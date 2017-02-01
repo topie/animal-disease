@@ -3,9 +3,9 @@ package com.topie.animal.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.topie.animal.dto.ReReportDto;
-import com.topie.animal.util.PeriodUtil;
 import com.topie.animal.service.IReReportService;
 import com.topie.animal.service.IReportService;
+import com.topie.animal.util.PeriodUtil;
 import com.topie.common.service.impl.BaseService;
 import com.topie.database.core.animal.dao.ReReportMapper;
 import com.topie.database.core.animal.dao.WeekConfigMapper;
@@ -49,10 +49,17 @@ public class ReReportServiceImpl extends BaseService<ReReport> implements IReRep
             Report report = iReportService
                     .selectOneByOrgIdAndTemplateIdAndBeginTime(reReportDto.getOrgId(), reReportDto.getTemplateId(),
                             reReportDto.getBeginTime());
-            reReportDto.setReportStatus(report.getStatus());
-            reReportDto.setReportId(report.getReportId());
+            if(report!=null){
+                reReportDto.setReportStatus(report.getStatus());
+                reReportDto.setReportId(report.getReportId());
+            }
         }
         return new PageInfo<>(list);
+    }
+
+    @Override
+    public int updateToClose(String id) {
+        return reReportMapper.updateToClose(id);
     }
 
 }

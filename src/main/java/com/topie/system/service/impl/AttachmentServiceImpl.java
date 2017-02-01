@@ -1,11 +1,11 @@
 package com.topie.system.service.impl;
 
 import com.topie.common.service.impl.BaseService;
-import com.topie.database.core.system.model.Attachment;
-import com.topie.system.service.IAttachmentService;
-import com.topie.security.utils.SecurityUtil;
 import com.topie.common.utils.FileUtil;
 import com.topie.common.utils.ResponseUtil;
+import com.topie.database.core.system.model.Attachment;
+import com.topie.security.utils.SecurityUtil;
+import com.topie.system.service.IAttachmentService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,8 +29,8 @@ public class AttachmentServiceImpl extends BaseService<Attachment> implements IA
     String uploadFolder;
 
     @Override
-    public Attachment uploadFileAttachment(HttpServletRequest request, MultipartFile file, String dirName,
-            long maxSize, HashMap<String, String> extLimitMap, Integer suffix) throws IOException {
+    public Attachment uploadFileAttachment(HttpServletRequest request, MultipartFile file, String dirName, long maxSize,
+            HashMap<String, String> extLimitMap, Integer suffix) throws IOException {
         //文件保存路径
         String savePath = request.getSession().getServletContext().getRealPath("/") + uploadFolder + "/" + SecurityUtil
                 .getCurrentUserName() + "/";
@@ -74,7 +74,7 @@ public class AttachmentServiceImpl extends BaseService<Attachment> implements IA
         Attachment attachment = new Attachment();
         attachment.setAttachmentPath(savePath + newFileName);
         attachment.setAttachmentUrl(saveUrl + newFileName);
-        attachment.setAttachmentName(fileName);
+        attachment.setAttachmentName(newFileName);
         attachment.setUploadLoginName(SecurityUtil.getCurrentUserName());
         attachment.setAttachmentSuffix(fileExt);
         attachment.setAttachmentType(suffix);

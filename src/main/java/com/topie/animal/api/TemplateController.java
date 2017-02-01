@@ -67,7 +67,6 @@ public class TemplateController {
     @RequestMapping(value = "/options", method = {RequestMethod.GET,RequestMethod.POST})
     @ResponseBody
     public List<Option> options(Template template) {
-        List<Option> optionList = iTemplateService.selectOptions(template);
-        return optionList;
+        return iTemplateService.selectOptions(template);
     }
 }

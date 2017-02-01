@@ -263,3 +263,4 @@ CREATE TABLE `b_wfootandmouthdisease` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
+

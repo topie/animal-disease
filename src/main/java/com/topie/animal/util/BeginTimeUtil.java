@@ -48,6 +48,9 @@ public class BeginTimeUtil {
     }
 
     public static List<WeekDto> getWeekDtoListByTime(String text) {
+        if (StringUtils.isEmpty(text)) {
+            return null;
+        }
         String[] arr = text.split(";");
         String[] periods = StringUtils.split(arr[0], ",");
         List<String> periodList = Lists.newArrayList(periods);
