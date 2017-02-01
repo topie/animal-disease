@@ -8,17 +8,12 @@ import com.topie.common.utils.UUIDUtil;
 import com.topie.database.core.animal.dao.RegionMapper;
 import com.topie.database.core.animal.dao.WeekConfigMapper;
 import com.topie.database.core.animal.model.*;
-import com.topie.database.core.template.dao.DisinfectiondrugsMapper;
-import com.topie.database.core.template.dao.LiveStockInOutMapper;
-import com.topie.database.core.template.dao.WfootandmouthdiseaseMapper;
-import com.topie.database.core.template.dao.WlivestockinoutMapper;
-import com.topie.database.core.template.model.Disinfectiondrugs;
-import com.topie.database.core.template.model.LiveStockInOut;
-import com.topie.database.core.template.model.Wfootandmouthdisease;
-import com.topie.database.core.template.model.Wlivestockinout;
+import com.topie.database.core.template.dao.*;
+import com.topie.database.core.template.model.*;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.servlet.http.HttpServletRequest;
@@ -62,6 +57,9 @@ public class ExcelServiceImpl implements IExcelService {
     @Autowired
     private WeekConfigMapper weekConfigMapper;
 
+    @Autowired
+    private AvianinfluenzaMapper avianinfluenzaMapper;
+
     @Override
     public String getReportHtml(HttpServletRequest request, Report report) {
         Map params = new HashMap();
@@ -82,6 +80,16 @@ public class ExcelServiceImpl implements IExcelService {
         params.put("org", orgInfo);
         params.put("report", report);
         switch (template.getTableName().toLowerCase()) {
+            case "b_avianinfluenza": {
+                Avianinfluenza arg =new Avianinfluenza();
+                arg.setAiReportid(report.getReportId());
+                Avianinfluenza item =  avianinfluenzaMapper.selectOne(arg);
+                if (item == null) {
+                    item = new Avianinfluenza();
+                }
+                params.put("item", item);
+                break;
+            }
             case "b_livestockinout": {
                 LiveStockInOut livestockInOut = liveStockInOutMapper.selectOneByReportId(report.getReportId());
                 if (livestockInOut == null) {
@@ -126,7 +134,15 @@ public class ExcelServiceImpl implements IExcelService {
         String templatePath = request.getSession().getServletContext().getRealPath("/template");
         return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getNormalTemplate(), params);
     }
-
+private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String reportName,Mapper mapper){
+    Map params = new HashMap();
+    Example example = new Example(clazz);
+    Example.Criteria criteria = example.createCriteria();
+    criteria.andIn(reportName, reportIds);
+    List items = mapper.selectByExample(example);
+    params.put("items", items);
+    return params;
+}
     @Override
     public String getReportSummaryHtml(HttpServletRequest request, String templateId, String beginTime) {
         Template template = iTemplateService.selectByKey(templateId);
@@ -134,6 +150,10 @@ public class ExcelServiceImpl implements IExcelService {
         if (reportIds.size() == 0) return null;
         Map params = new HashMap();
         switch (template.getTableName().toLowerCase()) {
+            case "b_avianinfluenza": {
+                params=this.getReportSummaryHtmlUtil(Avianinfluenza.class,reportIds,"aiReportid",avianinfluenzaMapper);
+                break;
+            }
             case "b_livestockinout": {
                 Example example = new Example(LiveStockInOut.class);
                 Example.Criteria criteria = example.createCriteria();
@@ -145,19 +165,11 @@ public class ExcelServiceImpl implements IExcelService {
                 break;
             }
             case "b_disinfectiondrugs": {
-                Example example = new Example(Disinfectiondrugs.class);
-                Example.Criteria criteria = example.createCriteria();
-                criteria.andIn("dfReportid", reportIds);
-                List<Disinfectiondrugs> items = disinfectiondrugsMapper.selectByExample(example);
-                params.put("items", items);
+                params=this.getReportSummaryHtmlUtil(Disinfectiondrugs.class,reportIds,"dfReportid",disinfectiondrugsMapper);
                 break;
             }
             case "b_wfootandmouthdisease": {
-                Example example = new Example(Wfootandmouthdisease.class);
-                Example.Criteria criteria = example.createCriteria();
-                criteria.andIn("fmdReportid", reportIds);
-                List<Wfootandmouthdisease> items = wfootandmouthdiseaseMapper.selectByExample(example);
-                params.put("items", items);
+                params=this.getReportSummaryHtmlUtil(Wfootandmouthdisease.class,reportIds,"fmdReportid",wfootandmouthdiseaseMapper);
                 break;
             }
             case "b_wlivestockinout": {
@@ -185,6 +197,31 @@ public class ExcelServiceImpl implements IExcelService {
         OrgInfo orgInfo = iOrgInfoService.selectByKey(userInfo.getOrgId());
         Region region = regionMapper.selectByPrimaryKey(orgInfo.getRegionCode());
         switch (template.getTableName().toLowerCase()) {
+            case "b_avianinfluenza": {
+                Avianinfluenza fill = (Avianinfluenza) JSONObject.toBean(jsonObj, Avianinfluenza.class);
+                Avianinfluenza arg = new Avianinfluenza();
+                arg.setAiReportid(report.getReportId());
+                Avianinfluenza avianinfluenza = avianinfluenzaMapper.selectOne(arg);
+                boolean insert = true;
+                if (avianinfluenza == null) {
+                    avianinfluenza = fill;
+                    avianinfluenza.setAiId(UUIDUtil.getUUID());
+                } else {
+                    fill.setAiId(avianinfluenza.getAiId());
+                    avianinfluenza = fill;
+                    insert = false;
+                }
+                avianinfluenza.setAiReportid(report.getReportId());
+                avianinfluenza.setAiDate(report.getBeginTime());
+                avianinfluenza.setAiRegioncode(region.getRegionCode());
+                avianinfluenza.setAiRegionname(region.getRegionName());
+                if (insert) {
+                    avianinfluenzaMapper.insertSelective(avianinfluenza);
+                } else {
+                    avianinfluenzaMapper.updateByPrimaryKeySelective(avianinfluenza);
+                }
+                break;
+            }
             case "b_livestockinout": {
                 LiveStockInOut fill = (LiveStockInOut) JSONObject.toBean(jsonObj, LiveStockInOut.class);
                 LiveStockInOut liveStockInOut = liveStockInOutMapper.selectOneByReportId(report.getReportId());

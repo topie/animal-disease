@@ -56,5 +56,8 @@
         <table tableName="b_wlivestockinout" domainObjectName="Wlivestockinout">
             <generatedKey column="LivestockId" sqlStatement="Mysql" identity="true"/>
         </table>
+        <table tableName="b_avianinfluenza" domainObjectName="Avianinfluenza">
+            <generatedKey column="ai_id" sqlStatement="Mysql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
