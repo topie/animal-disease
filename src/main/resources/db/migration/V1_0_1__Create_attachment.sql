@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `t_common_attachment`;
-CREATE TABLE `t_common_attachment` (
+DROP TABLE IF EXISTS `d_attachment`;
+CREATE TABLE `d_attachment` (
   `attachment_id`     INT(11) NOT NULL AUTO_INCREMENT
   COMMENT '附件id',
   `attachment_name`   VARCHAR(128)     DEFAULT ''

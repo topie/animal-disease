@@ -125,8 +125,8 @@
     <select id="findUserFunction" resultMap="FunctionVoMap">
         select distinct f.id,f.parent_id,f.function_name,f.icon,f.`action`
         from sys_user u left join sys_user_role ur
-        on u.id = ur.user_id left join sys_role_function rf
-        on ur.role_id=rf.role_id left join sys_function f
+        on u.id = ur.user_id left join d_role_function rf
+        on ur.role_id=rf.role_id left join d_function f
         on rf.function_id = f.id
         where u.login_name = #{loginName} and f.display=1
     </select>

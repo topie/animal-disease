@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `sys_function`;
-CREATE TABLE `sys_function` (
+DROP TABLE IF EXISTS `d_function`;
+CREATE TABLE `d_function` (
   `id`            INT(11)      NOT NULL AUTO_INCREMENT,
   `parent_id`     INT(11)      NOT NULL DEFAULT 0
   COMMENT '父ID',
@@ -25,8 +25,8 @@ CREATE TABLE `sys_function` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-DROP TABLE IF EXISTS `sys_role`;
-CREATE TABLE `sys_role` (
+DROP TABLE IF EXISTS `d_role`;
+CREATE TABLE `d_role` (
   `id`             INT(11)     NOT NULL AUTO_INCREMENT
   COMMENT 'id',
   `role_name`      VARCHAR(64) NOT NULL
@@ -44,8 +44,8 @@ CREATE TABLE `sys_role` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-DROP TABLE IF EXISTS `sys_role_function`;
-CREATE TABLE `sys_role_function` (
+DROP TABLE IF EXISTS `d_role_function`;
+CREATE TABLE `d_role_function` (
   `function_id` INT(11) DEFAULT 0,
   `role_id`     INT(11) DEFAULT 0,
   KEY `function_id` (`function_id`),
@@ -54,8 +54,8 @@ CREATE TABLE `sys_role_function` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-DROP TABLE IF EXISTS `sys_user`;
-CREATE TABLE `sys_user` (
+DROP TABLE IF EXISTS `d_user`;
+CREATE TABLE `d_user` (
   `id`                      INT(11)     NOT NULL  AUTO_INCREMENT,
   `login_name`              VARCHAR(64) NOT NULL
   COMMENT '登录名',
@@ -91,8 +91,8 @@ CREATE TABLE `sys_user` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-DROP TABLE IF EXISTS `sys_user_role`;
-CREATE TABLE `sys_user_role` (
+DROP TABLE IF EXISTS `d_user_role`;
+CREATE TABLE `d_user_role` (
   `user_id` INT(11) DEFAULT 0,
   `role_id` INT(11) DEFAULT 0,
   KEY `user_id` (`user_id`),
@@ -100,32 +100,32 @@ CREATE TABLE `sys_user_role` (
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
-INSERT INTO `sys_function` VALUES ('1', '0', '首页', '1', '1', "glyphicon glyphicon-home", '/api/index', '1', NULL, NULL);
-INSERT INTO `sys_function` VALUES ('2', '0', '系统管理', '1', '1', NULL, '#', '2', NULL, NULL);
-INSERT INTO `sys_function` VALUES ('3', '2', '用户管理', '1', '1', NULL, '/api/sys/user/pageList', '1', NULL, NULL);
-INSERT INTO `sys_function` VALUES ('4', '2', '角色管理', '1', '1', NULL, '/api/sys/role/pageList', '1', NULL, NULL);
-INSERT INTO `sys_function` VALUES ('5', '2', '菜单管理', '1', '1', NULL, '/api/sys/function/pageList', '1', NULL, NULL);
+INSERT INTO `d_function` VALUES ('1', '0', '首页', '1', '1', "glyphicon glyphicon-home", '/api/index', '1', NULL, NULL);
+INSERT INTO `d_function` VALUES ('2', '0', '系统管理', '1', '1', NULL, '#', '2', NULL, NULL);
+INSERT INTO `d_function` VALUES ('3', '2', '用户管理', '1', '1', NULL, '/api/sys/user/pageList', '1', NULL, NULL);
+INSERT INTO `d_function` VALUES ('4', '2', '角色管理', '1', '1', NULL, '/api/sys/role/pageList', '1', NULL, NULL);
+INSERT INTO `d_function` VALUES ('5', '2', '菜单管理', '1', '1', NULL, '/api/sys/function/pageList', '1', NULL, NULL);
 
-INSERT INTO `sys_role` VALUES ('1', '管理员', '/', '1', NULL, NULL);
-INSERT INTO `sys_role` VALUES ('2', '普通用户', '/', '1', NULL, NULL);
+INSERT INTO `d_role` VALUES ('1', '管理员', '/', '1', NULL, NULL);
+INSERT INTO `d_role` VALUES ('2', '普通用户', '/', '1', NULL, NULL);
 
-INSERT INTO `sys_role_function` (role_id, function_id) VALUES ('1', '1');
-INSERT INTO `sys_role_function` (role_id, function_id) VALUES ('1', '2');
-INSERT INTO `sys_role_function` (role_id, function_id) VALUES ('1', '3');
-INSERT INTO `sys_role_function` (role_id, function_id) VALUES ('1', '4');
-INSERT INTO `sys_role_function` (role_id, function_id) VALUES ('1', '5');
-INSERT INTO `sys_role_function` (role_id, function_id) VALUES ('2', '1');
+INSERT INTO `d_role_function` (role_id, function_id) VALUES ('1', '1');
+INSERT INTO `d_role_function` (role_id, function_id) VALUES ('1', '2');
+INSERT INTO `d_role_function` (role_id, function_id) VALUES ('1', '3');
+INSERT INTO `d_role_function` (role_id, function_id) VALUES ('1', '4');
+INSERT INTO `d_role_function` (role_id, function_id) VALUES ('1', '5');
+INSERT INTO `d_role_function` (role_id, function_id) VALUES ('2', '1');
 
-INSERT INTO `sys_user` VALUES
+INSERT INTO `d_user` VALUES
   ('1', 'admin', '$2a$10$oWaepJdwE7OjANCEEuQCW.aSxzOCZTsJglNcDpi8cnGXRLRppNZKG', '系统管理员', '1', '1',
         '1', '1', NULL, NULL, '597160667@qq.com', '18600200791', '2015-10-12 00:00:00',
    '2015-10-12 00:00:00', '2015-10-12 00:00:00');
-INSERT INTO `sys_user` VALUES
+INSERT INTO `d_user` VALUES
   ('2', 'user', '$2a$10$cQ/pNK.KzrjjQM0I/dRa1Owmuxb4P6NqMNp1Fs7VethhJq9F/W3L6', '普通用户', '1', '1',
         '1', '1', NULL, NULL, '18600200791@163.com', '18600200791', '2015-10-12 00:00:00',
    '2015-10-12 00:00:00', '2015-10-12 00:00:00');
 
-INSERT INTO `sys_user_role` (user_id, role_id) VALUES ('1', '1');
-INSERT INTO `sys_user_role` (user_id, role_id) VALUES ('1', '2');
-INSERT INTO `sys_user_role` (user_id, role_id) VALUES ('2', '2');
+INSERT INTO `d_user_role` (user_id, role_id) VALUES ('1', '1');
+INSERT INTO `d_user_role` (user_id, role_id) VALUES ('1', '2');
+INSERT INTO `d_user_role` (user_id, role_id) VALUES ('2', '2');
 

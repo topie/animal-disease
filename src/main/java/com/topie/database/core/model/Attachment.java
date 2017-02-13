@@ -2,7 +2,7 @@ package com.topie.database.core.model;
 
 import javax.persistence.*;
 
-@Table(name = "t_common_attachment")
+@Table(name = "d_attachment")
 public class Attachment {
 
     /**

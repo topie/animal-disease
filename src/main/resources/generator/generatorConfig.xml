@@ -53,7 +53,7 @@
         <javaClientGenerator targetPackage="com.topie.database.core.dao"
                              targetProject="${targetBasedir}/src/main/java" type="XMLMAPPER"/>
 
-        <table tableName="t_common_attachment" domainObjectName="Attachment">
+        <table tableName="d_attachment" domainObjectName="Attachment">
             <generatedKey column="attachment_id" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>

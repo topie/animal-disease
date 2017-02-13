@@ -5,7 +5,7 @@ import com.topie.common.handler.Sortable;
 import javax.persistence.*;
 import java.util.Date;
 
-@Table(name = "sys_function")
+@Table(name = "d_function")
 public class Function extends Sortable {
 
     private static final long serialVersionUID = -3601166032902209525L;

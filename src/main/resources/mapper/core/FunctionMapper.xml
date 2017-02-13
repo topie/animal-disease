@@ -26,10 +26,10 @@
         id, parent_id, function_name, display, state, icon, action, function_desc, insert_time, update_time
     </sql>
     <delete id="deleteRoleFunctionByFunctionId">
-        delete from animal-disease.sys_role_function where function_id=#{id}
+        delete from animal-disease.d_role_function where function_id=#{id}
     </delete>
     <select id="selectFunctionTreeNodes" resultMap="TreeNodeMap">
-        select id,parent_id,function_name from sys_function
+        select id,parent_id,function_name from d_function
         <where>
             <if test="functionName!=null and functionName!=''">
                 function_name like concat('%',concat(#{functionName},'%'))
@@ -42,7 +42,7 @@
     <select id="findFunctionList" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from sys_function
+        from d_function
         <where>
             <if test="parentId!=null">
                 parent_id = #{parentId}
@@ -59,7 +59,7 @@
         </if>
     </select>
     <select id="findRoleIdsByFunctionId" resultType="java.lang.Integer">
-        select distinct role_id from animal-disease.sys_role_function where function_id=#{functionId}
+        select distinct role_id from animal-disease.d_role_function where function_id=#{functionId}
     </select>
 
 </mapper>

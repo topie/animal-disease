@@ -28,10 +28,10 @@
         id, role_name, default_action, state, insert_time, update_time
     </sql>
     <insert id="insertRoleFunction" parameterType="java.lang.Integer">
-        insert into sys_role_function (role_id,function_id) values(#{roleId,jdbcType=INTEGER},#{functionId,jdbcType=INTEGER});
+        insert into d_role_function (role_id,function_id) values(#{roleId,jdbcType=INTEGER},#{functionId,jdbcType=INTEGER});
     </insert>
     <delete id="deleteFunctionByRoleId">
-        delete from sys_role_function where role_id=#{roleId}
+        delete from d_role_function where role_id=#{roleId}
     </delete>
     <delete id="deleteUserRoleRelateByRoleId">
         delete from sys_user_role where role_id=#{roleId}
@@ -39,15 +39,15 @@
     <select id="findRoleMatchUpFunctions" resultType="java.util.Map">
         select
         f.action as function,r.id as role
-        from  sys_role r
-        join sys_role_function rf
+        from  d_role r
+        join d_role_function rf
         on r.id=rf.role_id
-        join sys_function f
+        join d_function f
         on f.id=rf.function_id
         order by f.function_desc
     </select>
     <select id="selectRoleTreeNodes" resultMap="TreeNodeMap">
-        select id,0 parent_id,role_name from sys_role
+        select id,0 parent_id,role_name from d_role
         <if test="roleName!=null and roleName!=''">
             role_name like concat('%',concat(#{roleName},'%'))
         </if>
@@ -55,7 +55,7 @@
     <select id="findRoleList" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from sys_role
+        from d_role
         <where>
             <if test="roleName != null and roleName != ''">
                 role_name like concat('%',concat(#{roleName}, '%'))
@@ -66,7 +66,7 @@
         </if>
     </select>
     <select id="findFunctionByRoleId" resultType="java.lang.Integer">
-        select function_id from sys_role_function where role_id=#{roleId}
+        select function_id from d_role_function where role_id=#{roleId}
     </select>
     <select id="findHasRoleUserDtoList" resultMap="HasRoleUser">
         select

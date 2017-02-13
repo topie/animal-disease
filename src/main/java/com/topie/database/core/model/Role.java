@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Table(name = "sys_role")
+@Table(name = "d_role")
 public class Role extends Sortable {
 
     private static final long serialVersionUID = -387429146553168074L;
