@@ -33,7 +33,7 @@
     </tr>
     <tr class="r2">
         <td class="c2">填表日期:</td>
-        <td class="c3" colspan="21">2017年2月8日</td>
+        <td class="c3" colspan="21">${item.livestock_date?string("yyyy-MM-dd")}</td>
     </tr>
     <tr class="r3">
         <td class="c2">&nbsp;&nbsp;填 表 人:</td>
@@ -78,28 +78,28 @@
         <td class="c2">鸡</td>
     </tr>
     <tr class="r5">
-        <td class="c5">这是ChinaExcel报表软件的试用版本，如有问题请联系www.chinaexcel.com。</td>
-        <td class="c2">192.82</td>
-        <td class="c2">13.02</td>
-        <td class="c2">31.08</td>
-        <td class="c2">0.00</td>
-        <td class="c2">2540.81</td>
-        <td class="c2">134.56</td>
-        <td class="c2">16.67</td>
-        <td class="c2">10.31</td>
-        <td class="c2">4.63</td>
-        <td class="c2">0.07</td>
-        <td class="c2">0.38</td>
-        <td class="c2">0.00</td>
-        <td class="c2">656.60</td>
-        <td class="c2">1.57</td>
-        <td class="c2">1.00</td>
-        <td class="c2">0.02</td>
-        <td class="c2">0.04</td>
-        <td class="c2">0.00</td>
-        <td class="c2">1.56</td>
-        <td class="c2">5.58</td>
-        <td class="c2">89.19</td>
+        <td class="c5"></td>
+        <td class="c2">${item.herds_pig}</td>
+        <td class="c2">${item.herds_niu}</td>
+        <td class="c2">${item.herds_sheep}</td>
+        <td class="c2">${item.herds_other}</td>
+        <td class="c2">${item.herds_chicken}</td>
+        <td class="c2">${item.herds_duck}</td>
+        <td class="c2">${item.herds_goose}</td>
+        <td class="c2">${item.herds_other_q}</td>
+        <td class="c2">${item.immune_bird_flu_checken}</td>
+        <td class="c2">${item.immune_bird_flu_duck}</td>
+        <td class="c2">${item.immune_bird_flu_goose}</td>
+        <td class="c2">${item.immune_bird_flu_other}</td>
+        <td class="c2">${item.immune_afmd_niu}</td>
+        <td class="c2">${item.immune_afmd_sheep}</td>
+        <td class="c2">${item.immune_blue_ear}</td>
+        <td class="c2">${item.immune_swine}</td>
+        <td class="c2">${item.immune_new_castle}</td>
+        <td class="c2">${item.immune_fmd_pig}</td>
+        <td class="c2">${item.immune_fmd_niu}</td>
+        <td class="c2">${item.immune_fmd_sheep}</td>
+        <td class="c2">${item.immune_fmd_other}</td>
     </tr>
     </tbody>
 </table>

@@ -1,8 +1,10 @@
 package com.topie.poi;
 
+import me.chyxion.xls.TableToXls;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import java.io.IOException;
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,7 +17,6 @@ import java.util.logging.Logger;
  */
 
 /**
- *
  * @author y
  */
 public class Test {
@@ -26,6 +27,21 @@ public class Test {
     public static void main(String[] args) {
         try {
             PoiUtil.excelToHtml("/tmp/t2.xls", "/tmp/t2.html");
+            String encoding = "utf8";
+            StringBuilder html = new StringBuilder();
+            File file = new File("/tmp/t2.html");
+            if (file.isFile() && file.exists()) { //判断文件是否存在
+                InputStreamReader read = new InputStreamReader(new FileInputStream(file), encoding);//考虑到编码格式
+                BufferedReader bufferedReader = new BufferedReader(read);
+                String lineTxt = null;
+                while ((lineTxt = bufferedReader.readLine()) != null) {
+                    html.append(lineTxt);
+                }
+                read.close();
+            }
+            FileOutputStream fout = new FileOutputStream("/tmp/t3.xls");
+            TableToXls.process(html, fout);
+            fout.close();
         } catch (IOException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
@@ -33,7 +49,7 @@ public class Test {
         } catch (TransformerException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
+
 }

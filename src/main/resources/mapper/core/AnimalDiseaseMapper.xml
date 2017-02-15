@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.topie.database.core.dao.AnimalDiseaseMapper">
+
+    <select id="selectLivestock" resultType="java.util.Map">
+        select * from animal_disease.d_livestock_in_out
+        <where>
+            <if test="arg.liv_region_code!=null">
+                and liv_region_code=#{arg.liv_region_code}
+            </if>
+        </where>
+    </select>
+</mapper>
