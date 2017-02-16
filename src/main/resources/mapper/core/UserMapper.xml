@@ -64,35 +64,35 @@
         update_time,last_password_reset
     </sql>
     <update id="updateAccountNonLocked">
-        update sys_user set account_non_locked = #{accountNonLocked} where id=#{userId}
+        update d_user set account_non_locked = #{accountNonLocked} where id=#{userId}
     </update>
     <delete id="deleteUserAllRoles">
-        delete from sys_user_role where user_id=#{userId,jdbcType=INTEGER}
+        delete from d_user_role where user_id=#{userId,jdbcType=INTEGER}
     </delete>
     <delete id="deleteUserRole">
-        delete from sys_user_role where user_id=#{userId,jdbcType=INTEGER} and role_id=#{roleId,jdbcType=INTEGER}
+        delete from d_user_role where user_id=#{userId,jdbcType=INTEGER} and role_id=#{roleId,jdbcType=INTEGER}
     </delete>
     <select id="findUserByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from sys_user
+        from d_user
         where login_name = #{loginName,jdbcType=VARCHAR}
     </select>
     <insert id="insertUserRole" parameterType="java.lang.Integer">
-        insert ignore into sys_user_role (user_id,role_id) values(#{userId,jdbcType=INTEGER},#{roleId,jdbcType=INTEGER});
+        insert ignore into d_user_role (user_id,role_id) values(#{userId,jdbcType=INTEGER},#{roleId,jdbcType=INTEGER});
     </insert>
     <select id="findUserRoleByUserId" parameterType="java.lang.Integer"
             resultType="java.lang.Integer">
         select
         role_id
-        from sys_user_role
+        from d_user_role
         where user_id = #{userId,jdbcType=INTEGER}
     </select>
     <select id="findUserList" parameterType="com.topie.database.core.model.User"
             resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from sys_user
+        from d_user
         <where>
             <if test="displayName != null and displayName != ''">
                 display_name like concat('%',concat(#{displayName}, '%'))
@@ -112,7 +112,7 @@
         </if>
     </select>
     <select id="findExistUser" resultType="java.lang.Integer">
-        select count(1) from sys_user
+        select count(1) from d_user
         <where>
             <if test="id != null and id != ''">
                 id != #{id}
@@ -124,16 +124,16 @@
     </select>
     <select id="findUserFunction" resultMap="FunctionVoMap">
         select distinct f.id,f.parent_id,f.function_name,f.icon,f.`action`
-        from sys_user u left join sys_user_role ur
+        from d_user u left join d_user_role ur
         on u.id = ur.user_id left join d_role_function rf
         on ur.role_id=rf.role_id left join d_function f
         on rf.function_id = f.id
         where u.login_name = #{loginName} and f.display=1
     </select>
     <select id="countByLoginName" resultType="java.lang.Integer">
-        select count(1) from sys_user where login_name = #{loginName,jdbcType=VARCHAR}
+        select count(1) from d_user where login_name = #{loginName,jdbcType=VARCHAR}
     </select>
     <select id="findLoginNameByUserId" resultType="java.lang.String">
-        select login_name from sys_user where id=#{userId}
+        select login_name from d_user where id=#{userId}
     </select>
 </mapper>

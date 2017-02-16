@@ -34,7 +34,7 @@
         delete from d_role_function where role_id=#{roleId}
     </delete>
     <delete id="deleteUserRoleRelateByRoleId">
-        delete from sys_user_role where role_id=#{roleId}
+        delete from d_user_role where role_id=#{roleId}
     </delete>
     <select id="findRoleMatchUpFunctions" resultType="java.util.Map">
         select
@@ -71,8 +71,8 @@
     <select id="findHasRoleUserDtoList" resultMap="HasRoleUser">
         select
         u.id user_id,u.login_name,u.display_name,ur.role_id
-        from sys_user u
-        left join sys_user_role ur on u.id=ur.user_id
+        from d_user u
+        left join d_user_role ur on u.id=ur.user_id
         <if test="roleId != null">
             and ur.role_id=#{roleId}
         </if>
@@ -86,6 +86,6 @@
         </where>
     </select>
     <select id="findHasRoleUserIdsByRoleId" resultType="java.lang.Integer">
-        select user_id from sys_user_role where role_id=#{roleId}
+        select user_id from d_user_role where role_id=#{roleId}
     </select>
 </mapper>

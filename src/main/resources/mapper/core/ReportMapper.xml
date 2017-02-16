@@ -8,8 +8,8 @@
     <id column="report_id" property="reportId" jdbcType="INTEGER" />
     <result column="report_name" property="reportName" jdbcType="VARCHAR" />
     <result column="table_name" property="tableName" jdbcType="VARCHAR" />
-    <result column="template_name" property="templateName" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="SMALLINT" />
+    <result column="reprot_template_name" property="reprotTemplateName" jdbcType="VARCHAR" />
+    <result column="summary_template_name" property="summaryTemplateName" jdbcType="VARCHAR" />
     <result column="report_type" property="reportType" jdbcType="SMALLINT" />
     <result column="report_categery" property="reportCategery" jdbcType="SMALLINT" />
     <result column="report_period" property="reportPeriod" jdbcType="SMALLINT" />

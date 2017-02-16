@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
-@Table(name = "sys_user")
+@Table(name = "d_user")
 public class User extends Sortable {
 
     private static final long serialVersionUID = 4973095724072990604L;

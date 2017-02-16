@@ -25,15 +25,16 @@ public class Report {
     private String tableName;
 
     /**
-     * 模板名称
+     * 填报模板名称
      */
-    @Column(name = "template_name")
-    private String templateName;
+    @Column(name = "reprot_template_name")
+    private String reprotTemplateName;
 
     /**
-     * 类型 1：填报 2：汇总
+     * 汇总模板名称
      */
-    private Short type;
+    @Column(name = "summary_template_name")
+    private String summaryTemplateName;
 
     /**
      * 报表类型：1：月报 2：周报 3：统计 4：其他
@@ -108,39 +109,39 @@ public class Report {
     }
 
     /**
-     * 获取模板名称
+     * 获取填报模板名称
      *
-     * @return template_name - 模板名称
+     * @return reprot_template_name - 填报模板名称
      */
-    public String getTemplateName() {
-        return templateName;
+    public String getReprotTemplateName() {
+        return reprotTemplateName;
     }
 
     /**
-     * 设置模板名称
+     * 设置填报模板名称
      *
-     * @param templateName 模板名称
+     * @param reprotTemplateName 填报模板名称
      */
-    public void setTemplateName(String templateName) {
-        this.templateName = templateName;
+    public void setReprotTemplateName(String reprotTemplateName) {
+        this.reprotTemplateName = reprotTemplateName;
     }
 
     /**
-     * 获取类型 1：填报 2：汇总
+     * 获取汇总模板名称
      *
-     * @return type - 类型 1：填报 2：汇总
+     * @return summary_template_name - 汇总模板名称
      */
-    public Short getType() {
-        return type;
+    public String getSummaryTemplateName() {
+        return summaryTemplateName;
     }
 
     /**
-     * 设置类型 1：填报 2：汇总
+     * 设置汇总模板名称
      *
-     * @param type 类型 1：填报 2：汇总
+     * @param summaryTemplateName 汇总模板名称
      */
-    public void setType(Short type) {
-        this.type = type;
+    public void setSummaryTemplateName(String summaryTemplateName) {
+        this.summaryTemplateName = summaryTemplateName;
     }
 
     /**

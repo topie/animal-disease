@@ -22,7 +22,7 @@ public class OrangeHttpAuthenticationTokenFilter extends UsernamePasswordAuthent
 
     private static final Logger logger = LoggerFactory.getLogger(OrangeHttpAuthenticationTokenFilter.class);
 
-    private final String PARAM_TOKEN = "orange_token";
+    private final String PARAM_TOKEN = "animal_disease_token";
 
     @Value("${security.token.header}")
     private String tokenHeader;
