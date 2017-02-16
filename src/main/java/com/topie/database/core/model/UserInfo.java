@@ -15,7 +15,7 @@ public class UserInfo {
     /**
      * 性别 1：男 2：女
      */
-    private Byte gender;
+    private Integer gender;
 
     /**
      * 真是姓名
@@ -57,7 +57,7 @@ public class UserInfo {
      *
      * @return gender - 性别 1：男 2：女
      */
-    public Byte getGender() {
+    public Integer getGender() {
         return gender;
     }
 
@@ -66,7 +66,7 @@ public class UserInfo {
      *
      * @param gender 性别 1：男 2：女
      */
-    public void setGender(Byte gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 
