@@ -53,6 +53,37 @@ CREATE TABLE `d_report` (
   DEFAULT CHARSET = utf8
   COMMENT '报表模板';
 
+
+CREATE TABLE `d_report_fill` (
+  `id`            INT(11)   NOT NULL AUTO_INCREMENT
+  COMMENT 'id',
+  `report_id`     INT(11)   NOT NULL
+  COMMENT '报表ID',
+  `display_title` VARCHAR(128)       DEFAULT ''
+  COMMENT '填报标题',
+  `start_time`    TIMESTAMP NOT NULL,
+  `end_time`      TIMESTAMP NOT NULL,
+  PRIMARY KEY (`id`)
+)
+  DEFAULT CHARSET = utf8
+  COMMENT '报表填报';
+
+CREATE TABLE `d_report_re_fill` (
+  `id`            INT(11)   NOT NULL AUTO_INCREMENT
+  COMMENT 'id',
+  `report_id`     INT(11)   NOT NULL
+  COMMENT '报表ID',
+  `display_title` VARCHAR(128)       DEFAULT ''
+  COMMENT '填报标题',
+  `start_time`    TIMESTAMP NOT NULL,
+  `end_time`      TIMESTAMP NOT NULL,
+  `org_id`        INT(11)   NOT NULL DEFAULT 0
+  COMMENT '机构ID',
+  PRIMARY KEY (`id`)
+)
+  DEFAULT CHARSET = utf8
+  COMMENT '报表补填报';
+
 DROP TABLE IF EXISTS `d_livestock_in_out`;
 CREATE TABLE `d_livestock_in_out` (
   `livestock_id`            INT(11)     NOT NULL  AUTO_INCREMENT
