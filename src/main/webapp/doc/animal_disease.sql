@@ -38,13 +38,13 @@ CREATE TABLE `d_report` (
   COMMENT '报表名称',
   `table_name`            VARCHAR(128)     DEFAULT ''
   COMMENT '数据库表名',
-  `reprot_template_name`  VARCHAR(128)     DEFAULT ''
+  `report_template_name`  VARCHAR(128)     DEFAULT ''
   COMMENT '填报模板名称',
   `summary_template_name` VARCHAR(128)     DEFAULT ''
   COMMENT '汇总模板名称',
   `report_type`           SMALLINT         DEFAULT 0
   COMMENT '报表类型：1：月报 2：周报 3：统计 4：其他',
-  `report_categery`       SMALLINT         DEFAULT 0
+  `report_category`       SMALLINT         DEFAULT 0
   COMMENT '栏目 1：月度免疫 2：春秋防周报 3：春秋防数据汇总 4：物资储备',
   `report_period`         SMALLINT         DEFAULT 0
   COMMENT '填报频率 1：月度 2：周报 3：半年 4：季度 5：实时',

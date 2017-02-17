@@ -27,8 +27,8 @@ public class Report {
     /**
      * 填报模板名称
      */
-    @Column(name = "reprot_template_name")
-    private String reprotTemplateName;
+    @Column(name = "report_template_name")
+    private String reportTemplateName;
 
     /**
      * 汇总模板名称
@@ -40,19 +40,19 @@ public class Report {
      * 报表类型：1：月报 2：周报 3：统计 4：其他
      */
     @Column(name = "report_type")
-    private Short reportType;
+    private Integer reportType;
 
     /**
      * 栏目 1：月度免疫 2：春秋防周报 3：春秋防数据汇总 4：物资储备
      */
-    @Column(name = "report_categery")
-    private Short reportCategery;
+    @Column(name = "report_category")
+    private Integer reportCategory;
 
     /**
      * 填报频率 1：月度 2：周报 3：半年 4：季度 5：实时
      */
     @Column(name = "report_period")
-    private Short reportPeriod;
+    private Integer reportPeriod;
 
     /**
      * 获取ID
@@ -111,19 +111,19 @@ public class Report {
     /**
      * 获取填报模板名称
      *
-     * @return reprot_template_name - 填报模板名称
+     * @return report_template_name - 填报模板名称
      */
-    public String getReprotTemplateName() {
-        return reprotTemplateName;
+    public String getReportTemplateName() {
+        return reportTemplateName;
     }
 
     /**
      * 设置填报模板名称
      *
-     * @param reprotTemplateName 填报模板名称
+     * @param reportTemplateName 填报模板名称
      */
-    public void setReprotTemplateName(String reprotTemplateName) {
-        this.reprotTemplateName = reprotTemplateName;
+    public void setReportTemplateName(String reportTemplateName) {
+        this.reportTemplateName = reportTemplateName;
     }
 
     /**
@@ -149,7 +149,7 @@ public class Report {
      *
      * @return report_type - 报表类型：1：月报 2：周报 3：统计 4：其他
      */
-    public Short getReportType() {
+    public Integer getReportType() {
         return reportType;
     }
 
@@ -158,26 +158,26 @@ public class Report {
      *
      * @param reportType 报表类型：1：月报 2：周报 3：统计 4：其他
      */
-    public void setReportType(Short reportType) {
+    public void setReportType(Integer reportType) {
         this.reportType = reportType;
     }
 
     /**
      * 获取栏目 1：月度免疫 2：春秋防周报 3：春秋防数据汇总 4：物资储备
      *
-     * @return report_categery - 栏目 1：月度免疫 2：春秋防周报 3：春秋防数据汇总 4：物资储备
+     * @return report_category - 栏目 1：月度免疫 2：春秋防周报 3：春秋防数据汇总 4：物资储备
      */
-    public Short getReportCategery() {
-        return reportCategery;
+    public Integer getReportCategory() {
+        return reportCategory;
     }
 
     /**
      * 设置栏目 1：月度免疫 2：春秋防周报 3：春秋防数据汇总 4：物资储备
      *
-     * @param reportCategery 栏目 1：月度免疫 2：春秋防周报 3：春秋防数据汇总 4：物资储备
+     * @param reportCategory 栏目 1：月度免疫 2：春秋防周报 3：春秋防数据汇总 4：物资储备
      */
-    public void setReportCategery(Short reportCategery) {
-        this.reportCategery = reportCategery;
+    public void setReportCategory(Integer reportCategory) {
+        this.reportCategory = reportCategory;
     }
 
     /**
@@ -185,7 +185,7 @@ public class Report {
      *
      * @return report_period - 填报频率 1：月度 2：周报 3：半年 4：季度 5：实时
      */
-    public Short getReportPeriod() {
+    public Integer getReportPeriod() {
         return reportPeriod;
     }
 
@@ -194,7 +194,7 @@ public class Report {
      *
      * @param reportPeriod 填报频率 1：月度 2：周报 3：半年 4：季度 5：实时
      */
-    public void setReportPeriod(Short reportPeriod) {
+    public void setReportPeriod(Integer reportPeriod) {
         this.reportPeriod = reportPeriod;
     }
 }
