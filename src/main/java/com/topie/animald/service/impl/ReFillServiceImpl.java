@@ -6,6 +6,7 @@ import com.topie.animald.service.IReFillService;
 import com.topie.common.service.impl.BaseService;
 import com.topie.database.core.animald.dao.ReFillMapper;
 import com.topie.database.core.animald.model.ReFill;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
@@ -25,9 +26,12 @@ public class ReFillServiceImpl extends BaseService<ReFill> implements IReFillSer
     public PageInfo<ReFill> selectByPage(ReFill reFill, int pageNum, int pageSize) {
         Example example = new Example(ReFill.class);
         Example.Criteria criteria = example.createCriteria();
-        criteria.andLike("displayTitle", '%' + reFill.getDisplayTitle() + '%');
+        if (StringUtils.isNotEmpty(reFill.getDisplayTitle()))
+            criteria.andLike("displayTitle", '%' + reFill.getDisplayTitle() + '%');
+        if (reFill.getOrgId() != null && reFill.getOrgId() > 0) criteria.andEqualTo("orgId", reFill.getOrgId());
         PageHelper.startPage(pageNum, pageSize);
         List<ReFill> list = reFillMapper.selectByExample(example);
         return new PageInfo<>(list);
     }
+
 }

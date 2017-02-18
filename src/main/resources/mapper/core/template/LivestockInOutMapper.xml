@@ -39,4 +39,32 @@
     <select id="selectOneByFillIdAndOrgId" resultMap="BaseResultMap">
         select * from animal_disease.d_livestock_in_out where fill_id=#{fillId} and org_id=#{orgId}
     </select>
+    <select id="selectByFillIdGroupByOrgId" resultMap="BaseResultMap">
+       select * from animal_disease.d_livestock_in_out where fill_id=#{fillId} order by org_id
+    </select>
+    <select id="selectSumByFillId" resultMap="BaseResultMap">
+        select
+        ifnull(sum(herds_pig),0) herds_pig,
+        ifnull(sum(herds_niu),0) herds_niu,
+        ifnull(sum(herds_sheep),0) herds_sheep,
+        ifnull(sum(herds_other),0) herds_other,
+        ifnull(sum(herds_chicken),0) herds_chicken,
+        ifnull(sum(herds_duck),0) herds_duck,
+        ifnull(sum(herds_goose),0) herds_goose,
+        ifnull(sum(herds_other_q),0) herds_other_q,
+        ifnull(sum(immune_bird_flu_checken),0) immune_bird_flu_checken,
+        ifnull(sum(immune_bird_flu_duck),0) immune_bird_flu_duck,
+        ifnull(sum(immune_bird_flu_goose),0) immune_bird_flu_goose,
+        ifnull(sum(immune_bird_flu_other),0) immune_bird_flu_other,
+        ifnull(sum(immune_afmd_niu),0) immune_afmd_niu,
+        ifnull(sum(immune_afmd_sheep),0) immune_afmd_sheep,
+        ifnull(sum(immune_blue_ear),0) immune_blue_ear,
+        ifnull(sum(immune_swine),0) immune_swine,
+        ifnull(sum(immune_new_castle),0) immune_new_castle,
+        ifnull(sum(immune_fmd_pig),0) immune_fmd_pig,
+        ifnull(sum(immune_fmd_niu),0) immune_fmd_niu,
+        ifnull(sum(immune_fmd_sheep),0) immune_fmd_sheep,
+        ifnull(sum(immune_fmd_other),0) immune_fmd_other
+        from animal_disease.d_livestock_in_out where fill_id=#{fillId} order by org_id
+    </select>
 </mapper>

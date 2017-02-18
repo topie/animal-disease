@@ -2,12 +2,12 @@ package com.topie.animald.api;
 
 import com.github.pagehelper.PageInfo;
 import com.topie.animald.service.IReFillService;
-import com.topie.animald.service.IReportFillService;
+import com.topie.animald.service.INormalFillService;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
 import com.topie.database.core.animald.model.ReFill;
-import com.topie.database.core.animald.model.ReportFill;
+import com.topie.database.core.animald.model.NormalFill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class ReFillController {
     private IReFillService iReFillService;
 
     @Autowired
-    private IReportFillService iReportFillService;
+    private INormalFillService iNormalFillService;
 
     @RequestMapping(value = "/pageList", method = RequestMethod.GET)
     @ResponseBody
@@ -39,14 +39,14 @@ public class ReFillController {
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     @ResponseBody
     public Result insert(ReFill reFill) {
-        ReportFill reportFill = iReportFillService.selectByKey(reFill.getFillId());
-        if (reportFill == null) {
+        NormalFill normalFill = iNormalFillService.selectByKey(reFill.getFillId());
+        if (normalFill == null) {
             return ResponseUtil.error("申请补填报的填报规则不存在！");
         }
-        if (reportFill.getEndTime().after(new Date())) {
+        if (normalFill.getEndTime().after(new Date())) {
             return ResponseUtil.error("申请补填报的填报规则未过期！");
         }
-        reFill.setDisplayTitle(reportFill.getDisplayTitle() + "[补填报]");
+        reFill.setDisplayTitle(normalFill.getDisplayTitle() + "[补填报]");
         int result = iReFillService.saveNotNull(reFill);
         return result > 0 ? ResponseUtil.success() : ResponseUtil.error();
     }
@@ -54,14 +54,14 @@ public class ReFillController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public Result update(ReFill reFill) {
-        ReportFill reportFill = iReportFillService.selectByKey(reFill.getFillId());
-        if (reportFill == null) {
+        NormalFill normalFill = iNormalFillService.selectByKey(reFill.getFillId());
+        if (normalFill == null) {
             return ResponseUtil.error("申请补填报的填报规则不存在！");
         }
-        if (reportFill.getEndTime().after(new Date())) {
+        if (normalFill.getEndTime().after(new Date())) {
             return ResponseUtil.error("申请补填报的填报规则未过期！");
         }
-        reFill.setDisplayTitle(reportFill.getDisplayTitle() + "[补填报]");
+        reFill.setDisplayTitle(normalFill.getDisplayTitle() + "[补填报]");
         iReFillService.updateNotNull(reFill);
         return ResponseUtil.success();
     }

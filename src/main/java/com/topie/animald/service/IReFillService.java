@@ -10,4 +10,5 @@ import com.topie.database.core.animald.model.ReFill;
 public interface IReFillService extends IService<ReFill> {
 
     PageInfo<ReFill> selectByPage(ReFill userInfo, int pageNum, int pageSize);
+
 }

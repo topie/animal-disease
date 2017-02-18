@@ -7,7 +7,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "d_report_fill")
-public class ReportFill {
+public class NormalFill {
     /**
      * id
      */

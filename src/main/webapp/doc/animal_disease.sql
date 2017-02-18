@@ -95,7 +95,9 @@ CREATE TABLE `d_livestock_in_out` (
   `user_id`                 INT(11)   NOT NULL  DEFAULT 0
   COMMENT '上报人ID',
   `org_id`                  INT(11)   NOT NULL  DEFAULT 0
-  COMMENT '省行政ID',
+  COMMENT '机构ID',
+  `province`                VARCHAR(32)         DEFAULT ''
+  COMMENT '省',
   `livestock_date`          TIMESTAMP NULL      DEFAULT NULL
   COMMENT '上报时间',
   `status`                  TINYINT   NOT NULL  DEFAULT 0

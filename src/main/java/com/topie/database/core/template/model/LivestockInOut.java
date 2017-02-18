@@ -1,11 +1,12 @@
 package com.topie.database.core.template.model;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "d_livestock_in_out")
 public class LivestockInOut {
+
     /**
      * ID
      */
@@ -32,6 +33,8 @@ public class LivestockInOut {
     @Column(name = "org_id")
     private Integer orgId;
 
+    private String province;
+
     /**
      * 上报时间
      */
@@ -41,7 +44,7 @@ public class LivestockInOut {
     /**
      * 填报状态
      */
-    private Byte status;
+    private Integer status;
 
     /**
      * 当月存栏数量(万头/只/羽)-猪
@@ -169,6 +172,14 @@ public class LivestockInOut {
     @Column(name = "immune_fmd_other")
     private BigDecimal immuneFmdOther;
 
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
     /**
      * 获取ID
      *
@@ -264,7 +275,7 @@ public class LivestockInOut {
      *
      * @return status - 填报状态
      */
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
@@ -273,7 +284,7 @@ public class LivestockInOut {
      *
      * @param status 填报状态
      */
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
