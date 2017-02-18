@@ -5,7 +5,9 @@ import com.topie.animald.service.IUserInfoService;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
+import com.topie.database.core.model.User;
 import com.topie.database.core.model.UserInfo;
+import com.topie.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,9 @@ public class UserInfoController {
     @Autowired
     private IUserInfoService iUserInfoService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "/pageList", method = RequestMethod.GET)
     @ResponseBody
     public Result roles(UserInfo userInfo,
@@ -31,7 +36,19 @@ public class UserInfoController {
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     @ResponseBody
-    public Result insertRole(UserInfo userInfo) {
+    public Result insertRole(UserInfo userInfo, @RequestParam("loginName") String loginName,
+            @RequestParam("password") String password) {
+        User user = new User();
+        user.setLoginName(loginName);
+        user.setPassword(password);
+        user.setDisplayName(userInfo.getRealName());
+        user.setAccountNonExpired(true);
+        user.setAccountNonLocked(true);
+        user.setCredentialsNonExpired(true);
+        user.setEnabled(true);
+        user.setPassword(password);
+        userService.insertUser(user);
+        userInfo.setUserId(user.getId());
         int result = iUserInfoService.saveNotNull(userInfo);
         return result > 0 ? ResponseUtil.success() : ResponseUtil.error();
     }
