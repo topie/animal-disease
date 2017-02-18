@@ -59,7 +59,7 @@
                 <value>classpath*:mapper/core/**/*.xml</value>
             </array>
         </property>
-        <property name="typeAliasesPackage" value="com.topie.database.core.model"/>
+        <property name="typeAliasesPackage" value="com.topie.database.core.**.model"/>
         <property name="plugins">
             <array>
                 <bean class="com.github.pagehelper.PageHelper">
@@ -79,7 +79,7 @@
     </bean>
 
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.topie.database.core.dao"/>
+        <property name="basePackage" value="com.topie.database.core.**.dao"/>
         <property name="properties">
             <value>
                 mappers=tk.mybatis.mapper.common.Mapper

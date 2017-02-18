@@ -4,7 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.topie.common.utils.TreeNode;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.Result;
-import com.topie.database.core.model.Function;
+import com.topie.database.core.system.model.Function;
 import com.topie.security.service.FunctionService;
 import com.topie.security.service.UserService;
 import com.topie.common.tools.cache.RedisCache;

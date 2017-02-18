@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.LivestockInOutMapper">
+    <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.LivestockInOut">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="livestock_id" property="livestockId" jdbcType="INTEGER"/>
+        <result column="fill_id" property="fillId" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="org_id" property="orgId" jdbcType="INTEGER"/>
+        <result column="livestock_date" property="livestockDate" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="herds_pig" property="herdsPig" jdbcType="DECIMAL"/>
+        <result column="herds_niu" property="herdsNiu" jdbcType="DECIMAL"/>
+        <result column="herds_sheep" property="herdsSheep" jdbcType="DECIMAL"/>
+        <result column="herds_other" property="herdsOther" jdbcType="DECIMAL"/>
+        <result column="herds_chicken" property="herdsChicken" jdbcType="DECIMAL"/>
+        <result column="herds_duck" property="herdsDuck" jdbcType="DECIMAL"/>
+        <result column="herds_goose" property="herdsGoose" jdbcType="DECIMAL"/>
+        <result column="herds_other_q" property="herdsOtherQ" jdbcType="DECIMAL"/>
+        <result column="immune_bird_flu_checken" property="immuneBirdFluChecken" jdbcType="DECIMAL"/>
+        <result column="immune_bird_flu_duck" property="immuneBirdFluDuck" jdbcType="DECIMAL"/>
+        <result column="immune_bird_flu_goose" property="immuneBirdFluGoose" jdbcType="DECIMAL"/>
+        <result column="immune_bird_flu_other" property="immuneBirdFluOther" jdbcType="DECIMAL"/>
+        <result column="immune_afmd_niu" property="immuneAfmdNiu" jdbcType="DECIMAL"/>
+        <result column="immune_afmd_sheep" property="immuneAfmdSheep" jdbcType="DECIMAL"/>
+        <result column="immune_blue_ear" property="immuneBlueEar" jdbcType="DECIMAL"/>
+        <result column="immune_swine" property="immuneSwine" jdbcType="DECIMAL"/>
+        <result column="immune_new_castle" property="immuneNewCastle" jdbcType="DECIMAL"/>
+        <result column="immune_fmd_pig" property="immuneFmdPig" jdbcType="DECIMAL"/>
+        <result column="immune_fmd_niu" property="immuneFmdNiu" jdbcType="DECIMAL"/>
+        <result column="immune_fmd_sheep" property="immuneFmdSheep" jdbcType="DECIMAL"/>
+        <result column="immune_fmd_other" property="immuneFmdOther" jdbcType="DECIMAL"/>
+    </resultMap>
+    <delete id="deleteByFillIdAndOrgId">
+        delete from animal_disease.d_livestock_in_out where fill_id=#{fillId} and org_id=#{orgId}
+    </delete>
+    <select id="selectOneByFillIdAndOrgId" resultMap="BaseResultMap">
+        select * from animal_disease.d_livestock_in_out where fill_id=#{fillId} and org_id=#{orgId}
+    </select>
+</mapper>

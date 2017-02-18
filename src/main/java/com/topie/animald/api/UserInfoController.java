@@ -5,8 +5,8 @@ import com.topie.animald.service.IUserInfoService;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
-import com.topie.database.core.model.User;
-import com.topie.database.core.model.UserInfo;
+import com.topie.database.core.system.model.User;
+import com.topie.database.core.animald.model.UserInfo;
 import com.topie.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class UserInfoController {
 
     @RequestMapping(value = "/pageList", method = RequestMethod.GET)
     @ResponseBody
-    public Result roles(UserInfo userInfo,
+    public Result pageList(UserInfo userInfo,
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
         PageInfo<UserInfo> pageInfo = iUserInfoService.selectByPage(userInfo, pageNum, pageSize);
@@ -36,7 +36,7 @@ public class UserInfoController {
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     @ResponseBody
-    public Result insertRole(UserInfo userInfo, @RequestParam("loginName") String loginName,
+    public Result insert(UserInfo userInfo, @RequestParam("loginName") String loginName,
             @RequestParam("password") String password) {
         User user = new User();
         user.setLoginName(loginName);
@@ -55,14 +55,14 @@ public class UserInfoController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
-    public Result updateRole(UserInfo userInfo) {
+    public Result update(UserInfo userInfo) {
         iUserInfoService.updateNotNull(userInfo);
         return ResponseUtil.success();
     }
 
     @RequestMapping(value = "/load/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Result loadRole(@PathVariable(value = "id") Integer id) {
+    public Result load(@PathVariable(value = "id") Integer id) {
         UserInfo userInfo = iUserInfoService.selectByKey(id);
         return ResponseUtil.success(userInfo);
     }

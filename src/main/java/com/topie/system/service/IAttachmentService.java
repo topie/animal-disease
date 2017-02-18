@@ -1,7 +1,7 @@
 package com.topie.system.service;
 
 import com.topie.common.service.IService;
-import com.topie.database.core.model.Attachment;
+import com.topie.database.core.system.model.Attachment;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;

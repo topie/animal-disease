@@ -26,10 +26,10 @@ public class Test {
      */
     public static void main(String[] args) {
         try {
-            PoiUtil.excelToHtml("/tmp/t2.xls", "/tmp/t2.html");
+            PoiUtil.excelToHtml("/tmp/1.xls", "/tmp/1.html");
             String encoding = "utf8";
             StringBuilder html = new StringBuilder();
-            File file = new File("/tmp/t2.html");
+            File file = new File("/tmp/1.html");
             if (file.isFile() && file.exists()) { //判断文件是否存在
                 InputStreamReader read = new InputStreamReader(new FileInputStream(file), encoding);//考虑到编码格式
                 BufferedReader bufferedReader = new BufferedReader(read);
@@ -39,7 +39,7 @@ public class Test {
                 }
                 read.close();
             }
-            FileOutputStream fout = new FileOutputStream("/tmp/t3.xls");
+            FileOutputStream fout = new FileOutputStream("/tmp/2.xls");
             TableToXls.process(html, fout);
             fout.close();
         } catch (IOException ex) {

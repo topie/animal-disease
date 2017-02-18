@@ -16,7 +16,7 @@ public class OrangeSecurityUser extends User {
     private String email;
     private String contactPhone;
     private Date lastPasswordReset;
-    public OrangeSecurityUser(com.topie.database.core.model.User user,
+    public OrangeSecurityUser(com.topie.database.core.system.model.User user,
                               Collection<GrantedAuthority> userGrantedAuthorities) {
         super(user.getLoginName(), user.getPassword(), user.getEnabled(),
                 user.getAccountNonExpired(), user.getCredentialsNonExpired(),

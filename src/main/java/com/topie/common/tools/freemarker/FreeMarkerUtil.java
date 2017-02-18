@@ -1,8 +1,6 @@
 package com.topie.common.tools.freemarker;
 
 import freemarker.template.*;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
@@ -11,44 +9,22 @@ import java.io.*;
 import java.util.Locale;
 import java.util.Map;
 
-@Component
 public class FreeMarkerUtil {
 
-    @Value("${freemarker.template}")
-    private String freemarkerTemplate;
-
-    protected static Configuration updateConfiguration(Configuration configuration, HttpServletRequest request)
-            throws TemplateException {
-
-        // 设置标签类型([]、<>),[]这种标记解析要快些
-        configuration.setTagSyntax(Configuration.AUTO_DETECT_TAG_SYNTAX);
-
-        // 设置允许属性为空
-        configuration.setClassicCompatible(true);
-
-        WebApplicationContext webApp = RequestContextUtils
-                .getWebApplicationContext(request, request.getSession().getServletContext());
-        // 获取实现TemplateDirectiveModel的bean
-        Map<String, TemplateDirectiveModel> beans = webApp.getBeansOfType(TemplateDirectiveModel.class);
-
-        for (String key : beans.keySet()) {
-            Object obj = beans.get(key);
-            if (obj != null && obj instanceof TemplateDirectiveModel) {
-                configuration.setSharedVariable(key, obj);
-            }
-        }
-
-        return configuration;
-    }
-
-    public String getStringFromTemplate(String subFolderPath, String templateName, Map<?, ?> params) {
+    /**
+     *
+     * @param templatePath
+     * @param templateName
+     * @param params
+     * @return
+     */
+    public static String getHtmlStringFromTemplate(String templatePath, String templateName, Map<?, ?> params) {
         Writer out = null;
         try {
-            String baseTemplateFolder = this.getClass().getResource(freemarkerTemplate).getPath();
             //初使化FreeMarker配置
             Configuration config = new Configuration();
             // 设置要解析的模板所在的目录，并加载模板文件
-            config.setDirectoryForTemplateLoading(new File(baseTemplateFolder + subFolderPath));
+            config.setDirectoryForTemplateLoading(new File(templatePath));
             // 设置包装器，并将对象包装为数据模型
             config.setObjectWrapper(new DefaultObjectWrapper());
             config.setLocale(Locale.CHINA);
@@ -75,6 +51,7 @@ public class FreeMarkerUtil {
         return null;
     }
 
+
     /**
      * templatePath模板文件存放路径,templateName 模板文件名称,filename 生成的文件名称
      *
@@ -83,8 +60,8 @@ public class FreeMarkerUtil {
      * @param fileName
      * @param root
      */
-    public void generateFileByTemplate(String templatePath, String templateName, String fileName, Map<?, ?> root,
-            HttpServletRequest request) {
+    public static void analysisTemplate(String templatePath, String templateName, String fileName,
+        Map<?, ?> root, HttpServletRequest request) {
         try {
             //初使化FreeMarker配置
             Configuration config = new Configuration();
@@ -108,6 +85,31 @@ public class FreeMarkerUtil {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
+    }
+
+    protected static Configuration updateConfiguration(Configuration configuration,
+        HttpServletRequest request) throws TemplateException {
+
+        // 设置标签类型([]、<>),[]这种标记解析要快些
+        configuration.setTagSyntax(Configuration.AUTO_DETECT_TAG_SYNTAX);
+
+        // 设置允许属性为空
+        configuration.setClassicCompatible(true);
+
+        WebApplicationContext webApp = RequestContextUtils
+            .getWebApplicationContext(request, request.getSession().getServletContext());
+        // 获取实现TemplateDirectiveModel的bean
+        Map<String, TemplateDirectiveModel> beans =
+            webApp.getBeansOfType(TemplateDirectiveModel.class);
+
+        for (String key : beans.keySet()) {
+            Object obj = beans.get(key);
+            if (obj != null && obj instanceof TemplateDirectiveModel) {
+                configuration.setSharedVariable(key, obj);
+            }
+        }
+
+        return configuration;
     }
 
 }

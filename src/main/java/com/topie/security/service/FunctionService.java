@@ -3,7 +3,7 @@ package com.topie.security.service;
 import com.github.pagehelper.PageInfo;
 import com.topie.common.service.IService;
 import com.topie.common.utils.TreeNode;
-import com.topie.database.core.model.Function;
+import com.topie.database.core.system.model.Function;
 
 import java.util.List;
 

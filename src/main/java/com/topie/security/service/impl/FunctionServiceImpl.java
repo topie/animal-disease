@@ -4,8 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.topie.common.service.impl.BaseService;
 import com.topie.common.utils.TreeNode;
-import com.topie.database.core.dao.FunctionMapper;
-import com.topie.database.core.model.Function;
+import com.topie.database.core.system.dao.FunctionMapper;
+import com.topie.database.core.system.model.Function;
 import com.topie.security.service.FunctionService;
 import com.topie.security.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,15 @@ public class FunctionServiceImpl extends BaseService<Function> implements Functi
 
     @Override
     public int updateFunction(Function function) {
-        return getMapper().updateByPrimaryKeySelective(function);
+        int result = getMapper().updateByPrimaryKeySelective(function);
+        List<Integer> roleIds = functionMapper.findRoleIdsByFunctionId(function.getId());
+        if (roleIds.size() > 0) {
+            functionMapper.deleteRoleFunctionByFunctionId(function.getId());
+            for (Integer roleId : roleIds) {
+                roleService.refreshAuthAndResource(roleId);
+            }
+        }
+        return result;
     }
 
     @Override

@@ -44,17 +44,17 @@
                         password="${jdbc_password}">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.topie.database.core.model"
+        <javaModelGenerator targetPackage="com.topie.database.core.template.model"
                             targetProject="${targetBasedir}/src/main/java"/>
 
-        <sqlMapGenerator targetPackage="mapper/core"
+        <sqlMapGenerator targetPackage="mapper/template"
                          targetProject="${targetBasedir}/src/main/resources"/>
 
-        <javaClientGenerator targetPackage="com.topie.database.core.dao"
+        <javaClientGenerator targetPackage="com.topie.database.core.template.dao"
                              targetProject="${targetBasedir}/src/main/java" type="XMLMAPPER"/>
 
-        <table tableName="d_report" domainObjectName="Report">
-            <generatedKey column="report_id" sqlStatement="Mysql" identity="true"/>
+        <table tableName="d_livestock_in_out" domainObjectName="LivestockInOut">
+            <generatedKey column="livestock_id" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>

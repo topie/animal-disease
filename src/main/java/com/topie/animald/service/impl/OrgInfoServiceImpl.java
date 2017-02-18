@@ -4,8 +4,9 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.topie.animald.service.IOrgInfoService;
 import com.topie.common.service.impl.BaseService;
-import com.topie.database.core.dao.OrgInfoMapper;
-import com.topie.database.core.model.OrgInfo;
+import com.topie.common.utils.TreeNode;
+import com.topie.database.core.animald.dao.OrgInfoMapper;
+import com.topie.database.core.animald.model.OrgInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
@@ -29,5 +30,10 @@ public class OrgInfoServiceImpl extends BaseService<OrgInfo> implements IOrgInfo
         PageHelper.startPage(pageNum, pageSize);
         List<OrgInfo> list = orgInfoMapper.selectByExample(example);
         return new PageInfo<>(list);
+    }
+
+    @Override
+    public List<TreeNode> selectTreeNodes(OrgInfo orgInfo) {
+        return orgInfoMapper.selectTreeNodes(orgInfo);
     }
 }

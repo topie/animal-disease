@@ -2,7 +2,7 @@ package com.topie.system.api.sys;
 
 import com.github.pagehelper.PageInfo;
 import com.topie.common.utils.PageConvertUtil;
-import com.topie.database.core.model.User;
+import com.topie.database.core.system.model.User;
 import com.topie.security.exception.AuthBusinessException;
 import com.topie.security.service.UserService;
 import com.topie.security.utils.SecurityUtil;

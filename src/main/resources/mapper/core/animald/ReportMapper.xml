@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.topie.database.core.animald.dao.ReportMapper">
+    <resultMap id="BaseResultMap" type="com.topie.database.core.animald.model.Report">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="report_id" jdbcType="INTEGER" property="reportId"/>
+        <result column="report_name" jdbcType="VARCHAR" property="reportName"/>
+        <result column="table_name" jdbcType="VARCHAR" property="tableName"/>
+        <result column="report_template_name" jdbcType="VARCHAR" property="reportTemplateName"/>
+        <result column="summary_template_name" jdbcType="VARCHAR" property="summaryTemplateName"/>
+        <result column="report_type" jdbcType="SMALLINT" property="reportType"/>
+        <result column="report_category" jdbcType="SMALLINT" property="reportCategory"/>
+        <result column="report_period" jdbcType="SMALLINT" property="reportPeriod"/>
+    </resultMap>
+    <resultMap id="TreeNodeMap" type="com.topie.common.utils.TreeNode">
+        <id column="report_id" property="id" jdbcType="INTEGER"/>
+        <result column="pid" property="pId" jdbcType="INTEGER"/>
+        <result column="report_name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="selectTreeNodes" resultMap="TreeNodeMap">
+        select 0 pid,report_id,report_name from animal_disease.d_report
+        <where>
+            <if test="reportName!=null">
+                and report_name like concat('%',concat(#{reportName},'%'))
+            </if>
+        </where>
+    </select>
+</mapper>

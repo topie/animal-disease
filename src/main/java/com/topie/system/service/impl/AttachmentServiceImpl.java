@@ -1,7 +1,7 @@
 package com.topie.system.service.impl;
 
 import com.topie.common.service.impl.BaseService;
-import com.topie.database.core.model.Attachment;
+import com.topie.database.core.system.model.Attachment;
 import com.topie.system.service.IAttachmentService;
 import com.topie.security.utils.SecurityUtil;
 import com.topie.common.utils.FileUtil;

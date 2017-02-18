@@ -1,7 +1,7 @@
 package com.topie.system.api.common;
 
 import com.topie.common.utils.Result;
-import com.topie.database.core.model.Attachment;
+import com.topie.database.core.system.model.Attachment;
 import com.topie.system.service.IAttachmentService;
 import com.topie.common.utils.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;

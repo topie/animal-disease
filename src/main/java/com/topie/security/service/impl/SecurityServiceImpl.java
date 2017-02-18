@@ -1,7 +1,7 @@
 package com.topie.security.service.impl;
 
-import com.topie.database.core.model.Role;
-import com.topie.database.core.model.User;
+import com.topie.database.core.system.model.Role;
+import com.topie.database.core.system.model.User;
 import com.topie.security.constant.SecurityConstant;
 import com.topie.security.security.OrangeSecurityUser;
 import com.topie.security.service.RoleService;

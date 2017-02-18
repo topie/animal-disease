@@ -2,6 +2,8 @@ DROP TABLE IF EXISTS `d_user_info`;
 CREATE TABLE `d_user_info` (
   `user_id`   INT(11) NOT NULL
   COMMENT '用户ID',
+  `org_id`    INT(11) NOT NULL
+  COMMENT '机构ID',
   `gender`    TINYINT     DEFAULT 0
   COMMENT '性别 1：男 2：女',
   `real_name` VARCHAR(64) DEFAULT ''
@@ -61,8 +63,8 @@ CREATE TABLE `d_report_fill` (
   COMMENT '报表ID',
   `display_title` VARCHAR(128)       DEFAULT ''
   COMMENT '填报标题',
-  `start_time`    TIMESTAMP NOT NULL,
-  `end_time`      TIMESTAMP NOT NULL,
+  `start_time`    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `end_time`      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 )
   DEFAULT CHARSET = utf8
@@ -71,12 +73,12 @@ CREATE TABLE `d_report_fill` (
 CREATE TABLE `d_report_re_fill` (
   `id`            INT(11)   NOT NULL AUTO_INCREMENT
   COMMENT 'id',
-  `report_id`     INT(11)   NOT NULL
-  COMMENT '报表ID',
+  `fill_id`       INT(11)   NOT NULL
+  COMMENT '规则ID',
   `display_title` VARCHAR(128)       DEFAULT ''
   COMMENT '填报标题',
-  `start_time`    TIMESTAMP NOT NULL,
-  `end_time`      TIMESTAMP NOT NULL,
+  `start_time`    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `end_time`      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `org_id`        INT(11)   NOT NULL DEFAULT 0
   COMMENT '机构ID',
   PRIMARY KEY (`id`)
@@ -86,60 +88,62 @@ CREATE TABLE `d_report_re_fill` (
 
 DROP TABLE IF EXISTS `d_livestock_in_out`;
 CREATE TABLE `d_livestock_in_out` (
-  `livestock_id`            INT(11)     NOT NULL  AUTO_INCREMENT
+  `livestock_id`            INT(11)   NOT NULL  AUTO_INCREMENT
   COMMENT 'ID',
-  `report_id`               INT(11)     NOT NULL  DEFAULT 0
-  COMMENT '报表ID',
-  `liv_region_code`         VARCHAR(64) NOT NULL  DEFAULT ''
-  COMMENT '省行政编码',
-  `liv_region_name`         VARCHAR(128)          DEFAULT ''
-  COMMENT '省名',
-  `livestock_date`          TIMESTAMP   NULL      DEFAULT NULL
+  `fill_id`                 INT(11)   NOT NULL  DEFAULT 0
+  COMMENT '填报ID',
+  `user_id`                 INT(11)   NOT NULL  DEFAULT 0
+  COMMENT '上报人ID',
+  `org_id`                  INT(11)   NOT NULL  DEFAULT 0
+  COMMENT '省行政ID',
+  `livestock_date`          TIMESTAMP NULL      DEFAULT NULL
   COMMENT '上报时间',
-  `herds_pig`               DECIMAL(8, 4)         DEFAULT 0
+  `status`                  TINYINT   NOT NULL  DEFAULT 0
+  COMMENT '填报状态',
+  `herds_pig`               DECIMAL(8, 4)       DEFAULT 0
   COMMENT '当月存栏数量(万头/只/羽)-猪',
-  `herds_niu`               DECIMAL(8, 4)         DEFAULT 0
+  `herds_niu`               DECIMAL(8, 4)       DEFAULT 0
   COMMENT '当月存栏数量(万头/只/羽)-牛',
-  `herds_sheep`             DECIMAL(8, 4)         DEFAULT 0
+  `herds_sheep`             DECIMAL(8, 4)       DEFAULT 0
   COMMENT '当月存栏数量(万头/只/羽)-羊',
-  `herds_other`             DECIMAL(8, 4)         DEFAULT 0
+  `herds_other`             DECIMAL(8, 4)       DEFAULT 0
   COMMENT '当月存栏数量(万头/只/羽)-其他',
-  `herds_chicken`           DECIMAL(8, 4)         DEFAULT 0
+  `herds_chicken`           DECIMAL(8, 4)       DEFAULT 0
   COMMENT '当月存栏数量(万头/只/羽)-鸡',
-  `herds_duck`              DECIMAL(8, 4)         DEFAULT 0
+  `herds_duck`              DECIMAL(8, 4)       DEFAULT 0
   COMMENT '当月存栏数量(万头/只/羽)-鸭',
-  `herds_goose`             DECIMAL(8, 4)         DEFAULT 0
+  `herds_goose`             DECIMAL(8, 4)       DEFAULT 0
   COMMENT '当月存栏数量(万头/只/羽)-鹅',
-  `herds_other_q`           DECIMAL(8, 4)         DEFAULT 0
+  `herds_other_q`           DECIMAL(8, 4)       DEFAULT 0
   COMMENT '当月存栏数量(万头/只/羽)-其他禽',
-  `immune_bird_flu_checken` DECIMAL(8, 4)         DEFAULT 0
+  `immune_bird_flu_checken` DECIMAL(8, 4)       DEFAULT 0
   COMMENT '禽流感当月应免数量(万羽)-鸡',
-  `immune_bird_flu_duck`    DECIMAL(8, 4)         DEFAULT 0
+  `immune_bird_flu_duck`    DECIMAL(8, 4)       DEFAULT 0
   COMMENT '禽流感当月应免数量(万羽)-鸭',
-  `immune_bird_flu_goose`   DECIMAL(8, 4)         DEFAULT 0
+  `immune_bird_flu_goose`   DECIMAL(8, 4)       DEFAULT 0
   COMMENT '禽流感当月应免数量(万羽)-鹅',
-  `immune_bird_flu_other`   DECIMAL(8, 4)         DEFAULT 0
+  `immune_bird_flu_other`   DECIMAL(8, 4)       DEFAULT 0
   COMMENT '禽流感当月应免数量(万羽)-其他禽',
-  `immune_afmd_niu`         DECIMAL(8, 4)         DEFAULT 0
+  `immune_afmd_niu`         DECIMAL(8, 4)       DEFAULT 0
   COMMENT 'A型口蹄疫当月应免数量(万头/只)-牛',
-  `immune_afmd_sheep`       DECIMAL(8, 4)         DEFAULT 0
+  `immune_afmd_sheep`       DECIMAL(8, 4)       DEFAULT 0
   COMMENT 'A型口蹄疫当月应免数量(万头/只)-羊',
-  `immune_blue_ear`         DECIMAL(8, 4)         DEFAULT 0
+  `immune_blue_ear`         DECIMAL(8, 4)       DEFAULT 0
   COMMENT '高致病性猪蓝耳病当月应免数量(万头)-猪',
-  `immune_swine`            DECIMAL(8, 4)         DEFAULT 0
+  `immune_swine`            DECIMAL(8, 4)       DEFAULT 0
   COMMENT '猪瘟当月应免数量(万头)',
-  `immune_new_castle`       DECIMAL(8, 4)         DEFAULT 0
+  `immune_new_castle`       DECIMAL(8, 4)       DEFAULT 0
   COMMENT '新城疫当月应免数量(万羽)',
-  `immune_fmd_pig`          DECIMAL(8, 4)         DEFAULT 0
+  `immune_fmd_pig`          DECIMAL(8, 4)       DEFAULT 0
   COMMENT '牲畜口蹄疫当月应免数量(万头/只)-猪',
-  `immune_fmd_niu`          DECIMAL(8, 4)         DEFAULT 0
+  `immune_fmd_niu`          DECIMAL(8, 4)       DEFAULT 0
   COMMENT '牲畜口蹄疫当月应免数量(万头/只)-牛',
-  `immune_fmd_sheep`        DECIMAL(8, 4)         DEFAULT 0
+  `immune_fmd_sheep`        DECIMAL(8, 4)       DEFAULT 0
   COMMENT '牲畜口蹄疫当月应免数量(万头/只)-羊',
-  `immune_fmd_other`        DECIMAL(8, 4)         DEFAULT 0
+  `immune_fmd_other`        DECIMAL(8, 4)       DEFAULT 0
   COMMENT '牲畜口蹄疫当月应免数量(万头/只)-其他',
   PRIMARY KEY (`livestock_id`),
-  UNIQUE KEY (`report_id`)
+  UNIQUE KEY (`fill_id`, `org_id`)
 )
   DEFAULT CHARSET = utf8
   COMMENT '畜禽存栏和应免数量月报表';

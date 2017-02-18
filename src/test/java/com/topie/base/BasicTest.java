@@ -25,14 +25,6 @@ public class BasicTest extends Assert {
     private RedisCache redisCache;
 
     @Test
-    public void testFreemarker() {
-        Map params = new HashMap();
-        params.put("name", "guojun.chen");
-        String out = freeMarkerUtil.getStringFromTemplate("/", "test.ftl", params);
-        System.out.println(out);
-    }
-
-    @Test
     public void testRedis() {
         redisCache.set("user", "chen", 10);
         System.out.println(redisCache.get("user"));

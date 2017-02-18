@@ -3,7 +3,7 @@ package com.topie.security.service;
 import com.github.pagehelper.PageInfo;
 import com.topie.common.service.IService;
 import com.topie.common.utils.TreeNode;
-import com.topie.database.core.model.Role;
+import com.topie.database.core.system.model.Role;
 import com.topie.system.dto.HasRoleUserDto;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.topie.security;
 
-import com.topie.database.core.model.User;
+import com.topie.database.core.system.model.User;
 import com.topie.security.service.UserService;
 import com.topie.security.service.FunctionService;
 import com.topie.security.service.RoleService;

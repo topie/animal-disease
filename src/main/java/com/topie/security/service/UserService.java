@@ -2,7 +2,7 @@ package com.topie.security.service;
 
 import com.github.pagehelper.PageInfo;
 import com.topie.common.service.IService;
-import com.topie.database.core.model.User;
+import com.topie.database.core.system.model.User;
 import com.topie.security.vo.FunctionVO;
 
 import java.util.List;

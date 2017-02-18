@@ -1,7 +1,7 @@
 package com.topie.security.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.topie.database.core.model.User;
+import com.topie.database.core.system.model.User;
 
 /**
  * Created by cgj on 2015/10/30.

@@ -5,7 +5,7 @@ import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
 import com.topie.common.utils.TreeNode;
-import com.topie.database.core.model.Role;
+import com.topie.database.core.system.model.Role;
 import com.topie.security.service.RoleService;
 import com.topie.security.service.UserService;
 import com.topie.system.dto.HasRoleUserDto;
