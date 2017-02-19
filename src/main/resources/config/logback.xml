@@ -54,7 +54,7 @@
         </rollingPolicy>
     </appender>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="stdout"/>
         <appender-ref ref="infolog"/>
         <appender-ref ref="errlog"/>

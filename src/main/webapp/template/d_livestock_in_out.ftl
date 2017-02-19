@@ -1,113 +1,72 @@
-<style type="text/css">.b1 {
-    white-space-collapsing: preserve;
-}
+<style type="text/css">
+    .t1 {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
 
-.t1 {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
+    .r1 {
+        height: 24.75pt;
+    }
 
-.r1 {
-    height: 24.75pt;
-}
+    .r2 {
+        height: 15.0pt;
+    }
 
-.r2 {
-    height: 15.0pt;
-}
+    .r3 {
+        height: 16.5pt;
+    }
 
-.r3 {
-    height: 16.5pt;
-}
+    .r4 {
+        height: 62.25pt;
+    }
 
-.r4 {
-    height: 62.25pt;
-}
+    .r5 {
+        height: 21.75pt;
+    }
 
-.r5 {
-    height: 21.75pt;
-}
+    .c1 {
+        white-space: pre-wrap;
+        text-align: center;
+        border-top: thin solid black;
+        border-right: thin solid black;
+        border-bottom: thin solid black;
+        border-left: thin solid black;
+        color: black;
+        font-size: 16pt;
+    }
 
-.c1 {
-    white-space: pre-wrap;
-    text-align: center;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    border-bottom: thin solid black;
-    border-left: thin solid black;
-    color: black;
-    font-size: 16pt;
-}
+    .c2 {
+        white-space: pre-wrap;
+        text-align: center;
+        border-top: thin solid black;
+        border-right: thin solid black;
+        border-bottom: thin solid black;
+        border-left: thin solid black;
+        color: black;
+        font-size: 10pt;
+    }
 
-.c2 {
-    white-space: pre-wrap;
-    text-align: center;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    border-bottom: thin solid black;
-    border-left: thin solid black;
-    color: black;
-    font-size: 10pt;
-}
+    .c3 {
+        white-space: pre-wrap;
+        text-align: left;
+        border-top: thin solid black;
+        border-right: thin solid black;
+        border-bottom: thin solid black;
+        border-left: thin solid black;
+        color: black;
+        font-size: 10pt;
+    }
 
-.c3 {
-    white-space: pre-wrap;
-    text-align: left;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    border-bottom: thin solid black;
-    border-left: thin solid black;
-    color: black;
-    font-size: 10pt;
-}
+    .c4 {
+        white-space: pre-wrap;
+        text-align: center;
+        border-top: thin solid black;
+        border-right: thin solid black;
+        border-left: thin solid black;
+        color: black;
+        font-size: 10pt;
+    }
 
-.c4 {
-    white-space: pre-wrap;
-    text-align: center;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    border-left: thin solid black;
-    color: black;
-    font-size: 10pt;
-}
-
-.c5 {
-    white-space: pre-wrap;
-    text-align: left;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    border-bottom: thin solid black;
-    color: black;
-    font-size: 10pt;
-}
-
-.c6 {
-    white-space: pre-wrap;
-    text-align: center;
-    border-right: thin solid black;
-    border-bottom: thin solid black;
-    border-left: thin solid black;
-    color: black;
-    font-size: 10pt;
-}
-
-.c7 {
-    white-space: pre-wrap;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    border-bottom: thin solid black;
-    border-left: thin solid black;
-    font-size: 10pt;
-}
-
-.c8 {
-    white-space: pre-wrap;
-    text-align: center;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    border-bottom: thin solid black;
-    color: black;
-    font-size: 10pt;
-}
 </style>
 <table class="t1">
     <colgroup>
@@ -189,7 +148,7 @@
         <td class="c2">鸡</td>
     </tr>
     <tr class="r5">
-        <td class="c5"></td>
+        <td class="c2">-</td>
         <td role="data" n="herdsPig" class="c2"><#if item.herdsPig??>${item.herdsPig}</#if></td>
         <td role="data" n="herdsNiu" class="c2"><#if item.herdsNiu??>${item.herdsNiu}</#if></td>
         <td role="data" n="herdsSheep" class="c2"><#if item.herdsSheep??>${item.herdsSheep}</#if></td>
@@ -234,18 +193,24 @@
                 $("td[current=0]").find("input").each(function (e) {
                     var v = $(this).val()
                     $(this).parent("td").html(v)
+                    calculate()
                 })
                 var oldText = $(this).text()
                 $(this).empty()
                 var input = $('<input style="height: 100%;width:100%;" type="text" name="' + n + '" value="' + oldText + '">')
-                input.on("blur",function(e){
+                input.on("blur", function (e) {
                     var v = $(this).val()
                     $(this).parent("td").html(v)
+                    calculate()
                 })
                 $(this).append(input);
                 input.focus();
                 e.stopPropagation();
             })
         })
+
+        var calculate = function () {
+
+        }
     })(jQuery, window, document)
 </script>

@@ -1,6 +1,6 @@
 package com.topie.poi;
 
-import me.chyxion.xls.TableToXls;
+import com.topie.common.tools.tabletoxls.TableToXls;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;

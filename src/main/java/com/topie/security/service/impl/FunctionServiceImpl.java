@@ -69,7 +69,6 @@ public class FunctionServiceImpl extends BaseService<Function> implements Functi
     public PageInfo<Function> findFunctionList(int pageNum, int pageSize, Function function) {
         PageHelper.startPage(pageNum, pageSize);
         List<Function> list = functionMapper.findFunctionList(function);
-        PageInfo<Function> page = new PageInfo<Function>(list);
-        return page;
+        return new PageInfo<Function>(list);
     }
 }

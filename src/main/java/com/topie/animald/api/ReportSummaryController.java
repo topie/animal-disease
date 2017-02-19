@@ -2,6 +2,8 @@ package com.topie.animald.api;
 
 import com.github.pagehelper.PageInfo;
 import com.topie.animald.service.INormalFillService;
+import com.topie.common.tools.excel.ExcelFileUtil;
+import com.topie.common.tools.tabletoxls.TableToXls;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,5 +53,26 @@ public class ReportSummaryController {
         Map result = new HashMap<>();
         result.put("html", excelHtml);
         return ResponseUtil.success(result);
+    }
+
+    @RequestMapping(value = "/download/{id}", method = RequestMethod.GET)
+    public void download(HttpServletRequest request, HttpServletResponse response,
+            @PathVariable(value = "id") Integer id) throws Exception {
+
+        NormalFill normalFill = iNormalFillService.selectByKey(id);
+        if (normalFill == null) {
+            ResponseUtil.writeJson(response, "填报规则不存在");
+        }
+        Integer userId = SecurityUtil.getCurrentUserId();
+        if (userId == null) {
+            ResponseUtil.writeJson(response, "用户未登录");
+        }
+        String excelHtml = iNormalFillService.getSummaryHtml(request, normalFill);
+        String filePath = "/tmp/export.xls";
+        FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+        TableToXls.process(excelHtml, fileOutputStream);
+        fileOutputStream.close();
+        ExcelFileUtil
+                .download(response, filePath, (normalFill != null ? normalFill.getDisplayTitle() : "未命名") + ".xls");
     }
 }
