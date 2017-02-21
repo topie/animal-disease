@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.animal.dao.OrgInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.OrgInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="org_id" property="orgId" jdbcType="VARCHAR" />
+    <result column="org_name" property="orgName" jdbcType="VARCHAR" />
+    <result column="region_code" property="regionCode" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>
