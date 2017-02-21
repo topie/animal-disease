@@ -14,6 +14,8 @@ public class ReportDto {
 
     private String orgName;
 
+    private String templateId;
+
     private String templateName;
 
     private String reportPeriod;
@@ -25,6 +27,14 @@ public class ReportDto {
     private Date beginTime;
 
     private Integer reportStatus;
+
+    public String getTemplateId() {
+        return templateId;
+    }
+
+    public void setTemplateId(String templateId) {
+        this.templateId = templateId;
+    }
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     public Date getBeginTime() {

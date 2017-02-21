@@ -10,4 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 public interface IExcelService {
 
     String getReportHtml(HttpServletRequest request, Report report);
+
+    String getReportSummaryHtml(HttpServletRequest request, String templateId, String beginTime);
 }

@@ -1,39 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.topie.database.core.template.dao.LiveStockInOutMapper" >
-  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.LiveStockInOut" >
-    <!--
-      WARNING - @mbggenerated
-    -->
-    <id column="LivestockId" property="livestockid" jdbcType="VARCHAR" />
-    <result column="ReportId" property="reportid" jdbcType="VARCHAR" />
-    <result column="Liv_regionCode" property="livRegioncode" jdbcType="VARCHAR" />
-    <result column="Liv_regionName" property="livRegionname" jdbcType="VARCHAR" />
-    <result column="LivestockDate" property="livestockdate" jdbcType="TIMESTAMP" />
-    <result column="HerdsPig" property="herdspig" jdbcType="DECIMAL" />
-    <result column="HerdsNiu" property="herdsniu" jdbcType="DECIMAL" />
-    <result column="HerdsSheep" property="herdssheep" jdbcType="DECIMAL" />
-    <result column="HerdsOther" property="herdsother" jdbcType="DECIMAL" />
-    <result column="HerdsChicken" property="herdschicken" jdbcType="DECIMAL" />
-    <result column="HerdsDuck" property="herdsduck" jdbcType="DECIMAL" />
-    <result column="HerdsGoose" property="herdsgoose" jdbcType="DECIMAL" />
-    <result column="HerdsOtherQ" property="herdsotherq" jdbcType="DECIMAL" />
-    <result column="ImmuneBirdFluChecken" property="immunebirdfluchecken" jdbcType="DECIMAL" />
-    <result column="ImmuneBirdFluDuck" property="immunebirdfluduck" jdbcType="DECIMAL" />
-    <result column="ImmuneBirdFluGoose" property="immunebirdflugoose" jdbcType="DECIMAL" />
-    <result column="ImmuneBirdFluOther" property="immunebirdfluother" jdbcType="DECIMAL" />
-    <result column="ImmuneAFMDNiu" property="immuneafmdniu" jdbcType="DECIMAL" />
-    <result column="ImmuneAFMDSheep" property="immuneafmdsheep" jdbcType="DECIMAL" />
-    <result column="ImmuneBlueEar" property="immuneblueear" jdbcType="DECIMAL" />
-    <result column="ImmuneSwine" property="immuneswine" jdbcType="DECIMAL" />
-    <result column="ImmuneNewcastle" property="immunenewcastle" jdbcType="DECIMAL" />
-    <result column="ImmuneFMDPig" property="immunefmdpig" jdbcType="DECIMAL" />
-    <result column="ImmuneFMDNiu" property="immunefmdniu" jdbcType="DECIMAL" />
-    <result column="ImmuneFMDSheep" property="immunefmdsheep" jdbcType="DECIMAL" />
-    <result column="ImmuneFMDOther" property="immunefmdother" jdbcType="DECIMAL" />
-    <result column="PesteDesPetitsRuminants" property="pestedespetitsruminants" jdbcType="DECIMAL" />
-  </resultMap>
+<mapper namespace="com.topie.database.core.template.dao.LiveStockInOutMapper">
+    <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.LiveStockInOut">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="LivestockId" property="livestockid" jdbcType="VARCHAR"/>
+        <result column="ReportId" property="reportid" jdbcType="VARCHAR"/>
+        <result column="Liv_regionCode" property="livRegioncode" jdbcType="VARCHAR"/>
+        <result column="Liv_regionName" property="livRegionname" jdbcType="VARCHAR"/>
+        <result column="LivestockDate" property="livestockdate" jdbcType="TIMESTAMP"/>
+        <result column="HerdsPig" property="herdspig" jdbcType="DECIMAL"/>
+        <result column="HerdsNiu" property="herdsniu" jdbcType="DECIMAL"/>
+        <result column="HerdsSheep" property="herdssheep" jdbcType="DECIMAL"/>
+        <result column="HerdsOther" property="herdsother" jdbcType="DECIMAL"/>
+        <result column="HerdsChicken" property="herdschicken" jdbcType="DECIMAL"/>
+        <result column="HerdsDuck" property="herdsduck" jdbcType="DECIMAL"/>
+        <result column="HerdsGoose" property="herdsgoose" jdbcType="DECIMAL"/>
+        <result column="HerdsOtherQ" property="herdsotherq" jdbcType="DECIMAL"/>
+        <result column="ImmuneBirdFluChecken" property="immunebirdfluchecken" jdbcType="DECIMAL"/>
+        <result column="ImmuneBirdFluDuck" property="immunebirdfluduck" jdbcType="DECIMAL"/>
+        <result column="ImmuneBirdFluGoose" property="immunebirdflugoose" jdbcType="DECIMAL"/>
+        <result column="ImmuneBirdFluOther" property="immunebirdfluother" jdbcType="DECIMAL"/>
+        <result column="ImmuneAFMDNiu" property="immuneafmdniu" jdbcType="DECIMAL"/>
+        <result column="ImmuneAFMDSheep" property="immuneafmdsheep" jdbcType="DECIMAL"/>
+        <result column="ImmuneBlueEar" property="immuneblueear" jdbcType="DECIMAL"/>
+        <result column="ImmuneSwine" property="immuneswine" jdbcType="DECIMAL"/>
+        <result column="ImmuneNewcastle" property="immunenewcastle" jdbcType="DECIMAL"/>
+        <result column="ImmuneFMDPig" property="immunefmdpig" jdbcType="DECIMAL"/>
+        <result column="ImmuneFMDNiu" property="immunefmdniu" jdbcType="DECIMAL"/>
+        <result column="ImmuneFMDSheep" property="immunefmdsheep" jdbcType="DECIMAL"/>
+        <result column="ImmuneFMDOther" property="immunefmdother" jdbcType="DECIMAL"/>
+        <result column="PesteDesPetitsRuminants" property="pestedespetitsruminants" jdbcType="DECIMAL"/>
+    </resultMap>
     <select id="selectOneByReportId" resultMap="BaseResultMap">
       select * from animal_disease.b_livestockinout where ReportId=#{reportId}
+    </select>
+    <select id="selectOneByReportIds" resultMap="BaseResultMap">
+        select * from animal_disease.b_livestockinout
+        where ReportId in
+        <foreach item="item" collection="ids" open="(" separator="," close=")">
+            #{item}
+        </foreach>
     </select>
 </mapper>

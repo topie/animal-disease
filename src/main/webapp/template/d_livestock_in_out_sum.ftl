@@ -56,28 +56,10 @@
     font-size: 10pt;
 }
 
-.c4 {
-    white-space: pre-wrap;
-    text-align: center;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    border-bottom: thin solid black;
-    color: black;
-    font-size: 10pt;
-}
-
-.c5 {
-    white-space: pre-wrap;
-    border-top: thin solid black;
-    border-right: thin solid black;
-    border-bottom: thin solid black;
-    border-left: thin solid black;
-    font-size: 10pt;
-}
 </style>
 <table class="t1">
     <colgroup>
-        <col width="76">
+        <col width="86">
         <col width="47">
         <col width="51">
         <col width="52">
@@ -139,7 +121,7 @@
     </tr>
     <#list items as item>
     <tr class="r3">
-        <td class="c2">${item.province}</td>
+        <td class="c2">${item.livRegionname}</td>
         <td n="herdspig" class="c2"><#if item.herdspig??>${item.herdspig?c}</#if></td>
         <td n="herdsniu" class="c2"><#if item.herdsniu??>${item.herdsniu?c}</#if></td>
         <td n="herdssheep" class="c2"><#if item.herdssheep??>${item.herdssheep?c}</#if></td>
@@ -169,36 +151,6 @@
         <td n="immunefmdother" class="c2"><#if item.immunefmdother??>${item.immunefmdother?c}</#if></td>
     </tr>
     </#list>
-    <tr class="r4">
-        <td class="c2">汇总</td>
-        <td n="herdspig" class="c2"><#if sum.herdspig??>${sum.herdspig?c}</#if></td>
-        <td n="herdsniu" class="c2"><#if sum.herdsniu??>${sum.herdsniu?c}</#if></td>
-        <td n="herdssheep" class="c2"><#if sum.herdssheep??>${sum.herdssheep?c}</#if></td>
-        <td n="herdsother" class="c2"><#if sum.herdsother??>${sum.herdsother?c}</#if></td>
-        <td n="herdschicken" class="c2"><#if sum.herdschicken??>${sum.herdschicken?c}</#if></td>
-        <td n="herdsduck" class="c2"><#if sum.herdsduck??>${sum.herdsduck?c}</#if></td>
-        <td n="herdsgoose" class="c2"><#if sum.herdsgoose??>${sum.herdsgoose?c}</#if></td>
-        <td n="herdsotherq" class="c2"><#if sum.herdsotherq??>${sum.herdsotherq?c}</#if></td>
-        <td n="immunebirdfluchecken"
-            class="c2"><#if sum.immunebirdfluchecken??>${sum.immunebirdfluchecken?c}</#if></td>
-        <td n="immunebirdfluduck"
-            class="c2"><#if sum.immunebirdfluduck??>${sum.immunebirdfluduck?c}</#if></td>
-        <td n="immunebirdflugoose"
-            class="c2"><#if sum.immunebirdflugoose??>${sum.immunebirdflugoose?c?c}</#if></td>
-        <td n="immunebirdfluother"
-            class="c2"><#if sum.immunebirdfluother??>${sum.immunebirdfluother?c?c}</#if></td>
-        <td n="immuneafmdniu" class="c2"><#if sum.immuneafmdniu??>${sum.immuneafmdniu?c?c}</#if></td>
-        <td n="immuneafmdsheep"
-            class="c2"><#if sum.immuneafmdsheep??>${sum.immuneafmdsheep?c?c}</#if></td>
-        <td n="immuneblueear" class="c2"><#if sum.immuneblueear??>${sum.immuneblueear?c?c}</#if></td>
-        <td n="immuneswine" class="c2"><#if sum.immuneswine??>${sum.immuneswine?c?c}</#if></td>
-        <td n="immunenewcastle"
-            class="c2"><#if sum.immunenewcastle??>${sum.immunenewcastle?c?c}</#if></td>
-        <td n="immunefmdpig" class="c2"><#if sum.immunefmdpig??>${sum.immunefmdpig?c?c}</#if></td>
-        <td n="immunefmdniu" class="c2"><#if sum.immunefmdniu??>${sum.immunefmdniu?c?c}</#if></td>
-        <td n="immunefmdsheep" class="c2"><#if sum.immunefmdsheep??>${sum.immunefmdsheep?c?c}</#if></td>
-        <td n="immunefmdother" class="c2"><#if sum.immunefmdother??>${sum.immunefmdother?c?c}</#if></td>
-    </tr>
     </tbody>
 </table>
 

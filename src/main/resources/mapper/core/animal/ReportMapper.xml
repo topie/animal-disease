@@ -16,6 +16,7 @@
     </resultMap>
     <resultMap id="reportDto" type="com.topie.animal.dto.ReportDto">
         <id column="report_id" property="reportId" jdbcType="VARCHAR"/>
+        <result column="template_id" property="templateId" jdbcType="VARCHAR"/>
         <result column="org_name" property="orgName" jdbcType="VARCHAR"/>
         <result column="template_name" property="templateName" jdbcType="VARCHAR"/>
         <result column="report_time" property="reportTime" jdbcType="TIMESTAMP"/>
@@ -26,6 +27,7 @@
         select
         r.report_id,
         o.org_name,
+        t.template_id,
         t.template_name,
         r.report_time,
         r.status,
@@ -54,5 +56,8 @@
                 and r.begin_time=#{beginTime}
             </if>
         </where>
+    </select>
+    <select id="selectIdsByTemplateIdAndBeginTime" resultType="java.lang.String">
+        select report_id from animal_disease.a_report where begin_time=#{beginTime} and template_id=#{templateId}
     </select>
 </mapper>

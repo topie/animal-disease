@@ -1,9 +1,6 @@
 package com.topie.animal.service.impl;
 
-import com.topie.animal.service.IExcelService;
-import com.topie.animal.service.IOrgInfoService;
-import com.topie.animal.service.ITemplateService;
-import com.topie.animal.service.IUserInfoService;
+import com.topie.animal.service.*;
 import com.topie.common.tools.freemarker.FreeMarkerUtil;
 import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.Report;
@@ -16,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,6 +27,9 @@ public class ExcelServiceImpl implements IExcelService {
 
     @Autowired
     private ITemplateService iTemplateService;
+
+    @Autowired
+    private IReportService iReportService;
 
     @Autowired
     private IOrgInfoService iOrgInfoService;
@@ -56,9 +57,28 @@ public class ExcelServiceImpl implements IExcelService {
                 break;
             }
             default:
-                break;
+                return null;
         }
         String templatePath = request.getSession().getServletContext().getRealPath("/template");
         return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getNormalTemplate(), params);
+    }
+
+    @Override
+    public String getReportSummaryHtml(HttpServletRequest request, String templateId, String beginTime) {
+        Template template = iTemplateService.selectByKey(templateId);
+        List<String> reportIds = iReportService.selectIdsByTemplateIdAndBeginTime(templateId, beginTime);
+        if (reportIds.size() == 0) return null;
+        Map params = new HashMap();
+        switch (template.getTableName().toLowerCase()) {
+            case "b_livestockinout": {
+                List<LiveStockInOut> list = liveStockInOutMapper.selectOneByReportIds(reportIds);
+                params.put("items", list);
+                break;
+            }
+            default:
+                return null;
+        }
+        String templatePath = request.getSession().getServletContext().getRealPath("/template");
+        return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getSummaryTemplate(), params);
     }
 }

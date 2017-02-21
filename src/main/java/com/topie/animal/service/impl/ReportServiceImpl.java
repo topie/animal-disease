@@ -34,4 +34,9 @@ public class ReportServiceImpl extends BaseService<Report> implements IReportSer
         }
         return new PageInfo<>(list);
     }
+
+    @Override
+    public List<String> selectIdsByTemplateIdAndBeginTime(String templateId, String beginTime) {
+        return reportMapper.selectIdsByTemplateIdAndBeginTime(templateId,beginTime);
+    }
 }
