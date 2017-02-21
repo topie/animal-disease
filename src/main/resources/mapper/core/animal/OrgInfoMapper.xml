@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.topie.database.core.animal.dao.OrgInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.OrgInfo" >
-    <!--
-      WARNING - @mbggenerated
-    -->
-    <id column="org_id" property="orgId" jdbcType="VARCHAR" />
-    <result column="org_name" property="orgName" jdbcType="VARCHAR" />
-    <result column="region_code" property="regionCode" jdbcType="VARCHAR" />
-  </resultMap>
+<mapper namespace="com.topie.database.core.animal.dao.OrgInfoMapper">
+    <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.OrgInfo">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="org_id" property="orgId" jdbcType="VARCHAR"/>
+        <result column="org_name" property="orgName" jdbcType="VARCHAR"/>
+        <result column="region_code" property="regionCode" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="TreeNodeMap" type="com.topie.common.utils.TreeNode">
+        <id column="org_id" property="id" jdbcType="VARCHAR"/>
+        <result column="pid" property="pId" jdbcType="VARCHAR"/>
+        <result column="org_name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="selectTreeNodes" resultMap="TreeNodeMap">
+        select '' pid,org_id,org_name from a_org_info
+        <where>
+            <if test="orgName!=null">
+                and org_name like concat(concat('%',#{orgName}),'%')
+            </if>
+        </where>
+    </select>
 </mapper>

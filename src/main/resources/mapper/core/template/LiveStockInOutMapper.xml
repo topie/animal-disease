@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.topie.database.core.animaltemplate.dao.LiveStockInOutMapper" >
-  <resultMap id="BaseResultMap" type="com.topie.database.core.animaltemplate.model.LiveStockInOut" >
+<mapper namespace="com.topie.database.core.template.dao.LiveStockInOutMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.LiveStockInOut" >
     <!--
       WARNING - @mbggenerated
     -->
@@ -33,4 +33,7 @@
     <result column="ImmuneFMDOther" property="immunefmdother" jdbcType="DECIMAL" />
     <result column="PesteDesPetitsRuminants" property="pestedespetitsruminants" jdbcType="DECIMAL" />
   </resultMap>
+    <select id="selectOneByReportId" resultMap="BaseResultMap">
+      select * from animal_disease.b_livestockinout where ReportId=#{reportId}
+    </select>
 </mapper>

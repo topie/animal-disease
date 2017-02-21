@@ -40,7 +40,7 @@ public class Report {
     /**
      * 填报状态 0：未填写 1：起草中 2：已上报
      */
-    private Byte status;
+    private Integer status;
 
     /**
      * 开始时间
@@ -149,7 +149,7 @@ public class Report {
      *
      * @return status - 填报状态 0：未填写 1：起草中 2：已上报
      */
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
@@ -158,7 +158,7 @@ public class Report {
      *
      * @param status 填报状态 0：未填写 1：起草中 2：已上报
      */
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

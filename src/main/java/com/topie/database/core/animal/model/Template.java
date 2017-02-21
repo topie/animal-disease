@@ -40,13 +40,13 @@ public class Template {
      * 填报周期
      */
     @Column(name = "report_cycle")
-    private Short reportCycle;
+    private Integer reportCycle;
 
     /**
      * 填报类型
      */
     @Column(name = "report_type")
-    private Short reportType;
+    private Integer reportType;
 
     /**
      * 排序
@@ -148,7 +148,7 @@ public class Template {
      *
      * @return report_cycle - 填报周期
      */
-    public Short getReportCycle() {
+    public Integer getReportCycle() {
         return reportCycle;
     }
 
@@ -157,7 +157,7 @@ public class Template {
      *
      * @param reportCycle 填报周期
      */
-    public void setReportCycle(Short reportCycle) {
+    public void setReportCycle(Integer reportCycle) {
         this.reportCycle = reportCycle;
     }
 
@@ -166,7 +166,7 @@ public class Template {
      *
      * @return report_type - 填报类型
      */
-    public Short getReportType() {
+    public Integer getReportType() {
         return reportType;
     }
 
@@ -175,7 +175,7 @@ public class Template {
      *
      * @param reportType 填报类型
      */
-    public void setReportType(Short reportType) {
+    public void setReportType(Integer reportType) {
         this.reportType = reportType;
     }
 

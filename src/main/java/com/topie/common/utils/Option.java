@@ -1,4 +1,4 @@
-package com.topie.campus.common;
+package com.topie.common.utils;
 
 import java.io.Serializable;
 

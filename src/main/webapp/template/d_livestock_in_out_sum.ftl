@@ -102,7 +102,7 @@
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="22">畜禽存栏和应免数量月报表 （2017年1月）</td>
+        <td class="c1" colspan="22">畜禽存栏和应免数量月报表</td>
     </tr>
     <tr class="r2">
         <td class="c2" rowspan="2">省份</td>
@@ -140,64 +140,64 @@
     <#list items as item>
     <tr class="r3">
         <td class="c2">${item.province}</td>
-        <td n="herdsPig" class="c2"><#if item.herdsPig??>${item.herdsPig}</#if></td>
-        <td n="herdsNiu" class="c2"><#if item.herdsNiu??>${item.herdsNiu}</#if></td>
-        <td n="herdsSheep" class="c2"><#if item.herdsSheep??>${item.herdsSheep}</#if></td>
-        <td n="herdsOther" class="c2"><#if item.herdsOther??>${item.herdsOther}</#if></td>
-        <td n="herdsChicken" class="c2"><#if item.herdsChicken??>${item.herdsChicken}</#if></td>
-        <td n="herdsDuck" class="c2"><#if item.herdsDuck??>${item.herdsDuck}</#if></td>
-        <td n="herdsGoose" class="c2"><#if item.herdsGoose??>${item.herdsGoose}</#if></td>
-        <td n="herdsOtherQ" class="c2"><#if item.herdsOtherQ??>${item.herdsOtherQ}</#if></td>
-        <td n="immuneBirdFluChecken"
-            class="c2"><#if item.immuneBirdFluChecken??>${item.immuneBirdFluChecken}</#if></td>
-        <td n="immuneBirdFluDuck"
-            class="c2"><#if item.immuneBirdFluDuck??>${item.immuneBirdFluDuck}</#if></td>
-        <td n="immuneBirdFluGoose"
-            class="c2"><#if item.immuneBirdFluGoose??>${item.immuneBirdFluGoose}</#if></td>
-        <td n="immuneBirdFluOther"
-            class="c2"><#if item.immuneBirdFluOther??>${item.immuneBirdFluOther}</#if></td>
-        <td n="immuneAfmdNiu" class="c2"><#if item.immuneAfmdNiu??>${item.immuneAfmdNiu}</#if></td>
-        <td n="immuneAfmdSheep"
-            class="c2"><#if item.immuneAfmdSheep??>${item.immuneAfmdSheep}</#if></td>
-        <td n="immuneBlueEar" class="c2"><#if item.immuneBlueEar??>${item.immuneBlueEar}</#if></td>
-        <td n="immuneSwine" class="c2"><#if item.immuneSwine??>${item.immuneSwine}</#if></td>
-        <td n="immuneNewCastle"
-            class="c2"><#if item.immuneNewCastle??>${item.immuneNewCastle}</#if></td>
-        <td n="immuneFmdPig" class="c2"><#if item.immuneFmdPig??>${item.immuneFmdPig}</#if></td>
-        <td n="immuneFmdNiu" class="c2"><#if item.immuneFmdNiu??>${item.immuneFmdNiu}</#if></td>
-        <td n="immuneFmdSheep" class="c2"><#if item.immuneFmdSheep??>${item.immuneFmdSheep}</#if></td>
-        <td n="immuneFmdOther" class="c2"><#if item.immuneFmdOther??>${item.immuneFmdOther}</#if></td>
+        <td n="herdspig" class="c2"><#if item.herdspig??>${item.herdspig?c}</#if></td>
+        <td n="herdsniu" class="c2"><#if item.herdsniu??>${item.herdsniu?c}</#if></td>
+        <td n="herdssheep" class="c2"><#if item.herdssheep??>${item.herdssheep?c}</#if></td>
+        <td n="herdsother" class="c2"><#if item.herdsother??>${item.herdsother?c}</#if></td>
+        <td n="herdschicken" class="c2"><#if item.herdschicken??>${item.herdschicken?c}</#if></td>
+        <td n="herdsduck" class="c2"><#if item.herdsduck??>${item.herdsduck?c}</#if></td>
+        <td n="herdsgoose" class="c2"><#if item.herdsgoose??>${item.herdsgoose?c}</#if></td>
+        <td n="herdsotherq" class="c2"><#if item.herdsotherq??>${item.herdsotherq?c}</#if></td>
+        <td n="immunebirdfluchecken"
+            class="c2"><#if item.immunebirdfluchecken??>${item.immunebirdfluchecken?c}</#if></td>
+        <td n="immunebirdfluduck"
+            class="c2"><#if item.immunebirdfluduck??>${item.immunebirdfluduck?c}</#if></td>
+        <td n="immunebirdflugoose"
+            class="c2"><#if item.immunebirdflugoose??>${item.immunebirdflugoose?c}</#if></td>
+        <td n="immunebirdfluother"
+            class="c2"><#if item.immunebirdfluother??>${item.immunebirdfluother?c}</#if></td>
+        <td n="immuneafmdniu" class="c2"><#if item.immuneafmdniu??>${item.immuneafmdniu?c}</#if></td>
+        <td n="immuneafmdsheep"
+            class="c2"><#if item.immuneafmdsheep??>${item.immuneafmdsheep?c}</#if></td>
+        <td n="immuneblueear" class="c2"><#if item.immuneblueear??>${item.immuneblueear?c}</#if></td>
+        <td n="immuneswine" class="c2"><#if item.immuneswine??>${item.immuneswine?c}</#if></td>
+        <td n="immunenewcastle"
+            class="c2"><#if item.immunenewcastle??>${item.immunenewcastle?c}</#if></td>
+        <td n="immunefmdpig" class="c2"><#if item.immunefmdpig??>${item.immunefmdpig?c}</#if></td>
+        <td n="immunefmdniu" class="c2"><#if item.immunefmdniu??>${item.immunefmdniu?c}</#if></td>
+        <td n="immunefmdsheep" class="c2"><#if item.immunefmdsheep??>${item.immunefmdsheep?c}</#if></td>
+        <td n="immunefmdother" class="c2"><#if item.immunefmdother??>${item.immunefmdother?c}</#if></td>
     </tr>
     </#list>
     <tr class="r4">
         <td class="c2">汇总</td>
-        <td n="herdsPig" class="c2"><#if sum.herdsPig??>${sum.herdsPig}</#if></td>
-        <td n="herdsNiu" class="c2"><#if sum.herdsNiu??>${sum.herdsNiu}</#if></td>
-        <td n="herdsSheep" class="c2"><#if sum.herdsSheep??>${sum.herdsSheep}</#if></td>
-        <td n="herdsOther" class="c2"><#if sum.herdsOther??>${sum.herdsOther}</#if></td>
-        <td n="herdsChicken" class="c2"><#if sum.herdsChicken??>${sum.herdsChicken}</#if></td>
-        <td n="herdsDuck" class="c2"><#if sum.herdsDuck??>${sum.herdsDuck}</#if></td>
-        <td n="herdsGoose" class="c2"><#if sum.herdsGoose??>${sum.herdsGoose}</#if></td>
-        <td n="herdsOtherQ" class="c2"><#if sum.herdsOtherQ??>${sum.herdsOtherQ}</#if></td>
-        <td n="immuneBirdFluChecken"
-            class="c2"><#if sum.immuneBirdFluChecken??>${sum.immuneBirdFluChecken}</#if></td>
-        <td n="immuneBirdFluDuck"
-            class="c2"><#if sum.immuneBirdFluDuck??>${sum.immuneBirdFluDuck}</#if></td>
-        <td n="immuneBirdFluGoose"
-            class="c2"><#if sum.immuneBirdFluGoose??>${sum.immuneBirdFluGoose}</#if></td>
-        <td n="immuneBirdFluOther"
-            class="c2"><#if sum.immuneBirdFluOther??>${sum.immuneBirdFluOther}</#if></td>
-        <td n="immuneAfmdNiu" class="c2"><#if sum.immuneAfmdNiu??>${sum.immuneAfmdNiu}</#if></td>
-        <td n="immuneAfmdSheep"
-            class="c2"><#if sum.immuneAfmdSheep??>${sum.immuneAfmdSheep}</#if></td>
-        <td n="immuneBlueEar" class="c2"><#if sum.immuneBlueEar??>${sum.immuneBlueEar}</#if></td>
-        <td n="immuneSwine" class="c2"><#if sum.immuneSwine??>${sum.immuneSwine}</#if></td>
-        <td n="immuneNewCastle"
-            class="c2"><#if sum.immuneNewCastle??>${sum.immuneNewCastle}</#if></td>
-        <td n="immuneFmdPig" class="c2"><#if sum.immuneFmdPig??>${sum.immuneFmdPig}</#if></td>
-        <td n="immuneFmdNiu" class="c2"><#if sum.immuneFmdNiu??>${sum.immuneFmdNiu}</#if></td>
-        <td n="immuneFmdSheep" class="c2"><#if sum.immuneFmdSheep??>${sum.immuneFmdSheep}</#if></td>
-        <td n="immuneFmdOther" class="c2"><#if sum.immuneFmdOther??>${sum.immuneFmdOther}</#if></td>
+        <td n="herdspig" class="c2"><#if sum.herdspig??>${sum.herdspig?c}</#if></td>
+        <td n="herdsniu" class="c2"><#if sum.herdsniu??>${sum.herdsniu?c}</#if></td>
+        <td n="herdssheep" class="c2"><#if sum.herdssheep??>${sum.herdssheep?c}</#if></td>
+        <td n="herdsother" class="c2"><#if sum.herdsother??>${sum.herdsother?c}</#if></td>
+        <td n="herdschicken" class="c2"><#if sum.herdschicken??>${sum.herdschicken?c}</#if></td>
+        <td n="herdsduck" class="c2"><#if sum.herdsduck??>${sum.herdsduck?c}</#if></td>
+        <td n="herdsgoose" class="c2"><#if sum.herdsgoose??>${sum.herdsgoose?c}</#if></td>
+        <td n="herdsotherq" class="c2"><#if sum.herdsotherq??>${sum.herdsotherq?c}</#if></td>
+        <td n="immunebirdfluchecken"
+            class="c2"><#if sum.immunebirdfluchecken??>${sum.immunebirdfluchecken?c}</#if></td>
+        <td n="immunebirdfluduck"
+            class="c2"><#if sum.immunebirdfluduck??>${sum.immunebirdfluduck?c}</#if></td>
+        <td n="immunebirdflugoose"
+            class="c2"><#if sum.immunebirdflugoose??>${sum.immunebirdflugoose?c?c}</#if></td>
+        <td n="immunebirdfluother"
+            class="c2"><#if sum.immunebirdfluother??>${sum.immunebirdfluother?c?c}</#if></td>
+        <td n="immuneafmdniu" class="c2"><#if sum.immuneafmdniu??>${sum.immuneafmdniu?c?c}</#if></td>
+        <td n="immuneafmdsheep"
+            class="c2"><#if sum.immuneafmdsheep??>${sum.immuneafmdsheep?c?c}</#if></td>
+        <td n="immuneblueear" class="c2"><#if sum.immuneblueear??>${sum.immuneblueear?c?c}</#if></td>
+        <td n="immuneswine" class="c2"><#if sum.immuneswine??>${sum.immuneswine?c?c}</#if></td>
+        <td n="immunenewcastle"
+            class="c2"><#if sum.immunenewcastle??>${sum.immunenewcastle?c?c}</#if></td>
+        <td n="immunefmdpig" class="c2"><#if sum.immunefmdpig??>${sum.immunefmdpig?c?c}</#if></td>
+        <td n="immunefmdniu" class="c2"><#if sum.immunefmdniu??>${sum.immunefmdniu?c?c}</#if></td>
+        <td n="immunefmdsheep" class="c2"><#if sum.immunefmdsheep??>${sum.immunefmdsheep?c?c}</#if></td>
+        <td n="immunefmdother" class="c2"><#if sum.immunefmdother??>${sum.immunefmdother?c?c}</#if></td>
     </tr>
     </tbody>
 </table>

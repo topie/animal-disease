@@ -1,10 +1,8 @@
 package com.topie.poi;
 
-import com.topie.common.tools.tabletoxls.TableToXls;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import java.io.*;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,22 +24,7 @@ public class Test {
      */
     public static void main(String[] args) {
         try {
-            PoiUtil.excelToHtml("/tmp/s.xls", "/tmp/s.html");
-            String encoding = "utf8";
-            StringBuilder html = new StringBuilder();
-            File file = new File("/tmp/s.html");
-            if (file.isFile() && file.exists()) { //判断文件是否存在
-                InputStreamReader read = new InputStreamReader(new FileInputStream(file), encoding);//考虑到编码格式
-                BufferedReader bufferedReader = new BufferedReader(read);
-                String lineTxt = null;
-                while ((lineTxt = bufferedReader.readLine()) != null) {
-                    html.append(lineTxt);
-                }
-                read.close();
-            }
-            FileOutputStream fout = new FileOutputStream("/tmp/s2.xls");
-            TableToXls.process(html, fout);
-            fout.close();
+            PoiUtil.excelToHtml("/tmp/aa.xls", "/tmp/aa.html");
         } catch (IOException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {

@@ -1,12 +1,12 @@
-package com.topie.animald.service.impl;
+package com.topie.animal.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.topie.animald.service.IOrgInfoService;
+import com.topie.animal.service.IOrgInfoService;
 import com.topie.common.service.impl.BaseService;
 import com.topie.common.utils.TreeNode;
-import com.topie.database.core.animald.dao.OrgInfoMapper;
-import com.topie.database.core.animald.model.OrgInfo;
+import com.topie.database.core.animal.dao.OrgInfoMapper;
+import com.topie.database.core.animal.model.OrgInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;

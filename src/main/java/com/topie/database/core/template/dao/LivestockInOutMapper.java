@@ -1,18 +1,10 @@
 package com.topie.database.core.template.dao;
 
-import com.topie.database.core.template.model.LivestockInOut;
+import com.topie.database.core.template.model.LiveStockInOut;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
-import java.util.List;
+public interface LiveStockInOutMapper extends Mapper<LiveStockInOut> {
 
-public interface LivestockInOutMapper extends Mapper<LivestockInOut> {
-
-    LivestockInOut selectOneByFillIdAndOrgId(@Param("fillId") Integer fillId, @Param("orgId") Integer orgId);
-
-    int deleteByFillIdAndOrgId(@Param("fillId") Integer fillId, @Param("orgId") Integer orgId);
-
-    List<LivestockInOut> selectByFillIdGroupByOrgId(@Param("fillId") Integer fillId);
-
-    LivestockInOut selectSumByFillId(@Param("fillId") Integer fillId);
+    LiveStockInOut selectOneByReportId(@Param("reportId") String reportId);
 }

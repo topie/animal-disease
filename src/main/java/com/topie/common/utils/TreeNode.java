@@ -4,8 +4,8 @@ package com.topie.common.utils;
  * Created by cgj on 2015/11/23.
  */
 public class TreeNode {
-    private int id;
-    private int pId;
+    private Object id;
+    private Object pId;
     private String name;
     private boolean checked;
     private boolean open;
@@ -16,20 +16,19 @@ public class TreeNode {
     private String s;
     private boolean b;
 
-
-    public int getId() {
+    public Object getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Object id) {
         this.id = id;
     }
 
-    public int getpId() {
+    public Object getpId() {
         return pId;
     }
 
-    public void setpId(int pId) {
+    public void setpId(Object pId) {
         this.pId = pId;
     }
 

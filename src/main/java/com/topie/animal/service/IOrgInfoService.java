@@ -1,9 +1,9 @@
-package com.topie.animald.service;
+package com.topie.animal.service;
 
 import com.github.pagehelper.PageInfo;
 import com.topie.common.service.IService;
 import com.topie.common.utils.TreeNode;
-import com.topie.database.core.animald.model.OrgInfo;
+import com.topie.database.core.animal.model.OrgInfo;
 
 import java.util.List;
 

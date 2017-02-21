@@ -49,6 +49,7 @@ public class FunctionServiceImpl extends BaseService<Function> implements Functi
 
     @Override
     public int deleteFunctionById(int id) {
+
         int result = getMapper().deleteByPrimaryKey(id);
         List<Integer> roleIds = functionMapper.findRoleIdsByFunctionId(id);
         if (roleIds.size() > 0) {

@@ -59,7 +59,7 @@
         </if>
     </select>
     <select id="findRoleIdsByFunctionId" resultType="java.lang.Integer">
-        select distinct role_id from animal_disease.d_role_function where function_id=#{functionId}
+        select distinct role_id from d_role_function where function_id=#{functionId}
     </select>
 
 </mapper>

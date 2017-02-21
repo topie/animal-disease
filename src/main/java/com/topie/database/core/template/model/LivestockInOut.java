@@ -1,668 +1,475 @@
 package com.topie.database.core.template.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Table(name = "d_livestock_in_out")
-public class LivestockInOut {
+@Table(name = "b_livestockinout")
+public class LiveStockInOut {
 
-    /**
-     * ID
-     */
     @Id
-    @Column(name = "livestock_id")
+    @Column(name = "LivestockId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer livestockId;
+    private String livestockid;
+
+    @Column(name = "ReportId")
+    private String reportid;
+
+    @Column(name = "Liv_regionCode")
+    private String livRegioncode;
+
+    @Column(name = "Liv_regionName")
+    private String livRegionname;
+
+    @Column(name = "LivestockDate")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date livestockdate;
+
+    @Column(name = "HerdsPig")
+    private BigDecimal herdspig;
+
+    @Column(name = "HerdsNiu")
+    private BigDecimal herdsniu;
+
+    @Column(name = "HerdsSheep")
+    private BigDecimal herdssheep;
+
+    @Column(name = "HerdsOther")
+    private BigDecimal herdsother;
+
+    @Column(name = "HerdsChicken")
+    private BigDecimal herdschicken;
+
+    @Column(name = "HerdsDuck")
+    private BigDecimal herdsduck;
+
+    @Column(name = "HerdsGoose")
+    private BigDecimal herdsgoose;
+
+    @Column(name = "HerdsOtherQ")
+    private BigDecimal herdsotherq;
+
+    @Column(name = "ImmuneBirdFluChecken")
+    private BigDecimal immunebirdfluchecken;
+
+    @Column(name = "ImmuneBirdFluDuck")
+    private BigDecimal immunebirdfluduck;
+
+    @Column(name = "ImmuneBirdFluGoose")
+    private BigDecimal immunebirdflugoose;
+
+    @Column(name = "ImmuneBirdFluOther")
+    private BigDecimal immunebirdfluother;
+
+    @Column(name = "ImmuneAFMDNiu")
+    private BigDecimal immuneafmdniu;
+
+    @Column(name = "ImmuneAFMDSheep")
+    private BigDecimal immuneafmdsheep;
+
+    @Column(name = "ImmuneBlueEar")
+    private BigDecimal immuneblueear;
+
+    @Column(name = "ImmuneSwine")
+    private BigDecimal immuneswine;
+
+    @Column(name = "ImmuneNewcastle")
+    private BigDecimal immunenewcastle;
+
+    @Column(name = "ImmuneFMDPig")
+    private BigDecimal immunefmdpig;
+
+    @Column(name = "ImmuneFMDNiu")
+    private BigDecimal immunefmdniu;
+
+    @Column(name = "ImmuneFMDSheep")
+    private BigDecimal immunefmdsheep;
+
+    @Column(name = "ImmuneFMDOther")
+    private BigDecimal immunefmdother;
+
+    @Column(name = "PesteDesPetitsRuminants")
+    private BigDecimal pestedespetitsruminants;
 
     /**
-     * 填报ID
+     * @return LivestockId
      */
-    @Column(name = "fill_id")
-    private Integer fillId;
-
-    /**
-     * 上报人ID
-     */
-    @Column(name = "user_id")
-    private Integer userId;
-
-    /**
-     * 省行政ID
-     */
-    @Column(name = "org_id")
-    private Integer orgId;
-
-    private String province;
-
-    /**
-     * 上报时间
-     */
-    @Column(name = "livestock_date")
-    private Date livestockDate;
-
-    /**
-     * 填报状态
-     */
-    private Integer status;
-
-    /**
-     * 当月存栏数量(万头/只/羽)-猪
-     */
-    @Column(name = "herds_pig")
-    private BigDecimal herdsPig;
-
-    /**
-     * 当月存栏数量(万头/只/羽)-牛
-     */
-    @Column(name = "herds_niu")
-    private BigDecimal herdsNiu;
-
-    /**
-     * 当月存栏数量(万头/只/羽)-羊
-     */
-    @Column(name = "herds_sheep")
-    private BigDecimal herdsSheep;
-
-    /**
-     * 当月存栏数量(万头/只/羽)-其他
-     */
-    @Column(name = "herds_other")
-    private BigDecimal herdsOther;
-
-    /**
-     * 当月存栏数量(万头/只/羽)-鸡
-     */
-    @Column(name = "herds_chicken")
-    private BigDecimal herdsChicken;
-
-    /**
-     * 当月存栏数量(万头/只/羽)-鸭
-     */
-    @Column(name = "herds_duck")
-    private BigDecimal herdsDuck;
-
-    /**
-     * 当月存栏数量(万头/只/羽)-鹅
-     */
-    @Column(name = "herds_goose")
-    private BigDecimal herdsGoose;
-
-    /**
-     * 当月存栏数量(万头/只/羽)-其他禽
-     */
-    @Column(name = "herds_other_q")
-    private BigDecimal herdsOtherQ;
-
-    /**
-     * 禽流感当月应免数量(万羽)-鸡
-     */
-    @Column(name = "immune_bird_flu_checken")
-    private BigDecimal immuneBirdFluChecken;
-
-    /**
-     * 禽流感当月应免数量(万羽)-鸭
-     */
-    @Column(name = "immune_bird_flu_duck")
-    private BigDecimal immuneBirdFluDuck;
-
-    /**
-     * 禽流感当月应免数量(万羽)-鹅
-     */
-    @Column(name = "immune_bird_flu_goose")
-    private BigDecimal immuneBirdFluGoose;
-
-    /**
-     * 禽流感当月应免数量(万羽)-其他禽
-     */
-    @Column(name = "immune_bird_flu_other")
-    private BigDecimal immuneBirdFluOther;
-
-    /**
-     * A型口蹄疫当月应免数量(万头/只)-牛
-     */
-    @Column(name = "immune_afmd_niu")
-    private BigDecimal immuneAfmdNiu;
-
-    /**
-     * A型口蹄疫当月应免数量(万头/只)-羊
-     */
-    @Column(name = "immune_afmd_sheep")
-    private BigDecimal immuneAfmdSheep;
-
-    /**
-     * 高致病性猪蓝耳病当月应免数量(万头)-猪
-     */
-    @Column(name = "immune_blue_ear")
-    private BigDecimal immuneBlueEar;
-
-    /**
-     * 猪瘟当月应免数量(万头)
-     */
-    @Column(name = "immune_swine")
-    private BigDecimal immuneSwine;
-
-    /**
-     * 新城疫当月应免数量(万羽)
-     */
-    @Column(name = "immune_new_castle")
-    private BigDecimal immuneNewCastle;
-
-    /**
-     * 牲畜口蹄疫当月应免数量(万头/只)-猪
-     */
-    @Column(name = "immune_fmd_pig")
-    private BigDecimal immuneFmdPig;
-
-    /**
-     * 牲畜口蹄疫当月应免数量(万头/只)-牛
-     */
-    @Column(name = "immune_fmd_niu")
-    private BigDecimal immuneFmdNiu;
-
-    /**
-     * 牲畜口蹄疫当月应免数量(万头/只)-羊
-     */
-    @Column(name = "immune_fmd_sheep")
-    private BigDecimal immuneFmdSheep;
-
-    /**
-     * 牲畜口蹄疫当月应免数量(万头/只)-其他
-     */
-    @Column(name = "immune_fmd_other")
-    private BigDecimal immuneFmdOther;
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
+    public String getLivestockid() {
+        return livestockid;
     }
 
     /**
-     * 获取ID
-     *
-     * @return livestock_id - ID
+     * @param livestockid
      */
-    public Integer getLivestockId() {
-        return livestockId;
+    public void setLivestockid(String livestockid) {
+        this.livestockid = livestockid;
     }
 
     /**
-     * 设置ID
-     *
-     * @param livestockId ID
+     * @return ReportId
      */
-    public void setLivestockId(Integer livestockId) {
-        this.livestockId = livestockId;
+    public String getReportid() {
+        return reportid;
     }
 
     /**
-     * 获取填报ID
-     *
-     * @return fill_id - 填报ID
+     * @param reportid
      */
-    public Integer getFillId() {
-        return fillId;
+    public void setReportid(String reportid) {
+        this.reportid = reportid;
     }
 
     /**
-     * 设置填报ID
-     *
-     * @param fillId 填报ID
+     * @return Liv_regionCode
      */
-    public void setFillId(Integer fillId) {
-        this.fillId = fillId;
+    public String getLivRegioncode() {
+        return livRegioncode;
     }
 
     /**
-     * 获取上报人ID
-     *
-     * @return user_id - 上报人ID
+     * @param livRegioncode
      */
-    public Integer getUserId() {
-        return userId;
+    public void setLivRegioncode(String livRegioncode) {
+        this.livRegioncode = livRegioncode;
     }
 
     /**
-     * 设置上报人ID
-     *
-     * @param userId 上报人ID
+     * @return Liv_regionName
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public String getLivRegionname() {
+        return livRegionname;
     }
 
     /**
-     * 获取省行政ID
-     *
-     * @return org_id - 省行政ID
+     * @param livRegionname
      */
-    public Integer getOrgId() {
-        return orgId;
+    public void setLivRegionname(String livRegionname) {
+        this.livRegionname = livRegionname;
     }
 
     /**
-     * 设置省行政ID
-     *
-     * @param orgId 省行政ID
+     * @return LivestockDate
      */
-    public void setOrgId(Integer orgId) {
-        this.orgId = orgId;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
+    public Date getLivestockdate() {
+        return livestockdate;
     }
 
     /**
-     * 获取上报时间
-     *
-     * @return livestock_date - 上报时间
+     * @param livestockdate
      */
-    public Date getLivestockDate() {
-        return livestockDate;
+    public void setLivestockdate(Date livestockdate) {
+        this.livestockdate = livestockdate;
     }
 
     /**
-     * 设置上报时间
-     *
-     * @param livestockDate 上报时间
+     * @return HerdsPig
      */
-    public void setLivestockDate(Date livestockDate) {
-        this.livestockDate = livestockDate;
+    public BigDecimal getHerdspig() {
+        return herdspig;
     }
 
     /**
-     * 获取填报状态
-     *
-     * @return status - 填报状态
+     * @param herdspig
      */
-    public Integer getStatus() {
-        return status;
+    public void setHerdspig(BigDecimal herdspig) {
+        this.herdspig = herdspig;
     }
 
     /**
-     * 设置填报状态
-     *
-     * @param status 填报状态
+     * @return HerdsNiu
      */
-    public void setStatus(Integer status) {
-        this.status = status;
+    public BigDecimal getHerdsniu() {
+        return herdsniu;
     }
 
     /**
-     * 获取当月存栏数量(万头/只/羽)-猪
-     *
-     * @return herds_pig - 当月存栏数量(万头/只/羽)-猪
+     * @param herdsniu
      */
-    public BigDecimal getHerdsPig() {
-        return herdsPig;
+    public void setHerdsniu(BigDecimal herdsniu) {
+        this.herdsniu = herdsniu;
     }
 
     /**
-     * 设置当月存栏数量(万头/只/羽)-猪
-     *
-     * @param herdsPig 当月存栏数量(万头/只/羽)-猪
+     * @return HerdsSheep
      */
-    public void setHerdsPig(BigDecimal herdsPig) {
-        this.herdsPig = herdsPig;
+    public BigDecimal getHerdssheep() {
+        return herdssheep;
     }
 
     /**
-     * 获取当月存栏数量(万头/只/羽)-牛
-     *
-     * @return herds_niu - 当月存栏数量(万头/只/羽)-牛
+     * @param herdssheep
      */
-    public BigDecimal getHerdsNiu() {
-        return herdsNiu;
+    public void setHerdssheep(BigDecimal herdssheep) {
+        this.herdssheep = herdssheep;
     }
 
     /**
-     * 设置当月存栏数量(万头/只/羽)-牛
-     *
-     * @param herdsNiu 当月存栏数量(万头/只/羽)-牛
+     * @return HerdsOther
      */
-    public void setHerdsNiu(BigDecimal herdsNiu) {
-        this.herdsNiu = herdsNiu;
+    public BigDecimal getHerdsother() {
+        return herdsother;
     }
 
     /**
-     * 获取当月存栏数量(万头/只/羽)-羊
-     *
-     * @return herds_sheep - 当月存栏数量(万头/只/羽)-羊
+     * @param herdsother
      */
-    public BigDecimal getHerdsSheep() {
-        return herdsSheep;
+    public void setHerdsother(BigDecimal herdsother) {
+        this.herdsother = herdsother;
     }
 
     /**
-     * 设置当月存栏数量(万头/只/羽)-羊
-     *
-     * @param herdsSheep 当月存栏数量(万头/只/羽)-羊
+     * @return HerdsChicken
      */
-    public void setHerdsSheep(BigDecimal herdsSheep) {
-        this.herdsSheep = herdsSheep;
+    public BigDecimal getHerdschicken() {
+        return herdschicken;
     }
 
     /**
-     * 获取当月存栏数量(万头/只/羽)-其他
-     *
-     * @return herds_other - 当月存栏数量(万头/只/羽)-其他
+     * @param herdschicken
      */
-    public BigDecimal getHerdsOther() {
-        return herdsOther;
+    public void setHerdschicken(BigDecimal herdschicken) {
+        this.herdschicken = herdschicken;
     }
 
     /**
-     * 设置当月存栏数量(万头/只/羽)-其他
-     *
-     * @param herdsOther 当月存栏数量(万头/只/羽)-其他
+     * @return HerdsDuck
      */
-    public void setHerdsOther(BigDecimal herdsOther) {
-        this.herdsOther = herdsOther;
+    public BigDecimal getHerdsduck() {
+        return herdsduck;
     }
 
     /**
-     * 获取当月存栏数量(万头/只/羽)-鸡
-     *
-     * @return herds_chicken - 当月存栏数量(万头/只/羽)-鸡
+     * @param herdsduck
      */
-    public BigDecimal getHerdsChicken() {
-        return herdsChicken;
+    public void setHerdsduck(BigDecimal herdsduck) {
+        this.herdsduck = herdsduck;
     }
 
     /**
-     * 设置当月存栏数量(万头/只/羽)-鸡
-     *
-     * @param herdsChicken 当月存栏数量(万头/只/羽)-鸡
+     * @return HerdsGoose
      */
-    public void setHerdsChicken(BigDecimal herdsChicken) {
-        this.herdsChicken = herdsChicken;
+    public BigDecimal getHerdsgoose() {
+        return herdsgoose;
     }
 
     /**
-     * 获取当月存栏数量(万头/只/羽)-鸭
-     *
-     * @return herds_duck - 当月存栏数量(万头/只/羽)-鸭
+     * @param herdsgoose
      */
-    public BigDecimal getHerdsDuck() {
-        return herdsDuck;
+    public void setHerdsgoose(BigDecimal herdsgoose) {
+        this.herdsgoose = herdsgoose;
     }
 
     /**
-     * 设置当月存栏数量(万头/只/羽)-鸭
-     *
-     * @param herdsDuck 当月存栏数量(万头/只/羽)-鸭
+     * @return HerdsOtherQ
      */
-    public void setHerdsDuck(BigDecimal herdsDuck) {
-        this.herdsDuck = herdsDuck;
+    public BigDecimal getHerdsotherq() {
+        return herdsotherq;
     }
 
     /**
-     * 获取当月存栏数量(万头/只/羽)-鹅
-     *
-     * @return herds_goose - 当月存栏数量(万头/只/羽)-鹅
+     * @param herdsotherq
      */
-    public BigDecimal getHerdsGoose() {
-        return herdsGoose;
+    public void setHerdsotherq(BigDecimal herdsotherq) {
+        this.herdsotherq = herdsotherq;
     }
 
     /**
-     * 设置当月存栏数量(万头/只/羽)-鹅
-     *
-     * @param herdsGoose 当月存栏数量(万头/只/羽)-鹅
+     * @return ImmuneBirdFluChecken
      */
-    public void setHerdsGoose(BigDecimal herdsGoose) {
-        this.herdsGoose = herdsGoose;
+    public BigDecimal getImmunebirdfluchecken() {
+        return immunebirdfluchecken;
     }
 
     /**
-     * 获取当月存栏数量(万头/只/羽)-其他禽
-     *
-     * @return herds_other_q - 当月存栏数量(万头/只/羽)-其他禽
+     * @param immunebirdfluchecken
      */
-    public BigDecimal getHerdsOtherQ() {
-        return herdsOtherQ;
+    public void setImmunebirdfluchecken(BigDecimal immunebirdfluchecken) {
+        this.immunebirdfluchecken = immunebirdfluchecken;
     }
 
     /**
-     * 设置当月存栏数量(万头/只/羽)-其他禽
-     *
-     * @param herdsOtherQ 当月存栏数量(万头/只/羽)-其他禽
+     * @return ImmuneBirdFluDuck
      */
-    public void setHerdsOtherQ(BigDecimal herdsOtherQ) {
-        this.herdsOtherQ = herdsOtherQ;
+    public BigDecimal getImmunebirdfluduck() {
+        return immunebirdfluduck;
     }
 
     /**
-     * 获取禽流感当月应免数量(万羽)-鸡
-     *
-     * @return immune_bird_flu_checken - 禽流感当月应免数量(万羽)-鸡
+     * @param immunebirdfluduck
      */
-    public BigDecimal getImmuneBirdFluChecken() {
-        return immuneBirdFluChecken;
+    public void setImmunebirdfluduck(BigDecimal immunebirdfluduck) {
+        this.immunebirdfluduck = immunebirdfluduck;
     }
 
     /**
-     * 设置禽流感当月应免数量(万羽)-鸡
-     *
-     * @param immuneBirdFluChecken 禽流感当月应免数量(万羽)-鸡
+     * @return ImmuneBirdFluGoose
      */
-    public void setImmuneBirdFluChecken(BigDecimal immuneBirdFluChecken) {
-        this.immuneBirdFluChecken = immuneBirdFluChecken;
+    public BigDecimal getImmunebirdflugoose() {
+        return immunebirdflugoose;
     }
 
     /**
-     * 获取禽流感当月应免数量(万羽)-鸭
-     *
-     * @return immune_bird_flu_duck - 禽流感当月应免数量(万羽)-鸭
+     * @param immunebirdflugoose
      */
-    public BigDecimal getImmuneBirdFluDuck() {
-        return immuneBirdFluDuck;
+    public void setImmunebirdflugoose(BigDecimal immunebirdflugoose) {
+        this.immunebirdflugoose = immunebirdflugoose;
     }
 
     /**
-     * 设置禽流感当月应免数量(万羽)-鸭
-     *
-     * @param immuneBirdFluDuck 禽流感当月应免数量(万羽)-鸭
+     * @return ImmuneBirdFluOther
      */
-    public void setImmuneBirdFluDuck(BigDecimal immuneBirdFluDuck) {
-        this.immuneBirdFluDuck = immuneBirdFluDuck;
+    public BigDecimal getImmunebirdfluother() {
+        return immunebirdfluother;
     }
 
     /**
-     * 获取禽流感当月应免数量(万羽)-鹅
-     *
-     * @return immune_bird_flu_goose - 禽流感当月应免数量(万羽)-鹅
+     * @param immunebirdfluother
      */
-    public BigDecimal getImmuneBirdFluGoose() {
-        return immuneBirdFluGoose;
+    public void setImmunebirdfluother(BigDecimal immunebirdfluother) {
+        this.immunebirdfluother = immunebirdfluother;
     }
 
     /**
-     * 设置禽流感当月应免数量(万羽)-鹅
-     *
-     * @param immuneBirdFluGoose 禽流感当月应免数量(万羽)-鹅
+     * @return ImmuneAFMDNiu
      */
-    public void setImmuneBirdFluGoose(BigDecimal immuneBirdFluGoose) {
-        this.immuneBirdFluGoose = immuneBirdFluGoose;
+    public BigDecimal getImmuneafmdniu() {
+        return immuneafmdniu;
     }
 
     /**
-     * 获取禽流感当月应免数量(万羽)-其他禽
-     *
-     * @return immune_bird_flu_other - 禽流感当月应免数量(万羽)-其他禽
+     * @param immuneafmdniu
      */
-    public BigDecimal getImmuneBirdFluOther() {
-        return immuneBirdFluOther;
+    public void setImmuneafmdniu(BigDecimal immuneafmdniu) {
+        this.immuneafmdniu = immuneafmdniu;
     }
 
     /**
-     * 设置禽流感当月应免数量(万羽)-其他禽
-     *
-     * @param immuneBirdFluOther 禽流感当月应免数量(万羽)-其他禽
+     * @return ImmuneAFMDSheep
      */
-    public void setImmuneBirdFluOther(BigDecimal immuneBirdFluOther) {
-        this.immuneBirdFluOther = immuneBirdFluOther;
+    public BigDecimal getImmuneafmdsheep() {
+        return immuneafmdsheep;
     }
 
     /**
-     * 获取A型口蹄疫当月应免数量(万头/只)-牛
-     *
-     * @return immune_afmd_niu - A型口蹄疫当月应免数量(万头/只)-牛
+     * @param immuneafmdsheep
      */
-    public BigDecimal getImmuneAfmdNiu() {
-        return immuneAfmdNiu;
+    public void setImmuneafmdsheep(BigDecimal immuneafmdsheep) {
+        this.immuneafmdsheep = immuneafmdsheep;
     }
 
     /**
-     * 设置A型口蹄疫当月应免数量(万头/只)-牛
-     *
-     * @param immuneAfmdNiu A型口蹄疫当月应免数量(万头/只)-牛
+     * @return ImmuneBlueEar
      */
-    public void setImmuneAfmdNiu(BigDecimal immuneAfmdNiu) {
-        this.immuneAfmdNiu = immuneAfmdNiu;
+    public BigDecimal getImmuneblueear() {
+        return immuneblueear;
     }
 
     /**
-     * 获取A型口蹄疫当月应免数量(万头/只)-羊
-     *
-     * @return immune_afmd_sheep - A型口蹄疫当月应免数量(万头/只)-羊
+     * @param immuneblueear
      */
-    public BigDecimal getImmuneAfmdSheep() {
-        return immuneAfmdSheep;
+    public void setImmuneblueear(BigDecimal immuneblueear) {
+        this.immuneblueear = immuneblueear;
     }
 
     /**
-     * 设置A型口蹄疫当月应免数量(万头/只)-羊
-     *
-     * @param immuneAfmdSheep A型口蹄疫当月应免数量(万头/只)-羊
+     * @return ImmuneSwine
      */
-    public void setImmuneAfmdSheep(BigDecimal immuneAfmdSheep) {
-        this.immuneAfmdSheep = immuneAfmdSheep;
+    public BigDecimal getImmuneswine() {
+        return immuneswine;
     }
 
     /**
-     * 获取高致病性猪蓝耳病当月应免数量(万头)-猪
-     *
-     * @return immune_blue_ear - 高致病性猪蓝耳病当月应免数量(万头)-猪
+     * @param immuneswine
      */
-    public BigDecimal getImmuneBlueEar() {
-        return immuneBlueEar;
+    public void setImmuneswine(BigDecimal immuneswine) {
+        this.immuneswine = immuneswine;
     }
 
     /**
-     * 设置高致病性猪蓝耳病当月应免数量(万头)-猪
-     *
-     * @param immuneBlueEar 高致病性猪蓝耳病当月应免数量(万头)-猪
+     * @return ImmuneNewcastle
      */
-    public void setImmuneBlueEar(BigDecimal immuneBlueEar) {
-        this.immuneBlueEar = immuneBlueEar;
+    public BigDecimal getImmunenewcastle() {
+        return immunenewcastle;
     }
 
     /**
-     * 获取猪瘟当月应免数量(万头)
-     *
-     * @return immune_swine - 猪瘟当月应免数量(万头)
+     * @param immunenewcastle
      */
-    public BigDecimal getImmuneSwine() {
-        return immuneSwine;
+    public void setImmunenewcastle(BigDecimal immunenewcastle) {
+        this.immunenewcastle = immunenewcastle;
     }
 
     /**
-     * 设置猪瘟当月应免数量(万头)
-     *
-     * @param immuneSwine 猪瘟当月应免数量(万头)
+     * @return ImmuneFMDPig
      */
-    public void setImmuneSwine(BigDecimal immuneSwine) {
-        this.immuneSwine = immuneSwine;
+    public BigDecimal getImmunefmdpig() {
+        return immunefmdpig;
     }
 
     /**
-     * 获取新城疫当月应免数量(万羽)
-     *
-     * @return immune_new_castle - 新城疫当月应免数量(万羽)
+     * @param immunefmdpig
      */
-    public BigDecimal getImmuneNewCastle() {
-        return immuneNewCastle;
+    public void setImmunefmdpig(BigDecimal immunefmdpig) {
+        this.immunefmdpig = immunefmdpig;
     }
 
     /**
-     * 设置新城疫当月应免数量(万羽)
-     *
-     * @param immuneNewCastle 新城疫当月应免数量(万羽)
+     * @return ImmuneFMDNiu
      */
-    public void setImmuneNewCastle(BigDecimal immuneNewCastle) {
-        this.immuneNewCastle = immuneNewCastle;
+    public BigDecimal getImmunefmdniu() {
+        return immunefmdniu;
     }
 
     /**
-     * 获取牲畜口蹄疫当月应免数量(万头/只)-猪
-     *
-     * @return immune_fmd_pig - 牲畜口蹄疫当月应免数量(万头/只)-猪
+     * @param immunefmdniu
      */
-    public BigDecimal getImmuneFmdPig() {
-        return immuneFmdPig;
+    public void setImmunefmdniu(BigDecimal immunefmdniu) {
+        this.immunefmdniu = immunefmdniu;
     }
 
     /**
-     * 设置牲畜口蹄疫当月应免数量(万头/只)-猪
-     *
-     * @param immuneFmdPig 牲畜口蹄疫当月应免数量(万头/只)-猪
+     * @return ImmuneFMDSheep
      */
-    public void setImmuneFmdPig(BigDecimal immuneFmdPig) {
-        this.immuneFmdPig = immuneFmdPig;
+    public BigDecimal getImmunefmdsheep() {
+        return immunefmdsheep;
     }
 
     /**
-     * 获取牲畜口蹄疫当月应免数量(万头/只)-牛
-     *
-     * @return immune_fmd_niu - 牲畜口蹄疫当月应免数量(万头/只)-牛
+     * @param immunefmdsheep
      */
-    public BigDecimal getImmuneFmdNiu() {
-        return immuneFmdNiu;
+    public void setImmunefmdsheep(BigDecimal immunefmdsheep) {
+        this.immunefmdsheep = immunefmdsheep;
     }
 
     /**
-     * 设置牲畜口蹄疫当月应免数量(万头/只)-牛
-     *
-     * @param immuneFmdNiu 牲畜口蹄疫当月应免数量(万头/只)-牛
+     * @return ImmuneFMDOther
      */
-    public void setImmuneFmdNiu(BigDecimal immuneFmdNiu) {
-        this.immuneFmdNiu = immuneFmdNiu;
+    public BigDecimal getImmunefmdother() {
+        return immunefmdother;
     }
 
     /**
-     * 获取牲畜口蹄疫当月应免数量(万头/只)-羊
-     *
-     * @return immune_fmd_sheep - 牲畜口蹄疫当月应免数量(万头/只)-羊
+     * @param immunefmdother
      */
-    public BigDecimal getImmuneFmdSheep() {
-        return immuneFmdSheep;
+    public void setImmunefmdother(BigDecimal immunefmdother) {
+        this.immunefmdother = immunefmdother;
     }
 
     /**
-     * 设置牲畜口蹄疫当月应免数量(万头/只)-羊
-     *
-     * @param immuneFmdSheep 牲畜口蹄疫当月应免数量(万头/只)-羊
+     * @return PesteDesPetitsRuminants
      */
-    public void setImmuneFmdSheep(BigDecimal immuneFmdSheep) {
-        this.immuneFmdSheep = immuneFmdSheep;
+    public BigDecimal getPestedespetitsruminants() {
+        return pestedespetitsruminants;
     }
 
     /**
-     * 获取牲畜口蹄疫当月应免数量(万头/只)-其他
-     *
-     * @return immune_fmd_other - 牲畜口蹄疫当月应免数量(万头/只)-其他
+     * @param pestedespetitsruminants
      */
-    public BigDecimal getImmuneFmdOther() {
-        return immuneFmdOther;
-    }
-
-    /**
-     * 设置牲畜口蹄疫当月应免数量(万头/只)-其他
-     *
-     * @param immuneFmdOther 牲畜口蹄疫当月应免数量(万头/只)-其他
-     */
-    public void setImmuneFmdOther(BigDecimal immuneFmdOther) {
-        this.immuneFmdOther = immuneFmdOther;
+    public void setPestedespetitsruminants(BigDecimal pestedespetitsruminants) {
+        this.pestedespetitsruminants = pestedespetitsruminants;
     }
 }

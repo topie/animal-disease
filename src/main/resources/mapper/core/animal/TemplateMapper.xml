@@ -1,17 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.topie.database.core.animal.dao.TemplateMapper" >
-  <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.Template" >
-    <!--
-      WARNING - @mbggenerated
-    -->
-    <id column="template_id" property="templateId" jdbcType="VARCHAR" />
-    <result column="template_name" property="templateName" jdbcType="VARCHAR" />
-    <result column="table_name" property="tableName" jdbcType="VARCHAR" />
-    <result column="normal_template" property="normalTemplate" jdbcType="VARCHAR" />
-    <result column="summary_template" property="summaryTemplate" jdbcType="VARCHAR" />
-    <result column="report_cycle" property="reportCycle" jdbcType="SMALLINT" />
-    <result column="report_type" property="reportType" jdbcType="SMALLINT" />
-    <result column="sort" property="sort" jdbcType="INTEGER" />
-  </resultMap>
+<mapper namespace="com.topie.database.core.animal.dao.TemplateMapper">
+    <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.Template">
+        <id column="template_id" property="templateId" jdbcType="VARCHAR"/>
+        <result column="template_name" property="templateName" jdbcType="VARCHAR"/>
+        <result column="table_name" property="tableName" jdbcType="VARCHAR"/>
+        <result column="normal_template" property="normalTemplate" jdbcType="VARCHAR"/>
+        <result column="summary_template" property="summaryTemplate" jdbcType="VARCHAR"/>
+        <result column="report_cycle" property="reportCycle" jdbcType="SMALLINT"/>
+        <result column="report_type" property="reportType" jdbcType="SMALLINT"/>
+        <result column="sort" property="sort" jdbcType="INTEGER"/>
+    </resultMap>
+    <resultMap id="TreeNodeMap" type="com.topie.common.utils.TreeNode">
+        <id column="template_id" property="id" jdbcType="VARCHAR"/>
+        <result column="pid" property="pId" jdbcType="VARCHAR"/>
+        <result column="template_name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="Option" type="com.topie.common.utils.Option">
+        <id column="template_id" jdbcType="VARCHAR" property="value"/>
+        <result column="template_name" jdbcType="VARCHAR" property="text"/>
+    </resultMap>
+    <select id="selectTreeNodes" resultMap="TreeNodeMap">
+        select '' pid,template_id,template_name from a_template
+        <where>
+            <if test="report_type!=null">
+                and report_type=#{reportType}
+            </if>
+            <if test="templateName!=null">
+                and template_name like concat('%',concat(#{templateName},'%'))
+            </if>
+        </where>
+    </select>
+    <select id="selectOptions" resultMap="Option">
+        select template_id,template_name from a_template
+        <where>
+            <if test="reportType!=null">
+                and report_type=#{reportType}
+            </if>
+            <if test="templateName!=null">
+                and template_name like concat('%',concat(#{templateName},'%'))
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -1,17 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.topie.database.core.animal.dao.ReportMapper" >
-  <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.Report" >
-    <!--
-      WARNING - @mbggenerated
-    -->
-    <id column="report_id" property="reportId" jdbcType="VARCHAR" />
-    <result column="template_id" property="templateId" jdbcType="VARCHAR" />
-    <result column="report_type" property="reportType" jdbcType="INTEGER" />
-    <result column="report_user_id" property="reportUserId" jdbcType="VARCHAR" />
-    <result column="report_time" property="reportTime" jdbcType="TIMESTAMP" />
-    <result column="status" property="status" jdbcType="TINYINT" />
-    <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
-    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
-  </resultMap>
+<mapper namespace="com.topie.database.core.animal.dao.ReportMapper">
+    <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.Report">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="report_id" property="reportId" jdbcType="VARCHAR"/>
+        <result column="template_id" property="templateId" jdbcType="VARCHAR"/>
+        <result column="report_type" property="reportType" jdbcType="INTEGER"/>
+        <result column="report_user_id" property="reportUserId" jdbcType="VARCHAR"/>
+        <result column="report_time" property="reportTime" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="reportDto" type="com.topie.animal.dto.ReportDto">
+        <id column="report_id" property="reportId" jdbcType="VARCHAR"/>
+        <result column="org_name" property="orgName" jdbcType="VARCHAR"/>
+        <result column="template_name" property="templateName" jdbcType="VARCHAR"/>
+        <result column="report_time" property="reportTime" jdbcType="TIMESTAMP"/>
+        <result column="status" property="reportStatus" jdbcType="TINYINT"/>
+        <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <select id="selectByPageByArg" resultMap="reportDto">
+        select
+        r.report_id,
+        o.org_name,
+        t.template_name,
+        r.report_time,
+        r.status,
+        r.begin_time
+        from animal_disease.a_report r
+        inner join animal_disease.a_template t
+        on r.template_id = t.template_id
+        inner join animal_disease.a_user_info u
+        on r.report_user_id=u.user_id
+        left join animal_disease.a_org_info o
+        on u.org_id=o.org_id
+        <where>
+            <if test="status!=null">
+                and r.status = #{status}
+            </if>
+            <if test="templateId!=null">
+                and t.template_id = #{templateId}
+            </if>
+            <if test="reportType!=null">
+                and t.report_type=#{reportType}
+            </if>
+            <if test="orgId!=null">
+                and u.org_id=#{orgId}
+            </if>
+            <if test="beginTime!=null">
+                and r.begin_time=#{beginTime}
+            </if>
+        </where>
+    </select>
 </mapper>

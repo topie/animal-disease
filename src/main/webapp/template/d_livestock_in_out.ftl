@@ -95,7 +95,7 @@
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="22">${fill.displayTitle}</td>
+        <td class="c1" colspan="22">${templateName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">单 位:</td>
@@ -103,7 +103,7 @@
     </tr>
     <tr class="r2">
         <td class="c2">填表日期:</td>
-        <td class="c3" colspan="21"><#if item.livestockDate??>${item.livestockDate?string("yyyy-MM-dd")}</#if></td>
+        <td class="c3" colspan="21"><#if item.livestockdate??>${item.livestockdate?string("yyyy-MM-dd")}</#if></td>
     </tr>
     <tr class="r3">
         <td class="c2">&nbsp;&nbsp;填 表 人:</td>
@@ -111,7 +111,7 @@
     </tr>
     <tr class="r2">
         <td class="c4">主管领导：</td>
-        <td class="c3" colspan="21">${user.leader}</td>
+        <td class="c3" colspan="21">${user.leaderName}</td>
     </tr>
     <tr class="r4">
         <td class="c2">&nbsp;</td>
@@ -149,37 +149,37 @@
     </tr>
     <tr class="r5">
         <td class="c2">-</td>
-        <td role="data" n="herdsPig" class="c2"><#if item.herdsPig??>${item.herdsPig}</#if></td>
-        <td role="data" n="herdsNiu" class="c2"><#if item.herdsNiu??>${item.herdsNiu}</#if></td>
-        <td role="data" n="herdsSheep" class="c2"><#if item.herdsSheep??>${item.herdsSheep}</#if></td>
-        <td role="data" n="herdsOther" class="c2"><#if item.herdsOther??>${item.herdsOther}</#if></td>
-        <td role="data" n="herdsChicken" class="c2"><#if item.herdsChicken??>${item.herdsChicken}</#if></td>
-        <td role="data" n="herdsDuck" class="c2"><#if item.herdsDuck??>${item.herdsDuck}</#if></td>
-        <td role="data" n="herdsGoose" class="c2"><#if item.herdsGoose??>${item.herdsGoose}</#if></td>
-        <td role="data" n="herdsOtherQ" class="c2"><#if item.herdsOtherQ??>${item.herdsOtherQ}</#if></td>
-        <td role="data" n="immuneBirdFluChecken"
-            class="c2"><#if item.immuneBirdFluChecken??>${item.immuneBirdFluChecken}</#if></td>
-        <td role="data" n="immuneBirdFluDuck"
-            class="c2"><#if item.immuneBirdFluDuck??>${item.immuneBirdFluDuck}</#if></td>
-        <td role="data" n="immuneBirdFluGoose"
-            class="c2"><#if item.immuneBirdFluGoose??>${item.immuneBirdFluGoose}</#if></td>
-        <td role="data" n="immuneBirdFluOther"
-            class="c2"><#if item.immuneBirdFluOther??>${item.immuneBirdFluOther}</#if></td>
-        <td role="data" n="immuneAfmdNiu" class="c2"><#if item.immuneAfmdNiu??>${item.immuneAfmdNiu}</#if></td>
-        <td role="data" n="immuneAfmdSheep"
-            class="c2"><#if item.immuneAfmdSheep??>${item.immuneAfmdSheep}</#if></td>
-        <td role="data" n="immuneBlueEar" class="c2"><#if item.immuneBlueEar??>${item.immuneBlueEar}</#if></td>
-        <td role="data" n="immuneSwine" class="c2"><#if item.immuneSwine??>${item.immuneSwine}</#if></td>
-        <td role="data" n="immuneNewCastle"
-            class="c2"><#if item.immuneNewCastle??>${item.immuneNewCastle}</#if></td>
-        <td role="data" n="immuneFmdPig" class="c2"><#if item.immuneFmdPig??>${item.immuneFmdPig}</#if></td>
-        <td role="data" n="immuneFmdNiu" class="c2"><#if item.immuneFmdNiu??>${item.immuneFmdNiu}</#if></td>
-        <td role="data" n="immuneFmdSheep" class="c2"><#if item.immuneFmdSheep??>${item.immuneFmdSheep}</#if></td>
-        <td role="data" n="immuneFmdOther" class="c2"><#if item.immuneFmdOther??>${item.immuneFmdOther}</#if></td>
+        <td role="data" n="herdspig" class="c2"><#if item.herdspig??>${item.herdspig?c}</#if></td>
+        <td role="data" n="herdsniu" class="c2"><#if item.herdsniu??>${item.herdsniu?c}</#if></td>
+        <td role="data" n="herdssheep" class="c2"><#if item.herdssheep??>${item.herdssheep?c}</#if></td>
+        <td role="data" n="herdsother" class="c2"><#if item.herdsother??>${item.herdsother?c}</#if></td>
+        <td role="data" n="herdschicken" class="c2"><#if item.herdschicken??>${item.herdschicken?c}</#if></td>
+        <td role="data" n="herdsduck" class="c2"><#if item.herdsduck??>${item.herdsduck?c}</#if></td>
+        <td role="data" n="herdsgoose" class="c2"><#if item.herdsgoose??>${item.herdsgoose?c}</#if></td>
+        <td role="data" n="herdsotherq" class="c2"><#if item.herdsotherq??>${item.herdsotherq?c}</#if></td>
+        <td role="data" n="immunebirdfluchecken"
+            class="c2"><#if item.immunebirdfluchecken??>${item.immunebirdfluchecken?c}</#if></td>
+        <td role="data" n="immunebirdfluduck"
+            class="c2"><#if item.immunebirdfluduck??>${item.immunebirdfluduck?c}</#if></td>
+        <td role="data" n="immunebirdflugoose"
+            class="c2"><#if item.immunebirdflugoose??>${item.immunebirdflugoose?c}</#if></td>
+        <td role="data" n="immunebirdfluother"
+            class="c2"><#if item.immunebirdfluother??>${item.immunebirdfluother?c}</#if></td>
+        <td role="data" n="immuneafmdniu" class="c2"><#if item.immuneafmdniu??>${item.immuneafmdniu?c}</#if></td>
+        <td role="data" n="immuneafmdsheep"
+            class="c2"><#if item.immuneafmdsheep??>${item.immuneafmdsheep?c}</#if></td>
+        <td role="data" n="immuneblueear" class="c2"><#if item.immuneblueear??>${item.immuneblueear?c}</#if></td>
+        <td role="data" n="immuneswine" class="c2"><#if item.immuneswine??>${item.immuneswine?c}</#if></td>
+        <td role="data" n="immunenewcastle"
+            class="c2"><#if item.immunenewcastle??>${item.immunenewcastle?c}</#if></td>
+        <td role="data" n="immunefmdpig" class="c2"><#if item.immunefmdpig??>${item.immunefmdpig?c}</#if></td>
+        <td role="data" n="immunefmdniu" class="c2"><#if item.immunefmdniu??>${item.immunefmdniu?c}</#if></td>
+        <td role="data" n="immunefmdsheep" class="c2"><#if item.immunefmdsheep??>${item.immunefmdsheep?c}</#if></td>
+        <td role="data" n="immunefmdother" class="c2"><#if item.immunefmdother??>${item.immunefmdother?c}</#if></td>
     </tr>
     </tbody>
 </table>
-
+<#if report.status!=1>
 <script type="text/javascript">
     (function ($, window, document, undefined) {
         $("td[role=data]").each(function (i, d) {
@@ -214,3 +214,5 @@
         }
     })(jQuery, window, document)
 </script>
+</#if>
+

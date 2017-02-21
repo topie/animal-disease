@@ -371,22 +371,22 @@ public class DateUtil {
      * 增加日期的月份。失败返回null。
      *
      * @param date       日期
-     * @param yearAmount 增加数量。可为负数
+     * @param month 增加数量。可为负数
      * @return 增加月份后的日期字符串
      */
-    public static String addMonth(String date, int yearAmount) {
-        return addInteger(date, Calendar.MONTH, yearAmount);
+    public static String addMonth(String date, int month) {
+        return addInteger(date, Calendar.MONTH, month);
     }
 
     /**
      * 增加日期的月份。失败返回null。
      *
      * @param date       日期
-     * @param yearAmount 增加数量。可为负数
+     * @param month 增加数量。可为负数
      * @return 增加月份后的日期
      */
-    public static Date addMonth(Date date, int yearAmount) {
-        return addInteger(date, Calendar.MONTH, yearAmount);
+    public static Date addMonth(Date date, int month) {
+        return addInteger(date, Calendar.MONTH, month);
     }
 
     /**

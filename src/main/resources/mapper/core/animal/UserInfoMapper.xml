@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.topie.database.core.animal.dao.UserInfoMapper">
-  <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.UserInfo">
-    <!--
-      WARNING - @mbggenerated
-    -->
-    <id column="user_id" jdbcType="VARCHAR" property="userId" />
-    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
-    <result column="platform_id" jdbcType="INTEGER" property="platformId" />
-    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="gender" jdbcType="VARCHAR" property="gender" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="fax" jdbcType="VARCHAR" property="fax" />
-    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
-    <result column="job_title" jdbcType="VARCHAR" property="jobTitle" />
-    <result column="real_name" jdbcType="VARCHAR" property="realName" />
-    <result column="leader_name" jdbcType="VARCHAR" property="leaderName" />
-    <result column="token_code" jdbcType="VARCHAR" property="tokenCode" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.UserInfo">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="org_id" jdbcType="VARCHAR" property="orgId"/>
+        <result column="platform_id" jdbcType="INTEGER" property="platformId"/>
+        <result column="login_name" jdbcType="VARCHAR" property="loginName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="fax" jdbcType="VARCHAR" property="fax"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="job_title" jdbcType="VARCHAR" property="jobTitle"/>
+        <result column="real_name" jdbcType="VARCHAR" property="realName"/>
+        <result column="leader_name" jdbcType="VARCHAR" property="leaderName"/>
+        <result column="token_code" jdbcType="VARCHAR" property="tokenCode"/>
+    </resultMap>
+    <select id="selectOrgIdByLoginName" resultType="java.lang.String">
+      select org_id from a_user_info where login_name=#{loginName}
+    </select>
+    <select id="selectOrgInfoByLoginName" resultType="com.topie.database.core.animal.model.OrgInfo">
+        select
+        o.org_id orgId,
+        o.org_name orgName,
+        o.region_code regionCode
+        from animal_disease.a_user_info u
+        inner join animal_disease.a_org_info o
+        on u.org_id=o.org_id
+        where u.login_name = #{loginName}
+    </select>
 </mapper>
