@@ -68,4 +68,9 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
         }
         return 1;
     }
+
+    @Override
+    public UserInfo selectByOrgId(String orgId) {
+        return userInfoMapper.selectByOrgId(orgId);
+    }
 }

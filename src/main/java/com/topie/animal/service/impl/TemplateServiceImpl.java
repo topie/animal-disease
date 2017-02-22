@@ -45,4 +45,9 @@ public class TemplateServiceImpl extends BaseService<Template> implements ITempl
     public List<Option> selectOptions(Template template) {
         return templateMapper.selectOptions(template);
     }
+
+    @Override
+    public List<String> selectIdsByReportType(Integer reportType) {
+        return templateMapper.selectIdsByReportType(reportType);
+    }
 }

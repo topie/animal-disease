@@ -110,6 +110,7 @@ CREATE TABLE `a_report` (
   `end_time`       TIMESTAMP   NULL      DEFAULT NULL
   COMMENT '结束时间',
   PRIMARY KEY (`report_id`),
+  UNIQUE KEY type_time(`begin_time`, `template_id`, `report_user_id`),
   KEY k_user(`report_user_id`),
   KEY k_template(`template_id`),
   KEY k_b_time(`begin_time`),

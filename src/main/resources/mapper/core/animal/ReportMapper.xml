@@ -47,7 +47,7 @@
                 and t.template_id = #{templateId}
             </if>
             <if test="reportType!=null">
-                and t.report_type=#{reportType}
+                and r.report_type=#{reportType}
             </if>
             <if test="orgId!=null">
                 and u.org_id=#{orgId}

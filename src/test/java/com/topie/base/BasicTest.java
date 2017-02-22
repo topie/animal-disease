@@ -1,7 +1,10 @@
 package com.topie.base;
 
-import com.topie.common.tools.freemarker.FreeMarkerUtil;
+import com.topie.animal.constant.ReportTypeE;
+import com.topie.animal.service.IReportService;
 import com.topie.common.tools.cache.RedisCache;
+import com.topie.common.tools.freemarker.FreeMarkerUtil;
+import com.topie.common.utils.date.DateUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,8 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Date;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -19,10 +21,10 @@ import java.util.Map;
 public class BasicTest extends Assert {
 
     @Autowired
-    private FreeMarkerUtil freeMarkerUtil;
+    private RedisCache redisCache;
 
     @Autowired
-    private RedisCache redisCache;
+    private IReportService iReportService;
 
     @Test
     public void testRedis() {
@@ -42,5 +44,11 @@ public class BasicTest extends Assert {
             redisCache.set("user" + i, "chen" + i, 1000);
         }
         redisCache.delByPattern("user*");
+    }
+
+    @Test
+    public void generateMonth() throws Exception {
+        Date beginTime = DateUtil.getCurrentMonthFirstDay();
+        iReportService.insertReport(ReportTypeE.MONTH.getCode(), beginTime);
     }
 }

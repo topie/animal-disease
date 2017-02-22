@@ -203,15 +203,20 @@
                     $(this).parent("td").html(v)
                     calculate()
                 })
+                input.on("click", function (e) {
+                    e.stopPropagation()
+                })
                 $(this).append(input);
-                input.focus();
-                e.stopPropagation();
+                input.focus()
+                e.stopPropagation()
             })
         })
 
         var calculate = function () {
 
         }
+
+        calculate()
     })(jQuery, window, document)
 </script>
 </#if>

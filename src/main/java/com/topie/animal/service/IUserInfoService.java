@@ -19,4 +19,6 @@ public interface IUserInfoService extends IService<UserInfo> {
     OrgInfo selectOrgInfoByLoginName(String currentLoginName);
 
     int updateByConfig(UserInfoConfig userInfoConfig);
+
+    UserInfo selectByOrgId(String regionCode);
 }

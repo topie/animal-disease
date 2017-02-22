@@ -2,12 +2,14 @@ package com.topie.animal.service.impl;
 
 import com.topie.animal.service.*;
 import com.topie.common.tools.freemarker.FreeMarkerUtil;
+import com.topie.common.utils.UUIDUtil;
 import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.Report;
 import com.topie.database.core.animal.model.Template;
 import com.topie.database.core.animal.model.UserInfo;
 import com.topie.database.core.template.dao.LiveStockInOutMapper;
 import com.topie.database.core.template.model.LiveStockInOut;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -80,5 +82,40 @@ public class ExcelServiceImpl implements IExcelService {
         }
         String templatePath = request.getSession().getServletContext().getRealPath("/template");
         return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getSummaryTemplate(), params);
+    }
+
+    @Override
+    public int insertOrUpdateReportFill(String data, Report report) {
+        JSONObject jsonObj = JSONObject.fromObject(data);
+        UserInfo userInfo = iUserInfoService.selectByKey(report.getReportUserId());
+        Template template = iTemplateService.selectByKey(report.getTemplateId());
+        OrgInfo orgInfo = iOrgInfoService.selectByKey(userInfo.getOrgId());
+        switch (template.getTableName().toLowerCase()) {
+            case "b_livestockinout": {
+                LiveStockInOut fill = (LiveStockInOut) JSONObject.toBean(jsonObj, LiveStockInOut.class);
+                LiveStockInOut liveStockInOut = liveStockInOutMapper.selectOneByReportId(report.getReportId());
+                boolean insert = true;
+                if (liveStockInOut == null) {
+                    liveStockInOut = fill;
+                    liveStockInOut.setLivestockid(UUIDUtil.getUUID());
+                } else {
+                    fill.setLivestockid(liveStockInOut.getLivestockid());
+                    liveStockInOut = fill;
+                    insert = false;
+                }
+                liveStockInOut.setReportid(report.getReportId());
+                liveStockInOut.setLivestockdate(report.getBeginTime());
+                liveStockInOut.setLivRegioncode(userInfo.getOrgId());
+                if (insert) {
+                    liveStockInOutMapper.insertSelective(liveStockInOut);
+                } else {
+                    liveStockInOutMapper.updateByPrimaryKeySelective(liveStockInOut);
+                }
+                break;
+            }
+            default:
+                break;
+        }
+        return 1;
     }
 }

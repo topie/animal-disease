@@ -7,7 +7,7 @@ import java.util.List;
  * Created by chenguojun on 2017/2/21.
  */
 public enum ReportTypeE {
-    MONTH(7, "月度免疫"), SEASON(3, "物资储备"), WEEK(4, "春秋防周报"), HALF_YEAR(12, "春秋防数据汇总"), DAY(2, "应急管理");
+    MONTH(3, "月度免疫"), SEASON(4, "物资储备"), WEEK(2, "春秋防周报"), HALF_YEAR(7, "春秋防数据汇总"), DAY(0, "应急");
 
     /**
      * 编码

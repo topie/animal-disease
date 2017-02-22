@@ -18,4 +18,6 @@ public interface ITemplateService extends IService<Template> {
     List<TreeNode> selectTreeNodes(Template template);
 
     List<Option> selectOptions(Template template);
+
+    List<String> selectIdsByReportType(Integer reportType);
 }

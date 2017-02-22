@@ -42,4 +42,7 @@
             </if>
         </where>
     </select>
+    <select id="selectIdsByReportType" resultType="java.lang.String">
+        select template_id from animal_disease.a_template where report_type=#{reportType}
+    </select>
 </mapper>

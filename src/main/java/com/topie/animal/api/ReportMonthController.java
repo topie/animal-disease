@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -100,5 +101,33 @@ public class ReportMonthController {
         map.put("total", 1);
         map.put("data", Collections.singletonList(reportDto));
         return ResponseUtil.success(map);
+    }
+
+    @RequestMapping(value = "/fill", method = RequestMethod.GET)
+    @ResponseBody
+    public Result fill(@RequestParam(value = "templateId", required = false) String templateId,
+            @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
+        Date begin = DateUtil.getCurrentMonthFirstDay();
+        Date end = DateUtil.addDay(begin, 30);
+        Date now = new Date();
+        if (now.after(end)) {
+            return ResponseUtil.success(PageConvertUtil.grid(null));
+        }
+        String currentLoginName = SecurityUtil.getCurrentUserName();
+        if (StringUtils.isEmpty(currentLoginName)) {
+            return ResponseUtil.error("未登录");
+        }
+        OrgInfo currentOrg = iUserInfoService.selectOrgInfoByLoginName(currentLoginName);
+        if (StringUtils.isEmpty(currentOrg.getOrgId())) {
+            return ResponseUtil.error("当前用户没有组织机构");
+        }
+        Map argMap = new HashMap();
+        argMap.put("reportType", ReportTypeE.MONTH.getCode());
+        argMap.put("orgId", currentOrg.getOrgId());
+        if (StringUtils.isNotEmpty(templateId)) argMap.put("templateId", templateId);
+        argMap.put("beginTime", begin);
+        PageInfo<ReportDto> pageInfo = iReportService.selectByPageByArg(argMap, pageNum, pageSize);
+        return ResponseUtil.success(PageConvertUtil.grid(pageInfo));
     }
 }

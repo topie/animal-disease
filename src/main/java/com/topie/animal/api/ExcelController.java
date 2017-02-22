@@ -53,6 +53,22 @@ public class ExcelController {
         return ResponseUtil.success(result);
     }
 
+    @RequestMapping(value = "/insertOrUpdate", method = RequestMethod.POST)
+    @ResponseBody
+    public Result insertOrUpdate(@RequestParam("data") String data, @RequestParam("reportId") String reportId,
+            @RequestParam(value = "reportStatus", required = false) Integer reportStatus) {
+        Report report = iReportService.selectByKey(reportId);
+        if (report == null) {
+            return ResponseUtil.error("填报不存在");
+        }
+        int result = iExcelService.insertOrUpdateReportFill(data, report);
+        if (reportStatus != null) {
+            report.setStatus(reportStatus);
+        }
+        iReportService.updateNotNull(report);
+        return result > 0 ? ResponseUtil.success() : ResponseUtil.error();
+    }
+
     @RequestMapping(value = "/download/{id}", method = RequestMethod.GET)
     public void download(HttpServletRequest request, HttpServletResponse response,
             @PathVariable(value = "id") String reportId) throws Exception {

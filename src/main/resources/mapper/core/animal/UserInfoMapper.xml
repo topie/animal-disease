@@ -32,4 +32,7 @@
         on u.org_id=o.org_id
         where u.login_name = #{loginName}
     </select>
+    <select id="selectByOrgId" resultMap="BaseResultMap">
+        select * from animal_disease.a_user_info where org_id=#{orgId} limit 1
+    </select>
 </mapper>
