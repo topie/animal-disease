@@ -1,6 +1,7 @@
 package com.topie.animal.service;
 
 import com.github.pagehelper.PageInfo;
+import com.topie.animal.dto.UserInfoConfig;
 import com.topie.common.service.IService;
 import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.UserInfo;
@@ -17,4 +18,5 @@ public interface IUserInfoService extends IService<UserInfo> {
 
     OrgInfo selectOrgInfoByLoginName(String currentLoginName);
 
+    int updateByConfig(UserInfoConfig userInfoConfig);
 }

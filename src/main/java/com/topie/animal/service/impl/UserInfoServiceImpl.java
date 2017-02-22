@@ -2,11 +2,14 @@ package com.topie.animal.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.topie.animal.dto.UserInfoConfig;
 import com.topie.animal.service.IUserInfoService;
 import com.topie.common.service.impl.BaseService;
 import com.topie.database.core.animal.dao.UserInfoMapper;
 import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.UserInfo;
+import com.topie.security.service.UserService;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +25,9 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
 
     @Autowired
     private UserInfoMapper userInfoMapper;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public PageInfo<UserInfo> selectByPage(UserInfo userInfo, int pageNum, int pageSize) {
@@ -44,5 +50,22 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
     @Override
     public OrgInfo selectOrgInfoByLoginName(String currentLoginName) {
         return userInfoMapper.selectOrgInfoByLoginName(currentLoginName);
+    }
+
+    @Override
+    public int updateByConfig(UserInfoConfig userInfoConfig) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setPlatformId(userInfoConfig.getPlatformId());
+        userInfo.setLoginName(userInfoConfig.getLoginName());
+        userInfo.setPassword(userInfoConfig.getPassword());
+        userInfoMapper.updateByPrimaryKeySelective(userInfo);
+        userService.updatePassword(userInfoConfig.getPlatformId(), userInfoConfig.getPassword());
+        if (CollectionUtils.isNotEmpty(userInfoConfig.getRoles())) {
+            userService.deleteUserAllRoles(userInfoConfig.getPlatformId());
+            for (Integer roleId : userInfoConfig.getRoles()) {
+                userService.insertUserRole(userInfoConfig.getPlatformId(), roleId);
+            }
+        }
+        return 1;
     }
 }

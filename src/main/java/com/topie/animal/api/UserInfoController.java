@@ -1,6 +1,7 @@
 package com.topie.animal.api;
 
 import com.github.pagehelper.PageInfo;
+import com.topie.animal.dto.UserInfoConfig;
 import com.topie.animal.service.IUserInfoService;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
@@ -12,6 +13,8 @@ import com.topie.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by chenguojun on 2017/2/21.
@@ -91,6 +94,37 @@ public class UserInfoController {
         userService.insertUser(user);
         userInfo.setPlatformId(user.getId());
         iUserInfoService.updateNotNull(userInfo);
+        return ResponseUtil.success();
+    }
+
+    @RequestMapping(value = "/loadConfig/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Result loadConfig(@PathVariable(value = "id") String id) {
+        UserInfo userInfo = iUserInfoService.selectByKey(id);
+        if (userInfo.getPlatformId() == null || userInfo.getPlatformId() == 0) {
+            User user = new User();
+            user.setLoginName(userInfo.getLoginName());
+            user.setPassword(userInfo.getPassword());
+            user.setDisplayName(userInfo.getRealName());
+            user.setContactPhone(userInfo.getMobile());
+            user.setAccountNonExpired(true);
+            user.setAccountNonLocked(true);
+            user.setCredentialsNonExpired(true);
+            user.setEnabled(true);
+            userService.insertUser(user);
+            userInfo.setPlatformId(user.getId());
+            iUserInfoService.updateNotNull(userInfo);
+        }
+        UserInfoConfig userInfoConfig = new UserInfoConfig(userInfo);
+        List roles = userService.findUserRoleByUserId(userInfo.getPlatformId());
+        if (roles != null) userInfoConfig.setRoles(roles);
+        return ResponseUtil.success(userInfoConfig);
+    }
+
+    @RequestMapping(value = "/updateConfig", method = RequestMethod.POST)
+    @ResponseBody
+    public Result update(UserInfoConfig userInfoConfig) {
+        iUserInfoService.updateByConfig(userInfoConfig);
         return ResponseUtil.success();
     }
 }

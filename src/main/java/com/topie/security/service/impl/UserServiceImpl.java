@@ -155,4 +155,16 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
         }
         return result;
     }
+
+    @Override
+    public int updatePassword(Integer platformId, String password) {
+        User user = userMapper.selectByPrimaryKey(platformId);
+        if (!user.getPassword().equals(SecurityUtil.encodeString(password))) {
+            user.setPassword(SecurityUtil.encodeString(password));
+            userMapper.updateByPrimaryKeySelective(user);
+            orangeSideUserCache.removeUserFromCacheByUserId(user.getId());
+            return 1;
+        }
+        return 0;
+    }
 }
