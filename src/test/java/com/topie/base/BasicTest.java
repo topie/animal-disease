@@ -40,10 +40,8 @@ public class BasicTest extends Assert {
 
     @Test
     public void testDelByPattern() {
-        for (int i = 0; i < 10; i++) {
-            redisCache.set("user" + i, "chen" + i, 1000);
-        }
-        redisCache.delByPattern("user*");
+        redisCache.delByPattern("topie_animal_disease_*");
+
     }
 
     @Test
