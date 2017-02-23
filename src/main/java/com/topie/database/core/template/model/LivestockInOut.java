@@ -29,70 +29,70 @@ public class LiveStockInOut {
     private Date livestockdate;
 
     @Column(name = "HerdsPig")
-    private BigDecimal herdspig;
+    private BigDecimal herdspig=BigDecimal.ZERO;
 
     @Column(name = "HerdsNiu")
-    private BigDecimal herdsniu;
+    private BigDecimal herdsniu=BigDecimal.ZERO;
 
     @Column(name = "HerdsSheep")
-    private BigDecimal herdssheep;
+    private BigDecimal herdssheep=BigDecimal.ZERO;
 
     @Column(name = "HerdsOther")
-    private BigDecimal herdsother;
+    private BigDecimal herdsother=BigDecimal.ZERO;
 
     @Column(name = "HerdsChicken")
-    private BigDecimal herdschicken;
+    private BigDecimal herdschicken=BigDecimal.ZERO;
 
     @Column(name = "HerdsDuck")
-    private BigDecimal herdsduck;
+    private BigDecimal herdsduck=BigDecimal.ZERO;
 
     @Column(name = "HerdsGoose")
-    private BigDecimal herdsgoose;
+    private BigDecimal herdsgoose=BigDecimal.ZERO;
 
     @Column(name = "HerdsOtherQ")
-    private BigDecimal herdsotherq;
+    private BigDecimal herdsotherq=BigDecimal.ZERO;
 
     @Column(name = "ImmuneBirdFluChecken")
-    private BigDecimal immunebirdfluchecken;
+    private BigDecimal immunebirdfluchecken=BigDecimal.ZERO;
 
     @Column(name = "ImmuneBirdFluDuck")
-    private BigDecimal immunebirdfluduck;
+    private BigDecimal immunebirdfluduck=BigDecimal.ZERO;
 
     @Column(name = "ImmuneBirdFluGoose")
-    private BigDecimal immunebirdflugoose;
+    private BigDecimal immunebirdflugoose=BigDecimal.ZERO;
 
     @Column(name = "ImmuneBirdFluOther")
-    private BigDecimal immunebirdfluother;
+    private BigDecimal immunebirdfluother=BigDecimal.ZERO;
 
     @Column(name = "ImmuneAFMDNiu")
-    private BigDecimal immuneafmdniu;
+    private BigDecimal immuneafmdniu=BigDecimal.ZERO;
 
     @Column(name = "ImmuneAFMDSheep")
-    private BigDecimal immuneafmdsheep;
+    private BigDecimal immuneafmdsheep=BigDecimal.ZERO;
 
     @Column(name = "ImmuneBlueEar")
-    private BigDecimal immuneblueear;
+    private BigDecimal immuneblueear=BigDecimal.ZERO;
 
     @Column(name = "ImmuneSwine")
-    private BigDecimal immuneswine;
+    private BigDecimal immuneswine=BigDecimal.ZERO;
 
     @Column(name = "ImmuneNewcastle")
-    private BigDecimal immunenewcastle;
+    private BigDecimal immunenewcastle=BigDecimal.ZERO;
 
     @Column(name = "ImmuneFMDPig")
-    private BigDecimal immunefmdpig;
+    private BigDecimal immunefmdpig=BigDecimal.ZERO;
 
     @Column(name = "ImmuneFMDNiu")
-    private BigDecimal immunefmdniu;
+    private BigDecimal immunefmdniu=BigDecimal.ZERO;
 
     @Column(name = "ImmuneFMDSheep")
-    private BigDecimal immunefmdsheep;
+    private BigDecimal immunefmdsheep=BigDecimal.ZERO;
 
     @Column(name = "ImmuneFMDOther")
-    private BigDecimal immunefmdother;
+    private BigDecimal immunefmdother=BigDecimal.ZERO;
 
     @Column(name = "PesteDesPetitsRuminants")
-    private BigDecimal pestedespetitsruminants;
+    private BigDecimal pestedespetitsruminants=BigDecimal.ZERO;
 
     /**
      * @return LivestockId
