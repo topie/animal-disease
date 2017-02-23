@@ -1,5 +1,8 @@
 package com.topie.database.core.animal.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import javax.persistence.*;
 
@@ -22,6 +25,7 @@ public class ReReport {
      * 开始时间
      */
     @Column(name = "begin_time")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date beginTime;
 
     /**
@@ -83,6 +87,7 @@ public class ReReport {
      *
      * @return begin_time - 开始时间
      */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="Asia/Shanghai")
     public Date getBeginTime() {
         return beginTime;
     }

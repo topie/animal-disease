@@ -185,3 +185,18 @@ CREATE TABLE `b_livestockinout` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COMMENT '畜禽存栏和应免数量月报表';
+
+
+DROP TABLE IF EXISTS `a_news`;
+CREATE TABLE `a_news` (
+  `new_id`         CHAR(64)     NOT NULL,
+  `new_title`      VARCHAR(255) NOT NULL DEFAULT '',
+  `new_body`       LONGTEXT,
+  `new_date`       TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `new_count`      INT(11)               DEFAULT 0,
+  `new_deleteflag` INT(11)               DEFAULT 0,
+  PRIMARY KEY (`new_id`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8
+  COMMENT '新闻表';

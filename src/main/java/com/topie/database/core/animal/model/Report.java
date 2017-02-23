@@ -1,5 +1,8 @@
 package com.topie.database.core.animal.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import javax.persistence.*;
 
@@ -35,6 +38,7 @@ public class Report {
      * 上报时间
      */
     @Column(name = "report_time")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date reportTime;
 
     /**
@@ -46,12 +50,14 @@ public class Report {
      * 开始时间
      */
     @Column(name = "begin_time")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date beginTime;
 
     /**
      * 结束时间
      */
     @Column(name = "end_time")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date endTime;
 
     /**
@@ -131,6 +137,7 @@ public class Report {
      *
      * @return report_time - 上报时间
      */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="Asia/Shanghai")
     public Date getReportTime() {
         return reportTime;
     }
@@ -167,6 +174,7 @@ public class Report {
      *
      * @return begin_time - 开始时间
      */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="Asia/Shanghai")
     public Date getBeginTime() {
         return beginTime;
     }
@@ -185,6 +193,7 @@ public class Report {
      *
      * @return end_time - 结束时间
      */
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="Asia/Shanghai")
     public Date getEndTime() {
         return endTime;
     }
