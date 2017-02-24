@@ -2,6 +2,7 @@
     .t1 {
         border-collapse: collapse;
         border-spacing: 0;
+        width: 99%;
     }
 
     .r1 {

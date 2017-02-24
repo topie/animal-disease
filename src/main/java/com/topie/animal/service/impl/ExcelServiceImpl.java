@@ -3,11 +3,11 @@ package com.topie.animal.service.impl;
 import com.topie.animal.service.*;
 import com.topie.common.tools.freemarker.FreeMarkerUtil;
 import com.topie.common.utils.UUIDUtil;
-import com.topie.database.core.animal.model.OrgInfo;
-import com.topie.database.core.animal.model.Report;
-import com.topie.database.core.animal.model.Template;
-import com.topie.database.core.animal.model.UserInfo;
+import com.topie.database.core.animal.dao.RegionMapper;
+import com.topie.database.core.animal.model.*;
+import com.topie.database.core.template.dao.DisinfectiondrugsMapper;
 import com.topie.database.core.template.dao.LiveStockInOutMapper;
+import com.topie.database.core.template.model.Disinfectiondrugs;
 import com.topie.database.core.template.model.LiveStockInOut;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,13 @@ public class ExcelServiceImpl implements IExcelService {
     private IOrgInfoService iOrgInfoService;
 
     @Autowired
+    private RegionMapper regionMapper;
+
+    @Autowired
     private LiveStockInOutMapper liveStockInOutMapper;
+
+    @Autowired
+    private DisinfectiondrugsMapper disinfectiondrugsMapper;
 
     @Override
     public String getReportHtml(HttpServletRequest request, Report report) {
@@ -58,6 +64,16 @@ public class ExcelServiceImpl implements IExcelService {
                 params.put("item", livestockInOut);
                 break;
             }
+            case "b_disinfectiondrugs": {
+                Disinfectiondrugs arg = new Disinfectiondrugs();
+                arg.setDfReportid(report.getReportId());
+                Disinfectiondrugs disinfectiondrugs = disinfectiondrugsMapper.selectOne(arg);
+                if (disinfectiondrugs == null) {
+                    disinfectiondrugs = new Disinfectiondrugs();
+                }
+                params.put("item", disinfectiondrugs);
+                break;
+            }
             default:
                 return null;
         }
@@ -73,7 +89,12 @@ public class ExcelServiceImpl implements IExcelService {
         Map params = new HashMap();
         switch (template.getTableName().toLowerCase()) {
             case "b_livestockinout": {
-                List<LiveStockInOut> list = liveStockInOutMapper.selectOneByReportIds(reportIds);
+                List<LiveStockInOut> list = liveStockInOutMapper.selectByReportIds(reportIds);
+                params.put("items", list);
+                break;
+            }
+            case "b_disinfectiondrugs": {
+                List<Disinfectiondrugs> list = disinfectiondrugsMapper.selectByReportIds(reportIds);
                 params.put("items", list);
                 break;
             }
@@ -90,6 +111,7 @@ public class ExcelServiceImpl implements IExcelService {
         UserInfo userInfo = iUserInfoService.selectByKey(report.getReportUserId());
         Template template = iTemplateService.selectByKey(report.getTemplateId());
         OrgInfo orgInfo = iOrgInfoService.selectByKey(userInfo.getOrgId());
+        Region region = regionMapper.selectByPrimaryKey(orgInfo.getRegionCode());
         switch (template.getTableName().toLowerCase()) {
             case "b_livestockinout": {
                 LiveStockInOut fill = (LiveStockInOut) JSONObject.toBean(jsonObj, LiveStockInOut.class);
@@ -105,11 +127,37 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 liveStockInOut.setReportid(report.getReportId());
                 liveStockInOut.setLivestockdate(report.getBeginTime());
-                liveStockInOut.setLivRegioncode(userInfo.getOrgId());
+                liveStockInOut.setLivRegioncode(region.getRegionCode());
+                liveStockInOut.setLivRegionname(region.getRegionName());
                 if (insert) {
                     liveStockInOutMapper.insertSelective(liveStockInOut);
                 } else {
                     liveStockInOutMapper.updateByPrimaryKeySelective(liveStockInOut);
+                }
+                break;
+            }
+            case "b_disinfectiondrugs": {
+                Disinfectiondrugs fill = (Disinfectiondrugs) JSONObject.toBean(jsonObj, Disinfectiondrugs.class);
+                Disinfectiondrugs arg = new Disinfectiondrugs();
+                arg.setDfReportid(report.getReportId());
+                Disinfectiondrugs disinfectiondrugs = disinfectiondrugsMapper.selectOne(arg);
+                boolean insert = true;
+                if (disinfectiondrugs == null) {
+                    disinfectiondrugs = fill;
+                    disinfectiondrugs.setDfId(UUIDUtil.getUUID());
+                } else {
+                    fill.setDfId(disinfectiondrugs.getDfId());
+                    disinfectiondrugs = fill;
+                    insert = false;
+                }
+                disinfectiondrugs.setDfReportid(report.getReportId());
+                disinfectiondrugs.setDfDate(report.getBeginTime());
+                disinfectiondrugs.setDfRegioncode(region.getRegionCode());
+                disinfectiondrugs.setDfRegionname(region.getRegionName());
+                if (insert) {
+                    disinfectiondrugsMapper.insertSelective(disinfectiondrugs);
+                } else {
+                    disinfectiondrugsMapper.updateByPrimaryKeySelective(disinfectiondrugs);
                 }
                 break;
             }

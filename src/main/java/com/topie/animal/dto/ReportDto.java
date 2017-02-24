@@ -20,6 +20,8 @@ public class ReportDto {
 
     private String reportPeriod;
 
+    private Integer reportType;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date reportTime;
 
@@ -27,6 +29,14 @@ public class ReportDto {
     private Date beginTime;
 
     private Integer reportStatus;
+
+    public Integer getReportType() {
+        return reportType;
+    }
+
+    public void setReportType(Integer reportType) {
+        this.reportType = reportType;
+    }
 
     public String getTemplateId() {
         return templateId;

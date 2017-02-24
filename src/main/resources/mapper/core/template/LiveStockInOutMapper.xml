@@ -36,7 +36,7 @@
     <select id="selectOneByReportId" resultMap="BaseResultMap">
       select * from animal_disease.b_livestockinout where ReportId=#{reportId}
     </select>
-    <select id="selectOneByReportIds" resultMap="BaseResultMap">
+    <select id="selectByReportIds" resultMap="BaseResultMap">
         select * from animal_disease.b_livestockinout
         where ReportId in
         <foreach item="item" collection="ids" open="(" separator="," close=")">

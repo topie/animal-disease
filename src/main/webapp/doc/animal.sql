@@ -200,3 +200,21 @@ CREATE TABLE `a_news` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COMMENT '新闻表';
+
+DROP TABLE IF EXISTS `b_disinfectiondrugs`;
+CREATE TABLE `b_disinfectiondrugs` (
+  `df_id`          VARCHAR(64) NOT NULL,
+  `df_reportId`    VARCHAR(64)      DEFAULT NULL,
+  `df_date`        TIMESTAMP   NULL DEFAULT NULL,
+  `df_regionCode`  VARCHAR(64)      DEFAULT NULL,
+  `df_drugs`       DECIMAL(18, 2)   DEFAULT NULL,
+  `df_pharmacy`    DECIMAL(18, 2)   DEFAULT NULL,
+  `df_other`       DECIMAL(18, 2)   DEFAULT NULL,
+  `df_regionName`  VARCHAR(64)      DEFAULT NULL,
+  `df_Alldrugs`    DECIMAL(18, 2)   DEFAULT NULL,
+  `df_Allpharmacy` DECIMAL(18, 2)   DEFAULT NULL,
+  `df_Allother`    DECIMAL(18, 2)   DEFAULT NULL,
+  PRIMARY KEY (`df_id`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;

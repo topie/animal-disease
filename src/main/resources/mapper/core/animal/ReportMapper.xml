@@ -21,6 +21,7 @@
         <result column="template_name" property="templateName" jdbcType="VARCHAR"/>
         <result column="report_time" property="reportTime" jdbcType="TIMESTAMP"/>
         <result column="status" property="reportStatus" jdbcType="TINYINT"/>
+        <result column="report_type" property="reportType" jdbcType="SMALLINT"/>
         <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <select id="selectByPageByArg" resultMap="reportDto">
@@ -31,7 +32,8 @@
         t.template_name,
         r.report_time,
         r.status,
-        r.begin_time
+        r.begin_time,
+        t.report_type
         from animal_disease.a_report r
         inner join animal_disease.a_template t
         on r.template_id = t.template_id

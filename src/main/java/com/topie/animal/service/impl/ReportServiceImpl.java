@@ -13,16 +13,15 @@ import com.topie.common.utils.UUIDUtil;
 import com.topie.common.utils.date.DateStyle;
 import com.topie.common.utils.date.DateUtil;
 import com.topie.database.core.animal.dao.ReportMapper;
+import com.topie.database.core.animal.dao.WeekConfigMapper;
 import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.Report;
 import com.topie.database.core.animal.model.UserInfo;
+import com.topie.database.core.animal.model.WeekConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by chenguojun on 2017/2/21.
@@ -42,13 +41,21 @@ public class ReportServiceImpl extends BaseService<Report> implements IReportSer
     @Autowired
     private ITemplateService iTemplateService;
 
+    @Autowired
+    private WeekConfigMapper weekConfigMapper;
+
     @Override
     public PageInfo<ReportDto> selectByPageByArg(Map argMap, int pageNum, int pageSize) {
-
         PageHelper.startPage(pageNum, pageSize);
         List<ReportDto> list = reportMapper.selectByPageByArg(argMap);
+        List<WeekConfig> weekConfigs = weekConfigMapper.selectAll();
+        Map<String, String> weekConfigMap = new HashMap();
+        for (WeekConfig weekConfig : weekConfigs) {
+            weekConfigMap.put(weekConfig.getYear() + "#" + weekConfig.getType(), weekConfig.getTime());
+        }
         for (ReportDto reportDto : list) {
-            reportDto.setReportPeriod(PeriodBuilder.buildMonth(reportDto.getBeginTime()));
+            reportDto.setReportPeriod(
+                    PeriodBuilder.build(reportDto.getReportType(), reportDto.getBeginTime(), weekConfigMap));
         }
         return new PageInfo<>(list);
     }

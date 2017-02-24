@@ -71,8 +71,7 @@ public class FunctionController {
     @RequestMapping(value = "/treeNodes", method = RequestMethod.POST)
     @ResponseBody
     public Object treeNodes(Function function) {
-        List<TreeNode> list = functionService.getFunctionTreeNodes(function);
-        return list;
+        return functionService.getFunctionTreeNodes(function);
     }
 
 }

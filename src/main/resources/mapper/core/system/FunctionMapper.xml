@@ -38,6 +38,7 @@
                 display = #{display}
             </if>
         </where>
+        order by function_desc
     </select>
     <select id="findFunctionList" resultMap="BaseResultMap">
         select

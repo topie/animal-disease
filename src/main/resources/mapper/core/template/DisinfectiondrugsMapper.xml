@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.DisinfectiondrugsMapper">
+    <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Disinfectiondrugs">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="df_id" property="dfId" jdbcType="VARCHAR"/>
+        <result column="df_reportId" property="dfReportid" jdbcType="VARCHAR"/>
+        <result column="df_date" property="dfDate" jdbcType="TIMESTAMP"/>
+        <result column="df_regionCode" property="dfRegioncode" jdbcType="VARCHAR"/>
+        <result column="df_drugs" property="dfDrugs" jdbcType="DECIMAL"/>
+        <result column="df_pharmacy" property="dfPharmacy" jdbcType="DECIMAL"/>
+        <result column="df_other" property="dfOther" jdbcType="DECIMAL"/>
+        <result column="df_regionName" property="dfRegionname" jdbcType="VARCHAR"/>
+        <result column="df_Alldrugs" property="dfAlldrugs" jdbcType="DECIMAL"/>
+        <result column="df_Allpharmacy" property="dfAllpharmacy" jdbcType="DECIMAL"/>
+        <result column="df_Allother" property="dfAllother" jdbcType="DECIMAL"/>
+    </resultMap>
+    <select id="selectByReportIds" resultMap="BaseResultMap">
+        select * from animal_disease.b_disinfectiondrugs
+        where df_reportId in
+        <foreach item="item" collection="ids" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>
