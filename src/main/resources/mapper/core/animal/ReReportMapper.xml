@@ -43,6 +43,12 @@
             <if test="orgId!=null">
                 and r.org_id = #{orgId}
             </if>
+            <if test="templateId!=null">
+                and r.template_id = #{templateId}
+            </if>
+            <if test="reportType!=null">
+                and t.report_type = #{reportType}
+            </if>
         </where>
         order by r.begin_time desc
     </select>

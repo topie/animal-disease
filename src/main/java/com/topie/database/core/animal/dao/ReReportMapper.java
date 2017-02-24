@@ -9,4 +9,5 @@ import java.util.List;
 public interface ReReportMapper extends Mapper<ReReport> {
 
     List<ReReportDto> selectByReReportDto(ReReportDto reReport);
+
 }

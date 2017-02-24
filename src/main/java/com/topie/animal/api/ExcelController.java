@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileOutputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +48,7 @@ public class ExcelController {
             return ResponseUtil.error("填报不存在");
         }
         String excelHtml = iExcelService.getReportHtml(request, report);
-        if (excelHtml == null) return ResponseUtil.error("还没有填报");
+        if (excelHtml == null) return ResponseUtil.error("还没有模板");
         Map result = new HashMap<>();
         result.put("html", excelHtml);
         return ResponseUtil.success(result);
@@ -64,6 +65,7 @@ public class ExcelController {
         int result = iExcelService.insertOrUpdateReportFill(data, report);
         if (reportStatus != null) {
             report.setStatus(reportStatus);
+            report.setReportTime(new Date());
         }
         iReportService.updateNotNull(report);
         return result > 0 ? ResponseUtil.success() : ResponseUtil.error();

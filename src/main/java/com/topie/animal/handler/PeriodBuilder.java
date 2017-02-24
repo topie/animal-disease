@@ -75,11 +75,13 @@ public class PeriodBuilder {
         int year = DateUtil.getYear(beginTime);
         int month = DateUtil.getMonth(beginTime) + 1;
         String key = year + "#" + (month < 9 ? "0" : "1");
+        if (weekMap.get(key) == null) return "-";
         String[] arr = weekMap.get(key).split(";");
         String[] periods = StringUtils.split(arr[0], ",");
         List<String> periodList = Lists.newArrayList(periods);
         String[] times = StringUtils.split(arr[1], ",");
         List<String> timeList = Lists.newArrayList(times);
+        if (periodList.size() != timeList.size()) return "-";
         String time = DateUtil.DateToString(beginTime, DateStyle.YYYY_MM_DD);
         String period = periodList.get(timeList.indexOf(time));
         return DateUtil.getYear(beginTime) + " " + period;

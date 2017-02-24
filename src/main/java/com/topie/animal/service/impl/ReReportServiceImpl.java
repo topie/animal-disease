@@ -5,10 +5,12 @@ import com.github.pagehelper.PageInfo;
 import com.topie.animal.dto.ReReportDto;
 import com.topie.animal.handler.PeriodBuilder;
 import com.topie.animal.service.IReReportService;
+import com.topie.animal.service.IReportService;
 import com.topie.common.service.impl.BaseService;
 import com.topie.database.core.animal.dao.ReReportMapper;
 import com.topie.database.core.animal.dao.WeekConfigMapper;
 import com.topie.database.core.animal.model.ReReport;
+import com.topie.database.core.animal.model.Report;
 import com.topie.database.core.animal.model.WeekConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,9 @@ public class ReReportServiceImpl extends BaseService<ReReport> implements IReRep
     @Autowired
     private WeekConfigMapper weekConfigMapper;
 
+    @Autowired
+    private IReportService iReportService;
+
     @Override
     public PageInfo<ReReportDto> selectByPage(ReReportDto reReport, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -41,6 +46,11 @@ public class ReReportServiceImpl extends BaseService<ReReport> implements IReRep
         for (ReReportDto reReportDto : list) {
             reReportDto.setReportPeriod(
                     PeriodBuilder.build(reReportDto.getReportType(), reReportDto.getBeginTime(), weekConfigMap));
+            Report report = iReportService
+                    .selectOneByOrgIdAndTemplateIdAndBeginTime(reReportDto.getOrgId(), reReportDto.getTemplateId(),
+                            reReportDto.getBeginTime());
+            reReportDto.setReportStatus(report.getStatus());
+            reReportDto.setReportId(report.getReportId());
         }
         return new PageInfo<>(list);
     }

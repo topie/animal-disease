@@ -28,8 +28,28 @@ public class ReReportDto {
 
     private Boolean reIsOpen;
 
+    private Integer reportStatus;
+
+    private String reportId;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date beginTime;
+
+    public String getReportId() {
+        return reportId;
+    }
+
+    public void setReportId(String reportId) {
+        this.reportId = reportId;
+    }
+
+    public Integer getReportStatus() {
+        return reportStatus;
+    }
+
+    public void setReportStatus(Integer reportStatus) {
+        this.reportStatus = reportStatus;
+    }
 
     public String getId() {
         return id;

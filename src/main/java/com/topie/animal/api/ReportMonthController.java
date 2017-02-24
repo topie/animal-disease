@@ -2,8 +2,10 @@ package com.topie.animal.api;
 
 import com.github.pagehelper.PageInfo;
 import com.topie.animal.constant.ReportTypeE;
+import com.topie.animal.dto.ReReportDto;
 import com.topie.animal.dto.ReportDto;
 import com.topie.animal.handler.PeriodBuilder;
+import com.topie.animal.service.IReReportService;
 import com.topie.animal.service.IReportService;
 import com.topie.animal.service.ITemplateService;
 import com.topie.animal.service.IUserInfoService;
@@ -43,6 +45,9 @@ public class ReportMonthController {
 
     @Autowired
     private IUserInfoService iUserInfoService;
+
+    @Autowired
+    private IReReportService iReReportService;
 
     @RequestMapping(value = "/history", method = RequestMethod.GET)
     @ResponseBody
@@ -128,6 +133,28 @@ public class ReportMonthController {
         if (StringUtils.isNotEmpty(templateId)) argMap.put("templateId", templateId);
         argMap.put("beginTime", begin);
         PageInfo<ReportDto> pageInfo = iReportService.selectByPageByArg(argMap, pageNum, pageSize);
+        return ResponseUtil.success(PageConvertUtil.grid(pageInfo));
+    }
+
+    @RequestMapping(value = "/reFill", method = RequestMethod.GET)
+    @ResponseBody
+    public Result reFill(@RequestParam(value = "templateId", required = false) String templateId,
+            @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
+        ReReportDto reReportDto = new ReReportDto();
+        String currentLoginName = SecurityUtil.getCurrentUserName();
+        if (StringUtils.isEmpty(currentLoginName)) {
+            return ResponseUtil.error("未登录");
+        }
+        OrgInfo currentOrg = iUserInfoService.selectOrgInfoByLoginName(currentLoginName);
+        if (StringUtils.isEmpty(currentOrg.getOrgId())) {
+            return ResponseUtil.error("当前用户没有组织机构");
+        }
+        reReportDto.setOrgId(currentOrg.getOrgId());
+        reReportDto.setReIsOpen(true);
+        reReportDto.setReportType(ReportTypeE.MONTH.getCode());
+        if (StringUtils.isNotEmpty(templateId)) reReportDto.setTemplateId(templateId);
+        PageInfo<ReReportDto> pageInfo = iReReportService.selectByPage(reReportDto, pageNum, pageSize);
         return ResponseUtil.success(PageConvertUtil.grid(pageInfo));
     }
 }

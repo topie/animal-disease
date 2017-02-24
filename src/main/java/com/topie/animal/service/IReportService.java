@@ -20,4 +20,8 @@ public interface IReportService extends IService<Report> {
 
     int insertReport(Integer reportType, Date beginTime);
 
+    Report selectOneByOrgIdAndTemplateIdAndBeginTime(String orgId, String templateId, Date beginTime);
+
+    Report selectOneByOrgIdAndTemplateIdAndBeginTime(String orgId, String templateId, String beginTime);
+
 }

@@ -10,6 +10,7 @@ import com.topie.animal.service.ITemplateService;
 import com.topie.animal.service.IUserInfoService;
 import com.topie.common.service.impl.BaseService;
 import com.topie.common.utils.UUIDUtil;
+import com.topie.common.utils.date.DateStyle;
 import com.topie.common.utils.date.DateUtil;
 import com.topie.database.core.animal.dao.ReportMapper;
 import com.topie.database.core.animal.model.OrgInfo;
@@ -82,5 +83,22 @@ public class ReportServiceImpl extends BaseService<Report> implements IReportSer
             }
         }
         return 1;
+    }
+
+    @Override
+    public Report selectOneByOrgIdAndTemplateIdAndBeginTime(String orgId, String templateId, Date beginTime) {
+        UserInfo userInfo = iUserInfoService.selectByOrgId(orgId);
+        if (userInfo == null) return null;
+        Report report = new Report();
+        report.setReportUserId(userInfo.getUserId());
+        report.setTemplateId(templateId);
+        report.setBeginTime(beginTime);
+        return reportMapper.selectOne(report);
+    }
+
+    @Override
+    public Report selectOneByOrgIdAndTemplateIdAndBeginTime(String orgId, String templateId, String beginTime) {
+        Date bTime = DateUtil.StringToDate(beginTime, DateStyle.YYYY_MM_DD_HH_MM_SS);
+        return selectOneByOrgIdAndTemplateIdAndBeginTime(orgId, templateId, bTime);
     }
 }
