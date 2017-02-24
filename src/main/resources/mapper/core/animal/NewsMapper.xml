@@ -12,4 +12,7 @@
     <result column="new_deleteflag" property="newDeleteflag" jdbcType="INTEGER" />
     <result column="new_body" property="newBody" jdbcType="LONGVARCHAR" />
   </resultMap>
+    <update id="updateToIncreaseCount">
+      update a_news set new_count=new_count+1 where new_id=#{newId}
+    </update>
 </mapper>

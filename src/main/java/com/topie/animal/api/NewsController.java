@@ -59,4 +59,21 @@ public class NewsController {
         return ResponseUtil.success();
     }
 
+    @RequestMapping(value = "/indexList", method = RequestMethod.GET)
+    @ResponseBody
+    public Result indexList(News news,
+            @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
+        PageInfo<News> pageInfo = iNewsService.selectByPage(news, pageNum, pageSize);
+        return ResponseUtil.success(PageConvertUtil.grid(pageInfo));
+    }
+
+    @RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Result view(@PathVariable(value = "id") String id) {
+        iNewsService.updateToIncreaseCount(id);
+        News news = iNewsService.selectByKey(id);
+        return ResponseUtil.success(news);
+    }
+
 }

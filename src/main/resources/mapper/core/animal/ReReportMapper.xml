@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.topie.database.core.animal.dao.ReReportMapper" >
-  <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.ReReport" >
-    <!--
-      WARNING - @mbggenerated
-    -->
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="org_id" property="orgId" jdbcType="VARCHAR" />
-    <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
-    <result column="template_id" property="templateId" jdbcType="VARCHAR" />
-    <result column="report_type" property="reportType" jdbcType="SMALLINT" />
-    <result column="re_is_open" property="reIsOpen" jdbcType="TINYINT" />
-  </resultMap>
+<mapper namespace="com.topie.database.core.animal.dao.ReReportMapper">
+    <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.ReReport">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="org_id" property="orgId" jdbcType="VARCHAR"/>
+        <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP"/>
+        <result column="template_id" property="templateId" jdbcType="VARCHAR"/>
+        <result column="report_type" property="reportType" jdbcType="SMALLINT"/>
+        <result column="re_is_open" property="reIsOpen" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <resultMap id="ReReportDto" type="com.topie.animal.dto.ReReportDto">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="org_id" property="orgId" jdbcType="VARCHAR"/>
+        <result column="org_name" property="orgName" jdbcType="VARCHAR"/>
+        <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP"/>
+        <result column="template_id" property="templateId" jdbcType="VARCHAR"/>
+        <result column="template_name" property="templateName" jdbcType="VARCHAR"/>
+        <result column="report_type" property="reportType" jdbcType="SMALLINT"/>
+        <result column="re_is_open" property="reIsOpen" jdbcType="TINYINT"/>
+        <result column="report_cycle" property="reportCycle" jdbcType="SMALLINT"/>
+    </resultMap>
+    <select id="selectByReReportDto" resultMap="ReReportDto">
+        select
+        r.id,r.org_id,r.template_id,r.begin_time,r.re_is_open,
+        t.report_type,o.org_name,t.template_name,t.report_cycle
+        from animal_disease.a_re_report r
+        left join animal_disease.a_org_info o
+        on r.org_id=o.org_id
+        left join animal_disease.a_template t
+        on r.template_id=t.template_id
+        <where>
+            <if test="reIsOpen!=null">
+                and r.re_is_open = #{reIsOpen}
+            </if>
+            <if test="orgId!=null">
+                and r.org_id = #{orgId}
+            </if>
+        </where>
+        order by r.begin_time desc
+    </select>
 </mapper>

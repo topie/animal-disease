@@ -35,4 +35,7 @@
     <select id="selectByOrgId" resultMap="BaseResultMap">
         select * from animal_disease.a_user_info where org_id=#{orgId} limit 1
     </select>
+    <select id="selectByPlatformId" resultMap="BaseResultMap">
+        select * from animal_disease.a_user_info where platform_id=#{platformId}
+    </select>
 </mapper>

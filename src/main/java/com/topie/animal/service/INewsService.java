@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface INewsService extends IService<News> {
 
-    PageInfo<News> selectByPage(News userInfo, int pageNum, int pageSize);
+    PageInfo<News> selectByPage(News reReport, int pageNum, int pageSize);
 
+    int updateToIncreaseCount(String id);
 }

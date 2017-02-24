@@ -27,9 +27,15 @@ public class NewsServiceImpl extends BaseService<News> implements INewsService {
         Example example = new Example(News.class);
         Example.Criteria criteria = example.createCriteria();
         if (StringUtils.isNotEmpty(news.getNewTitle())) criteria.andLike("newTitle", '%' + news.getNewTitle() + '%');
+        example.setOrderByClause("new_date desc");
         PageHelper.startPage(pageNum, pageSize);
         List<News> list = newsMapper.selectByExample(example);
         return new PageInfo<>(list);
+    }
+
+    @Override
+    public int updateToIncreaseCount(String id) {
+        return newsMapper.updateToIncreaseCount(id);
     }
 
 }

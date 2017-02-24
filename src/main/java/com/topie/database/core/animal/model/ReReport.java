@@ -38,13 +38,13 @@ public class ReReport {
      * 填报类型
      */
     @Column(name = "report_type")
-    private Short reportType;
+    private Integer reportType;
 
     /**
      * 是否开放 0：关闭 1：开放
      */
     @Column(name = "re_is_open")
-    private Byte reIsOpen;
+    private Integer reIsOpen;
 
     /**
      * 获取补填报ID
@@ -124,7 +124,7 @@ public class ReReport {
      *
      * @return report_type - 填报类型
      */
-    public Short getReportType() {
+    public Integer getReportType() {
         return reportType;
     }
 
@@ -133,7 +133,7 @@ public class ReReport {
      *
      * @param reportType 填报类型
      */
-    public void setReportType(Short reportType) {
+    public void setReportType(Integer reportType) {
         this.reportType = reportType;
     }
 
@@ -142,7 +142,7 @@ public class ReReport {
      *
      * @return re_is_open - 是否开放 0：关闭 1：开放
      */
-    public Byte getReIsOpen() {
+    public Integer getReIsOpen() {
         return reIsOpen;
     }
 
@@ -151,7 +151,7 @@ public class ReReport {
      *
      * @param reIsOpen 是否开放 0：关闭 1：开放
      */
-    public void setReIsOpen(Byte reIsOpen) {
+    public void setReIsOpen(Integer reIsOpen) {
         this.reIsOpen = reIsOpen;
     }
 }

@@ -21,4 +21,6 @@ public interface IUserInfoService extends IService<UserInfo> {
     int updateByConfig(UserInfoConfig userInfoConfig);
 
     UserInfo selectByOrgId(String regionCode);
+
+    UserInfo selectByPlatformId(Integer platformId);
 }

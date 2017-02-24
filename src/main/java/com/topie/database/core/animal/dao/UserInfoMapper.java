@@ -12,4 +12,6 @@ public interface UserInfoMapper extends Mapper<UserInfo> {
     OrgInfo selectOrgInfoByLoginName(@Param("loginName") String currentLoginName);
 
     UserInfo selectByOrgId(@Param("orgId") String orgId);
+
+    UserInfo selectByPlatformId(@Param("platformId")Integer platformId);
 }

@@ -10,6 +10,8 @@ import com.topie.common.utils.UUIDUtil;
 import com.topie.database.core.animal.model.UserInfo;
 import com.topie.database.core.system.model.User;
 import com.topie.security.service.UserService;
+import com.topie.security.utils.SecurityUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -125,6 +127,29 @@ public class UserInfoController {
     @ResponseBody
     public Result update(UserInfoConfig userInfoConfig) {
         iUserInfoService.updateByConfig(userInfoConfig);
+        return ResponseUtil.success();
+    }
+
+    @RequestMapping(value = "/loadCurrent", method = RequestMethod.GET)
+    @ResponseBody
+    public Result load() {
+        Integer platformId = SecurityUtil.getCurrentUserId();
+        if (platformId == null) {
+            return ResponseUtil.error("未登录");
+        }
+        UserInfo userInfo = iUserInfoService.selectByPlatformId(platformId);
+        if (userInfo == null) {
+            return ResponseUtil.error("未绑定防控用户");
+        }
+        return ResponseUtil.success(userInfo);
+    }
+
+    @RequestMapping(value = "/updateCurrent", method = RequestMethod.POST)
+    @ResponseBody
+    public Result updateCurrent(UserInfo userInfo) {
+        iUserInfoService.updateNotNull(userInfo);
+        if (StringUtils.isNotEmpty(userInfo.getPassword()))
+            userService.updatePassword(userInfo.getPlatformId(), userInfo.getPassword());
         return ResponseUtil.success();
     }
 }
