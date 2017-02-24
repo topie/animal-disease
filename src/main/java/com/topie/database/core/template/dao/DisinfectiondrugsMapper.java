@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface DisinfectiondrugsMapper extends Mapper<Disinfectiondrugs> {
 
-    List<Disinfectiondrugs> selectByReportIds(@Param("reportIds") List<String> reportIds);
+    List<Disinfectiondrugs> selectByReportIds(@Param("ids") List<String> reportIds);
 }
