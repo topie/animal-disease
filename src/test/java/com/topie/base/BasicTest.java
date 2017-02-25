@@ -2,8 +2,8 @@ package com.topie.base;
 
 import com.topie.animal.constant.ReportTypeE;
 import com.topie.animal.service.IReportService;
+import com.topie.animal.util.BeginTimeUtil;
 import com.topie.common.tools.cache.RedisCache;
-import com.topie.common.tools.freemarker.FreeMarkerUtil;
 import com.topie.common.utils.date.DateUtil;
 import org.junit.Assert;
 import org.junit.Test;
@@ -48,5 +48,11 @@ public class BasicTest extends Assert {
     public void generateMonth() throws Exception {
         Date beginTime = DateUtil.getCurrentMonthFirstDay();
         iReportService.insertReport(ReportTypeE.MONTH.getCode(), beginTime);
+    }
+
+    @Test
+    public void generateSeason() throws Exception {
+        Date beginTime = BeginTimeUtil.getCurrentSeasonBeginTime();
+        iReportService.insertReport(ReportTypeE.SEASON.getCode(), beginTime);
     }
 }

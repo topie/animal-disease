@@ -9,6 +9,7 @@ import com.topie.animal.service.IReReportService;
 import com.topie.animal.service.IReportService;
 import com.topie.animal.service.ITemplateService;
 import com.topie.animal.service.IUserInfoService;
+import com.topie.animal.util.BeginTimeUtil;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
@@ -113,12 +114,12 @@ public class ReportSeasonController {
     public Result fill(@RequestParam(value = "templateId", required = false) String templateId,
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
-        Date begin = DateUtil.getCurrentMonthFirstDay();
+        Date begin = BeginTimeUtil.getCurrentSeasonBeginTime();
         Integer month = DateUtil.getMonth(begin) + 1;
-        if (month == 1 || month == 4 || month == 7 || month == 10) {
+        if (!(month == 1 || month == 4 || month == 7 || month == 10)) {
             return ResponseUtil.success(PageConvertUtil.grid(null));
         }
-        Date end = DateUtil.addDay(begin, 30);
+        Date end = DateUtil.addMonth(begin, 2);
         Date now = new Date();
         if (now.after(end)) {
             return ResponseUtil.success(PageConvertUtil.grid(null));
