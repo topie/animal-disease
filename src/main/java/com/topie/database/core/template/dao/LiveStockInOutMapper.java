@@ -11,4 +11,6 @@ public interface LiveStockInOutMapper extends Mapper<LiveStockInOut> {
     LiveStockInOut selectOneByReportId(@Param("reportId") String reportId);
 
     List<LiveStockInOut> selectByReportIds(@Param("ids") List<String> reportIds);
+
+    LiveStockInOut selectSumByReportIds(@Param("ids") List<String> reportIds);
 }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.topie.database.core.template.dao.LiveStockInOutMapper">
-    <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.LiveStockInOut">
+<mapper namespace="com.topie.database.core.template.dao.WlivestockinoutMapper">
+    <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Wlivestockinout">
         <!--
           WARNING - @mbggenerated
         -->
-        <id column="LivestockId" property="livestockid" jdbcType="VARCHAR"/>
-        <result column="ReportId" property="reportid" jdbcType="VARCHAR"/>
+        <id column="LivestockId" property="livestockid" jdbcType="CHAR"/>
+        <result column="ReportId" property="reportid" jdbcType="CHAR"/>
         <result column="Liv_regionCode" property="livRegioncode" jdbcType="VARCHAR"/>
         <result column="Liv_regionName" property="livRegionname" jdbcType="VARCHAR"/>
         <result column="LivestockDate" property="livestockdate" jdbcType="TIMESTAMP"/>
@@ -33,16 +33,6 @@
         <result column="ImmuneFMDOther" property="immunefmdother" jdbcType="DECIMAL"/>
         <result column="PesteDesPetitsRuminants" property="pestedespetitsruminants" jdbcType="DECIMAL"/>
     </resultMap>
-    <select id="selectOneByReportId" resultMap="BaseResultMap">
-      select * from animal_disease.b_livestockinout where ReportId=#{reportId}
-    </select>
-    <select id="selectByReportIds" resultMap="BaseResultMap">
-        select * from animal_disease.b_livestockinout
-        where ReportId in
-        <foreach item="item" collection="ids" open="(" separator="," close=")">
-            #{item}
-        </foreach>
-    </select>
     <select id="selectSumByReportIds" resultMap="BaseResultMap">
         select
         sum(HerdsPig) HerdsPig,
@@ -67,7 +57,7 @@
         sum(ImmuneFMDSheep) ImmuneFMDSheep,
         sum(ImmuneFMDOther) ImmuneFMDOther,
         sum(PesteDesPetitsRuminants) PesteDesPetitsRuminants
-        from animal_disease.b_livestockinout
+        from animal_disease.b_wlivestockinout
         where ReportId in
         <foreach item="item" collection="ids" open="(" separator="," close=")">
             #{item}

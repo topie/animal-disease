@@ -62,7 +62,7 @@
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="6">消毒药品储备情况</td>
+        <td class="c1" colspan="6">${templateName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">单 位</td>

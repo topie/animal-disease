@@ -1,17 +1,21 @@
 package com.topie.animal.service.impl;
 
+import com.topie.animal.constant.ReportTypeE;
 import com.topie.animal.service.*;
-import com.topie.common.service.IService;
+import com.topie.animal.util.PeriodUtil;
 import com.topie.common.tools.freemarker.FreeMarkerUtil;
 import com.topie.common.utils.UUIDUtil;
 import com.topie.database.core.animal.dao.RegionMapper;
+import com.topie.database.core.animal.dao.WeekConfigMapper;
 import com.topie.database.core.animal.model.*;
 import com.topie.database.core.template.dao.DisinfectiondrugsMapper;
 import com.topie.database.core.template.dao.LiveStockInOutMapper;
 import com.topie.database.core.template.dao.WfootandmouthdiseaseMapper;
+import com.topie.database.core.template.dao.WlivestockinoutMapper;
 import com.topie.database.core.template.model.Disinfectiondrugs;
 import com.topie.database.core.template.model.LiveStockInOut;
 import com.topie.database.core.template.model.Wfootandmouthdisease;
+import com.topie.database.core.template.model.Wlivestockinout;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,13 +56,28 @@ public class ExcelServiceImpl implements IExcelService {
     @Autowired
     private WfootandmouthdiseaseMapper wfootandmouthdiseaseMapper;
 
+    @Autowired
+    private WlivestockinoutMapper wlivestockinoutMapper;
+
+    @Autowired
+    private WeekConfigMapper weekConfigMapper;
+
     @Override
     public String getReportHtml(HttpServletRequest request, Report report) {
         Map params = new HashMap();
         UserInfo userInfo = iUserInfoService.selectByKey(report.getReportUserId());
         params.put("user", userInfo);
         Template template = iTemplateService.selectByKey(report.getTemplateId());
-        params.put("templateName", template.getTemplateName());
+        Map<String, String> weekConfigMap = null;
+        if (report.getReportType() == ReportTypeE.WEEK.getCode().intValue()) {
+            weekConfigMap = new HashMap();
+            List<WeekConfig> weekConfigs = weekConfigMapper.selectAll();
+            for (WeekConfig weekConfig : weekConfigs) {
+                weekConfigMap.put(weekConfig.getYear() + "#" + weekConfig.getType(), weekConfig.getTime());
+            }
+        }
+        String period = PeriodUtil.build(report.getReportType(), report.getBeginTime(), weekConfigMap);
+        params.put("templateName", period + " " + template.getTemplateName());
         OrgInfo orgInfo = iOrgInfoService.selectByKey(userInfo.getOrgId());
         params.put("org", orgInfo);
         params.put("report", report);
@@ -91,6 +110,16 @@ public class ExcelServiceImpl implements IExcelService {
                 params.put("item", item);
                 break;
             }
+            case "b_wlivestockinout": {
+                Wlivestockinout arg = new Wlivestockinout();
+                arg.setReportid(report.getReportId());
+                Wlivestockinout item = wlivestockinoutMapper.selectOne(arg);
+                if (item == null) {
+                    item = new Wlivestockinout();
+                }
+                params.put("item", item);
+                break;
+            }
             default:
                 return null;
         }
@@ -111,6 +140,8 @@ public class ExcelServiceImpl implements IExcelService {
                 criteria.andIn("reportid", reportIds);
                 List<LiveStockInOut> list = liveStockInOutMapper.selectByExample(example);
                 params.put("items", list);
+                LiveStockInOut sum = liveStockInOutMapper.selectSumByReportIds(reportIds);
+                params.put("sum", sum);
                 break;
             }
             case "b_disinfectiondrugs": {
@@ -126,7 +157,17 @@ public class ExcelServiceImpl implements IExcelService {
                 Example.Criteria criteria = example.createCriteria();
                 criteria.andIn("fmdReportid", reportIds);
                 List<Wfootandmouthdisease> items = wfootandmouthdiseaseMapper.selectByExample(example);
-                params.put("item", items);
+                params.put("items", items);
+                break;
+            }
+            case "b_wlivestockinout": {
+                Example example = new Example(Wlivestockinout.class);
+                Example.Criteria criteria = example.createCriteria();
+                criteria.andIn("reportid", reportIds);
+                List<Wlivestockinout> items = wlivestockinoutMapper.selectByExample(example);
+                params.put("items", items);
+                Wlivestockinout sum = wlivestockinoutMapper.selectSumByReportIds(reportIds);
+                params.put("sum", sum);
                 break;
             }
             default:
@@ -215,6 +256,31 @@ public class ExcelServiceImpl implements IExcelService {
                     wfootandmouthdiseaseMapper.insertSelective(item);
                 } else {
                     wfootandmouthdiseaseMapper.updateByPrimaryKeySelective(item);
+                }
+                break;
+            }
+            case "b_wlivestockinout": {
+                Wlivestockinout fill = (Wlivestockinout) JSONObject.toBean(jsonObj, Wlivestockinout.class);
+                Wlivestockinout arg = new Wlivestockinout();
+                arg.setReportid(report.getReportId());
+                Wlivestockinout item = wlivestockinoutMapper.selectOne(arg);
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setLivestockid(UUIDUtil.getUUID());
+                } else {
+                    fill.setLivestockid(item.getLivestockid());
+                    item = fill;
+                    insert = false;
+                }
+                item.setReportid(report.getReportId());
+                item.setLivestockdate(report.getBeginTime());
+                item.setLivRegioncode(region.getRegionCode());
+                item.setLivRegionname(region.getRegionName());
+                if (insert) {
+                    wlivestockinoutMapper.insertSelective(item);
+                } else {
+                    wlivestockinoutMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }

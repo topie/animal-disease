@@ -243,7 +243,7 @@
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c2" colspan="22">2016年秋防牲畜口蹄疫疫苗使用和免疫情况周报表</td>
+        <td class="c2" colspan="22">${templateName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">单 位</td>

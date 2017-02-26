@@ -48,7 +48,7 @@
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="7">消毒药品储备统计季度报表</td>
+        <td class="c1" colspan="7">${templateName}-汇总</td>
     </tr>
     <tr class="r2">
         <td class="c2" rowspan="2">省份</td>
