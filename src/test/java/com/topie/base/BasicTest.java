@@ -64,6 +64,12 @@ public class BasicTest extends Assert {
     }
 
     @Test
+    public void generateHalfYear() throws Exception {
+        Date beginTime = BeginTimeUtil.getCurrentHalfYearBeginTime();
+        iReportService.insertReport(ReportTypeE.HALF_YEAR.getCode(), beginTime);
+    }
+
+    @Test
     public void generateWeek() throws Exception {
         List<WeekDto> list = iWeekConfigService.getDays(new Date());
         for (WeekDto weekDto : list) {

@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 /**
  * @author y
  */
-public class Test {
+public class XlsToHtmlTest {
 
     /**
      * @param args the command line arguments
@@ -26,11 +26,11 @@ public class Test {
         try {
             PoiUtil.excelToHtml("/Users/chenguojun/Downloads/s.xls", "/Users/chenguojun/Downloads/s.html");
         } catch (IOException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(XlsToHtmlTest.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(XlsToHtmlTest.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(XlsToHtmlTest.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
