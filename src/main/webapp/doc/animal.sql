@@ -214,7 +214,52 @@ CREATE TABLE `b_disinfectiondrugs` (
   `df_Alldrugs`    DECIMAL(18, 2)   DEFAULT NULL,
   `df_Allpharmacy` DECIMAL(18, 2)   DEFAULT NULL,
   `df_Allother`    DECIMAL(18, 2)   DEFAULT NULL,
-  PRIMARY KEY (`df_id`)
+  PRIMARY KEY (`df_id`),
+  KEY k_report(`df_reportId`)
+)
+  ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
+CREATE TABLE `b_wfootandmouthdisease` (
+  `fmd_id`                           VARCHAR(64) NOT NULL,
+  `fmd_reportId`                     VARCHAR(64)      DEFAULT NULL,
+  `fmd_date`                         TIMESTAMP   NULL DEFAULT NULL,
+  `fmd_regionCode`                   VARCHAR(64)      DEFAULT NULL,
+  `fmd_regionName`                   VARCHAR(64)      DEFAULT NULL,
+  `fmd_inactivatedVaccine`           DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_inactivatedImmuneAmountPig`   DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_inactivatedImmuneAmountNiu`   DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_inactivatedImmuneAmountSheep` DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_inactivatedImmuneAmountOther` DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_inactivatedShouldAmountPig`   DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_inactivatedShouldAmountNiu`   DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_inactivatedShouldAmountSheep` DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_inactivatedShouldAmountOther` DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_syntheticVaccine`             DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_syntheticImmuneAmountPig`     DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_syntheticImmuneAmountNiu`     DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_syntheticImmuneAmountSheep`   DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_syntheticImmuneAmountOther`   DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_O2Vaccine`                    DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_O2ImmuneAmountPig`            DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_O2ImmuneAmountNiu`            DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_O2ImmuneAmountSheep`          DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_O2ImmuneAmountOther`          DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_OAVaccine`                    DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_OAImmuneAmountNiu`            DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_OAImmuneAmountSheep`          DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_OAAShudeImmuneAmountNiu`      DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_OAAShudeImmuneAmountSheep`    DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_AVaccine`                     DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_AImmuneAmountNiu`             DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_AImmuneAmountSheep`           DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_O3Vaccine`                    DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_O3ImmuneAmountPig`            DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_O3ImmuneAmountNiu`            DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_O3ImmuneAmountSheep`          DECIMAL(18, 2)   DEFAULT NULL,
+  `fmd_O3ImmuneAmountOther`          DECIMAL(18, 2)   DEFAULT NULL,
+  PRIMARY KEY (`fmd_id`),
+  KEY k_report(`fmd_reportId`)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;

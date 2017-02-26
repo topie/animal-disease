@@ -4,11 +4,10 @@ import com.github.pagehelper.PageInfo;
 import com.topie.animal.constant.ReportTypeE;
 import com.topie.animal.dto.ReReportDto;
 import com.topie.animal.dto.ReportDto;
+import com.topie.animal.dto.WeekDto;
+import com.topie.animal.service.*;
 import com.topie.animal.util.PeriodUtil;
-import com.topie.animal.service.IReReportService;
-import com.topie.animal.service.IReportService;
-import com.topie.animal.service.ITemplateService;
-import com.topie.animal.service.IUserInfoService;
+import com.topie.common.utils.Option;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
@@ -25,17 +24,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by chenguojun on 2017/2/21.
  */
 @Controller
-@RequestMapping("/api/animal/report/month")
-public class ReportMonthController {
+@RequestMapping("/api/animal/report/week")
+public class ReportWeekController {
 
     @Autowired
     private IReportService iReportService;
@@ -49,10 +45,13 @@ public class ReportMonthController {
     @Autowired
     private IReReportService iReReportService;
 
+    @Autowired
+    private IWeekConfigService iWeekConfigService;
+
     @RequestMapping(value = "/history", method = RequestMethod.GET)
     @ResponseBody
     public Result history(@RequestParam(value = "templateId", required = false) String templateId,
-            @RequestParam(value = "period") String period,
+            @RequestParam(value = "period", required = false) String period,
             @RequestParam(value = "status", required = false) Integer status,
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
@@ -65,12 +64,13 @@ public class ReportMonthController {
             return ResponseUtil.error("当前用户没有组织机构");
         }
         Map argMap = new HashMap();
-        argMap.put("reportType", ReportTypeE.MONTH.getCode());
+        argMap.put("reportType", ReportTypeE.WEEK.getCode());
         if (!currentOrg.getRegionCode().equals("000000")) argMap.put("orgId", currentOrg.getOrgId());
         if (StringUtils.isNotEmpty(templateId)) argMap.put("templateId", templateId);
         if (StringUtils.isNotEmpty(period)) {
-            String d = period.replace(",", "-") + "-01";
-            argMap.put("beginTime", DateUtil.StringToString(d, DateStyle.YYYY_MM_DD));
+            argMap.put("beginTime", DateUtil.StringToString(period, DateStyle.YYYY_MM_DD));
+        } else {
+            return ResponseUtil.success(PageConvertUtil.grid(null));
         }
         if (status != null) argMap.put("status", status);
         PageInfo<ReportDto> pageInfo = iReportService.selectByPageByArg(argMap, pageNum, pageSize);
@@ -90,7 +90,7 @@ public class ReportMonthController {
             return ResponseUtil.error("当前用户没有组织机构");
         }
         Map argMap = new HashMap();
-        argMap.put("reportType", ReportTypeE.MONTH.getCode());
+        argMap.put("reportType", ReportTypeE.WEEK.getCode());
         if (!currentOrg.getRegionCode().equals("000000")) {
             return ResponseUtil.error("没有查看汇总权限");
         }
@@ -98,9 +98,8 @@ public class ReportMonthController {
         ReportDto reportDto = new ReportDto();
         reportDto.setTemplateId(templateId);
         reportDto.setTemplateName(template.getTemplateName());
-        String d = period.replace(",", "-") + "-01";
-        reportDto.setBeginTime(DateUtil.StringToDate(d, DateStyle.YYYY_MM_DD));
-        reportDto.setReportPeriod(PeriodUtil.buildMonth(reportDto.getBeginTime()));
+        reportDto.setBeginTime(DateUtil.StringToDate(period, DateStyle.YYYY_MM_DD));
+        reportDto.setReportPeriod(PeriodUtil.build(ReportTypeE.WEEK.getCode(), reportDto.getBeginTime(), null));
         reportDto.setOrgName("汇总");
         Map map = new HashMap();
         map.put("total", 1);
@@ -113,12 +112,15 @@ public class ReportMonthController {
     public Result fill(@RequestParam(value = "templateId", required = false) String templateId,
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
-        Date begin = DateUtil.getCurrentMonthFirstDay();
-        Date end = DateUtil.addDay(begin, 30);
-        Date now = new Date();
-        if (now.after(end)) {
-            return ResponseUtil.success(PageConvertUtil.grid(null));
+        Date begin = DateUtil.StringToDate("2017-03-02", DateStyle.YYYY_MM_DD);
+        List<WeekDto> days = iWeekConfigService.getDays(begin);
+        Boolean flag = false;
+        for (WeekDto weekDto : days) {
+            if (weekDto.getTime().equals(DateUtil.DateToString(begin, DateStyle.YYYY_MM_DD))) {
+                flag = true;
+            }
         }
+        if (!flag) return ResponseUtil.success(PageConvertUtil.grid(null));
         String currentLoginName = SecurityUtil.getCurrentUserName();
         if (StringUtils.isEmpty(currentLoginName)) {
             return ResponseUtil.error("未登录");
@@ -128,7 +130,7 @@ public class ReportMonthController {
             return ResponseUtil.error("当前用户没有组织机构");
         }
         Map argMap = new HashMap();
-        argMap.put("reportType", ReportTypeE.MONTH.getCode());
+        argMap.put("reportType", ReportTypeE.WEEK.getCode());
         argMap.put("orgId", currentOrg.getOrgId());
         if (StringUtils.isNotEmpty(templateId)) argMap.put("templateId", templateId);
         argMap.put("beginTime", begin);
@@ -152,9 +154,23 @@ public class ReportMonthController {
         }
         reReportDto.setOrgId(currentOrg.getOrgId());
         reReportDto.setReIsOpen(true);
-        reReportDto.setReportType(ReportTypeE.MONTH.getCode());
+        reReportDto.setReportType(ReportTypeE.WEEK.getCode());
         if (StringUtils.isNotEmpty(templateId)) reReportDto.setTemplateId(templateId);
         PageInfo<ReReportDto> pageInfo = iReReportService.selectByPage(reReportDto, pageNum, pageSize);
         return ResponseUtil.success(PageConvertUtil.grid(pageInfo));
+    }
+
+    @RequestMapping(value = "/options", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public List<Option> options(@RequestParam("year") int year, @RequestParam("type") int type) {
+        List<WeekDto> days = iWeekConfigService.getDays(year, type);
+        List<Option> optionList = new ArrayList<>();
+        for (WeekDto day : days) {
+            Option option = new Option();
+            option.setText(day.getPeriod());
+            option.setValue(day.getTime());
+            optionList.add(option);
+        }
+        return optionList;
     }
 }

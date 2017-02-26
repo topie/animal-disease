@@ -1,17 +1,21 @@
 package com.topie.animal.service.impl;
 
 import com.topie.animal.service.*;
+import com.topie.common.service.IService;
 import com.topie.common.tools.freemarker.FreeMarkerUtil;
 import com.topie.common.utils.UUIDUtil;
 import com.topie.database.core.animal.dao.RegionMapper;
 import com.topie.database.core.animal.model.*;
 import com.topie.database.core.template.dao.DisinfectiondrugsMapper;
 import com.topie.database.core.template.dao.LiveStockInOutMapper;
+import com.topie.database.core.template.dao.WfootandmouthdiseaseMapper;
 import com.topie.database.core.template.model.Disinfectiondrugs;
 import com.topie.database.core.template.model.LiveStockInOut;
+import com.topie.database.core.template.model.Wfootandmouthdisease;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -45,6 +49,9 @@ public class ExcelServiceImpl implements IExcelService {
     @Autowired
     private DisinfectiondrugsMapper disinfectiondrugsMapper;
 
+    @Autowired
+    private WfootandmouthdiseaseMapper wfootandmouthdiseaseMapper;
+
     @Override
     public String getReportHtml(HttpServletRequest request, Report report) {
         Map params = new HashMap();
@@ -67,11 +74,21 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_disinfectiondrugs": {
                 Disinfectiondrugs arg = new Disinfectiondrugs();
                 arg.setDfReportid(report.getReportId());
-                Disinfectiondrugs disinfectiondrugs = disinfectiondrugsMapper.selectOne(arg);
-                if (disinfectiondrugs == null) {
-                    disinfectiondrugs = new Disinfectiondrugs();
+                Disinfectiondrugs item = disinfectiondrugsMapper.selectOne(arg);
+                if (item == null) {
+                    item = new Disinfectiondrugs();
                 }
-                params.put("item", disinfectiondrugs);
+                params.put("item", item);
+                break;
+            }
+            case "b_wfootandmouthdisease": {
+                Wfootandmouthdisease arg = new Wfootandmouthdisease();
+                arg.setFmdReportid(report.getReportId());
+                Wfootandmouthdisease item = wfootandmouthdiseaseMapper.selectOne(arg);
+                if (item == null) {
+                    item = new Wfootandmouthdisease();
+                }
+                params.put("item", item);
                 break;
             }
             default:
@@ -89,13 +106,27 @@ public class ExcelServiceImpl implements IExcelService {
         Map params = new HashMap();
         switch (template.getTableName().toLowerCase()) {
             case "b_livestockinout": {
-                List<LiveStockInOut> list = liveStockInOutMapper.selectByReportIds(reportIds);
+                Example example = new Example(LiveStockInOut.class);
+                Example.Criteria criteria = example.createCriteria();
+                criteria.andIn("reportid", reportIds);
+                List<LiveStockInOut> list = liveStockInOutMapper.selectByExample(example);
                 params.put("items", list);
                 break;
             }
             case "b_disinfectiondrugs": {
-                List<Disinfectiondrugs> list = disinfectiondrugsMapper.selectByReportIds(reportIds);
-                params.put("items", list);
+                Example example = new Example(Disinfectiondrugs.class);
+                Example.Criteria criteria = example.createCriteria();
+                criteria.andIn("dfReportid", reportIds);
+                List<Disinfectiondrugs> items = disinfectiondrugsMapper.selectByExample(example);
+                params.put("items", items);
+                break;
+            }
+            case "b_wfootandmouthdisease": {
+                Example example = new Example(Wfootandmouthdisease.class);
+                Example.Criteria criteria = example.createCriteria();
+                criteria.andIn("fmdReportid", reportIds);
+                List<Wfootandmouthdisease> items = wfootandmouthdiseaseMapper.selectByExample(example);
+                params.put("item", items);
                 break;
             }
             default:
@@ -158,6 +189,32 @@ public class ExcelServiceImpl implements IExcelService {
                     disinfectiondrugsMapper.insertSelective(disinfectiondrugs);
                 } else {
                     disinfectiondrugsMapper.updateByPrimaryKeySelective(disinfectiondrugs);
+                }
+                break;
+            }
+            case "b_wfootandmouthdisease": {
+                Wfootandmouthdisease fill = (Wfootandmouthdisease) JSONObject
+                        .toBean(jsonObj, Wfootandmouthdisease.class);
+                Wfootandmouthdisease arg = new Wfootandmouthdisease();
+                arg.setFmdReportid(report.getReportId());
+                Wfootandmouthdisease item = wfootandmouthdiseaseMapper.selectOne(arg);
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setFmdId(UUIDUtil.getUUID());
+                } else {
+                    fill.setFmdId(item.getFmdId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setFmdReportid(report.getReportId());
+                item.setFmdDate(report.getBeginTime());
+                item.setFmdRegioncode(region.getRegionCode());
+                item.setFmdRegionname(region.getRegionName());
+                if (insert) {
+                    wfootandmouthdiseaseMapper.insertSelective(item);
+                } else {
+                    wfootandmouthdiseaseMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }

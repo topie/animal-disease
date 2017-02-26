@@ -1,9 +1,14 @@
 package com.topie.animal.util;
 
+import com.google.common.collect.Lists;
+import com.topie.animal.dto.WeekDto;
 import com.topie.common.utils.date.DateStyle;
 import com.topie.common.utils.date.DateUtil;
+import org.apache.commons.lang.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by chenguojun on 2017/2/25.
@@ -26,5 +31,22 @@ public class BeginTimeUtil {
         String beginTimeStr = year + "-" + month + "-01";
         beginTime = DateUtil.StringToDate(beginTimeStr, DateStyle.YYYY_MM_DD);
         return beginTime;
+    }
+
+    public static List<WeekDto> getWeekDtoListByTime(String text) {
+        String[] arr = text.split(";");
+        String[] periods = StringUtils.split(arr[0], ",");
+        List<String> periodList = Lists.newArrayList(periods);
+        String[] times = StringUtils.split(arr[1], ",");
+        List<String> timeList = Lists.newArrayList(times);
+        if (periodList.size() != timeList.size()) return null;
+        List<WeekDto> list = new ArrayList<>();
+        for (int i = 0; i < periodList.size(); i++) {
+            WeekDto weekDto = new WeekDto();
+            weekDto.setPeriod(periodList.get(i));
+            weekDto.setTime(timeList.get(i));
+            list.add(weekDto);
+        }
+        return list;
     }
 }

@@ -3,7 +3,7 @@ package com.topie.animal.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.topie.animal.dto.ReportDto;
-import com.topie.animal.handler.PeriodBuilder;
+import com.topie.animal.util.PeriodUtil;
 import com.topie.animal.service.IOrgInfoService;
 import com.topie.animal.service.IReportService;
 import com.topie.animal.service.ITemplateService;
@@ -55,7 +55,7 @@ public class ReportServiceImpl extends BaseService<Report> implements IReportSer
         }
         for (ReportDto reportDto : list) {
             reportDto.setReportPeriod(
-                    PeriodBuilder.build(reportDto.getReportType(), reportDto.getBeginTime(), weekConfigMap));
+                    PeriodUtil.build(reportDto.getReportType(), reportDto.getBeginTime(), weekConfigMap));
         }
         return new PageInfo<>(list);
     }

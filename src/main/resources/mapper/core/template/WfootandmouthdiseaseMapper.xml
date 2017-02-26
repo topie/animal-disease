@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.WfootandmouthdiseaseMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Wfootandmouthdisease" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="fmd_id" property="fmdId" jdbcType="VARCHAR" />
+    <result column="fmd_reportId" property="fmdReportid" jdbcType="VARCHAR" />
+    <result column="fmd_date" property="fmdDate" jdbcType="TIMESTAMP" />
+    <result column="fmd_regionCode" property="fmdRegioncode" jdbcType="VARCHAR" />
+    <result column="fmd_regionName" property="fmdRegionname" jdbcType="VARCHAR" />
+    <result column="fmd_inactivatedVaccine" property="fmdInactivatedvaccine" jdbcType="DECIMAL" />
+    <result column="fmd_inactivatedImmuneAmountPig" property="fmdInactivatedimmuneamountpig" jdbcType="DECIMAL" />
+    <result column="fmd_inactivatedImmuneAmountNiu" property="fmdInactivatedimmuneamountniu" jdbcType="DECIMAL" />
+    <result column="fmd_inactivatedImmuneAmountSheep" property="fmdInactivatedimmuneamountsheep" jdbcType="DECIMAL" />
+    <result column="fmd_inactivatedImmuneAmountOther" property="fmdInactivatedimmuneamountother" jdbcType="DECIMAL" />
+    <result column="fmd_inactivatedShouldAmountPig" property="fmdInactivatedshouldamountpig" jdbcType="DECIMAL" />
+    <result column="fmd_inactivatedShouldAmountNiu" property="fmdInactivatedshouldamountniu" jdbcType="DECIMAL" />
+    <result column="fmd_inactivatedShouldAmountSheep" property="fmdInactivatedshouldamountsheep" jdbcType="DECIMAL" />
+    <result column="fmd_inactivatedShouldAmountOther" property="fmdInactivatedshouldamountother" jdbcType="DECIMAL" />
+    <result column="fmd_syntheticVaccine" property="fmdSyntheticvaccine" jdbcType="DECIMAL" />
+    <result column="fmd_syntheticImmuneAmountPig" property="fmdSyntheticimmuneamountpig" jdbcType="DECIMAL" />
+    <result column="fmd_syntheticImmuneAmountNiu" property="fmdSyntheticimmuneamountniu" jdbcType="DECIMAL" />
+    <result column="fmd_syntheticImmuneAmountSheep" property="fmdSyntheticimmuneamountsheep" jdbcType="DECIMAL" />
+    <result column="fmd_syntheticImmuneAmountOther" property="fmdSyntheticimmuneamountother" jdbcType="DECIMAL" />
+    <result column="fmd_O2Vaccine" property="fmdO2vaccine" jdbcType="DECIMAL" />
+    <result column="fmd_O2ImmuneAmountPig" property="fmdO2immuneamountpig" jdbcType="DECIMAL" />
+    <result column="fmd_O2ImmuneAmountNiu" property="fmdO2immuneamountniu" jdbcType="DECIMAL" />
+    <result column="fmd_O2ImmuneAmountSheep" property="fmdO2immuneamountsheep" jdbcType="DECIMAL" />
+    <result column="fmd_O2ImmuneAmountOther" property="fmdO2immuneamountother" jdbcType="DECIMAL" />
+    <result column="fmd_OAVaccine" property="fmdOavaccine" jdbcType="DECIMAL" />
+    <result column="fmd_OAImmuneAmountNiu" property="fmdOaimmuneamountniu" jdbcType="DECIMAL" />
+    <result column="fmd_OAImmuneAmountSheep" property="fmdOaimmuneamountsheep" jdbcType="DECIMAL" />
+    <result column="fmd_OAAShudeImmuneAmountNiu" property="fmdOaashudeimmuneamountniu" jdbcType="DECIMAL" />
+    <result column="fmd_OAAShudeImmuneAmountSheep" property="fmdOaashudeimmuneamountsheep" jdbcType="DECIMAL" />
+    <result column="fmd_AVaccine" property="fmdAvaccine" jdbcType="DECIMAL" />
+    <result column="fmd_AImmuneAmountNiu" property="fmdAimmuneamountniu" jdbcType="DECIMAL" />
+    <result column="fmd_AImmuneAmountSheep" property="fmdAimmuneamountsheep" jdbcType="DECIMAL" />
+    <result column="fmd_O3Vaccine" property="fmdO3vaccine" jdbcType="DECIMAL" />
+    <result column="fmd_O3ImmuneAmountPig" property="fmdO3immuneamountpig" jdbcType="DECIMAL" />
+    <result column="fmd_O3ImmuneAmountNiu" property="fmdO3immuneamountniu" jdbcType="DECIMAL" />
+    <result column="fmd_O3ImmuneAmountSheep" property="fmdO3immuneamountsheep" jdbcType="DECIMAL" />
+    <result column="fmd_O3ImmuneAmountOther" property="fmdO3immuneamountother" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

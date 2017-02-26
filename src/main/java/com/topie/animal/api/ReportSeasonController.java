@@ -4,7 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.topie.animal.constant.ReportTypeE;
 import com.topie.animal.dto.ReReportDto;
 import com.topie.animal.dto.ReportDto;
-import com.topie.animal.handler.PeriodBuilder;
+import com.topie.animal.util.PeriodUtil;
 import com.topie.animal.service.IReReportService;
 import com.topie.animal.service.IReportService;
 import com.topie.animal.service.ITemplateService;
@@ -101,7 +101,7 @@ public class ReportSeasonController {
         reportDto.setTemplateName(template.getTemplateName());
         String d = period.replace(",", "-") + "-01";
         reportDto.setBeginTime(DateUtil.StringToDate(d, DateStyle.YYYY_MM_DD));
-        reportDto.setReportPeriod(PeriodBuilder.build(ReportTypeE.SEASON.getCode(), reportDto.getBeginTime(), null));
+        reportDto.setReportPeriod(PeriodUtil.build(ReportTypeE.SEASON.getCode(), reportDto.getBeginTime(), null));
         reportDto.setOrgName("汇总");
         Map map = new HashMap();
         map.put("total", 1);

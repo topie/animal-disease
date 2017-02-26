@@ -1,4 +1,4 @@
-package com.topie.animal.handler;
+package com.topie.animal.util;
 
 import com.google.common.collect.Lists;
 import com.topie.common.utils.date.DateStyle;
@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by chenguojun on 2017/2/21.
  */
-public class PeriodBuilder {
+public class PeriodUtil {
 
     public static String buildMonth(Date beginTime) {
         return DateUtil.DateToString(beginTime, DateStyle.YYYY_MM_CN);

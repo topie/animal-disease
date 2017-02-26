@@ -24,7 +24,7 @@ public class Test {
      */
     public static void main(String[] args) {
         try {
-            PoiUtil.excelToHtml("/Users/chenguojun/Downloads/xs.xls", "/Users/chenguojun/Downloads/xs.html");
+            PoiUtil.excelToHtml("/Users/chenguojun/Downloads/w.xls", "/Users/chenguojun/Downloads/w.html");
         } catch (IOException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {

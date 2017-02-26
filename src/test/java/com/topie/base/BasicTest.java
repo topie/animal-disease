@@ -1,9 +1,12 @@
 package com.topie.base;
 
 import com.topie.animal.constant.ReportTypeE;
+import com.topie.animal.dto.WeekDto;
 import com.topie.animal.service.IReportService;
+import com.topie.animal.service.IWeekConfigService;
 import com.topie.animal.util.BeginTimeUtil;
 import com.topie.common.tools.cache.RedisCache;
+import com.topie.common.utils.date.DateStyle;
 import com.topie.common.utils.date.DateUtil;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -25,6 +29,9 @@ public class BasicTest extends Assert {
 
     @Autowired
     private IReportService iReportService;
+
+    @Autowired
+    private IWeekConfigService iWeekConfigService;
 
     @Test
     public void testRedis() {
@@ -54,5 +61,14 @@ public class BasicTest extends Assert {
     public void generateSeason() throws Exception {
         Date beginTime = BeginTimeUtil.getCurrentSeasonBeginTime();
         iReportService.insertReport(ReportTypeE.SEASON.getCode(), beginTime);
+    }
+
+    @Test
+    public void generateWeek() throws Exception {
+        List<WeekDto> list = iWeekConfigService.getDays(new Date());
+        for (WeekDto weekDto : list) {
+            Date beginTime = DateUtil.StringToDate(weekDto.getTime(), DateStyle.YYYY_MM_DD);
+            iReportService.insertReport(ReportTypeE.WEEK.getCode(), beginTime);
+        }
     }
 }

@@ -3,7 +3,7 @@ package com.topie.animal.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.topie.animal.dto.ReReportDto;
-import com.topie.animal.handler.PeriodBuilder;
+import com.topie.animal.util.PeriodUtil;
 import com.topie.animal.service.IReReportService;
 import com.topie.animal.service.IReportService;
 import com.topie.common.service.impl.BaseService;
@@ -45,7 +45,7 @@ public class ReReportServiceImpl extends BaseService<ReReport> implements IReRep
         }
         for (ReReportDto reReportDto : list) {
             reReportDto.setReportPeriod(
-                    PeriodBuilder.build(reReportDto.getReportType(), reReportDto.getBeginTime(), weekConfigMap));
+                    PeriodUtil.build(reReportDto.getReportType(), reReportDto.getBeginTime(), weekConfigMap));
             Report report = iReportService
                     .selectOneByOrgIdAndTemplateIdAndBeginTime(reReportDto.getOrgId(), reReportDto.getTemplateId(),
                             reReportDto.getBeginTime());
