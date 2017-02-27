@@ -50,7 +50,7 @@ public class CommonController {
                     "doc,docx,xls,xlsx,ppt,pptx,txt,zip,rar,gz,bz2,gif,jpg,jpeg,png,bmp,swf,flv,mp3,wav,wma,wmv,mid,avi,mpg,asf,rm,rmvb");
 
             Attachment attachment = iAttachmentService
-                    .uploadFileAttachement(request, file, dirName, maxSize, extMap, FILE);
+                    .uploadFileAttachment(request, file, dirName, maxSize, extMap, FILE);
             return ResponseUtil.success(attachment);
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class CommonController {
             extMap.put(dirName, "gif,jpg,jpeg,png,bmp");
 
             Attachment attachment = iAttachmentService
-                    .uploadFileAttachement(request, file, dirName, maxSize, extMap, IMAGE);
+                    .uploadFileAttachment(request, file, dirName, maxSize, extMap, IMAGE);
             return ResponseUtil.success(attachment);
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,9 +87,9 @@ public class CommonController {
     @RequestMapping(value = "/uploadFiles", method = RequestMethod.POST)
     @ResponseBody
     public Object uploadFiles(HttpServletRequest request,
-            @RequestParam(value = "files[]", required = false) MultipartFile[] file) throws Exception {
-        if (file.length > 0) {
-            for (MultipartFile multipartFile : file) {
+            @RequestParam(value = "files[]", required = false) MultipartFile[] files) throws Exception {
+        if (files.length > 0) {
+            for (MultipartFile file : files) {
                 //文件夹名
                 String dirName = "file";
                 // 最大文件大小
@@ -100,9 +100,8 @@ public class CommonController {
                 extMap.put(dirName,
                         "doc,docx,xls,xlsx,ppt,pptx,txt,zip,rar,gz,bz2,gif,jpg,jpeg,png,bmp,swf,flv,mp3,wav,wma,wmv,mid,avi,mpg,asf,rm,rmvb");
 
-                Attachment attachment = iAttachmentService
-                        .uploadFileAttachement(request, multipartFile, dirName, maxSize, extMap, FILE);
-                return attachment;
+                return iAttachmentService
+                        .uploadFileAttachment(request, file, dirName, maxSize, extMap, FILE);
             }
         }
         return false;

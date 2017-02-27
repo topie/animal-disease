@@ -13,6 +13,6 @@ import java.util.HashMap;
  */
 public interface IAttachmentService extends IService<Attachment> {
 
-    Attachment uploadFileAttachement(HttpServletRequest request, MultipartFile file, String dirName, long maxSize,
+    Attachment uploadFileAttachment(HttpServletRequest request, MultipartFile file, String dirName, long maxSize,
             HashMap<String, String> extLimitMap,Integer suffix) throws IOException;
 }

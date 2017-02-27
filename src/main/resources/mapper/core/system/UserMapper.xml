@@ -123,12 +123,13 @@
         </where>
     </select>
     <select id="findUserFunction" resultMap="FunctionVoMap">
-        select distinct f.id,f.parent_id,f.function_name,f.icon,f.`action`
+        select distinct f.id,f.parent_id,f.function_name,f.icon,f.`action`,f.function_desc
         from d_user u left join d_user_role ur
         on u.id = ur.user_id left join d_role_function rf
         on ur.role_id=rf.role_id left join d_function f
         on rf.function_id = f.id
         where u.login_name = #{loginName} and f.display=1
+        order by f.function_desc
     </select>
     <select id="countByLoginName" resultType="java.lang.Integer">
         select count(1) from d_user where login_name = #{loginName,jdbcType=VARCHAR}

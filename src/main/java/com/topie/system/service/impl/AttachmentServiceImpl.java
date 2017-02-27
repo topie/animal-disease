@@ -29,7 +29,7 @@ public class AttachmentServiceImpl extends BaseService<Attachment> implements IA
     String uploadFolder;
 
     @Override
-    public Attachment uploadFileAttachement(HttpServletRequest request, MultipartFile file, String dirName,
+    public Attachment uploadFileAttachment(HttpServletRequest request, MultipartFile file, String dirName,
             long maxSize, HashMap<String, String> extLimitMap, Integer suffix) throws IOException {
         //文件保存路径
         String savePath = request.getSession().getServletContext().getRealPath("/") + uploadFolder + "/" + SecurityUtil

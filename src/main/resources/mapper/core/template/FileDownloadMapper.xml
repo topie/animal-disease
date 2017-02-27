@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.FileDownloadMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.FileDownload" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="FileId" property="fileid" jdbcType="CHAR" />
+    <result column="FileType" property="filetype" jdbcType="VARCHAR" />
+    <result column="FileName" property="filename" jdbcType="VARCHAR" />
+    <result column="FileTime" property="filetime" jdbcType="TIMESTAMP" />
+    <result column="AgenciesId" property="agenciesid" jdbcType="CHAR" />
+    <result column="FilePath" property="filepath" jdbcType="LONGVARCHAR" />
+  </resultMap>
+</mapper>
