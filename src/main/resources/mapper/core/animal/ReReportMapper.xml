@@ -27,6 +27,9 @@
         <result column="re_is_open" property="reIsOpen" jdbcType="TINYINT"/>
         <result column="report_cycle" property="reportCycle" jdbcType="SMALLINT"/>
     </resultMap>
+    <update id="updateToClose">
+        update animal_disease.a_re_report set re_is_open=0 where id=#{id}
+    </update>
     <select id="selectByReReportDto" resultMap="ReReportDto">
         select
         r.id,r.org_id,r.template_id,r.begin_time,r.re_is_open,
@@ -40,10 +43,10 @@
             <if test="reIsOpen!=null">
                 and r.re_is_open = #{reIsOpen}
             </if>
-            <if test="orgId!=null">
+            <if test="orgId!=null and templateId!=''">
                 and r.org_id = #{orgId}
             </if>
-            <if test="templateId!=null">
+            <if test="templateId!=null and templateId!=''">
                 and r.template_id = #{templateId}
             </if>
             <if test="reportType!=null">

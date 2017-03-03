@@ -12,4 +12,5 @@ public interface IReReportService extends IService<ReReport> {
 
     PageInfo<ReReportDto> selectByPage(ReReportDto reReport, int pageNum, int pageSize);
 
+    int updateToClose(String id);
 }

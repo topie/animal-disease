@@ -63,4 +63,5 @@ public class OrgInfoController {
     public List<TreeNode> treeNodes(OrgInfo orgInfo) {
         return iOrgInfoService.selectTreeNodes(orgInfo);
     }
+
 }
