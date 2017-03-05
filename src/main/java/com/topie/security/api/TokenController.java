@@ -1,11 +1,12 @@
 package com.topie.security.api;
 
+import com.topie.common.tools.cache.RedisCache;
 import com.topie.common.utils.HttpResponseUtil;
 import com.topie.security.constant.SecurityConstant;
 import com.topie.security.security.OrangeAuthenticationRequest;
 import com.topie.security.security.OrangeHttpAuthenticationDetails;
-import com.topie.common.tools.cache.RedisCache;
 import com.topie.security.utils.TokenUtils;
+import com.topie.system.service.ILogService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,6 +45,9 @@ public class TokenController {
     @Autowired
     private RedisCache redisCache;
 
+    @Autowired
+    private ILogService iLogService;
+
     @RequestMapping(value = "/generate", method = RequestMethod.POST)
     public ResponseEntity<?> authenticationRequest(@RequestBody OrangeAuthenticationRequest authenticationRequest)
             throws AuthenticationException {
@@ -72,7 +76,7 @@ public class TokenController {
             redisCache.set(SecurityConstant.USER_CACHE_PREFIX + authenticationRequest.getUsername(), userDetails);
         }
         String token = this.tokenUtils.generateToken(userDetails);
-
+        iLogService.insertLog("登录系统。");
         return ResponseEntity.ok(HttpResponseUtil.success(token));
     }
 

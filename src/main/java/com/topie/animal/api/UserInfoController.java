@@ -11,6 +11,7 @@ import com.topie.database.core.animal.model.UserInfo;
 import com.topie.database.core.system.model.User;
 import com.topie.security.service.UserService;
 import com.topie.security.utils.SecurityUtil;
+import com.topie.system.service.ILogService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,9 @@ public class UserInfoController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ILogService iLogService;
 
     @RequestMapping(value = "/pageList", method = RequestMethod.GET)
     @ResponseBody
@@ -150,6 +154,7 @@ public class UserInfoController {
         iUserInfoService.updateNotNull(userInfo);
         if (StringUtils.isNotEmpty(userInfo.getPassword()))
             userService.updatePassword(userInfo.getPlatformId(), userInfo.getPassword());
+        iLogService.insertLog("更新资料。");
         return ResponseUtil.success();
     }
 }
