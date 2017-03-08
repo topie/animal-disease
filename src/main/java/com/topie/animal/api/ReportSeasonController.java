@@ -119,7 +119,7 @@ public class ReportSeasonController {
         if (!(month == 1 || month == 4 || month == 7 || month == 10)) {
             return ResponseUtil.success(PageConvertUtil.grid(null));
         }
-        Date end = DateUtil.addMonth(begin, 2);
+        Date end = DateUtil.addDay(begin, 10);
         Date now = new Date();
         if (now.after(end)) {
             return ResponseUtil.success(PageConvertUtil.grid(null));

@@ -112,7 +112,7 @@ public class ReportWeekController {
     public Result fill(@RequestParam(value = "templateId", required = false) String templateId,
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
-        Date begin = DateUtil.StringToDate("2017-03-02", DateStyle.YYYY_MM_DD);
+        Date begin = DateUtil.getToday();
         List<WeekDto> days = iWeekConfigService.getDays(begin);
         Boolean flag = false;
         for (WeekDto weekDto : days) {

@@ -114,7 +114,7 @@ public class ReportMonthController {
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
         Date begin = DateUtil.getCurrentMonthFirstDay();
-        Date end = DateUtil.addDay(begin, 30);
+        Date end = DateUtil.addDay(begin, 10);
         Date now = new Date();
         if (now.after(end)) {
             return ResponseUtil.success(PageConvertUtil.grid(null));
