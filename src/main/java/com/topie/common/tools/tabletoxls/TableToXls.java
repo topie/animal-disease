@@ -171,12 +171,14 @@ public class TableToXls {
 
     private void doProcess(String html, OutputStream output) {
         Element style = Jsoup.parseBodyFragment(html).select("style").first();
-        Matcher cssMatcher = Pattern.compile("[.](\\w+)\\s*[{]([^}]+)[}]").matcher(style.html());
         Map<String, String> styleMap = new HashMap<>();
-        while (cssMatcher.find()) {
-            String cls = cssMatcher.group(1);
-            String st = cssMatcher.group(2);
-            styleMap.put(cls, st);
+        if(style!=null){
+            Matcher cssMatcher = Pattern.compile("[.](\\w+)\\s*[{]([^}]+)[}]").matcher(style.html());
+            while (cssMatcher.find()) {
+                String cls = cssMatcher.group(1);
+                String st = cssMatcher.group(2);
+                styleMap.put(cls, st);
+            }
         }
         for (Element table : Jsoup.parseBodyFragment(html).select("table")) {
             Iterator<Map.Entry<String, String>> entries = styleMap.entrySet().iterator();
