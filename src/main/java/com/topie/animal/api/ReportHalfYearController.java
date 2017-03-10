@@ -4,11 +4,8 @@ import com.github.pagehelper.PageInfo;
 import com.topie.animal.constant.ReportTypeE;
 import com.topie.animal.dto.ReReportDto;
 import com.topie.animal.dto.ReportDto;
-import com.topie.animal.service.IReReportService;
-import com.topie.animal.service.IReportService;
-import com.topie.animal.service.ITemplateService;
-import com.topie.animal.service.IUserInfoService;
-import com.topie.animal.util.BeginTimeUtil;
+import com.topie.animal.dto.WeekDto;
+import com.topie.animal.service.*;
 import com.topie.animal.util.PeriodUtil;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
@@ -26,10 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by chenguojun on 2017/2/21.
@@ -49,6 +43,9 @@ public class ReportHalfYearController {
 
     @Autowired
     private IReReportService iReReportService;
+
+    @Autowired
+    private IWeekConfigService iWeekConfigService;
 
     @RequestMapping(value = "/history", method = RequestMethod.GET)
     @ResponseBody
@@ -114,14 +111,16 @@ public class ReportHalfYearController {
     public Result fill(@RequestParam(value = "templateId", required = false) String templateId,
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
-        Date begin = BeginTimeUtil.getCurrentSeasonBeginTime();
-        Integer month = DateUtil.getMonth(begin) + 1;
-        if (!(month == 3 || month == 9)) {
-            return ResponseUtil.success(PageConvertUtil.grid(null));
+        Date begin = DateUtil.getToday();
+        List<WeekDto> days = iWeekConfigService.getDays(begin);
+        if (days.size() > 0) {
+            begin = DateUtil.StringToDate(days.get(days.size() - 1).getTime(), DateStyle.YYYY_MM_DD);
+        } else {
+            return ResponseUtil.error("未检测到周填报规则，无法确定汇总开始时间");
         }
-        Date end = DateUtil.addMonth(begin, 1);
+        Date end = DateUtil.addMonth(begin, 7);
         Date now = new Date();
-        if (now.after(end)) {
+        if (now.before(begin) || now.after(end)) {
             return ResponseUtil.success(PageConvertUtil.grid(null));
         }
         String currentLoginName = SecurityUtil.getCurrentUserName();
