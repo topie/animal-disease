@@ -264,3 +264,22 @@ CREATE TABLE `b_wfootandmouthdisease` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
+DROP TABLE IF EXISTS `a_spec_fill`;
+CREATE TABLE `a_spec_fill` (
+  `id`            INT(11)     NOT NULL      AUTO_INCREMENT
+  COMMENT 'id',
+  `type`          INT(11)     NOT NULL      DEFAULT 0
+  COMMENT '类型',
+  `org_id`        VARCHAR(64) NOT NULL      DEFAULT ''
+  COMMENT '组织id',
+  `org_name`      VARCHAR(32) NOT NULL      DEFAULT ''
+  COMMENT '组织名称',
+  `table_content` LONGTEXT    NOT NULL
+  COMMENT '表格内容',
+  `u_time`        TIMESTAMP   NOT NULL      DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP()
+  COMMENT '修改时间',
+  PRIMARY KEY (id),
+  UNIQUE KEY (type, org_id)
+)
+  DEFAULT CHARSET = utf8
+  COMMENT '特殊填报';

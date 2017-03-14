@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.topie.database.core.animal.dao.SpecFillMapper">
+  <resultMap id="BaseResultMap" type="com.topie.database.core.animal.model.SpecFill">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="u_time" jdbcType="TIMESTAMP" property="uTime" />
+    <result column="table_content" jdbcType="LONGVARCHAR" property="tableContent" />
+  </resultMap>
+</mapper>
