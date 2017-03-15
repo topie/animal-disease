@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.ClassicalswinefevervaccineMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Classicalswinefevervaccine" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="cv_id" property="cvId" jdbcType="CHAR" />
+    <result column="cv_reportId" property="cvReportid" jdbcType="CHAR" />
+    <result column="cv_date" property="cvDate" jdbcType="TIMESTAMP" />
+    <result column="cv_regionCode" property="cvRegioncode" jdbcType="VARCHAR" />
+    <result column="cv_regionName" property="cvRegionname" jdbcType="VARCHAR" />
+    <result column="cv_livingUseCount" property="cvLivingusecount" jdbcType="DECIMAL" />
+    <result column="cv_cellUserCount" property="cvCellusercount" jdbcType="DECIMAL" />
+    <result column="cv_livingStoreCount" property="cvLivingstorecount" jdbcType="DECIMAL" />
+    <result column="cv_cellStoreCount" property="cvCellstorecount" jdbcType="DECIMAL" />
+    <result column="cv_livingYearCount" property="cvLivingyearcount" jdbcType="DECIMAL" />
+    <result column="cv_cellYearCount" property="cvCellyearcount" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

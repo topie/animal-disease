@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.SmallruminantsvaccineMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Smallruminantsvaccine" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="srv_id" property="srvId" jdbcType="CHAR" />
+    <result column="srv_reportId" property="srvReportid" jdbcType="CHAR" />
+    <result column="srv_regionCode" property="srvRegioncode" jdbcType="VARCHAR" />
+    <result column="srv_regionName" property="srvRegionname" jdbcType="VARCHAR" />
+    <result column="srv_date" property="srvDate" jdbcType="TIMESTAMP" />
+    <result column="srv_H5N2D7UseCount" property="srvH5n2d7usecount" jdbcType="DECIMAL" />
+    <result column="srv_H5N2D7StoreCount" property="srvH5n2d7storecount" jdbcType="DECIMAL" />
+    <result column="srv_H5N2D7YearCount" property="srvH5n2d7yearcount" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

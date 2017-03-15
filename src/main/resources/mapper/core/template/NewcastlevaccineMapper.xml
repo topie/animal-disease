@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.NewcastlevaccineMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Newcastlevaccine" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="nv_id" property="nvId" jdbcType="CHAR" />
+    <result column="nv_reportId" property="nvReportid" jdbcType="CHAR" />
+    <result column="nv_regionCode" property="nvRegioncode" jdbcType="VARCHAR" />
+    <result column="nv_regionName" property="nvRegionname" jdbcType="VARCHAR" />
+    <result column="nv_date" property="nvDate" jdbcType="TIMESTAMP" />
+    <result column="nv_inactivatedUseCount" property="nvInactivatedusecount" jdbcType="DECIMAL" />
+    <result column="nv_poisonUseCount" property="nvPoisonusecount" jdbcType="DECIMAL" />
+    <result column="nv_inactivatedStoreCount" property="nvInactivatedstorecount" jdbcType="DECIMAL" />
+    <result column="nv_poisonStoreCount" property="nvPoisonstorecount" jdbcType="DECIMAL" />
+    <result column="nv_inactivatedYearCount" property="nvInactivatedyearcount" jdbcType="DECIMAL" />
+    <result column="nv_poisonYearCount" property="nvPoisonyearcount" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

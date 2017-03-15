@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.PoultrydensityMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Poultrydensity" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <result column="pd_id" property="pdId" jdbcType="CHAR" />
+    <result column="pd_reportId" property="pdReportid" jdbcType="CHAR" />
+    <result column="pd_regionCode" property="pdRegioncode" jdbcType="VARCHAR" />
+    <result column="pd_regionName" property="pdRegionname" jdbcType="VARCHAR" />
+    <result column="pd_date" property="pdDate" jdbcType="TIMESTAMP" />
+    <result column="pd_chickenHerdsCount" property="pdChickenherdscount" jdbcType="DECIMAL" />
+    <result column="pd_chickenAShuldCount" property="pdChickenashuldcount" jdbcType="DECIMAL" />
+    <result column="pd_chickenAActualCount" property="pdChickenaactualcount" jdbcType="DECIMAL" />
+    <result column="pd_chickenNShuldCount" property="pdChickennshuldcount" jdbcType="DECIMAL" />
+    <result column="pd_chickenNActualCount" property="pdChickennactualcount" jdbcType="DECIMAL" />
+    <result column="pd_duckHerdsCount" property="pdDuckherdscount" jdbcType="DECIMAL" />
+    <result column="pd_duckShuldCount" property="pdDuckshuldcount" jdbcType="DECIMAL" />
+    <result column="pd_duckActualCount" property="pdDuckactualcount" jdbcType="DECIMAL" />
+    <result column="pd_gooseHerdsCount" property="pdGooseherdscount" jdbcType="DECIMAL" />
+    <result column="pd_gooseShuldCount" property="pdGooseshuldcount" jdbcType="DECIMAL" />
+    <result column="pd_gooseActualCount" property="pdGooseactualcount" jdbcType="DECIMAL" />
+    <result column="pd_otherHerdsCount" property="pdOtherherdscount" jdbcType="DECIMAL" />
+    <result column="pd_otherAShuldCount" property="pdOtherashuldcount" jdbcType="DECIMAL" />
+    <result column="pd_otherAActualCount" property="pdOtheraactualcount" jdbcType="DECIMAL" />
+    <result column="pd_otherNIAShuldCount" property="pdOtherniashuldcount" jdbcType="DECIMAL" />
+    <result column="pd_otherNIActualCount" property="pdOtherniactualcount" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

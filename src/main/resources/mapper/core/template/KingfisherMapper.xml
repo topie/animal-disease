@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.KingfisherMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Kingfisher" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <result column="kf_id" property="kfId" jdbcType="CHAR" />
+    <result column="kf_reportId" property="kfReportid" jdbcType="CHAR" />
+    <result column="kf_regionCode" property="kfRegioncode" jdbcType="VARCHAR" />
+    <result column="kf_regionName" property="kfRegionname" jdbcType="VARCHAR" />
+    <result column="kf_date" property="kfDate" jdbcType="TIMESTAMP" />
+    <result column="kf_FMKingfisher" property="kfFmkingfisher" jdbcType="DECIMAL" />
+    <result column="kf_AIKingfisher" property="kfAikingfisher" jdbcType="DECIMAL" />
+    <result column="kf_BKingfisher" property="kfBkingfisher" jdbcType="DECIMAL" />
+    <result column="kf_CSKingfisher" property="kfCskingfisher" jdbcType="DECIMAL" />
+    <result column="kf_otherKingfisher" property="kfOtherkingfisher" jdbcType="DECIMAL" />
+    <result column="kf_Culling" property="kfCulling" jdbcType="DECIMAL" />
+    <result column="kf_yearMonitoring" property="kfYearmonitoring" jdbcType="DECIMAL" />
+    <result column="kf_yearMaterials" property="kfYearmaterials" jdbcType="DECIMAL" />
+    <result column="kf_yearQuarantine" property="kfYearquarantine" jdbcType="DECIMAL" />
+    <result column="kf_yearOther" property="kfYearother" jdbcType="DECIMAL" />
+    <result column="kf_ProvinceVaccine" property="kfProvincevaccine" jdbcType="DECIMAL" />
+    <result column="kf_ProvinceMonitoring" property="kfProvincemonitoring" jdbcType="DECIMAL" />
+    <result column="kf_ProvincelQuarantine" property="kfProvincelquarantine" jdbcType="DECIMAL" />
+    <result column="kf_ProvinceOther" property="kfProvinceother" jdbcType="DECIMAL" />
+    <result column="kf_levelVaccine" property="kfLevelvaccine" jdbcType="DECIMAL" />
+    <result column="kf_levelMonitoring" property="kfLevelmonitoring" jdbcType="DECIMAL" />
+    <result column="kf_levelQuarantine" property="kfLevelquarantine" jdbcType="DECIMAL" />
+    <result column="kf_levelOther" property="kfLevelother" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.FootandmouthvaccineMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Footandmouthvaccine" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="fv_id" property="fvId" jdbcType="CHAR" />
+    <result column="fv_reportId" property="fvReportid" jdbcType="CHAR" />
+    <result column="fv_regionCode" property="fvRegioncode" jdbcType="VARCHAR" />
+    <result column="fv_regionName" property="fvRegionname" jdbcType="VARCHAR" />
+    <result column="fv_date" property="fvDate" jdbcType="TIMESTAMP" />
+    <result column="fv_OInactivatedUseCount" property="fvOinactivatedusecount" jdbcType="DECIMAL" />
+    <result column="fv_syntheticUseCount" property="fvSyntheticusecount" jdbcType="DECIMAL" />
+    <result column="fv_O2InactivatedUseCount" property="fvO2inactivatedusecount" jdbcType="DECIMAL" />
+    <result column="fv_OAInactivatedUseCount" property="fvOainactivatedusecount" jdbcType="DECIMAL" />
+    <result column="fv_AInactivatedUseCount" property="fvAinactivatedusecount" jdbcType="DECIMAL" />
+    <result column="fv_OInactivatedStoreCount" property="fvOinactivatedstorecount" jdbcType="DECIMAL" />
+    <result column="fv_syntheticStoreCount" property="fvSyntheticstorecount" jdbcType="DECIMAL" />
+    <result column="fv_O2InactivatedStoreCount" property="fvO2inactivatedstorecount" jdbcType="DECIMAL" />
+    <result column="fv_OAInactivatedStoreCount" property="fvOainactivatedstorecount" jdbcType="DECIMAL" />
+    <result column="fv_AInactivatedStoreCount" property="fvAinactivatedstorecount" jdbcType="DECIMAL" />
+    <result column="fv_OInactivatedYearCount" property="fvOinactivatedyearcount" jdbcType="DECIMAL" />
+    <result column="fv_syntheticYearCount" property="fvSyntheticyearcount" jdbcType="DECIMAL" />
+    <result column="fv_O2InactivatedSYearCount" property="fvO2inactivatedsyearcount" jdbcType="DECIMAL" />
+    <result column="fv_OAInactivatedYearCount" property="fvOainactivatedyearcount" jdbcType="DECIMAL" />
+    <result column="fv_AInactivatedSYearCount" property="fvAinactivatedsyearcount" jdbcType="DECIMAL" />
+    <result column="fv_O3InactivatedUseCount" property="fvO3inactivatedusecount" jdbcType="DECIMAL" />
+    <result column="fv_O3InactivatedStoreCount" property="fvO3inactivatedstorecount" jdbcType="DECIMAL" />
+    <result column="fv_O3InactivatedSYearCount" property="fvO3inactivatedsyearcount" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>
