@@ -15,6 +15,7 @@ import com.topie.common.utils.date.DateStyle;
 import com.topie.common.utils.date.DateUtil;
 import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.Template;
+import com.topie.database.core.animal.model.WeekConfig;
 import com.topie.security.utils.SecurityUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,8 +81,11 @@ public class ReportWeekController {
     @RequestMapping(value = "/summary", method = RequestMethod.GET)
     @ResponseBody
     public Result summary(@RequestParam(value = "templateId", required = false) String templateId,
-            @RequestParam(value = "period") String period) {
+            @RequestParam(value = "period", required = false) String period) {
         String currentLoginName = SecurityUtil.getCurrentUserName();
+        if (StringUtils.isEmpty(period)) {
+            return ResponseUtil.error("请选择上报日期");
+        }
         if (StringUtils.isEmpty(currentLoginName)) {
             return ResponseUtil.error("未登录");
         }
@@ -99,6 +103,12 @@ public class ReportWeekController {
         reportDto.setTemplateId(templateId);
         reportDto.setTemplateName(template.getTemplateName());
         reportDto.setBeginTime(DateUtil.StringToDate(period, DateStyle.YYYY_MM_DD));
+        Map<String, String> weekConfigMap = null;
+        weekConfigMap = new HashMap();
+        List<WeekConfig> weekConfigs = iWeekConfigService.selectAll();
+        for (WeekConfig weekConfig : weekConfigs) {
+            weekConfigMap.put(weekConfig.getYear() + "#" + weekConfig.getType(), weekConfig.getTime());
+        }
         reportDto.setReportPeriod(PeriodUtil.build(ReportTypeE.WEEK.getCode(), reportDto.getBeginTime(), null));
         reportDto.setOrgName("汇总");
         Map map = new HashMap();
