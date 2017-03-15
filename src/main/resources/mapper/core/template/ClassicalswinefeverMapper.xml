@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.ClassicalswinefeverMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Classicalswinefever" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="csf_id" property="csfId" jdbcType="CHAR" />
+    <result column="csf_reportId" property="csfReportid" jdbcType="CHAR" />
+    <result column="csf_date" property="csfDate" jdbcType="TIMESTAMP" />
+    <result column="csf_regionCode" property="csfRegioncode" jdbcType="VARCHAR" />
+    <result column="csf_regionName" property="csfRegionname" jdbcType="VARCHAR" />
+    <result column="csf_vaccine" property="csfVaccine" jdbcType="DECIMAL" />
+    <result column="csf_immuneAmount" property="csfImmuneamount" jdbcType="DECIMAL" />
+    <result column="csf_shouldAmount" property="csfShouldamount" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

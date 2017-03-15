@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.EmergencyvaccineMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Emergencyvaccine" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="ev_id" property="evId" jdbcType="CHAR" />
+    <result column="ev_reportId" property="evReportid" jdbcType="CHAR" />
+    <result column="ev_regionCode" property="evRegioncode" jdbcType="VARCHAR" />
+    <result column="ev_regionName" property="evRegionname" jdbcType="VARCHAR" />
+    <result column="ev_date" property="evDate" jdbcType="TIMESTAMP" />
+    <result column="ev_FMOInactivated" property="evFmoinactivated" jdbcType="DECIMAL" />
+    <result column="ev_FMOSynthetic" property="evFmosynthetic" jdbcType="DECIMAL" />
+    <result column="ev_FMOSInactivated" property="evFmosinactivated" jdbcType="DECIMAL" />
+    <result column="ev_FMOAS" property="evFmoas" jdbcType="DECIMAL" />
+    <result column="ev_FMOA" property="evFmoa" jdbcType="DECIMAL" />
+    <result column="ev_AIRLH5" property="evAirlh5" jdbcType="DECIMAL" />
+    <result column="ev_AIH5N1Re5Re4" property="evAih5n1re5re4" jdbcType="DECIMAL" />
+    <result column="ev_AIH5N1Re4" property="evAih5n1re4" jdbcType="DECIMAL" />
+    <result column="ev_AIH5N1Re5" property="evAih5n1re5" jdbcType="DECIMAL" />
+    <result column="ev_AIH5H9" property="evAih5h9" jdbcType="DECIMAL" />
+    <result column="ev_BE" property="evBe" jdbcType="DECIMAL" />
+    <result column="ev_BEInactivated" property="evBeinactivated" jdbcType="DECIMAL" />
+    <result column="ev_CS" property="evCs" jdbcType="DECIMAL" />
+    <result column="ev_CSPassage" property="evCspassage" jdbcType="DECIMAL" />
+    <result column="ev_NCInactivated" property="evNcinactivated" jdbcType="DECIMAL" />
+    <result column="ev_NCWeak" property="evNcweak" jdbcType="DECIMAL" />
+    <result column="ev_AllFMOInactivated" property="evAllfmoinactivated" jdbcType="DECIMAL" />
+    <result column="ev_AllFMOSynthetic" property="evAllfmosynthetic" jdbcType="DECIMAL" />
+    <result column="ev_AllFMOSInactivated" property="evAllfmosinactivated" jdbcType="DECIMAL" />
+    <result column="ev_AllFMOAS" property="evAllfmoas" jdbcType="DECIMAL" />
+    <result column="ev_AllFMOA" property="evAllfmoa" jdbcType="DECIMAL" />
+    <result column="ev_AllAIRLH5" property="evAllairlh5" jdbcType="DECIMAL" />
+    <result column="ev_AllAIH5N1Re5Re4" property="evAllaih5n1re5re4" jdbcType="DECIMAL" />
+    <result column="ev_AllAIH5N1Re4" property="evAllaih5n1re4" jdbcType="DECIMAL" />
+    <result column="ev_AllAIH5N1Re5" property="evAllaih5n1re5" jdbcType="DECIMAL" />
+    <result column="ev_AllAIH5H9" property="evAllaih5h9" jdbcType="DECIMAL" />
+    <result column="ev_AllBE" property="evAllbe" jdbcType="DECIMAL" />
+    <result column="ev_AllBEInactivated" property="evAllbeinactivated" jdbcType="DECIMAL" />
+    <result column="ev_AllCS" property="evAllcs" jdbcType="DECIMAL" />
+    <result column="ev_AllCSPassage" property="evAllcspassage" jdbcType="DECIMAL" />
+    <result column="ev_AllNCInactivated" property="evAllncinactivated" jdbcType="DECIMAL" />
+    <result column="ev_AllNCWeak" property="evAllncweak" jdbcType="DECIMAL" />
+    <result column="ev_FMOAAIT" property="evFmoaait" jdbcType="DECIMAL" />
+    <result column="ev_AllFMOAAIT" property="evAllfmoaait" jdbcType="DECIMAL" />
+    <result column="ev_AIH5N1Re6" property="evAih5n1re6" jdbcType="DECIMAL" />
+    <result column="ev_AllAIH5N1Re6" property="evAllaih5n1re6" jdbcType="DECIMAL" />
+    <result column="ev_AIH5N1Re7" property="evAih5n1re7" jdbcType="DECIMAL" />
+    <result column="ev_AllAIH5N1Re7" property="evAllaih5n1re7" jdbcType="DECIMAL" />
+    <result column="ev_AIH5N1Re6Re7" property="evAih5n1re6re7" jdbcType="DECIMAL" />
+    <result column="ev_AllAIH5N1Re6Re7" property="evAllaih5n1re6re7" jdbcType="DECIMAL" />
+    <result column="ev_AIH5N1Re6Re8" property="evAih5n1re6re8" jdbcType="DECIMAL" />
+    <result column="ev_AllAIH5N1Re6Re8" property="evAllaih5n1re6re8" jdbcType="DECIMAL" />
+    <result column="ev_AIH5N1Re6Re7Re8" property="evAih5n1re6re7re8" jdbcType="DECIMAL" />
+    <result column="ev_AllAIH5N1Re6Re7Re8" property="evAllaih5n1re6re7re8" jdbcType="DECIMAL" />
+    <result column="ev_AIH5N2D7" property="evAih5n2d7" jdbcType="DECIMAL" />
+    <result column="ev_AllAIH5N2D7" property="evAllaih5n2d7" jdbcType="DECIMAL" />
+    <result column="ev_PDPR" property="evPdpr" jdbcType="DECIMAL" />
+    <result column="ev_AllPDPR" property="evAllpdpr" jdbcType="DECIMAL" />
+    <result column="ev_BrucellaS2" property="evBrucellas2" jdbcType="DECIMAL" />
+    <result column="ev_AllBrucellaS2" property="evAllbrucellas2" jdbcType="DECIMAL" />
+    <result column="ev_BrucellaA19" property="evBrucellaa19" jdbcType="DECIMAL" />
+    <result column="ev_AllBrucellaA19" property="evAllbrucellaa19" jdbcType="DECIMAL" />
+    <result column="ev_SheepHydatid" property="evSheephydatid" jdbcType="DECIMAL" />
+    <result column="ev_AllSheepHydatid" property="evAllsheephydatid" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

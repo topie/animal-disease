@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.AvianinfluenzavaccineMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Avianinfluenzavaccine" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="av_id" property="avId" jdbcType="CHAR" />
+    <result column="av_reportId" property="avReportid" jdbcType="CHAR" />
+    <result column="av_regionCode" property="avRegioncode" jdbcType="VARCHAR" />
+    <result column="av_regionName" property="avRegionname" jdbcType="VARCHAR" />
+    <result column="av_date" property="avDate" jdbcType="TIMESTAMP" />
+    <result column="av_Re5AndRe4UseCount" property="avRe5andre4usecount" jdbcType="DECIMAL" />
+    <result column="av_rHRH5UseCount" property="avRhrh5usecount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re4UseCount" property="avH5n1re4usecount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re5UseCount" property="avH5n1re5usecount" jdbcType="DECIMAL" />
+    <result column="av_H5H9UseCount" property="avH5h9usecount" jdbcType="DECIMAL" />
+    <result column="av_Re5AndRe4StoreCount" property="avRe5andre4storecount" jdbcType="DECIMAL" />
+    <result column="av_rHRH5StoreCount" property="avRhrh5storecount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re4StoreCount" property="avH5n1re4storecount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re5StoreCount" property="avH5n1re5storecount" jdbcType="DECIMAL" />
+    <result column="av_H5H9StoreCount" property="avH5h9storecount" jdbcType="DECIMAL" />
+    <result column="av_Re5AndRe4YearCount" property="avRe5andre4yearcount" jdbcType="DECIMAL" />
+    <result column="av_rHRH5YearCount" property="avRhrh5yearcount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re4YearCount" property="avH5n1re4yearcount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re5YearCount" property="avH5n1re5yearcount" jdbcType="DECIMAL" />
+    <result column="av_H5H9YearCount" property="avH5h9yearcount" jdbcType="DECIMAL" />
+    <result column="av_H5N2D7UseCount" property="avH5n2d7usecount" jdbcType="DECIMAL" />
+    <result column="av_H5N2D7StoreCount" property="avH5n2d7storecount" jdbcType="DECIMAL" />
+    <result column="av_H5N2D7YearCount" property="avH5n2d7yearcount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re6UseCount" property="avH5n1re6usecount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re6StoreCount" property="avH5n1re6storecount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re6YearCount" property="avH5n1re6yearcount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re7UseCount" property="avH5n1re7usecount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re7StoreCount" property="avH5n1re7storecount" jdbcType="DECIMAL" />
+    <result column="av_H5N1Re7YearCount" property="avH5n1re7yearcount" jdbcType="DECIMAL" />
+    <result column="av_Re6Re7UseCount" property="avRe6re7usecount" jdbcType="DECIMAL" />
+    <result column="av_Re6Re7StoreCount" property="avRe6re7storecount" jdbcType="DECIMAL" />
+    <result column="av_Re6Re7YearCount" property="avRe6re7yearcount" jdbcType="DECIMAL" />
+    <result column="av_Re6Re8UseCount" property="avRe6re8usecount" jdbcType="DECIMAL" />
+    <result column="av_Re6Re8StoreCount" property="avRe6re8storecount" jdbcType="DECIMAL" />
+    <result column="av_Re6Re8YearCount" property="avRe6re8yearcount" jdbcType="DECIMAL" />
+    <result column="av_Re6Re7Re8UseCount" property="avRe6re7re8usecount" jdbcType="DECIMAL" />
+    <result column="av_Re6Re7Re8StoreCount" property="avRe6re7re8storecount" jdbcType="DECIMAL" />
+    <result column="av_Re6Re7Re8YearCount" property="avRe6re7re8yearcount" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

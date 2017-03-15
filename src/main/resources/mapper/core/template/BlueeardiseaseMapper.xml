@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.BlueeardiseaseMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Blueeardisease" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="bed_id" property="bedId" jdbcType="CHAR" />
+    <result column="bed_reportId" property="bedReportid" jdbcType="CHAR" />
+    <result column="bed_date" property="bedDate" jdbcType="TIMESTAMP" />
+    <result column="bed_regionCode" property="bedRegioncode" jdbcType="VARCHAR" />
+    <result column="bed_regionName" property="bedRegionname" jdbcType="VARCHAR" />
+    <result column="bed_inactivatedVaccine" property="bedInactivatedvaccine" jdbcType="DECIMAL" />
+    <result column="bed_inactivatedImmuneAmount" property="bedInactivatedimmuneamount" jdbcType="DECIMAL" />
+    <result column="bed_inactivatedShouldAmount" property="bedInactivatedshouldamount" jdbcType="DECIMAL" />
+    <result column="bed_weakVaccine" property="bedWeakvaccine" jdbcType="DECIMAL" />
+    <result column="bed_weakImmuneAmount" property="bedWeakimmuneamount" jdbcType="DECIMAL" />
+    <result column="bed_weakShouldAmount" property="bedWeakshouldamount" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

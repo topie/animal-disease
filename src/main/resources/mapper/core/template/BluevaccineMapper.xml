@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.BluevaccineMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Bluevaccine" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="bv_id" property="bvId" jdbcType="CHAR" />
+    <result column="bv_reportId" property="bvReportid" jdbcType="CHAR" />
+    <result column="bv_regionCode" property="bvRegioncode" jdbcType="VARCHAR" />
+    <result column="bv_regionName" property="bvRegionname" jdbcType="VARCHAR" />
+    <result column="bv_date" property="bvDate" jdbcType="TIMESTAMP" />
+    <result column="bv_inactivatedUseCount" property="bvInactivatedusecount" jdbcType="DECIMAL" />
+    <result column="bv_livingUseCount" property="bvLivingusecount" jdbcType="DECIMAL" />
+    <result column="bv_inactivatedStoreCount" property="bvInactivatedstorecount" jdbcType="DECIMAL" />
+    <result column="bv_livingStoreCount" property="bvLivingstorecount" jdbcType="DECIMAL" />
+    <result column="bv_inactivatedYearCount" property="bvInactivatedyearcount" jdbcType="DECIMAL" />
+    <result column="bv_livingYearCount" property="bvLivingyearcount" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

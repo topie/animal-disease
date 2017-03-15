@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.PestedespetitsruminantsMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Pestedespetitsruminants" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="pdpr_id" property="pdprId" jdbcType="CHAR" />
+    <result column="pdpr_reportId" property="pdprReportid" jdbcType="CHAR" />
+    <result column="pdpr_date" property="pdprDate" jdbcType="TIMESTAMP" />
+    <result column="pdpr_regionCode" property="pdprRegioncode" jdbcType="VARCHAR" />
+    <result column="pdpr_regionName" property="pdprRegionname" jdbcType="VARCHAR" />
+    <result column="pdpr_LiveVaccine" property="pdprLivevaccine" jdbcType="DECIMAL" />
+    <result column="pdpr_LiveBreedingSheep" property="pdprLivebreedingsheep" jdbcType="DECIMAL" />
+    <result column="pdpr_LiveGoat" property="pdprLivegoat" jdbcType="DECIMAL" />
+    <result column="pdpr_LiveSheep" property="pdprLivesheep" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

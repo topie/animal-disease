@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.LivestockdensityMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Livestockdensity" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <result column="ld_id" property="ldId" jdbcType="CHAR" />
+    <result column="ld_reportId" property="ldReportid" jdbcType="CHAR" />
+    <result column="ld_regionCode" property="ldRegioncode" jdbcType="VARCHAR" />
+    <result column="ld_regionName" property="ldRegionname" jdbcType="VARCHAR" />
+    <result column="ld_date" property="ldDate" jdbcType="TIMESTAMP" />
+    <result column="ld_pidHerdsCount" property="ldPidherdscount" jdbcType="DECIMAL" />
+    <result column="ld_pigOShuldCount" property="ldPigoshuldcount" jdbcType="DECIMAL" />
+    <result column="ld_pigOActualCount" property="ldPigoactualcount" jdbcType="DECIMAL" />
+    <result column="ld_pigBShuldCount" property="ldPigbshuldcount" jdbcType="DECIMAL" />
+    <result column="ld_pigBActualCount" property="ldPigbactualcount" jdbcType="DECIMAL" />
+    <result column="ld_pigCShuldCount" property="ldPigcshuldcount" jdbcType="DECIMAL" />
+    <result column="ld_pigCActualCount" property="ldPigcactualcount" jdbcType="DECIMAL" />
+    <result column="ld_niuHerdsCount" property="ldNiuherdscount" jdbcType="DECIMAL" />
+    <result column="ld_niuShuldCount" property="ldNiushuldcount" jdbcType="DECIMAL" />
+    <result column="ld_niuActualCount" property="ldNiuactualcount" jdbcType="DECIMAL" />
+    <result column="ld_cowHerdsCount" property="ldCowherdscount" jdbcType="DECIMAL" />
+    <result column="ld_cowShuldCount" property="ldCowshuldcount" jdbcType="DECIMAL" />
+    <result column="ld_cowActualCount" property="ldCowactualcount" jdbcType="DECIMAL" />
+    <result column="ld_sheepHerdsCount" property="ldSheepherdscount" jdbcType="DECIMAL" />
+    <result column="ld_sheepOShuldCount" property="ldSheeposhuldcount" jdbcType="DECIMAL" />
+    <result column="ld_sheepOActualCount" property="ldSheepoactualcount" jdbcType="DECIMAL" />
+    <result column="ld_sheepAShuldCount" property="ldSheepashuldcount" jdbcType="DECIMAL" />
+    <result column="ld_sheepAActualCount" property="ldSheepaactualcount" jdbcType="DECIMAL" />
+    <result column="ld_otherHerdsCount" property="ldOtherherdscount" jdbcType="DECIMAL" />
+    <result column="ld_otherOShuldCount" property="ldOtheroshuldcount" jdbcType="DECIMAL" />
+    <result column="ld_otherOActualCount" property="ldOtheroactualcount" jdbcType="DECIMAL" />
+    <result column="ld_otherOIShuldCount" property="ldOtheroishuldcount" jdbcType="DECIMAL" />
+    <result column="ld_otherOIActualCount" property="ldOtheroiactualcount" jdbcType="DECIMAL" />
+    <result column="ld_pigOIShuldCount" property="ldPigoishuldcount" jdbcType="DECIMAL" />
+    <result column="ld_pigOIActualCount" property="ldPigoiactualcount" jdbcType="DECIMAL" />
+    <result column="ld_niuOAIShuldCount" property="ldNiuoaishuldcount" jdbcType="DECIMAL" />
+    <result column="ld_niuOAIActualCount" property="ldNiuoaiactualcount" jdbcType="DECIMAL" />
+    <result column="ld_sheepOAIShuldCount" property="ldSheepoaishuldcount" jdbcType="DECIMAL" />
+    <result column="ld_sheepOAIActualCount" property="ldSheepoaiactualcount" jdbcType="DECIMAL" />
+    <result column="fv_O3InactivatedUseCount" property="fvO3inactivatedusecount" jdbcType="DECIMAL" />
+    <result column="fv_O3InactivatedStoreCount" property="fvO3inactivatedstorecount" jdbcType="DECIMAL" />
+    <result column="fv_O3InactivatedSYearCount" property="fvO3inactivatedsyearcount" jdbcType="DECIMAL" />
+    <result column="ld_niuAShuldCount" property="ldNiuashuldcount" jdbcType="DECIMAL" />
+    <result column="ld_niuAActualCount" property="ldNiuaactualcount" jdbcType="DECIMAL" />
+    <result column="ld_cowOAIShuldCount" property="ldCowoaishuldcount" jdbcType="DECIMAL" />
+    <result column="ld_cowOAIActualCount" property="ldCowoaiactualcount" jdbcType="DECIMAL" />
+    <result column="ld_sheepPDPRShuldCount" property="ldSheeppdprshuldcount" jdbcType="DECIMAL" />
+    <result column="ld_sheepPDPRActualCount" property="ldSheeppdpractualcount" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

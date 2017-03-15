@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.WnewcastleMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Wnewcastle" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="nc_id" property="ncId" jdbcType="CHAR" />
+    <result column="nc_reportId" property="ncReportid" jdbcType="CHAR" />
+    <result column="nc_date" property="ncDate" jdbcType="TIMESTAMP" />
+    <result column="nc_regionCode" property="ncRegioncode" jdbcType="VARCHAR" />
+    <result column="nc_regionName" property="ncRegionname" jdbcType="VARCHAR" />
+    <result column="nc_inactivatedVaccine" property="ncInactivatedvaccine" jdbcType="DECIMAL" />
+    <result column="nc_inactivatedImmuneAmount" property="ncInactivatedimmuneamount" jdbcType="DECIMAL" />
+    <result column="nc_inactivatedShouldAmount" property="ncInactivatedshouldamount" jdbcType="DECIMAL" />
+    <result column="nc_jointImmuneAmount" property="ncJointimmuneamount" jdbcType="DECIMAL" />
+    <result column="nc_jointShouldAmount" property="ncJointshouldamount" jdbcType="DECIMAL" />
+    <result column="nc_jointVaccine" property="ncJointvaccine" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>

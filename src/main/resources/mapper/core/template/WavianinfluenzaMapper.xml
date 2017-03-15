@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.WavianinfluenzaMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Wavianinfluenza" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="ai_id" property="aiId" jdbcType="CHAR" />
+    <result column="ai_reportId" property="aiReportid" jdbcType="CHAR" />
+    <result column="ai_regionCode" property="aiRegioncode" jdbcType="VARCHAR" />
+    <result column="ai_regionName" property="aiRegionname" jdbcType="VARCHAR" />
+    <result column="ai_date" property="aiDate" jdbcType="TIMESTAMP" />
+    <result column="ai_inactivatedVaccine" property="aiInactivatedvaccine" jdbcType="DECIMAL" />
+    <result column="ai_inactivatedImmuneAmountChicken" property="aiInactivatedimmuneamountchicken" jdbcType="DECIMAL" />
+    <result column="ai_inactivatedImmuneAmountDuck" property="aiInactivatedimmuneamountduck" jdbcType="DECIMAL" />
+    <result column="ai_inactivatedImmuneAmountGoose" property="aiInactivatedimmuneamountgoose" jdbcType="DECIMAL" />
+    <result column="ai_inactivatedImmuneAmountOther" property="aiInactivatedimmuneamountother" jdbcType="DECIMAL" />
+    <result column="ai_inactivatedShouldAmountChicken" property="aiInactivatedshouldamountchicken" jdbcType="DECIMAL" />
+    <result column="ai_inactivatedShouldAmountDuck" property="aiInactivatedshouldamountduck" jdbcType="DECIMAL" />
+    <result column="ai_inactivatedShouldAmountGoose" property="aiInactivatedshouldamountgoose" jdbcType="DECIMAL" />
+    <result column="ai_inactivatedShouldAmountOther" property="aiInactivatedshouldamountother" jdbcType="DECIMAL" />
+    <result column="ai_jointImmuneAmountChicken" property="aiJointimmuneamountchicken" jdbcType="DECIMAL" />
+    <result column="ai_jointImmuneAmountDuck" property="aiJointimmuneamountduck" jdbcType="DECIMAL" />
+    <result column="ai_jointImmuneAmountGoose" property="aiJointimmuneamountgoose" jdbcType="DECIMAL" />
+    <result column="ai_jointImmuneAmountOther" property="aiJointimmuneamountother" jdbcType="DECIMAL" />
+    <result column="ai_jointShouldAmountChicken" property="aiJointshouldamountchicken" jdbcType="DECIMAL" />
+    <result column="ai_jointShouldAmountDuck" property="aiJointshouldamountduck" jdbcType="DECIMAL" />
+    <result column="ai_jointShouldAmountGoose" property="aiJointshouldamountgoose" jdbcType="DECIMAL" />
+    <result column="ai_jointShouldAmountOther" property="aiJointshouldamountother" jdbcType="DECIMAL" />
+    <result column="ai_jointVaccine" property="aiJointvaccine" jdbcType="DECIMAL" />
+  </resultMap>
+</mapper>
