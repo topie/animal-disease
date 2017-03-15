@@ -118,7 +118,7 @@ public class ReportHalfYearController {
         } else {
             return ResponseUtil.error("未检测到周填报规则，无法确定汇总开始时间");
         }
-        Date end = DateUtil.addMonth(begin, 7);
+        Date end = DateUtil.addDay(begin, 7);
         Date now = new Date();
         if (now.before(begin) || now.after(end)) {
             return ResponseUtil.success(PageConvertUtil.grid(null));

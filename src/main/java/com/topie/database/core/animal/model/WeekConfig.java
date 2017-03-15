@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Table(name = "a_week_config")
 public class WeekConfig {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
@@ -22,6 +23,12 @@ public class WeekConfig {
      * 日期字符
      */
     private String time;
+
+    @Transient
+    private String part1;
+
+    @Transient
+    private String part2;
 
     /**
      * @return id
@@ -89,5 +96,21 @@ public class WeekConfig {
      */
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getPart1() {
+        return part1;
+    }
+
+    public void setPart1(String part1) {
+        this.part1 = part1;
+    }
+
+    public String getPart2() {
+        return part2;
+    }
+
+    public void setPart2(String part2) {
+        this.part2 = part2;
     }
 }

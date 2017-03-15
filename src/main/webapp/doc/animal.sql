@@ -283,3 +283,18 @@ CREATE TABLE `a_spec_fill` (
 )
   DEFAULT CHARSET = utf8
   COMMENT '特殊填报';
+
+DROP TABLE IF EXISTS `a_other_config`;
+CREATE TABLE `a_other_config` (
+  `id`    INT(11)     NOT NULL      AUTO_INCREMENT
+  COMMENT 'id',
+  `type`  INT(11)     NOT NULL      DEFAULT 0
+  COMMENT '类型',
+  `part1` VARCHAR(255) NOT NULL      DEFAULT ''
+  COMMENT '配置1',
+  `part2` VARCHAR(255) NOT NULL      DEFAULT ''
+  COMMENT '配置2',
+  PRIMARY KEY (id)
+)
+  DEFAULT CHARSET = utf8
+  COMMENT '其它填报配置';
