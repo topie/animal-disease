@@ -3,11 +3,11 @@ package com.topie.animal.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.topie.animal.dto.ReportDto;
-import com.topie.animal.util.PeriodUtil;
 import com.topie.animal.service.IOrgInfoService;
 import com.topie.animal.service.IReportService;
 import com.topie.animal.service.ITemplateService;
 import com.topie.animal.service.IUserInfoService;
+import com.topie.animal.util.PeriodUtil;
 import com.topie.common.service.impl.BaseService;
 import com.topie.common.utils.UUIDUtil;
 import com.topie.common.utils.date.DateStyle;
@@ -80,12 +80,15 @@ public class ReportServiceImpl extends BaseService<Report> implements IReportSer
             for (String reportUserId : userIdList) {
                 Report report = new Report();
                 report.setTemplateId(templateId);
+                report.setReportType(reportType);
+                report.setBeginTime(beginTime);
                 report.setReportUserId(reportUserId);
+                int cnt = reportMapper.selectCount(report);
+                if (cnt > 0) continue;
                 report.setStatus(0);
                 report.setEndTime(DateUtil.addDay(beginTime, 9));
-                report.setBeginTime(beginTime);
-                report.setReportType(reportType);
                 report.setReportId(UUIDUtil.getUUID());
+
                 reportMapper.insertSelective(report);
             }
         }
