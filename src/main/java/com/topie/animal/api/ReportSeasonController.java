@@ -151,6 +151,7 @@ public class ReportSeasonController {
         if (StringUtils.isEmpty(currentOrg.getOrgId())) {
             return ResponseUtil.error("当前用户没有组织机构");
         }
+        begin = DateUtil.addMonth(begin, -3);
         Map argMap = new HashMap();
         argMap.put("reportType", ReportTypeE.SEASON.getCode());
         argMap.put("orgId", currentOrg.getOrgId());
