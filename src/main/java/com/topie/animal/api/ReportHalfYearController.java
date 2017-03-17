@@ -47,6 +47,9 @@ public class ReportHalfYearController {
     @Autowired
     private IWeekConfigService iWeekConfigService;
 
+    @Autowired
+    private IOtherConfigService iOtherConfigService;
+
     @RequestMapping(value = "/history", method = RequestMethod.GET)
     @ResponseBody
     public Result history(@RequestParam(value = "templateId", required = false) String templateId,

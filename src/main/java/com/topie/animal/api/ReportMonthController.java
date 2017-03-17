@@ -1,20 +1,19 @@
 package com.topie.animal.api;
 
 import com.github.pagehelper.PageInfo;
+import com.google.common.collect.Lists;
 import com.topie.animal.constant.ReportTypeE;
 import com.topie.animal.dto.ReReportDto;
 import com.topie.animal.dto.ReportDto;
+import com.topie.animal.service.*;
 import com.topie.animal.util.PeriodUtil;
-import com.topie.animal.service.IReReportService;
-import com.topie.animal.service.IReportService;
-import com.topie.animal.service.ITemplateService;
-import com.topie.animal.service.IUserInfoService;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
 import com.topie.common.utils.date.DateStyle;
 import com.topie.common.utils.date.DateUtil;
 import com.topie.database.core.animal.model.OrgInfo;
+import com.topie.database.core.animal.model.OtherConfig;
 import com.topie.database.core.animal.model.Template;
 import com.topie.security.utils.SecurityUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -25,10 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by chenguojun on 2017/2/21.
@@ -48,6 +44,9 @@ public class ReportMonthController {
 
     @Autowired
     private IReReportService iReReportService;
+
+    @Autowired
+    private IOtherConfigService iOtherConfigService;
 
     @RequestMapping(value = "/history", method = RequestMethod.GET)
     @ResponseBody
@@ -114,10 +113,30 @@ public class ReportMonthController {
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
         Date begin = DateUtil.getCurrentMonthFirstDay();
-        Date end = DateUtil.addDay(begin, 10);
         Date now = new Date();
-        if (now.after(end)) {
-            return ResponseUtil.success(PageConvertUtil.grid(null));
+        OtherConfig otherConfig = iOtherConfigService.selectByType(0);
+        if (otherConfig != null) {
+            String config1 = otherConfig.getPart1();
+            String config2 = otherConfig.getPart2();
+            int month = DateUtil.getMonth(begin) + 1;
+            String[] c1 = org.apache.commons.lang.StringUtils.split(config1, ",");
+            List<String> c1List = Lists.newArrayList(c1);
+            int i = c1List.indexOf("" + month);
+            String[] c2 = org.apache.commons.lang.StringUtils.split(config2, ",");
+            List<String> c2List = Lists.newArrayList(c2);
+            String period = c2List.get(i);
+            int b = Integer.valueOf(period.split("-")[0]).intValue();
+            Date beginT = DateUtil.addDay(begin, b - 1);
+            int e = Integer.valueOf(period.split("-")[1]).intValue();
+            Date endT = DateUtil.addDay(begin, e - 1);
+            if (now.after(endT) || now.before(beginT)) {
+                return ResponseUtil.success(PageConvertUtil.grid(null));
+            }
+        } else {
+            Date end = DateUtil.addDay(begin, 10);
+            if (now.after(end)) {
+                return ResponseUtil.success(PageConvertUtil.grid(null));
+            }
         }
         String currentLoginName = SecurityUtil.getCurrentUserName();
         if (StringUtils.isEmpty(currentLoginName)) {

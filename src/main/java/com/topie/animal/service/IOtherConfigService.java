@@ -10,4 +10,6 @@ import com.topie.database.core.animal.model.OtherConfig;
 public interface IOtherConfigService extends IService<OtherConfig> {
 
     PageInfo<OtherConfig> selectByPage(OtherConfig otherConfig, int pageNum, int pageSize);
+
+    OtherConfig selectByType(Integer type);
 }

@@ -103,13 +103,13 @@ public class ReportWeekController {
         reportDto.setTemplateId(templateId);
         reportDto.setTemplateName(template.getTemplateName());
         reportDto.setBeginTime(DateUtil.StringToDate(period, DateStyle.YYYY_MM_DD));
-        Map<String, String> weekConfigMap = null;
-        weekConfigMap = new HashMap();
+        Map<String, String> weekConfigMap = new HashMap();
         List<WeekConfig> weekConfigs = iWeekConfigService.selectAll();
         for (WeekConfig weekConfig : weekConfigs) {
             weekConfigMap.put(weekConfig.getYear() + "#" + weekConfig.getType(), weekConfig.getTime());
         }
-        reportDto.setReportPeriod(PeriodUtil.build(ReportTypeE.WEEK.getCode(), reportDto.getBeginTime(), null));
+        reportDto
+                .setReportPeriod(PeriodUtil.build(ReportTypeE.WEEK.getCode(), reportDto.getBeginTime(), weekConfigMap));
         reportDto.setOrgName("汇总");
         Map map = new HashMap();
         map.put("total", 1);

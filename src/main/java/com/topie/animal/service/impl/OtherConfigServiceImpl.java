@@ -25,4 +25,12 @@ public class OtherConfigServiceImpl extends BaseService<OtherConfig> implements 
         List<OtherConfig> list = getMapper().selectByExample(example);
         return new PageInfo<>(list);
     }
+
+    @Override
+    public OtherConfig selectByType(Integer type) {
+        OtherConfig arg = new OtherConfig();
+        arg.setType(type);
+        List<OtherConfig> list = getMapper().select(arg);
+        return list.size() > 0 ? list.get(0) : null;
+    }
 }
