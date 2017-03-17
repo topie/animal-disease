@@ -120,6 +120,9 @@ public class ExcelServiceImpl implements IExcelService {
     @Autowired
     private SmallruminantsvaccineMapper smallruminantsvaccineMapper;
 
+     @Autowired
+    private EmergencyvaccineMapper emergencyvaccineMapper;
+
     @Override
     public String getReportHtml(HttpServletRequest request, Report report) {
         Map params = new HashMap();
@@ -143,19 +146,32 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_avianinfluenza": {
                 Avianinfluenza arg =new Avianinfluenza();
                 arg.setAiReportid(report.getReportId());
-                Avianinfluenza item =  avianinfluenzaMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Avianinfluenza();
+                List<Avianinfluenza> items=avianinfluenzaMapper.select(arg);
+                Avianinfluenza item =new Avianinfluenza();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
+                params.put("item", item);
+                break;
+            }
+           case "b_emergencyvaccine": {
+               Emergencyvaccine arg =new Emergencyvaccine();
+                arg.setEvReportid(report.getReportId());
+               List<Emergencyvaccine> items=emergencyvaccineMapper.select(arg);
+               Emergencyvaccine item =new Emergencyvaccine();
+               if(items.size()>0) {
+                   item = items.get(0);
+               }
                 params.put("item", item);
                 break;
             }
             case "b_smallruminantsvaccine": {
                 Smallruminantsvaccine arg =new Smallruminantsvaccine();
                 arg.setSrvReportid(report.getReportId());
-                Smallruminantsvaccine item =  smallruminantsvaccineMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Smallruminantsvaccine();
+                List<Smallruminantsvaccine> items=smallruminantsvaccineMapper.select(arg);
+                Smallruminantsvaccine item =new Smallruminantsvaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -163,9 +179,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_poultrydensity": {
                 Poultrydensity arg =new Poultrydensity();
                 arg.setPdReportid(report.getReportId());
-                Poultrydensity item =  poultrydensityMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Poultrydensity();
+                List<Poultrydensity> items=poultrydensityMapper.select(arg);
+                Poultrydensity item =new Poultrydensity();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -173,9 +190,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_newcastlevaccine": {
                 Newcastlevaccine arg =new Newcastlevaccine();
                 arg.setNvReportid(report.getReportId());
-                Newcastlevaccine item =  newcastlevaccineMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Newcastlevaccine();
+                List<Newcastlevaccine> items=newcastlevaccineMapper.select(arg);
+                Newcastlevaccine item =new Newcastlevaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -183,9 +201,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_livestockdensity": {
                 Livestockdensity arg =new Livestockdensity();
                 arg.setLdReportid(report.getReportId());
-                Livestockdensity item =  livestockdensityMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Livestockdensity();
+                List<Livestockdensity> items=livestockdensityMapper.select(arg);
+                Livestockdensity item =new Livestockdensity();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -193,9 +212,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_kingfisher": {
                 Kingfisher arg =new Kingfisher();
                 arg.setKfReportid(report.getReportId());
-                Kingfisher item =  kingfisherMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Kingfisher();
+                List<Kingfisher> items=kingfisherMapper.select(arg);
+                Kingfisher item =new Kingfisher();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -203,9 +223,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_footandmouthvaccine": {
                 Footandmouthvaccine arg =new Footandmouthvaccine();
                 arg.setFvReportid(report.getReportId());
-                Footandmouthvaccine item =  footandmouthvaccineMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Footandmouthvaccine();
+                List<Footandmouthvaccine> items=footandmouthvaccineMapper.select(arg);
+                Footandmouthvaccine item =new Footandmouthvaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -213,9 +234,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_classicalswinefevervaccine": {
                 Classicalswinefevervaccine arg =new Classicalswinefevervaccine();
                 arg.setCvReportid(report.getReportId());
-                Classicalswinefevervaccine item =  classicalswinefevervaccineMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Classicalswinefevervaccine();
+                List<Classicalswinefevervaccine> items=classicalswinefevervaccineMapper.select(arg);
+                Classicalswinefevervaccine item =new Classicalswinefevervaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -223,9 +245,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_bluevaccine": {
                 Bluevaccine arg =new Bluevaccine();
                 arg.setBvReportid(report.getReportId());
-                Bluevaccine item =  bluevaccineMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Bluevaccine();
+                List<Bluevaccine> items=bluevaccineMapper.select(arg);
+                Bluevaccine item =new Bluevaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -233,9 +256,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_avianinfluenzavaccine": {
                 Avianinfluenzavaccine arg =new Avianinfluenzavaccine();
                 arg.setAvReportid(report.getReportId());
-                Avianinfluenzavaccine item =  avianinfluenzavaccineMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Avianinfluenzavaccine();
+                List<Avianinfluenzavaccine> items=avianinfluenzavaccineMapper.select(arg);
+                Avianinfluenzavaccine item =new Avianinfluenzavaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -243,9 +267,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_wpestedespetitsruminants": {
                 Wpestedespetitsruminants arg =new Wpestedespetitsruminants();
                 arg.setWpdrReportid(report.getReportId());
-                Wpestedespetitsruminants item =  wpestedespetitsruminantsMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Wpestedespetitsruminants();
+                List<Wpestedespetitsruminants> items=wpestedespetitsruminantsMapper.select(arg);
+                Wpestedespetitsruminants item =new Wpestedespetitsruminants();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -253,9 +278,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_wavianinfluenza": {
                 Wavianinfluenza arg =new Wavianinfluenza();
                 arg.setAiReportid(report.getReportId());
-                Wavianinfluenza item =  wavianinfluenzaMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Wavianinfluenza();
+                List<Wavianinfluenza> items=wavianinfluenzaMapper.select(arg);
+                Wavianinfluenza item =new Wavianinfluenza();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -263,9 +289,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_wnewcastle": {
                 Wnewcastle arg =new Wnewcastle();
                 arg.setNcReportid(report.getReportId());
-                Wnewcastle item =  wnewcastleMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Wnewcastle();
+                List<Wnewcastle> items=wnewcastleMapper.select(arg);
+                Wnewcastle item =new Wnewcastle();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -273,9 +300,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_wclassicalswinefever": {
                 Wclassicalswinefever arg =new Wclassicalswinefever();
                 arg.setCsfReportid(report.getReportId());
-                Wclassicalswinefever item =  wclassicalswinefeverMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Wclassicalswinefever();
+                List<Wclassicalswinefever> items=wclassicalswinefeverMapper.select(arg);
+                Wclassicalswinefever item =new Wclassicalswinefever();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -283,9 +311,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_wblueeardisease": {
                 Wblueeardisease arg =new Wblueeardisease();
                 arg.setBedId(report.getReportId());
-                Wblueeardisease item =  wblueeardiseaseMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Wblueeardisease();
+                List<Wblueeardisease> items=wblueeardiseaseMapper.select(arg);
+                Wblueeardisease item =new Wblueeardisease();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -293,9 +322,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_vaccineorder": {
                 Vaccineorder arg =new Vaccineorder();
                 arg.setReportid(report.getReportId());
-                Vaccineorder item =  vaccineorderMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Vaccineorder();
+                List<Vaccineorder> items=vaccineorderMapper.select(arg);
+                Vaccineorder item =new Vaccineorder();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -303,9 +333,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_blueeardisease": {
                 Blueeardisease arg =new Blueeardisease();
                 arg.setBedReportid(report.getReportId());
-                Blueeardisease item =  blueeardiseaseMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Blueeardisease();
+                List<Blueeardisease> items=blueeardiseaseMapper.select(arg);
+                Blueeardisease item =new Blueeardisease();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -313,9 +344,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_classicalswinefever": {
                 Classicalswinefever arg =new Classicalswinefever();
                 arg.setCsfReportid(report.getReportId());
-                Classicalswinefever item =  classicalswinefeverMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Classicalswinefever();
+                List<Classicalswinefever> items=classicalswinefeverMapper.select(arg);
+                Classicalswinefever item =new Classicalswinefever();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -323,9 +355,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_footandmouthdisease": {
                 Footandmouthdisease arg =new Footandmouthdisease();
                 arg.setFmdReportid(report.getReportId());
-                Footandmouthdisease item = footandmouthdiseaseMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Footandmouthdisease();
+                List<Footandmouthdisease> items=footandmouthdiseaseMapper.select(arg);
+                Footandmouthdisease item =new Footandmouthdisease();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -341,9 +374,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_newcastle": {
                 Newcastle arg =new Newcastle();
                 arg.setNcReportid(report.getReportId());
-                Newcastle item = newcastleMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Newcastle();
+                List<Newcastle> items=newcastleMapper.select(arg);
+                Newcastle item =new Newcastle();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -351,9 +385,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_pestedespetitsruminants": {
                 Pestedespetitsruminants arg =new Pestedespetitsruminants();
                 arg.setPdprReportid(report.getReportId());
-                Pestedespetitsruminants item = pestedespetitsruminantsMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Pestedespetitsruminants();
+                List<Pestedespetitsruminants> items=pestedespetitsruminantsMapper.select(arg);
+                Pestedespetitsruminants item =new Pestedespetitsruminants();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -361,9 +396,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_disinfectiondrugs": {
                 Disinfectiondrugs arg = new Disinfectiondrugs();
                 arg.setDfReportid(report.getReportId());
-                Disinfectiondrugs item = disinfectiondrugsMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Disinfectiondrugs();
+                List<Disinfectiondrugs> items=disinfectiondrugsMapper.select(arg);
+                Disinfectiondrugs item =new Disinfectiondrugs();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -371,9 +407,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_wfootandmouthdisease": {
                 Wfootandmouthdisease arg = new Wfootandmouthdisease();
                 arg.setFmdReportid(report.getReportId());
-                Wfootandmouthdisease item = wfootandmouthdiseaseMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Wfootandmouthdisease();
+                List<Wfootandmouthdisease> items=wfootandmouthdiseaseMapper.select(arg);
+                Wfootandmouthdisease item =new Wfootandmouthdisease();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -381,9 +418,10 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_wlivestockinout": {
                 Wlivestockinout arg = new Wlivestockinout();
                 arg.setReportid(report.getReportId());
-                Wlivestockinout item = wlivestockinoutMapper.selectOne(arg);
-                if (item == null) {
-                    item = new Wlivestockinout();
+                List<Wlivestockinout> items=wlivestockinoutMapper.select(arg);
+                Wlivestockinout item =new Wlivestockinout();
+                if(items.size()>0) {
+                    item = items.get(0);
                 }
                 params.put("item", item);
                 break;
@@ -412,6 +450,10 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
         switch (template.getTableName().toLowerCase()) {
             case "b_avianinfluenza": {
                 params=this.getReportSummaryHtmlUtil(Avianinfluenza.class,reportIds,"aiReportid",avianinfluenzaMapper);
+                break;
+            }
+            case "b_emergencyvaccine": {
+                params=this.getReportSummaryHtmlUtil(Emergencyvaccine.class,reportIds,"evReportid",emergencyvaccineMapper);
                 break;
             }
             case "b_smallruminantsvaccine": {
@@ -541,24 +583,61 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Avianinfluenza fill = (Avianinfluenza) JSONObject.toBean(jsonObj, Avianinfluenza.class);
                 Avianinfluenza arg = new Avianinfluenza();
                 arg.setAiReportid(report.getReportId());
-                Avianinfluenza avianinfluenza = avianinfluenzaMapper.selectOne(arg);
+                List<Avianinfluenza> items=avianinfluenzaMapper.select(arg);
+                Avianinfluenza item =new Avianinfluenza();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (avianinfluenza == null) {
-                    avianinfluenza = fill;
-                    avianinfluenza.setAiId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setAiId(UUIDUtil.getUUID());
                 } else {
-                    fill.setAiId(avianinfluenza.getAiId());
-                    avianinfluenza = fill;
+                    fill.setAiId(item.getAiId());
+                    item = fill;
                     insert = false;
                 }
-                avianinfluenza.setAiReportid(report.getReportId());
-                avianinfluenza.setAiDate(report.getBeginTime());
-                avianinfluenza.setAiRegioncode(region.getRegionCode());
-                avianinfluenza.setAiRegionname(region.getRegionName());
+                item.setAiReportid(report.getReportId());
+                item.setAiDate(report.getBeginTime());
+                item.setAiRegioncode(region.getRegionCode());
+                item.setAiRegionname(region.getRegionName());
                 if (insert) {
-                    avianinfluenzaMapper.insertSelective(avianinfluenza);
+                    avianinfluenzaMapper.insertSelective(item);
                 } else {
-                    avianinfluenzaMapper.updateByPrimaryKeySelective(avianinfluenza);
+                    avianinfluenzaMapper.updateByPrimaryKeySelective(item);
+                }
+                break;
+            }
+            case "b_emergencyvaccine": {
+                Emergencyvaccine fill = (Emergencyvaccine) JSONObject.toBean(jsonObj, Emergencyvaccine.class);
+                Emergencyvaccine arg = new Emergencyvaccine();
+                arg.setEvReportid(report.getReportId());
+                List<Emergencyvaccine> items=emergencyvaccineMapper.select(arg);
+                Emergencyvaccine item =new Emergencyvaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setEvId(UUIDUtil.getUUID());
+                } else {
+                    fill.setEvId(item.getEvId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setEvReportid(report.getReportId());
+                item.setEvDate(report.getBeginTime());
+                item.setEvRegioncode(region.getRegionCode());
+                item.setEvRegionname(region.getRegionName());
+                if (insert) {
+                    emergencyvaccineMapper.insertSelective(item);
+                } else {
+                    emergencyvaccineMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -566,24 +645,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Smallruminantsvaccine fill = (Smallruminantsvaccine) JSONObject.toBean(jsonObj, Smallruminantsvaccine.class);
                 Smallruminantsvaccine arg = new Smallruminantsvaccine();
                 arg.setSrvReportid(report.getReportId());
-                Smallruminantsvaccine smallruminantsvaccine = smallruminantsvaccineMapper.selectOne(arg);
+                List<Smallruminantsvaccine> items=smallruminantsvaccineMapper.select(arg);
+                Smallruminantsvaccine item =new Smallruminantsvaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                 }
                 boolean insert = true;
-                if (smallruminantsvaccine == null) {
-                    smallruminantsvaccine = fill;
-                    smallruminantsvaccine.setSrvId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setSrvId(UUIDUtil.getUUID());
                 } else {
-                    fill.setSrvId(smallruminantsvaccine.getSrvId());
-                    smallruminantsvaccine = fill;
+                    fill.setSrvId(item.getSrvId());
+                    item = fill;
                     insert = false;
                 }
-                smallruminantsvaccine.setSrvReportid(report.getReportId());
-                smallruminantsvaccine.setSrvDate(report.getBeginTime());
-                smallruminantsvaccine.setSrvRegioncode(region.getRegionCode());
-                smallruminantsvaccine.setSrvRegionname(region.getRegionName());
+                item.setSrvReportid(report.getReportId());
+                item.setSrvDate(report.getBeginTime());
+                item.setSrvRegioncode(region.getRegionCode());
+                item.setSrvRegionname(region.getRegionName());
                 if (insert) {
-                    smallruminantsvaccineMapper.insertSelective(smallruminantsvaccine);
+                    smallruminantsvaccineMapper.insertSelective(item);
                 } else {
-                    smallruminantsvaccineMapper.updateByPrimaryKeySelective(smallruminantsvaccine);
+                    smallruminantsvaccineMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -591,24 +676,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Poultrydensity fill = (Poultrydensity) JSONObject.toBean(jsonObj, Poultrydensity.class);
                 Poultrydensity arg = new Poultrydensity();
                 arg.setPdReportid(report.getReportId());
-                Poultrydensity poultrydensity = poultrydensityMapper.selectOne(arg);
+                List<Poultrydensity> items=poultrydensityMapper.select(arg);
+                Poultrydensity item =new Poultrydensity();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (poultrydensity == null) {
-                    poultrydensity = fill;
-                    poultrydensity.setPdId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setPdId(UUIDUtil.getUUID());
                 } else {
-                    fill.setPdId(poultrydensity.getPdId());
-                    poultrydensity = fill;
+                    fill.setPdId(item.getPdId());
+                    item = fill;
                     insert = false;
                 }
-                poultrydensity.setPdReportid(report.getReportId());
-                poultrydensity.setPdDate(report.getBeginTime());
-                poultrydensity.setPdRegioncode(region.getRegionCode());
-                poultrydensity.setPdRegionname(region.getRegionName());
+                item.setPdReportid(report.getReportId());
+                item.setPdDate(report.getBeginTime());
+                item.setPdRegioncode(region.getRegionCode());
+                item.setPdRegionname(region.getRegionName());
                 if (insert) {
-                    poultrydensityMapper.insertSelective(poultrydensity);
+                    poultrydensityMapper.insertSelective(item);
                 } else {
-                    poultrydensityMapper.updateByPrimaryKeySelective(poultrydensity);
+                    poultrydensityMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -616,24 +707,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Newcastlevaccine fill = (Newcastlevaccine) JSONObject.toBean(jsonObj, Newcastlevaccine.class);
                 Newcastlevaccine arg = new Newcastlevaccine();
                 arg.setNvReportid(report.getReportId());
-                Newcastlevaccine newcastlevaccine = newcastlevaccineMapper.selectOne(arg);
+                List<Newcastlevaccine> items=newcastlevaccineMapper.select(arg);
+                Newcastlevaccine item =new Newcastlevaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (newcastlevaccine == null) {
-                    newcastlevaccine = fill;
-                    newcastlevaccine.setNvId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setNvId(UUIDUtil.getUUID());
                 } else {
-                    fill.setNvId(newcastlevaccine.getNvId());
-                    newcastlevaccine = fill;
+                    fill.setNvId(item.getNvId());
+                    item = fill;
                     insert = false;
                 }
-                newcastlevaccine.setNvReportid(report.getReportId());
-                newcastlevaccine.setNvDate(report.getBeginTime());
-                newcastlevaccine.setNvRegioncode(region.getRegionCode());
-                newcastlevaccine.setNvRegionname(region.getRegionName());
+                item.setNvReportid(report.getReportId());
+                item.setNvDate(report.getBeginTime());
+                item.setNvRegioncode(region.getRegionCode());
+                item.setNvRegionname(region.getRegionName());
                 if (insert) {
-                    newcastlevaccineMapper.insertSelective(newcastlevaccine);
+                    newcastlevaccineMapper.insertSelective(item);
                 } else {
-                    newcastlevaccineMapper.updateByPrimaryKeySelective(newcastlevaccine);
+                    newcastlevaccineMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -641,24 +738,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Livestockdensity fill = (Livestockdensity) JSONObject.toBean(jsonObj, Livestockdensity.class);
                 Livestockdensity arg = new Livestockdensity();
                 arg.setLdReportid(report.getReportId());
-                Livestockdensity livestockdensity = livestockdensityMapper.selectOne(arg);
+                List<Livestockdensity> items=livestockdensityMapper.select(arg);
+                Livestockdensity item =new Livestockdensity();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (livestockdensity == null) {
-                    livestockdensity = fill;
-                    livestockdensity.setLdId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setLdId(UUIDUtil.getUUID());
                 } else {
-                    fill.setLdId(livestockdensity.getLdId());
-                    livestockdensity = fill;
+                    fill.setLdId(item.getLdId());
+                    item = fill;
                     insert = false;
                 }
-                livestockdensity.setLdReportid(report.getReportId());
-                livestockdensity.setLdDate(report.getBeginTime());
-                livestockdensity.setLdRegioncode(region.getRegionCode());
-                livestockdensity.setLdRegionname(region.getRegionName());
+                item.setLdReportid(report.getReportId());
+                item.setLdDate(report.getBeginTime());
+                item.setLdRegioncode(region.getRegionCode());
+                item.setLdRegionname(region.getRegionName());
                 if (insert) {
-                    livestockdensityMapper.insertSelective(livestockdensity);
+                    livestockdensityMapper.insertSelective(item);
                 } else {
-                    livestockdensityMapper.updateByPrimaryKeySelective(livestockdensity);
+                    livestockdensityMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -666,24 +769,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Kingfisher fill = (Kingfisher) JSONObject.toBean(jsonObj, Kingfisher.class);
                 Kingfisher arg = new Kingfisher();
                 arg.setKfReportid(report.getReportId());
-                Kingfisher kingfisher = kingfisherMapper.selectOne(arg);
+                List<Kingfisher> items=kingfisherMapper.select(arg);
+                Kingfisher item =new Kingfisher();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (kingfisher == null) {
-                    kingfisher = fill;
-                    kingfisher.setKfId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setKfId(UUIDUtil.getUUID());
                 } else {
-                    fill.setKfId(kingfisher.getKfId());
-                    kingfisher = fill;
+                    fill.setKfId(item.getKfId());
+                    item = fill;
                     insert = false;
                 }
-                kingfisher.setKfReportid(report.getReportId());
-                kingfisher.setKfDate(report.getBeginTime());
-                kingfisher.setKfRegioncode(region.getRegionCode());
-                kingfisher.setKfRegionname(region.getRegionName());
+                item.setKfReportid(report.getReportId());
+                item.setKfDate(report.getBeginTime());
+                item.setKfRegioncode(region.getRegionCode());
+                item.setKfRegionname(region.getRegionName());
                 if (insert) {
-                    kingfisherMapper.insertSelective(kingfisher);
+                    kingfisherMapper.insertSelective(item);
                 } else {
-                    kingfisherMapper.updateByPrimaryKeySelective(kingfisher);
+                    kingfisherMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -691,24 +800,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Classicalswinefevervaccine fill = (Classicalswinefevervaccine) JSONObject.toBean(jsonObj, Classicalswinefevervaccine.class);
                 Classicalswinefevervaccine arg = new Classicalswinefevervaccine();
                 arg.setCvReportid(report.getReportId());
-                Classicalswinefevervaccine classicalswinefevervaccine = classicalswinefevervaccineMapper.selectOne(arg);
+                List<Classicalswinefevervaccine> items=classicalswinefevervaccineMapper.select(arg);
+                Classicalswinefevervaccine item =new Classicalswinefevervaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (classicalswinefevervaccine == null) {
-                    classicalswinefevervaccine = fill;
-                    classicalswinefevervaccine.setCvId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setCvId(UUIDUtil.getUUID());
                 } else {
-                    fill.setCvId(classicalswinefevervaccine.getCvId());
-                    classicalswinefevervaccine = fill;
+                    fill.setCvId(item.getCvId());
+                    item = fill;
                     insert = false;
                 }
-                classicalswinefevervaccine.setCvReportid(report.getReportId());
-                classicalswinefevervaccine.setCvDate(report.getBeginTime());
-                classicalswinefevervaccine.setCvRegioncode(region.getRegionCode());
-                classicalswinefevervaccine.setCvRegionname(region.getRegionName());
+                item.setCvReportid(report.getReportId());
+                item.setCvDate(report.getBeginTime());
+                item.setCvRegioncode(region.getRegionCode());
+                item.setCvRegionname(region.getRegionName());
                 if (insert) {
-                    classicalswinefevervaccineMapper.insertSelective(classicalswinefevervaccine);
+                    classicalswinefevervaccineMapper.insertSelective(item);
                 } else {
-                    classicalswinefevervaccineMapper.updateByPrimaryKeySelective(classicalswinefevervaccine);
+                    classicalswinefevervaccineMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -716,24 +831,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Footandmouthvaccine fill = (Footandmouthvaccine) JSONObject.toBean(jsonObj, Footandmouthvaccine.class);
                 Footandmouthvaccine arg = new Footandmouthvaccine();
                 arg.setFvReportid(report.getReportId());
-                Footandmouthvaccine footandmouthvaccine = footandmouthvaccineMapper.selectOne(arg);
+                List<Footandmouthvaccine> items=footandmouthvaccineMapper.select(arg);
+                Footandmouthvaccine item =new Footandmouthvaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (footandmouthvaccine == null) {
-                    footandmouthvaccine = fill;
-                    footandmouthvaccine.setFvId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setFvId(UUIDUtil.getUUID());
                 } else {
-                    fill.setFvId(footandmouthvaccine.getFvId());
-                    footandmouthvaccine = fill;
+                    fill.setFvId(item.getFvId());
+                    item = fill;
                     insert = false;
                 }
-                footandmouthvaccine.setFvReportid(report.getReportId());
-                footandmouthvaccine.setFvDate(report.getBeginTime());
-                footandmouthvaccine.setFvRegioncode(region.getRegionCode());
-                footandmouthvaccine.setFvRegionname(region.getRegionName());
+                item.setFvReportid(report.getReportId());
+                item.setFvDate(report.getBeginTime());
+                item.setFvRegioncode(region.getRegionCode());
+                item.setFvRegionname(region.getRegionName());
                 if (insert) {
-                    footandmouthvaccineMapper.insertSelective(footandmouthvaccine);
+                    footandmouthvaccineMapper.insertSelective(item);
                 } else {
-                    footandmouthvaccineMapper.updateByPrimaryKeySelective(footandmouthvaccine);
+                    footandmouthvaccineMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -741,24 +862,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Bluevaccine fill = (Bluevaccine) JSONObject.toBean(jsonObj, Bluevaccine.class);
                 Bluevaccine arg = new Bluevaccine();
                 arg.setBvReportid(report.getReportId());
-                Bluevaccine bluevaccine = bluevaccineMapper.selectOne(arg);
+                List<Bluevaccine> items=bluevaccineMapper.select(arg);
+                Bluevaccine item =new Bluevaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (bluevaccine == null) {
-                    bluevaccine = fill;
-                    bluevaccine.setBvId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setBvId(UUIDUtil.getUUID());
                 } else {
-                    fill.setBvId(bluevaccine.getBvId());
-                    bluevaccine = fill;
+                    fill.setBvId(item.getBvId());
+                    item = fill;
                     insert = false;
                 }
-                bluevaccine.setBvReportid(report.getReportId());
-                bluevaccine.setBvDate(report.getBeginTime());
-                bluevaccine.setBvRegioncode(region.getRegionCode());
-                bluevaccine.setBvRegionname(region.getRegionName());
+                item.setBvReportid(report.getReportId());
+                item.setBvDate(report.getBeginTime());
+                item.setBvRegioncode(region.getRegionCode());
+                item.setBvRegionname(region.getRegionName());
                 if (insert) {
-                    bluevaccineMapper.insertSelective(bluevaccine);
+                    bluevaccineMapper.insertSelective(item);
                 } else {
-                    bluevaccineMapper.updateByPrimaryKeySelective(bluevaccine);
+                    bluevaccineMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -766,24 +893,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Avianinfluenzavaccine fill = (Avianinfluenzavaccine) JSONObject.toBean(jsonObj, Avianinfluenzavaccine.class);
                 Avianinfluenzavaccine arg = new Avianinfluenzavaccine();
                 arg.setAvReportid(report.getReportId());
-                Avianinfluenzavaccine avianinfluenzavaccine = avianinfluenzavaccineMapper.selectOne(arg);
+                List<Avianinfluenzavaccine> items=avianinfluenzavaccineMapper.select(arg);
+                Avianinfluenzavaccine item =new Avianinfluenzavaccine();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (avianinfluenzavaccine == null) {
-                    avianinfluenzavaccine = fill;
-                    avianinfluenzavaccine.setAvId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setAvId(UUIDUtil.getUUID());
                 } else {
-                    fill.setAvId(avianinfluenzavaccine.getAvId());
-                    avianinfluenzavaccine = fill;
+                    fill.setAvId(item.getAvId());
+                    item = fill;
                     insert = false;
                 }
-                avianinfluenzavaccine.setAvReportid(report.getReportId());
-                avianinfluenzavaccine.setAvDate(report.getBeginTime());
-                avianinfluenzavaccine.setAvRegioncode(region.getRegionCode());
-                avianinfluenzavaccine.setAvRegionname(region.getRegionName());
+                item.setAvReportid(report.getReportId());
+                item.setAvDate(report.getBeginTime());
+                item.setAvRegioncode(region.getRegionCode());
+                item.setAvRegionname(region.getRegionName());
                 if (insert) {
-                    avianinfluenzavaccineMapper.insertSelective(avianinfluenzavaccine);
+                    avianinfluenzavaccineMapper.insertSelective(item);
                 } else {
-                    avianinfluenzavaccineMapper.updateByPrimaryKeySelective(avianinfluenzavaccine);
+                    avianinfluenzavaccineMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -791,24 +924,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Wpestedespetitsruminants fill = (Wpestedespetitsruminants) JSONObject.toBean(jsonObj, Wpestedespetitsruminants.class);
                 Wpestedespetitsruminants arg = new Wpestedespetitsruminants();
                 arg.setWpdrReportid(report.getReportId());
-                Wpestedespetitsruminants wpestedespetitsruminants = wpestedespetitsruminantsMapper.selectOne(arg);
+                List<Wpestedespetitsruminants> items=wpestedespetitsruminantsMapper.select(arg);
+                Wpestedespetitsruminants item =new Wpestedespetitsruminants();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (wpestedespetitsruminants == null) {
-                    wpestedespetitsruminants = fill;
-                    wpestedespetitsruminants.setWpdrId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setWpdrId(UUIDUtil.getUUID());
                 } else {
-                    fill.setWpdrId(wpestedespetitsruminants.getWpdrId());
-                    wpestedespetitsruminants = fill;
+                    fill.setWpdrId(item.getWpdrId());
+                    item = fill;
                     insert = false;
                 }
-                wpestedespetitsruminants.setWpdrReportid(report.getReportId());
-                wpestedespetitsruminants.setWpdrDate(report.getBeginTime());
-                wpestedespetitsruminants.setWpdrRegioncode(region.getRegionCode());
-                wpestedespetitsruminants.setWpdrRegionname(region.getRegionName());
+                item.setWpdrReportid(report.getReportId());
+                item.setWpdrDate(report.getBeginTime());
+                item.setWpdrRegioncode(region.getRegionCode());
+                item.setWpdrRegionname(region.getRegionName());
                 if (insert) {
-                    wpestedespetitsruminantsMapper.insertSelective(wpestedespetitsruminants);
+                    wpestedespetitsruminantsMapper.insertSelective(item);
                 } else {
-                    wpestedespetitsruminantsMapper.updateByPrimaryKeySelective(wpestedespetitsruminants);
+                    wpestedespetitsruminantsMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -816,24 +955,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Wavianinfluenza fill = (Wavianinfluenza) JSONObject.toBean(jsonObj, Wavianinfluenza.class);
                 Wavianinfluenza arg = new Wavianinfluenza();
                 arg.setAiReportid(report.getReportId());
-                Wavianinfluenza wavianinfluenza = wavianinfluenzaMapper.selectOne(arg);
+                List<Wavianinfluenza> items=wavianinfluenzaMapper.select(arg);
+                Wavianinfluenza item =new Wavianinfluenza();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (wavianinfluenza == null) {
-                    wavianinfluenza = fill;
-                    wavianinfluenza.setAiId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setAiId(UUIDUtil.getUUID());
                 } else {
-                    fill.setAiId(wavianinfluenza.getAiId());
-                    wavianinfluenza = fill;
+                    fill.setAiId(item.getAiId());
+                    item = fill;
                     insert = false;
                 }
-                wavianinfluenza.setAiReportid(report.getReportId());
-                wavianinfluenza.setAiDate(report.getBeginTime());
-                wavianinfluenza.setAiRegioncode(region.getRegionCode());
-                wavianinfluenza.setAiRegionname(region.getRegionName());
+                item.setAiReportid(report.getReportId());
+                item.setAiDate(report.getBeginTime());
+                item.setAiRegioncode(region.getRegionCode());
+                item.setAiRegionname(region.getRegionName());
                 if (insert) {
-                    wavianinfluenzaMapper.insertSelective(wavianinfluenza);
+                    wavianinfluenzaMapper.insertSelective(item);
                 } else {
-                    wavianinfluenzaMapper.updateByPrimaryKeySelective(wavianinfluenza);
+                    wavianinfluenzaMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -841,24 +986,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Wnewcastle fill = (Wnewcastle) JSONObject.toBean(jsonObj, Wnewcastle.class);
                 Wnewcastle arg = new Wnewcastle();
                 arg.setNcReportid(report.getReportId());
-                Wnewcastle wnewcastle = wnewcastleMapper.selectOne(arg);
+                List<Wnewcastle> items=wnewcastleMapper.select(arg);
+                Wnewcastle item =new Wnewcastle();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (wnewcastle == null) {
-                    wnewcastle = fill;
-                    wnewcastle.setNcId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setNcId(UUIDUtil.getUUID());
                 } else {
-                    fill.setNcId(wnewcastle.getNcId());
-                    wnewcastle = fill;
+                    fill.setNcId(item.getNcId());
+                    item = fill;
                     insert = false;
                 }
-                wnewcastle.setNcReportid(report.getReportId());
-                wnewcastle.setNcDate(report.getBeginTime());
-                wnewcastle.setNcRegioncode(region.getRegionCode());
-                wnewcastle.setNcRegionname(region.getRegionName());
+                item.setNcReportid(report.getReportId());
+                item.setNcDate(report.getBeginTime());
+                item.setNcRegioncode(region.getRegionCode());
+                item.setNcRegionname(region.getRegionName());
                 if (insert) {
-                    wnewcastleMapper.insertSelective(wnewcastle);
+                    wnewcastleMapper.insertSelective(item);
                 } else {
-                    wnewcastleMapper.updateByPrimaryKeySelective(wnewcastle);
+                    wnewcastleMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -866,24 +1017,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Wclassicalswinefever fill = (Wclassicalswinefever) JSONObject.toBean(jsonObj, Wclassicalswinefever.class);
                 Wclassicalswinefever arg = new Wclassicalswinefever();
                 arg.setCsfReportid(report.getReportId());
-                Wclassicalswinefever wclassicalswinefever = wclassicalswinefeverMapper.selectOne(arg);
+                List<Wclassicalswinefever> items=wclassicalswinefeverMapper.select(arg);
+                Wclassicalswinefever item =new Wclassicalswinefever();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (wclassicalswinefever == null) {
-                    wclassicalswinefever = fill;
-                    wclassicalswinefever.setCsfId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setCsfId(UUIDUtil.getUUID());
                 } else {
-                    fill.setCsfId(wclassicalswinefever.getCsfId());
-                    wclassicalswinefever = fill;
+                    fill.setCsfId(item.getCsfId());
+                    item = fill;
                     insert = false;
                 }
-                wclassicalswinefever.setCsfReportid(report.getReportId());
-                wclassicalswinefever.setCsfDate(report.getBeginTime());
-                wclassicalswinefever.setCsfRegioncode(region.getRegionCode());
-                wclassicalswinefever.setCsfRegionname(region.getRegionName());
+                item.setCsfReportid(report.getReportId());
+                item.setCsfDate(report.getBeginTime());
+                item.setCsfRegioncode(region.getRegionCode());
+                item.setCsfRegionname(region.getRegionName());
                 if (insert) {
-                    wclassicalswinefeverMapper.insertSelective(wclassicalswinefever);
+                    wclassicalswinefeverMapper.insertSelective(item);
                 } else {
-                    wclassicalswinefeverMapper.updateByPrimaryKeySelective(wclassicalswinefever);
+                    wclassicalswinefeverMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -891,24 +1048,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Wblueeardisease fill = (Wblueeardisease) JSONObject.toBean(jsonObj, Wblueeardisease.class);
                 Wblueeardisease arg = new Wblueeardisease();
                 arg.setBedReportid(report.getReportId());
-                Wblueeardisease wblueeardisease = wblueeardiseaseMapper.selectOne(arg);
+                List<Wblueeardisease> items=wblueeardiseaseMapper.select(arg);
+                Wblueeardisease item =new Wblueeardisease();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (wblueeardisease == null) {
-                    wblueeardisease = fill;
-                    wblueeardisease.setBedId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setBedId(UUIDUtil.getUUID());
                 } else {
-                    fill.setBedId(wblueeardisease.getBedId());
-                    wblueeardisease = fill;
+                    fill.setBedId(item.getBedId());
+                    item = fill;
                     insert = false;
                 }
-                wblueeardisease.setBedReportid(report.getReportId());
-                wblueeardisease.setBedDate(report.getBeginTime());
-                wblueeardisease.setBedRegioncode(region.getRegionCode());
-                wblueeardisease.setBedRegionname(region.getRegionName());
+                item.setBedReportid(report.getReportId());
+                item.setBedDate(report.getBeginTime());
+                item.setBedRegioncode(region.getRegionCode());
+                item.setBedRegionname(region.getRegionName());
                 if (insert) {
-                    wblueeardiseaseMapper.insertSelective(wblueeardisease);
+                    wblueeardiseaseMapper.insertSelective(item);
                 } else {
-                    wblueeardiseaseMapper.updateByPrimaryKeySelective(wblueeardisease);
+                    wblueeardiseaseMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -916,24 +1079,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Vaccineorder fill = (Vaccineorder) JSONObject.toBean(jsonObj, Vaccineorder.class);
                 Vaccineorder arg = new Vaccineorder();
                 arg.setReportid(report.getReportId());
-                Vaccineorder vaccineorder = vaccineorderMapper.selectOne(arg);
+                List<Vaccineorder> items=vaccineorderMapper.select(arg);
+                Vaccineorder item =new Vaccineorder();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (vaccineorder == null) {
-                    vaccineorder = fill;
-                    vaccineorder.setVaccineorderid(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setVaccineorderid(UUIDUtil.getUUID());
                 } else {
-                    fill.setVaccineorderid(vaccineorder.getVaccineorderid());
-                    vaccineorder = fill;
+                    fill.setVaccineorderid(item.getVaccineorderid());
+                    item = fill;
                     insert = false;
                 }
-                vaccineorder.setReportid(report.getReportId());
-                vaccineorder.setDate(report.getBeginTime());
-                vaccineorder.setRegioncode(region.getRegionCode());
-                vaccineorder.setRegionname(region.getRegionName());
+                item.setReportid(report.getReportId());
+                item.setDate(report.getBeginTime());
+                item.setRegioncode(region.getRegionCode());
+                item.setRegionname(region.getRegionName());
                 if (insert) {
-                    vaccineorderMapper.insertSelective(vaccineorder);
+                    vaccineorderMapper.insertSelective(item);
                 } else {
-                    vaccineorderMapper.updateByPrimaryKeySelective(vaccineorder);
+                    vaccineorderMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -941,24 +1110,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Blueeardisease fill = (Blueeardisease) JSONObject.toBean(jsonObj, Blueeardisease.class);
                 Blueeardisease arg = new Blueeardisease();
                 arg.setBedReportid(report.getReportId());
-                Blueeardisease blueeardisease =blueeardiseaseMapper.selectOne(arg);
+                List<Blueeardisease> items=blueeardiseaseMapper.select(arg);
+                Blueeardisease item =new Blueeardisease();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (blueeardisease == null) {
-                    blueeardisease = fill;
-                    blueeardisease.setBedId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setBedId(UUIDUtil.getUUID());
                 } else {
-                    fill.setBedId(blueeardisease.getBedId());
-                    blueeardisease = fill;
+                    fill.setBedId(item.getBedId());
+                    item = fill;
                     insert = false;
                 }
-                blueeardisease.setBedReportid(report.getReportId());
-                blueeardisease.setBedDate(report.getBeginTime());
-                blueeardisease.setBedRegioncode(region.getRegionCode());
-                blueeardisease.setBedRegionname(region.getRegionName());
+                item.setBedReportid(report.getReportId());
+                item.setBedDate(report.getBeginTime());
+                item.setBedRegioncode(region.getRegionCode());
+                item.setBedRegionname(region.getRegionName());
                 if (insert) {
-                    blueeardiseaseMapper.insertSelective(blueeardisease);
+                    blueeardiseaseMapper.insertSelective(item);
                 } else {
-                    blueeardiseaseMapper.updateByPrimaryKeySelective(blueeardisease);
+                    blueeardiseaseMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -966,24 +1141,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Classicalswinefever fill = (Classicalswinefever) JSONObject.toBean(jsonObj, Classicalswinefever.class);
                 Classicalswinefever arg = new Classicalswinefever();
                 arg.setCsfReportid(report.getReportId());
-                Classicalswinefever classicalswinefever =classicalswinefeverMapper.selectOne(arg);
+                List<Classicalswinefever> items=classicalswinefeverMapper.select(arg);
+                Classicalswinefever item =new Classicalswinefever();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (classicalswinefever == null) {
-                    classicalswinefever = fill;
-                    classicalswinefever.setCsfId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setCsfId(UUIDUtil.getUUID());
                 } else {
-                    fill.setCsfId(classicalswinefever.getCsfId());
-                    classicalswinefever = fill;
+                    fill.setCsfId(item.getCsfId());
+                    item = fill;
                     insert = false;
                 }
-                classicalswinefever.setCsfReportid(report.getReportId());
-                classicalswinefever.setCsfDate(report.getBeginTime());
-                classicalswinefever.setCsfRegioncode(region.getRegionCode());
-                classicalswinefever.setCsfRegionname(region.getRegionName());
+                item.setCsfReportid(report.getReportId());
+                item.setCsfDate(report.getBeginTime());
+                item.setCsfRegioncode(region.getRegionCode());
+                item.setCsfRegionname(region.getRegionName());
                 if (insert) {
-                    classicalswinefeverMapper.insertSelective(classicalswinefever);
+                    classicalswinefeverMapper.insertSelective(item);
                 } else {
-                    classicalswinefeverMapper.updateByPrimaryKeySelective(classicalswinefever);
+                    classicalswinefeverMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -991,24 +1172,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Footandmouthdisease fill = (Footandmouthdisease) JSONObject.toBean(jsonObj, Footandmouthdisease.class);
                 Footandmouthdisease arg = new Footandmouthdisease();
                 arg.setFmdReportid(report.getReportId());
-                Footandmouthdisease footandmouthdisease =footandmouthdiseaseMapper.selectOne(arg);
+                List<Footandmouthdisease> items=footandmouthdiseaseMapper.select(arg);
+                Footandmouthdisease item =new Footandmouthdisease();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (footandmouthdisease == null) {
-                    footandmouthdisease = fill;
-                    footandmouthdisease.setFmdId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setFmdId(UUIDUtil.getUUID());
                 } else {
-                    fill.setFmdId(footandmouthdisease.getFmdId());
-                    footandmouthdisease = fill;
+                    fill.setFmdId(item.getFmdId());
+                    item = fill;
                     insert = false;
                 }
-                footandmouthdisease.setFmdReportid(report.getReportId());
-                footandmouthdisease.setFmdDate(report.getBeginTime());
-                footandmouthdisease.setFmdRegioncode(region.getRegionCode());
-                footandmouthdisease.setFmdRegionname(region.getRegionName());
+                item.setFmdReportid(report.getReportId());
+                item.setFmdDate(report.getBeginTime());
+                item.setFmdRegioncode(region.getRegionCode());
+                item.setFmdRegionname(region.getRegionName());
                 if (insert) {
-                    footandmouthdiseaseMapper.insertSelective(footandmouthdisease);
+                    footandmouthdiseaseMapper.insertSelective(item);
                 } else {
-                    footandmouthdiseaseMapper.updateByPrimaryKeySelective(footandmouthdisease);
+                    footandmouthdiseaseMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -1016,24 +1203,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Newcastle fill = (Newcastle) JSONObject.toBean(jsonObj, Newcastle.class);
                 Newcastle arg = new Newcastle();
                 arg.setNcReportid(report.getReportId());
-                Newcastle newcastle =newcastleMapper.selectOne(arg);
+                List<Newcastle> items=newcastleMapper.select(arg);
+                Newcastle item =new Newcastle();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (newcastle == null) {
-                    newcastle = fill;
-                    newcastle.setNcId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setNcId(UUIDUtil.getUUID());
                 } else {
-                    fill.setNcId(newcastle.getNcId());
-                    newcastle = fill;
+                    fill.setNcId(item.getNcId());
+                    item = fill;
                     insert = false;
                 }
-                newcastle.setNcReportid(report.getReportId());
-                newcastle.setNcDate(report.getBeginTime());
-                newcastle.setNcRegioncode(region.getRegionCode());
-                newcastle.setNcRegionname(region.getRegionName());
+                item.setNcReportid(report.getReportId());
+                item.setNcDate(report.getBeginTime());
+                item.setNcRegioncode(region.getRegionCode());
+                item.setNcRegionname(region.getRegionName());
                 if (insert) {
-                    newcastleMapper.insertSelective(newcastle);
+                    newcastleMapper.insertSelective(item);
                 } else {
-                    newcastleMapper.updateByPrimaryKeySelective(newcastle);
+                    newcastleMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -1041,24 +1234,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Pestedespetitsruminants fill = (Pestedespetitsruminants) JSONObject.toBean(jsonObj, Pestedespetitsruminants.class);
                 Pestedespetitsruminants arg = new Pestedespetitsruminants();
                 arg.setPdprReportid(report.getReportId());
-                Pestedespetitsruminants pestedespetitsruminants =pestedespetitsruminantsMapper.selectOne(arg);
+                List<Pestedespetitsruminants> items=pestedespetitsruminantsMapper.select(arg);
+                Pestedespetitsruminants item =new Pestedespetitsruminants();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (pestedespetitsruminants == null) {
-                    pestedespetitsruminants = fill;
-                    pestedespetitsruminants.setPdprId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setPdprId(UUIDUtil.getUUID());
                 } else {
-                    fill.setPdprId(pestedespetitsruminants.getPdprId());
-                    pestedespetitsruminants = fill;
+                    fill.setPdprId(item.getPdprId());
+                    item = fill;
                     insert = false;
                 }
-                pestedespetitsruminants.setPdprReportid(report.getReportId());
-                pestedespetitsruminants.setPdprDate(report.getBeginTime());
-                pestedespetitsruminants.setPdprRegioncode(region.getRegionCode());
-                pestedespetitsruminants.setPdprRegionname(region.getRegionName());
+                item.setPdprReportid(report.getReportId());
+                item.setPdprDate(report.getBeginTime());
+                item.setPdprRegioncode(region.getRegionCode());
+                item.setPdprRegionname(region.getRegionName());
                 if (insert) {
-                    pestedespetitsruminantsMapper.insertSelective(pestedespetitsruminants);
+                    pestedespetitsruminantsMapper.insertSelective(item);
                 } else {
-                    pestedespetitsruminantsMapper.updateByPrimaryKeySelective(pestedespetitsruminants);
+                    pestedespetitsruminantsMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -1089,24 +1288,30 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Disinfectiondrugs fill = (Disinfectiondrugs) JSONObject.toBean(jsonObj, Disinfectiondrugs.class);
                 Disinfectiondrugs arg = new Disinfectiondrugs();
                 arg.setDfReportid(report.getReportId());
-                Disinfectiondrugs disinfectiondrugs = disinfectiondrugsMapper.selectOne(arg);
+                List<Disinfectiondrugs> items=disinfectiondrugsMapper.select(arg);
+                Disinfectiondrugs item =new Disinfectiondrugs();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
-                if (disinfectiondrugs == null) {
-                    disinfectiondrugs = fill;
-                    disinfectiondrugs.setDfId(UUIDUtil.getUUID());
+                if (item == null) {
+                    item = fill;
+                    item.setDfId(UUIDUtil.getUUID());
                 } else {
-                    fill.setDfId(disinfectiondrugs.getDfId());
-                    disinfectiondrugs = fill;
+                    fill.setDfId(item.getDfId());
+                    item = fill;
                     insert = false;
                 }
-                disinfectiondrugs.setDfReportid(report.getReportId());
-                disinfectiondrugs.setDfDate(report.getBeginTime());
-                disinfectiondrugs.setDfRegioncode(region.getRegionCode());
-                disinfectiondrugs.setDfRegionname(region.getRegionName());
+                item.setDfReportid(report.getReportId());
+                item.setDfDate(report.getBeginTime());
+                item.setDfRegioncode(region.getRegionCode());
+                item.setDfRegionname(region.getRegionName());
                 if (insert) {
-                    disinfectiondrugsMapper.insertSelective(disinfectiondrugs);
+                    disinfectiondrugsMapper.insertSelective(item);
                 } else {
-                    disinfectiondrugsMapper.updateByPrimaryKeySelective(disinfectiondrugs);
+                    disinfectiondrugsMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
@@ -1115,7 +1320,13 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                         .toBean(jsonObj, Wfootandmouthdisease.class);
                 Wfootandmouthdisease arg = new Wfootandmouthdisease();
                 arg.setFmdReportid(report.getReportId());
-                Wfootandmouthdisease item = wfootandmouthdiseaseMapper.selectOne(arg);
+                List<Wfootandmouthdisease> items=wfootandmouthdiseaseMapper.select(arg);
+                Wfootandmouthdisease item =new Wfootandmouthdisease();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
                 if (item == null) {
                     item = fill;
@@ -1140,7 +1351,13 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Wlivestockinout fill = (Wlivestockinout) JSONObject.toBean(jsonObj, Wlivestockinout.class);
                 Wlivestockinout arg = new Wlivestockinout();
                 arg.setReportid(report.getReportId());
-                Wlivestockinout item = wlivestockinoutMapper.selectOne(arg);
+                List<Wlivestockinout> items=wlivestockinoutMapper.select(arg);
+                Wlivestockinout item =new Wlivestockinout();
+                if(items.size()>0) {
+                    item = items.get(0);
+                }else{
+                    item=null;
+                }
                 boolean insert = true;
                 if (item == null) {
                     item = fill;
