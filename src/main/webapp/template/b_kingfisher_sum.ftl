@@ -113,7 +113,7 @@
 			</tr>
 			<#list items as item>
 			<tr class="r5">
-				<td n="kfRegionname" class="c2"><#if item.kfRegionname??>${item.kfRegionname?c}</#if></td>
+				<td n="kfRegionname" class="c2"><#if item.kfRegionname??>${item.kfRegionname}</#if></td>
 				
 				<td n="kfFmkingfisher"  class="c2"><#if item.kfFmkingfisher??>${item.kfFmkingfisher?c}</#if></td>
 				<td n="kfAikingfisher"  class="c2"><#if item.kfAikingfisher??>${item.kfAikingfisher?c}</#if></td>

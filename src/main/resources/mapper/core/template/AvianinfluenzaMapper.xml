@@ -29,4 +29,7 @@
     <result column="ai_jointShouldAmountOther" property="aiJointshouldamountother" jdbcType="DECIMAL" />
     <result column="ai_jointVaccine" property="aiJointvaccine" jdbcType="DECIMAL" />
   </resultMap>
+  <select id="selectCumulative" resultMap="BaseResultMap">
+    select * from animal_disease.b_avianinfluenza  where ai_date BETWEEN  #{startDate} AND #{endDate}
+  </select>
 </mapper>

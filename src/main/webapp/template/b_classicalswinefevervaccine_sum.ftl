@@ -93,7 +93,7 @@
 			</tr>
 			<#list items as item>
 			<tr class="r5">
-				<td n="cvregionname" class="c2"><#if item.cvregionname??>${item.cvregionname?c}</#if></td>
+				<td n="cvRegionname" class="c2"><#if item.cvRegionname??>${item.cvRegionname}</#if></td>
 				<td n="cvLivingusecount"  class="c2"><#if item.cvLivingusecount??>${item.cvLivingusecount?c}</#if></td>
 				<td n="cvCellusercount"  class="c2"><#if item.cvCellusercount??>${item.cvCellusercount?c}</#if></td>
 				<td n="cvLivingstorecount"  class="c2"><#if item.cvLivingstorecount??>${item.cvLivingstorecount?c}</#if></td>

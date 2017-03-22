@@ -66,4 +66,17 @@ public class BeginTimeUtil {
         }
         return list;
     }
+    public static Date getCurrentHalfYearBeginTime(Date beginTime) {
+//        Date beginTime = DateUtil.getCurrentMonthFirstDay();
+        int year = DateUtil.getYear(beginTime);
+        int month = DateUtil.getMonth(beginTime) + 1;
+        if (month >= 3 && month < 9) {
+            month = 3;
+        } else {
+            month = 9;
+        }
+        String beginTimeStr = year + "-" + month + "-01";
+        beginTime = DateUtil.StringToDate(beginTimeStr, DateStyle.YYYY_MM_DD);
+        return beginTime;
+    }
 }

@@ -17,4 +17,7 @@
     <result column="bed_weakImmuneAmount" property="bedWeakimmuneamount" jdbcType="DECIMAL" />
     <result column="bed_weakShouldAmount" property="bedWeakshouldamount" jdbcType="DECIMAL" />
   </resultMap>
+  <select id="selectCumulative" resultMap="BaseResultMap">
+    select * from animal_disease.b_blueeardisease  where bed_date BETWEEN  #{startDate} AND #{endDate}
+  </select>
 </mapper>

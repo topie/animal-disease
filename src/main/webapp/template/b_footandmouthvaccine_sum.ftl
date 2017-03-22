@@ -116,7 +116,7 @@
 				<td class="c2">口蹄疫A型灭活疫苗（万毫升）</td>
 			</tr>
 			<tr class="r5">
-				<td n="fvRegionname" class="c2"><#if item.fvRegionname??>${item.fvRegionname?c}</#if></td>
+				<td n="fvRegionname" class="c2"><#if item.fvRegionname??>${item.fvRegionname}</#if></td>
 				
 				<td n="fvOinactivatedusecount"  class="c2"><#if item.fvOinactivatedusecount??>${item.fvOinactivatedusecount?c}</#if></td>
 				<td n="fvSyntheticusecount"  class="c2"><#if item.fvSyntheticusecount??>${item.fvSyntheticusecount?c}</#if></td>

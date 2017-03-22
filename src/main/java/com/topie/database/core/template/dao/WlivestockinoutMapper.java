@@ -9,4 +9,5 @@ import java.util.List;
 public interface WlivestockinoutMapper extends Mapper<Wlivestockinout> {
 
     Wlivestockinout selectSumByReportIds(@Param("ids") List<String> reportIds);
+    Wlivestockinout selectLivestockInOutByRegionCode(@Param("regionCode") String regionCode,@Param("beginTime") String beginTime);
 }

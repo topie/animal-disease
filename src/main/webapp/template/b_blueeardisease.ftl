@@ -151,18 +151,12 @@
 				<td class="c2" rowspan="2">本月免疫数量（万头）</td>
 				<td class="c2" rowspan="2">累计免疫数量(万头)</td>
 			</tr>
-			<tr class="r6">
-				<td class="c5">累计使用数量（万毫升/万头份）</td>
-				<td class="c5">累计免疫数量(万头)</td>
-			</tr>
 			<tr class="r7">
 				<td class="c2">高致病性猪蓝耳病灭活疫苗</td>
 				<td role="data" n="bedInactivatedvaccine"  class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine?c}</#if></td>
 				<td role="data" n="" class="c6"></td>
 				<td role="data" n="bedInactivatedimmuneamount" class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount?c}</#if></td>
 				<td role="data" n="" class="c6"></td>
-				<td role="data" n="" class="c7">0</td>
-				<td role="data" n="" class="c7">0</td>
 			</tr>
 			<tr class="r8">
 				<td class="c2">高致病性猪蓝耳病活疫苗</td>
@@ -170,8 +164,6 @@
 				<td role="data" n="" class="c6"></td>
 				<td role="data" n="bedWeakimmuneamount" class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount?c}</#if></td>
 				<td role="data" n="" class="c6"></td>
-				<td role="data" n="" class="c7">0</td>
-				<td role="data" n="" class="c7">0</td>
 			</tr>
 			<tr class="r4">
 				<td class="c2" rowspan="3">填报说明：</td>
@@ -187,44 +179,3 @@
 	</table>
 </body>
 </html>
-<#if report.status!=1>
-<script type="text/javascript">
-    (function ($, window, document, undefined) {
-        $("td[role=data]").each(function (i, d) {
-            var n = $(this).attr("n")
-            $(this).off("click")
-            $(this).on("click", function (e) {
-                $("td[role=data]").each(function (e) {
-                    $(this).attr("current", 0)
-                })
-                $(this).attr("current", 1)
-                $("td[current=0]").find("input").each(function (e) {
-                    var v = $(this).val()
-                    $(this).parent("td").html(v)
-                    calculate()
-                })
-                var oldText = $(this).text()
-                $(this).empty()
-                var input = $('<input style="height: 100%;width:100%;" type="text" name="' + n + '" value="' + oldText + '">')
-                input.on("blur", function (e) {
-                    var v = $(this).val()
-                    $(this).parent("td").html(v)
-                    calculate()
-                })
-                input.on("click", function (e) {
-                    e.stopPropagation()
-                })
-                $(this).append(input);
-                input.focus()
-                e.stopPropagation()
-            })
-        })
-
-        var calculate = function () {
-
-        }
-
-        calculate()
-    })(jQuery, window, document)
-</script>
-</#if>

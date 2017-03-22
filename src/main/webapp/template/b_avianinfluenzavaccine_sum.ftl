@@ -151,7 +151,7 @@
 			</tr>
 			
 			<tr class="r5">
-				<td n="avRegionname"  class="c2"><#if item.avRegionname??>${item.avRegionname?c}</#if></td>
+				<td n="avRegionname"  class="c2"><#if item.avRegionname??>${item.avRegionname}</#if></td>
 				
 				<td n="avH5h9usecount"  class="c2"><#if item.avH5h9usecount??>${item.avH5h9usecount?c}</#if></td>
 				<td n="avH5n1re6usecount"  class="c2"><#if item.avH5n1re6usecount??>${item.avH5n1re6usecount?c}</#if></td>

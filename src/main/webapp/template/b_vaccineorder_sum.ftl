@@ -174,10 +174,10 @@
 			</tr>
 			<#list items as item>
 			<tr class="r5">
-				<td n="regionName"  class="c2"><#if item.regionName??>${item.regionName?c}</#if></td>
+				<td n="regionname"  class="c2"><#if item.regionname??>${item.regionname}</#if></td>
 				
-				<td n="evFmoinactivateddh"  class="c2"><#if item.evFmoinactivateddh??>${item.evFmoinactivateddh?c}</#if></td>
-				<td n="evFmoinactivatedx"  class="c2"><#if item.evFmoinactivatedx??>${item.evFmoinactivatedx?c}</#if></td>
+				<td n="evFmoinactivateddh"  class="c2"><#if item.evFmoinactivateddh??>${item.evFmoinactivateddh?string.number}</#if></td>
+				<td n="evFmoinactivatedx"  class="c2"><#if item.evFmoinactivatedx??>${item.evFmoinactivatedx?string.number}</#if></td>
 				
 				<td n="evFmosyntheticdh"  class="c2"><#if item.evFmosyntheticdh??>${item.evFmosyntheticdh?c}</#if></td>
 				<td n="evFmosyntheticx"  class="c2"><#if item.evFmosyntheticx??>${item.evFmosyntheticx?c}</#if></td>

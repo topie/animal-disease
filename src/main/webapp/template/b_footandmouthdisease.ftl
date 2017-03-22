@@ -206,11 +206,6 @@
 				<td class="c2">牛</td>
 				<td class="c2">羊</td>
 				<td class="c2">其它动物</td>
-				<td class="c6">累计使用数量</td>
-				<td class="c6">累计免疫数量（猪）</td>
-				<td class="c6">累计免疫数量（牛）</td>
-				<td class="c6">累计免疫数量（羊）</td>
-				<td class="c6">累计免疫数量（其他）</td>
 			</tr>
 			<tr class="r5">
 				<td class="c2">口蹄疫o型灭活类疫苗</td>
@@ -224,11 +219,6 @@
 				<td role="data"  n=""  class="c7"></td>
 				<td role="data"  n=""  class="c7"></td>
 				<td role="data"  n=""  class="c7"></td>
-				<td role="data"  n=""  class="c8"></td>
-				<td role="data"  n=""  class="c8"></td>
-				<td role="data"  n=""  class="c8"></td>
-				<td role="data"  n=""  class="c8"></td>
-				<td role="data"  n=""  class="c8"></td>
 			</tr>
 			<tr class="r6">
 				<td class="c2">口蹄疫o型-亚洲i型二价灭活疫苗</td>
@@ -242,11 +232,6 @@
 				<td role="data"  n=""  class="c7"></td>
 				<td role="data"  n=""  class="c7"></td>
 				<td role="data"  n=""  class="c7"></td>
-				<td role="data"  n=""  class="c8"></td>
-				<td role="data" n="" class="c8"></td>
-				<td role="data"  n=""  class="c8"></td>
-				<td role="data"  n=""  class="c8"></td>
-				<td role="data"  n=""  class="c8"></td>
 			</tr>
 			<tr class="r7">
 				<td class="c4">口蹄疫o型-a型-亚洲i型三价灭活疫苗</td>
@@ -259,11 +244,6 @@
 				<td role="data"  n=""  class="c10"></td>
 				<td role="data"  n=""  class="c7"></td>
 				<td role="data"  class="c7"></td>
-				<td role="data"  class="c2"></td>
-				<td role="data"  class="c8"></td>
-				<td role="data"  n="" ></td>
-				<td role="data"  n=""  class="c8"></td>
-				<td role="data"  n=""  class="c8"></td>
 			</tr>
 			<tr class="r8">
 				<td class="c2">口蹄疫a型灭活疫苗</td>
@@ -276,11 +256,6 @@
 				<td role="data" n=""  class="c11"></td>
 				<td role="data" n=""  class="c7"></td>
 				<td role="data" n=""  class="c7"></td>
-				<td role="data" n=""  class="c11"></td>
-				<td role="data" n=""  class="c8"></td>
-				<td role="data" n="" ></td>
-				<td role="data" n=""  class="c8"></td>
-				<td role="data" n=""  class="c8"></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="4">填表说明：</td>

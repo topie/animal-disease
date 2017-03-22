@@ -115,7 +115,7 @@
 			</tr>
 			 <#list items as item>
 			<tr class="r2">
-				<td n="pdRegionname"  class="c2"><#if item.pdRegionname??>${item.pdRegionname?c}</#if></td>
+				<td n="pdRegionname"  class="c2"><#if item.pdRegionname??>${item.pdRegionname}</#if></td>
 				
 				<td n="pdChickenherdscount"  class="c2"><#if item.pdChickenherdscount??>${item.pdChickenherdscount?c}</#if></td>
 				<td n="pdChickenashuldcount"  class="c2"><#if item.pdChickenashuldcount??>${item.pdChickenashuldcount?c}</#if></td>

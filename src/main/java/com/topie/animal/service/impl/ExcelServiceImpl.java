@@ -2,9 +2,12 @@ package com.topie.animal.service.impl;
 
 import com.topie.animal.constant.ReportTypeE;
 import com.topie.animal.service.*;
+import com.topie.animal.util.BeginTimeUtil;
 import com.topie.animal.util.PeriodUtil;
 import com.topie.common.tools.freemarker.FreeMarkerUtil;
 import com.topie.common.utils.UUIDUtil;
+import com.topie.common.utils.date.DateStyle;
+import com.topie.common.utils.date.DateUtil;
 import com.topie.database.core.animal.dao.RegionMapper;
 import com.topie.database.core.animal.dao.WeekConfigMapper;
 import com.topie.database.core.animal.model.*;
@@ -17,6 +20,7 @@ import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -123,9 +127,18 @@ public class ExcelServiceImpl implements IExcelService {
      @Autowired
     private EmergencyvaccineMapper emergencyvaccineMapper;
 
+    private Wlivestockinout getWlivestockinout(Region region,Date date){
+        Date beginTime= BeginTimeUtil.getCurrentHalfYearBeginTime(date);
+        String beginTimeStr= DateUtil.DateToString(beginTime, DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
+        Wlivestockinout wlivestockinout=new Wlivestockinout();
+        wlivestockinout=this.wlivestockinoutMapper.selectLivestockInOutByRegionCode(region.getRegionCode(),beginTimeStr);
+        return wlivestockinout;
+    }
+
     @Override
     public String getReportHtml(HttpServletRequest request, Report report) {
         Map params = new HashMap();
+
         UserInfo userInfo = iUserInfoService.selectByKey(report.getReportUserId());
         params.put("user", userInfo);
         Template template = iTemplateService.selectByKey(report.getTemplateId());
@@ -142,6 +155,9 @@ public class ExcelServiceImpl implements IExcelService {
         OrgInfo orgInfo = iOrgInfoService.selectByKey(userInfo.getOrgId());
         params.put("org", orgInfo);
         params.put("report", report);
+        Region region = regionMapper.selectByPrimaryKey(orgInfo.getRegionCode());
+        Wlivestockinout wlivestockinout=getWlivestockinout(region,report.getBeginTime());
+        params.put("wlivestockinout", wlivestockinout);
         switch (template.getTableName().toLowerCase()) {
             case "b_avianinfluenza": {
                 Avianinfluenza arg =new Avianinfluenza();
@@ -429,12 +445,14 @@ public class ExcelServiceImpl implements IExcelService {
             default:
                 return null;
         }
+
         String templatePath = request.getSession().getServletContext().getRealPath("/template");
         return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getNormalTemplate(), params);
     }
-private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String reportName,Mapper mapper){
+private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String reportName,Mapper mapper,String orderColumn){
     Map params = new HashMap();
     Example example = new Example(clazz);
+    example.setOrderByClause(orderColumn);
     Example.Criteria criteria = example.createCriteria();
         criteria.andIn(reportName, reportIds);
     List items = mapper.selectByExample(example);
@@ -449,87 +467,87 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
         Map params = new HashMap();
         switch (template.getTableName().toLowerCase()) {
             case "b_avianinfluenza": {
-                params=this.getReportSummaryHtmlUtil(Avianinfluenza.class,reportIds,"aiReportid",avianinfluenzaMapper);
+                params=this.getReportSummaryHtmlUtil(Avianinfluenza.class,reportIds,"aiReportid",avianinfluenzaMapper,"ai_regionCode");
                 break;
             }
             case "b_emergencyvaccine": {
-                params=this.getReportSummaryHtmlUtil(Emergencyvaccine.class,reportIds,"evReportid",emergencyvaccineMapper);
+                params=this.getReportSummaryHtmlUtil(Emergencyvaccine.class,reportIds,"evReportid",emergencyvaccineMapper,"ev_regionCode");
                 break;
             }
             case "b_smallruminantsvaccine": {
-                params=this.getReportSummaryHtmlUtil(Smallruminantsvaccine.class,reportIds,"srvReportid",smallruminantsvaccineMapper);
+                params=this.getReportSummaryHtmlUtil(Smallruminantsvaccine.class,reportIds,"srvReportid",smallruminantsvaccineMapper,"srv_regionCode");
                 break;
             }
             case "b_poultrydensity": {
-                params=this.getReportSummaryHtmlUtil(Poultrydensity.class,reportIds,"pdReportid",poultrydensityMapper);
+                params=this.getReportSummaryHtmlUtil(Poultrydensity.class,reportIds,"pdReportid",poultrydensityMapper,"pd_regionCode");
                 break;
             }
              case "b_newcastlevaccine": {
-                params=this.getReportSummaryHtmlUtil(Newcastlevaccine.class,reportIds,"nvReportid",newcastlevaccineMapper);
+                params=this.getReportSummaryHtmlUtil(Newcastlevaccine.class,reportIds,"nvReportid",newcastlevaccineMapper,"nv_regionCode");
                 break;
             }
              case "b_livestockdensity": {
-                params=this.getReportSummaryHtmlUtil(Livestockdensity.class,reportIds,"ldReportid",livestockdensityMapper);
+                params=this.getReportSummaryHtmlUtil(Livestockdensity.class,reportIds,"ldReportid",livestockdensityMapper,"ld_regionCode");
                 break;
             }
              case "b_kingfisher": {
-                params=this.getReportSummaryHtmlUtil(Kingfisher.class,reportIds,"kfReportid",kingfisherMapper);
+                params=this.getReportSummaryHtmlUtil(Kingfisher.class,reportIds,"kfReportid",kingfisherMapper,"kf_regionCode");
                 break;
             }
             case "b_footandmouthvaccine": {
-                params=this.getReportSummaryHtmlUtil(Footandmouthvaccine.class,reportIds,"fvReportid",footandmouthvaccineMapper);
+                params=this.getReportSummaryHtmlUtil(Footandmouthvaccine.class,reportIds,"fvReportid",footandmouthvaccineMapper,"fv_regionCode");
                 break;
             }
             case "b_classicalswinefevervaccine": {
-                params=this.getReportSummaryHtmlUtil(Classicalswinefevervaccine.class,reportIds,"cvReportid",classicalswinefevervaccineMapper);
+                params=this.getReportSummaryHtmlUtil(Classicalswinefevervaccine.class,reportIds,"cvReportid",classicalswinefevervaccineMapper,"cv_regionCode");
                 break;
             }
             case "b_bluevaccine": {
-                params=this.getReportSummaryHtmlUtil(Bluevaccine.class,reportIds,"bvReportid",bluevaccineMapper);
+                params=this.getReportSummaryHtmlUtil(Bluevaccine.class,reportIds,"bvReportid",bluevaccineMapper,"bv_regionCode");
                 break;
             }
             case "b_avianinfluenzavaccine": {
-                params=this.getReportSummaryHtmlUtil(Avianinfluenzavaccine.class,reportIds,"avReportid",avianinfluenzavaccineMapper);
+                params=this.getReportSummaryHtmlUtil(Avianinfluenzavaccine.class,reportIds,"avReportid",avianinfluenzavaccineMapper,"av_regionCode");
                 break;
             }
             case "b_wpestedespetitsruminants": {
-                params=this.getReportSummaryHtmlUtil(Wpestedespetitsruminants.class,reportIds,"wpdrReportid",wpestedespetitsruminantsMapper);
+                params=this.getReportSummaryHtmlUtil(Wpestedespetitsruminants.class,reportIds,"wpdrReportid",wpestedespetitsruminantsMapper,"wpdr_regionCode");
                 break;
             }
             case "b_wavianinfluenza": {
-                params=this.getReportSummaryHtmlUtil(Wavianinfluenza.class,reportIds,"aiReportid",wavianinfluenzaMapper);
+                params=this.getReportSummaryHtmlUtil(Wavianinfluenza.class,reportIds,"aiReportid",wavianinfluenzaMapper,"ai_regionCode");
                 break;
             }
             case "b_wnewcastle": {
-                params=this.getReportSummaryHtmlUtil(Wnewcastle.class,reportIds,"ncReportid",wnewcastleMapper);
+                params=this.getReportSummaryHtmlUtil(Wnewcastle.class,reportIds,"ncReportid",wnewcastleMapper,"nc_regionCode");
                 break;
             }
             case "b_wclassicalswinefever": {
-                params=this.getReportSummaryHtmlUtil(Wclassicalswinefever.class,reportIds,"csfReportid",wclassicalswinefeverMapper);
+                params=this.getReportSummaryHtmlUtil(Wclassicalswinefever.class,reportIds,"csfReportid",wclassicalswinefeverMapper,"csf_regionCode");
                 break;
             }
             case "b_wblueeardisease": {
-                params=this.getReportSummaryHtmlUtil(Wblueeardisease.class,reportIds,"bedReportid",wblueeardiseaseMapper);
+                params=this.getReportSummaryHtmlUtil(Wblueeardisease.class,reportIds,"bedReportid",wblueeardiseaseMapper,"bed_regionCode");
                 break;
             }
             case "b_vaccineorder": {
-                params=this.getReportSummaryHtmlUtil(Vaccineorder.class,reportIds,"reportid",vaccineorderMapper);
+                params=this.getReportSummaryHtmlUtil(Vaccineorder.class,reportIds,"reportid",vaccineorderMapper,"regionCode");
                 break;
             }
             case "b_blueeardisease": {
-                params=this.getReportSummaryHtmlUtil(Blueeardisease.class,reportIds,"bedReportid",blueeardiseaseMapper);
+                params=this.getReportSummaryHtmlUtil(Blueeardisease.class,reportIds,"bedReportid",blueeardiseaseMapper,"bed_regionCode");
                 break;
             }
             case "b_classicalswinefever": {
-                params=this.getReportSummaryHtmlUtil(Classicalswinefever.class,reportIds,"csfReportid",classicalswinefeverMapper);
+                params=this.getReportSummaryHtmlUtil(Classicalswinefever.class,reportIds,"csfReportid",classicalswinefeverMapper,"csf_regionCode");
                 break;
             }
             case "b_footandmouthdisease": {
-                params=this.getReportSummaryHtmlUtil(Footandmouthdisease.class,reportIds,"fmdReportid",footandmouthdiseaseMapper);
+                params=this.getReportSummaryHtmlUtil(Footandmouthdisease.class,reportIds,"fmdReportid",footandmouthdiseaseMapper,"fmd_regionCode");
                 break;
             }
             case "b_newcastle": {
-                params=this.getReportSummaryHtmlUtil(Newcastle.class,reportIds,"ncReportid",newcastleMapper);
+                params=this.getReportSummaryHtmlUtil(Newcastle.class,reportIds,"ncReportid",newcastleMapper,"nc_regionCode");
                 break;
             }
             case "b_livestockinout": {
@@ -543,15 +561,15 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 break;
             }
             case "b_disinfectiondrugs": {
-                params=this.getReportSummaryHtmlUtil(Disinfectiondrugs.class,reportIds,"dfReportid",disinfectiondrugsMapper);
+                params=this.getReportSummaryHtmlUtil(Disinfectiondrugs.class,reportIds,"dfReportid",disinfectiondrugsMapper,"df_regionCode");
                 break;
             }
             case "b_pestedespetitsruminants": {
-                params=this.getReportSummaryHtmlUtil(Pestedespetitsruminants.class,reportIds,"pdprReportid",pestedespetitsruminantsMapper);
+                params=this.getReportSummaryHtmlUtil(Pestedespetitsruminants.class,reportIds,"pdprReportid",pestedespetitsruminantsMapper,"pdpr_regionCode");
                 break;
             }
             case "b_wfootandmouthdisease": {
-                params=this.getReportSummaryHtmlUtil(Wfootandmouthdisease.class,reportIds,"fmdReportid",wfootandmouthdiseaseMapper);
+                params=this.getReportSummaryHtmlUtil(Wfootandmouthdisease.class,reportIds,"fmdReportid",wfootandmouthdiseaseMapper,"fmd_regionCode asc");
                 break;
             }
             case "b_wlivestockinout": {

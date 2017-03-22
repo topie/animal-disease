@@ -29,4 +29,8 @@
     <result column="ai_jointShouldAmountOther" property="aiJointshouldamountother" jdbcType="DECIMAL" />
     <result column="ai_jointVaccine" property="aiJointvaccine" jdbcType="DECIMAL" />
   </resultMap>
+
+<select id="selectLivestockInOutByReportId" resultMap="BaseResultMap">
+select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
+</select>
 </mapper>

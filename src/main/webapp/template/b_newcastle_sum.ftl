@@ -90,7 +90,7 @@
 			
 			<#list items as item>
 			<tr class="r4">
-				<td n="ncRegionname"  class="c2"><#if item.ncRegionname??>${item.ncRegionname?c}</#if></td>
+				<td n="ncRegionname"  class="c2"><#if item.ncRegionname??>${item.ncRegionname}</#if></td>
 			
 				<td n="ncInactivatedvaccine"  class="c2"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine?c}</#if></td>
 				<td n="ncInactivatedshouldamount"  class="c2"><#if item.ncInactivatedshouldamount??>${item.ncInactivatedshouldamount?c}</#if></td>

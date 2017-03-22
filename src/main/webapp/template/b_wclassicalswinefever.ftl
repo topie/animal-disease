@@ -154,7 +154,6 @@
 		<tbody>
 			<tr class="r1">
 				<td class="c1" colspan="7">${templateName}</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r2">
 				<td class="c3">单 位:</td>
@@ -173,17 +172,13 @@
 				<td class="c2" colspan="6">${user.leaderName}</td>
 			</tr>
 			<tr class="r4">
-				<td class="c3" rowspan="2">疫苗种类</td>
-				<td class="c3" rowspan="2">本周疫苗使用数量(万头份)</td>
-				<td class="c4" rowspan="2">秋防累计疫苗使用数量(万头份)</td>
-				<td class="c3" rowspan="2">本周免疫数量（万头）</td>
-				<td class="c3" rowspan="2">秋防累计免疫数量(万头)</td>
-				<td class="c5" rowspan="2">秋防应免数量(万头)</td>
-				<td class="c3" rowspan="2">免疫进展(%)</td>
-			</tr>
-			<tr class="r5">
-				<td class="c6">秋防累计疫苗使用数量(万头份)</td>
-				<td class="c6">秋防累计免疫数量(万头)</td>
+				<td class="c3" >疫苗种类</td>
+				<td class="c3" >本周疫苗使用数量(万头份)</td>
+				<td class="c4" >秋防累计疫苗使用数量(万头份)</td>
+				<td class="c3" >本周免疫数量（万头）</td>
+				<td class="c3" >秋防累计免疫数量(万头)</td>
+				<td class="c5" >秋防应免数量(万头)</td>
+				<td class="c3" >免疫进展(%)</td>
 			</tr>
 			<tr class="r3">
 				<td class="c7">猪瘟活疫苗</td>
@@ -193,8 +188,6 @@
 				<td role="data" n=""  class="c8"></td>
 				<td role="data" n=""  class="c8"></td>
 				<td role="data" n=""  class="c8"></td>
-				<td role="data" n=""  class="c9"></td>
-				<td role="data" n=""  class="c9"></td>
 			</tr>
 			<tr class="r3">
 				<td class="c10" rowspan="2">填报说明：</td>

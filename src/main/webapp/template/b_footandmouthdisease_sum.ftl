@@ -207,12 +207,12 @@
 			</tr>
 			<#list items as item>
 			<tr class="r5">
-				<td n="airegionname"  n="" class="c2"><#if item.airegionname??>${item.airegionname?c}</#if></td>
+				<td n="fmdRegionname"  n="" class="c2"><#if item.fmdRegionname??>${item.fmdRegionname}</#if></td>
 				
 				<td n="fmdInactivatedvaccine"  class="c2"><#if item.fmdInactivatedvaccine??>${item.fmdInactivatedvaccine?c}</#if></td>
 				<td n=""  class="c2"></td>
 				
-				<td n="fmdinactivatedimmuneamountpig"  class="c2"><#if item.fmdinactivatedimmuneamountpig??>${item.fmdinactivatedimmuneamountpig?c}</#if></td>
+				<td n="fmdInactivatedimmuneamountpig"  class="c2"><#if item.fmdInactivatedimmuneamountpig??>${item.fmdInactivatedimmuneamountpig?c}</#if></td>
 				<td n="fmdInactivatedimmuneamountniu"  class="c2"><#if item.fmdInactivatedimmuneamountniu??>${item.fmdInactivatedimmuneamountniu?c}</#if></td>
 				<td n="fmdInactivatedimmuneamountsheep"  class="c2"><#if item.fmdInactivatedimmuneamountsheep??>${item.fmdInactivatedimmuneamountsheep?c}</#if></td>
 				<td n="fmdInactivatedimmuneamountother"  class="c2"><#if item.fmdInactivatedimmuneamountother??>${item.fmdInactivatedimmuneamountother?c}</#if></td>

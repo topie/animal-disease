@@ -188,7 +188,6 @@
 		<tbody>
 			<tr class="r1">
 				<td class="c1" colspan="7">${templateName}</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r2">
 				<td class="c3">单 位:</td>
@@ -207,17 +206,13 @@
 				<td class="c6" colspan="6">${user.leaderName}</td>
 			</tr>
 			<tr class="r4">
-				<td class="c5" rowspan="2">疫苗种类</td>
-				<td class="c5" rowspan="2">本周疫苗使用数量(万头份)</td>
-				<td class="c7" rowspan="2">秋防累计疫苗使用数量(万头份)</td>
-				<td class="c5" rowspan="2">本周免疫数量（万只）</td>
-				<td class="c5" rowspan="2">秋防累计免疫数量(万只)</td>
-				<td class="c8" rowspan="2">秋防应免数量(万只)</td>
-				<td class="c5" rowspan="2">免疫进展(%)</td>
-			</tr>
-			<tr class="r5">
-				<td class="c9">秋防累计疫苗使用数量</td>
-				<td class="c9">秋防累计免疫数量</td>
+				<td class="c5" rowspan="1">疫苗种类</td>
+				<td class="c5" rowspan="1">本周疫苗使用数量(万头份)</td>
+				<td class="c7" rowspan="1">秋防累计疫苗使用数量(万头份)</td>
+				<td class="c5" rowspan="1">本周免疫数量（万只）</td>
+				<td class="c5" rowspan="1">秋防累计免疫数量(万只)</td>
+				<td class="c8" rowspan="1">秋防应免数量(万只)</td>
+				<td class="c5" rowspan="1">免疫进展(%)</td>
 			</tr>
 			<tr class="r3">
 				<td class="c10">小反刍兽疫活疫苗</td>
@@ -227,8 +222,6 @@
 				<td role="data" n=""  class="c11"></td>
 				<td role="data" n=""  class="c11"></td>
 				<td role="data" n=""  class="c11"></td>
-				<td role="data" n=""  class="c12"></td>
-				<td role="data" n=""  class="c12"></td>
 			</tr>
 			<tr class="r3">
 				<td class="c13" rowspan="3">填报说明：</td>
@@ -244,44 +237,3 @@
 	</table>
 </body>
 </html>
-<#if report.status!=1>
-<script type="text/javascript">
-    (function ($, window, document, undefined) {
-        $("td[role=data]").each(function (i, d) {
-            var n = $(this).attr("n")
-            $(this).off("click")
-            $(this).on("click", function (e) {
-                $("td[role=data]").each(function (e) {
-                    $(this).attr("current", 0)
-                })
-                $(this).attr("current", 1)
-                $("td[current=0]").find("input").each(function (e) {
-                    var v = $(this).val()
-                    $(this).parent("td").html(v)
-                    calculate()
-                })
-                var oldText = $(this).text()
-                $(this).empty()
-                var input = $('<input style="height: 100%;width:100%;" type="text" name="' + n + '" value="' + oldText + '">')
-                input.on("blur", function (e) {
-                    var v = $(this).val()
-                    $(this).parent("td").html(v)
-                    calculate()
-                })
-                input.on("click", function (e) {
-                    e.stopPropagation()
-                })
-                $(this).append(input);
-                input.focus()
-                e.stopPropagation()
-            })
-        })
-
-        var calculate = function () {
-
-        }
-
-        calculate()
-    })(jQuery, window, document)
-</script>
-</#if>

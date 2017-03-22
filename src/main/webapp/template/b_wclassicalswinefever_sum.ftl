@@ -95,7 +95,7 @@
 			</tr>
 			<#list items as item>
 			<tr class="r4">
-				<td n="csfRegionname" class="c2"><#if item.csfRegionname??>${item.csfRegionname?c}</#if></td>
+				<td n="csfRegionname" class="c2"><#if item.csfRegionname??>${item.csfRegionname}</#if></td>
 				<td n="csfVaccine" class="c2"><#if item.csfVaccine??>${item.csfVaccine?c}</#if></td>
 				<td n="" class="c2"></td>
 				<td n="csfImmuneamount" class="c2"><#if item.csfImmuneamount??>${item.csfImmuneamount?c}</#if></td>

@@ -244,10 +244,6 @@
 				<td class="c7">绵羊</td>
 				<td class="c10">山羊</td>
 				<td class="c11">绵羊</td>
-				<td class="c12">累计使用数量（万头份）</td>
-				<td class="c13">累计免疫数量(种羊)</td>
-				<td class="c13">累计免疫数量(山羊)</td>
-				<td class="c13">累计免疫数量(棉羊)</td>
 			</tr>
 			<tr class="r6">
 				<td class="c2">小反刍兽疫活疫苗</td>
@@ -259,10 +255,6 @@
 				<td role="data"  n=""    class="c15"></td>
 				<td role="data"  n=""    class="c15"></td>
 				<td role="data"  n=""    class="c15"></td>
-				<td role="data"  n=""    class="c16"></td>
-				<td role="data"  n=""    class="c16"></td>
-				<td role="data"  n=""    class="c16"></td>
-				<td role="data"  n=""    class="c16"></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="4">填表说明：</td>

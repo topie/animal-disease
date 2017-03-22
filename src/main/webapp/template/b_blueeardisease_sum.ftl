@@ -89,7 +89,7 @@
 			</tr>
 			<#list items as item>
 			<tr class="r4">
-				<td n="" class="c2"><#if item.airegionname??>${item.airegionname?c}</#if></td>
+				<td n="bedRegionname" class="c2"><#if item.bedRegionname??>${item.bedRegionname}</#if></td>
 				
 				<td  n="bedInactivatedvaccine" class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine?c}</#if></td>
 				<td n="bedInactivatedshouldamount"  class="c2"><#if item.bedInactivatedshouldamount??>${item.bedInactivatedshouldamount?c}</#if></td>

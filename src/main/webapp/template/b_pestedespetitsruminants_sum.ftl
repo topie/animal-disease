@@ -142,7 +142,7 @@
 			</tr>
 			<#list items as item>
 			<tr class="r6">
-				<td n="pdprRegionname"  class="c2"><#if item.pdprRegionname??>${item.pdprRegionname?c}</#if></td>
+				<td n="pdprRegionname"  class="c2"><#if item.pdprRegionname??>${item.pdprRegionname}</#if></td>
 				
 				<td n="pdprLivevaccine"  class="c2"><#if item.pdprLivevaccine??>${item.pdprLivevaccine?c}</#if></td>
 				<td n=""  class="c2"></td>
