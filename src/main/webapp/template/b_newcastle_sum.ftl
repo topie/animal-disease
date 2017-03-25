@@ -90,15 +90,15 @@
 			
 			<#list items as item>
 			<tr class="r4">
-				<td n="ncRegionname"  class="c2"><#if item.ncRegionname??>${item.ncRegionname?c}</#if></td>
+				<td n="ncRegionname"  class="c2"><#if item.ncRegionname??>${item.ncRegionname}</#if></td>
 			
-				<td n="ncInactivatedvaccine"  class="c2"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine?c}</#if></td>
-				<td n="ncInactivatedshouldamount"  class="c2"><#if item.ncInactivatedshouldamount??>${item.ncInactivatedshouldamount?c}</#if></td>
-				<td n="ncInactivatedimmuneamount"  class="c2"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount?c}</#if></td>
+				<td n="ncInactivatedvaccine"  class="c2"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine}</#if></td>
+				<td n="ncInactivatedshouldamount"  class="c2"><#if item.ncInactivatedshouldamount??>${item.ncInactivatedshouldamount}</#if></td>
+				<td n="ncInactivatedimmuneamount"  class="c2"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount}</#if></td>
 				<td n=""  class="c2"></td>
-				<td n="ncJointimmuneamount"  class="c2"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount?c}</#if></td>
-				<td n="ncJointshouldamount"  class="c2"><#if item.ncJointshouldamount??>${item.ncJointshouldamount?c}</#if></td>
-				<td n="ncJointvaccine"  class="c2"><#if item.ncJointvaccine??>${item.ncJointvaccine?c}</#if></td>
+				<td n="ncJointimmuneamount"  class="c2"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount}</#if></td>
+				<td n="ncJointshouldamount"  class="c2"><#if item.ncJointshouldamount??>${item.ncJointshouldamount}</#if></td>
+				<td n="ncJointvaccine"  class="c2"><#if item.ncJointvaccine??>${item.ncJointvaccine}</#if></td>
 				<td n=""  class="c2"></td>
 			</tr>
 			</#list>

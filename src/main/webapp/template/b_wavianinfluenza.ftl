@@ -226,12 +226,12 @@
 			</tr>
 			<tr class="r3">
 				<td class="c2">高致病性禽流感灭活疫苗</td>
-				<td role="data" n="aiInactivatedvaccine" class="c2"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine?c}</#if></td>
+				<td role="data" n="aiInactivatedvaccine" class="c2"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine}</#if></td>
 				<td role="data" n=""  class="c7"></td>
-				<td role="data" n="aiInactivatedimmuneamountchicken"  class="c2"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken?c}</#if></td>
-				<td role="data" n="aiInactivatedimmuneamountduck"  class="c2"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck?c}</#if></td>
-				<td role="data" n="aiInactivatedimmuneamountgoose"  class="c2"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose?c}</#if></td>
-				<td role="data" n="aiInactivatedimmuneamountother"  class="c2"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother?c}</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountchicken"  class="c2"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken}</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountduck"  class="c2"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck}</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountgoose"  class="c2"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose}</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountother"  class="c2"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother}</#if></td>
 				<td role="data" n=""  class="c7"></td>
 				<td role="data" n=""  class="c7"></td>
 				<td role="data" n=""  class="c7"></td>
@@ -261,12 +261,12 @@
 			</tr>
 			<tr class="r3">
 				<td class="c3">禽流感-新城疫重组二联活疫苗</td>
-				<td role="data" n="aiJointvaccine" class="c2"><#if item.aiJointvaccine??>${item.aiJointvaccine?c}</#if></td>
+				<td role="data" n="aiJointvaccine" class="c2"><#if item.aiJointvaccine??>${item.aiJointvaccine}</#if></td>
 				<td role="data" n=""  class="c7"></td>
-				<td role="data" n="aiJointimmuneamountchicken"  class="c2"><#if item.aiJointimmuneamountchicken??>${item.aiJointimmuneamountchicken?c}</#if></td>
-				<td role="data" n="aiJointimmuneamountduck"  class="c2"><#if item.aiJointimmuneamountduck??>${item.aiJointimmuneamountduck?c}</#if></td>
-				<td role="data" n="aiJointimmuneamountgoose"  class="c2"><#if item.aiJointimmuneamountgoose??>${item.aiJointimmuneamountgoose?c}</#if></td>
-				<td role="data" n="aiJointimmuneamountother"  class="c2"><#if item.aiJointimmuneamountother??>${item.aiJointimmuneamountother?c}</#if></td>
+				<td role="data" n="aiJointimmuneamountchicken"  class="c2"><#if item.aiJointimmuneamountchicken??>${item.aiJointimmuneamountchicken}</#if></td>
+				<td role="data" n="aiJointimmuneamountduck"  class="c2"><#if item.aiJointimmuneamountduck??>${item.aiJointimmuneamountduck}</#if></td>
+				<td role="data" n="aiJointimmuneamountgoose"  class="c2"><#if item.aiJointimmuneamountgoose??>${item.aiJointimmuneamountgoose}</#if></td>
+				<td role="data" n="aiJointimmuneamountother"  class="c2"><#if item.aiJointimmuneamountother??>${item.aiJointimmuneamountother}</#if></td>
 				<td role="data" n=""  class="c7"></td>
 				<td role="data" n=""  class="c7"></td>
 				<td role="data" n=""  class="c7"></td>

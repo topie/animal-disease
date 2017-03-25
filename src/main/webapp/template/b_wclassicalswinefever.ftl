@@ -187,9 +187,9 @@
 			</tr>
 			<tr class="r3">
 				<td class="c7">猪瘟活疫苗</td>
-				<td role="data" n="csfVaccine"  class="c7"><#if item.csfVaccine??>${item.csfVaccine?c}</#if></td>
+				<td role="data" n="csfVaccine"  class="c7"><#if item.csfVaccine??>${item.csfVaccine}</#if></td>
 				<td role="data" n=""  class="c8"></td>
-				<td role="data" n="csfImmuneamount"  class="c7"><#if item.csfImmuneamount??>${item.csfImmuneamount?c}</#if></td>
+				<td role="data" n="csfImmuneamount"  class="c7"><#if item.csfImmuneamount??>${item.csfImmuneamount}</#if></td>
 				<td role="data" n=""  class="c8"></td>
 				<td role="data" n=""  class="c8"></td>
 				<td role="data" n=""  class="c8"></td>

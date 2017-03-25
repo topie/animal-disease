@@ -151,34 +151,34 @@
 			</tr>
 			
 			<tr class="r5">
-				<td n="avRegionname"  class="c2"><#if item.avRegionname??>${item.avRegionname?c}</#if></td>
+				<td n="avRegionname"  class="c2"><#if item.avRegionname??>${item.avRegionname}</#if></td>
 				
-				<td n="avH5h9usecount"  class="c2"><#if item.avH5h9usecount??>${item.avH5h9usecount?c}</#if></td>
-				<td n="avH5n1re6usecount"  class="c2"><#if item.avH5n1re6usecount??>${item.avH5n1re6usecount?c}</#if></td>
-				<td n="avH5n1re7usecount"  class="c2"><#if item.avH5n1re7usecount??>${item.avH5n1re7usecount?c}</#if></td>
-				<td n="avRe6re7usecount"  class="c2"><#if item.avRe6re7usecount??>${item.avRe6re7usecount?c}</#if></td>
-				<td n="avRe6re8usecount"  class="c2"><#if item.avRe6re8usecount??>${item.avRe6re8usecount?c}</#if></td>
-				<td n="avRe6re7re8usecount"  class="c3"><#if item.avRe6re7re8usecount??>${item.avRe6re7re8usecount?c}</#if></td>
-				<td n="avH5n2d7usecount"  class="c4"><#if item.avH5n2d7usecount??>${item.avH5n2d7usecount?c}</#if></td>
-				<td n="avRhrh5usecount"  class="c4"><#if item.avrHrh5usecount??>${item.avrhrH5usecount?c}</#if></td>
+				<td n="avH5h9usecount"  class="c2"><#if item.avH5h9usecount??>${item.avH5h9usecount}</#if></td>
+				<td n="avH5n1re6usecount"  class="c2"><#if item.avH5n1re6usecount??>${item.avH5n1re6usecount}</#if></td>
+				<td n="avH5n1re7usecount"  class="c2"><#if item.avH5n1re7usecount??>${item.avH5n1re7usecount}</#if></td>
+				<td n="avRe6re7usecount"  class="c2"><#if item.avRe6re7usecount??>${item.avRe6re7usecount}</#if></td>
+				<td n="avRe6re8usecount"  class="c2"><#if item.avRe6re8usecount??>${item.avRe6re8usecount}</#if></td>
+				<td n="avRe6re7re8usecount"  class="c3"><#if item.avRe6re7re8usecount??>${item.avRe6re7re8usecount}</#if></td>
+				<td n="avH5n2d7usecount"  class="c4"><#if item.avH5n2d7usecount??>${item.avH5n2d7usecount}</#if></td>
+				<td n="avRhrh5usecount"  class="c4"><#if item.avrHrh5usecount??>${item.avrhrH5usecount}</#if></td>
 				
-				<td n="avH5h9storecount"  class="c2"><#if item.avH5h9storecount??>${item.avH5h9storecount?c}</#if></td>
-				<td n="avH5n1re6storecount"  class="c2"><#if item.avH5n1re6storecount??>${item.avH5n1re6storecount?c}</#if></td>
-				<td n="avH5n1re7storecount"  class="c2"><#if item.avH5n1re7storecount??>${item.avH5n1re7storecount?c}</#if></td>
-				<td n="avRe6re7storecount"  class="c2"><#if item.avRe6re7storecount??>${item.avRe6re7storecount?c}</#if></td>
-				<td n="avRe6re8storecount"  class="c2"><#if item.avRe6re8storecount??>${item.avRe6re8storecount?c}</#if></td>
-				<td n="avRe6re7re8storecount"  class="c3"><#if item.avRe6re7re8storecount??>${item.avRe6re7re8storecount?c}</#if></td>
-				<td n="avH5n2d7storecount"  class="c4"><#if item.avH5n2d7storecount??>${item.avH5n2d7storecount?c}</#if></td>
-				<td n="avRhrh5storecount"  class="c4"><#if item.avRhrh5storecount??>${item.avRhrh5storecount?c}</#if></td>
+				<td n="avH5h9storecount"  class="c2"><#if item.avH5h9storecount??>${item.avH5h9storecount}</#if></td>
+				<td n="avH5n1re6storecount"  class="c2"><#if item.avH5n1re6storecount??>${item.avH5n1re6storecount}</#if></td>
+				<td n="avH5n1re7storecount"  class="c2"><#if item.avH5n1re7storecount??>${item.avH5n1re7storecount}</#if></td>
+				<td n="avRe6re7storecount"  class="c2"><#if item.avRe6re7storecount??>${item.avRe6re7storecount}</#if></td>
+				<td n="avRe6re8storecount"  class="c2"><#if item.avRe6re8storecount??>${item.avRe6re8storecount}</#if></td>
+				<td n="avRe6re7re8storecount"  class="c3"><#if item.avRe6re7re8storecount??>${item.avRe6re7re8storecount}</#if></td>
+				<td n="avH5n2d7storecount"  class="c4"><#if item.avH5n2d7storecount??>${item.avH5n2d7storecount}</#if></td>
+				<td n="avRhrh5storecount"  class="c4"><#if item.avRhrh5storecount??>${item.avRhrh5storecount}</#if></td>
 				
-				<td n="avH5h9yearcount"  class="c2"><#if item.avH5h9yearcount??>${item.avH5h9yearcount?c}</#if></td>
-				<td n="avH5n1re6yearcount"  class="c2"><#if item.avH5n1re6yearcount??>${item.avH5n1re6yearcount?c}</#if></td>
-				<td n="avH5n1re7yearcount"  class="c2"><#if item.avH5n1re7yearcount??>${item.avH5n1re7yearcount?c}</#if></td>
-				<td n="avRe6re7yearcount"  class="c2"><#if item.avRe6re7yearcount??>${item.avRe6re7yearcount?c}</#if></td>
-				<td n="avRe6re8yearcount"  class="c2"><#if item.avRe6re8yearcount??>${item.avRe6re8yearcount?c}</#if></td>
-				<td n="avRe6re7re8yearcount"  class="c3"><#if item.avRe6re7re8yearcount??>${item.avRe6re7re8yearcount?c}</#if></td>
-				<td n="avH5n2d7yearcount"  class="c4"><#if item.avH5n2d7yearcount??>${item.avH5n2d7yearcount?c}</#if></td>
-				<td n="avRhrh5yearcount"  class="c4"><#if item.avRhrh5yearcount??>${item.avRhrh5yearcount?c}</#if></td>
+				<td n="avH5h9yearcount"  class="c2"><#if item.avH5h9yearcount??>${item.avH5h9yearcount}</#if></td>
+				<td n="avH5n1re6yearcount"  class="c2"><#if item.avH5n1re6yearcount??>${item.avH5n1re6yearcount}</#if></td>
+				<td n="avH5n1re7yearcount"  class="c2"><#if item.avH5n1re7yearcount??>${item.avH5n1re7yearcount}</#if></td>
+				<td n="avRe6re7yearcount"  class="c2"><#if item.avRe6re7yearcount??>${item.avRe6re7yearcount}</#if></td>
+				<td n="avRe6re8yearcount"  class="c2"><#if item.avRe6re8yearcount??>${item.avRe6re8yearcount}</#if></td>
+				<td n="avRe6re7re8yearcount"  class="c3"><#if item.avRe6re7re8yearcount??>${item.avRe6re7re8yearcount}</#if></td>
+				<td n="avH5n2d7yearcount"  class="c4"><#if item.avH5n2d7yearcount??>${item.avH5n2d7yearcount}</#if></td>
+				<td n="avRhrh5yearcount"  class="c4"><#if item.avRhrh5yearcount??>${item.avRhrh5yearcount}</#if></td>
 			</tr>
 
 		</tbody>

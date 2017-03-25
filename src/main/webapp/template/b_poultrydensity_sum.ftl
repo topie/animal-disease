@@ -115,26 +115,26 @@
 			</tr>
 			 <#list items as item>
 			<tr class="r2">
-				<td n="pdRegionname"  class="c2"><#if item.pdRegionname??>${item.pdRegionname?c}</#if></td>
+				<td n="pdRegionname"  class="c2"><#if item.pdRegionname??>${item.pdRegionname}</#if></td>
 				
-				<td n="pdChickenherdscount"  class="c2"><#if item.pdChickenherdscount??>${item.pdChickenherdscount?c}</#if></td>
-				<td n="pdChickenashuldcount"  class="c2"><#if item.pdChickenashuldcount??>${item.pdChickenashuldcount?c}</#if></td>
-				<td n="pdChickenaactualcount"  class="c2"><#if item.pdChickenaactualcount??>${item.pdChickenaactualcount?c}</#if></td>
-				<td n="pdChickennshuldcount"  class="c2"><#if item.pdChickennshuldcount??>${item.pdChickennshuldcount?c}</#if></td>
-				<td n="pdChickennactualcount"  class="c2"><#if item.pdChickennactualcount??>${item.pdChickennactualcount?c}</#if></td>
+				<td n="pdChickenherdscount"  class="c2"><#if item.pdChickenherdscount??>${item.pdChickenherdscount}</#if></td>
+				<td n="pdChickenashuldcount"  class="c2"><#if item.pdChickenashuldcount??>${item.pdChickenashuldcount}</#if></td>
+				<td n="pdChickenaactualcount"  class="c2"><#if item.pdChickenaactualcount??>${item.pdChickenaactualcount}</#if></td>
+				<td n="pdChickennshuldcount"  class="c2"><#if item.pdChickennshuldcount??>${item.pdChickennshuldcount}</#if></td>
+				<td n="pdChickennactualcount"  class="c2"><#if item.pdChickennactualcount??>${item.pdChickennactualcount}</#if></td>
 				
-				<td n="pdDuckherdscount"  class="c2"><#if item.pdDuckherdscount??>${item.pdDuckherdscount?c}</#if></td>
-				<td n="pdDuckshuldcount"  class="c2"><#if item.pdDuckshuldcount??>${item.pdDuckshuldcount?c}</#if></td>
-				<td n="pdDuckactualcount"  class="c2"><#if item.pdDuckactualcount??>${item.pdDuckactualcount?c}</#if></td>
+				<td n="pdDuckherdscount"  class="c2"><#if item.pdDuckherdscount??>${item.pdDuckherdscount}</#if></td>
+				<td n="pdDuckshuldcount"  class="c2"><#if item.pdDuckshuldcount??>${item.pdDuckshuldcount}</#if></td>
+				<td n="pdDuckactualcount"  class="c2"><#if item.pdDuckactualcount??>${item.pdDuckactualcount}</#if></td>
 			
-				<td n="pdGooseherdscount"  class="c2"><#if item.pdGooseherdscount??>${item.pdGooseherdscount?c}</#if></td>
-				<td n="pdGooseshuldcount"  class="c2"><#if item.pdGooseshuldcount??>${item.pdGooseshuldcount?c}</#if></td>
-				<td n="pdGooseactualcount"  class="c2"><#if item.pdGooseactualcount??>${item.pdGooseactualcount?c}</#if></td>
+				<td n="pdGooseherdscount"  class="c2"><#if item.pdGooseherdscount??>${item.pdGooseherdscount}</#if></td>
+				<td n="pdGooseshuldcount"  class="c2"><#if item.pdGooseshuldcount??>${item.pdGooseshuldcount}</#if></td>
+				<td n="pdGooseactualcount"  class="c2"><#if item.pdGooseactualcount??>${item.pdGooseactualcount}</#if></td>
 				
-				<td n="pdOtherherdscount"  class="c2"><#if item.pdOtherherdscount??>${item.pdOtherherdscount?c}</#if></td>
-				<td n="pdOtherashuldcount"  class="c2"><#if item.pdOtherashuldcount??>${item.pdOtherashuldcount?c}</#if></td>
-				<td n="pdOtheraactualcount"  class="c2"><#if item.pdOtheraactualcount??>${item.pdOtheraactualcount?c}</#if></td>
-				<td n="pdOtherniashuldcount"  class="c2"><#if item.pdOtherniashuldcount??>${item.pdOtherniashuldcount?c}</#if></td>
+				<td n="pdOtherherdscount"  class="c2"><#if item.pdOtherherdscount??>${item.pdOtherherdscount}</#if></td>
+				<td n="pdOtherashuldcount"  class="c2"><#if item.pdOtherashuldcount??>${item.pdOtherashuldcount}</#if></td>
+				<td n="pdOtheraactualcount"  class="c2"><#if item.pdOtheraactualcount??>${item.pdOtheraactualcount}</#if></td>
+				<td n="pdOtherniashuldcount"  class="c2"><#if item.pdOtherniashuldcount??>${item.pdOtherniashuldcount}</#if></td>
 			</tr>
  </#list>
 		</tbody>

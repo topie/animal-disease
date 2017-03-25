@@ -157,18 +157,18 @@
 			</tr>
 			<tr class="r7">
 				<td class="c2">高致病性猪蓝耳病灭活疫苗</td>
-				<td role="data" n="bedInactivatedvaccine"  class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine?c}</#if></td>
+				<td role="data" n="bedInactivatedvaccine"  class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine}</#if></td>
 				<td role="data" n="" class="c6"></td>
-				<td role="data" n="bedInactivatedimmuneamount" class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount?c}</#if></td>
+				<td role="data" n="bedInactivatedimmuneamount" class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount}</#if></td>
 				<td role="data" n="" class="c6"></td>
 				<td role="data" n="" class="c7">0</td>
 				<td role="data" n="" class="c7">0</td>
 			</tr>
 			<tr class="r8">
 				<td class="c2">高致病性猪蓝耳病活疫苗</td>
-				<td role="data" n="bedWeakvaccine" class="c2"><#if item.bedWeakvaccine??>${item.bedWeakvaccine?c}</#if></td>
+				<td role="data" n="bedWeakvaccine" class="c2"><#if item.bedWeakvaccine??>${item.bedWeakvaccine}</#if></td>
 				<td role="data" n="" class="c6"></td>
-				<td role="data" n="bedWeakimmuneamount" class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount?c}</#if></td>
+				<td role="data" n="bedWeakimmuneamount" class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount}</#if></td>
 				<td role="data" n="" class="c6"></td>
 				<td role="data" n="" class="c7">0</td>
 				<td role="data" n="" class="c7">0</td>

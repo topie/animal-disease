@@ -190,37 +190,37 @@
 				<td class="c2">实际免疫数量</td>
 			</tr>
 			<tr class="r4">
-				<td role="data" n="ldPidherdscount"  class="c2"><#if item.ldPidherdscount??>${item.ldPidherdscount?c}</#if></td>
-				<td role="data" n="ldPigoshuldcount"   class="c2"><#if item.ldPigoshuldcount??>${item.ldPigoshuldcount?c}</#if></td>
-				<td role="data" n="ldPigoactualcount"   class="c2"><#if item.ldPigoactualcount??>${item.ldPigoactualcount?c}</#if></td>
-				<td role="data" n="ldPigbshuldcount"   class="c2"><#if item.ldPigbshuldcount??>${item.ldPigbshuldcount?c}</#if></td>
-				<td role="data" n="ldPigbactualcount"   class="c2"><#if item.ldPigbactualcount??>${item.ldPigbactualcount?c}</#if></td>
-				<td role="data" n="ldPigcshuldcount"   class="c2"><#if item.ldPigcshuldcount??>${item.ldPigcshuldcount?c}</#if></td>
-				<td role="data" n="ldPigcactualcount"   class="c2"><#if item.ldPigcactualcount??>${item.ldPigcactualcount?c}</#if></td>
+				<td role="data" n="ldPidherdscount"  class="c2"><#if item.ldPidherdscount??>${item.ldPidherdscount}</#if></td>
+				<td role="data" n="ldPigoshuldcount"   class="c2"><#if item.ldPigoshuldcount??>${item.ldPigoshuldcount}</#if></td>
+				<td role="data" n="ldPigoactualcount"   class="c2"><#if item.ldPigoactualcount??>${item.ldPigoactualcount}</#if></td>
+				<td role="data" n="ldPigbshuldcount"   class="c2"><#if item.ldPigbshuldcount??>${item.ldPigbshuldcount}</#if></td>
+				<td role="data" n="ldPigbactualcount"   class="c2"><#if item.ldPigbactualcount??>${item.ldPigbactualcount}</#if></td>
+				<td role="data" n="ldPigcshuldcount"   class="c2"><#if item.ldPigcshuldcount??>${item.ldPigcshuldcount}</#if></td>
+				<td role="data" n="ldPigcactualcount"   class="c2"><#if item.ldPigcactualcount??>${item.ldPigcactualcount}</#if></td>
 				
-				<td role="data" n="ldNiuherdscount"   class="c2"><#if item.ldNiuherdscount??>${item.ldNiuherdscount?c}</#if></td>
-				<td role="data" n="ldNiushuldcount"   class="c2"><#if item.ldNiushuldcount??>${item.ldNiushuldcount?c}</#if></td>
-				<td role="data" n="ldNiuactualcount"   class="c2"><#if item.ldNiuactualcount??>${item.ldNiuactualcount?c}</#if></td>
-				<td role="data" n="ldCowshuldcount"   class="c2"><#if item.ldCowshuldcount??>${item.ldCowshuldcount?c}</#if></td>
-				<td role="data" n="ldCowactualcount"   class="c2"><#if item.ldCowactualcount??>${item.ldCowactualcount?c}</#if></td>
+				<td role="data" n="ldNiuherdscount"   class="c2"><#if item.ldNiuherdscount??>${item.ldNiuherdscount}</#if></td>
+				<td role="data" n="ldNiushuldcount"   class="c2"><#if item.ldNiushuldcount??>${item.ldNiushuldcount}</#if></td>
+				<td role="data" n="ldNiuactualcount"   class="c2"><#if item.ldNiuactualcount??>${item.ldNiuactualcount}</#if></td>
+				<td role="data" n="ldCowshuldcount"   class="c2"><#if item.ldCowshuldcount??>${item.ldCowshuldcount}</#if></td>
+				<td role="data" n="ldCowactualcount"   class="c2"><#if item.ldCowactualcount??>${item.ldCowactualcount}</#if></td>
 				
-				<td role="data" n="ldCowherdscount"   class="c2"><#if item.ldCowherdscount??>${item.ldCowherdscount?c}</#if></td>
-				<td role="data" n="ldCowshuldcount"   class="c2"><#if item.ldCowshuldcount??>${item.ldCowshuldcount?c}</#if></td>
-				<td role="data" n="ldCowactualcount"   class="c2"><#if item.ldCowactualcount??>${item.ldCowactualcount?c}</#if></td>
+				<td role="data" n="ldCowherdscount"   class="c2"><#if item.ldCowherdscount??>${item.ldCowherdscount}</#if></td>
+				<td role="data" n="ldCowshuldcount"   class="c2"><#if item.ldCowshuldcount??>${item.ldCowshuldcount}</#if></td>
+				<td role="data" n="ldCowactualcount"   class="c2"><#if item.ldCowactualcount??>${item.ldCowactualcount}</#if></td>
 				
-				<td role="data" n="ldSheepherdscount"   class="c2"><#if item.ldSheepherdscount??>${item.ldSheepherdscount?c}</#if></td>
-				<td role="data" n="ldSheeposhuldcount"   class="c2"><#if item.ldSheeposhuldcount??>${item.ldSheeposhuldcount?c}</#if></td>
-				<td role="data" n="ldSheepoactualcount"   class="c2"><#if item.ldSheepoactualcount??>${item.ldSheepoactualcount?c}</#if></td>
-				<td role="data" n="ldSheepashuldcount"   class="c2"><#if item.ldSheepashuldcount??>${item.ldSheepashuldcount?c}</#if></td>
-				<td role="data" n="ldSheepaactualcount"   class="c2"><#if item.ldSheepaactualcount??>${item.ldSheepaactualcount?c}</#if></td>
+				<td role="data" n="ldSheepherdscount"   class="c2"><#if item.ldSheepherdscount??>${item.ldSheepherdscount}</#if></td>
+				<td role="data" n="ldSheeposhuldcount"   class="c2"><#if item.ldSheeposhuldcount??>${item.ldSheeposhuldcount}</#if></td>
+				<td role="data" n="ldSheepoactualcount"   class="c2"><#if item.ldSheepoactualcount??>${item.ldSheepoactualcount}</#if></td>
+				<td role="data" n="ldSheepashuldcount"   class="c2"><#if item.ldSheepashuldcount??>${item.ldSheepashuldcount}</#if></td>
+				<td role="data" n="ldSheepaactualcount"   class="c2"><#if item.ldSheepaactualcount??>${item.ldSheepaactualcount}</#if></td>
 				<td role="data" n=""   class="c2"></td>
 				<td role="data" n=""   class="c2"></td>
 				
-				<td role="data" n="ldOtherherdscount"   class="c2"><#if item.ldOtherherdscount??>${item.ldOtherherdscount?c}</#if></td>
-				<td role="data" n="ldOtheroshuldcount"   class="c2"><#if item.ldOtheroshuldcount??>${item.ldOtheroshuldcount?c}</#if></td>
-				<td role="data" n="ldOtheroactualcount"   class="c2"><#if item.ldOtheroactualcount??>${item.ldOtheroactualcount?c}</#if></td>
-				<td role="data" n="ldOtheroishuldcount"   class="c2"><#if item.ldOtheroishuldcount??>${item.ldOtheroishuldcount?c}</#if></td>
-				<td role="data" n="ldOtheroiactualcount"   class="c2"><#if item.ldOtheroiactualcount??>${item.ldOtheroiactualcount?c}</#if></td>
+				<td role="data" n="ldOtherherdscount"   class="c2"><#if item.ldOtherherdscount??>${item.ldOtherherdscount}</#if></td>
+				<td role="data" n="ldOtheroshuldcount"   class="c2"><#if item.ldOtheroshuldcount??>${item.ldOtheroshuldcount}</#if></td>
+				<td role="data" n="ldOtheroactualcount"   class="c2"><#if item.ldOtheroactualcount??>${item.ldOtheroactualcount}</#if></td>
+				<td role="data" n="ldOtheroishuldcount"   class="c2"><#if item.ldOtheroishuldcount??>${item.ldOtheroishuldcount}</#if></td>
+				<td role="data" n="ldOtheroiactualcount"   class="c2"><#if item.ldOtheroiactualcount??>${item.ldOtheroiactualcount}</#if></td>
 			</tr>
 		</tbody>
 	</table>

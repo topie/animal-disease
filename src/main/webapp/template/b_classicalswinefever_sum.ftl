@@ -80,10 +80,10 @@
 			</tr>
 			<#list items as item>
 			<tr class="r4">
-				<td n="airegionname" class="c2"><#if item.airegionname??>${item.airegionname?c}</#if></td>
-				<td n="csfVaccine" class="c2"><#if item.csfVaccine??>${item.csfVaccine?c}</#if></td>
-				<td n="csfShouldamount" class="c2"><#if item.csfShouldamount??>${item.csfShouldamount?c}</#if></td>
-				<td n="csfImmuneamount" class="c2"><#if item.csfImmuneamount??>${item.csfImmuneamount?c}</#if></td>
+				<td n="airegionname" class="c2"><#if item.airegionname??>${item.airegionname}</#if></td>
+				<td n="csfVaccine" class="c2"><#if item.csfVaccine??>${item.csfVaccine}</#if></td>
+				<td n="csfShouldamount" class="c2"><#if item.csfShouldamount??>${item.csfShouldamount}</#if></td>
+				<td n="csfImmuneamount" class="c2"><#if item.csfImmuneamount??>${item.csfImmuneamount}</#if></td>
 				<td n="" class="c2"></td>
 			</tr>
 			</#list>

@@ -94,16 +94,16 @@
 			</tr>
 			 <#list items as item>
 			<tr class="r4">
-				<td n="bedregionname"  class="c2"><#if item.bedregionname??>${item.bedregionname?c}</#if></td>
+				<td n="bedregionname"  class="c2"><#if item.bedregionname??>${item.bedregionname}</#if></td>
 				
-				<td n="bedinactivatedvaccine"  class="c2"><#if item.bedinactivatedvaccine??>${item.bedinactivatedvaccine?c}</#if></td>
+				<td n="bedinactivatedvaccine"  class="c2"><#if item.bedinactivatedvaccine??>${item.bedinactivatedvaccine}</#if></td>
 				<td n=""  class="c2"></td>
-				<td n="bedinactivatedimmuneamount"  class="c2"><#if item.bedinactivatedimmuneamount??>${item.bedinactivatedimmuneamount?c}</#if></td>
+				<td n="bedinactivatedimmuneamount"  class="c2"><#if item.bedinactivatedimmuneamount??>${item.bedinactivatedimmuneamount}</#if></td>
 				<td n=""  class="c2"></td>
 				
-				<td n="bedweakvaccine"  class="c2"><#if item.bedweakvaccine??>${item.bedweakvaccine?c}</#if></td>
+				<td n="bedweakvaccine"  class="c2"><#if item.bedweakvaccine??>${item.bedweakvaccine}</#if></td>
 				<td n=""  class="c2"></td>
-				<td n="bedweakimmuneamount"  class="c2"><#if item.bedweakimmuneamount??>${item.bedweakimmuneamount?c}</#if></td>
+				<td n="bedweakimmuneamount"  class="c2"><#if item.bedweakimmuneamount??>${item.bedweakimmuneamount}</#if></td>
 				<td n=""  class="c2"></td>
 				
 				<td n=""  class="c2"></td>

@@ -218,40 +218,40 @@
 			</tr>
 			<#list items as item>
 			<tr class="r4">
-				<td n="ldRegionname"  class="c2"><#if item.ldRegionname??>${item.ldRegionname?c}</#if></td>
+				<td n="ldRegionname"  class="c2"><#if item.ldRegionname??>${item.ldRegionname}</#if></td>
 				
-				<td n="ldPidherdscount"  class="c2"><#if item.ldPidherdscount??>${item.ldPidherdscount?c}</#if></td>
+				<td n="ldPidherdscount"  class="c2"><#if item.ldPidherdscount??>${item.ldPidherdscount}</#if></td>
 				
-				<td n="ldPigoshuldcount"  class="c2"><#if item.ldPigoshuldcount??>${item.ldPigoshuldcount?c}</#if></td>
-				<td n="ldPigoactualcount"  class="c2"><#if item.ldPigoactualcount??>${item.ldPigoactualcount?c}</#if></td>
-				<td n="ldPigbshuldcount"  class="c2"><#if item.ldPigbshuldcount??>${item.ldPigbshuldcount?c}</#if></td>
-				<td n="ldPigbactualcount"  class="c2"><#if item.ldPigbactualcount??>${item.ldPigbactualcount?c}</#if></td>
-				<td n="ldPigcshuldcount"  class="c2"><#if item.ldPigcshuldcount??>${item.ldPigcshuldcount?c}</#if></td>
-				<td n="ldPigcactualcount"  class="c2"><#if item.ldPigcactualcount??>${item.ldPigcactualcount?c}</#if></td>
+				<td n="ldPigoshuldcount"  class="c2"><#if item.ldPigoshuldcount??>${item.ldPigoshuldcount}</#if></td>
+				<td n="ldPigoactualcount"  class="c2"><#if item.ldPigoactualcount??>${item.ldPigoactualcount}</#if></td>
+				<td n="ldPigbshuldcount"  class="c2"><#if item.ldPigbshuldcount??>${item.ldPigbshuldcount}</#if></td>
+				<td n="ldPigbactualcount"  class="c2"><#if item.ldPigbactualcount??>${item.ldPigbactualcount}</#if></td>
+				<td n="ldPigcshuldcount"  class="c2"><#if item.ldPigcshuldcount??>${item.ldPigcshuldcount}</#if></td>
+				<td n="ldPigcactualcount"  class="c2"><#if item.ldPigcactualcount??>${item.ldPigcactualcount}</#if></td>
 				
-				<td n="ldNiuherdscount"  class="c2"><#if item.ldNiuherdscount??>${item.ldNiuherdscount?c}</#if></td>
-				<td n="ldNiushuldcount"  class="c2"><#if item.ldNiushuldcount??>${item.ldNiushuldcount?c}</#if></td>
-				<td n="ldNiuactualcount"  class="c2"><#if item.ldNiuactualcount??>${item.ldNiuactualcount?c}</#if></td>
-				<td n="ldNiuashuldcount"  class="c9"><#if item.ldNiuashuldcount??>${item.ldNiuashuldcount?c}</#if></td>
-				<td n="ldNiuaactualcount"  class="c3"><#if item.ldNiuaactualcount??>${item.ldNiuaactualcount?c}</#if></td>
+				<td n="ldNiuherdscount"  class="c2"><#if item.ldNiuherdscount??>${item.ldNiuherdscount}</#if></td>
+				<td n="ldNiushuldcount"  class="c2"><#if item.ldNiushuldcount??>${item.ldNiushuldcount}</#if></td>
+				<td n="ldNiuactualcount"  class="c2"><#if item.ldNiuactualcount??>${item.ldNiuactualcount}</#if></td>
+				<td n="ldNiuashuldcount"  class="c9"><#if item.ldNiuashuldcount??>${item.ldNiuashuldcount}</#if></td>
+				<td n="ldNiuaactualcount"  class="c3"><#if item.ldNiuaactualcount??>${item.ldNiuaactualcount}</#if></td>
 				
-				<td n="ldCowherdscount"  class="c5"><#if item.ldCowherdscount??>${item.ldCowherdscount?c}</#if></td>
-				<td n="ldCowshuldcount"  class="c2"><#if item.ldCowshuldcount??>${item.ldCowshuldcount?c}</#if></td>
-				<td n="ldCowactualcount"  class="c2"><#if item.ldCowactualcount??>${item.ldCowactualcount?c}</#if></td>
+				<td n="ldCowherdscount"  class="c5"><#if item.ldCowherdscount??>${item.ldCowherdscount}</#if></td>
+				<td n="ldCowshuldcount"  class="c2"><#if item.ldCowshuldcount??>${item.ldCowshuldcount}</#if></td>
+				<td n="ldCowactualcount"  class="c2"><#if item.ldCowactualcount??>${item.ldCowactualcount}</#if></td>
 				
-				<td n="ldSheepherdscount"  class="c2"><#if item.ldSheepherdscount??>${item.ldSheepherdscount?c}</#if></td>
-				<td n="ldSheeposhuldcount"  class="c2"><#if item.ldSheeposhuldcount??>${item.ldSheeposhuldcount?c}</#if></td>
-				<td n="ldSheepoactualcount"  class="c2"><#if item.ldSheepoactualcount??>${item.ldSheepoactualcount?c}</#if></td>
-				<td n="ldSheepashuldcount"  class="c2"><#if item.ldSheepashuldcount??>${item.ldSheepashuldcount?c}</#if></td>
-				<td n="ldSheepaactualcount"  class="c2"><#if item.ldSheepaactualcount??>${item.ldSheepaactualcount?c}</#if></td>
+				<td n="ldSheepherdscount"  class="c2"><#if item.ldSheepherdscount??>${item.ldSheepherdscount}</#if></td>
+				<td n="ldSheeposhuldcount"  class="c2"><#if item.ldSheeposhuldcount??>${item.ldSheeposhuldcount}</#if></td>
+				<td n="ldSheepoactualcount"  class="c2"><#if item.ldSheepoactualcount??>${item.ldSheepoactualcount}</#if></td>
+				<td n="ldSheepashuldcount"  class="c2"><#if item.ldSheepashuldcount??>${item.ldSheepashuldcount}</#if></td>
+				<td n="ldSheepaactualcount"  class="c2"><#if item.ldSheepaactualcount??>${item.ldSheepaactualcount}</#if></td>
 				<td n=""  class="c2"></td>
 				<td n=""  class="c2"></td>
 				
-				<td n="ldOtherherdscount"  class="c2"><#if item.ldOtherherdscount??>${item.ldOtherherdscount?c}</#if></td>
-				<td n="ldOtheroshuldcount"  class="c2"><#if item.ldOtheroshuldcount??>${item.ldOtheroshuldcount?c}</#if></td>
-				<td n="ldOtheroactualcount"  class="c2"><#if item.ldOtheroactualcount??>${item.ldOtheroactualcount?c}</#if></td>
-				<td n="ldOtheroishuldcount"  class="c2"><#if item.ldOtheroishuldcount??>${item.ldOtheroishuldcount?c}</#if></td>
-				<td n="ldOtheroiactualcount"  class="c2"><#if item.ldOtheroiactualcount??>${item.ldOtheroiactualcount?c}</#if></td>
+				<td n="ldOtherherdscount"  class="c2"><#if item.ldOtherherdscount??>${item.ldOtherherdscount}</#if></td>
+				<td n="ldOtheroshuldcount"  class="c2"><#if item.ldOtheroshuldcount??>${item.ldOtheroshuldcount}</#if></td>
+				<td n="ldOtheroactualcount"  class="c2"><#if item.ldOtheroactualcount??>${item.ldOtheroactualcount}</#if></td>
+				<td n="ldOtheroishuldcount"  class="c2"><#if item.ldOtheroishuldcount??>${item.ldOtheroishuldcount}</#if></td>
+				<td n="ldOtheroiactualcount"  class="c2"><#if item.ldOtheroiactualcount??>${item.ldOtheroiactualcount}</#if></td>
 			</tr>
  </#list>
 		</tbody>

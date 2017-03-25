@@ -216,26 +216,26 @@
 				<td class="c10">禽流感灭活疫苗（H5N2亚型，D7株）</td>
 			</tr>
 			<tr class="r6">
-				<td role="data" n="avRe6re7usecount"   class="c7"><#if item.avRe6re7usecount??>${item.avRe6re7usecount?c}</#if></td>
-				<td role="data" n="avRhrh5usecount"   class="c7"><#if item.avRhrh5usecount??>${item.avRhrh5usecount?c}</#if></td>
-				<td role="data" n="avH5n1re7usecount"   class="c7"><#if item.avH5n1re7usecount??>${item.avH5n1re7usecount?c}</#if></td>
-				<td role="data" n="avH5n1re6usecount"   class="c7"><#if item.avH5n1re6usecount??>${item.avH5n1re6usecount?c}</#if></td>
+				<td role="data" n="avRe6re7usecount"   class="c7"><#if item.avRe6re7usecount??>${item.avRe6re7usecount}</#if></td>
+				<td role="data" n="avRhrh5usecount"   class="c7"><#if item.avRhrh5usecount??>${item.avRhrh5usecount}</#if></td>
+				<td role="data" n="avH5n1re7usecount"   class="c7"><#if item.avH5n1re7usecount??>${item.avH5n1re7usecount}</#if></td>
+				<td role="data" n="avH5n1re6usecount"   class="c7"><#if item.avH5n1re6usecount??>${item.avH5n1re6usecount}</#if></td>
 				<td role="data" n=""   class="c2"></td>
-				<td role="data" n="avH5n2d7usecount"   class="c7"><#if item.avH5n2d7usecount??>${item.avH5n2d7usecount?c}</#if></td>
+				<td role="data" n="avH5n2d7usecount"   class="c7"><#if item.avH5n2d7usecount??>${item.avH5n2d7usecount}</#if></td>
 			
-				<td role="data" n="avRe6re7storecount"   class="c8"><#if item.avRe6re7storecount??>${item.avRe6re7storecount?c}</#if></td>
-				<td role="data" n="avRhrh5storecount"   class="c7"><#if item.avRhrh5storecount??>${item.avRhrh5storecount?c}</#if></td>
-				<td role="data" n="avH5n1re7storecount"   class="c7"><#if item.avH5n1re7storecount??>${item.avH5n1re7storecount?c}</#if></td>
-				<td role="data" n="avH5n1re6storecount"   class="c7"><#if item.avH5n1re6storecount??>${item.avH5n1re6storecount?c}</#if></td>
+				<td role="data" n="avRe6re7storecount"   class="c8"><#if item.avRe6re7storecount??>${item.avRe6re7storecount}</#if></td>
+				<td role="data" n="avRhrh5storecount"   class="c7"><#if item.avRhrh5storecount??>${item.avRhrh5storecount}</#if></td>
+				<td role="data" n="avH5n1re7storecount"   class="c7"><#if item.avH5n1re7storecount??>${item.avH5n1re7storecount}</#if></td>
+				<td role="data" n="avH5n1re6storecount"   class="c7"><#if item.avH5n1re6storecount??>${item.avH5n1re6storecount}</#if></td>
 				<td role="data" n=""   class="c2"></td>
-				<td role="data" n="avH5n2d7storecount"   class="c7"><#if item.avH5n2d7storecount??>${item.avH5n2d7storecount?c}</#if></td>
+				<td role="data" n="avH5n2d7storecount"   class="c7"><#if item.avH5n2d7storecount??>${item.avH5n2d7storecount}</#if></td>
 				
-				<td role="data" n="avRe6re7yearcount"   class="c8"><#if item.avRe6re7yearcount??>${item.avRe6re7yearcount?c}</#if></td>
-				<td role="data" n="avRhrh5yearcount"   class="c7"><#if item.avRhrh5yearcount??>${item.avRhrh5yearcount?c}</#if></td>
-				<td role="data" n="avH5n1re7yearcount"   class="c7"><#if item.avH5n1re7yearcount??>${item.avH5n1re7yearcount?c}</#if></td>
-				<td role="data" n="avH5n1re6yearcount"   class="c7"><#if item.avH5n1re6yearcount??>${item.avH5n1re6yearcount?c}</#if></td>
+				<td role="data" n="avRe6re7yearcount"   class="c8"><#if item.avRe6re7yearcount??>${item.avRe6re7yearcount}</#if></td>
+				<td role="data" n="avRhrh5yearcount"   class="c7"><#if item.avRhrh5yearcount??>${item.avRhrh5yearcount}</#if></td>
+				<td role="data" n="avH5n1re7yearcount"   class="c7"><#if item.avH5n1re7yearcount??>${item.avH5n1re7yearcount}</#if></td>
+				<td role="data" n="avH5n1re6yearcount"   class="c7"><#if item.avH5n1re6yearcount??>${item.avH5n1re6yearcount}</#if></td>
 				<td role="data" n=""   class="c2"></td>
-				<td role="data" n="avH5n2d7yearcount"   class="c7"><#if item.avH5n2d7yearcount??>${item.avH5n2d7yearcount?c}</#if></td>
+				<td role="data" n="avH5n2d7yearcount"   class="c7"><#if item.avH5n2d7yearcount??>${item.avH5n2d7yearcount}</#if></td>
 			</tr>
 		</tbody>
 	</table>

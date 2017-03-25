@@ -141,9 +141,9 @@
 			<tr class="r6">
 				<td class="c2"></td>
 				<td role="data" n=""  class="c3"></td>
-				<td role="data" n="csfVaccine" class="c6"><#if item.csfVaccine??>${item.csfVaccine?c}</#if></td>
+				<td role="data" n="csfVaccine" class="c6"><#if item.csfVaccine??>${item.csfVaccine}</#if></td>
 				<td role="data" n="" class="c3"></td>
-				<td role="data" n="csfImmuneamount" class="c6"><#if item.csfImmuneamount??>${item.csfImmuneamount?c}</#if></td>
+				<td role="data" n="csfImmuneamount" class="c6"><#if item.csfImmuneamount??>${item.csfImmuneamount}</#if></td>
 				<td role="data" n="" class="c7"></td>
 				<td  role="data"n=""  class="c7"></td>
 			</tr>

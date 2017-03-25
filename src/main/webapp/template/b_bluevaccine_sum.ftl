@@ -110,13 +110,13 @@
 			</tr>
 			<#list items as item>
 			<tr class="r5">
-				<td n="bvRegionname" class="c2"><#if item.bvRegionname??>${item.bvRegionname?c}</#if></td>
-				<td n="bvInactivatedusecount"  class="c2"><#if item.bvInactivatedusecount??>${item.bvInactivatedusecount?c}</#if></td>
-				<td n="bvLivingusecount"  class="c2"><#if item.bvLivingusecount??>${item.bvLivingusecount?c}</#if></td>
-				<td n="bvInactivatedstorecount"  class="c2"><#if item.bvInactivatedstorecount??>${item.bvInactivatedstorecount?c}</#if></td>
-				<td n="bvLivingstorecount"  class="c2"><#if item.bvLivingstorecount??>${item.bvLivingstorecount?c}</#if></td>
-				<td n="bvInactivatedyearcount"  class="c2"><#if item.bvInactivatedyearcount??>${item.bvInactivatedyearcount?c}</#if></td>
-				<td n="bvLivingyearcount"  class="c2"><#if item.bvLivingyearcount??>${item.bvLivingyearcount?c}</#if></td>
+				<td n="bvRegionname" class="c2"><#if item.bvRegionname??>${item.bvRegionname}</#if></td>
+				<td n="bvInactivatedusecount"  class="c2"><#if item.bvInactivatedusecount??>${item.bvInactivatedusecount}</#if></td>
+				<td n="bvLivingusecount"  class="c2"><#if item.bvLivingusecount??>${item.bvLivingusecount}</#if></td>
+				<td n="bvInactivatedstorecount"  class="c2"><#if item.bvInactivatedstorecount??>${item.bvInactivatedstorecount}</#if></td>
+				<td n="bvLivingstorecount"  class="c2"><#if item.bvLivingstorecount??>${item.bvLivingstorecount}</#if></td>
+				<td n="bvInactivatedyearcount"  class="c2"><#if item.bvInactivatedyearcount??>${item.bvInactivatedyearcount}</#if></td>
+				<td n="bvLivingyearcount"  class="c2"><#if item.bvLivingyearcount??>${item.bvLivingyearcount}</#if></td>
 			</tr>
  </#list>
 		</tbody>
