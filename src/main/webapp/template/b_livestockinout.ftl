@@ -149,34 +149,29 @@
         <td class="c2">鸡</td>
     </tr>
     <tr class="r5">
-        <td class="c2">-</td>
-        <td role="data" n="herdspig" class="c2"><#if item.herdspig??>${item.herdspig}</#if></td>
-        <td role="data" n="herdsniu" class="c2"><#if item.herdsniu??>${item.herdsniu}</#if></td>
-        <td role="data" n="herdssheep" class="c2"><#if item.herdssheep??>${item.herdssheep}</#if></td>
-        <td role="data" n="herdsother" class="c2"><#if item.herdsother??>${item.herdsother}</#if></td>
-        <td role="data" n="herdschicken" class="c2"><#if item.herdschicken??>${item.herdschicken}</#if></td>
-        <td role="data" n="herdsduck" class="c2"><#if item.herdsduck??>${item.herdsduck}</#if></td>
-        <td role="data" n="herdsgoose" class="c2"><#if item.herdsgoose??>${item.herdsgoose}</#if></td>
-        <td role="data" n="herdsotherq" class="c2"><#if item.herdsotherq??>${item.herdsotherq}</#if></td>
-        <td role="data" n="immunebirdfluchecken"
-            class="c2"><#if item.immunebirdfluchecken??>${item.immunebirdfluchecken}</#if></td>
-        <td role="data" n="immunebirdfluduck"
-            class="c2"><#if item.immunebirdfluduck??>${item.immunebirdfluduck}</#if></td>
-        <td role="data" n="immunebirdflugoose"
-            class="c2"><#if item.immunebirdflugoose??>${item.immunebirdflugoose}</#if></td>
-        <td role="data" n="immunebirdfluother"
-            class="c2"><#if item.immunebirdfluother??>${item.immunebirdfluother}</#if></td>
-        <td role="data" n="immuneafmdniu" class="c2"><#if item.immuneafmdniu??>${item.immuneafmdniu}</#if></td>
-        <td role="data" n="immuneafmdsheep"
-            class="c2"><#if item.immuneafmdsheep??>${item.immuneafmdsheep}</#if></td>
-        <td role="data" n="immuneblueear" class="c2"><#if item.immuneblueear??>${item.immuneblueear}</#if></td>
-        <td role="data" n="immuneswine" class="c2"><#if item.immuneswine??>${item.immuneswine}</#if></td>
-        <td role="data" n="immunenewcastle"
-            class="c2"><#if item.immunenewcastle??>${item.immunenewcastle}</#if></td>
-        <td role="data" n="immunefmdpig" class="c2"><#if item.immunefmdpig??>${item.immunefmdpig}</#if></td>
-        <td role="data" n="immunefmdniu" class="c2"><#if item.immunefmdniu??>${item.immunefmdniu}</#if></td>
-        <td role="data" n="immunefmdsheep" class="c2"><#if item.immunefmdsheep??>${item.immunefmdsheep}</#if></td>
-        <td role="data" n="immunefmdother" class="c2"><#if item.immunefmdother??>${item.immunefmdother}</#if></td>
+        <td class="c2">数量</td>
+        <td role="data" n="herdspig" class="c2"><#if item.herdspig??>${item.herdspig?c}</#if></td>
+        <td role="data" n="herdsniu" class="c2"><#if item.herdsniu??>${item.herdsniu?c}</#if></td>
+        <td role="data" n="herdssheep" class="c2"><#if item.herdssheep??>${item.herdssheep?c}</#if></td>
+        <td role="data" n="herdsother" class="c2"><#if item.herdsother??>${item.herdsother?c}</#if></td>
+        <td role="data" n="herdschicken" class="c2"><#if item.herdschicken??>${item.herdschicken?c}</#if></td>
+        <td role="data" n="herdsduck" class="c2"><#if item.herdsduck??>${item.herdsduck?c}</#if></td>
+        <td role="data" n="herdsgoose" class="c2"><#if item.herdsgoose??>${item.herdsgoose?c}</#if></td>
+        <td role="data" n="herdsotherq" class="c2"><#if item.herdsotherq??>${item.herdsotherq?c}</#if></td>
+        <td role="data" n="immunefmdpig" class="c2"><#if item.immunefmdpig??>${item.immunefmdpig?c}</#if></td>
+        <td role="data" n="immunefmdniu" class="c2"><#if item.immunefmdniu??>${item.immunefmdniu?c}</#if></td>
+        <td role="data" n="immunefmdsheep" class="c2"><#if item.immunefmdsheep??>${item.immunefmdsheep?c}</#if></td>
+        <td role="data" n="immunefmdother" class="c2"><#if item.immunefmdother??>${item.immunefmdother?c}</#if></td>
+        <td role="data" n="immunebirdfluchecken" class="c2"><#if item.immunebirdfluchecken??>${item.immunebirdfluchecken?c}</#if></td>
+        <td role="data" n="immunebirdfluduck" class="c2"><#if item.immunebirdfluduck??>${item.immunebirdfluduck?c}</#if></td>
+        <td role="data" n="immunebirdflugoose" class="c2"><#if item.immunebirdflugoose??>${item.immunebirdflugoose?c}</#if></td>
+        <td role="data" n="immunebirdfluother"  class="c2"><#if item.immunebirdfluother??>${item.immunebirdfluother?c}</#if></td>
+        <td role="data" n="immuneafmdniu" class="c2"><#if item.immuneafmdniu??>${item.immuneafmdniu?c}</#if></td>
+        <td role="data" n="immuneafmdsheep" class="c2"><#if item.immuneafmdsheep??>${item.immuneafmdsheep?c}</#if></td>
+        <td role="data" n="immuneblueear" class="c2"><#if item.immuneblueear??>${item.immuneblueear?c}</#if></td>
+        <td role="data" n="immuneswine" class="c2"><#if item.immuneswine??>${item.immuneswine?c}</#if></td>
+        <td role="data" n="immunenewcastle"  class="c2"><#if item.immunenewcastle??>${item.immunenewcastle?c}</#if></td>
+
     </tr>
     </tbody>
 </table>
