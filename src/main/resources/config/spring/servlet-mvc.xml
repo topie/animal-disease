@@ -69,6 +69,7 @@
             <props>
                 <prop key="number_format">0.00</prop>
                 <prop key="template_update_delay">0</prop>
+                <prop key = "number_format"> 0.## </prop >
             </props>
         </property>
     </bean>

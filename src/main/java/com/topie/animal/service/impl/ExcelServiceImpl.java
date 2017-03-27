@@ -135,6 +135,8 @@ public class ExcelServiceImpl implements IExcelService {
         return wlivestockinout;
     }
 
+
+
     @Override
     public String getReportHtml(HttpServletRequest request, Report report) {
         Map params = new HashMap();
@@ -158,6 +160,11 @@ public class ExcelServiceImpl implements IExcelService {
         Region region = regionMapper.selectByPrimaryKey(orgInfo.getRegionCode());
         Wlivestockinout wlivestockinout=getWlivestockinout(region,report.getBeginTime());
         params.put("wlivestockinout", wlivestockinout);
+
+        Date beginTime=BeginTimeUtil.getBeginTime(report.getBeginTime());
+        Date halfYearbeginTime=BeginTimeUtil.getCurrentHalfYearBeginTime(report.getBeginTime());
+        Date endTime=report.getBeginTime();
+
         switch (template.getTableName().toLowerCase()) {
             case "b_avianinfluenza": {
                 Avianinfluenza arg =new Avianinfluenza();
@@ -168,6 +175,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Avianinfluenza  itemSum = avianinfluenzaMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
            case "b_emergencyvaccine": {
@@ -278,6 +287,7 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+
                 break;
             }
             case "b_wpestedespetitsruminants": {
@@ -300,6 +310,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Wavianinfluenza  itemSum = wavianinfluenzaMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_wnewcastle": {
@@ -344,6 +356,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Vaccineorder  itemSum = vaccineorderMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_blueeardisease": {
@@ -355,6 +369,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Blueeardisease  itemSum = blueeardiseaseMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_classicalswinefever": {
@@ -366,6 +382,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Classicalswinefever  itemSum = classicalswinefeverMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_footandmouthdisease": {
@@ -377,6 +395,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Footandmouthdisease  itemSum = footandmouthdiseaseMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_livestockinout": {
@@ -385,6 +405,8 @@ public class ExcelServiceImpl implements IExcelService {
                     livestockInOut = new LiveStockInOut();
                 }
                 params.put("item", livestockInOut);
+                LiveStockInOut  itemSum =liveStockInOutMapper.selectSumByReportCode(region.getRegionCode(),beginTime,endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_newcastle": {
@@ -396,6 +418,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Newcastle  itemSum = newcastleMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_pestedespetitsruminants": {
@@ -407,6 +431,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Pestedespetitsruminants  itemSum = pestedespetitsruminantsMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_disinfectiondrugs": {

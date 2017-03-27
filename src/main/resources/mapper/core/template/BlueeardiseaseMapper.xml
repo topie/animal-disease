@@ -20,4 +20,13 @@
   <select id="selectCumulative" resultMap="BaseResultMap">
     select * from animal_disease.b_blueeardisease  where bed_date BETWEEN  #{startDate} AND #{endDate}
   </select>
+  <select id="selectSumByReportCode" resultMap="BaseResultMap">
+    select
+    sum(bed_inactivatedVaccine) bed_inactivatedVaccine,
+    sum(bed_inactivatedImmuneAmount) bed_inactivatedImmuneAmount,
+    sum(bed_weakVaccine) bed_weakVaccine,
+    sum(bed_weakImmuneAmount) bed_weakImmuneAmount
+    from animal_disease.b_blueeardisease
+    where bed_regionCode=#{regionCode} AND bed_date BETWEEN  #{beginTime} AND #{endTime}
+  </select>
 </mapper>

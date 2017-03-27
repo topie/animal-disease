@@ -4,6 +4,7 @@ import com.topie.database.core.template.model.LiveStockInOut;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
+import java.util.Date;
 import java.util.List;
 
 public interface LiveStockInOutMapper extends Mapper<LiveStockInOut> {
@@ -13,4 +14,6 @@ public interface LiveStockInOutMapper extends Mapper<LiveStockInOut> {
     List<LiveStockInOut> selectByReportIds(@Param("ids") List<String> reportIds);
 
     LiveStockInOut selectSumByReportIds(@Param("ids") List<String> reportIds);
+
+    LiveStockInOut selectSumByReportCode(@Param("regionCode") String regionCode,@Param("beginTime")Date beginTime,@Param("endTime")Date endTime);
 }

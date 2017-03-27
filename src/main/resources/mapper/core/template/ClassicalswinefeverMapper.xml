@@ -17,4 +17,11 @@
   <select id="selectCumulative" resultMap="BaseResultMap">
     select * from animal_disease.b_classicalswinefever  where csf_date BETWEEN  #{startDate} AND #{endDate}
   </select>
+  <select id="selectSumByReportCode" resultMap="BaseResultMap">
+    select
+    sum(csf_vaccine) csf_vaccine,
+    sum(csf_immuneAmount) csf_immuneAmount
+    from animal_disease.b_classicalswinefever
+    where csf_regionCode=#{regionCode} AND csf_date BETWEEN  #{beginTime} AND #{endTime}
+  </select>
 </mapper>

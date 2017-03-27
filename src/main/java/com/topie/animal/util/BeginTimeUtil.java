@@ -70,10 +70,23 @@ public class BeginTimeUtil {
 //        Date beginTime = DateUtil.getCurrentMonthFirstDay();
         int year = DateUtil.getYear(beginTime);
         int month = DateUtil.getMonth(beginTime) + 1;
-        if (month >= 3 && month < 9) {
+        if ( month < 8) {
             month = 3;
         } else {
             month = 9;
+        }
+        String beginTimeStr = year + "-" + month + "-01";
+        beginTime = DateUtil.StringToDate(beginTimeStr, DateStyle.YYYY_MM_DD);
+        return beginTime;
+    }
+
+    public static Date getBeginTime(Date beginTime){
+        int year = DateUtil.getYear(beginTime);
+        int month = DateUtil.getMonth(beginTime) + 1;
+        if (month <=6) {
+            month = 1;
+        } else {
+            month = 7;
         }
         String beginTimeStr = year + "-" + month + "-01";
         beginTime = DateUtil.StringToDate(beginTimeStr, DateStyle.YYYY_MM_DD);
