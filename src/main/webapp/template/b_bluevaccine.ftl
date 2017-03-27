@@ -125,12 +125,12 @@
 				<td class="c2">高致病性猪蓝耳病活疫苗(万头份)</td>
 			</tr>
 			<tr class="r7">
-				<td role="data" n="bvInactivatedusecount"  class="c2"><#if item.bvInactivatedusecount??>${item.bvInactivatedusecount?c}</#if></td>
-				<td role="data" n="bvLivingusecount"  class="c2"><#if item.bvLivingusecount??>${item.bvLivingusecount?c}</#if></td>
-				<td role="data" n="bvInactivatedstorecount"  class="c2"><#if item.bvInactivatedstorecount??>${item.bvInactivatedstorecount?c}</#if></td>
-				<td role="data" n="bvLivingstorecount"  class="c2"><#if item.bvLivingstorecount??>${item.bvLivingstorecount?c}</#if></td>
-				<td role="data" n="bvInactivatedyearcount"  class="c2"><#if item.bvInactivatedyearcount??>${item.bvInactivatedyearcount?c}</#if></td>
-				<td role="data" n="bvLivingyearcount"  class="c2"><#if item.bvLivingyearcount??>${item.bvLivingyearcount?c}</#if></td>
+				<td role="data" n="bvInactivatedusecount"  class="c2"><#if item.bvInactivatedusecount??>${item.bvInactivatedusecount}</#if></td>
+				<td role="data" n="bvLivingusecount"  class="c2"><#if item.bvLivingusecount??>${item.bvLivingusecount}</#if></td>
+				<td role="data" n="bvInactivatedstorecount"  class="c2"><#if item.bvInactivatedstorecount??>${item.bvInactivatedstorecount}</#if></td>
+				<td role="data" n="bvLivingstorecount"  class="c2"><#if item.bvLivingstorecount??>${item.bvLivingstorecount}</#if></td>
+				<td role="data" n="bvInactivatedyearcount"  class="c2"><#if item.bvInactivatedyearcount??>${item.bvInactivatedyearcount}</#if></td>
+				<td role="data" n="bvLivingyearcount"  class="c2"><#if item.bvLivingyearcount??>${item.bvLivingyearcount}</#if></td>
 			</tr>
 		</tbody>
 	</table>

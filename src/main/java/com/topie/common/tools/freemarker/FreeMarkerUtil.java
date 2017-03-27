@@ -12,7 +12,6 @@ import java.util.Map;
 public class FreeMarkerUtil {
 
     /**
-     *
      * @param templatePath
      * @param templateName
      * @param params
@@ -30,9 +29,11 @@ public class FreeMarkerUtil {
             config.setLocale(Locale.CHINA);
             config.setDefaultEncoding("utf-8");
             config.setClassicCompatible(true);//处理空值为空字符串
+            config.setNumberFormat("0.00");
             // 获取模板,并设置编码方式，这个编码必须要与页面中的编码格式一致
             // 否则会出现乱码
             Template template = config.getTemplate(templateName, "UTF-8");
+            template.setNumberFormat("0.00");
             out = new StringWriter(2048);
             template.process(params, out);
             return out.toString();
@@ -51,7 +52,6 @@ public class FreeMarkerUtil {
         return null;
     }
 
-
     /**
      * templatePath模板文件存放路径,templateName 模板文件名称,filename 生成的文件名称
      *
@@ -60,8 +60,8 @@ public class FreeMarkerUtil {
      * @param fileName
      * @param root
      */
-    public static void analysisTemplate(String templatePath, String templateName, String fileName,
-        Map<?, ?> root, HttpServletRequest request) {
+    public static void analysisTemplate(String templatePath, String templateName, String fileName, Map<?, ?> root,
+            HttpServletRequest request) {
         try {
             //初使化FreeMarker配置
             Configuration config = new Configuration();
@@ -73,7 +73,7 @@ public class FreeMarkerUtil {
             // 否则会出现乱码
             config = updateConfiguration(config, request);
             Template template = config.getTemplate(templateName, "UTF-8");
-
+            template.setNumberFormat("0.00");
             // 合并数据模型与模板
             FileOutputStream fos = new FileOutputStream(fileName);
             Writer out = new OutputStreamWriter(fos, "UTF-8");
@@ -87,8 +87,8 @@ public class FreeMarkerUtil {
         }
     }
 
-    protected static Configuration updateConfiguration(Configuration configuration,
-        HttpServletRequest request) throws TemplateException {
+    protected static Configuration updateConfiguration(Configuration configuration, HttpServletRequest request)
+            throws TemplateException {
 
         // 设置标签类型([]、<>),[]这种标记解析要快些
         configuration.setTagSyntax(Configuration.AUTO_DETECT_TAG_SYNTAX);
@@ -97,10 +97,9 @@ public class FreeMarkerUtil {
         configuration.setClassicCompatible(true);
 
         WebApplicationContext webApp = RequestContextUtils
-            .getWebApplicationContext(request, request.getSession().getServletContext());
+                .getWebApplicationContext(request, request.getSession().getServletContext());
         // 获取实现TemplateDirectiveModel的bean
-        Map<String, TemplateDirectiveModel> beans =
-            webApp.getBeansOfType(TemplateDirectiveModel.class);
+        Map<String, TemplateDirectiveModel> beans = webApp.getBeansOfType(TemplateDirectiveModel.class);
 
         for (String key : beans.keySet()) {
             Object obj = beans.get(key);

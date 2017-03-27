@@ -111,6 +111,8 @@
 		<tbody>
 			<tr class="r1">
 				<td class="c1" colspan="5">${templateName}</td>
+				<td class="c2">累计使用数量</td>
+				<td class="c2">累计免疫数量</td>
 			</tr>
 			<tr class="r2">
 				<td class="c3">单 位:</td>
@@ -142,6 +144,8 @@
 				<td role="data" n="csfVaccine" class="c6"><#if item.csfVaccine??>${item.csfVaccine?c}</#if></td>
 				<td role="data" n="" class="c3"></td>
 				<td role="data" n="csfImmuneamount" class="c6"><#if item.csfImmuneamount??>${item.csfImmuneamount?c}</#if></td>
+				<td role="data" n="" class="c7"></td>
+				<td  role="data"n=""  class="c7"></td>
 			</tr>
 		</tbody>
 	</table>

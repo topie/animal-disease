@@ -216,9 +216,9 @@
 			</tr>
 			<tr class="r3">
 				<td class="c10">小反刍兽疫活疫苗</td>
-				<td role="data" n="wpdrVaccine"  class="c10"><#if item.wpdrVaccine??>${item.wpdrVaccine?c}</#if></td>
+				<td role="data" n="wpdrVaccine"  class="c10"><#if item.wpdrVaccine??>${item.wpdrVaccine}</#if></td>
 				<td role="data" n=""  role="data" n=""  class="c11"></td>
-				<td role="data" n="wpdrImmuneamount"  class="c10"><#if item.wpdrImmuneamount??>${item.wpdrImmuneamount?c}</#if></td>
+				<td role="data" n="wpdrImmuneamount"  class="c10"><#if item.wpdrImmuneamount??>${item.wpdrImmuneamount}</#if></td>
 				<td role="data" n=""  class="c11"></td>
 				<td role="data" n=""  class="c11"></td>
 				<td role="data" n=""  class="c11"></td>

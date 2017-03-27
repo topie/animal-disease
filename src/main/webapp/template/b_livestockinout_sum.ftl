@@ -122,33 +122,33 @@
     <#list items as item>
     <tr class="r3">
         <td class="c2">${item.livRegionname}</td>
-        <td n="herdspig" class="c2"><#if item.herdspig??>${item.herdspig?c}</#if></td>
-        <td n="herdsniu" class="c2"><#if item.herdsniu??>${item.herdsniu?c}</#if></td>
-        <td n="herdssheep" class="c2"><#if item.herdssheep??>${item.herdssheep?c}</#if></td>
-        <td n="herdsother" class="c2"><#if item.herdsother??>${item.herdsother?c}</#if></td>
-        <td n="herdschicken" class="c2"><#if item.herdschicken??>${item.herdschicken?c}</#if></td>
-        <td n="herdsduck" class="c2"><#if item.herdsduck??>${item.herdsduck?c}</#if></td>
-        <td n="herdsgoose" class="c2"><#if item.herdsgoose??>${item.herdsgoose?c}</#if></td>
-        <td n="herdsotherq" class="c2"><#if item.herdsotherq??>${item.herdsotherq?c}</#if></td>
+        <td n="herdspig" class="c2"><#if item.herdspig??>${item.herdspig}</#if></td>
+        <td n="herdsniu" class="c2"><#if item.herdsniu??>${item.herdsniu}</#if></td>
+        <td n="herdssheep" class="c2"><#if item.herdssheep??>${item.herdssheep}</#if></td>
+        <td n="herdsother" class="c2"><#if item.herdsother??>${item.herdsother}</#if></td>
+        <td n="herdschicken" class="c2"><#if item.herdschicken??>${item.herdschicken}</#if></td>
+        <td n="herdsduck" class="c2"><#if item.herdsduck??>${item.herdsduck}</#if></td>
+        <td n="herdsgoose" class="c2"><#if item.herdsgoose??>${item.herdsgoose}</#if></td>
+        <td n="herdsotherq" class="c2"><#if item.herdsotherq??>${item.herdsotherq}</#if></td>
         <td n="immunebirdfluchecken"
-            class="c2"><#if item.immunebirdfluchecken??>${item.immunebirdfluchecken?c}</#if></td>
+            class="c2"><#if item.immunebirdfluchecken??>${item.immunebirdfluchecken}</#if></td>
         <td n="immunebirdfluduck"
-            class="c2"><#if item.immunebirdfluduck??>${item.immunebirdfluduck?c}</#if></td>
+            class="c2"><#if item.immunebirdfluduck??>${item.immunebirdfluduck}</#if></td>
         <td n="immunebirdflugoose"
-            class="c2"><#if item.immunebirdflugoose??>${item.immunebirdflugoose?c}</#if></td>
+            class="c2"><#if item.immunebirdflugoose??>${item.immunebirdflugoose}</#if></td>
         <td n="immunebirdfluother"
-            class="c2"><#if item.immunebirdfluother??>${item.immunebirdfluother?c}</#if></td>
-        <td n="immuneafmdniu" class="c2"><#if item.immuneafmdniu??>${item.immuneafmdniu?c}</#if></td>
+            class="c2"><#if item.immunebirdfluother??>${item.immunebirdfluother}</#if></td>
+        <td n="immuneafmdniu" class="c2"><#if item.immuneafmdniu??>${item.immuneafmdniu}</#if></td>
         <td n="immuneafmdsheep"
-            class="c2"><#if item.immuneafmdsheep??>${item.immuneafmdsheep?c}</#if></td>
-        <td n="immuneblueear" class="c2"><#if item.immuneblueear??>${item.immuneblueear?c}</#if></td>
-        <td n="immuneswine" class="c2"><#if item.immuneswine??>${item.immuneswine?c}</#if></td>
+            class="c2"><#if item.immuneafmdsheep??>${item.immuneafmdsheep}</#if></td>
+        <td n="immuneblueear" class="c2"><#if item.immuneblueear??>${item.immuneblueear}</#if></td>
+        <td n="immuneswine" class="c2"><#if item.immuneswine??>${item.immuneswine}</#if></td>
         <td n="immunenewcastle"
-            class="c2"><#if item.immunenewcastle??>${item.immunenewcastle?c}</#if></td>
-        <td n="immunefmdpig" class="c2"><#if item.immunefmdpig??>${item.immunefmdpig?c}</#if></td>
-        <td n="immunefmdniu" class="c2"><#if item.immunefmdniu??>${item.immunefmdniu?c}</#if></td>
-        <td n="immunefmdsheep" class="c2"><#if item.immunefmdsheep??>${item.immunefmdsheep?c}</#if></td>
-        <td n="immunefmdother" class="c2"><#if item.immunefmdother??>${item.immunefmdother?c}</#if></td>
+            class="c2"><#if item.immunenewcastle??>${item.immunenewcastle}</#if></td>
+        <td n="immunefmdpig" class="c2"><#if item.immunefmdpig??>${item.immunefmdpig}</#if></td>
+        <td n="immunefmdniu" class="c2"><#if item.immunefmdniu??>${item.immunefmdniu}</#if></td>
+        <td n="immunefmdsheep" class="c2"><#if item.immunefmdsheep??>${item.immunefmdsheep}</#if></td>
+        <td n="immunefmdother" class="c2"><#if item.immunefmdother??>${item.immunefmdother}</#if></td>
     </tr>
     </#list>
     </tbody>

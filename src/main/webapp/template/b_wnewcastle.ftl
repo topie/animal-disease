@@ -144,18 +144,18 @@
 			<tr class="r5"></tr>
 			<tr class="r3">
 				<td class="c2">新城疫灭活疫苗</td>
-				<td role="data" n="ncInactivatedvaccine"  class="c2"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine?c}</#if></td>
+				<td role="data" n="ncInactivatedvaccine"  class="c2"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine}</#if></td>
 				<td role="data" n=""  class="c6"></td>
-				<td role="data" n="ncInactivatedimmuneamount"  class="c2"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount?c}</#if></td>
+				<td role="data" n="ncInactivatedimmuneamount"  class="c2"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount}</#if></td>
 				<td role="data" n=""  class="c6"></td>
 				<td role="data" n=""  class="c6" rowspan="2"></td>
 				<td role="data" n=""  class="c6" rowspan="2"></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2">新城疫弱毒疫苗</td>
-				<td role="data" n="ncJointvaccine"  class="c2"><#if item.ncJointvaccine??>${item.ncJointvaccine?c}</#if></td>
+				<td role="data" n="ncJointvaccine"  class="c2"><#if item.ncJointvaccine??>${item.ncJointvaccine}</#if></td>
 				<td role="data" n=""  class="c6"></td>
-				<td role="data" n="ncJointimmuneamount"  class="c2"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount?c}</#if></td>
+				<td role="data" n="ncJointimmuneamount"  class="c2"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount}</#if></td>
 				<td role="data" n=""  class="c6"></td>
 			</tr>
 			<tr class="r3">

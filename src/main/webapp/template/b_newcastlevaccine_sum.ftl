@@ -93,7 +93,7 @@
 			</tr>
 <#list items as item>
 			<tr class="r5">
-				<td n="nvRegionname" class="c2"><#if item.nvRegionname??>${item.nvRegionname}</#if></td>
+				<td n="nvRegionname" class="c2"><#if item.nvRegionname??>${item.nvRegionname?c}</#if></td>
 				<td n="nvInactivatedusecount"   class="c2"><#if item.nvInactivatedusecount??>${item.nvInactivatedusecount?c}</#if></td>
 				<td n="nvPoisonusecount"  class="c2"><#if item.nvPoisonusecount??>${item.nvPoisonusecount?c}</#if></td>
 				<td n="nvInactivatedstorecount"  class="c2"><#if item.nvInactivatedstorecount??>${item.nvInactivatedstorecount?c}</#if></td>

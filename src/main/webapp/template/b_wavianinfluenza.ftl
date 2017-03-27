@@ -237,11 +237,11 @@
 				<td role="data" n=""  class="c7"></td>
 				<td role="data" n=""  class="c7"></td>
 				<td role="data" n=""  class="c8"></td>
-                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.herdschicken??>${wlivestockinout.herdschicken?c}</#if></td>
-                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.herdsduck??>${wlivestockinout.herdsduck?c}</#if></td>
-                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.herdsgoose??>${wlivestockinout.herdsgoose?c}</#if></td>
-                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.herdsotherq??>${wlivestockinout.herdsotherq?c}</#if></td>
-				<td  n=""  class="c7" rowspan="2"><#if wlivestockinout??>${wlivestockinout.herdsotherq+wlivestockinout.herdschicken+wlivestockinout.herdsduck+wlivestockinout.herdsgoose}</#if></td>
+				<td role="data" n=""  class="c7" rowspan="2"></td>
+				<td role="data" n=""  class="c7" rowspan="2"></td>
+				<td role="data" n=""  class="c7" rowspan="2"></td>
+				<td role="data" n=""  class="c7" rowspan="2"></td>
+				<td role="data" n=""  class="c7" rowspan="2"></td>
 				<td role="data" n=""  class="c9" rowspan="2"></td>
 				<td role="data" n=""  class="c9" rowspan="2"></td>
 				<td role="data" n=""  class="c9" rowspan="2"></td>
@@ -267,10 +267,10 @@
 				<td role="data" n="aiJointimmuneamountduck"  class="c2"><#if item.aiJointimmuneamountduck??>${item.aiJointimmuneamountduck?c}</#if></td>
 				<td role="data" n="aiJointimmuneamountgoose"  class="c2"><#if item.aiJointimmuneamountgoose??>${item.aiJointimmuneamountgoose?c}</#if></td>
 				<td role="data" n="aiJointimmuneamountother"  class="c2"><#if item.aiJointimmuneamountother??>${item.aiJointimmuneamountother?c}</#if></td>
-                <td role="data" n=""  class="c7"></td>
-                <td role="data" n=""  class="c7"></td>
-                <td role="data" n=""  class="c7"></td>
-                <td role="data" n=""  class="c7"></td>
+				<td role="data" n=""  class="c7"></td>
+				<td role="data" n=""  class="c7"></td>
+				<td role="data" n=""  class="c7"></td>
+				<td role="data" n=""  class="c7"></td>
 				<td role="data" n=""  class="c8"></td>
 		<!-- 		<td class="c10">0</td>
 				<td class="c10">0</td>

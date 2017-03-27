@@ -128,9 +128,9 @@
 				<td class="c6">小反刍兽疫疫苗(万头份)</td>
 			</tr>
 			<tr class="r4">
-				<td role="data" n="srvH5n2d7usecount"  class="c5"><#if item.srvH5n2d7usecount??>${item.srvH5n2d7usecount?c}</#if></td>
-				<td role="data" n="srvH5n2d7storecount"  class="c5"><#if item.srvH5n2d7storecount??>${item.srvH5n2d7storecount?c}</#if></td>
-				<td role="data" n="srvH5n2d7yearcount"  class="c5"><#if item.srvH5n2d7yearcount??>${item.srvH5n2d7yearcount?c}</#if></td>
+				<td role="data" n="srvH5n2d7usecount"  class="c5"><#if item.srvH5n2d7usecount??>${item.srvH5n2d7usecount}</#if></td>
+				<td role="data" n="srvH5n2d7storecount"  class="c5"><#if item.srvH5n2d7storecount??>${item.srvH5n2d7storecount}</#if></td>
+				<td role="data" n="srvH5n2d7yearcount"  class="c5"><#if item.srvH5n2d7yearcount??>${item.srvH5n2d7yearcount}</#if></td>
 			</tr>
 		</tbody>
 	</table>

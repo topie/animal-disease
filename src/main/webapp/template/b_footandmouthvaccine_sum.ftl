@@ -118,26 +118,26 @@
 			<tr class="r5">
 				<td n="fvRegionname" class="c2"><#if item.fvRegionname??>${item.fvRegionname}</#if></td>
 				
-				<td n="fvOinactivatedusecount"  class="c2"><#if item.fvOinactivatedusecount??>${item.fvOinactivatedusecount?c}</#if></td>
-				<td n="fvSyntheticusecount"  class="c2"><#if item.fvSyntheticusecount??>${item.fvSyntheticusecount?c}</#if></td>
-				<td n="fvO2inactivatedusecount"  class="c2"><#if item.fvO2inactivatedusecount??>${item.fvO2inactivatedusecount?c}</#if></td>
-				<td n="fvOainactivatedusecount"  class="c2"><#if item.fvOainactivatedusecount??>${item.fvOainactivatedusecount?c}</#if></td>
-				<td n="fvO3inactivatedusecount"  class="c2"><#if item.fvO3inactivatedusecount??>${item.fvO3inactivatedusecount?c}</#if></td>
-				<td n="fvAinactivatedusecount"  class="c2"><#if item.fvAinactivatedusecount??>${item.fvAinactivatedusecount?c}</#if></td>
+				<td n="fvOinactivatedusecount"  class="c2"><#if item.fvOinactivatedusecount??>${item.fvOinactivatedusecount}</#if></td>
+				<td n="fvSyntheticusecount"  class="c2"><#if item.fvSyntheticusecount??>${item.fvSyntheticusecount}</#if></td>
+				<td n="fvO2inactivatedusecount"  class="c2"><#if item.fvO2inactivatedusecount??>${item.fvO2inactivatedusecount}</#if></td>
+				<td n="fvOainactivatedusecount"  class="c2"><#if item.fvOainactivatedusecount??>${item.fvOainactivatedusecount}</#if></td>
+				<td n="fvO3inactivatedusecount"  class="c2"><#if item.fvO3inactivatedusecount??>${item.fvO3inactivatedusecount}</#if></td>
+				<td n="fvAinactivatedusecount"  class="c2"><#if item.fvAinactivatedusecount??>${item.fvAinactivatedusecount}</#if></td>
 				
-				<td n="fvoinactivatedstorecount"  class="c2"><#if item.fvoinactivatedstorecount??>${item.fvoinactivatedstorecount?c}</#if></td>
-				<td n="fvSyntheticstorecount"  class="c2"><#if item.fvSyntheticstorecount??>${item.fvSyntheticstorecount?c}</#if></td>
-				<td n="fvO2inactivatedstorecount"  class="c2"><#if item.fvO2inactivatedstorecount??>${item.fvO2inactivatedstorecount?c}</#if></td>
-				<td n="fvoainactivatedstorecount"  class="c2"><#if item.fvoainactivatedstorecount??>${item.fvoainactivatedstorecount?c}</#if></td>
-				<td n="fvO3inactivatedstorecount"  class="c2"><#if item.fvO3inactivatedstorecount??>${item.fvO3inactivatedstorecount?c}</#if></td>
-				<td n="fvAinactivatedstorecount"  class="c2"><#if item.fvAinactivatedstorecount??>${item.fvAinactivatedstorecount?c}</#if></td>
+				<td n="fvoinactivatedstorecount"  class="c2"><#if item.fvoinactivatedstorecount??>${item.fvoinactivatedstorecount}</#if></td>
+				<td n="fvSyntheticstorecount"  class="c2"><#if item.fvSyntheticstorecount??>${item.fvSyntheticstorecount}</#if></td>
+				<td n="fvO2inactivatedstorecount"  class="c2"><#if item.fvO2inactivatedstorecount??>${item.fvO2inactivatedstorecount}</#if></td>
+				<td n="fvoainactivatedstorecount"  class="c2"><#if item.fvoainactivatedstorecount??>${item.fvoainactivatedstorecount}</#if></td>
+				<td n="fvO3inactivatedstorecount"  class="c2"><#if item.fvO3inactivatedstorecount??>${item.fvO3inactivatedstorecount}</#if></td>
+				<td n="fvAinactivatedstorecount"  class="c2"><#if item.fvAinactivatedstorecount??>${item.fvAinactivatedstorecount}</#if></td>
 				
-				<td n="fvOinactivatedyearcount"  class="c2"><#if item.fvOinactivatedyearcount??>${item.fvOinactivatedyearcount?c}</#if></td>
-				<td n="fvsyntheticyearcount"  class="c2"><#if item.fvsyntheticyearcount??>${item.fvsyntheticyearcount?c}</#if></td>
-				<td n="fvO2inactivatedsyearcount"  class="c2"><#if item.fvO2inactivatedsyearcount??>${item.fvO2inactivatedsyearcount?c}</#if></td>
-				<td n="fvOainactivatedyearcount"  class="c2"><#if item.fvOainactivatedyearcount??>${item.fvOainactivatedyearcount?c}</#if></td>
-				<td n="fvO3inactivatedsyearcount"  class="c2"><#if item.fvO3inactivatedsyearcount??>${item.fvO3inactivatedsyearcount?c}</#if></td>
-				<td n="fvAinactivatedsyearcount"  class="c2"><#if item.fvAinactivatedsyearcount??>${item.fvAinactivatedsyearcount?c}</#if></td>
+				<td n="fvOinactivatedyearcount"  class="c2"><#if item.fvOinactivatedyearcount??>${item.fvOinactivatedyearcount}</#if></td>
+				<td n="fvsyntheticyearcount"  class="c2"><#if item.fvsyntheticyearcount??>${item.fvsyntheticyearcount}</#if></td>
+				<td n="fvO2inactivatedsyearcount"  class="c2"><#if item.fvO2inactivatedsyearcount??>${item.fvO2inactivatedsyearcount}</#if></td>
+				<td n="fvOainactivatedyearcount"  class="c2"><#if item.fvOainactivatedyearcount??>${item.fvOainactivatedyearcount}</#if></td>
+				<td n="fvO3inactivatedsyearcount"  class="c2"><#if item.fvO3inactivatedsyearcount??>${item.fvO3inactivatedsyearcount}</#if></td>
+				<td n="fvAinactivatedsyearcount"  class="c2"><#if item.fvAinactivatedsyearcount??>${item.fvAinactivatedsyearcount}</#if></td>
 			</tr>
 
 		</tbody>

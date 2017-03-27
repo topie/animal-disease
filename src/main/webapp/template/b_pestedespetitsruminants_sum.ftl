@@ -144,11 +144,11 @@
 			<tr class="r6">
 				<td n="pdprRegionname"  class="c2"><#if item.pdprRegionname??>${item.pdprRegionname}</#if></td>
 				
-				<td n="pdprLivevaccine"  class="c2"><#if item.pdprLivevaccine??>${item.pdprLivevaccine?c}</#if></td>
+				<td n="pdprLivevaccine"  class="c2"><#if item.pdprLivevaccine??>${item.pdprLivevaccine}</#if></td>
 				<td n=""  class="c2"></td>
-				<td n="pdprLivebreedingsheep"  class="c6"><#if item.pdprLivebreedingsheep??>${item.pdprLivebreedingsheep?c}</#if></td>
-				<td n="pdpr_LiveGoat"  class="c6"><#if item.pdpr_LiveGoat??>${item.pdpr_LiveGoat?c}</#if></td>
-				<td n="pdpr_LiveSheep"  class="c6"><#if item.pdpr_LiveSheep??>${item.pdpr_LiveSheep?c}</#if></td>
+				<td n="pdprLivebreedingsheep"  class="c6"><#if item.pdprLivebreedingsheep??>${item.pdprLivebreedingsheep}</#if></td>
+				<td n="pdpr_LiveGoat"  class="c6"><#if item.pdpr_LiveGoat??>${item.pdpr_LiveGoat}</#if></td>
+				<td n="pdpr_LiveSheep"  class="c6"><#if item.pdpr_LiveSheep??>${item.pdpr_LiveSheep}</#if></td>
 				<td n=""  class="c6"></td>
 				<td n=""  class="c2"></td>
 				<td n=""  class="c2"></td>

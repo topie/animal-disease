@@ -124,12 +124,12 @@
 				<td class="c2">传代细胞源猪瘟活疫苗(万头份)</td>
 			</tr>
 			<tr class="r7">
-				<td role="data" n="cvLivingusecount"  class="c2"><#if item.cvLivingusecount??>${item.cvLivingusecount?c}</#if></td>
-				<td role="data" n="cvCellusercount"  class="c2"><#if item.cvCellusercount??>${item.cvCellusercount?c}</#if></td>
-				<td role="data" n="cvLivingstorecount"  class="c2"><#if item.cvLivingstorecount??>${item.cvLivingstorecount?c}</#if></td>
-				<td role="data" n="cvCellstorecount"  class="c2"><#if item.cvCellstorecount??>${item.cvCellstorecount?c}</#if></td>
-				<td role="data" n="cvLivingyearcount"  class="c2"><#if item.cvLivingyearcount??>${item.cvLivingyearcount?c}</#if></td>
-				<td role="data" n="cvCellyearcount"  class="c2"><#if item.cvCellyearcount??>${item.cvCellyearcount?c}</#if></td>
+				<td role="data" n="cvLivingusecount"  class="c2"><#if item.cvLivingusecount??>${item.cvLivingusecount}</#if></td>
+				<td role="data" n="cvCellusercount"  class="c2"><#if item.cvCellusercount??>${item.cvCellusercount}</#if></td>
+				<td role="data" n="cvLivingstorecount"  class="c2"><#if item.cvLivingstorecount??>${item.cvLivingstorecount}</#if></td>
+				<td role="data" n="cvCellstorecount"  class="c2"><#if item.cvCellstorecount??>${item.cvCellstorecount}</#if></td>
+				<td role="data" n="cvLivingyearcount"  class="c2"><#if item.cvLivingyearcount??>${item.cvLivingyearcount}</#if></td>
+				<td role="data" n="cvCellyearcount"  class="c2"><#if item.cvCellyearcount??>${item.cvCellyearcount}</#if></td>
 			</tr>
 		</tbody>
 	</table>

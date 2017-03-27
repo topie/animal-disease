@@ -209,12 +209,12 @@
 			</tr>
 			<tr class="r5">
 				<td class="c2">口蹄疫o型灭活类疫苗</td>
-				<td role="data" n="fmdInactivatedvaccine"  class="c2"><#if item.fmdInactivatedvaccine??>${item.fmdInactivatedvaccine?c}</#if></td>
+				<td role="data" n="fmdInactivatedvaccine"  class="c2"><#if item.fmdInactivatedvaccine??>${item.fmdInactivatedvaccine}</#if></td>
 				<td role="data"  n=""  class="c7"></td>
-				<td role="data"  n="fmdinactivatedimmuneamountpig"  class="c2"><#if item.fmdinactivatedimmuneamountpig??>${item.fmdinactivatedimmuneamountpig?c}</#if></td>
-				<td role="data" n="fmdInactivatedimmuneamountniu"   class="c2"><#if item.fmdInactivatedimmuneamountniu??>${item.fmdInactivatedimmuneamountniu?c}</#if></td>
-				<td role="data" n="fmdInactivatedimmuneamountsheep"   class="c2"><#if item.fmdInactivatedimmuneamountsheep??>${item.fmdInactivatedimmuneamountsheep?c}</#if></td>
-				<td role="data"  n="fmdInactivatedimmuneamountother"  class="c2"><#if item.fmdInactivatedimmuneamountother??>${item.fmdInactivatedimmuneamountother?c}</#if></td>
+				<td role="data"  n="fmdinactivatedimmuneamountpig"  class="c2"><#if item.fmdinactivatedimmuneamountpig??>${item.fmdinactivatedimmuneamountpig}</#if></td>
+				<td role="data" n="fmdInactivatedimmuneamountniu"   class="c2"><#if item.fmdInactivatedimmuneamountniu??>${item.fmdInactivatedimmuneamountniu}</#if></td>
+				<td role="data" n="fmdInactivatedimmuneamountsheep"   class="c2"><#if item.fmdInactivatedimmuneamountsheep??>${item.fmdInactivatedimmuneamountsheep}</#if></td>
+				<td role="data"  n="fmdInactivatedimmuneamountother"  class="c2"><#if item.fmdInactivatedimmuneamountother??>${item.fmdInactivatedimmuneamountother}</#if></td>
 				<td role="data"  n=""  class="c7"></td>
 				<td role="data"  n=""  class="c7"></td>
 				<td role="data"  n=""  class="c7"></td>
@@ -222,12 +222,12 @@
 			</tr>
 			<tr class="r6">
 				<td class="c2">口蹄疫o型-亚洲i型二价灭活疫苗</td>
-				<td role="data"  n="fmdO2vaccine"  class="c9"><#if item.fmdO2vaccine??>${item.fmdO2vaccine?c}</#if></td>
+				<td role="data"  n="fmdO2vaccine"  class="c9"><#if item.fmdO2vaccine??>${item.fmdO2vaccine}</#if></td>
 				<td role="data"  n=""  class="c7"></td>
-				<td role="data"  n="fmdO2immuneamountpig"  class="c9"><#if item.fmdO2immuneamountpig??>${item.fmdO2immuneamountpig?c}</#if></td>
-				<td role="data"  n="fmdO2immuneamountniu"  class="c2"><#if item.fmdO2immuneamountniu??>${item.fmdO2immuneamountniu?c}</#if></td>
-				<td role="data"  n="fmdO2immuneamountsheep"  class="c9"><#if item.fmdO2immuneamountsheep??>${item.fmdO2immuneamountsheep?c}</#if></td>
-				<td role="data"  n="fmdO2immuneamountother"  class="c9"><#if item.fmdO2immuneamountother??>${item.fmdO2immuneamountother?c}</#if></td>
+				<td role="data"  n="fmdO2immuneamountpig"  class="c9"><#if item.fmdO2immuneamountpig??>${item.fmdO2immuneamountpig}</#if></td>
+				<td role="data"  n="fmdO2immuneamountniu"  class="c2"><#if item.fmdO2immuneamountniu??>${item.fmdO2immuneamountniu}</#if></td>
+				<td role="data"  n="fmdO2immuneamountsheep"  class="c9"><#if item.fmdO2immuneamountsheep??>${item.fmdO2immuneamountsheep}</#if></td>
+				<td role="data"  n="fmdO2immuneamountother"  class="c9"><#if item.fmdO2immuneamountother??>${item.fmdO2immuneamountother}</#if></td>
 				<td role="data"  n=""  class="c7"></td>
 				<td role="data"  n=""  class="c7"></td>
 				<td role="data"  n=""  class="c7"></td>
@@ -235,24 +235,24 @@
 			</tr>
 			<tr class="r7">
 				<td class="c4">口蹄疫o型-a型-亚洲i型三价灭活疫苗</td>
-				<td role="data"  n="fmd_O3Vaccine"  class="c2"><#if item.fmd_O3Vaccine??>${item.fmd_O3Vaccine?c}</#if></td>
+				<td role="data"  n="fmd_O3Vaccine"  class="c2"><#if item.fmd_O3Vaccine??>${item.fmd_O3Vaccine}</#if></td>
 				<td role="data"  n=""  class="c7"></td>
-				<td role="data" n="fmdO3immuneamountpig"   class="c2"><#if item.fmdO3immuneamountpig??>${item.fmdO3immuneamountpig?c}</#if></td>
-				<td role="data" n="fmdO3immuneamountniu" class="c4"><#if item.fmdO3immuneamountniu??>${item.fmdO3immuneamountniu?c}</#if></td>
-				<td role="data"  n="fmdO3immuneamountsheep"  class="c10"><#if item.fmdO3immuneamountsheep??>${item.fmdO3immuneamountsheep?c}</#if></td>
-				<td role="data"  n="fmdO3immuneamountother"  class="c10"><#if item.fmdO3immuneamountother??>${item.fmdO3immuneamountother?c}</#if></td>
+				<td role="data" n="fmdO3immuneamountpig"   class="c2"><#if item.fmdO3immuneamountpig??>${item.fmdO3immuneamountpig}</#if></td>
+				<td role="data" n="fmdO3immuneamountniu" class="c4"><#if item.fmdO3immuneamountniu??>${item.fmdO3immuneamountniu}</#if></td>
+				<td role="data"  n="fmdO3immuneamountsheep"  class="c10"><#if item.fmdO3immuneamountsheep??>${item.fmdO3immuneamountsheep}</#if></td>
+				<td role="data"  n="fmdO3immuneamountother"  class="c10"><#if item.fmdO3immuneamountother??>${item.fmdO3immuneamountother}</#if></td>
 				<td role="data"  n=""  class="c10"></td>
 				<td role="data"  n=""  class="c7"></td>
 				<td role="data"  class="c7"></td>
 			</tr>
 			<tr class="r8">
 				<td class="c2">口蹄疫a型灭活疫苗</td>
-				<td role="data" n="fmdAvaccine" class="c11"><#if item.fmdAvaccine??>${item.fmdAvaccine?c}</#if></td>
+				<td role="data" n="fmdAvaccine" class="c11"><#if item.fmdAvaccine??>${item.fmdAvaccine}</#if></td>
 				<td role="data"  n=""  class="c7"></td>
 				<td role="data"  n="" class="c11"></td>
 				<td role="data" n=""  class="c2"></td>
-				<td role="data" n="fmdAimmuneamountniu"  class="c11"><#if item.fmdAimmuneamountniu??>${item.fmdAimmuneamountniu?c}</#if></td>
-				<td role="data" n="fmdAimmuneamountsheep"  class="c11"><#if item.fmdAimmuneamountsheep??>${item.fmdAimmuneamountsheep?c}</#if></td>
+				<td role="data" n="fmdAimmuneamountniu"  class="c11"><#if item.fmdAimmuneamountniu??>${item.fmdAimmuneamountniu}</#if></td>
+				<td role="data" n="fmdAimmuneamountsheep"  class="c11"><#if item.fmdAimmuneamountsheep??>${item.fmdAimmuneamountsheep}</#if></td>
 				<td role="data" n=""  class="c11"></td>
 				<td role="data" n=""  class="c7"></td>
 				<td role="data" n=""  class="c7"></td>

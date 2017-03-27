@@ -115,27 +115,27 @@
 			<tr class="r5">
 				<td n="kfRegionname" class="c2"><#if item.kfRegionname??>${item.kfRegionname}</#if></td>
 				
-				<td n="kfFmkingfisher"  class="c2"><#if item.kfFmkingfisher??>${item.kfFmkingfisher?c}</#if></td>
-				<td n="kfAikingfisher"  class="c2"><#if item.kfAikingfisher??>${item.kfAikingfisher?c}</#if></td>
-				<td n="kfBkingfisher"  class="c2"><#if item.kfBkingfisher??>${item.kfBkingfisher?c}</#if></td>
-				<td n="kfCskingfisher"  class="c2"><#if item.kfCskingfisher??>${item.kfCskingfisher?c}</#if></td>
-				<td n="kfOtherkingfisher"  class="c2"><#if item.kfOtherkingfisher??>${item.kfOtherkingfisher?c}</#if></td>
+				<td n="kfFmkingfisher"  class="c2"><#if item.kfFmkingfisher??>${item.kfFmkingfisher}</#if></td>
+				<td n="kfAikingfisher"  class="c2"><#if item.kfAikingfisher??>${item.kfAikingfisher}</#if></td>
+				<td n="kfBkingfisher"  class="c2"><#if item.kfBkingfisher??>${item.kfBkingfisher}</#if></td>
+				<td n="kfCskingfisher"  class="c2"><#if item.kfCskingfisher??>${item.kfCskingfisher}</#if></td>
+				<td n="kfOtherkingfisher"  class="c2"><#if item.kfOtherkingfisher??>${item.kfOtherkingfisher}</#if></td>
 				
-				<td n="kfCulling"  class="c2"><#if item.kfCulling??>${item.kfCulling?c}</#if></td>
-				<td n="kfYearmonitoring"  class="c2"><#if item.kfYearmonitoring??>${item.kfYearmonitoring?c}</#if></td>
-				<td n="kfYearmaterials"  class="c2"><#if item.kfYearmaterials??>${item.kfYearmaterials?c}</#if></td>
-				<td n="kfYearquarantine"  class="c2"><#if item.kfYearquarantine??>${item.kfYearquarantine?c}</#if></td>
-				<td n="kfYearother"  class="c2"><#if item.kfYearother??>${item.kfYearother?c}</#if></td>
+				<td n="kfCulling"  class="c2"><#if item.kfCulling??>${item.kfCulling}</#if></td>
+				<td n="kfYearmonitoring"  class="c2"><#if item.kfYearmonitoring??>${item.kfYearmonitoring}</#if></td>
+				<td n="kfYearmaterials"  class="c2"><#if item.kfYearmaterials??>${item.kfYearmaterials}</#if></td>
+				<td n="kfYearquarantine"  class="c2"><#if item.kfYearquarantine??>${item.kfYearquarantine}</#if></td>
+				<td n="kfYearother"  class="c2"><#if item.kfYearother??>${item.kfYearother}</#if></td>
 				
-				<td n="kfYearother"  class="c2"><#if item.kfYearother??>${item.kfYearother?c}</#if></td>
-				<td n="kfProvincemonitoring"  class="c2"><#if item.kfProvincemonitoring??>${item.kfProvincemonitoring?c}</#if></td>
-				<td n="kfProvincelquarantine"  class="c2"><#if item.kfProvincelquarantine??>${item.kfProvincelquarantine?c}</#if></td>
-				<td n="kfProvinceother"  class="c2"><#if item.kfProvinceother??>${item.kfProvinceother?c}</#if></td>
+				<td n="kfYearother"  class="c2"><#if item.kfYearother??>${item.kfYearother}</#if></td>
+				<td n="kfProvincemonitoring"  class="c2"><#if item.kfProvincemonitoring??>${item.kfProvincemonitoring}</#if></td>
+				<td n="kfProvincelquarantine"  class="c2"><#if item.kfProvincelquarantine??>${item.kfProvincelquarantine}</#if></td>
+				<td n="kfProvinceother"  class="c2"><#if item.kfProvinceother??>${item.kfProvinceother}</#if></td>
 				
-				<td n="kfLevelvaccine"  class="c2"><#if item.kfLevelvaccine??>${item.kfLevelvaccine?c}</#if></td>
-				<td n="kfLevelmonitoring"  class="c2"><#if item.kfLevelmonitoring??>${item.kfLevelmonitoring?c}</#if></td>
-				<td n="kfLevelquarantine"  class="c2"><#if item.kfLevelquarantine??>${item.kfLevelquarantine?c}</#if></td>
-				<td n="kfLevelother"  class="c2"><#if item.kfLevelother??>${item.kfLevelother?c}</#if></td>
+				<td n="kfLevelvaccine"  class="c2"><#if item.kfLevelvaccine??>${item.kfLevelvaccine}</#if></td>
+				<td n="kfLevelmonitoring"  class="c2"><#if item.kfLevelmonitoring??>${item.kfLevelmonitoring}</#if></td>
+				<td n="kfLevelquarantine"  class="c2"><#if item.kfLevelquarantine??>${item.kfLevelquarantine}</#if></td>
+				<td n="kfLevelother"  class="c2"><#if item.kfLevelother??>${item.kfLevelother}</#if></td>
 			</tr>
 </#list>
 		</tbody>

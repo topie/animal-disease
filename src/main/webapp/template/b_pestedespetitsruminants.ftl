@@ -247,11 +247,11 @@
 			</tr>
 			<tr class="r6">
 				<td class="c2">小反刍兽疫活疫苗</td>
-				<td role="data"  n="pdprLivevaccine"    class="c2"><#if item.pdprLivevaccine??>${item.pdprLivevaccine?c}</#if></td>
+				<td role="data"  n="pdprLivevaccine"    class="c2"><#if item.pdprLivevaccine??>${item.pdprLivevaccine}</#if></td>
 				<td role="data"  n=""    class="c14"></td>
-				<td role="data"  n="pdprLivebreedingsheep"    class="c11"><#if item.pdprLivebreedingsheep??>${item.pdprLivebreedingsheep?c}</#if></td>
-				<td role="data"  n="pdprLivegoat"    class="c11"><#if item.pdprLivegoat??>${item.pdprLivegoat?c}</#if></td>
-				<td role="data"  n="pdprLivesheep"    class="c11"><#if item.pdprLivesheep??>${item.pdprLivesheep?c}</#if></td>
+				<td role="data"  n="pdprLivebreedingsheep"    class="c11"><#if item.pdprLivebreedingsheep??>${item.pdprLivebreedingsheep}</#if></td>
+				<td role="data"  n="pdprLivegoat"    class="c11"><#if item.pdprLivegoat??>${item.pdprLivegoat}</#if></td>
+				<td role="data"  n="pdprLivesheep"    class="c11"><#if item.pdprLivesheep??>${item.pdprLivesheep}</#if></td>
 				<td role="data"  n=""    class="c15"></td>
 				<td role="data"  n=""    class="c15"></td>
 				<td role="data"  n=""    class="c15"></td>

@@ -123,7 +123,7 @@
 			</tr>
 			<#list items as item>
 				<tr class="r5">
-					<td  n="aiRegionname"  class="c2"><#if item.aiRegionname??>${item.aiRegionname}</#if></td>
+					<td class="c2"><#if item.aiRegionname??>${item.aiRegionname}</#if></td>
 					<td n="aiInactivatedvaccine"  class="c2"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine?c}</#if></td>
 					<td n=""  class="c2"></td>
 					<td n="aiInactivatedimmuneamountchicken"  class="c2"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken?c}</#if></td>
