@@ -134,7 +134,7 @@
 			</tr>
 			<tr class="r3">
 				<td class="c2">填表日期:</td>
-				<td class="c3" colspan="4"><#if item.beddate??>${item.beddate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c3" colspan="4"><#if item.bedDate??>${item.beDdate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2">填 表 人:</td>
@@ -145,25 +145,27 @@
 				<td class="c3" colspan="4">${user.leaderName}</td>
 			</tr>
 			<tr class="r5">
-				<td class="c2" rowspan="2">疫苗种类</td>
-				<td class="c2" rowspan="2">本月使用数量（万毫升/万头份）</td>
-				<td class="c4" rowspan="2">累计使用数量（万毫升/万头份）</td>
-				<td class="c2" rowspan="2">本月免疫数量（万头）</td>
-				<td class="c2" rowspan="2">累计免疫数量(万头)</td>
+				<td class="c2" >疫苗种类</td>
+				<td class="c2" >本月使用数量（万毫升/万头份）</td>
+				<td class="c4" >累计使用数量（万毫升/万头份）</td>
+				<td class="c2" >本月免疫数量（万头）</td>
+				<td class="c2" >累计免疫数量(万头)</td>
 			</tr>
 			<tr class="r7">
 				<td class="c2">高致病性猪蓝耳病灭活疫苗</td>
-				<td role="data" n="bedInactivatedvaccine"  class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine}</#if></td>
-				<td role="data" n="" class="c6"></td>
-				<td role="data" n="bedInactivatedimmuneamount" class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount}</#if></td>
-				<td role="data" n="" class="c6"></td>
+				<td role="data" n="bedInactivatedvaccine"  class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine?c}</#if></td>
+
+				<td  class="c6"><#if itemSum.bedInactivatedvaccine??>${itemSum.bedInactivatedvaccine?string("0.##")}<#else>0.00</#if></td>
+
+				<td role="data" n="bedInactivatedimmuneamount" class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount?c}</#if></td>
+				<td  class="c6"><#if itemSum.bedInactivatedimmuneamount??>${itemSum.bedInactivatedimmuneamount?string("0.##")}<#else>0.00</#if></td>
 			</tr>
 			<tr class="r8">
 				<td class="c2">高致病性猪蓝耳病活疫苗</td>
-				<td role="data" n="bedWeakvaccine" class="c2"><#if item.bedWeakvaccine??>${item.bedWeakvaccine}</#if></td>
-				<td role="data" n="" class="c6"></td>
-				<td role="data" n="bedWeakimmuneamount" class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount}</#if></td>
-				<td role="data" n="" class="c6"></td>
+				<td role="data" n="bedWeakvaccine" class="c2"><#if item.bedWeakvaccine??>${item.bedWeakvaccine?c}</#if></td>
+				<td class="c6"><#if itemSum.bedWeakvaccine??>${itemSum.bedWeakvaccine?string("0.##")}<#else>0.00</#if></td>
+				<td role="data" n="bedWeakimmuneamount" class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount?c}</#if></td>
+				<td  class="c6"><#if itemSum.bedWeakimmuneamount??>${itemSum.bedWeakimmuneamount?string("0.##")}<#else>0.00</#if></td>
 			</tr>
 			<tr class="r4">
 				<td class="c2" rowspan="3">填报说明：</td>
