@@ -109,7 +109,7 @@
 			</tr>
 			<tr class="r2">
 				<td class="c2">填表日期:</td>
-				<td class="c3" colspan="17"><#if item.fvdate??>${item.fvdate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c3" colspan="17"><#if item.fvDate??>${item.fvDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2">填 表 人:</td>
@@ -161,8 +161,8 @@
 				<td role="data" n="fvSyntheticstorecount"   class="c2"><#if item.fvSyntheticstorecount??>${item.fvSyntheticstorecount}</#if></td>
 				<td role="data" n="fvO2inactivatedstorecount"   class="c2"><#if item.fvO2inactivatedstorecount??>${item.fvO2inactivatedstorecount}</#if></td>
 				<td role="data" n="fvOainactivatedstorecount"   class="c2"><#if item.fvOainactivatedstorecount??>${item.fvOainactivatedstorecount}</#if></td>
-				<td role="data" n="fvo3inactivatedstorecount"   class="c2"><#if item.fvo3inactivatedstorecount??>${item.fvo3inactivatedstorecount}</#if></td>
-				<td role="data" n="fvainactivatedstorecount"   class="c2"><#if item.fvainactivatedstorecount??>${item.fvainactivatedstorecount}</#if></td>
+				<td role="data" n="fvO3inactivatedstorecount"   class="c2"><#if item.fvO3inactivatedstorecount??>${item.fvO3inactivatedstorecount}</#if></td>
+				<td role="data" n="fvAinactivatedstorecount"   class="c2"><#if item.fvAinactivatedstorecount??>${item.fvAinactivatedstorecount}</#if></td>
 				
 				<td role="data" n="fvOinactivatedyearcount"   class="c2"><#if item.fvOinactivatedyearcount??>${item.fvOinactivatedyearcount}</#if></td>
 				<td role="data" n="fvSyntheticyearcount"   class="c2"><#if item.fvSyntheticyearcount??>${item.fvSyntheticyearcount}</#if></td>

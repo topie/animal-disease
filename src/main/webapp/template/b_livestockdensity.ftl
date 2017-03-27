@@ -130,7 +130,7 @@
 			</tr>
 			<tr class="r2">
 				<td class="c2">填表日期:</td>
-				<td class="c3" colspan="26"><#if item.lddate??>${item.lddate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c3" colspan="26"><#if item.ldDate??>${item.ldDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r2">
 				<td class="c2">填 表 人:</td>
@@ -201,8 +201,8 @@
 				<td role="data" n="ldNiuherdscount"   class="c2"><#if item.ldNiuherdscount??>${item.ldNiuherdscount}</#if></td>
 				<td role="data" n="ldNiushuldcount"   class="c2"><#if item.ldNiushuldcount??>${item.ldNiushuldcount}</#if></td>
 				<td role="data" n="ldNiuactualcount"   class="c2"><#if item.ldNiuactualcount??>${item.ldNiuactualcount}</#if></td>
-				<td role="data" n="ldCowshuldcount"   class="c2"><#if item.ldCowshuldcount??>${item.ldCowshuldcount}</#if></td>
-				<td role="data" n="ldCowactualcount"   class="c2"><#if item.ldCowactualcount??>${item.ldCowactualcount}</#if></td>
+				<td role="data" n="ldNiuashuldcount"   class="c2"><#if item.ldNiuashuldcount??>${item.ldNiuashuldcount}</#if></td>
+				<td role="data" n="ldNiuaactualcount"   class="c2"><#if item.ldNiuaactualcount??>${item.ldNiuaactualcount}</#if></td>
 				
 				<td role="data" n="ldCowherdscount"   class="c2"><#if item.ldCowherdscount??>${item.ldCowherdscount}</#if></td>
 				<td role="data" n="ldCowshuldcount"   class="c2"><#if item.ldCowshuldcount??>${item.ldCowshuldcount}</#if></td>
@@ -213,8 +213,8 @@
 				<td role="data" n="ldSheepoactualcount"   class="c2"><#if item.ldSheepoactualcount??>${item.ldSheepoactualcount}</#if></td>
 				<td role="data" n="ldSheepashuldcount"   class="c2"><#if item.ldSheepashuldcount??>${item.ldSheepashuldcount}</#if></td>
 				<td role="data" n="ldSheepaactualcount"   class="c2"><#if item.ldSheepaactualcount??>${item.ldSheepaactualcount}</#if></td>
-				<td role="data" n=""   class="c2"></td>
-				<td role="data" n=""   class="c2"></td>
+				<td role="data" n="ldSheeppdprshuldcount"   class="c2"><#if item.ldSheeppdprshuldcount??>${item.ldSheeppdprshuldcount}</#if></td>
+				<td role="data" n="ldSheeppdpractualcount"   class="c2"><#if item.ldSheeppdpractualcount??>${item.ldSheeppdpractualcount}</#if></td>
 				
 				<td role="data" n="ldOtherherdscount"   class="c2"><#if item.ldOtherherdscount??>${item.ldOtherherdscount}</#if></td>
 				<td role="data" n="ldOtheroshuldcount"   class="c2"><#if item.ldOtheroshuldcount??>${item.ldOtheroshuldcount}</#if></td>
