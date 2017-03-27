@@ -599,11 +599,7 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 break;
             }
             case "b_wlivestockinout": {
-                Example example = new Example(Wlivestockinout.class);
-                Example.Criteria criteria = example.createCriteria();
-                criteria.andIn("reportid", reportIds);
-                List<Wlivestockinout> items = wlivestockinoutMapper.selectByExample(example);
-                params.put("items", items);
+                params=this.getReportSummaryHtmlUtil(Wlivestockinout.class,reportIds,"reportid",wlivestockinoutMapper,"Liv_regionCode asc");
                 Wlivestockinout sum = wlivestockinoutMapper.selectSumByReportIds(reportIds);
                 params.put("sum", sum);
                 break;

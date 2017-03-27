@@ -135,6 +135,7 @@
 				<td n="pdOtherashuldcount"  class="c2"><#if item.pdOtherashuldcount??>${item.pdOtherashuldcount}</#if></td>
 				<td n="pdOtheraactualcount"  class="c2"><#if item.pdOtheraactualcount??>${item.pdOtheraactualcount}</#if></td>
 				<td n="pdOtherniashuldcount"  class="c2"><#if item.pdOtherniashuldcount??>${item.pdOtherniashuldcount}</#if></td>
+                <td n="pdOtherniactualcount"  class="c2"><#if item.pdOtherniactualcount>${item.pdOtherniactualcount}</#if></td>
 			</tr>
  </#list>
 		</tbody>

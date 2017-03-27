@@ -115,6 +115,7 @@
 				<td class="c2">口蹄疫O型-A型-亚洲I型三价灭活疫苗（万毫升）</td>
 				<td class="c2">口蹄疫A型灭活疫苗（万毫升）</td>
 			</tr>
+<#list items as item>
 			<tr class="r5">
 				<td n="fvRegionname" class="c2"><#if item.fvRegionname??>${item.fvRegionname}</#if></td>
 				
@@ -125,21 +126,21 @@
 				<td n="fvO3inactivatedusecount"  class="c2"><#if item.fvO3inactivatedusecount??>${item.fvO3inactivatedusecount}</#if></td>
 				<td n="fvAinactivatedusecount"  class="c2"><#if item.fvAinactivatedusecount??>${item.fvAinactivatedusecount}</#if></td>
 				
-				<td n="fvoinactivatedstorecount"  class="c2"><#if item.fvoinactivatedstorecount??>${item.fvoinactivatedstorecount}</#if></td>
+				<td n="fvOinactivatedstorecount"  class="c2"><#if item.fvOinactivatedstorecount??>${item.fvOinactivatedstorecount}</#if></td>
 				<td n="fvSyntheticstorecount"  class="c2"><#if item.fvSyntheticstorecount??>${item.fvSyntheticstorecount}</#if></td>
 				<td n="fvO2inactivatedstorecount"  class="c2"><#if item.fvO2inactivatedstorecount??>${item.fvO2inactivatedstorecount}</#if></td>
-				<td n="fvoainactivatedstorecount"  class="c2"><#if item.fvoainactivatedstorecount??>${item.fvoainactivatedstorecount}</#if></td>
+				<td n="fvOainactivatedstorecount"  class="c2"><#if item.fvOainactivatedstorecount??>${item.fvOainactivatedstorecount}</#if></td>
 				<td n="fvO3inactivatedstorecount"  class="c2"><#if item.fvO3inactivatedstorecount??>${item.fvO3inactivatedstorecount}</#if></td>
 				<td n="fvAinactivatedstorecount"  class="c2"><#if item.fvAinactivatedstorecount??>${item.fvAinactivatedstorecount}</#if></td>
 				
 				<td n="fvOinactivatedyearcount"  class="c2"><#if item.fvOinactivatedyearcount??>${item.fvOinactivatedyearcount}</#if></td>
-				<td n="fvsyntheticyearcount"  class="c2"><#if item.fvsyntheticyearcount??>${item.fvsyntheticyearcount}</#if></td>
+				<td n="fvSyntheticyearcount"  class="c2"><#if item.fvSyntheticyearcount??>${item.fvSyntheticyearcount}</#if></td>
 				<td n="fvO2inactivatedsyearcount"  class="c2"><#if item.fvO2inactivatedsyearcount??>${item.fvO2inactivatedsyearcount}</#if></td>
 				<td n="fvOainactivatedyearcount"  class="c2"><#if item.fvOainactivatedyearcount??>${item.fvOainactivatedyearcount}</#if></td>
 				<td n="fvO3inactivatedsyearcount"  class="c2"><#if item.fvO3inactivatedsyearcount??>${item.fvO3inactivatedsyearcount}</#if></td>
 				<td n="fvAinactivatedsyearcount"  class="c2"><#if item.fvAinactivatedsyearcount??>${item.fvAinactivatedsyearcount}</#if></td>
 			</tr>
-
+</#list>
 		</tbody>
 	</table>
 </body>

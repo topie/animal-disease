@@ -149,9 +149,9 @@
 				<td class="c3">禽流感灭活疫苗（H5N2亚型，D7株）（万毫升）</td>
 				<td class="c3">禽流感-新城疫重组二联活疫苗（rL-H5-6株）（万羽份）</td>
 			</tr>
-			
+<#list items as item>
 			<tr class="r5">
-				<td n="avRegionname"  class="c2"><#if item.avRegionname??>${item.avRegionname}</#if></td>
+				<td n="avRegionname"  class="c2">${item.avRegionname}</td>
 				
 				<td n="avH5h9usecount"  class="c2"><#if item.avH5h9usecount??>${item.avH5h9usecount}</#if></td>
 				<td n="avH5n1re6usecount"  class="c2"><#if item.avH5n1re6usecount??>${item.avH5n1re6usecount}</#if></td>
@@ -160,7 +160,7 @@
 				<td n="avRe6re8usecount"  class="c2"><#if item.avRe6re8usecount??>${item.avRe6re8usecount}</#if></td>
 				<td n="avRe6re7re8usecount"  class="c3"><#if item.avRe6re7re8usecount??>${item.avRe6re7re8usecount}</#if></td>
 				<td n="avH5n2d7usecount"  class="c4"><#if item.avH5n2d7usecount??>${item.avH5n2d7usecount}</#if></td>
-				<td n="avRhrh5usecount"  class="c4"><#if item.avrHrh5usecount??>${item.avrhrH5usecount}</#if></td>
+				<td n="avRhrh5usecount"  class="c4"><#if item.avRhrh5usecount??>${item.avRhrh5usecount}</#if></td>
 				
 				<td n="avH5h9storecount"  class="c2"><#if item.avH5h9storecount??>${item.avH5h9storecount}</#if></td>
 				<td n="avH5n1re6storecount"  class="c2"><#if item.avH5n1re6storecount??>${item.avH5n1re6storecount}</#if></td>
@@ -180,7 +180,7 @@
 				<td n="avH5n2d7yearcount"  class="c4"><#if item.avH5n2d7yearcount??>${item.avH5n2d7yearcount}</#if></td>
 				<td n="avRhrh5yearcount"  class="c4"><#if item.avRhrh5yearcount??>${item.avRhrh5yearcount}</#if></td>
 			</tr>
-
+</#list>
 		</tbody>
 	</table>
 </body>

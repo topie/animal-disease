@@ -158,46 +158,46 @@
 			<tr class="r2">
 				<td n="evRegionname" class="c2"><#if item.evRegionname??>${item.evRegionname}</#if></td>
 				
-				<td n="evFmoinactivated" class="c2"><#if item.evFmoinactivated??>${item.evFmoinactivated?c}</#if></td>
-				<td n="evFmosynthetic" class="c2"><#if item.evFmosynthetic??>${item.evFmosynthetic?c}</#if></td>
-				<td n="evFmosinactivated" class="c2"><#if item.evFmosinactivated??>${item.evFmosinactivated?c}</#if></td>
-				<td n="evFmoas" class="c2"><#if item.evFmoas??>${item.evFmoas?c}</#if></td>
-				<td n="evFmoa" class="c2"><#if item.evFmoa??>${item.evFmoa?c}</#if></td>
+				<td n="evFmoinactivated" class="c2"><#if item.evFmoinactivated??>${item.evFmoinactivated}</#if></td>
+				<td n="evFmosynthetic" class="c2"><#if item.evFmosynthetic??>${item.evFmosynthetic}</#if></td>
+				<td n="evFmosinactivated" class="c2"><#if item.evFmosinactivated??>${item.evFmosinactivated}</#if></td>
+				<td n="evFmoas" class="c2"><#if item.evFmoas??>${item.evFmoas}</#if></td>
+				<td n="evFmoa" class="c2"><#if item.evFmoa??>${item.evFmoa}</#if></td>
 				
 				<td n="evAirlh5" class="c2"><#if item.evAirlh5??>${item.evAirlh5?c}</#if></td>
-				<td n="evAih5n1re5re4" class="c2"><#if item.evAih5n1re5re4??>${item.evAih5n1re5re4?c}</#if></td>
-				<td n="evAih5n1re4" class="c2"><#if item.evAih5n1re4??>${item.evAih5n1re4?c}</#if></td>
-				<td n="evAih5n1re5" class="c2"><#if item.evAih5n1re5??>${item.evAih5n1re5?c}</#if></td>
-				<td n="evAih5h9" class="c2"><#if item.evAih5h9??>${item.evAih5h9?c}</#if></td>
+				<td n="evAih5n1re5re4" class="c2"><#if item.evAih5n1re5re4??>${item.evAih5n1re5re4}</#if></td>
+				<td n="evAih5n1re4" class="c2"><#if item.evAih5n1re4??>${item.evAih5n1re4}</#if></td>
+				<td n="evAih5n1re5" class="c2"><#if item.evAih5n1re5??>${item.evAih5n1re5}</#if></td>
+				<td n="evAih5h9" class="c2"><#if item.evAih5h9??>${item.evAih5h9}</#if></td>
 				
-				<td n="evBe" class="c2"><#if item.evBe??>${item.evBe?c}</#if></td>
-				<td n="evBeinactivated" class="c2"><#if item.evBeinactivated??>${item.evBeinactivated?c}</#if></td>
+				<td n="evBe" class="c2"><#if item.evBe??>${item.evBe}</#if></td>
+				<td n="evBeinactivated" class="c2"><#if item.evBeinactivated??>${item.evBeinactivated}</#if></td>
 				
-				<td n="evCs" class="c2"><#if item.evCs??>${item.evCs?c}</#if></td>
-				<td n="evCspassage" class="c2"><#if item.evCspassage??>${item.evCspassage?c}</#if></td>
+				<td n="evCs" class="c2"><#if item.evCs??>${item.evCs}</#if></td>
+				<td n="evCspassage" class="c2"><#if item.evCspassage??>${item.evCspassage}</#if></td>
 				
-				<td n="evNcinactivated" class="c2"><#if item.evNcinactivated??>${item.evNcinactivated?c}</#if></td>
-				<td n="evNcweak" class="c2"><#if item.evNcweak??>${item.evNcweak?c}</#if></td>
+				<td n="evNcinactivated" class="c2"><#if item.evNcinactivated??>${item.evNcinactivated}</#if></td>
+				<td n="evNcweak" class="c2"><#if item.evNcweak??>${item.evNcweak}</#if></td>
 				
-				<td n="evAllfmoinactivated" class="c2"><#if item.evAllfmoinactivated??>${item.evAllfmoinactivated?c}</#if></td>
-				<td n="evAllfmosynthetic" class="c2"><#if item.evAllfmosynthetic??>${item.evAllfmosynthetic?c}</#if></td>
-				<td n="evAllfmosinactivated" class="c2"><#if item.evAllfmosinactivated??>${item.evAllfmosinactivated?c}</#if></td>
-				<td n="evAllfmoas" class="c2"><#if item.evAllfmoas??>${item.evAllfmoas?c}</#if></td>
-				<td n="evAllfmoa" class="c2"><#if item.evAllfmoa??>${item.evAllfmoa?c}</#if></td>
+				<td n="evAllfmoinactivated" class="c2"><#if item.evAllfmoinactivated??>${item.evAllfmoinactivated}</#if></td>
+				<td n="evAllfmosynthetic" class="c2"><#if item.evAllfmosynthetic??>${item.evAllfmosynthetic}</#if></td>
+				<td n="evAllfmosinactivated" class="c2"><#if item.evAllfmosinactivated??>${item.evAllfmosinactivated}</#if></td>
+				<td n="evAllfmoas" class="c2"><#if item.evAllfmoas??>${item.evAllfmoas}</#if></td>
+				<td n="evAllfmoa" class="c2"><#if item.evAllfmoa??>${item.evAllfmoa}</#if></td>
 				
-				<td n="evAllairlh5" class="c2"><#if item.evAllairlh5??>${item.evAllairlh5?c}</#if></td>
-				<td n="evAllaih5n1re5re4" class="c2"><#if item.evAllaih5n1re5re4??>${item.evAllaih5n1re5re4?c}</#if></td>
-				<td n="evAllaih5n1re4" class="c2"><#if item.evAllaih5n1re4??>${item.evAllaih5n1re4?c}</#if></td>
-				<td n="evAllaih5n1re5" class="c2"><#if item.evAllaih5n1re5??>${item.evAllaih5n1re5?c}</#if></td>
-				<td n="evAllaih5h9" class="c2"><#if item.evAllaih5h9??>${item.evAllaih5h9?c}</#if></td>
+				<td n="evAllairlh5" class="c2"><#if item.evAllairlh5??>${item.evAllairlh5}</#if></td>
+				<td n="evAllaih5n1re5re4" class="c2"><#if item.evAllaih5n1re5re4??>${item.evAllaih5n1re5re4}</#if></td>
+				<td n="evAllaih5n1re4" class="c2"><#if item.evAllaih5n1re4??>${item.evAllaih5n1re4}</#if></td>
+				<td n="evAllaih5n1re5" class="c2"><#if item.evAllaih5n1re5??>${item.evAllaih5n1re5}</#if></td>
+				<td n="evAllaih5h9" class="c2"><#if item.evAllaih5h9??>${item.evAllaih5h9}</#if></td>
 				
-				<td n="evAllbe" class="c2"><#if item.evAllbe??>${item.evAllbe?c}</#if></td>
-				<td n="evAllbeinactivated" class="c2"><#if item.evAllbeinactivated??>${item.evAllbeinactivated?c}</#if></td>
+				<td n="evAllbe" class="c2"><#if item.evAllbe??>${item.evAllbe}</#if></td>
+				<td n="evAllbeinactivated" class="c2"><#if item.evAllbeinactivated??>${item.evAllbeinactivated}</#if></td>
 				
-				<td n="evAllcs" class="c2"><#if item.evAllcs??>${item.evAllcs?c}</#if></td>
-				<td n="evAllcspassage" class="c2"><#if item.evAllcspassage??>${item.evAllcspassage?c}</#if></td>
-				<td n="evAllncinactivated" class="c2"><#if item.evAllncinactivated??>${item.evAllncinactivated?c}</#if></td>
-				<td n="evAllncweak" class="c2"><#if item.evAllncweak??>${item.evAllncweak?c}</#if></td>
+				<td n="evAllcs" class="c2"><#if item.evAllcs??>${item.evAllcs}</#if></td>
+				<td n="evAllcspassage" class="c2"><#if item.evAllcspassage??>${item.evAllcspassage}</#if></td>
+				<td n="evAllncinactivated" class="c2"><#if item.evAllncinactivated??>${item.evAllncinactivated}</#if></td>
+				<td n="evAllncweak" class="c2"><#if item.evAllncweak??>${item.evAllncweak}</#if></td>
 			</tr>
     </#list>
 		</tbody>

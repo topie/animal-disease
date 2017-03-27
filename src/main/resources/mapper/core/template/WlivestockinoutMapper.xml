@@ -62,6 +62,7 @@
         <foreach item="item" collection="ids" open="(" separator="," close=")">
             #{item}
         </foreach>
+        order by Liv_regionCode
     </select>
     <select id="selectLivestockInOutByRegionCode" resultMap="BaseResultMap">
         select * from animal_disease.b_wlivestockinout where Liv_regionCode=#{regionCode} AND  LivestockDate = #{beginTime}

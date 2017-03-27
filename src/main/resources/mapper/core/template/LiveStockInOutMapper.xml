@@ -72,6 +72,7 @@
         <foreach item="item" collection="ids" open="(" separator="," close=")">
             #{item}
         </foreach>
+        ORDER  by Liv_regionCode
     </select>
     <select id="selectSumByReportCode" resultMap="BaseResultMap">
         select

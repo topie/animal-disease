@@ -127,7 +127,7 @@
 				<td n="kfYearquarantine"  class="c2"><#if item.kfYearquarantine??>${item.kfYearquarantine}</#if></td>
 				<td n="kfYearother"  class="c2"><#if item.kfYearother??>${item.kfYearother}</#if></td>
 				
-				<td n="kfYearother"  class="c2"><#if item.kfYearother??>${item.kfYearother}</#if></td>
+				<td n="kfProvincevaccine"  class="c2"><#if item.kfProvincevaccine??>${item.kfProvincevaccine}</#if></td>
 				<td n="kfProvincemonitoring"  class="c2"><#if item.kfProvincemonitoring??>${item.kfProvincemonitoring}</#if></td>
 				<td n="kfProvincelquarantine"  class="c2"><#if item.kfProvincelquarantine??>${item.kfProvincelquarantine}</#if></td>
 				<td n="kfProvinceother"  class="c2"><#if item.kfProvinceother??>${item.kfProvinceother}</#if></td>
