@@ -124,11 +124,6 @@
 		<tbody>
 			<tr class="r1">
 				<td class="c1" colspan="11">${templateName}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td class="c2">累计免疫数量(其他禽)</td>
 			</tr>
 			<tr class="r2">
 				<td class="c3">单 位:</td>
@@ -136,7 +131,7 @@
 			</tr>
 			<tr class="r2">
 				<td class="c3">填表日期:</td>
-				<td class="c4" colspan="10"><#if item.aidate??>${item.aidate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c4" colspan="10"><#if item.aiDate??>${item.aiDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c3">填 表 人:</td>
@@ -162,46 +157,38 @@
 				<td class="c3">鸭</td>
 				<td class="c3">鹅</td>
 				<td class="c3">其它禽</td>
-				<td class="c2">累计使用数量</td>
-				<td class="c6">累计免疫数量(鸡)</td>
-				<td class="c6">累计免疫数量(鸭)</td>
-				<td class="c6">累计免疫数量(鹅)</td>
+
+
 			</tr>
 			<tr class="r2">
 				<td role="data" class="c3">高致病性禽流感灭活疫苗</td>
 				<td role="data" n="aiInactivatedvaccine" class="c3"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine?string("0.##")}<#else>0.00</#if></td>
-				<td role="data"    class="c7"></td>
+
+				<td role="data"    class="c7"><#if itemSum.aiInactivatedvaccine??>${itemSum.aiInactivatedvaccine?string("0.##")}<#else>0.00</#if></td>
+
 				<td role="data" n="aiInactivatedimmuneamountchicken"   class="c3"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken?string("0.##")}<#else>0.00</#if></td>
 				<td role="data" n="aiInactivatedimmuneamountduck"   class="c3"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck?string("0.##")}<#else>0.00</#if></td>
 				<td role="data" n="aiInactivatedimmuneamountgoose"   class="c3"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose?string("0.##")}<#else>0.00</#if></td>
 				<td  role="data" n="aiInactivatedimmuneamountother"  class="c3"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother?string("0.##")}<#else>0.00</#if></td>
-				<td role="data"    class="c7"></td>
-				<td role="data"   class="c7"></td>
-				<td role="data"   class="c7"></td>
-				<td role="data"   class="c7"></td>
-				<!-- <td class="c8">0</td>
-				<td class="c8">0</td>
-				<td class="c8">0</td>
-				<td class="c8">0</td>
-				<td class="c8">0</td> -->
+                <td class="c3"><#if itemSum.aiInactivatedimmuneamountchicken??>${itemSum.aiInactivatedimmuneamountchicken?string("0.##")}<#else>0.00</#if></td>
+                <td class="c3"><#if itemSum.aiInactivatedimmuneamountduck??>${itemSum.aiInactivatedimmuneamountduck?string("0.##")}<#else>0.00</#if></td>
+                <td class="c3"><#if itemSum.aiInactivatedimmuneamountgoose??>${itemSum.aiInactivatedimmuneamountgoose?string("0.##")}<#else>0.00</#if></td>
+                <td class="c3"><#if itemSum.aiInactivatedimmuneamountother??>${itemSum.aiInactivatedimmuneamountother?string("0.##")}<#else>0.00</#if></td>
 			</tr>
 			<tr class="r2">
 				<td role="data"  class="c4">禽流感-新城疫重组二联活疫苗</td>
-				<td role="data" n="aiJointvaccine"   class="c3"><#if item.aiJointvaccine??>${item.aiJointvaccine?string("0.##")}</#if></td>
-				<td role="data"   class="c7"></td>
+				<td role="data" n="aiJointvaccine"   class="c3"><#if item.aiJointvaccine??>${item.aiJointvaccine?string("0.##")}<#else>0.00</#if></td>
+
+				<td role="data"   class="c7"><#if itemSum.aiJointvaccine??>${itemSum.aiJointvaccine?string("0.##")}<#else>0.00</#if></td>
+
 				<td role="data" n="aiJointimmuneamountchicken"   class="c3"><#if item.aiJointimmuneamountchicken??>${item.aiJointimmuneamountchicken?string("0.##")}<#else>0.00</#if></td>
 				<td role="data" n="aiJointimmuneamountduck"   class="c3"><#if item.aiJointimmuneamountduck??>${item.aiJointimmuneamountduck?string("0.##")}<#else>0.00</#if></td>
 				<td role="data" n="aiJointimmuneamountgoose"   class="c3"><#if item.aiJointimmuneamountgoose??>${item.aiJointimmuneamountgoose?string("0.##")}<#else>0.00</#if></td>
 				<td role="data" n="aiJointimmuneamountother"   class="c3"><#if item.aiJointimmuneamountother??>${item.aiJointimmuneamountother?string("0.##")}<#else>0.00</#if></td>
-				<td role="data"   class="c7"></td>
-				<td role="data"    class="c7"></td>
-				<td role="data"    class="c7"></td>
-				<td role="data"    class="c7"></td>
-				<!-- <td class="c8">0</td>
-				<td class="c8">0</td>
-				<td class="c8">0</td>
-				<td class="c8">0</td>
-				<td class="c8">0</td> -->
+				 <td class="c3"><#if itemSum.aiJointimmuneamountchicken??>${itemSum.aiJointimmuneamountchicken?string("0.##")}<#else>0.00</#if></td>
+				<td class="c3"><#if itemSum.aiJointimmuneamountduck??>${itemSum.aiJointimmuneamountduck?string("0.##")}<#else>0.00</#if></td>
+				<td class="c3"><#if itemSum.aiJointimmuneamountgoose??>${itemSum.aiJointimmuneamountgoose?string("0.##")}<#else>0.00</#if></td>
+				<td class="c3"><#if itemSum.aiJointimmuneamountother??>${itemSum.aiJointimmuneamountother?string("0.##")}<#else>0.00</#if></td>
 			</tr>
 			<tr class="r2">
 				<td class="c3" rowspan="3">填报说明：</td>

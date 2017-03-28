@@ -14,4 +14,7 @@
     <result column="wpdr_immuneAmount" property="wpdrImmuneamount" jdbcType="DECIMAL" />
     <result column="wpdr_shouldAmount" property="wpdrShouldamount" jdbcType="DECIMAL" />
   </resultMap>
+  <select id="selectLivestockInOutByReportId" resultMap="BaseResultMap">
+    select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
+  </select>
 </mapper>

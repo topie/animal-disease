@@ -43,4 +43,8 @@
     <result column="fmd_O3ImmuneAmountSheep" property="fmdO3immuneamountsheep" jdbcType="DECIMAL" />
     <result column="fmd_O3ImmuneAmountOther" property="fmdO3immuneamountother" jdbcType="DECIMAL" />
   </resultMap>
+
+<select id="selectLivestockInOutByReportId" resultMap="BaseResultMap">
+select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
+</select>
 </mapper>

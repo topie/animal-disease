@@ -149,6 +149,10 @@
         <td role="data" n="herdsduck" class="c2">${item.herdsduck}</td>
         <td role="data" n="herdsgoose" class="c2">${item.herdsgoose}</td>
         <td role="data" n="herdsotherq" class="c2">${item.herdsotherq}</td>
+        <td role="data" n="immunefmdpig" class="c2">${item.immunefmdpig}</td>
+        <td role="data" n="immunefmdniu" class="c2">${item.immunefmdniu}</td>
+        <td role="data" n="immunefmdsheep" class="c6">${item.immunefmdsheep}</td>
+        <td role="data" n="immunefmdother" class="c2">${item.immunefmdother}</td>
         <td role="data" n="immunebirdfluchecken" class="c2">${item.immunebirdfluchecken}</td>
         <td role="data" n="immunebirdfluduck" class="c2">${item.immunebirdfluduck}</td>
         <td role="data" n="immunebirdflugoose" class="c2">${item.immunebirdflugoose}</td>
@@ -158,10 +162,7 @@
         <td role="data" n="immuneblueear" class="c2">${item.immuneblueear}</td>
         <td role="data" n="immuneswine" class="c2">${item.immuneswine}</td>
         <td role="data" n="immunenewcastle" class="c2">${item.immunenewcastle}</td>
-        <td role="data" n="immunefmdpig" class="c2">${item.immunefmdpig}</td>
-        <td role="data" n="immunefmdniu" class="c2">${item.immunefmdniu}</td>
-        <td role="data" n="immunefmdsheep" class="c6">${item.immunefmdsheep}</td>
-        <td role="data" n="immunefmdother" class="c2">${item.immunefmdother}</td>
+
     </tr>
 
     </#list>

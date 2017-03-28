@@ -124,28 +124,28 @@
 			<#list items as item>
 				<tr class="r5">
 					<td class="c2"><#if item.aiRegionname??>${item.aiRegionname}</#if></td>
-					<td n="aiInactivatedvaccine"  class="c2"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine}</#if></td>
+					<td n="aiInactivatedvaccine"  class="c2"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine?c}</#if></td>
 					<td n=""  class="c2"></td>
-					<td n="aiInactivatedimmuneamountchicken"  class="c2"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken}</#if></td>
-					<td n="aiInactivatedimmuneamountduck"  class="c2"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck}</#if></td>
-					<td n="aiInactivatedimmuneamountgoose"  class="c2"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose}</#if></td>
-					<td n="aiInactivatedimmuneamountother"  class="c2"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother}</#if></td>
+					<td n="aiInactivatedimmuneamountchicken"  class="c2"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken?c}</#if></td>
+					<td n="aiInactivatedimmuneamountduck"  class="c2"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck?c}</#if></td>
+					<td n="aiInactivatedimmuneamountgoose"  class="c2"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose?c}</#if></td>
+					<td n="aiInactivatedimmuneamountother"  class="c2"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother?c}</#if></td>
 					
-					<td n="aiInactivatedshouldamountchicken"  class="c2"><#if item.aiInactivatedshouldamountchicken??>${item.aiInactivatedshouldamountchicken}</#if></td>
-					<td n="aiInactivatedshouldamountduck"  class="c2"><#if item.aiInactivatedshouldamountduck??>${item.aiInactivatedshouldamountduck}</#if></td>
-					<td n="aiInactivatedshouldamountgoose"  class="c2"><#if item.aiInactivatedshouldamountgoose??>${item.aiInactivatedshouldamountgoose}</#if></td>
-					<td n="aiInactivatedshouldamountother"  class="c2"><#if item.aiInactivatedshouldamountother??>${item.aiInactivatedshouldamountother}</#if></td>
+					<td n="aiInactivatedshouldamountchicken"  class="c2"><#if item.aiInactivatedshouldamountchicken??>${item.aiInactivatedshouldamountchicken?c}</#if></td>
+					<td n="aiInactivatedshouldamountduck"  class="c2"><#if item.aiInactivatedshouldamountduck??>${item.aiInactivatedshouldamountduck?c}</#if></td>
+					<td n="aiInactivatedshouldamountgoose"  class="c2"><#if item.aiInactivatedshouldamountgoose??>${item.aiInactivatedshouldamountgoose?c}</#if></td>
+					<td n="aiInactivatedshouldamountother"  class="c2"><#if item.aiInactivatedshouldamountother??>${item.aiInactivatedshouldamountother?c}</#if></td>
 					
-					<td n="aiJointvaccine"  class="c2"><#if item.aiJointvaccine??>${item.aiJointvaccine}</#if></td>
+					<td n="aiJointvaccine"  class="c2"><#if item.aiJointvaccine??>${item.aiJointvaccine?c}</#if></td>
 					<td n="aiJointimmuneamountchicken"  class="c2"></td>
-					<td n="aiJointimmuneamountchicken"  class="c2"><#if item.aiJointimmuneamountchicken??>${item.aiJointimmuneamountchicken}</#if></td>
-					<td n="aiJointimmuneamountduck"  class="c2"><#if item.aiJointimmuneamountduck??>${item.aiJointimmuneamountduck}</#if></td>
-					<td n="aiJointimmuneamountgoose"  class="c2"><#if item.aiJointimmuneamountgoose??>${item.aiJointimmuneamountgoose}</#if></td>
-					<td n="aiJointimmuneamountother"  class="c2"><#if item.aiJointimmuneamountother??>${item.aiJointimmuneamountother}</#if></td>
-					<td n="aiJointshouldamountchicken"  class="c2"><#if item.aiJointshouldamountchicken??>${item.aiJointshouldamountchicken}</#if></td>
-					<td n="aiJointshouldamountduck"  class="c2"><#if item.aiJointshouldamountduck??>${item.aiJointshouldamountduck}</#if></td>
-					<td n="aiJointshouldamountgoose"  class="c2"><#if item.aiJointshouldamountgoose??>${item.aiJointshouldamountgoose}</#if></td>
-					<td n="aiJointshouldamountother"  class="c2"><#if item.aiJointshouldamountother??>${item.aiJointshouldamountother}</#if></td>
+					<td n="aiJointimmuneamountchicken"  class="c2"><#if item.aiJointimmuneamountchicken??>${item.aiJointimmuneamountchicken?c}</#if></td>
+					<td n="aiJointimmuneamountduck"  class="c2"><#if item.aiJointimmuneamountduck??>${item.aiJointimmuneamountduck?c}</#if></td>
+					<td n="aiJointimmuneamountgoose"  class="c2"><#if item.aiJointimmuneamountgoose??>${item.aiJointimmuneamountgoose?c}</#if></td>
+					<td n="aiJointimmuneamountother"  class="c2"><#if item.aiJointimmuneamountother??>${item.aiJointimmuneamountother?c}</#if></td>
+					<td n="aiJointshouldamountchicken"  class="c2"><#if item.aiJointshouldamountchicken??>${item.aiJointshouldamountchicken?c}</#if></td>
+					<td n="aiJointshouldamountduck"  class="c2"><#if item.aiJointshouldamountduck??>${item.aiJointshouldamountduck?c}</#if></td>
+					<td n="aiJointshouldamountgoose"  class="c2"><#if item.aiJointshouldamountgoose??>${item.aiJointshouldamountgoose?c}</#if></td>
+					<td n="aiJointshouldamountother"  class="c2"><#if item.aiJointshouldamountother??>${item.aiJointshouldamountother?c}</#if></td>
 				</tr>
 			</#list>
 			

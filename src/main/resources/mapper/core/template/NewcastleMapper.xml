@@ -17,4 +17,13 @@
     <result column="nc_jointShouldAmount" property="ncJointshouldamount" jdbcType="DECIMAL" />
     <result column="nc_jointVaccine" property="ncJointvaccine" jdbcType="DECIMAL" />
   </resultMap>
+  <select id="selectSumByReportCode" resultMap="BaseResultMap">
+    select
+    sum(nc_inactivatedVaccine) nc_inactivatedVaccine,
+    sum(nc_inactivatedImmuneAmount) nc_inactivatedImmuneAmount,
+    sum(nc_jointVaccine) nc_jointVaccine,
+    sum(nc_jointImmuneAmount) nc_jointImmuneAmount
+    from animal_disease.b_newcastle
+    where nc_regionCode=#{regionCode} AND nc_date BETWEEN  #{beginTime} AND #{endTime}
+  </select>
 </mapper>

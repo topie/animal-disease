@@ -117,76 +117,53 @@
 		<tbody>
 			<tr class="r1">
 				<td class="c1" colspan="5">${templateName}</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r2">
 				<td class="c3">单 位:</td>
 				<td class="c4" colspan="4">${org.orgName}</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r2">
 				<td class="c3">填表日期:</td>
-				<td class="c4" colspan="4"><#if item.ncdate??>${item.ncdate?string("yyyy-MM-dd")}</#if></td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
+				<td class="c4" colspan="4"><#if item.ncDate??>${item.ncDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c3">填 表 人:</td>
 				<td class="c4" colspan="4">${user.realName}</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r2">
 				<td class="c5">主管领导：</td>
 				<td class="c4" colspan="4">${user.leaderName}</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r4">
-				<td class="c3" rowspan="2">疫苗种类</td>
-				<td class="c5" rowspan="2">本月使用数量（万羽份）</td>
-				<td class="c4" rowspan="2">累计使用数量（万羽份）</td>
-				<td class="c3" rowspan="2">本月免疫数量（万羽）</td>
-				<td class="c3" rowspan="2">累计免疫数量(万羽)</td>
-				<td class="c4" rowspan="2">累计使用数量（万羽份）</td>
-				<td class="c3" rowspan="2">累计免疫数量(万羽)</td>
+				<td class="c3">疫苗种类</td>
+				<td class="c5">本月使用数量（万羽份）</td>
+				<td class="c4">累计使用数量（万羽份）</td>
+				<td class="c3">本月免疫数量（万羽）</td>
+				<td class="c3">累计免疫数量(万羽)</td>
 			</tr>
-			<tr class="r5"></tr>
 			<tr class="r2">
 				<td class="c3">新城疫灭活疫苗</td>
-				<td role="data"  n="ncInactivatedvaccine" class="c3"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine}</#if></td>
-				<td role="data"  n="" class="c6"></td>
-				<td  role="data"  n="ncInactivatedimmuneamount" class="c3"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount}</#if></td>
-				<td  role="data"  n="" class="c6"></td>
-				<td  role="data"  n="" class="c7"></td>
-				<td  role="data"  n="" class="c7"></td>
+				<td role="data"  n="ncInactivatedvaccine" class="c3"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine?c}</#if></td>
+				<td class="c6"><#if itemSum.ncInactivatedvaccine??>${itemSum.ncInactivatedvaccine?string("0.##")}<#else>0.00</#if></td>
+				<td  role="data"  n="ncInactivatedimmuneamount" class="c3"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount?c}</#if></td>
+				<td class="c6"><#if itemSum.ncInactivatedimmuneamount??>${itemSum.ncInactivatedimmuneamount?string("0.##")}<#else>0.00</#if></td>
 			</tr>
 			<tr class="r2">
 				<td class="c3">新城疫弱毒疫苗</td>
-				<td role="data"  n="ncJointvaccine"  class="c3"><#if item.ncJointvaccine??>${item.ncJointvaccine}</#if></td>
-				<td role="data"  n=""   class="c6"></td>
-				<td role="data"  n="ncJointimmuneamount"   class="c3"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount}</#if></td>
-				<td role="data"  n=""   class="c6"></td>
-				<td role="data"  n=""   class="c7"></td>
-				<td role="data"  n=""   class="c7"></td>
+				<td role="data"  n="ncJointvaccine"  class="c3"><#if item.ncJointvaccine??>${item.ncJointvaccine?c}</#if></td>
+				<td class="c6"><#if itemSum.ncJointvaccine??>${itemSum.ncJointvaccine?string("0.##")}<#else>0.00</#if></td>
+				<td role="data"  n="ncJointimmuneamount"   class="c3"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount?c}</#if></td>
+				<td class="c6"><#if itemSum.ncJointimmuneamount??>${itemSum.ncJointimmuneamount?string("0.##")}<#else>0.00</#if></td>
 			</tr>
 			<tr class="r2">
 				<td class="c3" rowspan="3">填报说明：</td>
 				<td class="c4" colspan="4">1、本月免疫数量是指填报本月的免疫数量；</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r2">
 				<td class="c4" colspan="4">2、使用的疫苗种类与其使用数量、免疫动物数量相对应。</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r6">
 				<td class="c4" colspan="4">3、&ldquo;新城疫灭活疫苗&rdquo;和&ldquo;新城疫弱毒疫苗&rdquo;使用数量统一按羽份统计；</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 		</tbody>
 	</table>

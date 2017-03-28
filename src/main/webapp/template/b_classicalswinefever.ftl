@@ -111,8 +111,6 @@
 		<tbody>
 			<tr class="r1">
 				<td class="c1" colspan="5">${templateName}</td>
-				<td class="c2">累计使用数量</td>
-				<td class="c2">累计免疫数量</td>
 			</tr>
 			<tr class="r2">
 				<td class="c3">单 位:</td>
@@ -120,7 +118,7 @@
 			</tr>
 			<tr class="r2">
 				<td class="c3">填表日期:</td>
-				<td class="c4" colspan="4"><#if item.csfdate??>${item.csfdate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c4" colspan="4"><#if item.csfDate??>${item.csfDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c3">填 表 人:</td>
@@ -131,21 +129,19 @@
 				<td class="c4" colspan="4">${user.leaderName}</td>
 			</tr>
 			<tr class="r4">
-				<td class="c3" rowspan="2">疫苗种类</td>
-				<td class="c3" rowspan="2">本月使用数量（万头份）</td>
-				<td class="c5" rowspan="2">累计使用数量（万头份）</td>
-				<td class="c3" rowspan="2">本月免疫数量（万头）</td>
-				<td class="c3" rowspan="2">累计免疫数量(万头)</td>
+				<td class="c3" >疫苗种类</td>
+				<td class="c3" >本月使用数量（万头份）</td>
+				<td class="c5" >累计使用数量（万头份）</td>
+				<td class="c3" >本月免疫数量（万头）</td>
+				<td class="c3" >累计免疫数量(万头)</td>
 			</tr>
-			<tr class="r5"></tr>
+
 			<tr class="r6">
-				<td class="c2"></td>
-				<td role="data" n=""  class="c3"></td>
-				<td role="data" n="csfVaccine" class="c6"><#if item.csfVaccine??>${item.csfVaccine}</#if></td>
-				<td role="data" n="" class="c3"></td>
-				<td role="data" n="csfImmuneamount" class="c6"><#if item.csfImmuneamount??>${item.csfImmuneamount}</#if></td>
-				<td role="data" n="" class="c7"></td>
-				<td  role="data"n=""  class="c7"></td>
+				<td class="c3">猪瘟活疫苗</td>
+				<td role="data" n="csfVaccine" class="c3"><#if item.csfVaccine??>${item.csfVaccine?c}</#if></td>
+				<td  class="c6"><#if itemSum.csfVaccine??>${itemSum.csfVaccine?string("0.##")}<#else>0.00</#if></td>
+				<td role="data" n="csfImmuneamount" class="c3"><#if item.csfImmuneamount??>${item.csfImmuneamount?c}</#if></td>
+                <td  class="c6"><#if itemSum.csfImmuneamount??>${itemSum.csfImmuneamount?string("0.##")}<#else>0.00</#if></td>
 			</tr>
 		</tbody>
 	</table>

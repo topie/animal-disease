@@ -72,5 +72,34 @@
         <foreach item="item" collection="ids" open="(" separator="," close=")">
             #{item}
         </foreach>
+        ORDER  by Liv_regionCode
+    </select>
+    <select id="selectSumByReportCode" resultMap="BaseResultMap">
+        select
+        sum(HerdsPig) HerdsPig,
+        sum(HerdsNiu) HerdsNiu,
+        sum(HerdsSheep) HerdsSheep,
+        sum(HerdsOther) HerdsOther,
+        sum(HerdsChicken) HerdsChicken,
+        sum(HerdsDuck) HerdsDuck,
+        sum(HerdsGoose) HerdsGoose,
+        sum(HerdsOtherQ) HerdsOtherQ,
+        sum(ImmuneBirdFluChecken) ImmuneBirdFluChecken,
+        sum(ImmuneBirdFluDuck) ImmuneBirdFluDuck,
+        sum(ImmuneBirdFluGoose) ImmuneBirdFluGoose,
+        sum(ImmuneBirdFluOther) ImmuneBirdFluOther,
+        sum(ImmuneAFMDNiu) ImmuneAFMDNiu,
+        sum(ImmuneAFMDSheep) ImmuneAFMDSheep,
+        sum(ImmuneBlueEar) ImmuneBlueEar,
+        sum(ImmuneSwine) ImmuneSwine,
+        sum(ImmuneNewcastle) ImmuneNewcastle,
+        sum(ImmuneFMDPig) ImmuneFMDPig,
+        sum(ImmuneFMDNiu) ImmuneFMDNiu,
+        sum(ImmuneFMDSheep) ImmuneFMDSheep,
+        sum(ImmuneFMDOther) ImmuneFMDOther,
+        sum(PesteDesPetitsRuminants) PesteDesPetitsRuminants
+        from animal_disease.b_livestockinout
+        where Liv_regionCode=#{regionCode} AND LivestockDate BETWEEN  #{beginTime} AND #{endTime}
+
     </select>
 </mapper>

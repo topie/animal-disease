@@ -126,9 +126,9 @@
 	 <#list items as item>
 			<tr class="r5">
 				<td  n="srvRegionname" class="c5"><#if item.srvRegionname??>${item.srvRegionname}</#if></td>
-				<td  n="srvH5n2d7usecount"  class="c5"><#if item.srvH5n2d7usecount??>${item.srvH5n2d7usecount}</#if></td>
-				<td  n="srvH5n2d7storecount"  class="c6"><#if item.srvH5n2d7storecount??>${item.srvH5n2d7storecount}</#if></td>
-				<td  n="srvH5n2d7yearcount"  class="c6"><#if item.srvH5n2d7yearcount??>${item.srvH5n2d7yearcount}</#if></td>
+				<td  n="srvH5n2d7usecount"  class="c5"><#if item.srvH5n2d7usecount??>${item.srvH5n2d7usecount?c}</#if></td>
+				<td  n="srvH5n2d7storecount"  class="c6"><#if item.srvH5n2d7storecount??>${item.srvH5n2d7storecount?c}</#if></td>
+				<td  n="srvH5n2d7yearcount"  class="c6"><#if item.srvH5n2d7yearcount??>${item.srvH5n2d7yearcount?c}</#if></td>
 			</tr>
    </#list>
 		</tbody>

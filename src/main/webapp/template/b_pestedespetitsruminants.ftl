@@ -216,7 +216,7 @@
 			</tr>
 			<tr class="r2">
 				<td class="c2">填表日期</td>
-				<td class="c3" colspan="8"><#if item.pdprdate??>${item.pdprdate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c3" colspan="8"><#if item.pdprDate??>${item.pdprDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r2">
 				<td class="c2">填 表 人</td>
@@ -244,25 +244,17 @@
 				<td class="c7">绵羊</td>
 				<td class="c10">山羊</td>
 				<td class="c11">绵羊</td>
-				<td class="c12">累计使用数量（万头份）</td>
-				<td class="c13">累计免疫数量(种羊)</td>
-				<td class="c13">累计免疫数量(山羊)</td>
-				<td class="c13">累计免疫数量(棉羊)</td>
 			</tr>
 			<tr class="r6">
 				<td class="c2">小反刍兽疫活疫苗</td>
-				<td role="data"  n="pdprLivevaccine"    class="c2"><#if item.pdprLivevaccine??>${item.pdprLivevaccine}</#if></td>
-				<td role="data"  n=""    class="c14"></td>
-				<td role="data"  n="pdprLivebreedingsheep"    class="c11"><#if item.pdprLivebreedingsheep??>${item.pdprLivebreedingsheep}</#if></td>
-				<td role="data"  n="pdprLivegoat"    class="c11"><#if item.pdprLivegoat??>${item.pdprLivegoat}</#if></td>
-				<td role="data"  n="pdprLivesheep"    class="c11"><#if item.pdprLivesheep??>${item.pdprLivesheep}</#if></td>
-				<td role="data"  n=""    class="c15"></td>
-				<td role="data"  n=""    class="c15"></td>
-				<td role="data"  n=""    class="c15"></td>
-				<td role="data"  n=""    class="c16"></td>
-				<td role="data"  n=""    class="c16"></td>
-				<td role="data"  n=""    class="c16"></td>
-				<td role="data"  n=""    class="c16"></td>
+				<td role="data"  n="pdprLivevaccine"    class="c2"><#if item.pdprLivevaccine??>${item.pdprLivevaccine?c}</#if></td>
+				<td class="c14"><#if itemSum.pdprLivevaccine??>${itemSum.pdprLivevaccine?string("0.##")}<#else>0.00</#if></td>
+				<td role="data"  n="pdprLivebreedingsheep"    class="c11"><#if item.pdprLivebreedingsheep??>${item.pdprLivebreedingsheep?c}</#if></td>
+				<td role="data"  n="pdprLivegoat"    class="c11"><#if item.pdprLivegoat??>${item.pdprLivegoat?c}</#if></td>
+				<td role="data"  n="pdprLivesheep"    class="c11"><#if item.pdprLivesheep??>${item.pdprLivesheep?c}</#if></td>
+				<td class="c15"><#if itemSum.pdprLivebreedingsheep??>${itemSum.pdprLivebreedingsheep?string("0.##")}<#else>0.00</#if></td>
+				<td class="c15"><#if itemSum.pdprLivegoat??>${itemSum.pdprLivegoat?string("0.##")}<#else>0.00</#if></td>
+				<td class="c15"><#if itemSum.pdprLivesheep??>${itemSum.pdprLivesheep?string("0.##")}<#else>0.00</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="4">填表说明：</td>

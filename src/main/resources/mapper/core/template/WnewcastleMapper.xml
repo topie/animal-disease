@@ -17,4 +17,7 @@
     <result column="nc_jointShouldAmount" property="ncJointshouldamount" jdbcType="DECIMAL" />
     <result column="nc_jointVaccine" property="ncJointvaccine" jdbcType="DECIMAL" />
   </resultMap>
+  <select id="selectLivestockInOutByReportId" resultMap="BaseResultMap">
+    select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
+  </select>
 </mapper>

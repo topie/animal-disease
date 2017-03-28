@@ -97,7 +97,7 @@
 			</tr>
 			<tr class="r2">
 				<td class="c2">填表日期:</td>
-				<td class="c3" colspan="5"><#if item.cvdate??>${item.cvdate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c3" colspan="5"><#if item.cvDate??>${item.cvDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2">填 表 人:</td>

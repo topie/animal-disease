@@ -93,15 +93,15 @@
 			</tr>
 			<#list items as item>
 			<tr class="r5">
-				<td n="cvregionname" class="c2"><#if item.cvregionname??>${item.cvregionname}</#if></td>
-				<td n="cvLivingusecount"  class="c2"><#if item.cvLivingusecount??>${item.cvLivingusecount}</#if></td>
-				<td n="cvCellusercount"  class="c2"><#if item.cvCellusercount??>${item.cvCellusercount}</#if></td>
-				<td n="cvLivingstorecount"  class="c2"><#if item.cvLivingstorecount??>${item.cvLivingstorecount}</#if></td>
-				<td n="cvCellstorecount"  class="c2"><#if item.cvCellstorecount??>${item.cvCellstorecount}</#if></td>
-				<td n="cvLivingyearcount"  class="c2"><#if item.cvLivingyearcount??>${item.cvLivingyearcount}</#if></td>
-				<td n="cvCellyearcount"  class="c2"><#if item.cvCellyearcount??>${item.cvCellyearcount}</#if></td>
+				<td n="cvRegionname" class="c2"><#if item.cvRegionname??>${item.cvRegionname}</#if></td>
+				<td n="cvLivingusecount"  class="c2"><#if item.cvLivingusecount??>${item.cvLivingusecount?c}</#if></td>
+				<td n="cvCellusercount"  class="c2"><#if item.cvCellusercount??>${item.cvCellusercount?c}</#if></td>
+				<td n="cvLivingstorecount"  class="c2"><#if item.cvLivingstorecount??>${item.cvLivingstorecount?c}</#if></td>
+				<td n="cvCellstorecount"  class="c2"><#if item.cvCellstorecount??>${item.cvCellstorecount?c}</#if></td>
+				<td n="cvLivingyearcount"  class="c2"><#if item.cvLivingyearcount??>${item.cvLivingyearcount?c}</#if></td>
+				<td n="cvCellyearcount"  class="c2"><#if item.cvCellyearcount??>${item.cvCellyearcount?c}</#if></td>
 			</tr>
-<#list items as item>
+			</#list>
 		</tbody>
 	</table>
 </body>

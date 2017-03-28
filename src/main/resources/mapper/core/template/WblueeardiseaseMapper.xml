@@ -17,4 +17,8 @@
     <result column="bed_weakImmuneAmount" property="bedWeakimmuneamount" jdbcType="DECIMAL" />
     <result column="bed_weakShouldAmount" property="bedWeakshouldamount" jdbcType="DECIMAL" />
   </resultMap>
+
+<select id="selectLivestockInOutByReportId" resultMap="BaseResultMap">
+select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
+</select>
 </mapper>

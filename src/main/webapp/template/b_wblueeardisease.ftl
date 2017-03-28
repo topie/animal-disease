@@ -131,47 +131,31 @@
 		<tbody>
 			<tr class="r1">
 				<td class="c1" colspan="7">${templateName}</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r2">
 				<td class="c3">单 位:</td>
 				<td class="c4" colspan="6">${org.orgName}</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r3">
 				<td class="c3">填表日期:</td>
 				<td class="c4" colspan="6"><#if item.aidate??>${item.aidate?string("yyyy-MM-dd")}</#if></td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r3">
 				<td class="c3">填 表 人:</td>
 				<td class="c4" colspan="6">${user.realName}</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r4">
 				<td class="c5">主管领导：</td>
 				<td class="c4" colspan="6">${user.leaderName}</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r5">
-				<td class="c3" rowspan="2">疫苗种类</td>
-				<td class="c3" rowspan="2">本周疫苗使用数量(万毫升/万头份)</td>
-				<td class="c5" rowspan="2">秋防累计疫苗使用数量(万毫升/万头份)</td>
-				<td class="c3" rowspan="2">本周免疫数量（万头）</td>
-				<td class="c3" rowspan="2">秋防累计免疫数量(万头)</td>
-				<td class="c3" rowspan="2">秋防应免数量(万头)</td>
-				<td class="c3" rowspan="2">免疫进展(%)</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
-			</tr>
-			<tr class="r6">
-				<td class="c2">秋防累计疫苗使用数量</td>
-				<td class="c2">秋防累计免疫数量</td>
+				<td class="c3" >疫苗种类</td>
+				<td class="c3" >本周疫苗使用数量(万毫升/万头份)</td>
+				<td class="c5" >秋防累计疫苗使用数量(万毫升/万头份)</td>
+				<td class="c3" >本周免疫数量（万头）</td>
+				<td class="c3" >秋防累计免疫数量(万头)</td>
+				<td class="c3" >秋防应免数量(万头)</td>
+				<td class="c3" >免疫进展(%)</td>
 			</tr>
 			<tr class="r7">
 				<td class="c3">高致病性猪蓝耳病灭活疫苗</td>
@@ -181,8 +165,6 @@
 				<td role="data" n=""  class="c6"></td>
 				<td role="data" n=""  class="c6" rowspan="2"></td>
 				<td role="data" n=""  class="c6" rowspan="2"></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n=""  class="c7"></td>
 			</tr>
 			<tr class="r6">
 				<td class="c3">高致病性猪蓝耳病活疫苗</td>
@@ -190,24 +172,16 @@
 				<td role="data" n=""  class="c6"></td>
 				<td role="data" n="bedWeakimmuneamount"  class="c3"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount}</#if></td>
 				<td role="data" n=""  class="c6"></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n=""  class="c7"></td>
 			</tr>
 			<tr class="r8">
 				<td class="c3" rowspan="3">填报说明：</td>
 				<td class="c4" colspan="6">1.本周免疫数量是指填报本周的免疫数量；</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r2">
 				<td class="c4" colspan="6">2.使用的疫苗种类与其使用数量、免疫动物数量相对应；</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 			<tr class="r9">
 				<td class="c4" colspan="6">3.&ldquo;高致病性猪蓝耳病灭活疫苗&rdquo;使用数量按毫升统计，&ldquo;高致病性猪蓝耳病活疫苗&rdquo;使用数量按头份统计。</td>
-				<td class="c2">&nbsp;</td>
-				<td class="c2">&nbsp;</td>
 			</tr>
 		</tbody>
 	</table>

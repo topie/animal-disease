@@ -89,16 +89,16 @@
 			</tr>
 			<#list items as item>
 			<tr class="r4">
-				<td n="" class="c2"><#if item.airegionname??>${item.airegionname}</#if></td>
+				<td n="" class="c2"><#if item.airegionname??>${item.airegionname?c}</#if></td>
 				
-				<td  n="bedInactivatedvaccine" class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine}</#if></td>
-				<td n="bedInactivatedshouldamount"  class="c2"><#if item.bedInactivatedshouldamount??>${item.bedInactivatedshouldamount}</#if></td>
-				<td n="bedInactivatedimmuneamount"  class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount}</#if></td>
+				<td  n="bedInactivatedvaccine" class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine?c}</#if></td>
+				<td n="bedInactivatedshouldamount"  class="c2"><#if item.bedInactivatedshouldamount??>${item.bedInactivatedshouldamount?c}</#if></td>
+				<td n="bedInactivatedimmuneamount"  class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount?c}</#if></td>
 				<td n=""  class="c2"></td>
 				
-				<td n="bedWeakvaccine"  class="c2"><#if item.bedWeakvaccine??>${item.bedWeakvaccine}</#if></td>
-				<td n="bedWeakshouldamount"  class="c2"><#if item.bedWeakshouldamount??>${item.bedWeakshouldamount}</#if></td>
-				<td n="bedWeakimmuneamount"  class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount}</#if></td>
+				<td n="bedWeakvaccine"  class="c2"><#if item.bedWeakvaccine??>${item.bedWeakvaccine?c}</#if></td>
+				<td n="bedWeakshouldamount"  class="c2"><#if item.bedWeakshouldamount??>${item.bedWeakshouldamount?c}</#if></td>
+				<td n="bedWeakimmuneamount"  class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount?c}</#if></td>
 				<td n=""  class="c2"></td>
 			</tr>
 			</#list>

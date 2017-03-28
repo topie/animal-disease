@@ -226,27 +226,29 @@
 			</tr>
 			<tr class="r3">
 				<td class="c2">高致病性禽流感灭活疫苗</td>
-				<td role="data" n="aiInactivatedvaccine" class="c2"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine}</#if></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n="aiInactivatedimmuneamountchicken"  class="c2"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken}</#if></td>
-				<td role="data" n="aiInactivatedimmuneamountduck"  class="c2"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck}</#if></td>
-				<td role="data" n="aiInactivatedimmuneamountgoose"  class="c2"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose}</#if></td>
-				<td role="data" n="aiInactivatedimmuneamountother"  class="c2"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother}</#if></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n=""  class="c8"></td>
-				<td role="data" n=""  class="c7" rowspan="2"></td>
-				<td role="data" n=""  class="c7" rowspan="2"></td>
-				<td role="data" n=""  class="c7" rowspan="2"></td>
-				<td role="data" n=""  class="c7" rowspan="2"></td>
-				<td role="data" n=""  class="c7" rowspan="2"></td>
-				<td role="data" n=""  class="c9" rowspan="2"></td>
-				<td role="data" n=""  class="c9" rowspan="2"></td>
-				<td role="data" n=""  class="c9" rowspan="2"></td>
-				<td role="data" n=""  class="c9" rowspan="2"></td>
-				<td role="data" n=""  class="c9" rowspan="2"></td>
+				<td role="data" n="aiInactivatedvaccine" class="c2"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine?c}</#if></td>
+				<td class="c7"><#if itemSum.aiInactivatedvaccine??>${itemSum.aiInactivatedvaccine?string("0.##")}<#else>0.00</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountchicken"  class="c2"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken?c}</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountduck"  class="c2"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck?c}</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountgoose"  class="c2"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose?c}</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountother"  class="c2"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother?c}</#if></td>
+				<td class="c7"><#if itemSum.aiInactivatedimmuneamountchicken??>${itemSum.aiInactivatedimmuneamountchicken?string("0.##")}<#else>0.00</#if></td>
+				<td class="c7"><#if itemSum.aiInactivatedimmuneamountduck??>${itemSum.aiInactivatedimmuneamountduck?string("0.##")}<#else>0.00</#if></td>
+				<td class="c7"><#if itemSum.aiInactivatedimmuneamountgoose??>${itemSum.aiInactivatedimmuneamountgoose?string("0.##")}<#else>0.00</#if></td>
+				<td class="c7"><#if itemSum.aiInactivatedimmuneamountother??>${itemSum.aiInactivatedimmuneamountother?string("0.##")}<#else>0.00</#if></td>
+				<td class="c8"><#if itemSum??>${itemSum.aiInactivatedimmuneamountchicken+itemSum.aiInactivatedimmuneamountduck+itemSum.aiInactivatedimmuneamountgoose+itemSum.aiInactivatedimmuneamountother}</#if></td>
+                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdfluchecken??>${wlivestockinout.immunebirdfluchecken?c}</#if></td>
+                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdfluduck??>${wlivestockinout.immunebirdfluduck?c}</#if></td>
+                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdflugoose??>${wlivestockinout.immunebirdflugoose?c}</#if></td>
+                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdfluother??>${wlivestockinout.immunebirdfluother?c}</#if></td>
+				<td  n=""  class="c7" rowspan="2"><#if wlivestockinout??>${wlivestockinout.immunebirdfluchecken+wlivestockinout.immunebirdfluduck+wlivestockinout.immunebirdflugoose+wlivestockinout.immunebirdfluother}</#if></td>
+				<td class="c9" rowspan="2"><#if itemSum??&&wlivestockinout??>${(itemSum.aiInactivatedimmuneamountchicken+itemSum.aiJointimmuneamountchicken)*100/wlivestockinout.immunebirdfluchecken}</#if>%</td>
+				<td class="c9" rowspan="2"><#if itemSum??&&wlivestockinout??>${(itemSum.aiInactivatedimmuneamountduck+itemSum.aiJointimmuneamountduck)*100/wlivestockinout.immunebirdfluduck}</#if>%</td>
+				<td class="c9" rowspan="2"><#if itemSum??&&wlivestockinout??>${(itemSum.aiInactivatedimmuneamountgoose+itemSum.aiJointimmuneamountgoose)*100/wlivestockinout.immunebirdflugoose}</#if>%</td>
+				<td class="c9" rowspan="2"><#if itemSum??&&wlivestockinout??>${(itemSum.aiInactivatedimmuneamountother+itemSum.aiJointimmuneamountother)*100/wlivestockinout.immunebirdfluother}</#if>%</td>
+				<td class="c9" rowspan="2"><#if itemSum??&&wlivestockinout??>
+				${(itemSum.aiInactivatedimmuneamountchicken+itemSum.aiInactivatedimmuneamountduck+itemSum.aiInactivatedimmuneamountgoose+itemSum.aiInactivatedimmuneamountother+itemSum.aiJointimmuneamountchicken+itemSum.aiJointimmuneamountduck+itemSum.aiJointimmuneamountgoose+itemSum.aiJointimmuneamountother)*100/(wlivestockinout.immunebirdfluchecken+wlivestockinout.immunebirdfluduck+wlivestockinout.immunebirdflugoose+wlivestockinout.immunebirdfluother)}
+				 </#if>%</td>
 	<!-- 			<td class="c10"></td>
 				<td class="c10"></td>
 				<td class="c10"></td>
@@ -261,17 +263,17 @@
 			</tr>
 			<tr class="r3">
 				<td class="c3">禽流感-新城疫重组二联活疫苗</td>
-				<td role="data" n="aiJointvaccine" class="c2"><#if item.aiJointvaccine??>${item.aiJointvaccine}</#if></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n="aiJointimmuneamountchicken"  class="c2"><#if item.aiJointimmuneamountchicken??>${item.aiJointimmuneamountchicken}</#if></td>
-				<td role="data" n="aiJointimmuneamountduck"  class="c2"><#if item.aiJointimmuneamountduck??>${item.aiJointimmuneamountduck}</#if></td>
-				<td role="data" n="aiJointimmuneamountgoose"  class="c2"><#if item.aiJointimmuneamountgoose??>${item.aiJointimmuneamountgoose}</#if></td>
-				<td role="data" n="aiJointimmuneamountother"  class="c2"><#if item.aiJointimmuneamountother??>${item.aiJointimmuneamountother}</#if></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n=""  class="c7"></td>
-				<td role="data" n=""  class="c8"></td>
+				<td role="data" n="aiJointvaccine" class="c2"><#if item.aiJointvaccine??>${item.aiJointvaccine?c}</#if></td>
+				<td class="c7"><#if itemSum.aiJointvaccine??>${itemSum.aiJointvaccine?string("0.##")}<#else>0.00</#if></td>
+				<td role="data" n="aiJointimmuneamountchicken"  class="c2"><#if item.aiJointimmuneamountchicken??>${item.aiJointimmuneamountchicken?c}</#if></td>
+				<td role="data" n="aiJointimmuneamountduck"  class="c2"><#if item.aiJointimmuneamountduck??>${item.aiJointimmuneamountduck?c}</#if></td>
+				<td role="data" n="aiJointimmuneamountgoose"  class="c2"><#if item.aiJointimmuneamountgoose??>${item.aiJointimmuneamountgoose?c}</#if></td>
+				<td role="data" n="aiJointimmuneamountother"  class="c2"><#if item.aiJointimmuneamountother??>${item.aiJointimmuneamountother?c}</#if></td>
+                <td class="c7"><#if itemSum.aiJointimmuneamountchicken??>${itemSum.aiJointimmuneamountchicken?string("0.##")}<#else>0.00</#if></td>
+                <td class="c7"><#if itemSum.aiJointimmuneamountduck??>${itemSum.aiJointimmuneamountduck?string("0.##")}<#else>0.00</#if></td>
+                <td class="c7"><#if itemSum.aiJointimmuneamountgoose??>${itemSum.aiJointimmuneamountgoose?string("0.##")}<#else>0.00</#if></td>
+                <td class="c7"><#if itemSum.aiJointimmuneamountother??>${itemSum.aiJointimmuneamountother?string("0.##")}<#else>0.00</#if></td>
+				<td class="c8"><#if itemSum??>${itemSum.aiJointimmuneamountchicken+itemSum.aiJointimmuneamountduck+itemSum.aiJointimmuneamountgoose+itemSum.aiJointimmuneamountother}</#if></td>
 		<!-- 		<td class="c10">0</td>
 				<td class="c10">0</td>
 				<td class="c10">0</td>
