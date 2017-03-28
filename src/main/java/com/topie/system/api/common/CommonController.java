@@ -1,9 +1,9 @@
 package com.topie.system.api.common;
 
+import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
 import com.topie.database.core.system.model.Attachment;
 import com.topie.system.service.IAttachmentService;
-import com.topie.common.utils.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,8 +46,7 @@ public class CommonController {
 
             // 定义允许上传的文件扩展名
             HashMap<String, String> extMap = new HashMap<String, String>();
-            extMap.put(dirName,
-                    "doc,docx,xls,xlsx,ppt,pptx,txt,zip,rar,gz,bz2,gif,jpg,jpeg,png,bmp,swf,flv,mp3,wav,wma,wmv,mid,avi,mpg,asf,rm,rmvb");
+            extMap.put(dirName, "doc,docx");
 
             Attachment attachment = iAttachmentService
                     .uploadFileAttachment(request, file, dirName, maxSize, extMap, FILE);
@@ -100,8 +99,7 @@ public class CommonController {
                 extMap.put(dirName,
                         "doc,docx,xls,xlsx,ppt,pptx,txt,zip,rar,gz,bz2,gif,jpg,jpeg,png,bmp,swf,flv,mp3,wav,wma,wmv,mid,avi,mpg,asf,rm,rmvb");
 
-                return iAttachmentService
-                        .uploadFileAttachment(request, file, dirName, maxSize, extMap, FILE);
+                return iAttachmentService.uploadFileAttachment(request, file, dirName, maxSize, extMap, FILE);
             }
         }
         return false;

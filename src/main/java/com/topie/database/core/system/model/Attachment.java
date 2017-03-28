@@ -1,5 +1,7 @@
 package com.topie.database.core.system.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 
 @Table(name = "d_attachment")
@@ -35,6 +37,7 @@ public class Attachment {
      * 附件文件路径
      */
     @Column(name = "attachment_path")
+    @JsonIgnore
     private String attachmentPath;
 
     /**
