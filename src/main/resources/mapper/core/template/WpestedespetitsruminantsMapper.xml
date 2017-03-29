@@ -17,4 +17,22 @@
   <select id="selectLivestockInOutByReportId" resultMap="BaseResultMap">
     select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
   </select>
+  <select id="selectSumByReportCode" resultMap="BaseResultMap">
+    select
+    sum(wpdr_vaccine) wpdr_vaccine,
+    sum(wpdr_immuneAmount) wpdr_immuneAmount,
+    sum(wpdr_shouldAmount) wpdr_shouldAmount
+    from animal_disease.b_wpestedespetitsruminants
+    where wpdr_regionCode=#{regionCode} AND wpdr_date BETWEEN  #{beginTime} AND #{endTime}
+  </select>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+     select
+    sum(wpdr_vaccine) wpdr_vaccine,
+    sum(wpdr_immuneAmount) wpdr_immuneAmount,
+    sum(wpdr_shouldAmount) wpdr_shouldAmount
+     from animal_disease.b_wpestedespetitsruminants
+     where  wpdr_date BETWEEN  #{beginTime} AND #{endTime}
+     GROUP  BY wpdr_regionCode
+     order by wpdr_regionCode
+  </select>
 </mapper>

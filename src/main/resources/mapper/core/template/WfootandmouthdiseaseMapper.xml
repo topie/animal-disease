@@ -47,4 +47,80 @@
 <select id="selectLivestockInOutByReportId" resultMap="BaseResultMap">
 select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
 </select>
+  <select id="selectSumByReportCode" resultMap="BaseResultMap">
+    select
+    sum(fmd_inactivatedVaccine) fmd_inactivatedVaccine,
+    sum(fmd_inactivatedImmuneAmountPig) fmd_inactivatedImmuneAmountPig,
+    sum(fmd_inactivatedImmuneAmountNiu) fmd_inactivatedImmuneAmountNiu,
+    sum(fmd_inactivatedImmuneAmountSheep) fmd_inactivatedImmuneAmountSheep,
+    sum(fmd_inactivatedImmuneAmountOther) fmd_inactivatedImmuneAmountOther,
+    sum(fmd_inactivatedShouldAmountPig) fmd_inactivatedShouldAmountPig,
+    sum(fmd_inactivatedShouldAmountNiu) fmd_inactivatedShouldAmountNiu,
+    sum(fmd_inactivatedShouldAmountSheep) fmd_inactivatedShouldAmountSheep,
+    sum(fmd_inactivatedShouldAmountOther) fmd_inactivatedShouldAmountOther,
+    sum(fmd_syntheticVaccine) fmd_syntheticVaccine,
+    sum(fmd_syntheticImmuneAmountPig) fmd_syntheticImmuneAmountPig,
+    sum(fmd_syntheticImmuneAmountNiu) fmd_syntheticImmuneAmountNiu,
+    sum(fmd_syntheticImmuneAmountSheep) fmd_syntheticImmuneAmountSheep,
+    sum(fmd_syntheticImmuneAmountOther) fmd_syntheticImmuneAmountOther,
+    sum(fmd_O2Vaccine) fmd_O2Vaccine,
+    sum(fmd_O2ImmuneAmountPig) fmd_O2ImmuneAmountPig,
+    sum(fmd_O2ImmuneAmountNiu) fmd_O2ImmuneAmountNiu,
+    sum(fmd_O2ImmuneAmountSheep) fmd_O2ImmuneAmountSheep,
+    sum(fmd_O2ImmuneAmountOther) fmd_O2ImmuneAmountOther,
+    sum(fmd_OAVaccine) fmd_OAVaccine,
+    sum(fmd_OAImmuneAmountNiu) fmd_OAImmuneAmountNiu,
+    sum(fmd_OAImmuneAmountSheep) fmd_OAImmuneAmountSheep,
+    sum(fmd_OAAShudeImmuneAmountNiu) fmd_OAAShudeImmuneAmountNiu,
+    sum(fmd_OAAShudeImmuneAmountSheep) fmd_OAAShudeImmuneAmountSheep,
+     sum(fmd_AVaccine) fmd_AVaccine,
+    sum(fmd_AImmuneAmountNiu) fmd_AImmuneAmountNiu,
+    sum(fmd_AImmuneAmountSheep) fmd_AImmuneAmountSheep,
+     sum(fmd_O3Vaccine) fmd_O3Vaccine,
+    sum(fmd_O3ImmuneAmountPig) fmd_O3ImmuneAmountPig,
+    sum(fmd_O3ImmuneAmountNiu) fmd_O3ImmuneAmountNiu,
+    sum(fmd_O3ImmuneAmountSheep) fmd_O3ImmuneAmountSheep,
+    sum(fmd_O3ImmuneAmountOther) fmd_O3ImmuneAmountOther
+    from animal_disease.b_wfootandmouthdisease
+    where fmd_regionCode=#{regionCode} AND fmd_date BETWEEN  #{beginTime} AND #{endTime}
+  </select>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select
+    sum(fmd_inactivatedVaccine) fmd_inactivatedVaccine,
+    sum(fmd_inactivatedImmuneAmountPig) fmd_inactivatedImmuneAmountPig,
+    sum(fmd_inactivatedImmuneAmountNiu) fmd_inactivatedImmuneAmountNiu,
+    sum(fmd_inactivatedImmuneAmountSheep) fmd_inactivatedImmuneAmountSheep,
+    sum(fmd_inactivatedImmuneAmountOther) fmd_inactivatedImmuneAmountOther,
+    sum(fmd_inactivatedShouldAmountPig) fmd_inactivatedShouldAmountPig,
+    sum(fmd_inactivatedShouldAmountNiu) fmd_inactivatedShouldAmountNiu,
+    sum(fmd_inactivatedShouldAmountSheep) fmd_inactivatedShouldAmountSheep,
+    sum(fmd_inactivatedShouldAmountOther) fmd_inactivatedShouldAmountOther,
+    sum(fmd_syntheticVaccine) fmd_syntheticVaccine,
+    sum(fmd_syntheticImmuneAmountPig) fmd_syntheticImmuneAmountPig,
+    sum(fmd_syntheticImmuneAmountNiu) fmd_syntheticImmuneAmountNiu,
+    sum(fmd_syntheticImmuneAmountSheep) fmd_syntheticImmuneAmountSheep,
+    sum(fmd_syntheticImmuneAmountOther) fmd_syntheticImmuneAmountOther,
+    sum(fmd_O2Vaccine) fmd_O2Vaccine,
+    sum(fmd_O2ImmuneAmountPig) fmd_O2ImmuneAmountPig,
+    sum(fmd_O2ImmuneAmountNiu) fmd_O2ImmuneAmountNiu,
+    sum(fmd_O2ImmuneAmountSheep) fmd_O2ImmuneAmountSheep,
+    sum(fmd_O2ImmuneAmountOther) fmd_O2ImmuneAmountOther,
+    sum(fmd_OAVaccine) fmd_OAVaccine,
+    sum(fmd_OAImmuneAmountNiu) fmd_OAImmuneAmountNiu,
+    sum(fmd_OAImmuneAmountSheep) fmd_OAImmuneAmountSheep,
+    sum(fmd_OAAShudeImmuneAmountNiu) fmd_OAAShudeImmuneAmountNiu,
+    sum(fmd_OAAShudeImmuneAmountSheep) fmd_OAAShudeImmuneAmountSheep,
+     sum(fmd_AVaccine) fmd_AVaccine,
+    sum(fmd_AImmuneAmountNiu) fmd_AImmuneAmountNiu,
+    sum(fmd_AImmuneAmountSheep) fmd_AImmuneAmountSheep,
+     sum(fmd_O3Vaccine) fmd_O3Vaccine,
+    sum(fmd_O3ImmuneAmountPig) fmd_O3ImmuneAmountPig,
+    sum(fmd_O3ImmuneAmountNiu) fmd_O3ImmuneAmountNiu,
+    sum(fmd_O3ImmuneAmountSheep) fmd_O3ImmuneAmountSheep,
+    sum(fmd_O3ImmuneAmountOther) fmd_O3ImmuneAmountOther
+      from animal_disease.b_wfootandmouthdisease
+       where  fmd_date BETWEEN  #{beginTime} AND #{endTime}
+       GROUP  BY fmd_regionCode
+        order by fmd_regionCode
+  </select>
 </mapper>

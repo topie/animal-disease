@@ -20,10 +20,8 @@ import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * Created by chenguojun on 2017/2/21.
@@ -299,6 +297,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Wpestedespetitsruminants  itemSum = wpestedespetitsruminantsMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_wavianinfluenza": {
@@ -323,6 +323,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Wnewcastle  itemSum = wnewcastleMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_wclassicalswinefever": {
@@ -334,17 +336,21 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Wclassicalswinefever  itemSum = wclassicalswinefeverMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_wblueeardisease": {
                 Wblueeardisease arg =new Wblueeardisease();
-                arg.setBedId(report.getReportId());
+                arg.setBedReportid(report.getReportId());
                 List<Wblueeardisease> items=wblueeardiseaseMapper.select(arg);
                 Wblueeardisease item =new Wblueeardisease();
                 if(items.size()>0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Wblueeardisease  itemSum = wblueeardiseaseMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_vaccineorder": {
@@ -455,6 +461,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
+                Wfootandmouthdisease  itemSum = wfootandmouthdiseaseMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                params.put("itemSum",itemSum);
                 break;
             }
             case "b_wlivestockinout": {
@@ -485,15 +493,23 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
     params.put("items", items);
     return params;
 }
+
     @Override
     public String getReportSummaryHtml(HttpServletRequest request, String templateId, String beginTime) {
         Template template = iTemplateService.selectByKey(templateId);
         List<String> reportIds = iReportService.selectIdsByTemplateIdAndBeginTime(templateId, beginTime);
+        String endTime=beginTime;
+
+//         String beginTime=DateUtil.DateToString(BeginTimeUtil.getBeginTime(beginTime), DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
+        String halfYearbeginTime=DateUtil.DateToString(BeginTimeUtil.getCurrentHalfYearBeginTime(beginTime), DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
+
         if (reportIds.size() == 0) return null;
         Map params = new HashMap();
+
         switch (template.getTableName().toLowerCase()) {
             case "b_avianinfluenza": {
                 params=this.getReportSummaryHtmlUtil(Avianinfluenza.class,reportIds,"aiReportid",avianinfluenzaMapper,"ai_regionCode");
+
                 break;
             }
             case "b_emergencyvaccine": {
@@ -510,6 +526,7 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
             }
              case "b_newcastlevaccine": {
                 params=this.getReportSummaryHtmlUtil(Newcastlevaccine.class,reportIds,"nvReportid",newcastlevaccineMapper,"nv_regionCode");
+
                 break;
             }
              case "b_livestockdensity": {
@@ -538,22 +555,88 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
             }
             case "b_wpestedespetitsruminants": {
                 params=this.getReportSummaryHtmlUtil(Wpestedespetitsruminants.class,reportIds,"wpdrReportid",wpestedespetitsruminantsMapper,"wpdr_regionCode");
+                List<Wpestedespetitsruminants>  cumulatives = wpestedespetitsruminantsMapper.selectAllByDate(halfYearbeginTime, endTime);
+                Wpestedespetitsruminants xizang = new Wpestedespetitsruminants();
+                xizang.setWpdrRegionname("西藏");
+                xizang.setWpdrRegioncode("540000");
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+                List<Wpestedespetitsruminants> items= (List<Wpestedespetitsruminants>) params.get("items");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
                 break;
             }
             case "b_wavianinfluenza": {
                 params=this.getReportSummaryHtmlUtil(Wavianinfluenza.class,reportIds,"aiReportid",wavianinfluenzaMapper,"ai_regionCode");
+                List<Wavianinfluenza>  cumulatives = wavianinfluenzaMapper.selectAllByDate(halfYearbeginTime, endTime);
+                Wavianinfluenza xizang = new Wavianinfluenza();
+                xizang.setAiRegionname("西藏");
+                xizang.setAiRegioncode("540000");
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+                List<Wavianinfluenza> items= (List<Wavianinfluenza>) params.get("items");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
                 break;
             }
             case "b_wnewcastle": {
                 params=this.getReportSummaryHtmlUtil(Wnewcastle.class,reportIds,"ncReportid",wnewcastleMapper,"nc_regionCode");
+                List<Wnewcastle> items= (List<Wnewcastle>) params.get("items");
+                Wnewcastle xizang = new Wnewcastle();
+                xizang.setNcRegionname("西藏");
+                xizang.setNcRegioncode("540000");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
+                List<Wnewcastle>  cumulatives = wnewcastleMapper.selectAllByDate(halfYearbeginTime, endTime);
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+
                 break;
             }
             case "b_wclassicalswinefever": {
                 params=this.getReportSummaryHtmlUtil(Wclassicalswinefever.class,reportIds,"csfReportid",wclassicalswinefeverMapper,"csf_regionCode");
+                List<Wclassicalswinefever>  cumulatives = wclassicalswinefeverMapper.selectAllByDate(halfYearbeginTime, endTime);
+                Wclassicalswinefever xizang = new Wclassicalswinefever();
+                xizang.setCsfRegionname("西藏");
+                xizang.setCsfRegioncode("540000");
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+                List<Wclassicalswinefever> items= (List<Wclassicalswinefever>) params.get("items");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
                 break;
             }
             case "b_wblueeardisease": {
                 params=this.getReportSummaryHtmlUtil(Wblueeardisease.class,reportIds,"bedReportid",wblueeardiseaseMapper,"bed_regionCode");
+                List<Wblueeardisease>  cumulatives = wblueeardiseaseMapper.selectAllByDate(halfYearbeginTime, endTime);
+                Wblueeardisease xizang = new Wblueeardisease();
+                xizang.setBedRegionname("西藏");
+                xizang.setBedRegioncode("540000");
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+                List<Wblueeardisease> items= (List<Wblueeardisease>) params.get("items");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
                 break;
             }
             case "b_vaccineorder": {
@@ -596,6 +679,19 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
             }
             case "b_wfootandmouthdisease": {
                 params=this.getReportSummaryHtmlUtil(Wfootandmouthdisease.class,reportIds,"fmdReportid",wfootandmouthdiseaseMapper,"fmd_regionCode asc");
+                List<Wfootandmouthdisease>  cumulatives = wfootandmouthdiseaseMapper.selectAllByDate(halfYearbeginTime, endTime);
+                Wfootandmouthdisease xizang = new Wfootandmouthdisease();
+                xizang.setFmdRegionname("西藏");
+                xizang.setFmdRegioncode("540000");
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+                List<Wfootandmouthdisease> items= (List<Wfootandmouthdisease>) params.get("items");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
                 break;
             }
             case "b_wlivestockinout": {
@@ -608,6 +704,9 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 return null;
         }
         String templatePath = request.getSession().getServletContext().getRealPath("/template");
+        List<Wlivestockinout> wlivestockinouts=this.wlivestockinoutMapper.selectLivestockInOutByDate(halfYearbeginTime);
+        params.put("wlivestockinouts", wlivestockinouts);
+
         return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getSummaryTemplate(), params);
     }
 

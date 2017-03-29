@@ -67,5 +67,7 @@
     <select id="selectLivestockInOutByRegionCode" resultMap="BaseResultMap">
         select * from animal_disease.b_wlivestockinout where Liv_regionCode=#{regionCode} AND  LivestockDate = #{beginTime}
     </select>
-
+    <select id="selectLivestockInOutByDate" resultMap="BaseResultMap">
+        select * from animal_disease.b_wlivestockinout where LivestockDate = #{beginTime} ORDER  by Liv_regionCode
+    </select>
 </mapper>
