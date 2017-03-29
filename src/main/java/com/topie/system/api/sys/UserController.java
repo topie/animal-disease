@@ -116,4 +116,11 @@ public class UserController {
         List roles = userService.findUserRoleByUserId(userId);
         return ResponseUtil.success(roles);
     }
+
+    @RequestMapping("/unique")
+    @ResponseBody
+    public Object unique(@RequestParam(value = "loginName", required = false) String loginName) {
+        int count = userService.countByLoginName(loginName);
+        return count > 0 ? false : true;
+    }
 }
