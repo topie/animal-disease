@@ -15,6 +15,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
@@ -40,6 +41,13 @@ public class OrangeHttpAuthenticationTokenFilter extends UsernamePasswordAuthent
             throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String authToken = httpRequest.getHeader(this.tokenHeader);
+        if (StringUtils.isEmpty(authToken)) {
+            for (Cookie cookie : httpRequest.getCookies()) {
+                if ("animal_disease_tc_t".equals(cookie.getName())) {
+                    authToken = cookie.getValue();
+                }
+            }
+        }
         if (StringUtils.isEmpty(authToken)) {
             authToken = request.getParameter(PARAM_TOKEN);
         }

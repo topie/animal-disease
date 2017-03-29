@@ -27,6 +27,6 @@ public class ControllerExceptionHandler {
         } else {
             e.printStackTrace();
         }
-        return ResponseUtil.error(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
+        return ResponseUtil.error(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "服务器内部错误");
     }
 }
