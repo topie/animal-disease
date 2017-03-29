@@ -161,7 +161,7 @@
 			</tr>
 			<tr class="r2">
 				<td class="c3">填表日期:</td>
-				<td class="c2" colspan="6"><#if item.csfdate??>${item.csfdate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c2" colspan="6"><#if item.csfDate??>${item.csfDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c3">填 表 人:</td>
@@ -183,11 +183,11 @@
 			<tr class="r3">
 				<td class="c7">猪瘟活疫苗</td>
 				<td role="data" n="csfVaccine"  class="c7"><#if item.csfVaccine??>${item.csfVaccine}</#if></td>
-				<td role="data" n=""  class="c8"></td>
+				<td class="c8"><#if itemSum.csfVaccine??>${itemSum.csfVaccine} </#if></td>
 				<td role="data" n="csfImmuneamount"  class="c7"><#if item.csfImmuneamount??>${item.csfImmuneamount}</#if></td>
-				<td role="data" n=""  class="c8"></td>
-				<td role="data" n=""  class="c8"></td>
-				<td role="data" n=""  class="c8"></td>
+				<td class="c8"><#if itemSum.csfImmuneamount??>${itemSum.csfImmuneamount} </#if></td>
+				<td class="c8"><#if wlivestockinout.immuneswine??>${wlivestockinout.immuneswine}</#if></td>
+				<td class="c8"><#if wlivestockinout??&&itemSum??>${itemSum.csfImmuneamount*100/wlivestockinout.immuneswine}</#if>%</td>
 			</tr>
 			<tr class="r3">
 				<td class="c10" rowspan="2">填报说明：</td>

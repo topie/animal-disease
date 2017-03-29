@@ -20,4 +20,28 @@
   <select id="selectLivestockInOutByReportId" resultMap="BaseResultMap">
     select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
   </select>
+  <select id="selectSumByReportCode" resultMap="BaseResultMap">
+    select
+    sum(nc_inactivatedVaccine) nc_inactivatedVaccine,
+    sum(nc_inactivatedImmuneAmount) nc_inactivatedImmuneAmount,
+    sum(nc_inactivatedShouldAmount) nc_inactivatedShouldAmount,
+    sum(nc_jointImmuneAmount) nc_jointImmuneAmount,
+    sum(nc_jointShouldAmount) nc_jointShouldAmount,
+    sum(nc_jointVaccine) nc_jointVaccine
+    from animal_disease.b_wnewcastle
+    where nc_regionCode=#{regionCode} AND nc_date BETWEEN  #{beginTime} AND #{endTime}
+  </select>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+     select
+    sum(nc_inactivatedVaccine) nc_inactivatedVaccine,
+    sum(nc_inactivatedImmuneAmount) nc_inactivatedImmuneAmount,
+    sum(nc_inactivatedShouldAmount) nc_inactivatedShouldAmount,
+    sum(nc_jointImmuneAmount) nc_jointImmuneAmount,
+    sum(nc_jointShouldAmount) nc_jointShouldAmount,
+    sum(nc_jointVaccine) nc_jointVaccine
+      from animal_disease.b_wnewcastle
+       where  nc_date BETWEEN  #{beginTime} AND #{endTime}
+       GROUP  BY nc_regionCode
+       order by nc_regionCode
+  </select>
 </mapper>

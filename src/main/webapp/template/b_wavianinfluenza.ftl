@@ -226,21 +226,21 @@
 			</tr>
 			<tr class="r3">
 				<td class="c2">高致病性禽流感灭活疫苗</td>
-				<td role="data" n="aiInactivatedvaccine" class="c2"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine?c}</#if></td>
-				<td class="c7"><#if itemSum.aiInactivatedvaccine??>${itemSum.aiInactivatedvaccine?string("0.##")}<#else>0.00</#if></td>
-				<td role="data" n="aiInactivatedimmuneamountchicken"  class="c2"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken?c}</#if></td>
-				<td role="data" n="aiInactivatedimmuneamountduck"  class="c2"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck?c}</#if></td>
-				<td role="data" n="aiInactivatedimmuneamountgoose"  class="c2"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose?c}</#if></td>
-				<td role="data" n="aiInactivatedimmuneamountother"  class="c2"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother?c}</#if></td>
-				<td class="c7"><#if itemSum.aiInactivatedimmuneamountchicken??>${itemSum.aiInactivatedimmuneamountchicken?string("0.##")}<#else>0.00</#if></td>
-				<td class="c7"><#if itemSum.aiInactivatedimmuneamountduck??>${itemSum.aiInactivatedimmuneamountduck?string("0.##")}<#else>0.00</#if></td>
-				<td class="c7"><#if itemSum.aiInactivatedimmuneamountgoose??>${itemSum.aiInactivatedimmuneamountgoose?string("0.##")}<#else>0.00</#if></td>
-				<td class="c7"><#if itemSum.aiInactivatedimmuneamountother??>${itemSum.aiInactivatedimmuneamountother?string("0.##")}<#else>0.00</#if></td>
+				<td role="data" n="aiInactivatedvaccine" class="c2"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine}</#if></td>
+				<td class="c7"><#if itemSum.aiInactivatedvaccine??>${itemSum.aiInactivatedvaccine}<#else>0.00</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountchicken"  class="c2"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken}</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountduck"  class="c2"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck}</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountgoose"  class="c2"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose}</#if></td>
+				<td role="data" n="aiInactivatedimmuneamountother"  class="c2"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother}</#if></td>
+				<td class="c7"><#if itemSum.aiInactivatedimmuneamountchicken??>${itemSum.aiInactivatedimmuneamountchicken}<#else>0.00</#if></td>
+				<td class="c7"><#if itemSum.aiInactivatedimmuneamountduck??>${itemSum.aiInactivatedimmuneamountduck}<#else>0.00</#if></td>
+				<td class="c7"><#if itemSum.aiInactivatedimmuneamountgoose??>${itemSum.aiInactivatedimmuneamountgoose}<#else>0.00</#if></td>
+				<td class="c7"><#if itemSum.aiInactivatedimmuneamountother??>${itemSum.aiInactivatedimmuneamountother}<#else>0.00</#if></td>
 				<td class="c8"><#if itemSum??>${itemSum.aiInactivatedimmuneamountchicken+itemSum.aiInactivatedimmuneamountduck+itemSum.aiInactivatedimmuneamountgoose+itemSum.aiInactivatedimmuneamountother}</#if></td>
-                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdfluchecken??>${wlivestockinout.immunebirdfluchecken?c}</#if></td>
-                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdfluduck??>${wlivestockinout.immunebirdfluduck?c}</#if></td>
-                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdflugoose??>${wlivestockinout.immunebirdflugoose?c}</#if></td>
-                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdfluother??>${wlivestockinout.immunebirdfluother?c}</#if></td>
+                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdfluchecken??>${wlivestockinout.immunebirdfluchecken}</#if></td>
+                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdfluduck??>${wlivestockinout.immunebirdfluduck}</#if></td>
+                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdflugoose??>${wlivestockinout.immunebirdflugoose}</#if></td>
+                <td  n=""  class="c7" rowspan="2"><#if wlivestockinout.immunebirdfluother??>${wlivestockinout.immunebirdfluother}</#if></td>
 				<td  n=""  class="c7" rowspan="2"><#if wlivestockinout??>${wlivestockinout.immunebirdfluchecken+wlivestockinout.immunebirdfluduck+wlivestockinout.immunebirdflugoose+wlivestockinout.immunebirdfluother}</#if></td>
 				<td class="c9" rowspan="2"><#if itemSum??&&wlivestockinout??>${(itemSum.aiInactivatedimmuneamountchicken+itemSum.aiJointimmuneamountchicken)*100/wlivestockinout.immunebirdfluchecken}</#if>%</td>
 				<td class="c9" rowspan="2"><#if itemSum??&&wlivestockinout??>${(itemSum.aiInactivatedimmuneamountduck+itemSum.aiJointimmuneamountduck)*100/wlivestockinout.immunebirdfluduck}</#if>%</td>

@@ -122,7 +122,7 @@
 			</tr>
 			<tr class="r2">
 				<td class="c2">填表日期:</td>
-				<td class="c3" colspan="6"><#if item.ncdate??>${item.ncdate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c3" colspan="6"><#if item.ncDate??>${item.ncDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2">填 表 人:</td>
@@ -145,18 +145,18 @@
 			<tr class="r3">
 				<td class="c2">新城疫灭活疫苗</td>
 				<td role="data" n="ncInactivatedvaccine"  class="c2"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine}</#if></td>
-				<td role="data" n=""  class="c6"></td>
+				<td class="c6"><#if itemSum.ncInactivatedvaccine??>${itemSum.ncInactivatedvaccine}</#if></td>
 				<td role="data" n="ncInactivatedimmuneamount"  class="c2"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount}</#if></td>
-				<td role="data" n=""  class="c6"></td>
-				<td role="data" n=""  class="c6" rowspan="2"></td>
-				<td role="data" n=""  class="c6" rowspan="2"></td>
+				<td class="c6"><#if itemSum.ncInactivatedimmuneamount??>${itemSum.ncInactivatedimmuneamount}</#if></td>
+				<td class="c6" rowspan="2"><#if wlivestockinout.immunenewcastle??>${wlivestockinout.immunenewcastle}</#if></td>
+				<td class="c6" rowspan="2"><#if wlivestockinout.immunenewcastle==0>0.00<#else>${(itemSum.ncInactivatedimmuneamount+itemSum.ncJointimmuneamount)*100/wlivestockinout.immunenewcastle}</#if>%</td>
 			</tr>
 			<tr class="r3">
 				<td class="c2">新城疫弱毒疫苗</td>
 				<td role="data" n="ncJointvaccine"  class="c2"><#if item.ncJointvaccine??>${item.ncJointvaccine}</#if></td>
-				<td role="data" n=""  class="c6"></td>
+				<td class="c6"><#if itemSum.ncJointvaccine??>${itemSum.ncJointvaccine}</#if></td>
 				<td role="data" n="ncJointimmuneamount"  class="c2"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount}</#if></td>
-				<td role="data" n=""  class="c6"></td>
+				<td class="c6"><#if itemSum.ncJointimmuneamount??>${itemSum.ncJointimmuneamount}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="3">填报说明：</td>

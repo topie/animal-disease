@@ -47,4 +47,17 @@ select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
     from animal_disease.b_wavianinfluenza
     where ai_regionCode=#{regionCode} AND ai_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+select
+   sum(ai_inactivatedVaccine) ai_inactivatedVaccine,
+    sum(ai_inactivatedImmuneAmountChicken) ai_inactivatedImmuneAmountChicken,
+    sum(ai_inactivatedImmuneAmountDuck) ai_inactivatedImmuneAmountDuck,
+    sum(ai_inactivatedImmuneAmountGoose) ai_inactivatedImmuneAmountGoose,
+    sum(ai_inactivatedImmuneAmountOther) ai_inactivatedImmuneAmountOther,
+      sum(ai_jointImmuneAmountChicken) ai_jointImmuneAmountChicken,
+    sum(ai_jointImmuneAmountDuck) ai_jointImmuneAmountDuck,
+    sum(ai_jointImmuneAmountGoose) ai_jointImmuneAmountGoose,
+    sum(ai_jointImmuneAmountOther) ai_jointImmuneAmountOther
+     from animal_disease.b_wavianinfluenza   where  ai_date BETWEEN  #{beginTime} AND #{endTime}  GROUP  by ai_regionCode order by ai_regionCode
+  </select>
 </mapper>

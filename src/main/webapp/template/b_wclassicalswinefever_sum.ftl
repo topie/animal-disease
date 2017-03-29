@@ -95,13 +95,15 @@
 			</tr>
 			<#list items as item>
 			<tr class="r4">
-				<td n="csfRegionname" class="c2"><#if item.csfRegionname??>${item.csfRegionname?c}</#if></td>
-				<td n="csfVaccine" class="c2"><#if item.csfVaccine??>${item.csfVaccine?c}</#if></td>
-				<td n="" class="c2"></td>
-				<td n="csfImmuneamount" class="c2"><#if item.csfImmuneamount??>${item.csfImmuneamount?c}</#if></td>
-				<td n="" class="c2"></td>
-				<td n="csfShouldamount" class="c2"><#if item.csfShouldamount??>${item.csfShouldamount?c}</#if></td>
-				<td n="" class="c2"></td>
+				<td class="c2"><#if item.csfRegionname??>${item.csfRegionname}</#if></td>
+				<td class="c2"><#if item.csfVaccine??>${item.csfVaccine}</#if></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].csfVaccine??>${cumulatives[item_index].csfVaccine}</#if></td>
+				<td class="c2"><#if item.csfImmuneamount??>${item.csfImmuneamount}</#if></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].csfImmuneamount??>${cumulatives[item_index].csfImmuneamount}</#if></td>
+				<td class="c2"><#if wlivestockinouts[item_index]??&&wlivestockinouts[item_index].immuneswine??>${wlivestockinouts[item_index].immuneswine}</#if></td>
+				<td n="" class="c2">
+					<#if  wlivestockinouts[item_index]??&& wlivestockinouts[item_index].immuneswine==0>0.00<#else><#if wlivestockinouts[item_index]??&&cumulatives[item_index]??>${cumulatives[item_index].csfImmuneamount?default(0)*100/wlivestockinouts[item_index].immuneswine}</#if></#if>%
+				</td>
 			</tr>
   </#list>
 		</tbody>

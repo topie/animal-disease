@@ -97,15 +97,17 @@
 				<td n="ncRegionname"  class="c2"><#if item.ncRegionname??>${item.ncRegionname}</#if></td>
 				
 				<td n="ncInactivatedvaccine"  class="c2"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine}</#if></td>
-				<td n=""  class="c2"></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].ncInactivatedvaccine??>${cumulatives[item_index].ncInactivatedvaccine}</#if></td>
 				<td n="ncInactivatedimmuneamount"  class="c2"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount}</#if></td>
-				<td n=""  class="c2"></td>
-				<td n="ncJointimmuneamount"  class="c2"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount}</#if></td>
-				<td n=""  class="c2"></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].ncInactivatedimmuneamount??>${cumulatives[item_index].ncInactivatedimmuneamount}</#if></td>
 				<td n="ncJointvaccine"  class="c2"><#if item.ncJointvaccine??>${item.ncJointvaccine}</#if></td>
-				<td n=""  class="c2"></td>
-				<td n=""  class="c2"></td>
-				<td n=""  class="c2"></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].ncJointvaccine??>${cumulatives[item_index].ncJointvaccine}</#if></td>
+                <td n="ncJointimmuneamount"  class="c2"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount}</#if></td>
+                <td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].ncJointimmuneamount??>${cumulatives[item_index].ncJointimmuneamount}</#if></td>
+                <td n=""  class="c2"><#if wlivestockinouts[item_index]??&&wlivestockinouts[item_index].immunenewcastle??>${wlivestockinouts[item_index].immunenewcastle}</#if></td>
+				<td n=""  class="c2">
+					<#if  wlivestockinouts[item_index]??&& wlivestockinouts[item_index].immunenewcastle==0>0.00<#else><#if wlivestockinouts[item_index]??&&cumulatives[item_index]??>${(cumulatives[item_index].ncJointimmuneamount?default(0)+cumulatives[item_index].ncInactivatedimmuneamount?default(0))*100/wlivestockinouts[item_index].immunenewcastle}</#if></#if>%
+				</td>
 			</tr>
   </#list>
 		</tbody>

@@ -10,4 +10,5 @@ public interface WlivestockinoutMapper extends Mapper<Wlivestockinout> {
 
     Wlivestockinout selectSumByReportIds(@Param("ids") List<String> reportIds);
     Wlivestockinout selectLivestockInOutByRegionCode(@Param("regionCode") String regionCode,@Param("beginTime") String beginTime);
+    List<Wlivestockinout> selectLivestockInOutByDate(@Param("beginTime") String beginTime);
 }

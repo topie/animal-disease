@@ -98,11 +98,11 @@
 				<td n="wpdrRegionname"  class="c2"><#if item.wpdrRegionname??>${item.wpdrRegionname}</#if></td>
 				
 				<td n="wpdrVaccine"  class="c2"><#if item.wpdrVaccine??>${item.wpdrVaccine}</#if></td>
-				<td n=""  class="c2"></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].wpdrVaccine??>${cumulatives[item_index].wpdrVaccine}</#if></td>
 				<td n="wpdrImmuneamount"  class="c2"><#if item.wpdrImmuneamount??>${item.wpdrImmuneamount}</#if></td>
-				<td n=""  class="c2"></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].wpdrImmuneamount??>${cumulatives[item_index].wpdrImmuneamount}</#if></td>
 				<td n="wpdrShouldamount"  class="c2"><#if item.wpdrShouldamount??>${item.wpdrShouldamount}</#if></td>
-				<td n=""  class="c2"></td>
+				<td class="c2"><#if item.wpdrShouldamount==0>0.00<#else><#if cumulatives[item_index]??&&cumulatives[item_index].wpdrImmuneamount??>${cumulatives[item_index].wpdrImmuneamount*100/item.wpdrShouldamount}</#if></#if>%</td>
 			</tr>
           </#list>
 		</tbody>

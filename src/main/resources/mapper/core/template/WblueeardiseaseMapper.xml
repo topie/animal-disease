@@ -21,4 +21,24 @@
 <select id="selectLivestockInOutByReportId" resultMap="BaseResultMap">
 select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
 </select>
+  <select id="selectSumByReportCode" resultMap="BaseResultMap">
+    select
+    sum(bed_inactivatedVaccine) bed_inactivatedVaccine,
+    sum(bed_inactivatedImmuneAmount) bed_inactivatedImmuneAmount,
+    sum(bed_inactivatedShouldAmount) bed_inactivatedShouldAmount,
+    sum(bed_weakVaccine) bed_weakVaccine,
+    sum(bed_weakImmuneAmount) bed_weakImmuneAmount,
+    sum(bed_weakShouldAmount) bed_weakShouldAmount
+    from animal_disease.b_wblueeardisease
+    where bed_regionCode=#{regionCode} AND bed_date BETWEEN  #{beginTime} AND #{endTime}
+  </select>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+   select
+    sum(bed_inactivatedVaccine) bed_inactivatedVaccine,
+    sum(bed_inactivatedImmuneAmount) bed_inactivatedImmuneAmount,
+    sum(bed_inactivatedShouldAmount) bed_inactivatedShouldAmount,
+    sum(bed_weakVaccine) bed_weakVaccine,
+    sum(bed_weakImmuneAmount) bed_weakImmuneAmount,
+    sum(bed_weakShouldAmount) bed_weakShouldAmount  from animal_disease.b_wblueeardisease   where  bed_date BETWEEN  #{beginTime} AND #{endTime} GROUP  by bed_regionCode order by bed_regionCode
+  </select>
 </mapper>

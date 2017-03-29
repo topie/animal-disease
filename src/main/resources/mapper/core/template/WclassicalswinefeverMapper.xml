@@ -18,4 +18,21 @@
 <select id="selectLivestockInOutByReportId" resultMap="BaseResultMap">
 select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
 </select>
+  <select id="selectSumByReportCode" resultMap="BaseResultMap">
+    select
+    sum(csf_vaccine) csf_vaccine,
+    sum(csf_immuneAmount) csf_immuneAmount,
+    sum(csf_shouldAmount) csf_shouldAmount
+    from animal_disease.b_wclassicalswinefever
+    where csf_regionCode=#{regionCode} AND csf_date BETWEEN  #{beginTime} AND #{endTime}
+  </select>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select
+    sum(csf_vaccine) csf_vaccine,
+    sum(csf_immuneAmount) csf_immuneAmount,
+    sum(csf_shouldAmount) csf_shouldAmount  from animal_disease.b_wclassicalswinefever
+     where  csf_date BETWEEN  #{beginTime} AND #{endTime}
+     GROUP  by  csf_regionCode
+     order by csf_regionCode
+  </select>
 </mapper>

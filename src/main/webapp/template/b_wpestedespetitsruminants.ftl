@@ -195,7 +195,7 @@
 			</tr>
 			<tr class="r2">
 				<td class="c5">填表日期:</td>
-				<td class="c6" colspan="6"><#if item.wpdrdate??>${item.wpdrdate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c6" colspan="6"><#if item.wpdrDate??>${item.wpdrDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c5">填 表 人:</td>
@@ -217,11 +217,11 @@
 			<tr class="r3">
 				<td class="c10">小反刍兽疫活疫苗</td>
 				<td role="data" n="wpdrVaccine"  class="c10"><#if item.wpdrVaccine??>${item.wpdrVaccine}</#if></td>
-				<td role="data" n=""  role="data" n=""  class="c11"></td>
+				<td class="c11"><#if itemSum.wpdrVaccine??>${itemSum.wpdrVaccine}</#if></td>
 				<td role="data" n="wpdrImmuneamount"  class="c10"><#if item.wpdrImmuneamount??>${item.wpdrImmuneamount}</#if></td>
-				<td role="data" n=""  class="c11"></td>
-				<td role="data" n=""  class="c11"></td>
-				<td role="data" n=""  class="c11"></td>
+				<td class="c11"><#if itemSum.wpdrImmuneamount??>${itemSum.wpdrImmuneamount}</#if></td>
+				<td  class="c11"><#if wlivestockinout.pestedespetitsruminants??>${wlivestockinout.pestedespetitsruminants}</#if></td>
+				<td class="c11"><#if wlivestockinout.pestedespetitsruminants==0>0.00<#else>${(itemSum.wpdrImmuneamount)*100/wlivestockinout.pestedespetitsruminants}</#if>%</td>
 			</tr>
 			<tr class="r3">
 				<td class="c13" rowspan="3">填报说明：</td>

@@ -94,20 +94,24 @@
 			</tr>
 			 <#list items as item>
 			<tr class="r4">
-				<td n="bedregionname"  class="c2"><#if item.bedregionname??>${item.bedregionname?c}</#if></td>
+				<td  class="c2"><#if item.bedRegionname??>${item.bedRegionname}</#if></td>
 				
-				<td n="bedinactivatedvaccine"  class="c2"><#if item.bedinactivatedvaccine??>${item.bedinactivatedvaccine?c}</#if></td>
-				<td n=""  class="c2"></td>
-				<td n="bedinactivatedimmuneamount"  class="c2"><#if item.bedinactivatedimmuneamount??>${item.bedinactivatedimmuneamount?c}</#if></td>
-				<td n=""  class="c2"></td>
+				<td class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine?c}</#if></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].bedInactivatedvaccine??>${cumulatives[item_index].bedInactivatedvaccine}</#if></td>
+				<td class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount?c}</#if></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].bedInactivatedimmuneamount??>${cumulatives[item_index].bedInactivatedimmuneamount}</#if></td>
 				
-				<td n="bedweakvaccine"  class="c2"><#if item.bedweakvaccine??>${item.bedweakvaccine?c}</#if></td>
-				<td n=""  class="c2"></td>
-				<td n="bedweakimmuneamount"  class="c2"><#if item.bedweakimmuneamount??>${item.bedweakimmuneamount?c}</#if></td>
-				<td n=""  class="c2"></td>
+				<td class="c2"><#if item.bedWeakvaccine??>${item.bedWeakvaccine?c}</#if></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].bedWeakvaccine??>${cumulatives[item_index].bedWeakvaccine}</#if></td>
+				<td class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount?c}</#if></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].bedWeakimmuneamount??>${cumulatives[item_index].bedWeakimmuneamount}</#if></td>
 				
-				<td n=""  class="c2"></td>
-				<td n=""  class="c2"></td>
+				<td class="c2"><#if wlivestockinouts[item_index]??&&wlivestockinouts[item_index].immuneblueear??>${wlivestockinouts[item_index].immuneblueear}</#if></td>
+				<td class="c2">
+					<#if  wlivestockinouts[item_index]??&& wlivestockinouts[item_index].immuneblueear==0>0.00<#else>
+						<#if wlivestockinouts[item_index]??&&cumulatives[item_index]??>
+						${(cumulatives[item_index].bedInactivatedimmuneamount?default(0)+cumulatives[item_index].bedWeakimmuneamount?default(0))*100/wlivestockinouts[item_index].immuneblueear}</#if></#if>%
+				</td>
 			</tr>
       </#list>
 		</tbody>
