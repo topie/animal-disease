@@ -81,6 +81,8 @@ public class ReReportController {
         if (report == null) {
             return ResponseUtil.error("填报不存在无法补填报！");
         }
+        report.setStatus(0);
+        iReportService.updateNotNull(report);
         reReport.setId(UUIDUtil.getUUID());
         reReport.setReIsOpen(1);
         int result = iReReportService.saveNotNull(reReport);
