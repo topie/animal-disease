@@ -74,7 +74,7 @@ public class ExcelController {
             report.setReportTime(new Date());
         }
         iReportService.updateNotNull(report);
-        if (reportStatus == 1) {
+        if (reportStatus != null && reportStatus == 1) {
             List<ReReport> reReportList = iReReportService.selectByReport(report);
             for (ReReport reReport : reReportList) {
                 reReport.setReIsOpen(0);
