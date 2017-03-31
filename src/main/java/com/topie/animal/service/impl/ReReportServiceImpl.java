@@ -71,7 +71,6 @@ public class ReReportServiceImpl extends BaseService<ReReport> implements IReRep
     public List<ReReport> selectByReport(Report report) {
         ReReport reReport = new ReReport();
         reReport.setBeginTime(report.getBeginTime());
-        reReport.setReportType(report.getReportType());
         reReport.setTemplateId(report.getTemplateId());
         UserInfo userInfo = iUserInfoService.selectByKey(report.getReportUserId());
         reReport.setOrgId(userInfo.getOrgId());
