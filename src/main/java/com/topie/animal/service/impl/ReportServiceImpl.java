@@ -88,7 +88,6 @@ public class ReportServiceImpl extends BaseService<Report> implements IReportSer
                 report.setStatus(0);
                 report.setEndTime(DateUtil.addDay(beginTime, 9));
                 report.setReportId(UUIDUtil.getUUID());
-
                 reportMapper.insertSelective(report);
             }
         }

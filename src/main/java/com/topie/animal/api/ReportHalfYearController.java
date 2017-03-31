@@ -6,6 +6,7 @@ import com.topie.animal.dto.ReReportDto;
 import com.topie.animal.dto.ReportDto;
 import com.topie.animal.dto.WeekDto;
 import com.topie.animal.service.*;
+import com.topie.animal.util.BeginTimeUtil;
 import com.topie.animal.util.PeriodUtil;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
@@ -114,18 +115,6 @@ public class ReportHalfYearController {
     public Result fill(@RequestParam(value = "templateId", required = false) String templateId,
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
-        Date begin = DateUtil.getToday();
-        List<WeekDto> days = iWeekConfigService.getDays(begin);
-        if (days.size() > 0) {
-            begin = DateUtil.StringToDate(days.get(days.size() - 1).getTime(), DateStyle.YYYY_MM_DD);
-        } else {
-            return ResponseUtil.error("未检测到周填报规则，无法确定汇总开始时间");
-        }
-        Date end = DateUtil.addDay(begin, 7);
-        Date now = new Date();
-        if (now.before(begin) || now.after(end)) {
-            return ResponseUtil.success(PageConvertUtil.grid(null));
-        }
         String currentLoginName = SecurityUtil.getCurrentUserName();
         if (StringUtils.isEmpty(currentLoginName)) {
             return ResponseUtil.error("未登录");
@@ -135,10 +124,33 @@ public class ReportHalfYearController {
             return ResponseUtil.error("当前用户没有组织机构");
         }
         Map argMap = new HashMap();
+        Date begin = DateUtil.getToday();
+        List<WeekDto> days = iWeekConfigService.getDays(begin);
+        Date b2 = null;
+        if (days.size() > 0) {
+            b2 = DateUtil.StringToDate(days.get(0).getTime(), DateStyle.YYYY_MM_DD);
+            begin = DateUtil.StringToDate(days.get(days.size() - 1).getTime(), DateStyle.YYYY_MM_DD);
+        } else {
+            return ResponseUtil.error("未检测到周填报规则，无法确定汇总开始时间");
+        }
+        Date end = DateUtil.addDay(begin, 7);
+        Date now = new Date();
+        if (now.before(begin) || now.after(end)) {
+            if (now.after(b2) && now.before(end)) {
+                argMap.put("reportType", ReportTypeE.HALF_YEAR.getCode());
+                argMap.put("orgId", currentOrg.getOrgId());
+                argMap.put("beginTime", BeginTimeUtil.getCurrentHalfYearBeginTime(begin));
+                argMap.put("templateId", "2664786F-FD92-4838-B492-4617D21C4D75");
+                PageInfo<ReportDto> pageInfo = iReportService.selectByPageByArg(argMap, pageNum, pageSize);
+                return ResponseUtil.success(PageConvertUtil.grid(pageInfo));
+            }
+            return ResponseUtil.success(PageConvertUtil.grid(null));
+        }
+
         argMap.put("reportType", ReportTypeE.HALF_YEAR.getCode());
         argMap.put("orgId", currentOrg.getOrgId());
         if (StringUtils.isNotEmpty(templateId)) argMap.put("templateId", templateId);
-        argMap.put("beginTime", begin);
+        argMap.put("beginTime", BeginTimeUtil.getCurrentHalfYearBeginTime(begin));
         PageInfo<ReportDto> pageInfo = iReportService.selectByPageByArg(argMap, pageNum, pageSize);
         return ResponseUtil.success(PageConvertUtil.grid(pageInfo));
     }

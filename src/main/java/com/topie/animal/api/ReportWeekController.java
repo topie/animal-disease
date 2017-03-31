@@ -130,7 +130,9 @@ public class ReportWeekController {
                 flag = true;
             }
         }
-        if (!flag) return ResponseUtil.success(PageConvertUtil.grid(null));
+        if (!flag) {
+            return ResponseUtil.success(PageConvertUtil.grid(null));
+        }
         String currentLoginName = SecurityUtil.getCurrentUserName();
         if (StringUtils.isEmpty(currentLoginName)) {
             return ResponseUtil.error("未登录");
@@ -175,11 +177,13 @@ public class ReportWeekController {
     public List<Option> options(@RequestParam("year") int year, @RequestParam("type") int type) {
         List<WeekDto> days = iWeekConfigService.getDays(year, type);
         List<Option> optionList = new ArrayList<>();
-        for (WeekDto day : days) {
-            Option option = new Option();
-            option.setText(day.getPeriod());
-            option.setValue(day.getTime());
-            optionList.add(option);
+        if (days.size() > 0) {
+            for (WeekDto day : days) {
+                Option option = new Option();
+                option.setText(day.getPeriod());
+                option.setValue(day.getTime());
+                optionList.add(option);
+            }
         }
         return optionList;
     }

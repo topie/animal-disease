@@ -224,7 +224,6 @@
     </tr>
     </tbody>
 </table>
-<#if report.status!=1>
 <script type="text/javascript">
     (function ($, window, document, undefined) {
         $("td[role=data]").each(function (i, d) {
@@ -264,4 +263,3 @@
         calculate()
     })(jQuery, window, document)
 </script>
-</#if>
