@@ -56,14 +56,15 @@ public class TokenController {
                 .isEmpty(authenticationRequest.getVkey())) {
             return ResponseEntity.ok(HttpResponseUtil.error("请输入验证码"));
         }
-        if (StringUtils.isNotEmpty((String) redisCache.get("bi_vkey_" + authenticationRequest.getVkey()))) {
-            if (!((String) redisCache.get(authenticationRequest.getVkey())).equals(authenticationRequest.getVcode())) {
+        if (StringUtils.isNotEmpty((String) redisCache.get("animal_vkey_" + authenticationRequest.getVkey()))) {
+            if (!((String) redisCache.get("animal_vkey_" + authenticationRequest.getVkey()))
+                    .equals(authenticationRequest.getVcode())) {
                 return ResponseEntity.ok(HttpResponseUtil.error("验证码不正确"));
             }
         } else {
             return ResponseEntity.ok(HttpResponseUtil.error("验证码不存在或已过期"));
         }
-        redisCache.del("bi_vkey_" + authenticationRequest.getVkey());
+        redisCache.del("animal_vkey_" + authenticationRequest.getVkey());
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                 authenticationRequest.getUsername(), authenticationRequest.getPassword());
         usernamePasswordAuthenticationToken.setDetails(new OrangeHttpAuthenticationDetails());

@@ -26,7 +26,7 @@ public class NoneAuthController {
     public void captcha(@RequestParam("vkey") String vkey, HttpServletRequest httpServletRequest,
             HttpServletResponse httpServletResponse) throws IOException {
         Captcha captcha = ImageUtils.getCaptcha(httpServletResponse);
-        redisCache.set("bi_vkey_" + vkey, captcha.getChallenge(), 120);
+        redisCache.set("animal_vkey_" + vkey, captcha.getChallenge(), 120);
         System.out.println(captcha.getChallenge());
     }
 }
