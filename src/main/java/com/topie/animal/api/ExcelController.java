@@ -1,12 +1,14 @@
 package com.topie.animal.api;
 
 import com.topie.animal.service.IExcelService;
+import com.topie.animal.service.IReReportService;
 import com.topie.animal.service.IReportService;
 import com.topie.animal.service.ITemplateService;
 import com.topie.common.tools.excel.ExcelFileUtil;
 import com.topie.common.tools.tabletoxls.TableToXls;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
+import com.topie.database.core.animal.model.ReReport;
 import com.topie.database.core.animal.model.Report;
 import com.topie.database.core.animal.model.Template;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.FileOutputStream;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,6 +33,9 @@ public class ExcelController {
 
     @Autowired
     private IReportService iReportService;
+
+    @Autowired
+    private IReReportService iReReportService;
 
     @Autowired
     private ITemplateService iTemplateService;
@@ -68,6 +74,11 @@ public class ExcelController {
             report.setReportTime(new Date());
         }
         iReportService.updateNotNull(report);
+        List<ReReport> reReportList = iReReportService.selectByReport(report);
+        for (ReReport reReport : reReportList) {
+            reReport.setReIsOpen(0);
+            iReReportService.updateNotNull(reReport);
+        }
         return result > 0 ? ResponseUtil.success() : ResponseUtil.error();
     }
 

@@ -5,12 +5,14 @@ import com.github.pagehelper.PageInfo;
 import com.topie.animal.dto.ReReportDto;
 import com.topie.animal.service.IReReportService;
 import com.topie.animal.service.IReportService;
+import com.topie.animal.service.IUserInfoService;
 import com.topie.animal.util.PeriodUtil;
 import com.topie.common.service.impl.BaseService;
 import com.topie.database.core.animal.dao.ReReportMapper;
 import com.topie.database.core.animal.dao.WeekConfigMapper;
 import com.topie.database.core.animal.model.ReReport;
 import com.topie.database.core.animal.model.Report;
+import com.topie.database.core.animal.model.UserInfo;
 import com.topie.database.core.animal.model.WeekConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,9 @@ public class ReReportServiceImpl extends BaseService<ReReport> implements IReRep
     @Autowired
     private IReportService iReportService;
 
+    @Autowired
+    private IUserInfoService iUserInfoService;
+
     @Override
     public PageInfo<ReReportDto> selectByPage(ReReportDto reReport, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
@@ -49,7 +54,7 @@ public class ReReportServiceImpl extends BaseService<ReReport> implements IReRep
             Report report = iReportService
                     .selectOneByOrgIdAndTemplateIdAndBeginTime(reReportDto.getOrgId(), reReportDto.getTemplateId(),
                             reReportDto.getBeginTime());
-            if(report!=null){
+            if (report != null) {
                 reReportDto.setReportStatus(report.getStatus());
                 reReportDto.setReportId(report.getReportId());
             }
@@ -60,6 +65,17 @@ public class ReReportServiceImpl extends BaseService<ReReport> implements IReRep
     @Override
     public int updateToClose(String id) {
         return reReportMapper.updateToClose(id);
+    }
+
+    @Override
+    public List<ReReport> selectByReport(Report report) {
+        ReReport reReport = new ReReport();
+        reReport.setBeginTime(report.getBeginTime());
+        reReport.setReportType(report.getReportType());
+        reReport.setTemplateId(report.getTemplateId());
+        UserInfo userInfo = iUserInfoService.selectByKey(report.getReportUserId());
+        reReport.setOrgId(userInfo.getOrgId());
+        return reReportMapper.select(reReport);
     }
 
 }
