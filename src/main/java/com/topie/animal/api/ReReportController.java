@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by chenguojun on 2017/2/16.
@@ -83,6 +84,10 @@ public class ReReportController {
         }
         report.setStatus(0);
         iReportService.updateNotNull(report);
+        List<ReReport> reReportList = iReReportService.selectByReport(report);
+        if (reReportList.size() > 0) {
+            ResponseUtil.error("已存在补填报记录，不能重复添加!");
+        }
         reReport.setId(UUIDUtil.getUUID());
         reReport.setReIsOpen(1);
         int result = iReReportService.saveNotNull(reReport);
