@@ -74,10 +74,12 @@ public class ExcelController {
             report.setReportTime(new Date());
         }
         iReportService.updateNotNull(report);
-        List<ReReport> reReportList = iReReportService.selectByReport(report);
-        for (ReReport reReport : reReportList) {
-            reReport.setReIsOpen(0);
-            iReReportService.updateNotNull(reReport);
+        if (reportStatus == 1) {
+            List<ReReport> reReportList = iReReportService.selectByReport(report);
+            for (ReReport reReport : reReportList) {
+                reReport.setReIsOpen(0);
+                iReReportService.updateNotNull(reReport);
+            }
         }
         return result > 0 ? ResponseUtil.success() : ResponseUtil.error();
     }
