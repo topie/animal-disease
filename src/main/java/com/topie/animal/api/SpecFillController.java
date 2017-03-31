@@ -11,7 +11,9 @@ import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
 import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.SpecFill;
+import com.topie.database.core.system.model.Attachment;
 import com.topie.security.utils.SecurityUtil;
+import com.topie.system.service.IAttachmentService;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,9 @@ public class SpecFillController {
 
     @Autowired
     private IUserInfoService iUserInfoService;
+
+    @Autowired
+    private IAttachmentService iAttachmentService;
 
     @RequestMapping(value = "/pageList", method = RequestMethod.GET)
     @ResponseBody
@@ -70,6 +75,13 @@ public class SpecFillController {
     public Result insert(SpecFill specFill, @RequestParam(value = "xlsPath", required = false) String xlsPath)
             throws ParserConfigurationException, TransformerException, IOException {
         if (StringUtils.isNotEmpty(xlsPath)) {
+            Integer id = Integer.valueOf(xlsPath);
+            Attachment attachment = iAttachmentService.selectByKey(id);
+            if (attachment != null) {
+                xlsPath = attachment.getAttachmentPath();
+            }else{
+                return ResponseUtil.error("上传附件不存在！");
+            }
             String html = PoiUtil.excelToHtmlString(xlsPath);
             specFill.setTableContent(
                     "<style type=\"text/css\">" + Jsoup.parseBodyFragment(html).select("style").first().html()
