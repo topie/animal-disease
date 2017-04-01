@@ -17,6 +17,7 @@ import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.Template;
 import com.topie.database.core.animal.model.WeekConfig;
 import com.topie.security.utils.SecurityUtil;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -174,10 +175,14 @@ public class ReportWeekController {
 
     @RequestMapping(value = "/options", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
-    public List<Option> options(@RequestParam("year") int year, @RequestParam("type") int type) {
+    public List<Option> options(@RequestParam(value = "year", required = false) Integer year,
+            @RequestParam(value = "type", required = false) Integer type) {
+        if (year == null || type == null) {
+            return new ArrayList<>();
+        }
         List<WeekDto> days = iWeekConfigService.getDays(year, type);
         List<Option> optionList = new ArrayList<>();
-        if (days.size() > 0) {
+        if (CollectionUtils.isNotEmpty(days)) {
             for (WeekDto day : days) {
                 Option option = new Option();
                 option.setText(day.getPeriod());
