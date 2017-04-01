@@ -82,12 +82,12 @@ public class ReReportController {
         if (report == null) {
             return ResponseUtil.error("填报不存在无法补填报！");
         }
-        report.setStatus(0);
-        iReportService.updateNotNull(report);
         List<ReReport> reReportList = iReReportService.selectByReport(report);
         if (reReportList.size() > 0) {
             return ResponseUtil.error("已存在补填报记录，不能重复添加!");
         }
+        report.setStatus(0);
+        iReportService.updateNotNull(report);
         reReport.setId(UUIDUtil.getUUID());
         reReport.setReIsOpen(1);
         int result = iReReportService.saveNotNull(reReport);
