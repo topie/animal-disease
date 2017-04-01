@@ -5,6 +5,7 @@ import com.topie.common.utils.date.DateStyle;
 import com.topie.common.utils.date.DateUtil;
 import org.apache.commons.lang.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -80,10 +81,15 @@ public class PeriodUtil {
         String[] periods = StringUtils.split(arr[0], ",");
         List<String> periodList = Lists.newArrayList(periods);
         String[] times = StringUtils.split(arr[1], ",");
-        List<String> timeList = Lists.newArrayList(times);
+        List<String> timeList = new ArrayList<>();
+        for (String time : times) {
+            time = DateUtil.StringToString(time, DateStyle.YYYY_MM_DD);
+            timeList.add(time);
+        }
         if (periodList.size() != timeList.size()) return "-";
         String time = DateUtil.DateToString(beginTime, DateStyle.YYYY_MM_DD);
-        String period = periodList.get(timeList.indexOf(time));
+        String period = "-";
+        if (timeList.indexOf(time) > 0) period = periodList.get(timeList.indexOf(time));
         return DateUtil.getYear(beginTime) + " " + period;
     }
 }
