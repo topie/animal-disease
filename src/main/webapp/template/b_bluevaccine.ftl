@@ -113,7 +113,7 @@
 			<tr class="r5">
 				<td class="c2" colspan="2">使用数量</td>
 				<td class="c2" colspan="2">目前库存数量</td>
-				<td class="c2" colspan="2">上半年使用数量</td>
+				<td class="c2" colspan="2">累计使用数量</td>
 			</tr>
 			<tr class="r6">
 				<td class="c2">高致病性猪蓝耳病灭活疫苗(万毫升)</td>

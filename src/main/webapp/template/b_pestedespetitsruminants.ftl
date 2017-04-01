@@ -247,14 +247,18 @@
 			</tr>
 			<tr class="r6">
 				<td class="c2">小反刍兽疫活疫苗</td>
-				<td role="data"  n="pdprLivevaccine"    class="c2"><#if item.pdprLivevaccine??>${item.pdprLivevaccine?c}</#if></td>
-				<td class="c14"><#if itemSum.pdprLivevaccine??>${itemSum.pdprLivevaccine?string("0.##")}<#else>0.00</#if></td>
-				<td role="data"  n="pdprLivebreedingsheep"    class="c11"><#if item.pdprLivebreedingsheep??>${item.pdprLivebreedingsheep?c}</#if></td>
-				<td role="data"  n="pdprLivegoat"    class="c11"><#if item.pdprLivegoat??>${item.pdprLivegoat?c}</#if></td>
-				<td role="data"  n="pdprLivesheep"    class="c11"><#if item.pdprLivesheep??>${item.pdprLivesheep?c}</#if></td>
-				<td class="c15"><#if itemSum.pdprLivebreedingsheep??>${itemSum.pdprLivebreedingsheep?string("0.##")}<#else>0.00</#if></td>
-				<td class="c15"><#if itemSum.pdprLivegoat??>${itemSum.pdprLivegoat?string("0.##")}<#else>0.00</#if></td>
-				<td class="c15"><#if itemSum.pdprLivesheep??>${itemSum.pdprLivesheep?string("0.##")}<#else>0.00</#if></td>
+				<td role="data"  n="pdprLivevaccine"    class="c2"><#if item.pdprLivevaccine??>${item.pdprLivevaccine}</#if></td>
+				<td role="lj_pdprLivevaccine" class="c14"><#if itemSum.pdprLivevaccine??>${itemSum.pdprLivevaccine}</#if></td>
+				<td role="data"  n="pdprLivebreedingsheep"    class="c11"><#if item.pdprLivebreedingsheep??>${item.pdprLivebreedingsheep}</#if></td>
+				<td role="data"  n="pdprLivegoat"    class="c11"><#if item.pdprLivegoat??>${item.pdprLivegoat}</#if></td>
+				<td role="data"  n="pdprLivesheep"    class="c11"><#if item.pdprLivesheep??>${item.pdprLivesheep}</#if></td>
+				<td role="lj_pdprLivebreedingsheep" class="c15"><#if itemSum.pdprLivebreedingsheep??>${itemSum.pdprLivebreedingsheep}</#if></td>
+				<td role="lj_pdprLivegoat" class="c15"><#if itemSum.pdprLivegoat??>${itemSum.pdprLivegoat}</#if></td>
+				<td role="lj_pdprLivesheep" class="c15"><#if itemSum.pdprLivesheep??>${itemSum.pdprLivesheep}</#if></td>
+                <input id="pdprLivevaccine" type="hidden" value="${itemSum.pdprLivevaccine?default(0)-item.pdprLivevaccine?default(0)}"/>
+                <input id="pdprLivebreedingsheep" type="hidden" value="${itemSum.pdprLivebreedingsheep?default(0)-item.pdprLivebreedingsheep?default(0)}"/>
+                <input id="pdprLivegoat" type="hidden" value="${itemSum.pdprLivegoat?default(0)-item.pdprLivegoat?default(0)}"/>
+                <input id="pdprLivesheep" type="hidden" value="${itemSum.pdprLivesheep?default(0)-item.pdprLivesheep?default(0)}"/>
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="4">填表说明：</td>
@@ -307,7 +311,18 @@
         })
 
         var calculate = function () {
-
+            var pdprLivevaccine = $.trim($('td[n="pdprLivevaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="pdprLivevaccine"]').text()));
+            var pdprLivebreedingsheep = $.trim($('td[n="pdprLivebreedingsheep"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="pdprLivebreedingsheep"]').text()));
+            var pdprLivegoat = $.trim($('td[n="pdprLivegoat"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="pdprLivegoat"]').text()));
+            var pdprLivesheep = $.trim($('td[n="pdprLivesheep"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="pdprLivesheep"]').text()));
+            var lj_pdprLivevaccine=document.getElementById('pdprLivevaccine').value;
+            var lj_pdprLivebreedingsheep=document.getElementById('pdprLivebreedingsheep').value;
+            var lj_pdprLivegoat=document.getElementById('pdprLivegoat').value;
+            var lj_pdprLivesheep=document.getElementById('pdprLivesheep').value;
+            $("td[role=lj_pdprLivevaccine]").text((parseFloat(lj_pdprLivevaccine)+parseFloat(pdprLivevaccine)).toFixed(2));
+            $("td[role=lj_pdprLivebreedingsheep]").text((parseFloat(lj_pdprLivebreedingsheep)+parseFloat(pdprLivebreedingsheep)).toFixed(2));
+            $("td[role=lj_pdprLivegoat]").text((parseFloat(lj_pdprLivegoat)+parseFloat(pdprLivegoat)).toFixed(2));
+            $("td[role=lj_pdprLivesheep]").text((parseFloat(lj_pdprLivesheep)+parseFloat(pdprLivesheep)).toFixed(2));
         }
 
         calculate()

@@ -157,6 +157,9 @@ public class ExcelServiceImpl implements IExcelService {
         params.put("report", report);
         Region region = regionMapper.selectByPrimaryKey(orgInfo.getRegionCode());
         Wlivestockinout wlivestockinout=getWlivestockinout(region,report.getBeginTime());
+        if(wlivestockinout==null){
+            wlivestockinout=new Wlivestockinout();
+        }
         params.put("wlivestockinout", wlivestockinout);
 
         Date beginTime=BeginTimeUtil.getBeginTime(report.getBeginTime());
@@ -174,6 +177,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Avianinfluenza  itemSum = avianinfluenzaMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Avianinfluenza();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -298,6 +304,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Wpestedespetitsruminants  itemSum = wpestedespetitsruminantsMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Wpestedespetitsruminants();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -311,6 +320,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Wavianinfluenza  itemSum = wavianinfluenzaMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Wavianinfluenza();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -324,6 +336,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Wnewcastle  itemSum = wnewcastleMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Wnewcastle();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -337,6 +352,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Wclassicalswinefever  itemSum = wclassicalswinefeverMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Wclassicalswinefever();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -350,6 +368,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Wblueeardisease  itemSum = wblueeardiseaseMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Wblueeardisease();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -363,6 +384,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Vaccineorder  itemSum = vaccineorderMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Vaccineorder();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -376,6 +400,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Blueeardisease  itemSum = blueeardiseaseMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Blueeardisease();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -389,6 +416,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Classicalswinefever  itemSum = classicalswinefeverMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Classicalswinefever();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -402,6 +432,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Footandmouthdisease  itemSum = footandmouthdiseaseMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Footandmouthdisease();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -412,6 +445,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", livestockInOut);
                 LiveStockInOut  itemSum =liveStockInOutMapper.selectSumByReportCode(region.getRegionCode(),beginTime,endTime);
+                if(itemSum==null){
+                    itemSum=new LiveStockInOut();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -425,6 +461,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Newcastle  itemSum = newcastleMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Newcastle();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -438,6 +477,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Pestedespetitsruminants  itemSum = pestedespetitsruminantsMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Pestedespetitsruminants();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -462,6 +504,9 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Wfootandmouthdisease  itemSum = wfootandmouthdiseaseMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if(itemSum==null){
+                    itemSum=new Wfootandmouthdisease();
+                }
                 params.put("itemSum",itemSum);
                 break;
             }
@@ -502,14 +547,26 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
 
 //         String beginTime=DateUtil.DateToString(BeginTimeUtil.getBeginTime(beginTime), DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
         String halfYearbeginTime=DateUtil.DateToString(BeginTimeUtil.getCurrentHalfYearBeginTime(beginTime), DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
-
+        String monthBeginTime=DateUtil.DateToString(BeginTimeUtil.getMonthBeginTime(beginTime), DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
         if (reportIds.size() == 0) return null;
         Map params = new HashMap();
 
         switch (template.getTableName().toLowerCase()) {
             case "b_avianinfluenza": {
                 params=this.getReportSummaryHtmlUtil(Avianinfluenza.class,reportIds,"aiReportid",avianinfluenzaMapper,"ai_regionCode");
-
+                List<Avianinfluenza>  cumulatives = avianinfluenzaMapper.selectAllByDate(monthBeginTime, endTime);
+                Avianinfluenza xizang = new Avianinfluenza();
+                xizang.setAiRegionname("西藏");
+                xizang.setAiRegioncode("540000");
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+                List<Avianinfluenza> items= (List<Avianinfluenza>) params.get("items");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
                 break;
             }
             case "b_emergencyvaccine": {
@@ -547,6 +604,7 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
             }
             case "b_bluevaccine": {
                 params=this.getReportSummaryHtmlUtil(Bluevaccine.class,reportIds,"bvReportid",bluevaccineMapper,"bv_regionCode");
+
                 break;
             }
             case "b_avianinfluenzavaccine": {
@@ -645,22 +703,75 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
             }
             case "b_blueeardisease": {
                 params=this.getReportSummaryHtmlUtil(Blueeardisease.class,reportIds,"bedReportid",blueeardiseaseMapper,"bed_regionCode");
+                List<Blueeardisease>  cumulatives = blueeardiseaseMapper.selectAllByDate(monthBeginTime, endTime);
+                Blueeardisease xizang = new Blueeardisease();
+                xizang.setBedRegionname("西藏");
+                xizang.setBedRegioncode("540000");
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+                List<Blueeardisease> items= (List<Blueeardisease>) params.get("items");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
                 break;
             }
             case "b_classicalswinefever": {
                 params=this.getReportSummaryHtmlUtil(Classicalswinefever.class,reportIds,"csfReportid",classicalswinefeverMapper,"csf_regionCode");
+                List<Classicalswinefever>  cumulatives = classicalswinefeverMapper.selectAllByDate(monthBeginTime, endTime);
+                Classicalswinefever xizang = new Classicalswinefever();
+                xizang.setCsfRegionname("西藏");
+                xizang.setCsfRegioncode("540000");
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+                List<Classicalswinefever> items= (List<Classicalswinefever>) params.get("items");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
                 break;
             }
             case "b_footandmouthdisease": {
                 params=this.getReportSummaryHtmlUtil(Footandmouthdisease.class,reportIds,"fmdReportid",footandmouthdiseaseMapper,"fmd_regionCode");
+                List<Footandmouthdisease>  cumulatives = footandmouthdiseaseMapper.selectAllByDate(monthBeginTime, endTime);
+                Footandmouthdisease xizang = new Footandmouthdisease();
+                xizang.setFmdRegionname("西藏");
+                xizang.setFmdRegioncode("540000");
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+                List<Footandmouthdisease> items= (List<Footandmouthdisease>) params.get("items");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
                 break;
             }
             case "b_newcastle": {
                 params=this.getReportSummaryHtmlUtil(Newcastle.class,reportIds,"ncReportid",newcastleMapper,"nc_regionCode");
+                List<Newcastle>  cumulatives = newcastleMapper.selectAllByDate(monthBeginTime, endTime);
+                Newcastle xizang = new Newcastle();
+                xizang.setNcRegionname("西藏");
+                xizang.setNcRegioncode("540000");
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+                List<Newcastle> items= (List<Newcastle>) params.get("items");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
                 break;
             }
             case "b_livestockinout": {
                 Example example = new Example(LiveStockInOut.class);
+                example.setOrderByClause("Liv_regionCode");
                 Example.Criteria criteria = example.createCriteria();
                 criteria.andIn("reportid", reportIds);
                 List<LiveStockInOut> list = liveStockInOutMapper.selectByExample(example);
@@ -675,6 +786,19 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
             }
             case "b_pestedespetitsruminants": {
                 params=this.getReportSummaryHtmlUtil(Pestedespetitsruminants.class,reportIds,"pdprReportid",pestedespetitsruminantsMapper,"pdpr_regionCode");
+                List<Pestedespetitsruminants>  cumulatives = pestedespetitsruminantsMapper.selectAllByDate(monthBeginTime, endTime);
+                Pestedespetitsruminants xizang = new Pestedespetitsruminants();
+                xizang.setPdprRegionname("西藏");
+                xizang.setPdprRegioncode("540000");
+                if(cumulatives.size()==36) {
+                    cumulatives.add(30, xizang);
+                }
+                params.put("cumulatives",cumulatives);
+                List<Pestedespetitsruminants> items= (List<Pestedespetitsruminants>) params.get("items");
+                if(items.size()==36) {
+                    items.add(30, xizang);
+                    params.put("items", items);
+                }
                 break;
             }
             case "b_wfootandmouthdisease": {

@@ -143,18 +143,22 @@
 			</tr>
 			<tr class="r2">
 				<td class="c3">新城疫灭活疫苗</td>
-				<td role="data"  n="ncInactivatedvaccine" class="c3"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine?c}</#if></td>
-				<td class="c6"><#if itemSum.ncInactivatedvaccine??>${itemSum.ncInactivatedvaccine?string("0.##")}<#else>0.00</#if></td>
-				<td  role="data"  n="ncInactivatedimmuneamount" class="c3"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount?c}</#if></td>
-				<td class="c6"><#if itemSum.ncInactivatedimmuneamount??>${itemSum.ncInactivatedimmuneamount?string("0.##")}<#else>0.00</#if></td>
+				<td role="data"  n="ncInactivatedvaccine" class="c3"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine}</#if></td>
+				<td role="lj_ncInactivatedvaccine" class="c6"><#if itemSum.ncInactivatedvaccine??>${itemSum.ncInactivatedvaccine}</#if></td>
+				<td  role="data"  n="ncInactivatedimmuneamount" class="c3"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount}</#if></td>
+				<td role="lj_ncInactivatedimmuneamount" class="c6"><#if itemSum.ncInactivatedimmuneamount??>${itemSum.ncInactivatedimmuneamount}</#if></td>
 			</tr>
 			<tr class="r2">
 				<td class="c3">新城疫弱毒疫苗</td>
-				<td role="data"  n="ncJointvaccine"  class="c3"><#if item.ncJointvaccine??>${item.ncJointvaccine?c}</#if></td>
-				<td class="c6"><#if itemSum.ncJointvaccine??>${itemSum.ncJointvaccine?string("0.##")}<#else>0.00</#if></td>
-				<td role="data"  n="ncJointimmuneamount"   class="c3"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount?c}</#if></td>
-				<td class="c6"><#if itemSum.ncJointimmuneamount??>${itemSum.ncJointimmuneamount?string("0.##")}<#else>0.00</#if></td>
+				<td role="data"  n="ncJointvaccine"  class="c3"><#if item.ncJointvaccine??>${item.ncJointvaccine}</#if></td>
+				<td role="lj_ncJointvaccine" class="c6"><#if itemSum.ncJointvaccine??>${itemSum.ncJointvaccine}</#if></td>
+				<td role="data"  n="ncJointimmuneamount"   class="c3"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount}</#if></td>
+				<td role="lj_ncJointimmuneamount" class="c6"><#if itemSum.ncJointimmuneamount??>${itemSum.ncJointimmuneamount}</#if></td>
 			</tr>
+            <input id="ncInactivatedvaccine" type="hidden" value="${itemSum.ncInactivatedvaccine?default(0)-item.ncInactivatedvaccine?default(0)}"/>
+            <input id="ncInactivatedimmuneamount" type="hidden" value="${itemSum.ncInactivatedimmuneamount?default(0)-item.ncInactivatedimmuneamount?default(0)}"/>
+            <input id="ncJointvaccine" type="hidden" value="${itemSum.ncJointvaccine?default(0)-item.ncJointvaccine?default(0)}"/>
+            <input id="ncJointimmuneamount" type="hidden" value="${itemSum.ncJointimmuneamount?default(0)-item.ncJointimmuneamount?default(0)}"/>
 			<tr class="r2">
 				<td class="c3" rowspan="3">填报说明：</td>
 				<td class="c4" colspan="4">1、本月免疫数量是指填报本月的免疫数量；</td>
@@ -203,7 +207,18 @@
         })
 
         var calculate = function () {
-
+            var ncInactivatedvaccine = $.trim($('td[n="ncInactivatedvaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="ncInactivatedvaccine"]').text()));
+            var ncInactivatedimmuneamount = $.trim($('td[n="ncInactivatedimmuneamount"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="ncInactivatedimmuneamount"]').text()));
+            var ncJointvaccine = $.trim($('td[n="ncJointvaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="ncJointvaccine"]').text()));
+            var ncJointimmuneamount = $.trim($('td[n="ncJointimmuneamount"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="ncJointimmuneamount"]').text()));
+            var lj_ncInactivatedvaccine=document.getElementById('ncInactivatedvaccine').value;
+            var lj_ncInactivatedimmuneamount=document.getElementById('ncInactivatedimmuneamount').value;
+            var lj_ncJointvaccine=document.getElementById('ncJointvaccine').value;
+            var lj_ncJointimmuneamount=document.getElementById('ncJointimmuneamount').value;
+            $("td[role=lj_ncInactivatedvaccine]").text((parseFloat(lj_ncInactivatedvaccine)+parseFloat(ncInactivatedvaccine)).toFixed(2));
+            $("td[role=lj_ncInactivatedimmuneamount]").text((parseFloat(lj_ncInactivatedimmuneamount)+parseFloat(ncInactivatedimmuneamount)).toFixed(2));
+            $("td[role=lj_ncJointvaccine]").text((parseFloat(lj_ncJointvaccine)+parseFloat(ncJointvaccine)).toFixed(2));
+            $("td[role=lj_ncJointimmuneamount]").text((parseFloat(lj_ncJointimmuneamount)+parseFloat(ncJointimmuneamount)).toFixed(2));
         }
 
         calculate()

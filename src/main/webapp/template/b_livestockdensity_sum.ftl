@@ -164,7 +164,7 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="28">2016年春防牲畜免疫密度统计表</td>
+				<td class="c1" colspan="28">${templateName}统计表</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="3">省份</td>

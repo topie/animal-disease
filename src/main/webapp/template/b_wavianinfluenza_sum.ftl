@@ -105,7 +105,7 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="33">2016年春防禽流感疫苗使用和免疫情况周报表 （截止 03月11日）</td>
+				<td class="c1" colspan="33">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="3">省份</td>
@@ -116,13 +116,13 @@
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="2">本周疫苗使用量（万毫升）</td>
-				<td class="c2" rowspan="2">春防累计疫苗使用数量(万毫升)</td>
+				<td class="c2" rowspan="2">累计疫苗使用数量(万毫升)</td>
 				<td class="c2" colspan="4">本周免疫数量（万羽）</td>
-				<td class="c2" colspan="5">春防累计免疫数量(万羽)</td>
+				<td class="c2" colspan="5">累计免疫数量(万羽)</td>
 				<td class="c2" rowspan="2">本周疫苗使用数量(万羽份)</td>
-				<td class="c2" rowspan="2">春防累计疫苗使用数量(万羽份)</td>
+				<td class="c2" rowspan="2">累计疫苗使用数量(万羽份)</td>
 				<td class="c2" colspan="4">本周免疫数量（万羽）</td>
-				<td class="c2" colspan="5">春防累计免疫数量(万羽)</td>
+				<td class="c2" colspan="5">累计免疫数量(万羽)</td>
 			</tr>
 			<tr class="r4">
 				<td class="c2">鸡</td>

@@ -70,7 +70,7 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="9">高致病性猪蓝耳病免疫情况月报表 （2017年1月）</td>
+				<td class="c1" colspan="9">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="2">省份</td>
@@ -89,17 +89,17 @@
 			</tr>
 			<#list items as item>
 			<tr class="r4">
-				<td n="" class="c2"><#if item.airegionname??>${item.airegionname?c}</#if></td>
+				<td n="" class="c2"><#if item.bedRegionname??>${item.bedRegionname}</#if></td>
 				
-				<td  n="bedInactivatedvaccine" class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine?c}</#if></td>
-				<td n="bedInactivatedshouldamount"  class="c2"><#if item.bedInactivatedshouldamount??>${item.bedInactivatedshouldamount?c}</#if></td>
-				<td n="bedInactivatedimmuneamount"  class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount?c}</#if></td>
-				<td n=""  class="c2"></td>
+				<td  n="bedInactivatedvaccine" class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine}</#if></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].bedInactivatedvaccine??>${cumulatives[item_index].bedInactivatedvaccine}</#if></td>
+				<td n="bedInactivatedimmuneamount"  class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount}</#if></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].bedInactivatedimmuneamount??>${cumulatives[item_index].bedInactivatedimmuneamount}</#if></td>
 				
-				<td n="bedWeakvaccine"  class="c2"><#if item.bedWeakvaccine??>${item.bedWeakvaccine?c}</#if></td>
-				<td n="bedWeakshouldamount"  class="c2"><#if item.bedWeakshouldamount??>${item.bedWeakshouldamount?c}</#if></td>
-				<td n="bedWeakimmuneamount"  class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount?c}</#if></td>
-				<td n=""  class="c2"></td>
+				<td n="bedWeakvaccine"  class="c2"><#if item.bedWeakvaccine??>${item.bedWeakvaccine}</#if></td>
+				<td n="bedWeakshouldamount"  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].bedWeakvaccine??>${cumulatives[item_index].bedWeakvaccine}</#if></td>
+				<td n="bedWeakimmuneamount"  class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount}</#if></td>
+				<td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].bedWeakimmuneamount??>${cumulatives[item_index].bedWeakimmuneamount}</#if></td>
 			</tr>
 			</#list>
 			

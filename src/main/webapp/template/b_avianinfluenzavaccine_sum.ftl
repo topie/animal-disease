@@ -112,14 +112,14 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="25">2016年春防高致病性禽流感疫苗使用统计表</td>
+				<td class="c1" colspan="25">${templateName}统计表</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" colspan="25">禽流感疫苗</td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="2">省份</td>
-				<td class="c2" colspan="8">春防累计使用数量</td>
+				<td class="c2" colspan="8">累计使用数量</td>
 				<td class="c2" colspan="8">目前库存数量</td>
 				<td class="c2" colspan="8">全年使用数量</td>
 			</tr>

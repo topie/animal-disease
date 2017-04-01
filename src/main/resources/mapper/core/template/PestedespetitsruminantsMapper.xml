@@ -24,4 +24,15 @@
     from animal_disease.b_pestedespetitsruminants
     where pdpr_regionCode=#{regionCode} AND pdpr_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+     select
+    sum(pdpr_LiveVaccine) pdpr_LiveVaccine,
+    sum(pdpr_LiveBreedingSheep) pdpr_LiveBreedingSheep,
+    sum(pdpr_LiveGoat) pdpr_LiveGoat,
+    sum(pdpr_LiveSheep) pdpr_LiveSheep
+    from animal_disease.b_pestedespetitsruminants
+    where  pdpr_date BETWEEN  #{beginTime} AND #{endTime}
+    GROUP  by pdpr_regionCode
+    order by pdpr_regionCode
+  </select>
 </mapper>

@@ -101,7 +101,7 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="33">疫苗储备统计季度报表</td>
+				<td class="c1" colspan="33">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="3">省份</td>
@@ -164,7 +164,7 @@
 				<td n="evFmoas" class="c2"><#if item.evFmoas??>${item.evFmoas}</#if></td>
 				<td n="evFmoa" class="c2"><#if item.evFmoa??>${item.evFmoa}</#if></td>
 				
-				<td n="evAirlh5" class="c2"><#if item.evAirlh5??>${item.evAirlh5?c}</#if></td>
+				<td n="evAirlh5" class="c2"><#if item.evAirlh5??>${item.evAirlh5}</#if></td>
 				<td n="evAih5n1re5re4" class="c2"><#if item.evAih5n1re5re4??>${item.evAih5n1re5re4}</#if></td>
 				<td n="evAih5n1re4" class="c2"><#if item.evAih5n1re4??>${item.evAih5n1re4}</#if></td>
 				<td n="evAih5n1re5" class="c2"><#if item.evAih5n1re5??>${item.evAih5n1re5}</#if></td>

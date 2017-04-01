@@ -160,14 +160,14 @@
     </tr>
     <tr class="r3">
         <td class="c3">&nbsp;</td>
-        <td class="c2" colspan="8">春防期间存栏数量（万头/只/羽）</td>
-        <td class="c2" colspan="4">春防期间牲畜口蹄疫应免数量（万头/只）</td>
-        <td class="c2" colspan="4">春防期间禽流感应免数量（万羽）</td>
-        <td class="c2" colspan="2">春防期间A型口蹄疫应免数量（万头/只）</td>
-        <td class="c2">春防期间高致病性猪蓝耳病应免数量（万头）</td>
-        <td class="c6">春防期间猪瘟应免数量（万头）</td>
-        <td class="c7">春防期间新城疫应免数量（万羽）</td>
-        <td class="c8">春防期间小反刍兽疫应免数量（万只）</td>
+        <td class="c2" colspan="8">存栏数量（万头/只/羽）</td>
+        <td class="c2" colspan="4">牲畜口蹄疫应免数量（万头/只）</td>
+        <td class="c2" colspan="4">禽流感应免数量（万羽）</td>
+        <td class="c2" colspan="2">A型口蹄疫应免数量（万头/只）</td>
+        <td class="c2">高致病性猪蓝耳病应免数量（万头）</td>
+        <td class="c6">猪瘟应免数量（万头）</td>
+        <td class="c7">新城疫应免数量（万羽）</td>
+        <td class="c8">小反刍兽疫应免数量（万只）</td>
     </tr>
     <tr class="r2">
         <td class="c2">畜禽种类</td>

@@ -29,4 +29,15 @@
     from animal_disease.b_blueeardisease
     where bed_regionCode=#{regionCode} AND bed_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select
+    sum(bed_inactivatedVaccine) bed_inactivatedVaccine,
+    sum(bed_inactivatedImmuneAmount) bed_inactivatedImmuneAmount,
+    sum(bed_weakVaccine) bed_weakVaccine,
+    sum(bed_weakImmuneAmount) bed_weakImmuneAmount
+    from animal_disease.b_blueeardisease
+    where  bed_date BETWEEN  #{beginTime} AND #{endTime}
+    GROUP  by bed_regionCode
+    order by bed_regionCode
+  </select>
 </mapper>

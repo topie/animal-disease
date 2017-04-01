@@ -72,7 +72,7 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="11">2016年春防新城疫疫苗使用和免疫情况周报表 （截止 03月11日）</td>
+				<td class="c1" colspan="11">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="2">省份</td>
@@ -83,13 +83,13 @@
 			</tr>
 			<tr class="r3">
 				<td class="c2">本周疫苗使用数量（万毫升）</td>
-				<td class="c2">春防累计疫苗使用数量(万羽份)</td>
+				<td class="c2">累计疫苗使用数量(万羽份)</td>
 				<td class="c2">本周免疫数量（万羽）</td>
-				<td class="c2">春防累计免疫数量(万羽)</td>
+				<td class="c2">累计免疫数量(万羽)</td>
 				<td class="c2">本周疫苗使用数量（万羽份）</td>
-				<td class="c2">春防累计疫苗使用数量(万羽份)</td>
+				<td class="c2">累计疫苗使用数量(万羽份)</td>
 				<td class="c2">本周免疫数量（万羽）</td>
-				<td class="c2">春防累计免疫数量(万羽)</td>
+				<td class="c2">累计免疫数量(万羽)</td>
 			</tr>
 			
 			 <#list items as item>

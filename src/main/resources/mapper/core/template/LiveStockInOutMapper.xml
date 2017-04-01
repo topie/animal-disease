@@ -42,6 +42,7 @@
         <foreach item="item" collection="ids" open="(" separator="," close=")">
             #{item}
         </foreach>
+        ORDER  BY  Liv_regionCode
     </select>
     <select id="selectSumByReportIds" resultMap="BaseResultMap">
         select
@@ -72,6 +73,7 @@
         <foreach item="item" collection="ids" open="(" separator="," close=")">
             #{item}
         </foreach>
+
         ORDER  by Liv_regionCode
     </select>
     <select id="selectSumByReportCode" resultMap="BaseResultMap">
@@ -100,6 +102,6 @@
         sum(PesteDesPetitsRuminants) PesteDesPetitsRuminants
         from animal_disease.b_livestockinout
         where Liv_regionCode=#{regionCode} AND LivestockDate BETWEEN  #{beginTime} AND #{endTime}
-
+      ORDER  BY  Liv_regionCode
     </select>
 </mapper>

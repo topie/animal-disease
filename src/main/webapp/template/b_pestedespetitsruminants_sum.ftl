@@ -116,7 +116,7 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="9">小反刍兽疫免疫情况月报表</td>
+				<td class="c1" colspan="9">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="4">省份</td>
@@ -145,13 +145,13 @@
 				<td n="pdprRegionname"  class="c2"><#if item.pdprRegionname??>${item.pdprRegionname}</#if></td>
 				
 				<td n="pdprLivevaccine"  class="c2"><#if item.pdprLivevaccine??>${item.pdprLivevaccine}</#if></td>
-				<td n=""  class="c2"></td>
+				<td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].pdprLivevaccine??>${cumulatives[item_index].pdprLivevaccine}</#if></td>
 				<td n="pdprLivebreedingsheep"  class="c6"><#if item.pdprLivebreedingsheep??>${item.pdprLivebreedingsheep}</#if></td>
-				<td n="pdpr_LiveGoat"  class="c6"><#if item.pdpr_LiveGoat??>${item.pdpr_LiveGoat}</#if></td>
-				<td n="pdpr_LiveSheep"  class="c6"><#if item.pdpr_LiveSheep??>${item.pdpr_LiveSheep}</#if></td>
-				<td n=""  class="c6"></td>
-				<td n=""  class="c2"></td>
-				<td n=""  class="c2"></td>
+				<td n="pdprLivegoat"  class="c6"><#if item.pdprLivegoat??>${item.pdprLivegoat}</#if></td>
+				<td n="pdprLivesheep"  class="c6"><#if item.pdprLivesheep??>${item.pdprLivesheep}</#if></td>
+				<td n=""  class="c6"><#if cumulatives[item_index]??&&cumulatives[item_index].pdprLivebreedingsheep??>${cumulatives[item_index].pdprLivebreedingsheep}</#if></td>
+				<td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].pdprLivegoat??>${cumulatives[item_index].pdprLivegoat}</#if></td>
+				<td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].pdprLivesheep??>${cumulatives[item_index].pdprLivesheep}</#if></td>
 			</tr>
 			</#list>
 		</tbody>

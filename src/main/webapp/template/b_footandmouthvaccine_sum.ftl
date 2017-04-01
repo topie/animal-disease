@@ -84,14 +84,14 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="19">2016年春防口蹄疫疫苗使用统计表</td>
+				<td class="c1" colspan="19">${templateName}统计表</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" colspan="19">口蹄疫疫苗</td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="2">省份</td>
-				<td class="c2" colspan="6">春防累计使用数量</td>
+				<td class="c2" colspan="6">累计使用数量</td>
 				<td class="c2" colspan="6">目前库存数量</td>
 				<td class="c2" colspan="6">全年使用数量</td>
 			</tr>

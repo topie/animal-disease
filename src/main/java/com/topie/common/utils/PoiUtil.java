@@ -70,7 +70,7 @@ public class PoiUtil {
 
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer serializer = tf.newTransformer();
-        serializer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        serializer.setOutputProperty(OutputKeys.ENCODING, "GBK");
         serializer.setOutputProperty(OutputKeys.INDENT, "yes");
         serializer.setOutputProperty(OutputKeys.METHOD, "html");
         serializer.transform(domSource, streamResult);

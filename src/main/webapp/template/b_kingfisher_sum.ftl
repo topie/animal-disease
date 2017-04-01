@@ -80,13 +80,13 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="19">2016年春防经费统计表</td>
+				<td class="c1" colspan="19">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="3">省份</td>
-				<td class="c2" colspan="10">全省上半年落实动物疫病防控经费（万元）</td>
-				<td class="c2" colspan="4">全省春防落实动物疫病防控经费（万元）</td>
-				<td class="c2" colspan="4">省本级春防落实动物疫病防控经费（万元）</td>
+				<td class="c2" colspan="10">全省落实动物疫病防控经费（万元）</td>
+				<td class="c2" colspan="4">全省春秋防落实动物疫病防控经费（万元）</td>
+				<td class="c2" colspan="4">省本级春秋防落实动物疫病防控经费（万元）</td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" colspan="5">疫苗配套经费</td>
