@@ -26,4 +26,15 @@
     from animal_disease.b_newcastle
     where nc_regionCode=#{regionCode} AND nc_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select
+    sum(nc_inactivatedVaccine) nc_inactivatedVaccine,
+    sum(nc_inactivatedImmuneAmount) nc_inactivatedImmuneAmount,
+    sum(nc_jointVaccine) nc_jointVaccine,
+    sum(nc_jointImmuneAmount) nc_jointImmuneAmount
+    from animal_disease.b_newcastle
+    where  nc_date BETWEEN  #{beginTime} AND #{endTime}
+    GROUP  by nc_regionCode
+    order by nc_regionCode
+  </select>
 </mapper>

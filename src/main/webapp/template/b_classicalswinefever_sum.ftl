@@ -66,7 +66,7 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="5">猪瘟免疫情况月报表 （2017年1月）</td>
+				<td class="c1" colspan="5">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="2">省份</td>
@@ -80,11 +80,11 @@
 			</tr>
 			<#list items as item>
 			<tr class="r4">
-				<td n="airegionname" class="c2"><#if item.airegionname??>${item.airegionname?c}</#if></td>
-				<td n="csfVaccine" class="c2"><#if item.csfVaccine??>${item.csfVaccine?c}</#if></td>
-				<td n="csfShouldamount" class="c2"><#if item.csfShouldamount??>${item.csfShouldamount?c}</#if></td>
-				<td n="csfImmuneamount" class="c2"><#if item.csfImmuneamount??>${item.csfImmuneamount?c}</#if></td>
-				<td n="" class="c2"></td>
+				<td n="csfRegionname" class="c2"><#if item.csfRegionname??>${item.csfRegionname}</#if></td>
+				<td n="csfVaccine" class="c2"><#if item.csfVaccine??>${item.csfVaccine}</#if></td>
+				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].csfVaccine??>${cumulatives[item_index].csfVaccine}</#if></td>
+				<td n="csfImmuneamount" class="c2"><#if item.csfImmuneamount??>${item.csfImmuneamount}</#if></td>
+				<td   class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].csfImmuneamount??>${cumulatives[item_index].csfImmuneamount}</#if></td>
 			</tr>
 			</#list>
 			

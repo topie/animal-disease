@@ -134,7 +134,7 @@
 			</tr>
 			<tr class="r3">
 				<td class="c2">填表日期:</td>
-				<td class="c3" colspan="4"><#if item.bedDate??>${item.beDdate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c3" colspan="4"><#if item.bedDate??>${item.bedDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2">填 表 人:</td>
@@ -153,20 +153,22 @@
 			</tr>
 			<tr class="r7">
 				<td class="c2">高致病性猪蓝耳病灭活疫苗</td>
-				<td role="data" n="bedInactivatedvaccine"  class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine?c}</#if></td>
-
-				<td  class="c6"><#if itemSum.bedInactivatedvaccine??>${itemSum.bedInactivatedvaccine?string("0.##")}<#else>0.00</#if></td>
-
-				<td role="data" n="bedInactivatedimmuneamount" class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount?c}</#if></td>
-				<td  class="c6"><#if itemSum.bedInactivatedimmuneamount??>${itemSum.bedInactivatedimmuneamount?string("0.##")}<#else>0.00</#if></td>
+				<td role="data" n="bedInactivatedvaccine"  class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine}</#if></td>
+				<td role="lj_bedInactivatedvaccine" class="c6"><#if itemSum.bedInactivatedvaccine??>${itemSum.bedInactivatedvaccine}</#if></td>
+				<td role="data" n="bedInactivatedimmuneamount" class="c2"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount}</#if></td>
+				<td role="lj_bedInactivatedimmuneamount" class="c6"><#if itemSum.bedInactivatedimmuneamount??>${itemSum.bedInactivatedimmuneamount}</#if></td>
 			</tr>
 			<tr class="r8">
 				<td class="c2">高致病性猪蓝耳病活疫苗</td>
-				<td role="data" n="bedWeakvaccine" class="c2"><#if item.bedWeakvaccine??>${item.bedWeakvaccine?c}</#if></td>
-				<td class="c6"><#if itemSum.bedWeakvaccine??>${itemSum.bedWeakvaccine?string("0.##")}<#else>0.00</#if></td>
-				<td role="data" n="bedWeakimmuneamount" class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount?c}</#if></td>
-				<td  class="c6"><#if itemSum.bedWeakimmuneamount??>${itemSum.bedWeakimmuneamount?string("0.##")}<#else>0.00</#if></td>
+				<td role="data" n="bedWeakvaccine" class="c2"><#if item.bedWeakvaccine??>${item.bedWeakvaccine}</#if></td>
+				<td role="lj_bedWeakvaccine" class="c6"><#if itemSum.bedWeakvaccine??>${itemSum.bedWeakvaccine}</#if></td>
+				<td role="data" n="bedWeakimmuneamount" class="c2"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount}</#if></td>
+				<td role="lj_bedWeakimmuneamount" class="c6"><#if itemSum.bedWeakimmuneamount??>${itemSum.bedWeakimmuneamount}</#if></td>
 			</tr>
+            <input id="bedInactivatedvaccine" type="hidden" value="${itemSum.bedInactivatedvaccine?default(0)-item.bedInactivatedvaccine?default(0)}"/>
+            <input id="bedInactivatedimmuneamount" type="hidden" value="${itemSum.bedInactivatedimmuneamount?default(0)-item.bedInactivatedimmuneamount?default(0)}"/>
+            <input id="bedWeakvaccine" type="hidden" value="${itemSum.bedWeakvaccine?default(0)-item.bedWeakvaccine?default(0)}"/>
+            <input id="bedWeakimmuneamount" type="hidden" value="${itemSum.bedWeakimmuneamount?default(0)-item.bedWeakimmuneamount?default(0)}"/>
 			<tr class="r4">
 				<td class="c2" rowspan="3">填报说明：</td>
 				<td class="c3" colspan="4">1、本月免疫数量是指填报本月的免疫数量；</td>
@@ -181,3 +183,55 @@
 	</table>
 </body>
 </html>
+<#if report.status!=1>
+<script type="text/javascript">
+    (function ($, window, document, undefined) {
+        $("td[role=data]").each(function (i, d) {
+            var n = $(this).attr("n")
+            $(this).off("click")
+            $(this).on("click", function (e) {
+                $("td[role=data]").each(function (e) {
+                    $(this).attr("current", 0)
+                })
+                $(this).attr("current", 1)
+                $("td[current=0]").find("input").each(function (e) {
+                    var v = $(this).val()
+                    $(this).parent("td").html(v)
+                    calculate()
+                })
+                var oldText = $(this).text()
+                $(this).empty()
+                var input = $('<input style="height: 100%;width:100%;" type="text" name="' + n + '" value="' + oldText + '">')
+                input.on("blur", function (e) {
+                    var v = $(this).val()
+                    $(this).parent("td").html(v)
+                    calculate()
+                })
+                input.on("click", function (e) {
+                    e.stopPropagation()
+                })
+                $(this).append(input);
+                input.focus()
+                e.stopPropagation()
+            })
+        })
+
+        var calculate = function () {
+            var bedInactivatedvaccine = $.trim($('td[n="bedInactivatedvaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="bedInactivatedvaccine"]').text()));
+            var bedInactivatedimmuneamount = $.trim($('td[n="bedInactivatedimmuneamount"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="bedInactivatedimmuneamount"]').text()));
+            var bedWeakvaccine = $.trim($('td[n="bedWeakvaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="bedWeakvaccine"]').text()));
+            var bedWeakimmuneamount = $.trim($('td[n="bedWeakimmuneamount"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="bedWeakimmuneamount"]').text()));
+            var lj_bedInactivatedvaccine=document.getElementById('bedInactivatedvaccine').value;
+            var lj_bedInactivatedimmuneamount=document.getElementById('bedInactivatedimmuneamount').value;
+            var lj_bedWeakvaccine=document.getElementById('bedWeakvaccine').value;
+            var lj_bedWeakimmuneamount=document.getElementById('bedWeakimmuneamount').value;
+            $("td[role=lj_bedInactivatedvaccine]").text((parseFloat(lj_bedInactivatedvaccine)+parseFloat(bedInactivatedvaccine)).toFixed(2));
+            $("td[role=lj_bedInactivatedimmuneamount]").text((parseFloat(lj_bedInactivatedimmuneamount)+parseFloat(bedInactivatedimmuneamount)).toFixed(2));
+            $("td[role=lj_bedWeakvaccine]").text((parseFloat(lj_bedWeakvaccine)+parseFloat(bedWeakvaccine)).toFixed(2));
+            $("td[role=lj_bedWeakimmuneamount]").text((parseFloat(lj_bedWeakimmuneamount)+parseFloat(bedWeakimmuneamount)).toFixed(2));
+        }
+
+        calculate()
+    })(jQuery, window, document)
+</script>
+</#if>

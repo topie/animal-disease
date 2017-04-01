@@ -114,8 +114,7 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="53">2016年春防牲畜口蹄疫疫苗使用和免疫情况周报表 （截止
-					03月11日）</td>
+				<td class="c1" colspan="53">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="3">省份</td>
@@ -128,21 +127,21 @@
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="2">本周疫苗使用数量（万毫升）</td>
-				<td class="c2" rowspan="2">春防累计疫苗使用数量(万毫升)</td>
+				<td class="c2" rowspan="2">累计疫苗使用数量(万毫升)</td>
 				<td class="c2" colspan="4">本周免疫数量（万头/只）</td>
-				<td class="c2" colspan="5">春防累计免疫数量(万头/只)</td>
+				<td class="c2" colspan="5">累计免疫数量(万头/只)</td>
 				<td class="c2" rowspan="2">本周疫苗使用数量（万毫升）</td>
-				<td class="c2" rowspan="2">春防累计疫苗使用数量(万毫升)</td>
-				<td class="c2" colspan="4">春防累计疫苗使用数量(万毫升)</td>
-				<td class="c2" colspan="5">春防累计免疫数量(万头/只)</td>
+				<td class="c2" rowspan="2">累计疫苗使用数量(万毫升)</td>
+				<td class="c2" colspan="4">累计疫苗使用数量(万毫升)</td>
+				<td class="c2" colspan="5">累计免疫数量(万头/只)</td>
 				<td class="c2" rowspan="2">本周疫苗使用数量（万毫升）</td>
-				<td class="c2" rowspan="2">春防累计疫苗使用数量(万毫升)</td>
+				<td class="c2" rowspan="2">累计疫苗使用数量(万毫升)</td>
 				<td class="c2" colspan="2">本周免疫数量（万头）</td>
-				<td class="c2" colspan="3">春防累计免疫数量(万头)</td>
+				<td class="c2" colspan="3">累计免疫数量(万头)</td>
 				<td class="c2" rowspan="2">本周疫苗使用数量（万毫升）</td>
-				<td class="c2" rowspan="2">春防累计疫苗使用数量(万毫升)</td>
+				<td class="c2" rowspan="2">累计疫苗使用数量(万毫升)</td>
 				<td class="c2" colspan="2">本周免疫数量（万头）</td>
-				<td class="c2" colspan="3">春防累计免疫数量(万头)</td>
+				<td class="c2" colspan="3">累计免疫数量(万头)</td>
 				<td class="c2" colspan="5">口蹄疫o型疫苗</td>
 				<td class="c2" colspan="3">口蹄疫A型灭活疫苗</td>
 				<td class="c2" colspan="5">口蹄疫o型疫苗</td>

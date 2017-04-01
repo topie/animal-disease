@@ -264,10 +264,10 @@
     <tr class="r3">
         <td class="c2" rowspan="2">疫苗种类</td>
         <td class="c2" rowspan="2">本周疫苗使用数量(万毫升)</td>
-        <td class="c3" rowspan="2">秋防累计疫苗使用数量(万毫升)</td>
+        <td class="c3" rowspan="2">累计疫苗使用数量(万毫升)</td>
         <td class="c2" colspan="4">本周免疫数量（万头/只）</td>
-        <td class="c2" colspan="5">秋防累计免疫数量(万头/只)</td>
-        <td class="c4" colspan="5">秋防应免数量(万头/只)</td>
+        <td class="c2" colspan="5">累计免疫数量(万头/只)</td>
+        <td class="c4" colspan="5">应免数量(万头/只)</td>
         <td class="c5" colspan="5">免疫进展(%)</td>
     </tr>
     <tr class="r4">
@@ -296,22 +296,22 @@
         <td role="data" n="fmdInactivatedvaccine" class="c2"><#if item.fmdInactivatedvaccine??>${item.fmdInactivatedvaccine}</#if></td>
         <td class="c7"><#if itemSum.fmdInactivatedvaccine??>${itemSum.fmdInactivatedvaccine} </#if></td>
         <td role="data" n="fmdInactivatedimmuneamountpig" class="c2"><#if item.fmdInactivatedimmuneamountpig??>${item.fmdInactivatedimmuneamountpig}</#if></td>
-        <td class="c2">X</td>
-        <td class="c2">X</td>
+        <td class="c2">-</td>
+        <td class="c2">-</td>
         <td role="data" n="fmdInactivatedimmuneamountother" class="c2"><#if item.fmdInactivatedimmuneamountother??>${item.fmdInactivatedimmuneamountother}</#if></td>
         <td class="c7"><#if itemSum.fmdInactivatedimmuneamountpig??>${itemSum.fmdInactivatedimmuneamountpig}</#if></td>
-        <td class="c2">X</td>
-        <td class="c2">X</td>
+        <td class="c2">-</td>
+        <td class="c2">-</td>
         <td class="c7"><#if itemSum.fmdInactivatedimmuneamountother??>${itemSum.fmdInactivatedimmuneamountother}</#if></td>
         <td class="c8"><#if itemSum??>${itemSum.fmdInactivatedimmuneamountother+itemSum.fmdInactivatedimmuneamountpig}</#if></td>
         <td class="c8"><#if wlivestockinout.immunefmdpig??>${wlivestockinout.immunefmdpig}</#if></td>
-        <td class="c4">X</td>
-        <td class="c4">X</td>
+        <td class="c4">-</td>
+        <td class="c4">-</td>
         <td  class="c9"  rowspan="2"><#if wlivestockinout.immunefmdother??>${wlivestockinout.immunefmdother}</#if></td>
         <td class="c9" rowspan="3"><#if wlivestockinout??>${wlivestockinout.immunefmdpig+wlivestockinout.immunefmdniu+wlivestockinout.immunefmdsheep+wlivestockinout.immunefmdother}</#if></td>
         <td class="c10"><#if wlivestockinout.immunefmdpig==0>0.00<#else>${itemSum.fmdInactivatedimmuneamountpig*100/wlivestockinout.immunefmdpig}</#if>%</td>
-        <td class="c2">X</td>
-        <td class="c2">X</td>
+        <td class="c2">-</td>
+        <td class="c2">-</td>
          <td class="c8" rowspan="2"><#if wlivestockinout.immunefmdother==0>0.00<#else>${itemSum.fmdInactivatedimmuneamountother*100/wlivestockinout.immunefmdother}</#if>%</td>
         <td class="c7" rowspan="3"><#if (wlivestockinout.immunefmdpig+wlivestockinout.immunefmdniu+wlivestockinout.immunefmdsheep+wlivestockinout.immunefmdother)==0>0.00<#else>
         ${(itemSum.fmdInactivatedimmuneamountother+itemSum.fmdInactivatedimmuneamountpig+itemSum.fmdO2immuneamountniu+itemSum.fmdO2immuneamountsheep+itemSum.fmdO2immuneamountother+itemSum.fmdO3immuneamountsheep+itemSum.fmdO3immuneamountniu)*100/(wlivestockinout.immunefmdpig+wlivestockinout.immunefmdniu+wlivestockinout.immunefmdsheep+wlivestockinout.immunefmdother)}</#if>%</td>
@@ -321,19 +321,19 @@
         <td class="c2">口蹄疫o型-亚洲I型二价灭活疫苗</td>
         <td role="data" n="fmdO2vaccine" class="c2"><#if item.fmdO2vaccine??>${item.fmdO2vaccine}</#if></td>
         <td class="c7"><#if itemSum.fmdO2vaccine??>${itemSum.fmdO2vaccine}</#if></td>
-        <td class="c2">X</td>
+        <td class="c2">-</td>
         <td role="data" n="fmdO2immuneamountniu" class="c2"><#if item.fmdO2immuneamountniu??>${item.fmdO2immuneamountniu}</#if></td>
         <td role="data" n="fmdO2immuneamountsheep" class="c2"><#if item.fmdO2immuneamountsheep??>${item.fmdO2immuneamountsheep}</#if></td>
         <td role="data" n="fmdO2immuneamountother" class="c2"><#if item.fmdO2immuneamountother??>${item.fmdO2immuneamountother}</#if></td>
-        <td class="c2">X</td>
+        <td class="c2">-</td>
         <td class="c7"><#if itemSum.fmdO2immuneamountniu??>${itemSum.fmdO2immuneamountniu}</#if></td>
         <td class="c7"><#if itemSum.fmdO2immuneamountsheep??>${itemSum.fmdO2immuneamountsheep}</#if></td>
         <td class="c7"><#if itemSum.fmdO2immuneamountother??>${itemSum.fmdO2immuneamountother}</#if></td>
         <td class="c8"><#if itemSum??>${itemSum.fmdO2immuneamountniu+itemSum.fmdO2immuneamountsheep+itemSum.fmdO2immuneamountother}</#if></td>
-        <td class="c4">X</td>
+        <td class="c4">-</td>
         <td class="c9" rowspan="2"><#if wlivestockinout.immunefmdniu??>${wlivestockinout.immunefmdniu}</#if></td>
         <td class="c9" rowspan="2"><#if wlivestockinout.immunefmdsheep??>${wlivestockinout.immunefmdsheep}</#if></td>
-        <td class="c5">X</td>
+        <td class="c5">-</td>
         <td class="c8" rowspan="2">${(itemSum.fmdO2immuneamountniu+itemSum.fmdO3immuneamountniu)*100/wlivestockinout.immunefmdniu}%</td>
         <td class="c7" rowspan="2">${(itemSum.fmdO2immuneamountsheep+itemSum.fmdO3immuneamountsheep)*100/wlivestockinout.immunefmdsheep}%</td>
 
@@ -342,7 +342,7 @@
         <td class="c2">口蹄疫O型-A型-亚洲I型三价灭活疫苗</td>
         <td role="data" n="fmdO3vaccine" class="c2">${item.fmdO3vaccine}</td>
         <td class="c7"><#if itemSum.fmdO3vaccine??>${itemSum.fmdO3vaccine}</#if></td>
-        <td class="c2">X</td>
+        <td class="c2">-</td>
         <td role="data" n="fmdO3immuneamountniu" class="c2">${item.fmdO3immuneamountniu}</td>
         <td role="data" n="fmdO3immuneamountsheep" class="c12">${item.fmdO3immuneamountsheep}</td>
         <td class="c13">X</td>
@@ -360,26 +360,27 @@
     <tr class="r6">
         <td class="c18">口蹄疫A型灭活疫苗</td>
         <td role="data" n="fmdAvaccine" class="c2">${item.fmdAvaccine}</td>
-        <td class="c7"><#if itemSum.fmdAvaccine??>${itemSum.fmdAvaccine}</#if></td>
-        <td class="c2">X</td>
+        <td n="sum_fmdAvaccine" class="c7"><#if itemSum.fmdAvaccine??>${itemSum.fmdAvaccine}</#if></td>
+
+        <td class="c2">-</td>
         <td role="data" n="fmdAimmuneamountniu" class="c2">${item.fmdAimmuneamountniu}</td>
         <td role="data" n="fmdAimmuneamountsheep" class="c2">${item.fmdAimmuneamountsheep}</td>
-        <td class="c2">X</td>
-        <td class="c2">X</td>
-        <td class="c7"><#if itemSum.fmdAimmuneamountniu??>${itemSum.fmdAimmuneamountniu}</#if></td>
-        <td class="c7"><#if itemSum.fmdAimmuneamountsheep??>${itemSum.fmdAimmuneamountsheep}</#if></td>
-        <td class="c2">X</td>
-        <td class="c8"><#if itemSum??>${itemSum.fmdAimmuneamountsheep+itemSum.fmdAimmuneamountniu}</#if></td>
-        <td class="c4">X&nbsp;</td>
-        <td class="c9"><#if wlivestockinout.immuneafmdniu??>${wlivestockinout.immuneafmdniu}</#if></td>
-        <td class="c9"><#if wlivestockinout.immuneafmdsheep??>${wlivestockinout.immuneafmdsheep}</#if></td>
-        <td class="c4">X&nbsp;</td>
-        <td class="c9"><#if wlivestockinout??>${wlivestockinout.immuneafmdniu+wlivestockinout.immuneafmdsheep}</#if></td>
-        <td class="c5">X&nbsp;</td>
-        <td class="c7"><#if wlivestockinout.immuneafmdniu==0>0.00<#else>${itemSum.fmdAimmuneamountniu*100/wlivestockinout.immuneafmdniu}</#if>%</td>
-        <td class="c7"><#if wlivestockinout.immuneafmdsheep==0>0.00<#else>${itemSum.fmdAimmuneamountsheep*100/wlivestockinout.immuneafmdsheep}</#if>%</td>
-        <td class="c2">X&nbsp;</td>
-        <td class="c7"><#if (wlivestockinout.immuneafmdniu+wlivestockinout.immuneafmdsheep)==0>0.00<#else>${(itemSum.fmdAimmuneamountsheep+itemSum.fmdAimmuneamountniu)*100/wlivestockinout.immuneafmdniu+wlivestockinout.immuneafmdsheep}</#if>%</td>
+        <td class="c2">-</td>
+        <td class="c2">-</td>
+        <td  n="lj_fmdAimmuneamountniu" class="c7"><#if itemSum.fmdAimmuneamountniu??>${itemSum.fmdAimmuneamountniu}</#if></td>
+        <td n="lj_fmdAimmuneamountsheep" class="c7"><#if itemSum.fmdAimmuneamountsheep??>${itemSum.fmdAimmuneamountsheep}</#if></td>
+        <td class="c2">-</td>
+        <td n="lj_sum" class="c8"><#if itemSum??>${itemSum.fmdAimmuneamountsheep+itemSum.fmdAimmuneamountniu}</#if></td>
+        <td class="c4">-</td>
+        <td n="ym_immuneafmdniu" class="c9"><#if wlivestockinout.immuneafmdniu??>${wlivestockinout.immuneafmdniu}</#if></td>
+        <td n="ym_immuneafmdsheep" class="c9"><#if wlivestockinout.immuneafmdsheep??>${wlivestockinout.immuneafmdsheep}</#if></td>
+        <td class="c4">-</td>
+        <td  n="ym_sum" class="c9"><#if wlivestockinout??>${wlivestockinout.immuneafmdniu+wlivestockinout.immuneafmdsheep}</#if></td>
+        <td class="c5">-</td>
+        <td  n="jz_immuneafmdniu" class="c7"><#if wlivestockinout.immuneafmdniu==0>0.00<#else>${itemSum.fmdAimmuneamountniu*100/wlivestockinout.immuneafmdniu}</#if>%</td>
+        <td n="jz_immuneafmdsheep" class="c7"><#if wlivestockinout.immuneafmdsheep==0>0.00<#else>${itemSum.fmdAimmuneamountsheep*100/wlivestockinout.immuneafmdsheep}</#if>%</td>
+        <td class="c2">-</td>
+        <td n="jz_sum" class="c7"><#if (wlivestockinout.immuneafmdniu+wlivestockinout.immuneafmdsheep)==0>0.00<#else>${(itemSum.fmdAimmuneamountsheep+itemSum.fmdAimmuneamountniu)*100/wlivestockinout.immuneafmdniu+wlivestockinout.immuneafmdsheep}</#if>%</td>
 
     </tr>
     <tr class="r3">

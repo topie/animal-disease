@@ -86,7 +86,7 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="21">禽流感免疫情况月报表 （2017年1月）</td>
+				<td class="c1" colspan="21">${templateName}统计表</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="3">省份</td>
@@ -124,28 +124,28 @@
 			<#list items as item>
 				<tr class="r5">
 					<td class="c2"><#if item.aiRegionname??>${item.aiRegionname}</#if></td>
-					<td n="aiInactivatedvaccine"  class="c2"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine?c}</#if></td>
-					<td n=""  class="c2"></td>
-					<td n="aiInactivatedimmuneamountchicken"  class="c2"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken?c}</#if></td>
-					<td n="aiInactivatedimmuneamountduck"  class="c2"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck?c}</#if></td>
-					<td n="aiInactivatedimmuneamountgoose"  class="c2"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose?c}</#if></td>
-					<td n="aiInactivatedimmuneamountother"  class="c2"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother?c}</#if></td>
+					<td n="aiInactivatedvaccine"  class="c2"><#if item.aiInactivatedvaccine??>${item.aiInactivatedvaccine}</#if></td>
+					<td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiInactivatedvaccine??>${cumulatives[item_index].aiInactivatedvaccine}</#if></td>
+					<td n="aiInactivatedimmuneamountchicken"  class="c2"><#if item.aiInactivatedimmuneamountchicken??>${item.aiInactivatedimmuneamountchicken}</#if></td>
+					<td n="aiInactivatedimmuneamountduck"  class="c2"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck}</#if></td>
+					<td n="aiInactivatedimmuneamountgoose"  class="c2"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose}</#if></td>
+					<td n="aiInactivatedimmuneamountother"  class="c2"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother}</#if></td>
 					
-					<td n="aiInactivatedshouldamountchicken"  class="c2"><#if item.aiInactivatedshouldamountchicken??>${item.aiInactivatedshouldamountchicken?c}</#if></td>
-					<td n="aiInactivatedshouldamountduck"  class="c2"><#if item.aiInactivatedshouldamountduck??>${item.aiInactivatedshouldamountduck?c}</#if></td>
-					<td n="aiInactivatedshouldamountgoose"  class="c2"><#if item.aiInactivatedshouldamountgoose??>${item.aiInactivatedshouldamountgoose?c}</#if></td>
-					<td n="aiInactivatedshouldamountother"  class="c2"><#if item.aiInactivatedshouldamountother??>${item.aiInactivatedshouldamountother?c}</#if></td>
+					<td n="aiInactivatedshouldamountchicken"  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiInactivatedimmuneamountchicken??>${cumulatives[item_index].aiInactivatedimmuneamountchicken}</#if></td>
+					<td n="aiInactivatedshouldamountduck"  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiInactivatedimmuneamountduck??>${cumulatives[item_index].aiInactivatedimmuneamountduck}</#if></td>
+					<td n="aiInactivatedshouldamountgoose"  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiInactivatedimmuneamountgoose??>${cumulatives[item_index].aiInactivatedimmuneamountgoose}</#if></td>
+					<td n="aiInactivatedshouldamountother"  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiInactivatedimmuneamountother??>${cumulatives[item_index].aiInactivatedimmuneamountother}</#if></td>
 					
-					<td n="aiJointvaccine"  class="c2"><#if item.aiJointvaccine??>${item.aiJointvaccine?c}</#if></td>
-					<td n="aiJointimmuneamountchicken"  class="c2"></td>
-					<td n="aiJointimmuneamountchicken"  class="c2"><#if item.aiJointimmuneamountchicken??>${item.aiJointimmuneamountchicken?c}</#if></td>
-					<td n="aiJointimmuneamountduck"  class="c2"><#if item.aiJointimmuneamountduck??>${item.aiJointimmuneamountduck?c}</#if></td>
-					<td n="aiJointimmuneamountgoose"  class="c2"><#if item.aiJointimmuneamountgoose??>${item.aiJointimmuneamountgoose?c}</#if></td>
-					<td n="aiJointimmuneamountother"  class="c2"><#if item.aiJointimmuneamountother??>${item.aiJointimmuneamountother?c}</#if></td>
-					<td n="aiJointshouldamountchicken"  class="c2"><#if item.aiJointshouldamountchicken??>${item.aiJointshouldamountchicken?c}</#if></td>
-					<td n="aiJointshouldamountduck"  class="c2"><#if item.aiJointshouldamountduck??>${item.aiJointshouldamountduck?c}</#if></td>
-					<td n="aiJointshouldamountgoose"  class="c2"><#if item.aiJointshouldamountgoose??>${item.aiJointshouldamountgoose?c}</#if></td>
-					<td n="aiJointshouldamountother"  class="c2"><#if item.aiJointshouldamountother??>${item.aiJointshouldamountother?c}</#if></td>
+					<td n="aiJointvaccine"  class="c2"><#if item.aiJointvaccine??>${item.aiJointvaccine}</#if></td>
+					<td   class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiJointvaccine??>${cumulatives[item_index].aiJointvaccine}</#if></td>
+					<td n="aiJointimmuneamountchicken"  class="c2"><#if item.aiJointimmuneamountchicken??>${item.aiJointimmuneamountchicken}</#if></td>
+					<td n="aiJointimmuneamountduck"  class="c2"><#if item.aiJointimmuneamountduck??>${item.aiJointimmuneamountduck}</#if></td>
+					<td n="aiJointimmuneamountgoose"  class="c2"><#if item.aiJointimmuneamountgoose??>${item.aiJointimmuneamountgoose}</#if></td>
+					<td n="aiJointimmuneamountother"  class="c2"><#if item.aiJointimmuneamountother??>${item.aiJointimmuneamountother}</#if></td>
+					<td n="aiJointshouldamountchicken"  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiJointimmuneamountchicken??>${cumulatives[item_index].aiJointimmuneamountchicken}</#if></td>
+					<td n="aiJointshouldamountduck"  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiJointimmuneamountduck??>${cumulatives[item_index].aiJointimmuneamountduck}</#if></td>
+					<td n="aiJointshouldamountgoose"  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiJointimmuneamountgoose??>${cumulatives[item_index].aiJointimmuneamountgoose}</#if></td>
+					<td n="aiJointshouldamountother"  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiJointimmuneamountother??>${cumulatives[item_index].aiJointimmuneamountother}</#if></td>
 				</tr>
 			</#list>
 			

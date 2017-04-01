@@ -132,8 +132,8 @@
 			</tr>
 			<tr class="r4">
 				<td class="c2" colspan="10">全省上半年落实动物疫病防控经费（万元）</td>
-				<td class="c2" colspan="4">全省春防落实动物疫病防控经费（万元）</td>
-				<td class="c2" colspan="4">省本级春防落实动物疫病防控经费（万元）</td>
+				<td class="c2" colspan="4">全省春秋防落实动物疫病防控经费（万元）</td>
+				<td class="c2" colspan="4">省本级春秋防落实动物疫病防控经费（万元）</td>
 			</tr>
 			<tr class="r5">
 				<td class="c2" colspan="5">疫苗配套经费</td>

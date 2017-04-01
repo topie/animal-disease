@@ -135,28 +135,32 @@
 			<tr class="r4">
 				<td class="c2" rowspan="2">疫苗种类</td>
 				<td class="c2" rowspan="2">本周疫苗使用数量(万毫升/万羽份)</td>
-				<td class="c4" rowspan="2">秋防累计疫苗使用数量(万毫升/万羽份)</td>
+				<td class="c4" rowspan="2">累计疫苗使用数量(万毫升/万羽份)</td>
 				<td class="c2" rowspan="2">本周免疫数量（万羽）</td>
-				<td class="c2" rowspan="2">秋防累计免疫数量(万羽)</td>
-				<td class="c5" rowspan="2">秋防应免数量(万羽)</td>
+				<td class="c2" rowspan="2">累计免疫数量(万羽)</td>
+				<td class="c5" rowspan="2">应免数量(万羽)</td>
 				<td class="c2" rowspan="2">免疫进展(%)</td>
 			</tr>
 			<tr class="r5"></tr>
 			<tr class="r3">
 				<td class="c2">新城疫灭活疫苗</td>
 				<td role="data" n="ncInactivatedvaccine"  class="c2"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine}</#if></td>
-				<td class="c6"><#if itemSum.ncInactivatedvaccine??>${itemSum.ncInactivatedvaccine}</#if></td>
+				<td role="lj_ncInactivatedvaccine" class="c6"><#if itemSum.ncInactivatedvaccine??>${itemSum.ncInactivatedvaccine}</#if></td>
 				<td role="data" n="ncInactivatedimmuneamount"  class="c2"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount}</#if></td>
-				<td class="c6"><#if itemSum.ncInactivatedimmuneamount??>${itemSum.ncInactivatedimmuneamount}</#if></td>
-				<td class="c6" rowspan="2"><#if wlivestockinout.immunenewcastle??>${wlivestockinout.immunenewcastle}</#if></td>
-				<td class="c6" rowspan="2"><#if wlivestockinout.immunenewcastle==0>0.00<#else>${(itemSum.ncInactivatedimmuneamount+itemSum.ncJointimmuneamount)*100/wlivestockinout.immunenewcastle}</#if>%</td>
+				<td role="lj_ncInactivatedimmuneamount" class="c6"><#if itemSum.ncInactivatedimmuneamount??>${itemSum.ncInactivatedimmuneamount}</#if></td>
+				<td n="immunenewcastle" class="c6" rowspan="2"><#if wlivestockinout.immunenewcastle??>${wlivestockinout.immunenewcastle}</#if></td>
+				<td n="jz_sum" class="c6" rowspan="2"><#if wlivestockinout.immunenewcastle??&&wlivestockinout.immunenewcastle>0>${(itemSum.ncInactivatedimmuneamount?default(0)+itemSum.ncJointimmuneamount?default(0))*100/wlivestockinout.immunenewcastle}</#if>%</td>
 			</tr>
+            <input id="ncInactivatedvaccine" type="hidden" value="${itemSum.ncInactivatedvaccine?default(0)-item.ncInactivatedvaccine?default(0)}"/>
+            <input id="ncInactivatedimmuneamount" type="hidden" value="${itemSum.ncInactivatedimmuneamount?default(0)-item.ncInactivatedimmuneamount?default(0)}"/>
+            <input id="ncJointvaccine" type="hidden" value="${itemSum.ncJointvaccine?default(0)-item.ncJointvaccine?default(0)}"/>
+            <input id="ncJointimmuneamount" type="hidden" value="${itemSum.ncJointimmuneamount?default(0)-item.ncJointimmuneamount?default(0)}"/>
 			<tr class="r3">
 				<td class="c2">新城疫弱毒疫苗</td>
 				<td role="data" n="ncJointvaccine"  class="c2"><#if item.ncJointvaccine??>${item.ncJointvaccine}</#if></td>
-				<td class="c6"><#if itemSum.ncJointvaccine??>${itemSum.ncJointvaccine}</#if></td>
+				<td role="lj_ncJointvaccine" class="c6"><#if itemSum.ncJointvaccine??>${itemSum.ncJointvaccine}</#if></td>
 				<td role="data" n="ncJointimmuneamount"  class="c2"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount}</#if></td>
-				<td class="c6"><#if itemSum.ncJointimmuneamount??>${itemSum.ncJointimmuneamount}</#if></td>
+				<td role="lj_ncJointimmuneamount" class="c6"><#if itemSum.ncJointimmuneamount??>${itemSum.ncJointimmuneamount}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="3">填报说明：</td>
@@ -206,7 +210,27 @@
         })
 
         var calculate = function () {
+            var ncInactivatedvaccine = $.trim($('td[n="ncInactivatedvaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="ncInactivatedvaccine"]').text()));
+            var ncInactivatedimmuneamount = $.trim($('td[n="ncInactivatedimmuneamount"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="ncInactivatedimmuneamount"]').text()));
+            var ncJointvaccine = $.trim($('td[n="ncJointvaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="ncJointvaccine"]').text()));
+            var ncJointimmuneamount = $.trim($('td[n="ncJointimmuneamount"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="ncJointimmuneamount"]').text()));
+            var lj_ncInactivatedvaccine=document.getElementById('ncInactivatedvaccine').value;
+            var lj_ncInactivatedimmuneamount=document.getElementById('ncInactivatedimmuneamount').value;
+            var lj_ncJointvaccine=document.getElementById('ncJointvaccine').value;
+            var lj_ncJointimmuneamount=document.getElementById('ncJointimmuneamount').value;
 
+            var sum_ncInactivatedvaccine=(parseFloat(lj_ncInactivatedvaccine)+parseFloat(ncInactivatedvaccine)).toFixed(2);
+            var sum_ncInactivatedimmuneamount=(parseFloat(lj_ncInactivatedimmuneamount)+parseFloat(ncInactivatedimmuneamount)).toFixed(2);
+            var sum_ncJointvaccine=(parseFloat(lj_ncJointvaccine)+parseFloat(ncJointvaccine)).toFixed(2);
+            var sum_ncJointimmuneamount=(parseFloat(lj_ncJointimmuneamount)+parseFloat(ncJointimmuneamount)).toFixed(2);
+            $("td[role=lj_ncInactivatedvaccine]").text(sum_ncInactivatedvaccine);
+            $("td[role=lj_ncInactivatedimmuneamount]").text(sum_ncInactivatedimmuneamount);
+            $("td[role=lj_ncJointvaccine]").text(sum_ncJointvaccine);
+            $("td[role=lj_ncJointimmuneamount]").text(sum_ncJointimmuneamount);
+            var lj_sum=(parseFloat(sum_ncInactivatedimmuneamount)+parseFloat(sum_ncJointimmuneamount)).toFixed(2);
+            var immunenewcastle = $.trim($('td[n="immunenewcastle"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immunenewcastle"]').text()));
+            var jz_sum=(parseFloat(lj_sum*100)/parseFloat(immunenewcastle)).toFixed(2);
+            $('td[n="jz_sum"]').text(jz_sum+"%");
         }
 
         calculate()

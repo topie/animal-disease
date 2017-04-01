@@ -174,21 +174,23 @@
 			<tr class="r4">
 				<td class="c3" >疫苗种类</td>
 				<td class="c3" >本周疫苗使用数量(万头份)</td>
-				<td class="c4" >秋防累计疫苗使用数量(万头份)</td>
+				<td class="c4" >累计疫苗使用数量(万头份)</td>
 				<td class="c3" >本周免疫数量（万头）</td>
-				<td class="c3" >秋防累计免疫数量(万头)</td>
-				<td class="c5" >秋防应免数量(万头)</td>
+				<td class="c3" >累计免疫数量(万头)</td>
+				<td class="c5" >应免数量(万头)</td>
 				<td class="c3" >免疫进展(%)</td>
 			</tr>
 			<tr class="r3">
 				<td class="c7">猪瘟活疫苗</td>
 				<td role="data" n="csfVaccine"  class="c7"><#if item.csfVaccine??>${item.csfVaccine}</#if></td>
-				<td class="c8"><#if itemSum.csfVaccine??>${itemSum.csfVaccine} </#if></td>
+				<td role="lj_csfVaccine" class="c8"><#if itemSum.csfVaccine??>${itemSum.csfVaccine} </#if></td>
 				<td role="data" n="csfImmuneamount"  class="c7"><#if item.csfImmuneamount??>${item.csfImmuneamount}</#if></td>
-				<td class="c8"><#if itemSum.csfImmuneamount??>${itemSum.csfImmuneamount} </#if></td>
-				<td class="c8"><#if wlivestockinout.immuneswine??>${wlivestockinout.immuneswine}</#if></td>
-				<td class="c8"><#if wlivestockinout??&&itemSum??>${itemSum.csfImmuneamount*100/wlivestockinout.immuneswine}</#if>%</td>
+				<td role="lj_csfImmuneamount" class="c8"><#if itemSum.csfImmuneamount??>${itemSum.csfImmuneamount} </#if></td>
+				<td n="immuneswine" class="c8"><#if wlivestockinout.immuneswine??>${wlivestockinout.immuneswine}</#if></td>
+				<td n="jz_sum" class="c8"><#if (wlivestockinout.immuneswine??&&wlivestockinout.immuneswine>0)>${itemSum.csfImmuneamount?default(0)*100/wlivestockinout.immuneswine}</#if>%</td>
 			</tr>
+            <input id="csfVaccine" type="hidden" value="${itemSum.csfVaccine?default(0)-item.csfVaccine?default(0)}"/>
+            <input id="csfImmuneamount" type="hidden" value="${itemSum.csfImmuneamount?default(0)-item.csfImmuneamount?default(0)}"/>
 			<tr class="r3">
 				<td class="c10" rowspan="2">填报说明：</td>
 				<td class="c11" colspan="6">1.本周免疫数量是指填报本周的免疫数量；</td>
@@ -234,7 +236,18 @@
         })
 
         var calculate = function () {
-
+            var csfVaccine = $.trim($('td[n="csfVaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="csfVaccine"]').text()));
+            var csfImmuneamount = $.trim($('td[n="csfImmuneamount"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="csfImmuneamount"]').text()));
+            var lj_csfVaccine=document.getElementById('csfVaccine').value;
+            var lj_csfImmuneamount=document.getElementById('csfImmuneamount').value;
+            var sum_csfVaccine=(parseFloat(lj_csfVaccine)+parseFloat(csfVaccine)).toFixed(2);
+            var sum_csfImmuneamount=(parseFloat(lj_csfImmuneamount)+parseFloat(csfImmuneamount)).toFixed(2);
+            $("td[role=lj_csfVaccine]").text(sum_csfVaccine);
+            $("td[role=lj_csfImmuneamount]").text(sum_csfImmuneamount);
+            var lj_sum=parseFloat(sum_csfImmuneamount).toFixed(2);
+            var immuneswine = $.trim($('td[n="immuneswine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immuneswine"]').text()));
+            var jz_sum=(parseFloat(lj_sum*100)/parseFloat(immuneswine)).toFixed(2);
+            $('td[n="jz_sum"]').text(jz_sum+"%");
         }
 
         calculate()

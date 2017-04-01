@@ -84,21 +84,21 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="7">2016年春防高致病性猪蓝耳病疫苗使用统计表</td>
+				<td class="c1" colspan="7">${templateName}统计表</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" colspan="7">高致病性猪蓝耳病疫苗</td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="2">省份</td>
-				<td class="c2" colspan="2">春防累计使用数量</td>
+				<td class="c2" colspan="2">累计使用数量</td>
 				<td class="c2" colspan="2">目前库存数量</td>
 				<td class="c2" colspan="2">全年使用数量</td>
 				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td class="c3">上半年使用数量</td>
+				<td class="c3">使用数量</td>
 			</tr>
 			<tr class="r4">
 				<td class="c2">高致病性猪蓝耳病灭活疫苗(万毫升)</td>
@@ -111,12 +111,12 @@
 			<#list items as item>
 			<tr class="r5">
 				<td n="bvRegionname" class="c2"><#if item.bvRegionname??>${item.bvRegionname}</#if></td>
-				<td n="bvInactivatedusecount"  class="c2"><#if item.bvInactivatedusecount??>${item.bvInactivatedusecount?c}</#if></td>
-				<td n="bvLivingusecount"  class="c2"><#if item.bvLivingusecount??>${item.bvLivingusecount?c}</#if></td>
-				<td n="bvInactivatedstorecount"  class="c2"><#if item.bvInactivatedstorecount??>${item.bvInactivatedstorecount?c}</#if></td>
-				<td n="bvLivingstorecount"  class="c2"><#if item.bvLivingstorecount??>${item.bvLivingstorecount?c}</#if></td>
-				<td n="bvInactivatedyearcount"  class="c2"><#if item.bvInactivatedyearcount??>${item.bvInactivatedyearcount?c}</#if></td>
-				<td n="bvLivingyearcount"  class="c2"><#if item.bvLivingyearcount??>${item.bvLivingyearcount?c}</#if></td>
+				<td n="bvInactivatedusecount"  class="c2"><#if item.bvInactivatedusecount??>${item.bvInactivatedusecount}</#if></td>
+				<td n="bvLivingusecount"  class="c2"><#if item.bvLivingusecount??>${item.bvLivingusecount}</#if></td>
+				<td n="bvInactivatedstorecount"  class="c2"><#if item.bvInactivatedstorecount??>${item.bvInactivatedstorecount}</#if></td>
+				<td n="bvLivingstorecount"  class="c2"><#if item.bvLivingstorecount??>${item.bvLivingstorecount}</#if></td>
+				<td n="bvInactivatedyearcount"  class="c2"><#if item.bvInactivatedyearcount??>${item.bvInactivatedyearcount}</#if></td>
+				<td n="bvLivingyearcount"  class="c2"><#if item.bvLivingyearcount??>${item.bvLivingyearcount}</#if></td>
 			</tr>
  </#list>
 		</tbody>

@@ -70,7 +70,7 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="9">新城疫免疫情况月报表 （2017年1月）</td>
+				<td class="c1" colspan="9">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="2">省份</td>
@@ -93,13 +93,15 @@
 				<td n="ncRegionname"  class="c2"><#if item.ncRegionname??>${item.ncRegionname}</#if></td>
 			
 				<td n="ncInactivatedvaccine"  class="c2"><#if item.ncInactivatedvaccine??>${item.ncInactivatedvaccine}</#if></td>
-				<td n="ncInactivatedshouldamount"  class="c2"><#if item.ncInactivatedshouldamount??>${item.ncInactivatedshouldamount}</#if></td>
+                <td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].ncInactivatedvaccine??>${cumulatives[item_index].ncInactivatedvaccine}</#if></td>
 				<td n="ncInactivatedimmuneamount"  class="c2"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount}</#if></td>
-				<td n=""  class="c2"></td>
-				<td n="ncJointimmuneamount"  class="c2"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount}</#if></td>
-				<td n="ncJointshouldamount"  class="c2"><#if item.ncJointshouldamount??>${item.ncJointshouldamount}</#if></td>
-				<td n="ncJointvaccine"  class="c2"><#if item.ncJointvaccine??>${item.ncJointvaccine}</#if></td>
-				<td n=""  class="c2"></td>
+                <td n="ncInactivatedshouldamount"  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].ncInactivatedimmuneamount??>${cumulatives[item_index].ncInactivatedimmuneamount}</#if></td>
+
+                <td n="ncJointvaccine"  class="c2"><#if item.ncJointvaccine??>${item.ncJointvaccine}</#if></td>
+                <td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].ncJointvaccine??>${cumulatives[item_index].ncJointvaccine}</#if></td>
+                <td n="ncJointimmuneamount"  class="c2"><#if item.ncJointimmuneamount??>${item.ncJointimmuneamount}</#if></td>
+                <td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].ncJointimmuneamount??>${cumulatives[item_index].ncJointimmuneamount}</#if></td>
+
 			</tr>
 			</#list>
 		</tbody>

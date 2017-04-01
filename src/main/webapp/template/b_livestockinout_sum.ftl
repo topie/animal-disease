@@ -84,7 +84,7 @@
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="22">畜禽存栏和应免数量月报表</td>
+        <td class="c1" colspan="22">${templateName}</td>
     </tr>
     <tr class="r2">
         <td class="c2" rowspan="2">省份</td>
@@ -130,6 +130,10 @@
         <td n="herdsduck" class="c2"><#if item.herdsduck??>${item.herdsduck}</#if></td>
         <td n="herdsgoose" class="c2"><#if item.herdsgoose??>${item.herdsgoose}</#if></td>
         <td n="herdsotherq" class="c2"><#if item.herdsotherq??>${item.herdsotherq}</#if></td>
+        <td n="immunefmdpig" class="c2"><#if item.immunefmdpig??>${item.immunefmdpig}</#if></td>
+        <td n="immunefmdniu" class="c2"><#if item.immunefmdniu??>${item.immunefmdniu}</#if></td>
+        <td n="immunefmdsheep" class="c2"><#if item.immunefmdsheep??>${item.immunefmdsheep}</#if></td>
+        <td n="immunefmdother" class="c2"><#if item.immunefmdother??>${item.immunefmdother}</#if></td>
         <td n="immunebirdfluchecken"
             class="c2"><#if item.immunebirdfluchecken??>${item.immunebirdfluchecken}</#if></td>
         <td n="immunebirdfluduck"
@@ -145,10 +149,7 @@
         <td n="immuneswine" class="c2"><#if item.immuneswine??>${item.immuneswine}</#if></td>
         <td n="immunenewcastle"
             class="c2"><#if item.immunenewcastle??>${item.immunenewcastle}</#if></td>
-        <td n="immunefmdpig" class="c2"><#if item.immunefmdpig??>${item.immunefmdpig}</#if></td>
-        <td n="immunefmdniu" class="c2"><#if item.immunefmdniu??>${item.immunefmdniu}</#if></td>
-        <td n="immunefmdsheep" class="c2"><#if item.immunefmdsheep??>${item.immunefmdsheep}</#if></td>
-        <td n="immunefmdother" class="c2"><#if item.immunefmdother??>${item.immunefmdother}</#if></td>
+
     </tr>
     </#list>
     </tbody>

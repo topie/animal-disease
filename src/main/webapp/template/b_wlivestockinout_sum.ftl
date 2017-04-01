@@ -103,17 +103,17 @@
     </colgroup>
     <tbody>
     <tr class="r5">
-        <td class="c1" colspan="22">2016年春防畜禽存栏和应免数量统计表</td>
+        <td class="c1" colspan="22">${templateName}</td>
     </tr>
     <tr class="r6">
         <td class="c2" rowspan="2">省份</td>
-        <td class="c2" colspan="8">春防期间存栏数量（万头/只/羽）</td>
-        <td class="c2" colspan="4">春防期间牲畜口蹄疫应免数量（万头/只）</td>
-        <td class="c10" colspan="4">春防期间禽流感应免数量（万羽）</td>
-        <td class="c2" colspan="2">春防期间A型口蹄疫应免数量（万头）</td>
-        <td class="c2">春防期间高致病性猪蓝耳病应免数量（万头）</td>
-        <td class="c2">春防期间猪瘟应免数量（万头）</td>
-        <td class="c2">春防期间新城疫应免数量（万羽）</td>
+        <td class="c2" colspan="8">期间存栏数量（万头/只/羽）</td>
+        <td class="c2" colspan="4">期间牲畜口蹄疫应免数量（万头/只）</td>
+        <td class="c10" colspan="4">期间禽流感应免数量（万羽）</td>
+        <td class="c2" colspan="2">期间A型口蹄疫应免数量（万头）</td>
+        <td class="c2">期间高致病性猪蓝耳病应免数量（万头）</td>
+        <td class="c2">期间猪瘟应免数量（万头）</td>
+        <td class="c2">期间新城疫应免数量（万羽）</td>
     </tr>
     <tr class="r7">
         <td class="c2">猪</td>

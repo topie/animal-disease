@@ -138,10 +138,12 @@
 
 			<tr class="r6">
 				<td class="c3">猪瘟活疫苗</td>
-				<td role="data" n="csfVaccine" class="c3"><#if item.csfVaccine??>${item.csfVaccine?c}</#if></td>
-				<td  class="c6"><#if itemSum.csfVaccine??>${itemSum.csfVaccine?string("0.##")}<#else>0.00</#if></td>
-				<td role="data" n="csfImmuneamount" class="c3"><#if item.csfImmuneamount??>${item.csfImmuneamount?c}</#if></td>
-                <td  class="c6"><#if itemSum.csfImmuneamount??>${itemSum.csfImmuneamount?string("0.##")}<#else>0.00</#if></td>
+				<td role="data" n="csfVaccine" class="c3"><#if item.csfVaccine??>${item.csfVaccine}</#if></td>
+				<td role="lj_csfVaccine" class="c6"><#if itemSum.csfVaccine??>${itemSum.csfVaccine}</#if></td>
+				<td role="data" n="csfImmuneamount" class="c3"><#if item.csfImmuneamount??>${item.csfImmuneamount}</#if></td>
+                <td role="lj_csfImmuneamount" class="c6"><#if itemSum.csfImmuneamount??>${itemSum.csfImmuneamount}</#if></td>
+                <input id="csfVaccine" type="hidden" value="${itemSum.csfVaccine?default(0)-item.csfVaccine?default(0)}"/>
+                <input id="csfImmuneamount" type="hidden" value="${itemSum.csfImmuneamount?default(0)-item.csfImmuneamount?default(0)}"/>
 			</tr>
 		</tbody>
 	</table>
@@ -181,7 +183,12 @@
         })
 
         var calculate = function () {
-
+            var csfVaccine = $.trim($('td[n="csfVaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="csfVaccine"]').text()));
+            var csfImmuneamount = $.trim($('td[n="csfImmuneamount"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="csfImmuneamount"]').text()));
+            var lj_csfVaccine=document.getElementById('csfVaccine').value;
+            var lj_csfImmuneamount=document.getElementById('csfImmuneamount').value;
+            $("td[role=lj_csfVaccine]").text((parseFloat(lj_csfVaccine)+parseFloat(csfVaccine)).toFixed(2));
+            $("td[role=lj_csfImmuneamount]").text((parseFloat(lj_csfImmuneamount)+parseFloat(csfImmuneamount)).toFixed(2));
         }
 
         calculate()

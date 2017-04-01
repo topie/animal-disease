@@ -72,14 +72,14 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="7">2016年春防猪瘟疫苗使用统计表</td>
+				<td class="c1" colspan="7">${templateName}统计表</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" colspan="7">猪瘟疫苗</td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="2">省份</td>
-				<td class="c2" colspan="2">春/秋防使用数量</td>
+				<td class="c2" colspan="2">使用数量</td>
 				<td class="c2" colspan="2">目前库存数量</td>
 				<td class="c2" colspan="2">全年使用数量</td>
 			</tr>
@@ -94,12 +94,12 @@
 			<#list items as item>
 			<tr class="r5">
 				<td n="cvRegionname" class="c2"><#if item.cvRegionname??>${item.cvRegionname}</#if></td>
-				<td n="cvLivingusecount"  class="c2"><#if item.cvLivingusecount??>${item.cvLivingusecount?c}</#if></td>
-				<td n="cvCellusercount"  class="c2"><#if item.cvCellusercount??>${item.cvCellusercount?c}</#if></td>
-				<td n="cvLivingstorecount"  class="c2"><#if item.cvLivingstorecount??>${item.cvLivingstorecount?c}</#if></td>
-				<td n="cvCellstorecount"  class="c2"><#if item.cvCellstorecount??>${item.cvCellstorecount?c}</#if></td>
-				<td n="cvLivingyearcount"  class="c2"><#if item.cvLivingyearcount??>${item.cvLivingyearcount?c}</#if></td>
-				<td n="cvCellyearcount"  class="c2"><#if item.cvCellyearcount??>${item.cvCellyearcount?c}</#if></td>
+				<td n="cvLivingusecount"  class="c2"><#if item.cvLivingusecount??>${item.cvLivingusecount}</#if></td>
+				<td n="cvCellusercount"  class="c2"><#if item.cvCellusercount??>${item.cvCellusercount}</#if></td>
+				<td n="cvLivingstorecount"  class="c2"><#if item.cvLivingstorecount??>${item.cvLivingstorecount}</#if></td>
+				<td n="cvCellstorecount"  class="c2"><#if item.cvCellstorecount??>${item.cvCellstorecount}</#if></td>
+				<td n="cvLivingyearcount"  class="c2"><#if item.cvLivingyearcount??>${item.cvLivingyearcount}</#if></td>
+				<td n="cvCellyearcount"  class="c2"><#if item.cvCellyearcount??>${item.cvCellyearcount}</#if></td>
 			</tr>
 			</#list>
 		</tbody>

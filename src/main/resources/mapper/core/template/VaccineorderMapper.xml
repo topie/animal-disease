@@ -193,6 +193,8 @@
     sum(ev_BrucellaA19DH) ev_BrucellaA19DH,
     sum(ev_BrucellaA19X) ev_BrucellaA19X,
     sum(ev_SheepHydatidDH) ev_SheepHydatidDH,
+    sum(ev_FMOSInactivatedX) ev_FMOSInactivatedX,
+    sum(ev_FMOSInactivatedDH) ev_FMOSInactivatedDH,
     sum(ev_SheepHydatidX) ev_SheepHydatidX
     from animal_disease.b_vaccineorder
     where regionCode=#{regionCode} AND date BETWEEN  #{beginTime} AND #{endTime}

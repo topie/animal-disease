@@ -72,7 +72,7 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="7">2016年春防新城疫疫苗使用统计表</td>
+				<td class="c1" colspan="7">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" colspan="7">新城疫疫苗</td>
@@ -94,12 +94,12 @@
 <#list items as item>
 			<tr class="r5">
 				<td n="nvRegionname" class="c2"><#if item.nvRegionname??>${item.nvRegionname}</#if></td>
-				<td n="nvInactivatedusecount"   class="c2"><#if item.nvInactivatedusecount??>${item.nvInactivatedusecount?c}</#if></td>
-				<td n="nvPoisonusecount"  class="c2"><#if item.nvPoisonusecount??>${item.nvPoisonusecount?c}</#if></td>
-				<td n="nvInactivatedstorecount"  class="c2"><#if item.nvInactivatedstorecount??>${item.nvInactivatedstorecount?c}</#if></td>
-				<td n="nvPoisonstorecount"  class="c2"><#if item.nvPoisonstorecount??>${item.nvPoisonstorecount?c}</#if></td>
-				<td n="nvInactivatedyearcount"  class="c2"><#if item.nvInactivatedyearcount??>${item.nvInactivatedyearcount?c}</#if></td>
-				<td n="nvPoisonyearcount"  class="c2"><#if item.nvPoisonyearcount??>${item.nvPoisonyearcount?c}</#if></td>
+				<td n="nvInactivatedusecount"   class="c2"><#if item.nvInactivatedusecount??>${item.nvInactivatedusecount}</#if></td>
+				<td n="nvPoisonusecount"  class="c2"><#if item.nvPoisonusecount??>${item.nvPoisonusecount}</#if></td>
+				<td n="nvInactivatedstorecount"  class="c2"><#if item.nvInactivatedstorecount??>${item.nvInactivatedstorecount}</#if></td>
+				<td n="nvPoisonstorecount"  class="c2"><#if item.nvPoisonstorecount??>${item.nvPoisonstorecount}</#if></td>
+				<td n="nvInactivatedyearcount"  class="c2"><#if item.nvInactivatedyearcount??>${item.nvInactivatedyearcount}</#if></td>
+				<td n="nvPoisonyearcount"  class="c2"><#if item.nvPoisonyearcount??>${item.nvPoisonyearcount}</#if></td>
 			</tr>
  </#list>
 		</tbody>

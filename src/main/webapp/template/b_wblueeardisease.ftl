@@ -151,27 +151,31 @@
 			<tr class="r5">
 				<td class="c3" >疫苗种类</td>
 				<td class="c3" >本周疫苗使用数量(万毫升/万头份)</td>
-				<td class="c5" >秋防累计疫苗使用数量(万毫升/万头份)</td>
+				<td class="c5" >累计疫苗使用数量(万毫升/万头份)</td>
 				<td class="c3" >本周免疫数量（万头）</td>
-				<td class="c3" >秋防累计免疫数量(万头)</td>
-				<td class="c3" >秋防应免数量(万头)</td>
+				<td class="c3" >累计免疫数量(万头)</td>
+				<td class="c3" >应免数量(万头)</td>
 				<td class="c3" >免疫进展(%)</td>
 			</tr>
 			<tr class="r7">
 				<td class="c3">高致病性猪蓝耳病灭活疫苗</td>
-				<td role="data" n="bedInactivatedvaccine"  class="c3"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine?c}</#if></td>
-				<td class="c6"><#if itemSum.bedInactivatedvaccine??>${itemSum.bedInactivatedvaccine} </#if></td>
-				<td role="data" n="bedInactivatedimmuneamount"  class="c3"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount?c}</#if></td>
-				<td class="c6"><#if itemSum.bedInactivatedimmuneamount??>${itemSum.bedInactivatedimmuneamount?c} </#if></td>
-				<td class="c6" rowspan="2"><#if wlivestockinout.immuneblueear??>${wlivestockinout.immuneblueear}</#if></td>
-				<td class="c6" rowspan="2"><#if wlivestockinout??&&itemSum??>${(itemSum.bedInactivatedimmuneamount+itemSum.bedWeakimmuneamount)*100/wlivestockinout.immuneblueear}</#if>%</td>
+				<td role="data" n="bedInactivatedvaccine"  class="c3"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine}</#if></td>
+				<td role="lj_bedInactivatedvaccine" class="c6"><#if itemSum.bedInactivatedvaccine??>${itemSum.bedInactivatedvaccine} </#if></td>
+				<td role="data" n="bedInactivatedimmuneamount"  class="c3"><#if item.bedInactivatedimmuneamount??>${item.bedInactivatedimmuneamount}</#if></td>
+				<td role="lj_bedInactivatedimmuneamount" class="c6"><#if itemSum.bedInactivatedimmuneamount??>${itemSum.bedInactivatedimmuneamount} </#if></td>
+				<td n="immuneblueear" class="c6" rowspan="2"><#if wlivestockinout.immuneblueear??>${wlivestockinout.immuneblueear}</#if></td>
+				<td n="jz_sum" class="c6" rowspan="2"><#if (wlivestockinout.immuneblueear??&&wlivestockinout.immuneblueear>0)>${(itemSum.bedInactivatedimmuneamount?default(0)+itemSum.bedWeakimmuneamount?default(0))*100/wlivestockinout.immuneblueear}%</#if></td>
 			</tr>
+            <input id="bedInactivatedvaccine" type="hidden" value="${itemSum.bedInactivatedvaccine?default(0)-item.bedInactivatedvaccine?default(0)}"/>
+            <input id="bedInactivatedimmuneamount" type="hidden" value="${itemSum.bedInactivatedimmuneamount?default(0)-item.bedInactivatedimmuneamount?default(0)}"/>
+            <input id="bedWeakvaccine" type="hidden" value="${itemSum.bedWeakvaccine?default(0)-item.bedWeakvaccine?default(0)}"/>
+            <input id="bedWeakimmuneamount" type="hidden" value="${itemSum.bedWeakimmuneamount?default(0)-item.bedWeakimmuneamount?default(0)}"/>
 			<tr class="r6">
 				<td class="c3">高致病性猪蓝耳病活疫苗</td>
 				<td role="data" n="bedWeakvaccine" class="c3"><#if item.bedWeakvaccine??>${item.bedWeakvaccine}</#if></td>
-				<td class="c6"><#if itemSum.bedWeakvaccine??>${itemSum.bedWeakvaccine}</#if> </td>
+				<td role="lj_bedWeakvaccine" class="c6"><#if itemSum.bedWeakvaccine??>${itemSum.bedWeakvaccine}</#if> </td>
 				<td role="data" n="bedWeakimmuneamount"  class="c3"><#if item.bedWeakimmuneamount??>${item.bedWeakimmuneamount}</#if></td>
-				<td class="c6"><#if itemSum.bedWeakimmuneamount??>${itemSum.bedWeakimmuneamount} </#if></td>
+				<td role="lj_bedWeakimmuneamount" class="c6"><#if itemSum.bedWeakimmuneamount??>${itemSum.bedWeakimmuneamount} </#if></td>
 			</tr>
 			<tr class="r8">
 				<td class="c3" rowspan="3">填报说明：</td>
@@ -221,6 +225,27 @@
         })
 
         var calculate = function () {
+            var bedInactivatedvaccine = $.trim($('td[n="bedInactivatedvaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="bedInactivatedvaccine"]').text()));
+            var bedInactivatedimmuneamount = $.trim($('td[n="bedInactivatedimmuneamount"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="bedInactivatedimmuneamount"]').text()));
+            var bedWeakvaccine = $.trim($('td[n="bedWeakvaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="bedWeakvaccine"]').text()));
+            var bedWeakimmuneamount = $.trim($('td[n="bedWeakimmuneamount"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="bedWeakimmuneamount"]').text()));
+            var lj_bedInactivatedvaccine=document.getElementById('bedInactivatedvaccine').value;
+            var lj_bedInactivatedimmuneamount=document.getElementById('bedInactivatedimmuneamount').value;
+            var lj_bedWeakvaccine=document.getElementById('bedWeakvaccine').value;
+            var lj_bedWeakimmuneamount=document.getElementById('bedWeakimmuneamount').value;
+
+            var sum_bedInactivatedvaccine=(parseFloat(lj_bedInactivatedvaccine)+parseFloat(bedInactivatedvaccine)).toFixed(2);
+            var sum_bedWeakvaccine=(parseFloat(lj_bedWeakvaccine)+parseFloat(bedWeakvaccine)).toFixed(2);
+            var sum_bedInactivatedimmuneamount=(parseFloat(lj_bedInactivatedimmuneamount)+parseFloat(bedInactivatedimmuneamount)).toFixed(2);
+            var sum_bedWeakimmuneamount=(parseFloat(lj_bedWeakimmuneamount)+parseFloat(bedWeakimmuneamount)).toFixed(2);
+            $("td[role=lj_bedInactivatedvaccine]").text(sum_bedInactivatedvaccine);
+            $("td[role=lj_bedWeakvaccine]").text(sum_bedWeakvaccine);
+            $("td[role=lj_bedInactivatedimmuneamount]").text(sum_bedInactivatedimmuneamount);
+            $("td[role=lj_bedWeakimmuneamount]").text(sum_bedWeakimmuneamount);
+            var lj_sum=(parseFloat(sum_bedInactivatedimmuneamount)+parseFloat(sum_bedWeakimmuneamount)).toFixed(2);
+            var immuneblueear = $.trim($('td[n="immuneblueear"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immuneblueear"]').text()));
+            var jz_sum=(parseFloat(lj_sum*100)/parseFloat(immuneblueear)).toFixed(2);
+            $('td[n="jz_sum"]').text(jz_sum+"%");
 
         }
 
