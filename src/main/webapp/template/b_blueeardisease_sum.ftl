@@ -87,8 +87,26 @@
 				<td class="c2">本月免疫数量（万头）</td>
 				<td class="c2">累计疫苗数量（万头）</td>
 			</tr>
+			<#assign bedInactivatedvaccineSum=0>
+			<#assign bedInactivatedvaccine_ljSum=0>
+			<#assign bedInactivatedimmuneamountSum=0>
+			<#assign bedInactivatedimmuneamount_ljSum=0>
+			<#assign bedWeakvaccineSum=0>
+			<#assign bedWeakvaccine_ljSum=0>
+			<#assign bedWeakimmuneamountSum=0>
+			<#assign bedWeakimmuneamount_ljSum=0>
 			<#list items as item>
-			<tr class="r4">
+				<#assign bedInactivatedvaccineSum=bedInactivatedvaccineSum?default(0) +item.bedInactivatedvaccine?default(0)>
+				<#assign bedInactivatedvaccine_ljSum=bedInactivatedvaccine_ljSum?default(0) +cumulatives[item_index].bedInactivatedvaccine?default(0)>
+				<#assign bedInactivatedimmuneamountSum=bedInactivatedimmuneamountSum?default(0) +item.bedInactivatedimmuneamount?default(0)>
+				<#assign bedInactivatedimmuneamount_ljSum=bedInactivatedimmuneamount_ljSum?default(0) +cumulatives[item_index].bedInactivatedimmuneamount?default(0)>
+				<#assign bedWeakvaccineSum=bedWeakvaccineSum?default(0) +item.bedWeakvaccine?default(0)>
+				<#assign bedWeakvaccine_ljSum=bedWeakvaccine_ljSum?default(0) +cumulatives[item_index].bedWeakvaccine?default(0)>
+				<#assign bedWeakimmuneamountSum=bedWeakimmuneamountSum?default(0) +item.bedWeakimmuneamount?default(0)>
+				<#assign bedWeakimmuneamount_ljSum=bedWeakimmuneamount_ljSum?default(0) +cumulatives[item_index].bedWeakimmuneamount?default(0)>
+				
+
+            <tr class="r4">
 				<td n="" class="c2"><#if item.bedRegionname??>${item.bedRegionname}</#if></td>
 				
 				<td  n="bedInactivatedvaccine" class="c2"><#if item.bedInactivatedvaccine??>${item.bedInactivatedvaccine}</#if></td>
@@ -102,7 +120,17 @@
 				<td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].bedWeakimmuneamount??>${cumulatives[item_index].bedWeakimmuneamount}</#if></td>
 			</tr>
 			</#list>
-			
+            <tr class="r4">
+                <td  class="c2">合计</td>
+                <td n="bedInactivatedvaccineSum" class="c2"><#if bedInactivatedvaccineSum??>${bedInactivatedvaccineSum}</#if></td>
+                <td n="bedInactivatedvaccine_ljSum" class="c2"><#if bedInactivatedvaccine_ljSum??>${bedInactivatedvaccine_ljSum}</#if></td>
+                <td n="bedInactivatedimmuneamountSum" class="c2"><#if bedInactivatedimmuneamountSum??>${bedInactivatedimmuneamountSum}</#if></td>
+                <td n="bedInactivatedimmuneamount_ljSum" class="c2"><#if bedInactivatedimmuneamount_ljSum??>${bedInactivatedimmuneamount_ljSum}</#if></td>
+                <td n="bedWeakvaccineSum" class="c2"><#if bedWeakvaccineSum??>${bedWeakvaccineSum}</#if></td>
+                <td n="bedWeakvaccine_ljSum" class="c2"><#if bedWeakvaccine_ljSum??>${bedWeakvaccine_ljSum}</#if></td>
+                <td n="bedWeakimmuneamountSum" class="c2"><#if bedWeakimmuneamountSum??>${bedWeakimmuneamountSum}</#if></td>
+                <td n="bedWeakimmuneamount_ljSum" class="c2"><#if bedWeakimmuneamount_ljSum??>${bedWeakimmuneamount_ljSum}</#if></td>
+            </tr>
 		</tbody>
 	</table>
 </body>

@@ -242,13 +242,13 @@
                 <td  n="immunebirdflugoose"  class="c7" rowspan="2"><#if wlivestockinout.immunebirdflugoose??>${wlivestockinout.immunebirdflugoose}</#if></td>
                 <td  n="immunebirdfluother"  class="c7" rowspan="2"><#if wlivestockinout.immunebirdfluother??>${wlivestockinout.immunebirdfluother}</#if></td>
 				<td  n="immunebirdSum"  class="c7" rowspan="2"><#if wlivestockinout??>${wlivestockinout.immunebirdfluchecken+wlivestockinout.immunebirdfluduck+wlivestockinout.immunebirdflugoose+wlivestockinout.immunebirdfluother}</#if></td>
-				<td n="jz_immunebirdfluchecken" class="c9" rowspan="2"><#if wlivestockinout.immunebirdfluchecken??&&(wlivestockinout.immunebirdfluchecken>0)>${(itemSum.aiInactivatedimmuneamountchicken+itemSum.aiJointimmuneamountchicken)*100/wlivestockinout.immunebirdfluchecken}</#if>%</td>
+				<td n="jz_immunebirdfluchecken" class="c9" rowspan="2"><#if wlivestockinout.immunebirdfluchecken??&&(wlivestockinout.immunebirdfluchecken>0)>${(itemSum.aiInactivatedimmuneamountchicken+itemSum.aiJointimmuneamountchicken)*100/wlivestockinout.immunebirdfluchecken}%</#if></td>
 				<td n="jz_immunebirdfluduck" class="c9" rowspan="2"><#if wlivestockinout.immunebirdfluchecken??&&(wlivestockinout.immunebirdfluduck>0)>${(itemSum.aiInactivatedimmuneamountduck+itemSum.aiJointimmuneamountduck)*100/wlivestockinout.immunebirdfluduck}%</#if></td>
 				<td n="jz_immunebirdflugoose" class="c9" rowspan="2"><#if wlivestockinout.immunebirdfluchecken??&&(wlivestockinout.immunebirdflugoose>0)>${(itemSum.aiInactivatedimmuneamountgoose+itemSum.aiJointimmuneamountgoose)*100/wlivestockinout.immunebirdflugoose}%</#if></td>
 				<td n="jz_immunebirdfluother" class="c9" rowspan="2"><#if wlivestockinout.immunebirdfluchecken??&&(wlivestockinout.immunebirdfluother>0)>${(itemSum.aiInactivatedimmuneamountother+itemSum.aiJointimmuneamountother)*100/wlivestockinout.immunebirdfluother}%</#if></td>
 				<td n="jz_sum" class="c9" rowspan="2"><#if (wlivestockinout.immunebirdfluchecken+wlivestockinout.immunebirdfluduck+wlivestockinout.immunebirdflugoose+wlivestockinout.immunebirdfluother>0)>
 				${(itemSum.aiInactivatedimmuneamountchicken+itemSum.aiInactivatedimmuneamountduck+itemSum.aiInactivatedimmuneamountgoose+itemSum.aiInactivatedimmuneamountother+itemSum.aiJointimmuneamountchicken+itemSum.aiJointimmuneamountduck+itemSum.aiJointimmuneamountgoose+itemSum.aiJointimmuneamountother)*100/(wlivestockinout.immunebirdfluchecken+wlivestockinout.immunebirdfluduck+wlivestockinout.immunebirdflugoose+wlivestockinout.immunebirdfluother)}
-				 </#if>%</td>
+				 %</#if></td>
                 <input id="aiInactivatedvaccine" type="hidden" value="${itemSum.aiInactivatedvaccine?default(0)-item.aiInactivatedvaccine?default(0)}"/>
                 <input id="aiInactivatedimmuneamountchicken" type="hidden" value="${itemSum.aiInactivatedimmuneamountchicken?default(0)-item.aiInactivatedimmuneamountchicken?default(0)}"/>
                 <input id="aiInactivatedimmuneamountduck" type="hidden" value="${itemSum.aiInactivatedimmuneamountduck?default(0)-item.aiInactivatedimmuneamountduck?default(0)}"/>

@@ -93,7 +93,17 @@
 				<td class="c2">本周免疫数量（万只）</td>
 				<td class="c2">累计免疫数量(万只)</td>
 			</tr>
+			<#assign wpdrVaccineSum=0>
+			<#assign wpdrVaccine_ljSum=0>
+			<#assign wpdrImmuneamountSum=0>
+			<#assign wpdrImmuneamount_ljSum=0>
+			<#assign pestedespetitsruminants_ljSum=0>
 			<#list items as item>
+				<#assign wpdrVaccineSum=wpdrVaccineSum?default(0) +item.wpdrVaccine?default(0)>
+				<#assign wpdrVaccine_ljSum=wpdrVaccine_ljSum?default(0) +cumulatives[item_index].wpdrVaccine?default(0)>
+				<#assign wpdrImmuneamountSum=wpdrImmuneamountSum?default(0) +item.wpdrImmuneamount?default(0)>
+				<#assign wpdrImmuneamount_ljSum=wpdrImmuneamount_ljSum?default(0) +cumulatives[item_index].wpdrImmuneamount?default(0)>
+				<#assign pestedespetitsruminants_ljSum=pestedespetitsruminants_ljSum?default(0) +wlivestockinouts[item_index].pestedespetitsruminants?default(0)>
 			<tr class="r4">
 				<td n="wpdrRegionname"  class="c2"><#if item.wpdrRegionname??>${item.wpdrRegionname}</#if></td>
 				
@@ -101,10 +111,20 @@
 				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].wpdrVaccine??>${cumulatives[item_index].wpdrVaccine}</#if></td>
 				<td n="wpdrImmuneamount"  class="c2"><#if item.wpdrImmuneamount??>${item.wpdrImmuneamount}</#if></td>
 				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].wpdrImmuneamount??>${cumulatives[item_index].wpdrImmuneamount}</#if></td>
-				<td n="wpdrShouldamount"  class="c2"><#if item.wpdrShouldamount??>${item.wpdrShouldamount}</#if></td>
-				<td class="c2"><#if item.wpdrShouldamount==0>0.00<#else><#if cumulatives[item_index]??&&cumulatives[item_index].wpdrImmuneamount??>${cumulatives[item_index].wpdrImmuneamount*100/item.wpdrShouldamount}</#if></#if>%</td>
+				<td n="wpdrShouldamount"  class="c2"><#if wlivestockinouts[item_index]??&&wlivestockinouts[item_index].pestedespetitsruminants??>${wlivestockinouts[item_index].pestedespetitsruminants}</#if></td>
+				<td class="c2"><#if (wlivestockinouts??&&wlivestockinouts[item_index]??&&wlivestockinouts[item_index].pestedespetitsruminants??&&wlivestockinouts[item_index].pestedespetitsruminants>0)><#if cumulatives[item_index]??&&cumulatives[item_index].wpdrImmuneamount??>${cumulatives[item_index].wpdrImmuneamount?default(0)*100/wlivestockinouts[item_index].pestedespetitsruminants}%</#if></#if></td>
 			</tr>
           </#list>
+            <tr class="r4">
+                <td  class="c2">合计</td>
+                <td n="wpdrVaccineSum" class="c2"><#if wpdrVaccineSum??>${wpdrVaccineSum}</#if></td>
+                <td n="wpdrVaccine_ljSum" class="c2"><#if wpdrVaccine_ljSum??>${wpdrVaccine_ljSum}</#if></td>
+                <td n="wpdrImmuneamountSum" class="c2"><#if wpdrImmuneamountSum??>${wpdrImmuneamountSum}</#if></td>
+                <td n="wpdrImmuneamount_ljSum" class="c2"><#if wpdrImmuneamount_ljSum??>${wpdrImmuneamount_ljSum}</#if></td>
+                <td n="pestedespetitsruminants_ljSum" class="c2"><#if pestedespetitsruminants_ljSum??>${pestedespetitsruminants_ljSum}</#if></td>
+                <td  class="c2"><#if (pestedespetitsruminants_ljSum>0)>${wpdrImmuneamount_ljSum*100/pestedespetitsruminants_ljSum}%</#if></td>
+
+            </tr>
 		</tbody>
 	</table>
 </body>

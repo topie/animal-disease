@@ -119,7 +119,52 @@
         <td class="c2">猪</td>
         <td class="c2">鸡</td>
     </tr>
+    <#assign herdspigSum=0>
+    <#assign herdsniuSum=0>
+    <#assign herdssheepSum=0>
+    <#assign herdsotherSum=0>
+    <#assign herdschickenSum=0>
+    <#assign herdsduckSum=0>
+    <#assign herdsgooseSum=0>
+    <#assign herdsotherqSum=0>
+    <#assign immunefmdpigSum=0>
+    <#assign immunefmdniuSum=0>
+    <#assign immunefmdsheepSum=0>
+    <#assign immunefmdotherSum=0>
+    <#assign immunebirdflucheckenSum=0>
+    <#assign immunebirdfluduckSum=0>
+    <#assign immunebirdflugooseSum=0>
+    <#assign immunebirdfluotherSum=0>
+    <#assign immuneafmdniuSum=0>
+    <#assign immuneafmdsheepSum=0>
+    <#assign immuneblueearSum=0>
+    <#assign immuneswineSum=0>
+    <#assign immunenewcastleSum=0>
+
     <#list items as item>
+        <#assign herdspigSum=herdspigSum?default(0) +item.herdspig?default(0)>
+        <#assign herdsniuSum=herdsniuSum?default(0) +item.herdsniu?default(0)>
+        <#assign herdssheepSum=herdssheepSum?default(0) +item.herdssheep?default(0)>
+        <#assign herdsotherSum=herdsotherSum?default(0) +item.herdsother?default(0)>
+        <#assign herdschickenSum=herdschickenSum?default(0) +item.herdschicken?default(0)>
+        <#assign herdsduckSum=herdsduckSum?default(0) +item.herdsduck?default(0)>
+        <#assign herdsgooseSum=herdsgooseSum?default(0) +item.herdsgoose?default(0)>
+        <#assign herdsotherqSum=herdsotherqSum?default(0) +item.herdsotherq?default(0)>
+        <#assign immunefmdpigSum=immunefmdpigSum?default(0) +item.immunefmdpig?default(0)>
+        <#assign immunefmdniuSum=immunefmdniuSum?default(0) +item.immunefmdniu?default(0)>
+        <#assign immunefmdsheepSum=immunefmdsheepSum?default(0) +item.immunefmdsheep?default(0)>
+        <#assign immunefmdotherSum=immunefmdotherSum?default(0) +item.immunefmdother?default(0)>
+        <#assign immunebirdflucheckenSum=immunebirdflucheckenSum?default(0) +item.immunebirdfluchecken?default(0)>
+        <#assign immunebirdfluduckSum=immunebirdfluduckSum?default(0) +item.immunebirdfluduck?default(0)>
+        <#assign immunebirdflugooseSum=immunebirdflugooseSum?default(0) +item.immunebirdflugoose?default(0)>
+        <#assign immunebirdfluotherSum=immunebirdfluotherSum?default(0) +item.immunebirdfluother?default(0)>
+        <#assign immuneafmdniuSum=immuneafmdniuSum?default(0) +item.immuneafmdniu?default(0)>
+        <#assign immuneafmdsheepSum=immuneafmdsheepSum?default(0) +item.immuneafmdsheep?default(0)>
+        <#assign immuneblueearSum=immuneblueearSum?default(0) +item.immuneblueear?default(0)>
+        <#assign immuneswineSum=immuneswineSum?default(0) +item.immuneswine?default(0)>
+    
+        <#assign immunenewcastleSum=immunenewcastleSum?default(0) +item.immunenewcastle?default(0)>
+
     <tr class="r3">
         <td class="c2">${item.livRegionname}</td>
         <td n="herdspig" class="c2"><#if item.herdspig??>${item.herdspig}</#if></td>
@@ -152,6 +197,31 @@
 
     </tr>
     </#list>
+    <tr class="r3">
+        <td  class="c2">合计</td>
+        <td n="herdspigSum" class="c2"><#if herdspigSum??>${herdspigSum}</#if></td>
+        <td n="herdsniuSum" class="c2"><#if herdsniuSum??>${herdsniuSum}</#if></td>
+        <td n="herdssheepSum" class="c2"><#if herdssheepSum??>${herdssheepSum}</#if></td>
+        <td n="herdsotherSum" class="c2"><#if herdsotherSum??>${herdsotherSum}</#if></td>
+        <td n="herdschickenSum" class="c2"><#if herdschickenSum??>${herdschickenSum}</#if></td>
+        <td n="herdsduckSum" class="c2"><#if herdsduckSum??>${herdsduckSum}</#if></td>
+        <td n="herdsgooseSum" class="c2"><#if herdsgooseSum??>${herdsgooseSum}</#if></td>
+        <td n="herdsotherqSum" class="c2"><#if herdsotherqSum??>${herdsotherqSum}</#if></td>
+        <td n="immunefmdpigSum" class="c2"><#if immunefmdpigSum??>${immunefmdpigSum}</#if></td>
+        <td n="immunefmdniuSum" class="c2"><#if immunefmdniuSum??>${immunefmdniuSum}</#if></td>
+        <td n="immunefmdsheepSum" class="c2"><#if immunefmdsheepSum??>${immunefmdsheepSum}</#if></td>
+        <td n="immunefmdotherSum" class="c2"><#if immunefmdotherSum??>${immunefmdotherSum}</#if></td>
+        <td n="immunebirdflucheckenSum" class="c2"><#if immunebirdflucheckenSum??>${immunebirdflucheckenSum}</#if></td>
+        <td n="immunebirdfluduckSum" class="c2"><#if immunebirdfluduckSum??>${immunebirdfluduckSum}</#if></td>
+        <td n="immunebirdflugooseSum" class="c2"><#if immunebirdflugooseSum??>${immunebirdflugooseSum}</#if></td>
+        <td n="immunebirdfluotherSum" class="c2"><#if immunebirdfluotherSum??>${immunebirdfluotherSum}</#if></td>
+        <td n="immuneafmdniuSum" class="c2"><#if immuneafmdniuSum??>${immuneafmdniuSum}</#if></td>
+        <td n="immuneafmdsheepSum" class="c2"><#if immuneafmdsheepSum??>${immuneafmdsheepSum}</#if></td>
+        <td n="immuneblueearSum" class="c2"><#if immuneblueearSum??>${immuneblueearSum}</#if></td>
+        <td n="immuneswineSum" class="c2"><#if immuneswineSum??>${immuneswineSum}</#if></td>
+        <td n="immunenewcastleSum" class="c2"><#if immunenewcastleSum??>${immunenewcastleSum}</#if></td>
+
+    </tr>
     </tbody>
 </table>
 

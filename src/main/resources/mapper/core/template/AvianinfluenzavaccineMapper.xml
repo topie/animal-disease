@@ -44,4 +44,14 @@
     <result column="av_Re6Re7Re8StoreCount" property="avRe6re7re8storecount" jdbcType="DECIMAL" />
     <result column="av_Re6Re7Re8YearCount" property="avRe6re7re8yearcount" jdbcType="DECIMAL" />
   </resultMap>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select t1.Liv_regionCode as av_regionCode ,t1.Liv_regionName as av_regionName,t2.* from
+    (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+    LEFT JOIN
+    ( select  * from animal_disease.b_avianinfluenzavaccine
+    where  av_date BETWEEN  #{beginTime} AND #{endTime}
+    ) as t2
+    on t1.Liv_regionCode=t2.av_regionCode
+    ORDER  by t1.Liv_regionCode
+  </select>
 </mapper>

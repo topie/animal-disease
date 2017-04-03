@@ -65,4 +65,14 @@
     <result column="ev_SheepHydatid" property="evSheephydatid" jdbcType="DECIMAL" />
     <result column="ev_AllSheepHydatid" property="evAllsheephydatid" jdbcType="DECIMAL" />
   </resultMap>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select t1.Liv_regionCode as ev_regionCode ,t1.Liv_regionName as ev_regionName,t2.* from
+    (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+    LEFT JOIN
+    ( select  * from animal_disease.B_EmergencyVaccine
+    where  ev_date BETWEEN  #{beginTime} AND #{endTime}
+    ) as t2
+    on t1.Liv_regionCode=t2.ev_regionCode
+    ORDER  by t1.Liv_regionCode
+  </select>
 </mapper>

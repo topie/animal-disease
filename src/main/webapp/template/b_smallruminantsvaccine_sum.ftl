@@ -123,7 +123,13 @@
 				<td class="c4">小反刍兽疫疫苗(万头份)</td>
 				<td class="c4">小反刍兽疫疫苗(万头份)</td>
 			</tr>
+			<#assign srvH5n2d7usecountSum=0>
+			<#assign srvH5n2d7storecountSum=0>
+			<#assign srvH5n2d7yearcountSum=0>
 	 <#list items as item>
+		 <#assign srvH5n2d7usecountSum=srvH5n2d7usecountSum?default(0) +item.srvH5n2d7usecount?default(0)>
+		 <#assign srvH5n2d7storecountSum=srvH5n2d7storecountSum?default(0) +item.srvH5n2d7storecount?default(0)>
+		 <#assign srvH5n2d7yearcountSum=srvH5n2d7yearcountSum?default(0) +item.srvH5n2d7yearcount?default(0)>
 			<tr class="r5">
 				<td  n="srvRegionname" class="c5"><#if item.srvRegionname??>${item.srvRegionname}</#if></td>
 				<td  n="srvH5n2d7usecount"  class="c5"><#if item.srvH5n2d7usecount??>${item.srvH5n2d7usecount}</#if></td>
@@ -131,6 +137,14 @@
 				<td  n="srvH5n2d7yearcount"  class="c6"><#if item.srvH5n2d7yearcount??>${item.srvH5n2d7yearcount}</#if></td>
 			</tr>
    </#list>
+            <tr class="r5">
+                <td  class="c2">合计</td>
+                <td n="srvH5n2d7usecountSum" class="c2"><#if srvH5n2d7usecountSum??>${srvH5n2d7usecountSum}</#if></td>
+                <td n="srvH5n2d7storecountSum" class="c2"><#if srvH5n2d7storecountSum??>${srvH5n2d7storecountSum}</#if></td>
+                <td n="srvH5n2d7yearcountSum" class="c2"><#if srvH5n2d7yearcountSum??>${srvH5n2d7yearcountSum}</#if></td>
+              
+
+            </tr>
 		</tbody>
 	</table>
 </body>

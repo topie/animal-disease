@@ -25,7 +25,11 @@
     where pdpr_regionCode=#{regionCode} AND pdpr_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
   <select id="selectAllByDate" resultMap="BaseResultMap">
-     select
+ select t1.Liv_regionCode as pdpr_regionCode ,t1.Liv_regionName as pdpr_regionName,t2.* from
+    (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+    LEFT JOIN
+    ( select
+    pdpr_regionCode,
     sum(pdpr_LiveVaccine) pdpr_LiveVaccine,
     sum(pdpr_LiveBreedingSheep) pdpr_LiveBreedingSheep,
     sum(pdpr_LiveGoat) pdpr_LiveGoat,
@@ -33,6 +37,8 @@
     from animal_disease.b_pestedespetitsruminants
     where  pdpr_date BETWEEN  #{beginTime} AND #{endTime}
     GROUP  by pdpr_regionCode
-    order by pdpr_regionCode
+    ) as t2
+    on t1.Liv_regionCode=t2.pdpr_regionCode
+    ORDER  by t1.Liv_regionCode
   </select>
 </mapper>

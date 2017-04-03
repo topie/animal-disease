@@ -17,4 +17,14 @@
     <result column="bv_inactivatedYearCount" property="bvInactivatedyearcount" jdbcType="DECIMAL" />
     <result column="bv_livingYearCount" property="bvLivingyearcount" jdbcType="DECIMAL" />
   </resultMap>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select t1.Liv_regionCode as bv_regionCode ,t1.Liv_regionName as bv_regionName,t2.* from
+    (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+    LEFT JOIN
+    ( select  * from animal_disease.B_BlueVaccine
+    where  bv_date BETWEEN  #{beginTime} AND #{endTime}
+    ) as t2
+    on t1.Liv_regionCode=t2.bv_regionCode
+    ORDER  by t1.Liv_regionCode
+  </select>
 </mapper>

@@ -93,7 +93,17 @@
 				<td class="c2">本周免疫数量（万头）</td>
 				<td class="c2">累计免疫数量(万头)</td>
 			</tr>
+			<#assign csfVaccineSum=0>
+			<#assign csfVaccine_ljSum=0>
+			<#assign csfImmuneamountSum=0>
+			<#assign csfImmuneamount_ljSum=0>
+			<#assign immuneswine_ljSum=0>
 			<#list items as item>
+				<#assign csfVaccineSum=csfVaccineSum?default(0) +item.csfVaccine?default(0)>
+				<#assign csfVaccine_ljSum=csfVaccine_ljSum?default(0) +cumulatives[item_index].csfVaccine?default(0)>
+				<#assign csfImmuneamountSum=csfImmuneamountSum?default(0) +item.csfImmuneamount?default(0)>
+				<#assign csfImmuneamount_ljSum=csfImmuneamount_ljSum?default(0) +cumulatives[item_index].csfImmuneamount?default(0)>
+				<#assign immuneswine_ljSum=immuneswine_ljSum?default(0) +wlivestockinouts[item_index].immuneswine?default(0)>
 			<tr class="r4">
 				<td class="c2"><#if item.csfRegionname??>${item.csfRegionname}</#if></td>
 				<td class="c2"><#if item.csfVaccine??>${item.csfVaccine}</#if></td>
@@ -102,10 +112,20 @@
 				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].csfImmuneamount??>${cumulatives[item_index].csfImmuneamount}</#if></td>
 				<td class="c2"><#if wlivestockinouts[item_index]??&&wlivestockinouts[item_index].immuneswine??>${wlivestockinouts[item_index].immuneswine}</#if></td>
 				<td n="" class="c2">
-					<#if  wlivestockinouts[item_index]??&& wlivestockinouts[item_index].immuneswine==0>0.00<#else><#if wlivestockinouts[item_index]??&&cumulatives[item_index]??>${cumulatives[item_index].csfImmuneamount?default(0)*100/wlivestockinouts[item_index].immuneswine}</#if></#if>%
+					<#if  (wlivestockinouts[item_index]??&&wlivestockinouts[item_index].immuneswine??&& wlivestockinouts[item_index].immuneswine>0)><#if wlivestockinouts[item_index]??&&cumulatives[item_index]??>${cumulatives[item_index].csfImmuneamount?default(0)*100/wlivestockinouts[item_index].immuneswine}%</#if></#if>
 				</td>
 			</tr>
   </#list>
+            <tr class="r4">
+                <td  class="c2">合计</td>
+                <td n="csfVaccineSum" class="c2"><#if csfVaccineSum??>${csfVaccineSum}</#if></td>
+                <td n="csfVaccine_ljSum" class="c2"><#if csfVaccine_ljSum??>${csfVaccine_ljSum}</#if></td>
+                <td n="csfImmuneamountSum" class="c2"><#if csfImmuneamountSum??>${csfImmuneamountSum}</#if></td>
+                <td n="csfImmuneamount_ljSum" class="c2"><#if csfImmuneamount_ljSum??>${csfImmuneamount_ljSum}</#if></td>
+                <td n="immuneswine_ljSum" class="c2"><#if immuneswine_ljSum??>${immuneswine_ljSum}</#if></td>
+                <td  class="c2"><#if (immuneswine_ljSum>0)>${csfImmuneamount_ljSum*100/immuneswine_ljSum}%</#if></td>
+
+            </tr>
 		</tbody>
 	</table>
 </body>

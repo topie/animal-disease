@@ -91,7 +91,19 @@
 				<td class="c2">新城疫灭活疫苗（万毫升）</td>
 				<td class="c2">新城疫弱毒疫苗（万羽份）</td>
 			</tr>
+			<#assign nvInactivatedusecountSum=0>
+			<#assign nvPoisonusecountSum=0>
+			<#assign nvInactivatedstorecountSum=0>
+			<#assign nvPoisonstorecountSum=0>
+			<#assign nvInactivatedyearcountSum=0>
+			<#assign nvPoisonyearcountSum=0>
 <#list items as item>
+	<#assign nvInactivatedusecountSum=nvInactivatedusecountSum?default(0) +item.nvInactivatedusecount?default(0)>
+	<#assign nvPoisonusecountSum=nvPoisonusecountSum?default(0) +item.nvPoisonusecount?default(0)>
+	<#assign nvInactivatedstorecountSum=nvInactivatedstorecountSum?default(0) +item.nvInactivatedstorecount?default(0)>
+	<#assign nvPoisonstorecountSum=nvPoisonstorecountSum?default(0) +item.nvPoisonstorecount?default(0)>
+	<#assign nvInactivatedyearcountSum=nvInactivatedyearcountSum?default(0) +item.nvInactivatedyearcount?default(0)>
+	<#assign nvPoisonyearcountSum=nvPoisonyearcountSum?default(0) +item.nvPoisonyearcount?default(0)>
 			<tr class="r5">
 				<td n="nvRegionname" class="c2"><#if item.nvRegionname??>${item.nvRegionname}</#if></td>
 				<td n="nvInactivatedusecount"   class="c2"><#if item.nvInactivatedusecount??>${item.nvInactivatedusecount}</#if></td>
@@ -102,6 +114,16 @@
 				<td n="nvPoisonyearcount"  class="c2"><#if item.nvPoisonyearcount??>${item.nvPoisonyearcount}</#if></td>
 			</tr>
  </#list>
+            <tr class="r5">
+                <td  class="c2">合计</td>
+                <td n="nvInactivatedusecountSum" class="c2"><#if nvInactivatedusecountSum??>${nvInactivatedusecountSum}</#if></td>
+                <td n="nvPoisonusecountSum" class="c2"><#if nvPoisonusecountSum??>${nvPoisonusecountSum}</#if></td>
+                <td n="nvInactivatedstorecountSum" class="c2"><#if nvInactivatedstorecountSum??>${nvInactivatedstorecountSum}</#if></td>
+                <td n="nvPoisonstorecountSum" class="c2"><#if nvPoisonstorecountSum??>${nvPoisonstorecountSum}</#if></td>
+                <td n="nvInactivatedyearcountSum" class="c2"><#if nvInactivatedyearcountSum??>${nvInactivatedyearcountSum}</#if></td>
+                <td n="nvPoisonyearcountSum" class="c2"><#if nvPoisonyearcountSum??>${nvPoisonyearcountSum}</#if></td>
+
+            </tr>
 		</tbody>
 	</table>
 </body>

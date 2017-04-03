@@ -187,7 +187,7 @@
 				<td role="data" n="csfImmuneamount"  class="c7"><#if item.csfImmuneamount??>${item.csfImmuneamount}</#if></td>
 				<td role="lj_csfImmuneamount" class="c8"><#if itemSum.csfImmuneamount??>${itemSum.csfImmuneamount} </#if></td>
 				<td n="immuneswine" class="c8"><#if wlivestockinout.immuneswine??>${wlivestockinout.immuneswine}</#if></td>
-				<td n="jz_sum" class="c8"><#if (wlivestockinout.immuneswine??&&wlivestockinout.immuneswine>0)>${itemSum.csfImmuneamount?default(0)*100/wlivestockinout.immuneswine}</#if>%</td>
+				<td n="jz_sum" class="c8"><#if (wlivestockinout.immuneswine??&&wlivestockinout.immuneswine>0)>${itemSum.csfImmuneamount?default(0)*100/wlivestockinout.immuneswine}%</#if></td>
 			</tr>
             <input id="csfVaccine" type="hidden" value="${itemSum.csfVaccine?default(0)-item.csfVaccine?default(0)}"/>
             <input id="csfImmuneamount" type="hidden" value="${itemSum.csfImmuneamount?default(0)-item.csfImmuneamount?default(0)}"/>

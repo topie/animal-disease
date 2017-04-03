@@ -140,7 +140,23 @@
 				<td class="c2">牛</td>
 				<td class="c2">羊</td>
 			</tr>
+			<#assign pdprLivevaccineSum=0>
+			<#assign pdprLivevaccine_ljSum=0>
+			<#assign pdprLivebreedingsheepSum=0>
+			<#assign pdprLivebreedingsheep_ljSum=0>
+			<#assign pdprLivesheepSum=0>
+			<#assign pdprLivesheep_ljSum=0>
+			<#assign pdprLivegoatSum=0>
+			<#assign pdprLivegoat_ljSum=0>
 			<#list items as item>
+				<#assign pdprLivevaccineSum=pdprLivevaccineSum?default(0) +item.pdprLivevaccine?default(0)>
+				<#assign pdprLivevaccine_ljSum=pdprLivevaccine_ljSum?default(0) +cumulatives[item_index].pdprLivevaccine?default(0)>
+				<#assign pdprLivebreedingsheepSum=pdprLivebreedingsheepSum?default(0) +item.pdprLivebreedingsheep?default(0)>
+				<#assign pdprLivebreedingsheep_ljSum=pdprLivebreedingsheep_ljSum?default(0) +cumulatives[item_index].pdprLivebreedingsheep?default(0)>
+				<#assign pdprLivesheepSum=pdprLivesheepSum?default(0) +item.pdprLivesheep?default(0)>
+				<#assign pdprLivesheep_ljSum=pdprLivesheep_ljSum?default(0) +cumulatives[item_index].pdprLivesheep?default(0)>
+				<#assign pdprLivegoatSum=pdprLivegoatSum?default(0) +item.pdprLivegoat?default(0)>
+				<#assign pdprLivegoat_ljSum=pdprLivegoat_ljSum?default(0) +cumulatives[item_index].pdprLivegoat?default(0)>
 			<tr class="r6">
 				<td n="pdprRegionname"  class="c2"><#if item.pdprRegionname??>${item.pdprRegionname}</#if></td>
 				
@@ -154,6 +170,18 @@
 				<td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].pdprLivesheep??>${cumulatives[item_index].pdprLivesheep}</#if></td>
 			</tr>
 			</#list>
+            <tr class="r6">
+                <td  class="c2">合计</td>
+                <td n="pdprLivevaccineSum" class="c2"><#if pdprLivevaccineSum??>${pdprLivevaccineSum}</#if></td>
+                <td n="pdprLivevaccine_ljSum" class="c2"><#if pdprLivevaccine_ljSum??>${pdprLivevaccine_ljSum}</#if></td>
+                <td n="pdprLivebreedingsheepSum" class="c2"><#if pdprLivebreedingsheepSum??>${pdprLivebreedingsheepSum}</#if></td>
+                <td n="pdprLivegoatSum" class="c2"><#if pdprLivegoatSum??>${pdprLivegoatSum}</#if></td>
+                <td n="pdprLivesheepSum" class="c2"><#if pdprLivesheepSum??>${pdprLivesheepSum}</#if></td>
+                <td n="pdprLivebreedingsheep_ljSum" class="c2"><#if pdprLivebreedingsheep_ljSum??>${pdprLivebreedingsheep_ljSum}</#if></td>
+                <td n="pdprLivegoat_ljSum" class="c2"><#if pdprLivegoat_ljSum??>${pdprLivegoat_ljSum}</#if></td>
+                <td n="pdprLivesheep_ljSum" class="c2"><#if pdprLivesheep_ljSum??>${pdprLivesheep_ljSum}</#if></td>
+
+            </tr>
 		</tbody>
 	</table>
 </body>
