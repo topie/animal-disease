@@ -91,7 +91,19 @@
 				<td class="c2">猪瘟活疫苗(万头份)</td>
 				<td class="c2">传代细胞源猪瘟活疫苗(万头份)</td>
 			</tr>
+			<#assign cvLivingusecountSum=0>
+			<#assign cvCellusercountSum=0>
+			<#assign cvLivingstorecountSum=0>
+			<#assign cvCellstorecountSum=0>
+			<#assign cvLivingyearcountSum=0>
+			<#assign cvCellyearcountSum=0>
 			<#list items as item>
+				<#assign cvLivingusecountSum=cvLivingusecountSum?default(0) +item.cvLivingusecount?default(0)>
+				<#assign cvCellusercountSum=cvCellusercountSum?default(0) +item.cvCellusercount?default(0)>
+				<#assign cvLivingstorecountSum=cvLivingstorecountSum?default(0) +item.cvLivingstorecount?default(0)>
+				<#assign cvCellstorecountSum=cvCellstorecountSum?default(0) +item.cvCellstorecount?default(0)>
+				<#assign cvLivingyearcountSum=cvLivingyearcountSum?default(0) +item.cvLivingyearcount?default(0)>
+				<#assign cvCellyearcountSum=cvCellyearcountSum?default(0) +item.cvCellyearcount?default(0)>
 			<tr class="r5">
 				<td n="cvRegionname" class="c2"><#if item.cvRegionname??>${item.cvRegionname}</#if></td>
 				<td n="cvLivingusecount"  class="c2"><#if item.cvLivingusecount??>${item.cvLivingusecount}</#if></td>
@@ -102,6 +114,16 @@
 				<td n="cvCellyearcount"  class="c2"><#if item.cvCellyearcount??>${item.cvCellyearcount}</#if></td>
 			</tr>
 			</#list>
+            <tr class="r5">
+                <td  class="c2">合计</td>
+                <td n="cvLivingusecountSum" class="c2"><#if cvLivingusecountSum??>${cvLivingusecountSum}</#if></td>
+                <td n="cvCellusercountSum" class="c2"><#if cvCellusercountSum??>${cvCellusercountSum}</#if></td>
+                <td n="cvLivingstorecountSum" class="c2"><#if cvLivingstorecountSum??>${cvLivingstorecountSum}</#if></td>
+                <td n="cvCellstorecountSum" class="c2"><#if cvCellstorecountSum??>${cvCellstorecountSum}</#if></td>
+                <td n="cvLivingyearcountSum" class="c2"><#if cvLivingyearcountSum??>${cvLivingyearcountSum}</#if></td>
+                <td n="cvCellyearcountSum" class="c2"><#if cvCellyearcountSum??>${cvCellyearcountSum}</#if></td>
+
+            </tr>
 		</tbody>
 	</table>
 </body>

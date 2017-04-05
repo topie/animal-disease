@@ -26,13 +26,19 @@
     where wpdr_regionCode=#{regionCode} AND wpdr_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
   <select id="selectAllByDate" resultMap="BaseResultMap">
-     select
+    select t1.Liv_regionCode as wpdr_regionCode ,t1.Liv_regionName as wpdr_regionName,wpdr_vaccine,wpdr_immuneAmount,wpdr_shouldAmount from
+      (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+      LEFT JOIN
+     (select
+     wpdr_regionCode,
     sum(wpdr_vaccine) wpdr_vaccine,
     sum(wpdr_immuneAmount) wpdr_immuneAmount,
     sum(wpdr_shouldAmount) wpdr_shouldAmount
      from animal_disease.b_wpestedespetitsruminants
      where  wpdr_date BETWEEN  #{beginTime} AND #{endTime}
      GROUP  BY wpdr_regionCode
-     order by wpdr_regionCode
+      )  as t2
+      on t1.Liv_regionCode=t2.wpdr_regionCode
+      ORDER  by t1.Liv_regionCode
   </select>
 </mapper>

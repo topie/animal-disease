@@ -65,7 +65,11 @@
     where fmd_regionCode=#{regionCode} AND fmd_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
   <select id="selectAllByDate" resultMap="BaseResultMap">
-    select
+     select t1.Liv_regionCode as fmd_regionCode ,t1.Liv_regionName as fmd_regionName,t2.* from
+        (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+        LEFT JOIN
+        (select
+        fmd_regionCode,
     sum(fmd_inactivatedVaccine) fmd_inactivatedVaccine,
     sum(fmd_inactivatedImmuneAmountPig) fmd_inactivatedImmuneAmountPig,
     sum(fmd_inactivatedImmuneAmountOther) fmd_inactivatedImmuneAmountOther,
@@ -86,6 +90,8 @@
     from animal_disease.b_footandmouthdisease
     where  fmd_date BETWEEN  #{beginTime} AND #{endTime}
     GROUP  by fmd_regionCode
-    order by fmd_regionCode
+    ) as t2
+        on t1.Liv_regionCode=t2.fmd_regionCode
+        ORDER  by t1.Liv_regionCode
   </select>
 </mapper>

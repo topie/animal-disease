@@ -87,8 +87,24 @@
 				<td class="c2">本月免疫数量（万羽）</td>
 				<td class="c2">累计疫苗数量（万羽）</td>
 			</tr>
-			
+
+			<#assign ncInactivatedvaccineSum=0>
+			<#assign ncInactivatedvaccine_ljSum=0>
+			<#assign ncInactivatedimmuneamountSum=0>
+			<#assign ncInactivatedimmuneamount_ljSum=0>
+			<#assign ncJointvaccineSum=0>
+			<#assign ncJointvaccine_ljSum=0>
+			<#assign ncJointimmuneamountSum=0>
+			<#assign ncJointimmuneamount_ljSum=0>
 			<#list items as item>
+				<#assign ncInactivatedvaccineSum=ncInactivatedvaccineSum?default(0) +item.ncInactivatedvaccine?default(0)>
+				<#assign ncInactivatedvaccine_ljSum=ncInactivatedvaccine_ljSum?default(0) +cumulatives[item_index].ncInactivatedvaccine?default(0)>
+				<#assign ncInactivatedimmuneamountSum=ncInactivatedimmuneamountSum?default(0) +item.ncInactivatedimmuneamount?default(0)>
+				<#assign ncInactivatedimmuneamount_ljSum=ncInactivatedimmuneamount_ljSum?default(0) +cumulatives[item_index].ncInactivatedimmuneamount?default(0)>
+				<#assign ncJointvaccineSum=ncJointvaccineSum?default(0) +item.ncJointvaccine?default(0)>
+				<#assign ncJointvaccine_ljSum=ncJointvaccine_ljSum?default(0) +cumulatives[item_index].ncJointvaccine?default(0)>
+				<#assign ncJointimmuneamountSum=ncJointimmuneamountSum?default(0) +item.ncJointimmuneamount?default(0)>
+				<#assign ncJointimmuneamount_ljSum=ncJointimmuneamount_ljSum?default(0) +cumulatives[item_index].ncJointimmuneamount?default(0)>
 			<tr class="r4">
 				<td n="ncRegionname"  class="c2"><#if item.ncRegionname??>${item.ncRegionname}</#if></td>
 			
@@ -104,6 +120,19 @@
 
 			</tr>
 			</#list>
+            <tr class="r4">
+                <td  class="c2">合计</td>
+                <td n="ncInactivatedvaccineSum" class="c2"><#if ncInactivatedvaccineSum??>${ncInactivatedvaccineSum}</#if></td>
+                <td n="ncInactivatedvaccine_ljSum" class="c2"><#if ncInactivatedvaccine_ljSum??>${ncInactivatedvaccine_ljSum}</#if></td>
+                <td n="ncInactivatedimmuneamountSum" class="c2"><#if ncInactivatedimmuneamountSum??>${ncInactivatedimmuneamountSum}</#if></td>
+                <td n="ncInactivatedimmuneamount_ljSum" class="c2"><#if ncInactivatedimmuneamount_ljSum??>${ncInactivatedimmuneamount_ljSum}</#if></td>
+                <td n="ncJointvaccineSum" class="c2"><#if ncJointvaccineSum??>${ncJointvaccineSum}</#if></td>
+                <td n="ncJointvaccine_ljSum" class="c2"><#if ncJointvaccine_ljSum??>${ncJointvaccine_ljSum}</#if></td>
+                <td n="ncJointimmuneamountSum" class="c2"><#if ncJointimmuneamountSum??>${ncJointimmuneamountSum}</#if></td>
+                <td n="ncJointimmuneamount_ljSum" class="c2"><#if ncJointimmuneamount_ljSum??>${ncJointimmuneamount_ljSum}</#if></td>
+
+
+            </tr>
 		</tbody>
 	</table>
 </body>

@@ -32,7 +32,11 @@
     where nc_regionCode=#{regionCode} AND nc_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
   <select id="selectAllByDate" resultMap="BaseResultMap">
-     select
+ select t1.Liv_regionCode as nc_regionCode ,t1.Liv_regionName as nc_regionName,t2.* from
+      (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+      LEFT JOIN
+     ( select
+     nc_regionCode,
     sum(nc_inactivatedVaccine) nc_inactivatedVaccine,
     sum(nc_inactivatedImmuneAmount) nc_inactivatedImmuneAmount,
     sum(nc_inactivatedShouldAmount) nc_inactivatedShouldAmount,
@@ -42,6 +46,8 @@
       from animal_disease.b_wnewcastle
        where  nc_date BETWEEN  #{beginTime} AND #{endTime}
        GROUP  BY nc_regionCode
-       order by nc_regionCode
+       ) as t2
+      on t1.Liv_regionCode=t2.nc_regionCode
+      ORDER  by t1.Liv_regionCode
   </select>
 </mapper>

@@ -30,7 +30,11 @@
     where bed_regionCode=#{regionCode} AND bed_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
   <select id="selectAllByDate" resultMap="BaseResultMap">
-    select
+    select t1.Liv_regionCode as bed_regionCode ,t1.Liv_regionName as bed_regionName,t2.* from
+        (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+        LEFT JOIN
+        ( select
+        bed_regionCode,
     sum(bed_inactivatedVaccine) bed_inactivatedVaccine,
     sum(bed_inactivatedImmuneAmount) bed_inactivatedImmuneAmount,
     sum(bed_weakVaccine) bed_weakVaccine,
@@ -38,6 +42,8 @@
     from animal_disease.b_blueeardisease
     where  bed_date BETWEEN  #{beginTime} AND #{endTime}
     GROUP  by bed_regionCode
-    order by bed_regionCode
+     ) as t2
+        on t1.Liv_regionCode=t2.bed_regionCode
+        ORDER  by t1.Liv_regionCode
   </select>
 </mapper>

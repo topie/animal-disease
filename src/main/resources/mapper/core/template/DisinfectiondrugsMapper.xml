@@ -24,4 +24,14 @@
             #{item}
         </foreach>
     </select>
+    <select id="selectAllByDate" resultMap="BaseResultMap">
+        select t1.Liv_regionCode as df_regionCode ,t1.Liv_regionName as df_regionName,t2.* from
+        (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+        LEFT JOIN
+        ( select  * from animal_disease.b_disinfectiondrugs
+        where  df_date BETWEEN  #{beginTime} AND #{endTime}
+        ) as t2
+        on t1.Liv_regionCode=t2.df_regionCode
+        ORDER  by t1.Liv_regionCode
+    </select>
 </mapper>

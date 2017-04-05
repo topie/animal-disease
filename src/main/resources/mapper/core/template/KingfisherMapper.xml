@@ -29,4 +29,14 @@
     <result column="kf_levelQuarantine" property="kfLevelquarantine" jdbcType="DECIMAL" />
     <result column="kf_levelOther" property="kfLevelother" jdbcType="DECIMAL" />
   </resultMap>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select t1.Liv_regionCode as kf_regionCode ,t1.Liv_regionName as kf_regionName,t2.* from
+    (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+    LEFT JOIN
+    ( select  * from animal_disease.B_Kingfisher
+    where  kf_date BETWEEN  #{beginTime} AND #{endTime}
+    ) as t2
+    on t1.Liv_regionCode=t2.kf_regionCode
+    ORDER  by t1.Liv_regionCode
+  </select>
 </mapper>

@@ -14,4 +14,14 @@
     <result column="srv_H5N2D7StoreCount" property="srvH5n2d7storecount" jdbcType="DECIMAL" />
     <result column="srv_H5N2D7YearCount" property="srvH5n2d7yearcount" jdbcType="DECIMAL" />
   </resultMap>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select t1.Liv_regionCode as srv_regionCode ,t1.Liv_regionName as srv_regionName,t2.* from
+    (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+    LEFT JOIN
+    ( select  * from animal_disease.B_SmallRuminantsVaccine
+    where  srv_date BETWEEN  #{beginTime} AND #{endTime}
+    ) as t2
+    on t1.Liv_regionCode=t2.srv_regionCode
+    ORDER  by t1.Liv_regionCode
+  </select>
 </mapper>

@@ -49,7 +49,11 @@
 
   </select>
   <select id="selectAllByDate" resultMap="BaseResultMap">
-     select
+   select t1.Liv_regionCode as ai_regionCode ,t1.Liv_regionName as ai_regionName,t2.* from
+      (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+        LEFT JOIN
+        ( select
+        ai_regionCode,
     sum(ai_inactivatedVaccine) ai_inactivatedVaccine,
     sum(ai_jointVaccine) ai_jointVaccine,
      sum(ai_jointImmuneAmountChicken) ai_jointImmuneAmountChicken,
@@ -63,6 +67,8 @@
     from animal_disease.b_avianinfluenza
     where  ai_date BETWEEN  #{beginTime} AND #{endTime}
     GROUP  by ai_regionCode
-    order by ai_regionCode
+    ) as t2
+        on t1.Liv_regionCode=t2.ai_regionCode
+        ORDER  by t1.Liv_regionCode
   </select>
 </mapper>

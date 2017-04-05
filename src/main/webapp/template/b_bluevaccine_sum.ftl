@@ -98,7 +98,6 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td class="c3">使用数量</td>
 			</tr>
 			<tr class="r4">
 				<td class="c2">高致病性猪蓝耳病灭活疫苗(万毫升)</td>
@@ -108,7 +107,19 @@
 				<td class="c2">高致病性猪蓝耳病灭活疫苗(万毫升)</td>
 				<td class="c2">高致病性猪蓝耳病活疫苗(万头份)</td>
 			</tr>
+			<#assign bvInactivatedusecountSum=0>
+			<#assign bvLivingusecountSum=0>
+			<#assign bvInactivatedstorecountSum=0>
+			<#assign bvLivingstorecountSum=0>
+			<#assign bvInactivatedyearcountSum=0>
+			<#assign bvLivingyearcountSum=0>
 			<#list items as item>
+				<#assign bvInactivatedusecountSum=bvInactivatedusecountSum?default(0) +item.bvInactivatedusecount?default(0)>
+				<#assign bvLivingusecountSum=bvLivingusecountSum?default(0) +item.bvLivingusecount?default(0)>
+				<#assign bvInactivatedstorecountSum=bvInactivatedstorecountSum?default(0) +item.bvInactivatedstorecount?default(0)>
+				<#assign bvLivingstorecountSum=bvLivingstorecountSum?default(0) +item.bvLivingstorecount?default(0)>
+				<#assign bvInactivatedyearcountSum=bvInactivatedyearcountSum?default(0) +item.bvInactivatedyearcount?default(0)>
+				<#assign bvLivingyearcountSum=bvLivingyearcountSum?default(0) +item.bvLivingyearcount?default(0)>
 			<tr class="r5">
 				<td n="bvRegionname" class="c2"><#if item.bvRegionname??>${item.bvRegionname}</#if></td>
 				<td n="bvInactivatedusecount"  class="c2"><#if item.bvInactivatedusecount??>${item.bvInactivatedusecount}</#if></td>
@@ -119,6 +130,16 @@
 				<td n="bvLivingyearcount"  class="c2"><#if item.bvLivingyearcount??>${item.bvLivingyearcount}</#if></td>
 			</tr>
  </#list>
+            <tr class="r5">
+                <td  class="c2">合计</td>
+                <td n="bvInactivatedusecountSum" class="c2"><#if bvInactivatedusecountSum??>${bvInactivatedusecountSum}</#if></td>
+               <td n="bvLivingusecountSum" class="c2"><#if bvLivingusecountSum??>${bvLivingusecountSum}</#if></td>
+               <td n="bvInactivatedstorecountSum" class="c2"><#if bvInactivatedstorecountSum??>${bvInactivatedstorecountSum}</#if></td>
+               <td n="bvLivingstorecountSum" class="c2"><#if bvLivingstorecountSum??>${bvLivingstorecountSum}</#if></td>
+               <td n="bvInactivatedyearcountSum" class="c2"><#if bvInactivatedyearcountSum??>${bvInactivatedyearcountSum}</#if></td>
+               <td n="bvLivingyearcountSum" class="c2"><#if bvLivingyearcountSum??>${bvLivingyearcountSum}</#if></td>
+
+            </tr>
 		</tbody>
 	</table>
 </body>

@@ -149,7 +149,7 @@
 				<td role="data" n="ncInactivatedimmuneamount"  class="c2"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount}</#if></td>
 				<td role="lj_ncInactivatedimmuneamount" class="c6"><#if itemSum.ncInactivatedimmuneamount??>${itemSum.ncInactivatedimmuneamount}</#if></td>
 				<td n="immunenewcastle" class="c6" rowspan="2"><#if wlivestockinout.immunenewcastle??>${wlivestockinout.immunenewcastle}</#if></td>
-				<td n="jz_sum" class="c6" rowspan="2"><#if wlivestockinout.immunenewcastle??&&wlivestockinout.immunenewcastle>0>${(itemSum.ncInactivatedimmuneamount?default(0)+itemSum.ncJointimmuneamount?default(0))*100/wlivestockinout.immunenewcastle}</#if>%</td>
+				<td n="jz_sum" class="c6" rowspan="2"><#if wlivestockinout.immunenewcastle??&&wlivestockinout.immunenewcastle>0>${(itemSum.ncInactivatedimmuneamount?default(0)+itemSum.ncJointimmuneamount?default(0))*100/wlivestockinout.immunenewcastle}%</#if></td>
 			</tr>
             <input id="ncInactivatedvaccine" type="hidden" value="${itemSum.ncInactivatedvaccine?default(0)-item.ncInactivatedvaccine?default(0)}"/>
             <input id="ncInactivatedimmuneamount" type="hidden" value="${itemSum.ncInactivatedimmuneamount?default(0)-item.ncInactivatedimmuneamount?default(0)}"/>

@@ -221,7 +221,7 @@
 				<td role="data" n="wpdrImmuneamount"  class="c10"><#if item.wpdrImmuneamount??>${item.wpdrImmuneamount}</#if></td>
 				<td role="lj_wpdrImmuneamount" class="c11"><#if itemSum.wpdrImmuneamount??>${itemSum.wpdrImmuneamount}</#if></td>
 				<td n="pestedespetitsruminants" class="c11"><#if wlivestockinout.pestedespetitsruminants??>${wlivestockinout.pestedespetitsruminants}</#if></td>
-				<td n="jz_sum" class="c11"><#if  wlivestockinout.pestedespetitsruminants??&&wlivestockinout.pestedespetitsruminants==0>0.00<#else>${(itemSum.wpdrImmuneamount?default(0))*100/wlivestockinout.pestedespetitsruminants}</#if>%</td>
+				<td n="jz_sum" class="c11"><#if  (wlivestockinout.pestedespetitsruminants??&&wlivestockinout.pestedespetitsruminants>0)>${(itemSum.wpdrImmuneamount?default(0))*100/wlivestockinout.pestedespetitsruminants}%</#if></td>
 			</tr>
             <input id="wpdrVaccine" type="hidden" value="${itemSum.wpdrVaccine?default(0)-item.wpdrVaccine?default(0)}"/>
             <input id="wpdrImmuneamount" type="hidden" value="${itemSum.wpdrImmuneamount?default(0)-item.wpdrImmuneamount?default(0)}"/>
