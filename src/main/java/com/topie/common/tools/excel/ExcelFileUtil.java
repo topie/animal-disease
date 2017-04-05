@@ -46,7 +46,7 @@ public class ExcelFileUtil {
             returnFileName = URLEncoder.encode(fileName, "UTF-8");
             returnFileName = StringUtils.replace(returnFileName, "+", "%20");
             if (returnFileName.length() > 150) {
-                returnFileName = new String(fileName.getBytes("GB2312"), "ISO8859-1");
+                returnFileName = new String(fileName.getBytes("GB2312"), "ISO-8859-1");
                 returnFileName = StringUtils.replace(returnFileName, " ", "%20");
             }
         } catch (UnsupportedEncodingException e) {
