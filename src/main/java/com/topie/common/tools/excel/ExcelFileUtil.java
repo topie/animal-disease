@@ -2,22 +2,11 @@ package com.topie.common.tools.excel;
 
 import com.topie.common.utils.PropertiesUtil;
 
-import org.apache.commons.lang3.StringUtils;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by cgj on 2016/1/6.
@@ -28,7 +17,7 @@ public class ExcelFileUtil {
         response.setCharacterEncoding("utf-8");
         response.setContentType("multipart/form-core");
         response.setHeader("Content-Disposition",
-                "attachment;filename=" + encodingFileName(fileName));
+                "attachment;filename=" + new String(fileName.getBytes("gbk"), "iso-8859-1"));
         File file = new File(filePath);
         InputStream inputStream = new FileInputStream(file);
         OutputStream os = response.getOutputStream();
@@ -38,21 +27,6 @@ public class ExcelFileUtil {
             os.write(b, 0, length);
         }
         inputStream.close();
-    }
-
-    public static String encodingFileName(String fileName) {
-        String returnFileName = "";
-        try {
-            returnFileName = URLEncoder.encode(fileName, "GBK");
-            returnFileName = StringUtils.replace(returnFileName, "+", "%20");
-            if (returnFileName.length() > 150) {
-                returnFileName = new String(fileName.getBytes("GBK"), "ISO-8859-1");
-                returnFileName = StringUtils.replace(returnFileName, " ", "%20");
-            }
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return returnFileName;
     }
 
     public static <T> void reponseXls(HttpServletResponse response, String fileName,
