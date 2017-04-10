@@ -94,6 +94,18 @@ public class LiveStockInOut {
     @Column(name = "PesteDesPetitsRuminants")
     private BigDecimal pestedespetitsruminants=BigDecimal.ZERO;
 
+    @Column(name = "ImmuneaPprSheep")
+    private BigDecimal immuneaPprSheep=BigDecimal.ZERO;
+
+    @Column(name = "ImmuneBruniu")
+    private BigDecimal immuneBruniu=BigDecimal.ZERO;
+
+    @Column(name = "ImmuneBruSheep")
+    private BigDecimal immuneBruSheep=BigDecimal.ZERO;
+
+    @Column(name = "ImmuneEchSheep")
+    private BigDecimal immuneEchSheep=BigDecimal.ZERO;
+
     /**
      * @return LivestockId
      */
@@ -471,5 +483,37 @@ public class LiveStockInOut {
      */
     public void setPestedespetitsruminants(BigDecimal pestedespetitsruminants) {
         this.pestedespetitsruminants = pestedespetitsruminants;
+    }
+
+    public BigDecimal getImmuneaPprSheep() {
+        return immuneaPprSheep;
+    }
+
+    public BigDecimal getImmuneBruniu() {
+        return immuneBruniu;
+    }
+
+    public BigDecimal getImmuneBruSheep() {
+        return immuneBruSheep;
+    }
+
+    public BigDecimal getImmuneEchSheep() {
+        return immuneEchSheep;
+    }
+
+    public void setImmuneaPprSheep(BigDecimal immuneaPprSheep) {
+        this.immuneaPprSheep = immuneaPprSheep;
+    }
+
+    public void setImmuneBruniu(BigDecimal immuneBruniu) {
+        this.immuneBruniu = immuneBruniu;
+    }
+
+    public void setImmuneBruSheep(BigDecimal immuneBruSheep) {
+        this.immuneBruSheep = immuneBruSheep;
+    }
+
+    public void setImmuneEchSheep(BigDecimal immuneEchSheep) {
+        this.immuneEchSheep = immuneEchSheep;
     }
 }

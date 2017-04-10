@@ -103,7 +103,7 @@
     </colgroup>
     <tbody>
     <tr class="r5">
-        <td class="c1" colspan="22">${templateName}</td>
+        <td class="c1" colspan="26">${templateName}</td>
     </tr>
     <tr class="r6">
         <td class="c2" rowspan="2">省份</td>
@@ -114,6 +114,10 @@
         <td class="c2">期间高致病性猪蓝耳病应免数量（万头）</td>
         <td class="c2">期间猪瘟应免数量（万头）</td>
         <td class="c2">期间新城疫应免数量（万羽）</td>
+
+        <td class="c2">小反刍兽疫应免数量（万只）</td>
+        <td class="c2" colspan="2">布鲁氏菌病应免数量（万头/只）</td>
+        <td class="c2">包虫病应免数量（万只）</td>
     </tr>
     <tr class="r7">
         <td class="c2">猪</td>
@@ -137,58 +141,72 @@
         <td class="c2">猪</td>
         <td class="c2">猪</td>
         <td class="c2">鸡</td>
+
+        <td class="c2">羊</td>
+        <td class="c2">牛</td>
+        <td class="c2">羊</td>
+        <td class="c2">羊</td>
     </tr>
     <#list items as item>
     <tr class="r7">
         <td class="c9">${item.livRegionname}</td>
-        <td role="data" n="herdspig" class="c2">${item.herdspig}</td>
-        <td role="data" n="herdsniu" class="c2">${item.herdsniu}</td>
-        <td role="data" n="herdssheep" class="c2">${item.herdssheep}</td>
-        <td role="data" n="herdsother" class="c2">${item.herdsother}</td>
-        <td role="data" n="herdschicken" class="c2">${item.herdschicken}</td>
-        <td role="data" n="herdsduck" class="c2">${item.herdsduck}</td>
-        <td role="data" n="herdsgoose" class="c2">${item.herdsgoose}</td>
-        <td role="data" n="herdsotherq" class="c2">${item.herdsotherq}</td>
-        <td role="data" n="immunefmdpig" class="c2">${item.immunefmdpig}</td>
-        <td role="data" n="immunefmdniu" class="c2">${item.immunefmdniu}</td>
-        <td role="data" n="immunefmdsheep" class="c6">${item.immunefmdsheep}</td>
-        <td role="data" n="immunefmdother" class="c2">${item.immunefmdother}</td>
-        <td role="data" n="immunebirdfluchecken" class="c2">${item.immunebirdfluchecken}</td>
-        <td role="data" n="immunebirdfluduck" class="c2">${item.immunebirdfluduck}</td>
-        <td role="data" n="immunebirdflugoose" class="c2">${item.immunebirdflugoose}</td>
-        <td role="data" n="immunebirdfluother" class="c2">${item.immunebirdfluother}</td>
-        <td role="data" n="immuneafmdniu" class="c2">${item.immuneafmdniu}</td>
-        <td role="data" n="immuneafmdsheep" class="c2">${item.immuneafmdsheep}</td>
-        <td role="data" n="immuneblueear" class="c2">${item.immuneblueear}</td>
-        <td role="data" n="immuneswine" class="c2">${item.immuneswine}</td>
-        <td role="data" n="immunenewcastle" class="c2">${item.immunenewcastle}</td>
+        <td n="herdspig" class="c2">${item.herdspig}</td>
+        <td n="herdsniu" class="c2">${item.herdsniu}</td>
+        <td n="herdssheep" class="c2">${item.herdssheep}</td>
+        <td n="herdsother" class="c2">${item.herdsother}</td>
+        <td n="herdschicken" class="c2">${item.herdschicken}</td>
+        <td n="herdsduck" class="c2">${item.herdsduck}</td>
+        <td n="herdsgoose" class="c2">${item.herdsgoose}</td>
+        <td n="herdsotherq" class="c2">${item.herdsotherq}</td>
+        <td n="immunefmdpig" class="c2">${item.immunefmdpig}</td>
+        <td n="immunefmdniu" class="c2">${item.immunefmdniu}</td>
+        <td n="immunefmdsheep" class="c6">${item.immunefmdsheep}</td>
+        <td n="immunefmdother" class="c2">${item.immunefmdother}</td>
+        <td n="immunebirdfluchecken" class="c2">${item.immunebirdfluchecken}</td>
+        <td n="immunebirdfluduck" class="c2">${item.immunebirdfluduck}</td>
+        <td n="immunebirdflugoose" class="c2">${item.immunebirdflugoose}</td>
+        <td n="immunebirdfluother" class="c2">${item.immunebirdfluother}</td>
+        <td n="immuneafmdniu" class="c2">${item.immuneafmdniu}</td>
+        <td n="immuneafmdsheep" class="c2">${item.immuneafmdsheep}</td>
+        <td n="immuneblueear" class="c2">${item.immuneblueear}</td>
+        <td n="immuneswine" class="c2">${item.immuneswine}</td>
+        <td n="immunenewcastle" class="c2">${item.immunenewcastle}</td>
+
+        <td n="pestedespetitsruminants" class="c2"><#if item.pestedespetitsruminants??>${item.pestedespetitsruminants}</#if></td>
+        <td n="immuneBruniu" class="c2"><#if item.immuneBruniu??>${item.immuneBruniu}</#if></td>
+        <td n="immuneBruSheep" class="c2"><#if item.immuneBruSheep??>${item.immuneBruSheep}</#if></td>
+        <td n="immuneEchSheep"  class="c2"><#if item.immuneEchSheep??>${item.immuneEchSheep}</#if></td>
 
     </tr>
 
     </#list>
     <tr class="r7">
         <td class="c11">合计</td>
-        <td role="data" n="herdspig" class="c2">${sum.herdspig}</td>
-        <td role="data" n="herdsniu" class="c2">${sum.herdsniu}</td>
-        <td role="data" n="herdssheep" class="c2">${sum.herdssheep}</td>
-        <td role="data" n="herdsother" class="c2">${sum.herdsother}</td>
-        <td role="data" n="herdschicken" class="c2">${sum.herdschicken}</td>
-        <td role="data" n="herdsduck" class="c2">${sum.herdsduck}</td>
-        <td role="data" n="herdsgoose" class="c2">${sum.herdsgoose}</td>
-        <td role="data" n="herdsotherq" class="c2">${sum.herdsotherq}</td>
-        <td role="data" n="immunebirdfluchecken" class="c2">${sum.immunebirdfluchecken}</td>
-        <td role="data" n="immunebirdfluduck" class="c2">${sum.immunebirdfluduck}</td>
-        <td role="data" n="immunebirdflugoose" class="c2">${sum.immunebirdflugoose}</td>
-        <td role="data" n="immunebirdfluother" class="c2">${sum.immunebirdfluother}</td>
-        <td role="data" n="immuneafmdniu" class="c2">${sum.immuneafmdniu}</td>
-        <td role="data" n="immuneafmdsheep" class="c2">${sum.immuneafmdsheep}</td>
-        <td role="data" n="immuneblueear" class="c2">${sum.immuneblueear}</td>
-        <td role="data" n="immuneswine" class="c2">${sum.immuneswine}</td>
-        <td role="data" n="immunenewcastle" class="c2">${sum.immunenewcastle}</td>
-        <td role="data" n="immunefmdpig" class="c2">${sum.immunefmdpig}</td>
-        <td role="data" n="immunefmdniu" class="c2">${sum.immunefmdniu}</td>
-        <td role="data" n="immunefmdsheep" class="c6">${sum.immunefmdsheep}</td>
-        <td role="data" n="immunefmdother" class="c2">${sum.immunefmdother}</td>
+        <td n="herdspig" class="c2">${sum.herdspig}</td>
+        <td n="herdsniu" class="c2">${sum.herdsniu}</td>
+        <td n="herdssheep" class="c2">${sum.herdssheep}</td>
+        <td n="herdsother" class="c2">${sum.herdsother}</td>
+        <td n="herdschicken" class="c2">${sum.herdschicken}</td>
+        <td n="herdsduck" class="c2">${sum.herdsduck}</td>
+        <td n="herdsgoose" class="c2">${sum.herdsgoose}</td>
+        <td n="herdsotherq" class="c2">${sum.herdsotherq}</td>
+        <td n="immunebirdfluchecken" class="c2">${sum.immunebirdfluchecken}</td>
+        <td n="immunebirdfluduck" class="c2">${sum.immunebirdfluduck}</td>
+        <td n="immunebirdflugoose" class="c2">${sum.immunebirdflugoose}</td>
+        <td n="immunebirdfluother" class="c2">${sum.immunebirdfluother}</td>
+        <td n="immuneafmdniu" class="c2">${sum.immuneafmdniu}</td>
+        <td n="immuneafmdsheep" class="c2">${sum.immuneafmdsheep}</td>
+        <td n="immuneblueear" class="c2">${sum.immuneblueear}</td>
+        <td n="immuneswine" class="c2">${sum.immuneswine}</td>
+        <td n="immunenewcastle" class="c2">${sum.immunenewcastle}</td>
+        <td n="immunefmdpig" class="c2">${sum.immunefmdpig}</td>
+        <td n="immunefmdniu" class="c2">${sum.immunefmdniu}</td>
+        <td n="immunefmdsheep" class="c6">${sum.immunefmdsheep}</td>
+        <td n="immunefmdother" class="c2">${sum.immunefmdother}</td>
+        <td n="pestedespetitsruminants" class="c2"><#if sum.pestedespetitsruminants??>${sum.pestedespetitsruminants}</#if></td>
+        <td n="immuneBruniu" class="c2"><#if sum.immuneBruniu??>${sum.immuneBruniu}</#if></td>
+        <td n="immuneBruSheep" class="c2"><#if sum.immuneBruSheep??>${sum.immuneBruSheep}</#if></td>
+        <td n="immuneEchSheep"  class="c2"><#if sum.immuneEchSheep??>${sum.immuneEchSheep}</#if></td>
     </tr>
     </tbody>
 </table>

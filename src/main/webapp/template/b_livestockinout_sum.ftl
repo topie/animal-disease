@@ -84,7 +84,7 @@
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="22">${templateName}</td>
+        <td class="c1" colspan="26">${templateName}</td>
     </tr>
     <tr class="r2">
         <td class="c2" rowspan="2">省份</td>
@@ -95,6 +95,9 @@
         <td class="c2">高致病性猪蓝耳病当月应免数量(万头)</td>
         <td class="c2">猪瘟当月应免数量(万头)</td>
         <td class="c2">新城疫当月应免数量(万羽)</td>
+        <td class="c2">小反刍兽疫应免数量（万只）</td>
+        <td class="c2" colspan="2">布鲁氏菌病应免数量（万头/只）</td>
+        <td class="c2">包虫病应免数量（万只）</td>
     </tr>
     <tr class="r3">
         <td class="c2">猪</td>
@@ -118,6 +121,10 @@
         <td class="c2">猪</td>
         <td class="c2">猪</td>
         <td class="c2">鸡</td>
+        <td class="c2">羊</td>
+        <td class="c2">牛</td>
+        <td class="c2">羊</td>
+        <td class="c2">羊</td>
     </tr>
     <#assign herdspigSum=0>
     <#assign herdsniuSum=0>
@@ -141,6 +148,10 @@
     <#assign immuneswineSum=0>
     <#assign immunenewcastleSum=0>
 
+    <#assign immuneaPprSheepSum=0>
+    <#assign immuneBruniuSum=0>
+    <#assign immuneBruSheepSum=0>
+    <#assign immuneEchSheepSum=0>
     <#list items as item>
         <#assign herdspigSum=herdspigSum?default(0) +item.herdspig?default(0)>
         <#assign herdsniuSum=herdsniuSum?default(0) +item.herdsniu?default(0)>
@@ -164,6 +175,11 @@
         <#assign immuneswineSum=immuneswineSum?default(0) +item.immuneswine?default(0)>
     
         <#assign immunenewcastleSum=immunenewcastleSum?default(0) +item.immunenewcastle?default(0)>
+
+        <#assign immuneaPprSheepSum=immuneaPprSheepSum?default(0) +item.immuneaPprSheep?default(0)>
+        <#assign immuneBruniuSum=immuneBruniuSum?default(0) +item.immuneBruniu?default(0)>
+        <#assign immuneBruSheepSum=immuneBruSheepSum?default(0) +item.immuneBruSheep?default(0)>
+        <#assign immuneEchSheepSum=immuneEchSheepSum?default(0) +item.immuneEchSheep?default(0)>
 
     <tr class="r3">
         <td class="c2">${item.livRegionname}</td>
@@ -195,6 +211,10 @@
         <td n="immunenewcastle"
             class="c2"><#if item.immunenewcastle??>${item.immunenewcastle}</#if></td>
 
+        <td n="immuneaPprSheep" class="c2"><#if item.immuneaPprSheep??>${item.immuneaPprSheep}</#if></td>
+        <td n="immuneBruniu" class="c2"><#if item.immuneBruniu??>${item.immuneBruniu}</#if></td>
+        <td n="immuneBruSheep" class="c2"><#if item.immuneBruSheep??>${item.immuneBruSheep}</#if></td>
+        <td n="immuneEchSheep"  class="c2"><#if item.immuneEchSheep??>${item.immuneEchSheep}</#if></td>
     </tr>
     </#list>
     <tr class="r3">
@@ -220,6 +240,12 @@
         <td n="immuneblueearSum" class="c2"><#if immuneblueearSum??>${immuneblueearSum}</#if></td>
         <td n="immuneswineSum" class="c2"><#if immuneswineSum??>${immuneswineSum}</#if></td>
         <td n="immunenewcastleSum" class="c2"><#if immunenewcastleSum??>${immunenewcastleSum}</#if></td>
+
+        <td n="immuneaPprSheepSum" class="c2"><#if immuneaPprSheepSum??>${immuneaPprSheepSum}</#if></td>
+        <td n="immuneBruniuSum" class="c2"><#if immuneBruniuSum??>${immuneBruniuSum}</#if></td>
+        <td n="immuneBruSheepSum" class="c2"><#if immuneBruSheepSum??>${immuneBruSheepSum}</#if></td>
+        <td n="immuneEchSheepSum" class="c2"><#if immuneEchSheepSum??>${immuneEchSheepSum}</#if></td>
+
 
     </tr>
     </tbody>

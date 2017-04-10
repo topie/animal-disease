@@ -140,23 +140,23 @@
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="23">${templateName}</td>
+        <td class="c1" colspan="26">${templateName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">单 位:</td>
-        <td class="c3" colspan="22">${org.orgName}</td>
+        <td class="c3" colspan="25">${org.orgName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">填表日期:</td>
-        <td class="c3" colspan="22"><#if item.livestockdate??>${item.livestockdate?string("yyyy-MM-dd")}</#if></td>
+        <td class="c3" colspan="25"><#if item.livestockdate??>${item.livestockdate?string("yyyy-MM-dd")}</#if></td>
     </tr>
     <tr class="r2">
         <td class="c2">&nbsp;填 表 人:</td>
-        <td class="c3" colspan="22">${user.realName}</td>
+        <td class="c3" colspan="25">${user.realName}</td>
     </tr>
     <tr class="r2">
         <td class="c4">&nbsp;主管领导：</td>
-        <td class="c5" colspan="22">${user.leaderName}</td>
+        <td class="c5" colspan="25">${user.leaderName}</td>
     </tr>
     <tr class="r3">
         <td class="c3">&nbsp;</td>
@@ -168,6 +168,8 @@
         <td class="c6">猪瘟应免数量（万头）</td>
         <td class="c7">新城疫应免数量（万羽）</td>
         <td class="c8">小反刍兽疫应免数量（万只）</td>
+        <td class="c2" colspan="2">布鲁氏菌病应免数量（万头/只）</td>
+        <td class="c2">包虫病应免数量（万只）</td>
     </tr>
     <tr class="r2">
         <td class="c2">畜禽种类</td>
@@ -193,6 +195,9 @@
         <td class="c6">猪</td>
         <td class="c7">鸡</td>
         <td class="c8">羊</td>
+        <td class="c2">牛</td>
+        <td class="c2">羊</td>
+        <td class="c2">羊</td>
     </tr>
     <tr class="r4">
         <td class="c9">&nbsp;-</td>
@@ -221,6 +226,11 @@
         <td role="data" n="immunenewcastle" class="c2">${item.immunenewcastle}</td>
 
         <td role="data" n="pestedespetitsruminants" class="c8">${item.pestedespetitsruminants}</td>
+
+        <td role="data" n="immuneBruniu" class="c2"><#if item.immuneBruniu??>${item.immuneBruniu}</#if></td>
+        <td role="data" n="immuneBruSheep" class="c2"><#if item.immuneBruSheep??>${item.immuneBruSheep}</#if></td>
+        <td role="data" n="immuneEchSheep"  class="c2"><#if item.immuneEchSheep??>${item.immuneEchSheep}</#if></td>
+
     </tr>
     </tbody>
 </table>

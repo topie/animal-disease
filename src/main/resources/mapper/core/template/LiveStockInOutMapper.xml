@@ -32,6 +32,10 @@
         <result column="ImmuneFMDSheep" property="immunefmdsheep" jdbcType="DECIMAL"/>
         <result column="ImmuneFMDOther" property="immunefmdother" jdbcType="DECIMAL"/>
         <result column="PesteDesPetitsRuminants" property="pestedespetitsruminants" jdbcType="DECIMAL"/>
+        <result column="ImmuneaPprSheep" property="immuneaPprSheep" jdbcType="DECIMAL"/>
+        <result column="ImmuneBruniu" property="immuneBruniu" jdbcType="DECIMAL"/>
+        <result column="ImmuneBruSheep" property="immuneBruSheep" jdbcType="DECIMAL"/>
+        <result column="ImmuneEchSheep" property="immuneEchSheep" jdbcType="DECIMAL"/>
     </resultMap>
     <select id="selectOneByReportId" resultMap="BaseResultMap">
       select * from animal_disease.b_livestockinout where ReportId=#{reportId}
@@ -67,7 +71,11 @@
         sum(ImmuneFMDNiu) ImmuneFMDNiu,
         sum(ImmuneFMDSheep) ImmuneFMDSheep,
         sum(ImmuneFMDOther) ImmuneFMDOther,
-        sum(PesteDesPetitsRuminants) PesteDesPetitsRuminants
+        sum(PesteDesPetitsRuminants) PesteDesPetitsRuminants,
+        sum(ImmuneaPprSheep) ImmuneaPprSheep,
+        sum(ImmuneBruniu) ImmuneBruniu,
+        sum(ImmuneBruSheep) ImmuneBruSheep,
+        sum(ImmuneEchSheep) ImmuneEchSheep
         from animal_disease.b_livestockinout
         where ReportId in
         <foreach item="item" collection="ids" open="(" separator="," close=")">
@@ -99,7 +107,11 @@
         sum(ImmuneFMDNiu) ImmuneFMDNiu,
         sum(ImmuneFMDSheep) ImmuneFMDSheep,
         sum(ImmuneFMDOther) ImmuneFMDOther,
-        sum(PesteDesPetitsRuminants) PesteDesPetitsRuminants
+        sum(PesteDesPetitsRuminants) PesteDesPetitsRuminants,
+         sum(ImmuneaPprSheep) ImmuneaPprSheep,
+        sum(ImmuneBruniu) ImmuneBruniu,
+        sum(ImmuneBruSheep) ImmuneBruSheep,
+        sum(ImmuneEchSheep) ImmuneEchSheep
         from animal_disease.b_livestockinout
         where Liv_regionCode=#{regionCode} AND LivestockDate BETWEEN  #{beginTime} AND #{endTime}
       ORDER  BY  Liv_regionCode
