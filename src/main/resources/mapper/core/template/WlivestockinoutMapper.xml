@@ -31,7 +31,7 @@
         <result column="ImmuneFMDNiu" property="immunefmdniu" jdbcType="DECIMAL"/>
         <result column="ImmuneFMDSheep" property="immunefmdsheep" jdbcType="DECIMAL"/>
         <result column="ImmuneFMDOther" property="immunefmdother" jdbcType="DECIMAL"/>
-        <result column="PesteDesPetitsRuminants" property="pestedespetitsruminants" jdbcType="DECIMAL"/> <result column="ImmuneBruniu" property="immuneBruniu" jdbcType="DECIMAL"/>
+        <result column="PesteDesPetitsRuminants" property="pestedespetitsruminants" jdbcType="DECIMAL"/>
         <result column="ImmuneBruniu" property="immuneBruniu" jdbcType="DECIMAL"/>
         <result column="ImmuneBruSheep" property="immuneBruSheep" jdbcType="DECIMAL"/>
         <result column="ImmuneEchSheep" property="immuneEchSheep" jdbcType="DECIMAL"/>

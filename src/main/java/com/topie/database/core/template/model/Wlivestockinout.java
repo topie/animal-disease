@@ -90,13 +90,13 @@ public class Wlivestockinout {
     private BigDecimal pestedespetitsruminants;
 
     @Column(name = "ImmuneBruniu")
-    private BigDecimal immuneBruniu=BigDecimal.ZERO;
+    private BigDecimal immuneBruniu;
 
     @Column(name = "ImmuneBruSheep")
-    private BigDecimal immuneBruSheep=BigDecimal.ZERO;
+    private BigDecimal immuneBruSheep;
 
     @Column(name = "ImmuneEchSheep")
-    private BigDecimal immuneEchSheep=BigDecimal.ZERO;
+    private BigDecimal immuneEchSheep;
 
     /**
      * @return LivestockId
