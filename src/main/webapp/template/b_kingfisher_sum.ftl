@@ -84,12 +84,12 @@
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="3">省份</td>
-				<td class="c2" colspan="10">全省落实动物疫病防控经费（万元）</td>
+				<td class="c2" colspan="11">全省落实动物疫病防控经费（万元）</td>
 				<td class="c2" colspan="4">全省春秋防落实动物疫病防控经费（万元）</td>
 				<td class="c2" colspan="4">省本级春秋防落实动物疫病防控经费（万元）</td>
 			</tr>
 			<tr class="r3">
-				<td class="c2" colspan="5">疫苗配套经费</td>
+				<td class="c2" colspan="6">疫苗配套经费</td>
 				<td class="c2" rowspan="2">扑杀补助</td>
 				<td class="c2" rowspan="2">监测经费</td>
 				<td class="c2" rowspan="2">应急物资储备经费</td>
@@ -107,8 +107,9 @@
 			<tr class="r4">
 				<td class="c2">口蹄疫</td>
 				<td class="c2">禽流感</td>
-				<td class="c2">高致病性猪蓝耳病</td>
-				<td class="c2">猪 瘟</td>
+                <td class="c2">小反刍兽疫</td>
+                <td class="c2">布鲁氏菌病</td>
+                <td class="c2">包虫病</td>
 				<td class="c2">其 它</td>
 			</tr>
 			<#assign kfFmkingfisherSum=0>
@@ -129,9 +130,20 @@
 			<#assign kfLevelmonitoringSum=0>
 			<#assign kfLevelquarantineSum=0>
 			<#assign kfLevelotherSum=0>
+
+			<#assign kfPprKingfisherSum=0>
+			<#assign kfBurKingfisherSum=0>
+			<#assign kfEchKingfisherSum=0>
+
+
 			<#list items as item>
 				<#assign kfFmkingfisherSum=kfFmkingfisherSum?default(0) +item.kfFmkingfisher?default(0)>
 				<#assign kfAikingfisherSum=kfAikingfisherSum?default(0) +item.kfAikingfisher?default(0)>
+
+				<#assign kfPprKingfisherSum=kfPprKingfisherSum?default(0) +item.kfPprKingfisher?default(0)>
+				<#assign kfBurKingfisherSum=kfBurKingfisherSum?default(0) +item.kfBurKingfisher?default(0)>
+				<#assign kfEchKingfisherSum=kfEchKingfisherSum?default(0) +item.kfEchKingfisher?default(0)>
+
 				<#assign kfBkingfisherSum=kfBkingfisherSum?default(0) +item.kfBkingfisher?default(0)>
 				<#assign kfCskingfisherSum=kfCskingfisherSum?default(0) +item.kfCskingfisher?default(0)>
 				<#assign kfOtherkingfisherSum=kfOtherkingfisherSum?default(0) +item.kfOtherkingfisher?default(0)>
@@ -154,8 +166,11 @@
 				<td n="kfRegionname" class="c2"><#if item.kfRegionname??>${item.kfRegionname}</#if></td>
 				<td n="kfFmkingfisher"  class="c2"><#if item.kfFmkingfisher??>${item.kfFmkingfisher}</#if></td>
 				<td n="kfAikingfisher"  class="c2"><#if item.kfAikingfisher??>${item.kfAikingfisher}</#if></td>
-				<td n="kfBkingfisher"  class="c2"><#if item.kfBkingfisher??>${item.kfBkingfisher}</#if></td>
-				<td n="kfCskingfisher"  class="c2"><#if item.kfCskingfisher??>${item.kfCskingfisher}</#if></td>
+
+                <td n="kfPprKingfisher"   class="c2"><#if item.kfPprKingfisher??>${item.kfPprKingfisher}</#if></td>
+                <td n="kfBurKingfisher"   class="c2"><#if item.kfBurKingfisher??>${item.kfBurKingfisher}</#if></td>
+                <td n="kfEchKingfisher"   class="c2"><#if item.kfEchKingfisher??>${item.kfEchKingfisher}</#if></td>
+			
 				<td n="kfOtherkingfisher"  class="c2"><#if item.kfOtherkingfisher??>${item.kfOtherkingfisher}</#if></td>
 				<td n="kfCulling"  class="c2"><#if item.kfCulling??>${item.kfCulling}</#if></td>
 				<td n="kfYearmonitoring"  class="c2"><#if item.kfYearmonitoring??>${item.kfYearmonitoring}</#if></td>
@@ -177,8 +192,9 @@
                 <td  class="c2">合计</td>
                 <td n="kfFmkingfisherSum" class="c2"><#if kfFmkingfisherSum??>${kfFmkingfisherSum}</#if></td>
                 <td n="kfAikingfisherSum" class="c2"><#if kfAikingfisherSum??>${kfAikingfisherSum}</#if></td>
-                <td n="kfBkingfisherSum" class="c2"><#if kfBkingfisherSum??>${kfBkingfisherSum}</#if></td>
-                <td n="kfCskingfisherSum" class="c2"><#if kfCskingfisherSum??>${kfCskingfisherSum}</#if></td>
+                <td n="kfPprKingfisherSum"   class="c2"><#if kfPprKingfisherSum??>${kfPprKingfisherSum}</#if></td>
+                <td n="kfBurKingfisherSum"   class="c2"><#if kfBurKingfisherSum??>${kfBurKingfisherSum}</#if></td>
+                <td n="kfEchKingfisherSum"   class="c2"><#if kfEchKingfisherSum??>${kfEchKingfisherSum}</#if></td>
                 <td n="kfOtherkingfisherSum" class="c2"><#if kfOtherkingfisherSum??>${kfOtherkingfisherSum}</#if></td>
                 <td n="kfCullingSum" class="c2"><#if kfCullingSum??>${kfCullingSum}</#if></td>
                 <td n="kfYearmonitoringSum" class="c2"><#if kfYearmonitoringSum??>${kfYearmonitoringSum}</#if></td>

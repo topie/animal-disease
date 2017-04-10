@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 @Table(name = "b_kingfisher")
 public class Kingfisher {
+
+    @Id
     @Column(name = "kf_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String kfId;
@@ -75,6 +77,15 @@ public class Kingfisher {
 
     @Column(name = "kf_levelOther")
     private BigDecimal kfLevelother;
+
+    @Column(name = "kf_PprKingfisher")
+    private BigDecimal kfPprKingfisher;
+
+    @Column(name = "kf_BurKingfisher")
+    private BigDecimal kfBurKingfisher;
+
+    @Column(name = "kf_EchKingfisher")
+    private BigDecimal kfEchKingfisher;
 
     /**
      * @return kf_id
@@ -396,5 +407,29 @@ public class Kingfisher {
      */
     public void setKfLevelother(BigDecimal kfLevelother) {
         this.kfLevelother = kfLevelother;
+    }
+
+    public BigDecimal getKfPprKingfisher() {
+        return kfPprKingfisher;
+    }
+
+    public BigDecimal getKfBurKingfisher() {
+        return kfBurKingfisher;
+    }
+
+    public BigDecimal getKfEchKingfisher() {
+        return kfEchKingfisher;
+    }
+
+    public void setKfPprKingfisher(BigDecimal kfPprKingfisher) {
+        this.kfPprKingfisher = kfPprKingfisher;
+    }
+
+    public void setKfBurKingfisher(BigDecimal kfBurKingfisher) {
+        this.kfBurKingfisher = kfBurKingfisher;
+    }
+
+    public void setKfEchKingfisher(BigDecimal kfEchKingfisher) {
+        this.kfEchKingfisher = kfEchKingfisher;
     }
 }

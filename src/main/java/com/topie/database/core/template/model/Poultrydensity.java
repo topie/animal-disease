@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 @Table(name = "b_poultrydensity")
 public class Poultrydensity {
+
+    @Id
     @Column(name = "pd_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String pdId;

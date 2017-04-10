@@ -933,6 +933,7 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                     item=null;
                 }
                 boolean insert = true;
+
                 if (item == null) {
                     item = fill;
                     item.setLdId(UUIDUtil.getUUID());
@@ -976,10 +977,11 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 item.setKfDate(report.getBeginTime());
                 item.setKfRegioncode(region.getRegionCode());
                 item.setKfRegionname(region.getRegionName());
+                int i;
                 if (insert) {
                     kingfisherMapper.insertSelective(item);
                 } else {
-                    kingfisherMapper.updateByPrimaryKeySelective(item);
+                    i= kingfisherMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }

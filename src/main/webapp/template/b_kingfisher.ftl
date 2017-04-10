@@ -112,31 +112,31 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="18">${templateName}</td>
+				<td class="c1" colspan="19">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2">单 位:</td>
-				<td class="c3" colspan="17">${org.orgName}</td>
+				<td class="c3" colspan="18">${org.orgName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2">填表日期:</td>
-				<td class="c3" colspan="17"><#if item.kfDate??>${item.kfDate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c3" colspan="18"><#if item.kfDate??>${item.kfDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r2">
 				<td class="c2">填 表 人:</td>
-				<td class="c3" colspan="17">${user.realName}</td>
+				<td class="c3" colspan="18">${user.realName}</td>
 			</tr>
 			<tr class="r3">
 				<td class="c4">主管领导：</td>
-				<td class="c3" colspan="17">${user.leaderName}</td>
+				<td class="c3" colspan="18">${user.leaderName}</td>
 			</tr>
 			<tr class="r4">
-				<td class="c2" colspan="10">全省上半年落实动物疫病防控经费（万元）</td>
+				<td class="c2" colspan="11">全省上半年落实动物疫病防控经费（万元）</td>
 				<td class="c2" colspan="4">全省春秋防落实动物疫病防控经费（万元）</td>
 				<td class="c2" colspan="4">省本级春秋防落实动物疫病防控经费（万元）</td>
 			</tr>
 			<tr class="r5">
-				<td class="c2" colspan="5">疫苗配套经费</td>
+				<td class="c2" colspan="6">疫苗配套经费</td>
 				<td class="c2" rowspan="2">扑杀补助</td>
 				<td class="c2" rowspan="2">监测经费</td>
 				<td class="c2" rowspan="2">应急物资储备经费</td>
@@ -154,15 +154,17 @@
 			<tr class="r6">
 				<td class="c2">口蹄疫</td>
 				<td class="c2">禽流感</td>
-				<td class="c2">高致病性猪蓝耳病</td>
-				<td class="c2">猪 瘟</td>
+				<td class="c2">小反刍兽疫</td>
+				<td class="c2">布鲁氏菌病</td>
+                <td class="c2">包虫病</td>
 				<td class="c2">其 它</td>
 			</tr>
 			<tr class="r7">
 				<td role="data" n="kfFmkingfisher"   class="c2"><#if item.kfFmkingfisher??>${item.kfFmkingfisher}</#if></td>
 				<td role="data" n="kfAikingfisher"   class="c2"><#if item.kfAikingfisher??>${item.kfAikingfisher}</#if></td>
-				<td role="data" n="kfBkingfisher"   class="c2"><#if item.kfBkingfisher??>${item.kfBkingfisher}</#if></td>
-				<td role="data" n="kfCskingfisher"   class="c2"><#if item.kfCskingfisher??>${item.kfCskingfisher}</#if></td>
+				<td role="data" n="kfPprKingfisher"   class="c2"><#if item.kfPprKingfisher??>${item.kfPprKingfisher}</#if></td>
+				<td role="data" n="kfBurKingfisher"   class="c2"><#if item.kfBurKingfisher??>${item.kfBurKingfisher}</#if></td>
+				<td role="data" n="kfEchKingfisher"   class="c2"><#if item.kfEchKingfisher??>${item.kfEchKingfisher}</#if></td>
 				<td role="data" n="kfOtherkingfisher"   class="c2"><#if item.kfOtherkingfisher??>${item.kfOtherkingfisher}</#if></td>
 				<td role="data" n="kfCulling"   class="c2"><#if item.kfCulling??>${item.kfCulling}</#if></td>
 				<td role="data" n="kfYearmonitoring"   class="c2"><#if item.kfYearmonitoring??>${item.kfYearmonitoring}</#if></td>

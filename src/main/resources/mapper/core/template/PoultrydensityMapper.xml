@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbggenerated
     -->
-    <result column="pd_id" property="pdId" jdbcType="CHAR" />
+    <id column="pd_id" property="pdId" jdbcType="CHAR" />
     <result column="pd_reportId" property="pdReportid" jdbcType="CHAR" />
     <result column="pd_regionCode" property="pdRegioncode" jdbcType="VARCHAR" />
     <result column="pd_regionName" property="pdRegionname" jdbcType="VARCHAR" />

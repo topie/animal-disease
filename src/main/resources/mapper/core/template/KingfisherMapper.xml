@@ -5,13 +5,18 @@
     <!--
       WARNING - @mbggenerated
     -->
-    <result column="kf_id" property="kfId" jdbcType="CHAR" />
+    <id column="kf_id" property="kfId" jdbcType="CHAR" />
     <result column="kf_reportId" property="kfReportid" jdbcType="CHAR" />
     <result column="kf_regionCode" property="kfRegioncode" jdbcType="VARCHAR" />
     <result column="kf_regionName" property="kfRegionname" jdbcType="VARCHAR" />
     <result column="kf_date" property="kfDate" jdbcType="TIMESTAMP" />
     <result column="kf_FMKingfisher" property="kfFmkingfisher" jdbcType="DECIMAL" />
     <result column="kf_AIKingfisher" property="kfAikingfisher" jdbcType="DECIMAL" />
+
+    <result column="kf_PprKingfisher" property="kfPprKingfisher" jdbcType="DECIMAL" />
+    <result column="kf_BurKingfisher" property="kfBurKingfisher" jdbcType="DECIMAL" />
+    <result column="kf_EchKingfisher" property="kfEchKingfisher" jdbcType="DECIMAL" />
+
     <result column="kf_BKingfisher" property="kfBkingfisher" jdbcType="DECIMAL" />
     <result column="kf_CSKingfisher" property="kfCskingfisher" jdbcType="DECIMAL" />
     <result column="kf_otherKingfisher" property="kfOtherkingfisher" jdbcType="DECIMAL" />

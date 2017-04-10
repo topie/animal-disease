@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbggenerated
     -->
-    <result column="ld_id" property="ldId" jdbcType="CHAR" />
+    <id column="ld_id" property="ldId" jdbcType="CHAR" />
     <result column="ld_reportId" property="ldReportid" jdbcType="CHAR" />
     <result column="ld_regionCode" property="ldRegioncode" jdbcType="VARCHAR" />
     <result column="ld_regionName" property="ldRegionname" jdbcType="VARCHAR" />
