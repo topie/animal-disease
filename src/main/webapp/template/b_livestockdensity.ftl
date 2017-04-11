@@ -122,30 +122,30 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="27">${templateName}</td>
+				<td class="c1" colspan="35">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2">单 位:</td>
-				<td class="c3" colspan="26">${org.orgName}</td>
+				<td class="c3" colspan="34">${org.orgName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2">填表日期:</td>
-				<td class="c3" colspan="26"><#if item.ldDate??>${item.ldDate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c3" colspan="34"><#if item.ldDate??>${item.ldDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r2">
 				<td class="c2">填 表 人:</td>
-				<td class="c3" colspan="26">${user.realName}</td>
+				<td class="c3" colspan="34">${user.realName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c4">主管领导：</td>
-				<td class="c3" colspan="26">${user.leaderName}</td>
+				<td class="c3" colspan="34">${user.leaderName}</td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" colspan="7">猪(万头)</td>
-				<td class="c5" colspan="5">牛（含奶牛）(万头)</td>
+				<td class="c5" colspan="7">牛（含奶牛）(万头)</td>
 				<td class="c2" colspan="3">奶牛(万头)</td>
-				<td class="c2" colspan="7">羊(万只)</td>
-				<td class="c2" colspan="5">其它(万头/只)</td>
+				<td class="c2" colspan="11">羊(万只)</td>
+				<td class="c2" colspan="7">其它(万头/只)</td>
 			</tr>
 			<tr class="r3">
 				<td class="c2" rowspan="2">存栏数量</td>
@@ -155,17 +155,34 @@
 				<td class="c2" rowspan="2">存栏数量</td>
 				<td class="c2" colspan="2">O型-亚洲I型口蹄疫</td>
 				<td class="c5" colspan="2">A型口蹄疫</td>
+
+                <td class="c5" colspan="2">布鲁氏菌病</td>
+
 				<td class="c6" rowspan="2">存栏数量</td>
 				<td class="c2" colspan="2">A型口蹄疫</td>
 				<td class="c2" rowspan="2">存栏数量</td>
 				<td class="c2" colspan="2">O型-亚洲I型口蹄疫</td>
 				<td class="c2" colspan="2">A型口蹄疫</td>
 				<td class="c2" colspan="2">小反刍兽疫</td>
+
+                <td class="c5" colspan="2">布鲁氏菌病</td>
+                <td class="c5" colspan="2">包虫病</td>
+
 				<td class="c2" rowspan="2">存栏情况</td>
 				<td class="c2" colspan="2">O型口蹄疫</td>
 				<td class="c2" colspan="2">O型-亚洲I型口蹄疫</td>
+
+                <td class="c2" colspan="2">A型口蹄疫</td>
 			</tr>
 			<tr class="r3">
+                <td class="c2">应免数量</td>
+                <td class="c2">实际免疫数量</td>
+                <td class="c2">应免数量</td>
+                <td class="c2">实际免疫数量</td>
+                <td class="c2">应免数量</td>
+                <td class="c2">实际免疫数量</td>
+                <td class="c2">应免数量</td>
+                <td class="c2">实际免疫数量</td>
 				<td class="c2">应免数量</td>
 				<td class="c2">实际免疫数量</td>
 				<td class="c2">应免数量</td>
@@ -203,6 +220,9 @@
 				<td role="data" n="ldNiuactualcount"   class="c2"><#if item.ldNiuactualcount??>${item.ldNiuactualcount}</#if></td>
 				<td role="data" n="ldNiuashuldcount"   class="c2"><#if item.ldNiuashuldcount??>${item.ldNiuashuldcount}</#if></td>
 				<td role="data" n="ldNiuaactualcount"   class="c2"><#if item.ldNiuaactualcount??>${item.ldNiuaactualcount}</#if></td>
+
+                <td role="data" n="ldNiuBruShuldCount"   class="c2"><#if item.ldNiuBruShuldCount??>${item.ldNiuBruShuldCount}</#if></td>
+                <td role="data" n="ldNiuBruActualCount"   class="c2"><#if item.ldNiuBruActualCount??>${item.ldNiuBruActualCount}</#if></td>
 				
 				<td role="data" n="ldCowherdscount"   class="c2"><#if item.ldCowherdscount??>${item.ldCowherdscount}</#if></td>
 				<td role="data" n="ldCowshuldcount"   class="c2"><#if item.ldCowshuldcount??>${item.ldCowshuldcount}</#if></td>
@@ -215,12 +235,20 @@
 				<td role="data" n="ldSheepaactualcount"   class="c2"><#if item.ldSheepaactualcount??>${item.ldSheepaactualcount}</#if></td>
 				<td role="data" n="ldSheeppdprshuldcount"   class="c2"><#if item.ldSheeppdprshuldcount??>${item.ldSheeppdprshuldcount}</#if></td>
 				<td role="data" n="ldSheeppdpractualcount"   class="c2"><#if item.ldSheeppdpractualcount??>${item.ldSheeppdpractualcount}</#if></td>
+
+                <td role="data" n="ldSheepBruShuldCount"   class="c2"><#if item.ldSheepBruShuldCount??>${item.ldSheepBruShuldCount}</#if></td>
+                <td role="data" n="ldSheepBruActualCount"   class="c2"><#if item.ldSheepBruActualCount??>${item.ldSheepBruActualCount}</#if></td>
+                <td role="data" n="ldSheepEchShuldCount"   class="c2"><#if item.ldSheepEchShuldCount??>${item.ldSheepEchShuldCount}</#if></td>
+                <td role="data" n="ldSheepEchActualCount"   class="c2"><#if item.ldSheepEchActualCount??>${item.ldSheepEchActualCount}</#if></td>
 				
 				<td role="data" n="ldOtherherdscount"   class="c2"><#if item.ldOtherherdscount??>${item.ldOtherherdscount}</#if></td>
 				<td role="data" n="ldOtheroshuldcount"   class="c2"><#if item.ldOtheroshuldcount??>${item.ldOtheroshuldcount}</#if></td>
 				<td role="data" n="ldOtheroactualcount"   class="c2"><#if item.ldOtheroactualcount??>${item.ldOtheroactualcount}</#if></td>
 				<td role="data" n="ldOtheroishuldcount"   class="c2"><#if item.ldOtheroishuldcount??>${item.ldOtheroishuldcount}</#if></td>
 				<td role="data" n="ldOtheroiactualcount"   class="c2"><#if item.ldOtheroiactualcount??>${item.ldOtheroiactualcount}</#if></td>
+
+                <td role="data" n="ldOtherFmdaShuldCount"   class="c2"><#if item.ldOtherFmdaShuldCount??>${item.ldOtherFmdaShuldCount}</#if></td>
+                <td role="data" n="ldOtherFmdaActualCount"   class="c2"><#if item.ldOtherFmdaActualCount??>${item.ldOtherFmdaActualCount}</#if></td>
 			</tr>
 		</tbody>
 	</table>

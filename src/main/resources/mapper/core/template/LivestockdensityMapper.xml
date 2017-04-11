@@ -48,6 +48,16 @@
     <result column="ld_cowOAIActualCount" property="ldCowoaiactualcount" jdbcType="DECIMAL" />
     <result column="ld_sheepPDPRShuldCount" property="ldSheeppdprshuldcount" jdbcType="DECIMAL" />
     <result column="ld_sheepPDPRActualCount" property="ldSheeppdpractualcount" jdbcType="DECIMAL" />
+
+    <result column="ld_NiuBruShuldCount" property="ldNiuBruShuldCount" jdbcType="DECIMAL" />
+    <result column="ld_NiuBruActualCount" property="ldNiuBruActualCount" jdbcType="DECIMAL" />
+    <result column="ld_SheepBruShuldCount" property="ldSheepBruShuldCount" jdbcType="DECIMAL" />
+    <result column="ld_SheepBruActualCount" property="ldSheepBruActualCount" jdbcType="DECIMAL" />
+    <result column="ld_SheepEchShuldCount" property="ldSheepEchShuldCount" jdbcType="DECIMAL" />
+    <result column="ld_SheepEchActualCount" property="ldSheepEchActualCount" jdbcType="DECIMAL" />
+    <result column="ld_OtherFmdaShuldCount" property="ldOtherFmdaShuldCount" jdbcType="DECIMAL" />
+    <result column="ld_OtherFmdaActualCount" property="ldOtherFmdaActualCount" jdbcType="DECIMAL" />
+
   </resultMap>
   <select id="selectAllByDate" resultMap="BaseResultMap">
     select t1.Liv_regionCode as ld_regionCode ,t1.Liv_regionName as ld_regionName,t2.* from

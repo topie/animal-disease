@@ -64,6 +64,10 @@
     <result column="ev_AllBrucellaA19" property="evAllbrucellaa19" jdbcType="DECIMAL" />
     <result column="ev_SheepHydatid" property="evSheephydatid" jdbcType="DECIMAL" />
     <result column="ev_AllSheepHydatid" property="evAllsheephydatid" jdbcType="DECIMAL" />
+
+
+    <result column="ev_BrucellaM5" property="evBrucellaM5" jdbcType="DECIMAL" />
+    <result column="ev_AllBrucellaM5" property="evAllBrucellaM5" jdbcType="DECIMAL" />
   </resultMap>
   <select id="selectAllByDate" resultMap="BaseResultMap">
     select t1.Liv_regionCode as ev_regionCode ,t1.Liv_regionName as ev_regionName,t2.* from

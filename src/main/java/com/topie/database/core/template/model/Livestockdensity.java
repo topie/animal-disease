@@ -138,6 +138,38 @@ public class Livestockdensity {
     @Column(name = "ld_sheepPDPRActualCount")
     private BigDecimal ldSheeppdpractualcount;
 
+
+    @Column(name = "ld_NiuBruShuldCount")
+    private BigDecimal ldNiuBruShuldCount;
+
+    @Column(name = "ld_NiuBruActualCount")
+    private BigDecimal ldNiuBruActualCount;
+
+
+
+    @Column(name = "ld_SheepBruShuldCount")
+    private BigDecimal ldSheepBruShuldCount;
+
+    @Column(name = "ld_SheepBruActualCount")
+    private BigDecimal ldSheepBruActualCount;
+
+    @Column(name = "ld_SheepEchShuldCount")
+    private BigDecimal ldSheepEchShuldCount;
+
+    @Column(name = "ld_SheepEchActualCount")
+    private BigDecimal ldSheepEchActualCount;
+
+    @Column(name = "ld_OtherFmdaShuldCount")
+    private BigDecimal ldOtherFmdaShuldCount;
+
+    @Column(name = "ld_OtherFmdaActualCount")
+    private BigDecimal ldOtherFmdaActualCount;
+
+
+
+
+
+
     /**
      * @return ld_id
      */
@@ -738,5 +770,69 @@ public class Livestockdensity {
      */
     public void setLdSheeppdpractualcount(BigDecimal ldSheeppdpractualcount) {
         this.ldSheeppdpractualcount = ldSheeppdpractualcount;
+    }
+
+    public BigDecimal getLdNiuBruShuldCount() {
+        return ldNiuBruShuldCount;
+    }
+
+    public BigDecimal getLdNiuBruActualCount() {
+        return ldNiuBruActualCount;
+    }
+
+    public BigDecimal getLdSheepBruShuldCount() {
+        return ldSheepBruShuldCount;
+    }
+
+    public BigDecimal getLdSheepBruActualCount() {
+        return ldSheepBruActualCount;
+    }
+
+    public BigDecimal getLdSheepEchShuldCount() {
+        return ldSheepEchShuldCount;
+    }
+
+    public BigDecimal getLdSheepEchActualCount() {
+        return ldSheepEchActualCount;
+    }
+
+    public BigDecimal getLdOtherFmdaShuldCount() {
+        return ldOtherFmdaShuldCount;
+    }
+
+    public BigDecimal getLdOtherFmdaActualCount() {
+        return ldOtherFmdaActualCount;
+    }
+
+    public void setLdNiuBruShuldCount(BigDecimal ldNiuBruShuldCount) {
+        this.ldNiuBruShuldCount = ldNiuBruShuldCount;
+    }
+
+    public void setLdNiuBruActualCount(BigDecimal ldNiuBruActualCount) {
+        this.ldNiuBruActualCount = ldNiuBruActualCount;
+    }
+
+    public void setLdSheepBruShuldCount(BigDecimal ldSheepBruShuldCount) {
+        this.ldSheepBruShuldCount = ldSheepBruShuldCount;
+    }
+
+    public void setLdSheepBruActualCount(BigDecimal ldSheepBruActualCount) {
+        this.ldSheepBruActualCount = ldSheepBruActualCount;
+    }
+
+    public void setLdSheepEchShuldCount(BigDecimal ldSheepEchShuldCount) {
+        this.ldSheepEchShuldCount = ldSheepEchShuldCount;
+    }
+
+    public void setLdSheepEchActualCount(BigDecimal ldSheepEchActualCount) {
+        this.ldSheepEchActualCount = ldSheepEchActualCount;
+    }
+
+    public void setLdOtherFmdaShuldCount(BigDecimal ldOtherFmdaShuldCount) {
+        this.ldOtherFmdaShuldCount = ldOtherFmdaShuldCount;
+    }
+
+    public void setLdOtherFmdaActualCount(BigDecimal ldOtherFmdaActualCount) {
+        this.ldOtherFmdaActualCount = ldOtherFmdaActualCount;
     }
 }

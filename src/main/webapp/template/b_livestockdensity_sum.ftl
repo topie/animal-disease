@@ -164,15 +164,15 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="28">${templateName}统计表</td>
+				<td class="c1" colspan="36">${templateName}统计表</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="3">省份</td>
 				<td class="c2" colspan="7">猪</td>
-				<td class="c3" colspan="5">牛（含奶牛）</td>
+				<td class="c3" colspan="7">牛（含奶牛）</td>
 				<td class="c3" colspan="3">奶牛</td>
-				<td class="c2" colspan="7">羊</td>
-				<td class="c2" colspan="5">其他</td>
+				<td class="c2" colspan="11">羊</td>
+				<td class="c2" colspan="7">其他</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="2">存栏数量(万头)</td>
@@ -182,17 +182,34 @@
 				<td class="c2" rowspan="2">存栏数量(万头)</td>
 				<td class="c2" colspan="2">O型-亚洲I型口蹄疫</td>
 				<td class="c2" colspan="2">A型口蹄疫</td>
+
+                <td class="c5" colspan="2">布鲁氏菌病</td>
+
 				<td class="c4" rowspan="2">存栏数量(万头)</td>
 				<td class="c2" colspan="2">A型口蹄疫</td>
 				<td class="c5" rowspan="2">存栏数量（万只）</td>
 				<td class="c2" colspan="2">O型-亚洲I型口蹄疫</td>
 				<td class="c2" colspan="2">A型口蹄疫</td>
 				<td class="c2" colspan="2">小反刍兽疫</td>
+
+                <td class="c5" colspan="2">布鲁氏菌病</td>
+                <td class="c5" colspan="2">包虫病</td>
+
 				<td class="c2" rowspan="2">存栏情况（万头/只）</td>
 				<td class="c2" colspan="2">O型口蹄疫</td>
 				<td class="c2" colspan="2">O型-亚洲I型口蹄疫</td>
+
+                <td class="c2" colspan="2">A型口蹄疫</td>
 			</tr>
 			<tr class="r3">
+                <td class="c2">应免数量(万头)</td>
+                <td class="c2">实际免疫数量(万头)</td>
+                <td class="c2">应免数量(万头)</td>
+                <td class="c2">实际免疫数量(万头)</td>
+                <td class="c2">应免数量(万头)</td>
+                <td class="c2">实际免疫数量(万头)</td>
+                <td class="c2">应免数量(万头)</td>
+                <td class="c2">实际免疫数量(万头)</td>
 				<td class="c2">应免数量(万头)</td>
 				<td class="c2">实际免疫数量(万头)</td>
 				<td class="c2">应免数量(万头)</td>
@@ -243,6 +260,15 @@
 			<#assign ldOtheroactualcountSum=0>
 			<#assign ldOtheroishuldcountSum=0>
 			<#assign ldOtheroiactualcountSum=0>
+
+			<#assign ldNiuBruShuldCountSum=0>
+			<#assign ldNiuBruActualCountSum=0>
+			<#assign ldSheepBruShuldCountSum=0>
+			<#assign ldSheepBruActualCountSum=0>
+			<#assign ldSheepEchShuldCountSum=0>
+			<#assign ldSheepEchActualCountSum=0>
+			<#assign ldOtherFmdaShuldCountSum=0>
+			<#assign ldOtherFmdaActualCountSum=0>
 			<#list items as item>
 				<#assign ldPidherdscountSum=ldPidherdscountSum?default(0) +item.ldPidherdscount?default(0)>
 				<#assign ldPigoshuldcountSum=ldPigoshuldcountSum?default(0) +item.ldPigoshuldcount?default(0)>
@@ -272,6 +298,17 @@
 				<#assign ldOtheroactualcountSum=ldOtheroactualcountSum?default(0) +item.ldOtheroactualcount?default(0)>
 				<#assign ldOtheroishuldcountSum=ldOtheroishuldcountSum?default(0) +item.ldOtheroishuldcount?default(0)>
 				<#assign ldOtheroiactualcountSum=ldOtheroiactualcountSum?default(0) +item.ldOtheroiactualcount?default(0)>
+
+				<#assign ldNiuBruShuldCountSum=ldNiuBruShuldCountSum?default(0) +item.ldNiuBruShuldCount?default(0)>
+				<#assign ldNiuBruActualCountSum=ldNiuBruActualCountSum?default(0) +item.ldNiuBruActualCount?default(0)>
+				<#assign ldSheepBruShuldCountSum=ldSheepBruShuldCountSum?default(0) +item.ldSheepBruShuldCount?default(0)>
+				<#assign ldSheepBruActualCountSum=ldSheepBruActualCountSum?default(0) +item.ldSheepBruActualCount?default(0)>
+				<#assign ldSheepEchShuldCountSum=ldSheepEchShuldCountSum?default(0) +item.ldSheepEchShuldCount?default(0)>
+				<#assign ldSheepEchActualCountSum=ldSheepEchActualCountSum?default(0) +item.ldSheepEchActualCount?default(0)>
+				<#assign ldOtherFmdaShuldCountSum=ldOtherFmdaShuldCountSum?default(0) +item.ldOtherFmdaShuldCount?default(0)>
+				<#assign ldOtherFmdaActualCountSum=ldOtherFmdaActualCountSum?default(0) +item.ldOtherFmdaActualCount?default(0)>
+
+
 			<tr class="r4">
 				<td n="ldRegionname"  class="c2"><#if item.ldRegionname??>${item.ldRegionname}</#if></td>
 				
@@ -287,6 +324,10 @@
 				<td n="ldNiuactualcount"  class="c2"><#if item.ldNiuactualcount??>${item.ldNiuactualcount}</#if></td>
 				<td n="ldNiuashuldcount"  class="c9"><#if item.ldNiuashuldcount??>${item.ldNiuashuldcount}</#if></td>
 				<td n="ldNiuaactualcount"  class="c3"><#if item.ldNiuaactualcount??>${item.ldNiuaactualcount}</#if></td>
+
+                <td role="data" n="ldNiuBruShuldCount"   class="c2"><#if item.ldNiuBruShuldCount??>${item.ldNiuBruShuldCount}</#if></td>
+                <td role="data" n="ldNiuBruActualCount"   class="c2"><#if item.ldNiuBruActualCount??>${item.ldNiuBruActualCount}</#if></td>
+
 				<td n="ldCowherdscount"  class="c5"><#if item.ldCowherdscount??>${item.ldCowherdscount}</#if></td>
 				<td n="ldCowshuldcount"  class="c2"><#if item.ldCowshuldcount??>${item.ldCowshuldcount}</#if></td>
 				<td n="ldCowactualcount"  class="c2"><#if item.ldCowactualcount??>${item.ldCowactualcount}</#if></td>
@@ -297,12 +338,22 @@
 				<td n="ldSheepaactualcount"  class="c2"><#if item.ldSheepaactualcount??>${item.ldSheepaactualcount}</#if></td>
 				<td n="ldSheeppdprshuldcount"  class="c2"><#if item.ldSheeppdprshuldcount??>${item.ldSheeppdprshuldcount}</#if></td>
 				<td n="ldSheeppdpractualcount"  class="c2"><#if item.ldSheeppdpractualcount??>${item.ldSheeppdpractualcount}</#if></td>
+
+                <td role="data" n="ldSheepBruShuldCount"   class="c2"><#if item.ldSheepBruShuldCount??>${item.ldSheepBruShuldCount}</#if></td>
+                <td role="data" n="ldSheepBruActualCount"   class="c2"><#if item.ldSheepBruActualCount??>${item.ldSheepBruActualCount}</#if></td>
+                <td role="data" n="ldSheepEchShuldCount"   class="c2"><#if item.ldSheepEchShuldCount??>${item.ldSheepEchShuldCount}</#if></td>
+                <td role="data" n="ldSheepEchActualCount"   class="c2"><#if item.ldSheepEchActualCount??>${item.ldSheepEchActualCount}</#if></td>
+
 				<td n="ldOtherherdscount"  class="c2"><#if item.ldOtherherdscount??>${item.ldOtherherdscount}</#if></td>
 				<td n="ldOtheroshuldcount"  class="c2"><#if item.ldOtheroshuldcount??>${item.ldOtheroshuldcount}</#if></td>
 				
 				<td n="ldOtheroactualcount"  class="c2"><#if item.ldOtheroactualcount??>${item.ldOtheroactualcount}</#if></td>
 				<td n="ldOtheroishuldcount"  class="c2"><#if item.ldOtheroishuldcount??>${item.ldOtheroishuldcount}</#if></td>
 				<td n="ldOtheroiactualcount"  class="c2"><#if item.ldOtheroiactualcount??>${item.ldOtheroiactualcount}</#if></td>
+
+                <td role="data" n="ldOtherFmdaShuldCount"   class="c2"><#if item.ldOtherFmdaShuldCount??>${item.ldOtherFmdaShuldCount}</#if></td>
+                <td role="data" n="ldOtherFmdaActualCount"   class="c2"><#if item.ldOtherFmdaActualCount??>${item.ldOtherFmdaActualCount}</#if></td>
+
 			</tr>
  </#list>
             <tr class="r4">
@@ -319,6 +370,10 @@
                 <td n="ldNiuactualcountSum" class="c2"><#if ldNiuactualcountSum??>${ldNiuactualcountSum}</#if></td>
                 <td n="ldNiuashuldcountSum" class="c2"><#if ldNiuashuldcountSum??>${ldNiuashuldcountSum}</#if></td>
                 <td n="ldNiuaactualcountSum" class="c2"><#if ldNiuaactualcountSum??>${ldNiuaactualcountSum}</#if></td>
+
+                <td n="ldNiuBruShuldCountSum" class="c2"><#if ldNiuBruShuldCountSum??>${ldNiuBruShuldCountSum}</#if></td>
+                <td n="ldNiuBruActualCountSum" class="c2"><#if ldNiuBruActualCountSum??>${ldNiuBruActualCountSum}</#if></td>
+
                 <td n="ldCowherdscountSum" class="c2"><#if ldCowherdscountSum??>${ldCowherdscountSum}</#if></td>
                 <td n="ldCowshuldcountSum" class="c2"><#if ldCowshuldcountSum??>${ldCowshuldcountSum}</#if></td>
                 <td n="ldCowactualcountSum" class="c2"><#if ldCowactualcountSum??>${ldCowactualcountSum}</#if></td>
@@ -329,11 +384,24 @@
                 <td n="ldSheepaactualcountSum" class="c2"><#if ldSheepaactualcountSum??>${ldSheepaactualcountSum}</#if></td>
                 <td n="ldSheeppdprshuldcountSum" class="c2"><#if ldSheeppdprshuldcountSum??>${ldSheeppdprshuldcountSum}</#if></td>
                 <td n="ldSheeppdpractualcountSum" class="c2"><#if ldSheeppdpractualcountSum??>${ldSheeppdpractualcountSum}</#if></td>
+
+                <td n="ldSheepBruShuldCountSum" class="c2"><#if ldSheepBruShuldCountSum??>${ldSheepBruShuldCountSum}</#if></td>
+                <td n="ldSheepBruActualCountSum" class="c2"><#if ldSheepBruActualCountSum??>${ldSheepBruActualCountSum}</#if></td>
+                <td n="ldSheepEchShuldCountSum" class="c2"><#if ldSheepEchShuldCountSum??>${ldSheepEchShuldCountSum}</#if></td>
+                <td n="ldSheepEchActualCountSum" class="c2"><#if ldSheepEchActualCountSum??>${ldSheepEchActualCountSum}</#if></td>
+
                 <td n="ldOtherherdscountSum" class="c2"><#if ldOtherherdscountSum??>${ldOtherherdscountSum}</#if></td>
                 <td n="ldOtheroshuldcountSum" class="c2"><#if ldOtheroshuldcountSum??>${ldOtheroshuldcountSum}</#if></td>
                 <td n="ldOtheroactualcountSum" class="c2"><#if ldOtheroactualcountSum??>${ldOtheroactualcountSum}</#if></td>
                 <td n="ldOtheroishuldcountSum" class="c2"><#if ldOtheroishuldcountSum??>${ldOtheroishuldcountSum}</#if></td>
                 <td n="ldOtheroiactualcountSum" class="c2"><#if ldOtheroiactualcountSum??>${ldOtheroiactualcountSum}</#if></td>
+
+
+
+                <td n="ldOtherFmdaShuldCountSum" class="c2"><#if ldOtherFmdaShuldCountSum??>${ldOtherFmdaShuldCountSum}</#if></td>
+                <td n="ldOtherFmdaActualCountSum" class="c2"><#if ldOtherFmdaActualCountSum??>${ldOtherFmdaActualCountSum}</#if></td>
+
+
             </tr>
 		</tbody>
 	</table>

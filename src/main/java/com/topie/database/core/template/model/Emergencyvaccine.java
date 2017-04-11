@@ -185,6 +185,13 @@ public class Emergencyvaccine {
     @Column(name = "ev_AllSheepHydatid")
     private BigDecimal evAllsheephydatid;
 
+
+    @Column(name = "ev_BrucellaM5")
+    private BigDecimal evBrucellaM5;
+
+    @Column(name = "ev_AllBrucellaM5")
+    private BigDecimal evAllBrucellaM5;
+
     /**
      * @return ev_id
      */
@@ -1009,5 +1016,21 @@ public class Emergencyvaccine {
      */
     public void setEvAllsheephydatid(BigDecimal evAllsheephydatid) {
         this.evAllsheephydatid = evAllsheephydatid;
+    }
+
+    public BigDecimal getEvBrucellaM5() {
+        return evBrucellaM5;
+    }
+
+    public BigDecimal getEvAllBrucellaM5() {
+        return evAllBrucellaM5;
+    }
+
+    public void setEvBrucellaM5(BigDecimal evBrucellaM5) {
+        this.evBrucellaM5 = evBrucellaM5;
+    }
+
+    public void setEvAllBrucellaM5(BigDecimal evAllBrucellaM5) {
+        this.evAllBrucellaM5 = evAllBrucellaM5;
     }
 }
