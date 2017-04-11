@@ -20,8 +20,10 @@ import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.servlet.http.HttpServletRequest;
-import java.math.BigDecimal;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by chenguojun on 2017/2/21.
@@ -107,33 +109,32 @@ public class ExcelServiceImpl implements IExcelService {
     @Autowired
     private FootandmouthvaccineMapper footandmouthvaccineMapper;
 
-     @Autowired
+    @Autowired
     private KingfisherMapper kingfisherMapper;
 
-     @Autowired
+    @Autowired
     private LivestockdensityMapper livestockdensityMapper;
 
-     @Autowired
+    @Autowired
     private NewcastlevaccineMapper newcastlevaccineMapper;
 
-     @Autowired
+    @Autowired
     private PoultrydensityMapper poultrydensityMapper;
 
     @Autowired
     private SmallruminantsvaccineMapper smallruminantsvaccineMapper;
 
-     @Autowired
+    @Autowired
     private EmergencyvaccineMapper emergencyvaccineMapper;
 
-    private Wlivestockinout getWlivestockinout(Region region,Date date){
-        Date beginTime= BeginTimeUtil.getCurrentHalfYearBeginTime(date);
-        String beginTimeStr= DateUtil.DateToString(beginTime, DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
-        Wlivestockinout wlivestockinout=new Wlivestockinout();
-        wlivestockinout=this.wlivestockinoutMapper.selectLivestockInOutByRegionCode(region.getRegionCode(),beginTimeStr);
+    private Wlivestockinout getWlivestockinout(Region region, Date date) {
+        Date beginTime = BeginTimeUtil.getCurrentHalfYearBeginTime(date);
+        String beginTimeStr = DateUtil.DateToString(beginTime, DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
+        Wlivestockinout wlivestockinout = new Wlivestockinout();
+        wlivestockinout = this.wlivestockinoutMapper
+                .selectLivestockInOutByRegionCode(region.getRegionCode(), beginTimeStr);
         return wlivestockinout;
     }
-
-
 
     @Override
     public String getReportHtml(HttpServletRequest request, Report report) {
@@ -156,138 +157,139 @@ public class ExcelServiceImpl implements IExcelService {
         params.put("org", orgInfo);
         params.put("report", report);
         Region region = regionMapper.selectByPrimaryKey(orgInfo.getRegionCode());
-        Wlivestockinout wlivestockinout=getWlivestockinout(region,report.getBeginTime());
-        if(wlivestockinout==null){
-            wlivestockinout=new Wlivestockinout();
+        Wlivestockinout wlivestockinout = getWlivestockinout(region, report.getBeginTime());
+        if (wlivestockinout == null) {
+            wlivestockinout = new Wlivestockinout();
         }
         params.put("wlivestockinout", wlivestockinout);
 
-        Date beginTime=BeginTimeUtil.getBeginTime(report.getBeginTime());
-        Date halfYearbeginTime=BeginTimeUtil.getCurrentHalfYearBeginTime(report.getBeginTime());
-        Date endTime=report.getBeginTime();
+        Date beginTime = BeginTimeUtil.getBeginTime(report.getBeginTime());
+        Date halfYearbeginTime = BeginTimeUtil.getCurrentHalfYearBeginTime(report.getBeginTime());
+        Date endTime = report.getBeginTime();
 
         switch (template.getTableName().toLowerCase()) {
             case "b_avianinfluenza": {
-                Avianinfluenza arg =new Avianinfluenza();
+                Avianinfluenza arg = new Avianinfluenza();
                 arg.setAiReportid(report.getReportId());
-                List<Avianinfluenza> items=avianinfluenzaMapper.select(arg);
-                Avianinfluenza item =new Avianinfluenza();
-                if(items.size()>0) {
+                List<Avianinfluenza> items = avianinfluenzaMapper.select(arg);
+                Avianinfluenza item = new Avianinfluenza();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Avianinfluenza  itemSum = avianinfluenzaMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Avianinfluenza();
+                Avianinfluenza itemSum = avianinfluenzaMapper
+                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Avianinfluenza();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
-           case "b_emergencyvaccine": {
-               Emergencyvaccine arg =new Emergencyvaccine();
+            case "b_emergencyvaccine": {
+                Emergencyvaccine arg = new Emergencyvaccine();
                 arg.setEvReportid(report.getReportId());
-               List<Emergencyvaccine> items=emergencyvaccineMapper.select(arg);
-               Emergencyvaccine item =new Emergencyvaccine();
-               if(items.size()>0) {
-                   item = items.get(0);
-               }
+                List<Emergencyvaccine> items = emergencyvaccineMapper.select(arg);
+                Emergencyvaccine item = new Emergencyvaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                }
                 params.put("item", item);
                 break;
             }
             case "b_smallruminantsvaccine": {
-                Smallruminantsvaccine arg =new Smallruminantsvaccine();
+                Smallruminantsvaccine arg = new Smallruminantsvaccine();
                 arg.setSrvReportid(report.getReportId());
-                List<Smallruminantsvaccine> items=smallruminantsvaccineMapper.select(arg);
-                Smallruminantsvaccine item =new Smallruminantsvaccine();
-                if(items.size()>0) {
+                List<Smallruminantsvaccine> items = smallruminantsvaccineMapper.select(arg);
+                Smallruminantsvaccine item = new Smallruminantsvaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
                 break;
             }
             case "b_poultrydensity": {
-                Poultrydensity arg =new Poultrydensity();
+                Poultrydensity arg = new Poultrydensity();
                 arg.setPdReportid(report.getReportId());
-                List<Poultrydensity> items=poultrydensityMapper.select(arg);
-                Poultrydensity item =new Poultrydensity();
-                if(items.size()>0) {
+                List<Poultrydensity> items = poultrydensityMapper.select(arg);
+                Poultrydensity item = new Poultrydensity();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
                 break;
             }
             case "b_newcastlevaccine": {
-                Newcastlevaccine arg =new Newcastlevaccine();
+                Newcastlevaccine arg = new Newcastlevaccine();
                 arg.setNvReportid(report.getReportId());
-                List<Newcastlevaccine> items=newcastlevaccineMapper.select(arg);
-                Newcastlevaccine item =new Newcastlevaccine();
-                if(items.size()>0) {
+                List<Newcastlevaccine> items = newcastlevaccineMapper.select(arg);
+                Newcastlevaccine item = new Newcastlevaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
                 break;
             }
             case "b_livestockdensity": {
-                Livestockdensity arg =new Livestockdensity();
+                Livestockdensity arg = new Livestockdensity();
                 arg.setLdReportid(report.getReportId());
-                List<Livestockdensity> items=livestockdensityMapper.select(arg);
-                Livestockdensity item =new Livestockdensity();
-                if(items.size()>0) {
+                List<Livestockdensity> items = livestockdensityMapper.select(arg);
+                Livestockdensity item = new Livestockdensity();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
                 break;
             }
             case "b_kingfisher": {
-                Kingfisher arg =new Kingfisher();
+                Kingfisher arg = new Kingfisher();
                 arg.setKfReportid(report.getReportId());
-                List<Kingfisher> items=kingfisherMapper.select(arg);
-                Kingfisher item =new Kingfisher();
-                if(items.size()>0) {
+                List<Kingfisher> items = kingfisherMapper.select(arg);
+                Kingfisher item = new Kingfisher();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
                 break;
             }
             case "b_footandmouthvaccine": {
-                Footandmouthvaccine arg =new Footandmouthvaccine();
+                Footandmouthvaccine arg = new Footandmouthvaccine();
                 arg.setFvReportid(report.getReportId());
-                List<Footandmouthvaccine> items=footandmouthvaccineMapper.select(arg);
-                Footandmouthvaccine item =new Footandmouthvaccine();
-                if(items.size()>0) {
+                List<Footandmouthvaccine> items = footandmouthvaccineMapper.select(arg);
+                Footandmouthvaccine item = new Footandmouthvaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
                 break;
             }
             case "b_classicalswinefevervaccine": {
-                Classicalswinefevervaccine arg =new Classicalswinefevervaccine();
+                Classicalswinefevervaccine arg = new Classicalswinefevervaccine();
                 arg.setCvReportid(report.getReportId());
-                List<Classicalswinefevervaccine> items=classicalswinefevervaccineMapper.select(arg);
-                Classicalswinefevervaccine item =new Classicalswinefevervaccine();
-                if(items.size()>0) {
+                List<Classicalswinefevervaccine> items = classicalswinefevervaccineMapper.select(arg);
+                Classicalswinefevervaccine item = new Classicalswinefevervaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
                 break;
             }
             case "b_bluevaccine": {
-                Bluevaccine arg =new Bluevaccine();
+                Bluevaccine arg = new Bluevaccine();
                 arg.setBvReportid(report.getReportId());
-                List<Bluevaccine> items=bluevaccineMapper.select(arg);
-                Bluevaccine item =new Bluevaccine();
-                if(items.size()>0) {
+                List<Bluevaccine> items = bluevaccineMapper.select(arg);
+                Bluevaccine item = new Bluevaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
                 break;
             }
             case "b_avianinfluenzavaccine": {
-                Avianinfluenzavaccine arg =new Avianinfluenzavaccine();
+                Avianinfluenzavaccine arg = new Avianinfluenzavaccine();
                 arg.setAvReportid(report.getReportId());
-                List<Avianinfluenzavaccine> items=avianinfluenzavaccineMapper.select(arg);
-                Avianinfluenzavaccine item =new Avianinfluenzavaccine();
-                if(items.size()>0) {
+                List<Avianinfluenzavaccine> items = avianinfluenzavaccineMapper.select(arg);
+                Avianinfluenzavaccine item = new Avianinfluenzavaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
@@ -295,147 +297,156 @@ public class ExcelServiceImpl implements IExcelService {
                 break;
             }
             case "b_wpestedespetitsruminants": {
-                Wpestedespetitsruminants arg =new Wpestedespetitsruminants();
+                Wpestedespetitsruminants arg = new Wpestedespetitsruminants();
                 arg.setWpdrReportid(report.getReportId());
-                List<Wpestedespetitsruminants> items=wpestedespetitsruminantsMapper.select(arg);
-                Wpestedespetitsruminants item =new Wpestedespetitsruminants();
-                if(items.size()>0) {
+                List<Wpestedespetitsruminants> items = wpestedespetitsruminantsMapper.select(arg);
+                Wpestedespetitsruminants item = new Wpestedespetitsruminants();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Wpestedespetitsruminants  itemSum = wpestedespetitsruminantsMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Wpestedespetitsruminants();
+                Wpestedespetitsruminants itemSum = wpestedespetitsruminantsMapper
+                        .selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Wpestedespetitsruminants();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_wavianinfluenza": {
-                Wavianinfluenza arg =new Wavianinfluenza();
+                Wavianinfluenza arg = new Wavianinfluenza();
                 arg.setAiReportid(report.getReportId());
-                List<Wavianinfluenza> items=wavianinfluenzaMapper.select(arg);
-                Wavianinfluenza item =new Wavianinfluenza();
-                if(items.size()>0) {
+                List<Wavianinfluenza> items = wavianinfluenzaMapper.select(arg);
+                Wavianinfluenza item = new Wavianinfluenza();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Wavianinfluenza  itemSum = wavianinfluenzaMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Wavianinfluenza();
+                Wavianinfluenza itemSum = wavianinfluenzaMapper
+                        .selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Wavianinfluenza();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_wnewcastle": {
-                Wnewcastle arg =new Wnewcastle();
+                Wnewcastle arg = new Wnewcastle();
                 arg.setNcReportid(report.getReportId());
-                List<Wnewcastle> items=wnewcastleMapper.select(arg);
-                Wnewcastle item =new Wnewcastle();
-                if(items.size()>0) {
+                List<Wnewcastle> items = wnewcastleMapper.select(arg);
+                Wnewcastle item = new Wnewcastle();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Wnewcastle  itemSum = wnewcastleMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Wnewcastle();
+                Wnewcastle itemSum = wnewcastleMapper
+                        .selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Wnewcastle();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_wclassicalswinefever": {
-                Wclassicalswinefever arg =new Wclassicalswinefever();
+                Wclassicalswinefever arg = new Wclassicalswinefever();
                 arg.setCsfReportid(report.getReportId());
-                List<Wclassicalswinefever> items=wclassicalswinefeverMapper.select(arg);
-                Wclassicalswinefever item =new Wclassicalswinefever();
-                if(items.size()>0) {
+                List<Wclassicalswinefever> items = wclassicalswinefeverMapper.select(arg);
+                Wclassicalswinefever item = new Wclassicalswinefever();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Wclassicalswinefever  itemSum = wclassicalswinefeverMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Wclassicalswinefever();
+                Wclassicalswinefever itemSum = wclassicalswinefeverMapper
+                        .selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Wclassicalswinefever();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_wblueeardisease": {
-                Wblueeardisease arg =new Wblueeardisease();
+                Wblueeardisease arg = new Wblueeardisease();
                 arg.setBedReportid(report.getReportId());
-                List<Wblueeardisease> items=wblueeardiseaseMapper.select(arg);
-                Wblueeardisease item =new Wblueeardisease();
-                if(items.size()>0) {
+                List<Wblueeardisease> items = wblueeardiseaseMapper.select(arg);
+                Wblueeardisease item = new Wblueeardisease();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Wblueeardisease  itemSum = wblueeardiseaseMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Wblueeardisease();
+                Wblueeardisease itemSum = wblueeardiseaseMapper
+                        .selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Wblueeardisease();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_vaccineorder": {
-                Vaccineorder arg =new Vaccineorder();
+                Vaccineorder arg = new Vaccineorder();
                 arg.setReportid(report.getReportId());
-                List<Vaccineorder> items=vaccineorderMapper.select(arg);
-                Vaccineorder item =new Vaccineorder();
-                if(items.size()>0) {
+                List<Vaccineorder> items = vaccineorderMapper.select(arg);
+                Vaccineorder item = new Vaccineorder();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Vaccineorder  itemSum = vaccineorderMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Vaccineorder();
+                Vaccineorder itemSum = vaccineorderMapper
+                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Vaccineorder();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_blueeardisease": {
-                Blueeardisease arg =new Blueeardisease();
+                Blueeardisease arg = new Blueeardisease();
                 arg.setBedReportid(report.getReportId());
-                List<Blueeardisease> items=blueeardiseaseMapper.select(arg);
-                Blueeardisease item =new Blueeardisease();
-                if(items.size()>0) {
+                List<Blueeardisease> items = blueeardiseaseMapper.select(arg);
+                Blueeardisease item = new Blueeardisease();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Blueeardisease  itemSum = blueeardiseaseMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Blueeardisease();
+                Blueeardisease itemSum = blueeardiseaseMapper
+                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Blueeardisease();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_classicalswinefever": {
-                Classicalswinefever arg =new Classicalswinefever();
+                Classicalswinefever arg = new Classicalswinefever();
                 arg.setCsfReportid(report.getReportId());
-                List<Classicalswinefever> items=classicalswinefeverMapper.select(arg);
-                Classicalswinefever item =new Classicalswinefever();
-                if(items.size()>0) {
+                List<Classicalswinefever> items = classicalswinefeverMapper.select(arg);
+                Classicalswinefever item = new Classicalswinefever();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Classicalswinefever  itemSum = classicalswinefeverMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Classicalswinefever();
+                Classicalswinefever itemSum = classicalswinefeverMapper
+                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Classicalswinefever();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_footandmouthdisease": {
-                Footandmouthdisease arg =new Footandmouthdisease();
+                Footandmouthdisease arg = new Footandmouthdisease();
                 arg.setFmdReportid(report.getReportId());
-                List<Footandmouthdisease> items=footandmouthdiseaseMapper.select(arg);
-                Footandmouthdisease item =new Footandmouthdisease();
-                if(items.size()>0) {
+                List<Footandmouthdisease> items = footandmouthdiseaseMapper.select(arg);
+                Footandmouthdisease item = new Footandmouthdisease();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Footandmouthdisease  itemSum = footandmouthdiseaseMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Footandmouthdisease();
+                Footandmouthdisease itemSum = footandmouthdiseaseMapper
+                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Footandmouthdisease();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_livestockinout": {
@@ -444,51 +455,53 @@ public class ExcelServiceImpl implements IExcelService {
                     livestockInOut = new LiveStockInOut();
                 }
                 params.put("item", livestockInOut);
-                LiveStockInOut  itemSum =liveStockInOutMapper.selectSumByReportCode(region.getRegionCode(),beginTime,endTime);
-                if(itemSum==null){
-                    itemSum=new LiveStockInOut();
+                LiveStockInOut itemSum = liveStockInOutMapper
+                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new LiveStockInOut();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_newcastle": {
-                Newcastle arg =new Newcastle();
+                Newcastle arg = new Newcastle();
                 arg.setNcReportid(report.getReportId());
-                List<Newcastle> items=newcastleMapper.select(arg);
-                Newcastle item =new Newcastle();
-                if(items.size()>0) {
+                List<Newcastle> items = newcastleMapper.select(arg);
+                Newcastle item = new Newcastle();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Newcastle  itemSum = newcastleMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Newcastle();
+                Newcastle itemSum = newcastleMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Newcastle();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_pestedespetitsruminants": {
-                Pestedespetitsruminants arg =new Pestedespetitsruminants();
+                Pestedespetitsruminants arg = new Pestedespetitsruminants();
                 arg.setPdprReportid(report.getReportId());
-                List<Pestedespetitsruminants> items=pestedespetitsruminantsMapper.select(arg);
-                Pestedespetitsruminants item =new Pestedespetitsruminants();
-                if(items.size()>0) {
+                List<Pestedespetitsruminants> items = pestedespetitsruminantsMapper.select(arg);
+                Pestedespetitsruminants item = new Pestedespetitsruminants();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Pestedespetitsruminants  itemSum = pestedespetitsruminantsMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Pestedespetitsruminants();
+                Pestedespetitsruminants itemSum = pestedespetitsruminantsMapper
+                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Pestedespetitsruminants();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_disinfectiondrugs": {
                 Disinfectiondrugs arg = new Disinfectiondrugs();
                 arg.setDfReportid(report.getReportId());
-                List<Disinfectiondrugs> items=disinfectiondrugsMapper.select(arg);
-                Disinfectiondrugs item =new Disinfectiondrugs();
-                if(items.size()>0) {
+                List<Disinfectiondrugs> items = disinfectiondrugsMapper.select(arg);
+                Disinfectiondrugs item = new Disinfectiondrugs();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
@@ -497,25 +510,26 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_wfootandmouthdisease": {
                 Wfootandmouthdisease arg = new Wfootandmouthdisease();
                 arg.setFmdReportid(report.getReportId());
-                List<Wfootandmouthdisease> items=wfootandmouthdiseaseMapper.select(arg);
-                Wfootandmouthdisease item =new Wfootandmouthdisease();
-                if(items.size()>0) {
+                List<Wfootandmouthdisease> items = wfootandmouthdiseaseMapper.select(arg);
+                Wfootandmouthdisease item = new Wfootandmouthdisease();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Wfootandmouthdisease  itemSum = wfootandmouthdiseaseMapper.selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
-                if(itemSum==null){
-                    itemSum=new Wfootandmouthdisease();
+                Wfootandmouthdisease itemSum = wfootandmouthdiseaseMapper
+                        .selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Wfootandmouthdisease();
                 }
-                params.put("itemSum",itemSum);
+                params.put("itemSum", itemSum);
                 break;
             }
             case "b_wlivestockinout": {
                 Wlivestockinout arg = new Wlivestockinout();
                 arg.setReportid(report.getReportId());
-                List<Wlivestockinout> items=wlivestockinoutMapper.select(arg);
-                Wlivestockinout item =new Wlivestockinout();
-                if(items.size()>0) {
+                List<Wlivestockinout> items = wlivestockinoutMapper.select(arg);
+                Wlivestockinout item = new Wlivestockinout();
+                if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
@@ -528,222 +542,240 @@ public class ExcelServiceImpl implements IExcelService {
         String templatePath = request.getSession().getServletContext().getRealPath("/template");
         return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getNormalTemplate(), params);
     }
-private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String reportName,Mapper mapper,String orderColumn){
-    Map params = new HashMap();
-    Example example = new Example(clazz);
-    example.setOrderByClause(orderColumn);
-    Example.Criteria criteria = example.createCriteria();
+
+    private Map getReportSummaryHtmlUtil(Class clazz, List<String> reportIds, String reportName, Mapper mapper,
+            String orderColumn) {
+        Map params = new HashMap();
+        Example example = new Example(clazz);
+        example.setOrderByClause(orderColumn);
+        Example.Criteria criteria = example.createCriteria();
         criteria.andIn(reportName, reportIds);
-    List items = mapper.selectByExample(example);
-    params.put("items", items);
-    return params;
-}
-
-
+        List items = mapper.selectByExample(example);
+        params.put("items", items);
+        return params;
+    }
 
     @Override
     public String getReportSummaryHtml(HttpServletRequest request, String templateId, String beginTime) {
         Template template = iTemplateService.selectByKey(templateId);
         List<String> reportIds = iReportService.selectIdsByTemplateIdAndBeginTime(templateId, beginTime);
-        String endTime=beginTime;
-
-//         String beginTime=DateUtil.DateToString(BeginTimeUtil.getBeginTime(beginTime), DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
-        String halfYearbeginTime=DateUtil.DateToString(BeginTimeUtil.getCurrentHalfYearBeginTime(beginTime), DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
-        String monthBeginTime=DateUtil.DateToString(BeginTimeUtil.getMonthBeginTime(beginTime), DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
+        String endTime = beginTime;
+        //         String beginTime=DateUtil.DateToString(BeginTimeUtil.getBeginTime(beginTime), DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
+        String halfYearbeginTime = DateUtil.DateToString(BeginTimeUtil.getCurrentHalfYearBeginTime(beginTime),
+                DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
+        String monthBeginTime = DateUtil
+                .DateToString(BeginTimeUtil.getMonthBeginTime(beginTime), DateStyle.HH_MM.YYYY_MM_DD_HH_MM_SS);
         if (reportIds.size() == 0) return null;
         Map params = new HashMap();
-
+        Map<String, String> weekConfigMap = null;
+        if (template.getReportType() == ReportTypeE.WEEK.getCode().intValue()) {
+            weekConfigMap = new HashMap();
+            List<WeekConfig> weekConfigs = weekConfigMapper.selectAll();
+            for (WeekConfig weekConfig : weekConfigs) {
+                weekConfigMap.put(weekConfig.getYear() + "#" + weekConfig.getType(), weekConfig.getTime());
+            }
+        }
+        String period = PeriodUtil
+                .build(template.getReportType(), DateUtil.StringToDate(beginTime, DateStyle.YYYY_MM_DD), weekConfigMap);
+        params.put("templateName", period + " " + template.getTemplateName());
         switch (template.getTableName().toLowerCase()) {
             case "b_avianinfluenza": {
-//                params=this.getReportSummaryHtmlUtil(Avianinfluenza.class,reportIds,"aiReportid",avianinfluenzaMapper,"ai_regionCode");
-                List<Avianinfluenza>  items = avianinfluenzaMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
-                List<Avianinfluenza>  cumulatives = avianinfluenzaMapper.selectAllByDate(monthBeginTime, endTime);
-                params.put("cumulatives",cumulatives);
+                //                params=this.getReportSummaryHtmlUtil(Avianinfluenza.class,reportIds,"aiReportid",avianinfluenzaMapper,"ai_regionCode");
+                List<Avianinfluenza> items = avianinfluenzaMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Avianinfluenza> cumulatives = avianinfluenzaMapper.selectAllByDate(monthBeginTime, endTime);
+                params.put("cumulatives", cumulatives);
                 break;
             }
             case "b_emergencyvaccine": {
-//                params=this.getReportSummaryHtmlUtil(Emergencyvaccine.class,reportIds,"evReportid",emergencyvaccineMapper,"ev_regionCode");
-                List<Emergencyvaccine>  items = emergencyvaccineMapper.selectAllByDate(endTime, endTime);
+                //                params=this.getReportSummaryHtmlUtil(Emergencyvaccine.class,reportIds,"evReportid",emergencyvaccineMapper,"ev_regionCode");
+                List<Emergencyvaccine> items = emergencyvaccineMapper.selectAllByDate(endTime, endTime);
                 params.put("items", items);
                 break;
             }
             case "b_smallruminantsvaccine": {
-//                params=this.getReportSummaryHtmlUtil(Smallruminantsvaccine.class,reportIds,"srvReportid",smallruminantsvaccineMapper,"srv_regionCode");
-                List<Smallruminantsvaccine>  items = smallruminantsvaccineMapper.selectAllByDate(endTime, endTime);
+                //                params=this.getReportSummaryHtmlUtil(Smallruminantsvaccine.class,reportIds,"srvReportid",smallruminantsvaccineMapper,"srv_regionCode");
+                List<Smallruminantsvaccine> items = smallruminantsvaccineMapper.selectAllByDate(endTime, endTime);
                 params.put("items", items);
                 break;
             }
             case "b_poultrydensity": {
-//                params=this.getReportSummaryHtmlUtil(Poultrydensity.class,reportIds,"pdReportid",poultrydensityMapper,"pd_regionCode");
-                List<Poultrydensity>  items = poultrydensityMapper.selectAllByDate(endTime, endTime);
+                //                params=this.getReportSummaryHtmlUtil(Poultrydensity.class,reportIds,"pdReportid",poultrydensityMapper,"pd_regionCode");
+                List<Poultrydensity> items = poultrydensityMapper.selectAllByDate(endTime, endTime);
                 params.put("items", items);
                 break;
             }
-             case "b_newcastlevaccine": {
-//                params=this.getReportSummaryHtmlUtil(Newcastlevaccine.class,reportIds,"nvReportid",newcastlevaccineMapper,"nv_regionCode");
-                 List<Newcastlevaccine>  items = newcastlevaccineMapper.selectAllByDate(endTime, endTime);
-                 params.put("items", items);
+            case "b_newcastlevaccine": {
+                //                params=this.getReportSummaryHtmlUtil(Newcastlevaccine.class,reportIds,"nvReportid",newcastlevaccineMapper,"nv_regionCode");
+                List<Newcastlevaccine> items = newcastlevaccineMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
                 break;
             }
-             case "b_livestockdensity": {
-//                params=this.getReportSummaryHtmlUtil(Livestockdensity.class,reportIds,"ldReportid",livestockdensityMapper,"ld_regionCode");
-                 List<Livestockdensity>  items = livestockdensityMapper.selectAllByDate(endTime, endTime);
-                 params.put("items", items);
+            case "b_livestockdensity": {
+                //                params=this.getReportSummaryHtmlUtil(Livestockdensity.class,reportIds,"ldReportid",livestockdensityMapper,"ld_regionCode");
+                List<Livestockdensity> items = livestockdensityMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
                 break;
             }
-             case "b_kingfisher": {
-//                params=this.getReportSummaryHtmlUtil(Kingfisher.class,reportIds,"kfReportid",kingfisherMapper,"kf_regionCode");
-                 List<Kingfisher>  items = kingfisherMapper.selectAllByDate(endTime, endTime);
-                 params.put("items", items);
+            case "b_kingfisher": {
+                //                params=this.getReportSummaryHtmlUtil(Kingfisher.class,reportIds,"kfReportid",kingfisherMapper,"kf_regionCode");
+                List<Kingfisher> items = kingfisherMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
                 break;
             }
             case "b_footandmouthvaccine": {
-//                params=this.getReportSummaryHtmlUtil(Footandmouthvaccine.class,reportIds,"fvReportid",footandmouthvaccineMapper,"fv_regionCode");
-                List<Footandmouthvaccine>  items = footandmouthvaccineMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
+                //                params=this.getReportSummaryHtmlUtil(Footandmouthvaccine.class,reportIds,"fvReportid",footandmouthvaccineMapper,"fv_regionCode");
+                List<Footandmouthvaccine> items = footandmouthvaccineMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
                 break;
             }
             case "b_classicalswinefevervaccine": {
-//                params=this.getReportSummaryHtmlUtil(Classicalswinefevervaccine.class,reportIds,"cvReportid",classicalswinefevervaccineMapper,"cv_regionCode");
-                List<Classicalswinefevervaccine>  items = classicalswinefevervaccineMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
+                //                params=this.getReportSummaryHtmlUtil(Classicalswinefevervaccine.class,reportIds,"cvReportid",classicalswinefevervaccineMapper,"cv_regionCode");
+                List<Classicalswinefevervaccine> items = classicalswinefevervaccineMapper
+                        .selectAllByDate(endTime, endTime);
+                params.put("items", items);
                 break;
             }
             case "b_bluevaccine": {
-//                params=this.getReportSummaryHtmlUtil(Bluevaccine.class,reportIds,"bvReportid",bluevaccineMapper,"bv_regionCode");
-                List<Bluevaccine>  items = bluevaccineMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
+                //                params=this.getReportSummaryHtmlUtil(Bluevaccine.class,reportIds,"bvReportid",bluevaccineMapper,"bv_regionCode");
+                List<Bluevaccine> items = bluevaccineMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
                 break;
             }
             case "b_avianinfluenzavaccine": {
-//               params=this.getReportSummaryHtmlUtil(Avianinfluenzavaccine.class,reportIds,"avReportid",avianinfluenzavaccineMapper,"av_regionCode");
-                List<Avianinfluenzavaccine>  items = avianinfluenzavaccineMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
+                //               params=this.getReportSummaryHtmlUtil(Avianinfluenzavaccine.class,reportIds,"avReportid",avianinfluenzavaccineMapper,"av_regionCode");
+                List<Avianinfluenzavaccine> items = avianinfluenzavaccineMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
                 break;
             }
             case "b_wpestedespetitsruminants": {
-//                params=this.getReportSummaryHtmlUtil(Wpestedespetitsruminants.class,reportIds,"wpdrReportid",wpestedespetitsruminantsMapper,"wpdr_regionCode");
-                List<Wpestedespetitsruminants>  items = wpestedespetitsruminantsMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
-                List<Wpestedespetitsruminants>  cumulatives = wpestedespetitsruminantsMapper.selectAllByDate(halfYearbeginTime, endTime);
-                params.put("cumulatives",cumulatives);
+                //                params=this.getReportSummaryHtmlUtil(Wpestedespetitsruminants.class,reportIds,"wpdrReportid",wpestedespetitsruminantsMapper,"wpdr_regionCode");
+                List<Wpestedespetitsruminants> items = wpestedespetitsruminantsMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Wpestedespetitsruminants> cumulatives = wpestedespetitsruminantsMapper
+                        .selectAllByDate(halfYearbeginTime, endTime);
+                params.put("cumulatives", cumulatives);
                 break;
             }
             case "b_wavianinfluenza": {
-//                params=this.getReportSummaryHtmlUtil(Wavianinfluenza.class,reportIds,"aiReportid",wavianinfluenzaMapper,"ai_regionCode");
-                List<Wavianinfluenza>  items = wavianinfluenzaMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
-                List<Wavianinfluenza>  cumulatives = wavianinfluenzaMapper.selectAllByDate(halfYearbeginTime, endTime);
-                params.put("cumulatives",cumulatives);
+                //                params=this.getReportSummaryHtmlUtil(Wavianinfluenza.class,reportIds,"aiReportid",wavianinfluenzaMapper,"ai_regionCode");
+                List<Wavianinfluenza> items = wavianinfluenzaMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Wavianinfluenza> cumulatives = wavianinfluenzaMapper.selectAllByDate(halfYearbeginTime, endTime);
+                params.put("cumulatives", cumulatives);
                 break;
             }
             case "b_wnewcastle": {
-//                params=this.getReportSummaryHtmlUtil(Wnewcastle.class,reportIds,"ncReportid",wnewcastleMapper,"nc_regionCode");
-                List<Wnewcastle>  items = wnewcastleMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
+                //                params=this.getReportSummaryHtmlUtil(Wnewcastle.class,reportIds,"ncReportid",wnewcastleMapper,"nc_regionCode");
+                List<Wnewcastle> items = wnewcastleMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
 
-                List<Wnewcastle>  cumulatives = wnewcastleMapper.selectAllByDate(halfYearbeginTime, endTime);
+                List<Wnewcastle> cumulatives = wnewcastleMapper.selectAllByDate(halfYearbeginTime, endTime);
 
-                params.put("cumulatives",cumulatives);
+                params.put("cumulatives", cumulatives);
 
                 break;
             }
             case "b_wclassicalswinefever": {
-//                params=this.getReportSummaryHtmlUtil(Wclassicalswinefever.class,reportIds,"csfReportid",wclassicalswinefeverMapper,"csf_regionCode");
-                List<Wclassicalswinefever>  items = wclassicalswinefeverMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
-                List<Wclassicalswinefever>  cumulatives = wclassicalswinefeverMapper.selectAllByDate(halfYearbeginTime, endTime);
-                params.put("cumulatives",cumulatives);
+                //                params=this.getReportSummaryHtmlUtil(Wclassicalswinefever.class,reportIds,"csfReportid",wclassicalswinefeverMapper,"csf_regionCode");
+                List<Wclassicalswinefever> items = wclassicalswinefeverMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Wclassicalswinefever> cumulatives = wclassicalswinefeverMapper
+                        .selectAllByDate(halfYearbeginTime, endTime);
+                params.put("cumulatives", cumulatives);
                 break;
             }
             case "b_wblueeardisease": {
-//                params=this.getReportSummaryHtmlUtil(Wblueeardisease.class,reportIds,"bedReportid",wblueeardiseaseMapper,"bed_regionCode");
-                List<Wblueeardisease>  items = wblueeardiseaseMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
-                List<Wblueeardisease>  cumulatives = wblueeardiseaseMapper.selectAllByDate(halfYearbeginTime, endTime);
-                params.put("cumulatives",cumulatives);
+                //                params=this.getReportSummaryHtmlUtil(Wblueeardisease.class,reportIds,"bedReportid",wblueeardiseaseMapper,"bed_regionCode");
+                List<Wblueeardisease> items = wblueeardiseaseMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Wblueeardisease> cumulatives = wblueeardiseaseMapper.selectAllByDate(halfYearbeginTime, endTime);
+                params.put("cumulatives", cumulatives);
                 break;
             }
             case "b_vaccineorder": {
-//                params=this.getReportSummaryHtmlUtil(Vaccineorder.class,reportIds,"reportid",vaccineorderMapper,"regionCode");
-                List<Vaccineorder>  items = vaccineorderMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
+                //                params=this.getReportSummaryHtmlUtil(Vaccineorder.class,reportIds,"reportid",vaccineorderMapper,"regionCode");
+                List<Vaccineorder> items = vaccineorderMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
                 break;
             }
             case "b_blueeardisease": {
-//                params=this.getReportSummaryHtmlUtil(Blueeardisease.class,reportIds,"bedReportid",blueeardiseaseMapper,"bed_regionCode");
-                List<Blueeardisease>  items = blueeardiseaseMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
-                List<Blueeardisease>  cumulatives = blueeardiseaseMapper.selectAllByDate(monthBeginTime, endTime);
-                params.put("cumulatives",cumulatives);
+                //                params=this.getReportSummaryHtmlUtil(Blueeardisease.class,reportIds,"bedReportid",blueeardiseaseMapper,"bed_regionCode");
+                List<Blueeardisease> items = blueeardiseaseMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Blueeardisease> cumulatives = blueeardiseaseMapper.selectAllByDate(monthBeginTime, endTime);
+                params.put("cumulatives", cumulatives);
                 break;
             }
             case "b_classicalswinefever": {
-//                params=this.getReportSummaryHtmlUtil(Classicalswinefever.class,reportIds,"csfReportid",classicalswinefeverMapper,"csf_regionCode");
-                List<Classicalswinefever>  items = classicalswinefeverMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
-                List<Classicalswinefever>  cumulatives = classicalswinefeverMapper.selectAllByDate(monthBeginTime, endTime);
-                params.put("cumulatives",cumulatives);
+                //                params=this.getReportSummaryHtmlUtil(Classicalswinefever.class,reportIds,"csfReportid",classicalswinefeverMapper,"csf_regionCode");
+                List<Classicalswinefever> items = classicalswinefeverMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Classicalswinefever> cumulatives = classicalswinefeverMapper
+                        .selectAllByDate(monthBeginTime, endTime);
+                params.put("cumulatives", cumulatives);
                 break;
             }
             case "b_footandmouthdisease": {
-//                params=this.getReportSummaryHtmlUtil(Footandmouthdisease.class,reportIds,"fmdReportid",footandmouthdiseaseMapper,"fmd_regionCode");
-                List<Footandmouthdisease>  items = footandmouthdiseaseMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
-                List<Footandmouthdisease>  cumulatives = footandmouthdiseaseMapper.selectAllByDate(monthBeginTime, endTime);
-                params.put("cumulatives",cumulatives);
+                //                params=this.getReportSummaryHtmlUtil(Footandmouthdisease.class,reportIds,"fmdReportid",footandmouthdiseaseMapper,"fmd_regionCode");
+                List<Footandmouthdisease> items = footandmouthdiseaseMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Footandmouthdisease> cumulatives = footandmouthdiseaseMapper
+                        .selectAllByDate(monthBeginTime, endTime);
+                params.put("cumulatives", cumulatives);
                 break;
             }
             case "b_newcastle": {
-//                params=this.getReportSummaryHtmlUtil(Newcastle.class,reportIds,"ncReportid",newcastleMapper,"nc_regionCode");
-                List<Newcastle>  items = newcastleMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
-                List<Newcastle>  cumulatives = newcastleMapper.selectAllByDate(monthBeginTime, endTime);
-                params.put("cumulatives",cumulatives);
+                //                params=this.getReportSummaryHtmlUtil(Newcastle.class,reportIds,"ncReportid",newcastleMapper,"nc_regionCode");
+                List<Newcastle> items = newcastleMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Newcastle> cumulatives = newcastleMapper.selectAllByDate(monthBeginTime, endTime);
+                params.put("cumulatives", cumulatives);
                 break;
             }
             case "b_livestockinout": {
-//                Example example = new Example(LiveStockInOut.class);
-//                example.setOrderByClause("Liv_regionCode");
-//                Example.Criteria criteria = example.createCriteria();
-//                criteria.andIn("reportid", reportIds);
-//                List<LiveStockInOut> list = liveStockInOutMapper.selectByExample(example);
-//
-//                params.put("items", list);
-                List<LiveStockInOut>  items = liveStockInOutMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
+                //                Example example = new Example(LiveStockInOut.class);
+                //                example.setOrderByClause("Liv_regionCode");
+                //                Example.Criteria criteria = example.createCriteria();
+                //                criteria.andIn("reportid", reportIds);
+                //                List<LiveStockInOut> list = liveStockInOutMapper.selectByExample(example);
+                //
+                //                params.put("items", list);
+                List<LiveStockInOut> items = liveStockInOutMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
                 LiveStockInOut sum = liveStockInOutMapper.selectSumByReportIds(reportIds);
                 params.put("sum", sum);
                 break;
             }
             case "b_disinfectiondrugs": {
-//                params=this.getReportSummaryHtmlUtil(Disinfectiondrugs.class,reportIds,"dfReportid",disinfectiondrugsMapper,"df_regionCode");
-                List<Disinfectiondrugs>  items = disinfectiondrugsMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
+                //                params=this.getReportSummaryHtmlUtil(Disinfectiondrugs.class,reportIds,"dfReportid",disinfectiondrugsMapper,"df_regionCode");
+                List<Disinfectiondrugs> items = disinfectiondrugsMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
                 break;
             }
             case "b_pestedespetitsruminants": {
-//                params=this.getReportSummaryHtmlUtil(Pestedespetitsruminants.class,reportIds,"pdprReportid",pestedespetitsruminantsMapper,"pdpr_regionCode");
-                List<Pestedespetitsruminants>  items = pestedespetitsruminantsMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
-                List<Pestedespetitsruminants>  cumulatives = pestedespetitsruminantsMapper.selectAllByDate(monthBeginTime, endTime);
-                params.put("cumulatives",cumulatives);
+                //                params=this.getReportSummaryHtmlUtil(Pestedespetitsruminants.class,reportIds,"pdprReportid",pestedespetitsruminantsMapper,"pdpr_regionCode");
+                List<Pestedespetitsruminants> items = pestedespetitsruminantsMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Pestedespetitsruminants> cumulatives = pestedespetitsruminantsMapper
+                        .selectAllByDate(monthBeginTime, endTime);
+                params.put("cumulatives", cumulatives);
                 break;
             }
             case "b_wfootandmouthdisease": {
-//                params=this.getReportSummaryHtmlUtil(Wfootandmouthdisease.class,reportIds,"fmdReportid",wfootandmouthdiseaseMapper,"fmd_regionCode asc");
-                List<Wfootandmouthdisease>  items = wfootandmouthdiseaseMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
-                List<Wfootandmouthdisease>  cumulatives = wfootandmouthdiseaseMapper.selectAllByDate(halfYearbeginTime, endTime);
-                params.put("cumulatives",cumulatives);
+                //                params=this.getReportSummaryHtmlUtil(Wfootandmouthdisease.class,reportIds,"fmdReportid",wfootandmouthdiseaseMapper,"fmd_regionCode asc");
+                List<Wfootandmouthdisease> items = wfootandmouthdiseaseMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Wfootandmouthdisease> cumulatives = wfootandmouthdiseaseMapper
+                        .selectAllByDate(halfYearbeginTime, endTime);
+                params.put("cumulatives", cumulatives);
 
                 break;
             }
             case "b_wlivestockinout": {
-//                params=this.getReportSummaryHtmlUtil(Wlivestockinout.class,reportIds,"reportid",wlivestockinoutMapper,"Liv_regionCode asc");
-                List<Wlivestockinout>  items = wlivestockinoutMapper.selectAllByDate(endTime, endTime);
-                params.put("items",items);
+                //                params=this.getReportSummaryHtmlUtil(Wlivestockinout.class,reportIds,"reportid",wlivestockinoutMapper,"Liv_regionCode asc");
+                List<Wlivestockinout> items = wlivestockinoutMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
                 Wlivestockinout sum = wlivestockinoutMapper.selectSumByReportIds(reportIds);
                 params.put("sum", sum);
                 break;
@@ -752,7 +784,8 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 return null;
         }
         String templatePath = request.getSession().getServletContext().getRealPath("/template");
-        List<Wlivestockinout> wlivestockinouts=this.wlivestockinoutMapper.selectLivestockInOutByDate(halfYearbeginTime);
+        List<Wlivestockinout> wlivestockinouts = this.wlivestockinoutMapper
+                .selectLivestockInOutByDate(halfYearbeginTime);
         params.put("wlivestockinouts", wlivestockinouts);
 
         return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getSummaryTemplate(), params);
@@ -770,12 +803,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Avianinfluenza fill = (Avianinfluenza) JSONObject.toBean(jsonObj, Avianinfluenza.class);
                 Avianinfluenza arg = new Avianinfluenza();
                 arg.setAiReportid(report.getReportId());
-                List<Avianinfluenza> items=avianinfluenzaMapper.select(arg);
-                Avianinfluenza item =new Avianinfluenza();
-                if(items.size()>0) {
+                List<Avianinfluenza> items = avianinfluenzaMapper.select(arg);
+                Avianinfluenza item = new Avianinfluenza();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -801,12 +834,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Emergencyvaccine fill = (Emergencyvaccine) JSONObject.toBean(jsonObj, Emergencyvaccine.class);
                 Emergencyvaccine arg = new Emergencyvaccine();
                 arg.setEvReportid(report.getReportId());
-                List<Emergencyvaccine> items=emergencyvaccineMapper.select(arg);
-                Emergencyvaccine item =new Emergencyvaccine();
-                if(items.size()>0) {
+                List<Emergencyvaccine> items = emergencyvaccineMapper.select(arg);
+                Emergencyvaccine item = new Emergencyvaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -829,16 +862,17 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 break;
             }
             case "b_smallruminantsvaccine": {
-                Smallruminantsvaccine fill = (Smallruminantsvaccine) JSONObject.toBean(jsonObj, Smallruminantsvaccine.class);
+                Smallruminantsvaccine fill = (Smallruminantsvaccine) JSONObject
+                        .toBean(jsonObj, Smallruminantsvaccine.class);
                 Smallruminantsvaccine arg = new Smallruminantsvaccine();
                 arg.setSrvReportid(report.getReportId());
-                List<Smallruminantsvaccine> items=smallruminantsvaccineMapper.select(arg);
-                Smallruminantsvaccine item =new Smallruminantsvaccine();
-                if(items.size()>0) {
+                List<Smallruminantsvaccine> items = smallruminantsvaccineMapper.select(arg);
+                Smallruminantsvaccine item = new Smallruminantsvaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
-                 }
+                } else {
+                    item = null;
+                }
                 boolean insert = true;
                 if (item == null) {
                     item = fill;
@@ -863,12 +897,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Poultrydensity fill = (Poultrydensity) JSONObject.toBean(jsonObj, Poultrydensity.class);
                 Poultrydensity arg = new Poultrydensity();
                 arg.setPdReportid(report.getReportId());
-                List<Poultrydensity> items=poultrydensityMapper.select(arg);
-                Poultrydensity item =new Poultrydensity();
-                if(items.size()>0) {
+                List<Poultrydensity> items = poultrydensityMapper.select(arg);
+                Poultrydensity item = new Poultrydensity();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -894,12 +928,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Newcastlevaccine fill = (Newcastlevaccine) JSONObject.toBean(jsonObj, Newcastlevaccine.class);
                 Newcastlevaccine arg = new Newcastlevaccine();
                 arg.setNvReportid(report.getReportId());
-                List<Newcastlevaccine> items=newcastlevaccineMapper.select(arg);
-                Newcastlevaccine item =new Newcastlevaccine();
-                if(items.size()>0) {
+                List<Newcastlevaccine> items = newcastlevaccineMapper.select(arg);
+                Newcastlevaccine item = new Newcastlevaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -925,12 +959,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Livestockdensity fill = (Livestockdensity) JSONObject.toBean(jsonObj, Livestockdensity.class);
                 Livestockdensity arg = new Livestockdensity();
                 arg.setLdReportid(report.getReportId());
-                List<Livestockdensity> items=livestockdensityMapper.select(arg);
-                Livestockdensity item =new Livestockdensity();
-                if(items.size()>0) {
+                List<Livestockdensity> items = livestockdensityMapper.select(arg);
+                Livestockdensity item = new Livestockdensity();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
 
@@ -957,12 +991,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Kingfisher fill = (Kingfisher) JSONObject.toBean(jsonObj, Kingfisher.class);
                 Kingfisher arg = new Kingfisher();
                 arg.setKfReportid(report.getReportId());
-                List<Kingfisher> items=kingfisherMapper.select(arg);
-                Kingfisher item =new Kingfisher();
-                if(items.size()>0) {
+                List<Kingfisher> items = kingfisherMapper.select(arg);
+                Kingfisher item = new Kingfisher();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -981,20 +1015,21 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 if (insert) {
                     kingfisherMapper.insertSelective(item);
                 } else {
-                    i= kingfisherMapper.updateByPrimaryKeySelective(item);
+                    i = kingfisherMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }
             case "b_classicalswinefevervaccine": {
-                Classicalswinefevervaccine fill = (Classicalswinefevervaccine) JSONObject.toBean(jsonObj, Classicalswinefevervaccine.class);
+                Classicalswinefevervaccine fill = (Classicalswinefevervaccine) JSONObject
+                        .toBean(jsonObj, Classicalswinefevervaccine.class);
                 Classicalswinefevervaccine arg = new Classicalswinefevervaccine();
                 arg.setCvReportid(report.getReportId());
-                List<Classicalswinefevervaccine> items=classicalswinefevervaccineMapper.select(arg);
-                Classicalswinefevervaccine item =new Classicalswinefevervaccine();
-                if(items.size()>0) {
+                List<Classicalswinefevervaccine> items = classicalswinefevervaccineMapper.select(arg);
+                Classicalswinefevervaccine item = new Classicalswinefevervaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1020,12 +1055,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Footandmouthvaccine fill = (Footandmouthvaccine) JSONObject.toBean(jsonObj, Footandmouthvaccine.class);
                 Footandmouthvaccine arg = new Footandmouthvaccine();
                 arg.setFvReportid(report.getReportId());
-                List<Footandmouthvaccine> items=footandmouthvaccineMapper.select(arg);
-                Footandmouthvaccine item =new Footandmouthvaccine();
-                if(items.size()>0) {
+                List<Footandmouthvaccine> items = footandmouthvaccineMapper.select(arg);
+                Footandmouthvaccine item = new Footandmouthvaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1051,12 +1086,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Bluevaccine fill = (Bluevaccine) JSONObject.toBean(jsonObj, Bluevaccine.class);
                 Bluevaccine arg = new Bluevaccine();
                 arg.setBvReportid(report.getReportId());
-                List<Bluevaccine> items=bluevaccineMapper.select(arg);
-                Bluevaccine item =new Bluevaccine();
-                if(items.size()>0) {
+                List<Bluevaccine> items = bluevaccineMapper.select(arg);
+                Bluevaccine item = new Bluevaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1079,15 +1114,16 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 break;
             }
             case "b_avianinfluenzavaccine": {
-                Avianinfluenzavaccine fill = (Avianinfluenzavaccine) JSONObject.toBean(jsonObj, Avianinfluenzavaccine.class);
+                Avianinfluenzavaccine fill = (Avianinfluenzavaccine) JSONObject
+                        .toBean(jsonObj, Avianinfluenzavaccine.class);
                 Avianinfluenzavaccine arg = new Avianinfluenzavaccine();
                 arg.setAvReportid(report.getReportId());
-                List<Avianinfluenzavaccine> items=avianinfluenzavaccineMapper.select(arg);
-                Avianinfluenzavaccine item =new Avianinfluenzavaccine();
-                if(items.size()>0) {
+                List<Avianinfluenzavaccine> items = avianinfluenzavaccineMapper.select(arg);
+                Avianinfluenzavaccine item = new Avianinfluenzavaccine();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1110,15 +1146,16 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 break;
             }
             case "b_wpestedespetitsruminants": {
-                Wpestedespetitsruminants fill = (Wpestedespetitsruminants) JSONObject.toBean(jsonObj, Wpestedespetitsruminants.class);
+                Wpestedespetitsruminants fill = (Wpestedespetitsruminants) JSONObject
+                        .toBean(jsonObj, Wpestedespetitsruminants.class);
                 Wpestedespetitsruminants arg = new Wpestedespetitsruminants();
                 arg.setWpdrReportid(report.getReportId());
-                List<Wpestedespetitsruminants> items=wpestedespetitsruminantsMapper.select(arg);
-                Wpestedespetitsruminants item =new Wpestedespetitsruminants();
-                if(items.size()>0) {
+                List<Wpestedespetitsruminants> items = wpestedespetitsruminantsMapper.select(arg);
+                Wpestedespetitsruminants item = new Wpestedespetitsruminants();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1144,12 +1181,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Wavianinfluenza fill = (Wavianinfluenza) JSONObject.toBean(jsonObj, Wavianinfluenza.class);
                 Wavianinfluenza arg = new Wavianinfluenza();
                 arg.setAiReportid(report.getReportId());
-                List<Wavianinfluenza> items=wavianinfluenzaMapper.select(arg);
-                Wavianinfluenza item =new Wavianinfluenza();
-                if(items.size()>0) {
+                List<Wavianinfluenza> items = wavianinfluenzaMapper.select(arg);
+                Wavianinfluenza item = new Wavianinfluenza();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1175,12 +1212,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Wnewcastle fill = (Wnewcastle) JSONObject.toBean(jsonObj, Wnewcastle.class);
                 Wnewcastle arg = new Wnewcastle();
                 arg.setNcReportid(report.getReportId());
-                List<Wnewcastle> items=wnewcastleMapper.select(arg);
-                Wnewcastle item =new Wnewcastle();
-                if(items.size()>0) {
+                List<Wnewcastle> items = wnewcastleMapper.select(arg);
+                Wnewcastle item = new Wnewcastle();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1203,15 +1240,16 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 break;
             }
             case "b_wclassicalswinefever": {
-                Wclassicalswinefever fill = (Wclassicalswinefever) JSONObject.toBean(jsonObj, Wclassicalswinefever.class);
+                Wclassicalswinefever fill = (Wclassicalswinefever) JSONObject
+                        .toBean(jsonObj, Wclassicalswinefever.class);
                 Wclassicalswinefever arg = new Wclassicalswinefever();
                 arg.setCsfReportid(report.getReportId());
-                List<Wclassicalswinefever> items=wclassicalswinefeverMapper.select(arg);
-                Wclassicalswinefever item =new Wclassicalswinefever();
-                if(items.size()>0) {
+                List<Wclassicalswinefever> items = wclassicalswinefeverMapper.select(arg);
+                Wclassicalswinefever item = new Wclassicalswinefever();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1237,12 +1275,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Wblueeardisease fill = (Wblueeardisease) JSONObject.toBean(jsonObj, Wblueeardisease.class);
                 Wblueeardisease arg = new Wblueeardisease();
                 arg.setBedReportid(report.getReportId());
-                List<Wblueeardisease> items=wblueeardiseaseMapper.select(arg);
-                Wblueeardisease item =new Wblueeardisease();
-                if(items.size()>0) {
+                List<Wblueeardisease> items = wblueeardiseaseMapper.select(arg);
+                Wblueeardisease item = new Wblueeardisease();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1268,12 +1306,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Vaccineorder fill = (Vaccineorder) JSONObject.toBean(jsonObj, Vaccineorder.class);
                 Vaccineorder arg = new Vaccineorder();
                 arg.setReportid(report.getReportId());
-                List<Vaccineorder> items=vaccineorderMapper.select(arg);
-                Vaccineorder item =new Vaccineorder();
-                if(items.size()>0) {
+                List<Vaccineorder> items = vaccineorderMapper.select(arg);
+                Vaccineorder item = new Vaccineorder();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1299,12 +1337,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Blueeardisease fill = (Blueeardisease) JSONObject.toBean(jsonObj, Blueeardisease.class);
                 Blueeardisease arg = new Blueeardisease();
                 arg.setBedReportid(report.getReportId());
-                List<Blueeardisease> items=blueeardiseaseMapper.select(arg);
-                Blueeardisease item =new Blueeardisease();
-                if(items.size()>0) {
+                List<Blueeardisease> items = blueeardiseaseMapper.select(arg);
+                Blueeardisease item = new Blueeardisease();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1330,12 +1368,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Classicalswinefever fill = (Classicalswinefever) JSONObject.toBean(jsonObj, Classicalswinefever.class);
                 Classicalswinefever arg = new Classicalswinefever();
                 arg.setCsfReportid(report.getReportId());
-                List<Classicalswinefever> items=classicalswinefeverMapper.select(arg);
-                Classicalswinefever item =new Classicalswinefever();
-                if(items.size()>0) {
+                List<Classicalswinefever> items = classicalswinefeverMapper.select(arg);
+                Classicalswinefever item = new Classicalswinefever();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1361,12 +1399,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Footandmouthdisease fill = (Footandmouthdisease) JSONObject.toBean(jsonObj, Footandmouthdisease.class);
                 Footandmouthdisease arg = new Footandmouthdisease();
                 arg.setFmdReportid(report.getReportId());
-                List<Footandmouthdisease> items=footandmouthdiseaseMapper.select(arg);
-                Footandmouthdisease item =new Footandmouthdisease();
-                if(items.size()>0) {
+                List<Footandmouthdisease> items = footandmouthdiseaseMapper.select(arg);
+                Footandmouthdisease item = new Footandmouthdisease();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1392,12 +1430,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Newcastle fill = (Newcastle) JSONObject.toBean(jsonObj, Newcastle.class);
                 Newcastle arg = new Newcastle();
                 arg.setNcReportid(report.getReportId());
-                List<Newcastle> items=newcastleMapper.select(arg);
-                Newcastle item =new Newcastle();
-                if(items.size()>0) {
+                List<Newcastle> items = newcastleMapper.select(arg);
+                Newcastle item = new Newcastle();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1420,15 +1458,16 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 break;
             }
             case "b_pestedespetitsruminants": {
-                Pestedespetitsruminants fill = (Pestedespetitsruminants) JSONObject.toBean(jsonObj, Pestedespetitsruminants.class);
+                Pestedespetitsruminants fill = (Pestedespetitsruminants) JSONObject
+                        .toBean(jsonObj, Pestedespetitsruminants.class);
                 Pestedespetitsruminants arg = new Pestedespetitsruminants();
                 arg.setPdprReportid(report.getReportId());
-                List<Pestedespetitsruminants> items=pestedespetitsruminantsMapper.select(arg);
-                Pestedespetitsruminants item =new Pestedespetitsruminants();
-                if(items.size()>0) {
+                List<Pestedespetitsruminants> items = pestedespetitsruminantsMapper.select(arg);
+                Pestedespetitsruminants item = new Pestedespetitsruminants();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1477,12 +1516,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Disinfectiondrugs fill = (Disinfectiondrugs) JSONObject.toBean(jsonObj, Disinfectiondrugs.class);
                 Disinfectiondrugs arg = new Disinfectiondrugs();
                 arg.setDfReportid(report.getReportId());
-                List<Disinfectiondrugs> items=disinfectiondrugsMapper.select(arg);
-                Disinfectiondrugs item =new Disinfectiondrugs();
-                if(items.size()>0) {
+                List<Disinfectiondrugs> items = disinfectiondrugsMapper.select(arg);
+                Disinfectiondrugs item = new Disinfectiondrugs();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1509,12 +1548,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                         .toBean(jsonObj, Wfootandmouthdisease.class);
                 Wfootandmouthdisease arg = new Wfootandmouthdisease();
                 arg.setFmdReportid(report.getReportId());
-                List<Wfootandmouthdisease> items=wfootandmouthdiseaseMapper.select(arg);
-                Wfootandmouthdisease item =new Wfootandmouthdisease();
-                if(items.size()>0) {
+                List<Wfootandmouthdisease> items = wfootandmouthdiseaseMapper.select(arg);
+                Wfootandmouthdisease item = new Wfootandmouthdisease();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {
@@ -1540,12 +1579,12 @@ private Map getReportSummaryHtmlUtil(Class clazz,List<String> reportIds,String r
                 Wlivestockinout fill = (Wlivestockinout) JSONObject.toBean(jsonObj, Wlivestockinout.class);
                 Wlivestockinout arg = new Wlivestockinout();
                 arg.setReportid(report.getReportId());
-                List<Wlivestockinout> items=wlivestockinoutMapper.select(arg);
-                Wlivestockinout item =new Wlivestockinout();
-                if(items.size()>0) {
+                List<Wlivestockinout> items = wlivestockinoutMapper.select(arg);
+                Wlivestockinout item = new Wlivestockinout();
+                if (items.size() > 0) {
                     item = items.get(0);
-                }else{
-                    item=null;
+                } else {
+                    item = null;
                 }
                 boolean insert = true;
                 if (item == null) {

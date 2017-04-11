@@ -53,6 +53,7 @@ public class ReportMonthController {
     public Result history(@RequestParam(value = "templateId", required = false) String templateId,
             @RequestParam(value = "period") String period,
             @RequestParam(value = "status", required = false) Integer status,
+            @RequestParam(value = "orgId", required = false) String orgId,
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
         String currentLoginName = SecurityUtil.getCurrentUserName();
@@ -65,7 +66,11 @@ public class ReportMonthController {
         }
         Map argMap = new HashMap();
         argMap.put("reportType", ReportTypeE.MONTH.getCode());
-        if (!currentOrg.getRegionCode().equals("000000")) argMap.put("orgId", currentOrg.getOrgId());
+        if (!currentOrg.getRegionCode().equals("000000")) {
+            argMap.put("orgId", currentOrg.getOrgId());
+        } else {
+            if (StringUtils.isNotEmpty(orgId)) argMap.put("orgId", orgId);
+        }
         if (StringUtils.isNotEmpty(templateId)) argMap.put("templateId", templateId);
         if (StringUtils.isNotEmpty(period)) {
             String d = period.replace(",", "-") + "-01";

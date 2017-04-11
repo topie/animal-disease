@@ -132,20 +132,20 @@
     <tr class="r3">
         <td class="c3" rowspan="2">高致病性猪蓝耳病疫苗</td>
         <td class="c4">高致病性猪蓝耳病灭活疫苗(万毫升)</td>
-        <td role="data" n="evBe"   class="c3"><#if item.evBe??>${item.evBe}</#if></td>
-        <td role="data" n="evAllbe"   class="c3"><#if item.evAllbe??>${item.evAllbe}</#if></td>
+        <td role="data" n="evBe" class="c3"><#if item.evBe??>${item.evBe}</#if></td>
+        <td role="data" n="evAllbe" class="c3"><#if item.evAllbe??>${item.evAllbe}</#if></td>
         <td class="c3">&nbsp;</td>
     </tr>
     <tr class="r3">
         <td class="c4">高致病性猪蓝耳病活疫苗(万头份)</td>
-        <td role="data" n="evBeinactivated"   class="c3"><#if item.evBeinactivated??>${item.evBeinactivated}</#if><td>
-        <td role="data" n="evAllbeinactivated"   class="c3"><#if item.evAllbeinactivated??>${item.evAllbeinactivated}</#if><td>
+        <td role="data" n="evBeinactivated"   class="c3"><#if item.evBeinactivated??>${item.evBeinactivated}</#if></td>
+        <td role="data" n="evAllbeinactivated"   class="c3"><#if item.evAllbeinactivated??>${item.evAllbeinactivated}</#if></td>
         <td class="c3">&nbsp;</td>
     </tr>
     <tr class="r3">
         <td class="c3" rowspan="2">猪瘟疫苗</td>
         <td class="c4">猪瘟活疫苗(万头份)</td>
-        <td role="data" n="evCs"   class="c3"><#if item.evCs??>${item.evCs}</#if><td>
+        <td role="data" n="evCs"   class="c3"><#if item.evCs??>${item.evCs}</#if></td>
         <td role="data" n="evAllcs"   class="c3"><#if item.evAllcs??>${item.evAllcs}</#if></td>
         <td class="c3">&nbsp;</td>
     </tr>

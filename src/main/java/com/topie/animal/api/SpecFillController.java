@@ -56,7 +56,9 @@ public class SpecFillController {
         if (StringUtils.isEmpty(currentOrg.getOrgId())) {
             return ResponseUtil.error("当前用户没有组织机构");
         }
-        if (!currentOrg.getRegionCode().equals("000000")) specFill.setOrgId(currentOrg.getOrgId());
+        if (!currentOrg.getRegionCode().equals("000000")) {
+            specFill.setOrgId(currentOrg.getOrgId());
+        }
         PageInfo<SpecFill> pageInfo = iSpecFillService.selectByPage(specFill, pageNum, pageSize);
         return ResponseUtil.success(PageConvertUtil.grid(pageInfo));
     }
@@ -79,7 +81,7 @@ public class SpecFillController {
             Attachment attachment = iAttachmentService.selectByKey(id);
             if (attachment != null) {
                 xlsPath = attachment.getAttachmentPath();
-            }else{
+            } else {
                 return ResponseUtil.error("上传附件不存在！");
             }
             String html = PoiUtil.excelToHtmlString(xlsPath);

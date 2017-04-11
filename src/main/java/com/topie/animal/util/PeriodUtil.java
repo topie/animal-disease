@@ -89,7 +89,7 @@ public class PeriodUtil {
         if (periodList.size() != timeList.size()) return "-";
         String time = DateUtil.DateToString(beginTime, DateStyle.YYYY_MM_DD);
         String period = "-";
-        if (timeList.indexOf(time) > 0) period = periodList.get(timeList.indexOf(time));
+        if (timeList.indexOf(time) >= 0) period = periodList.get(timeList.indexOf(time));
         return DateUtil.getYear(beginTime) + " " + period;
     }
 }

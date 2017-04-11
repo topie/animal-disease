@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,6 +63,17 @@ public class OrgInfoController {
     @ResponseBody
     public List<TreeNode> treeNodes(OrgInfo orgInfo) {
         return iOrgInfoService.selectTreeNodes(orgInfo);
+    }
+
+    @RequestMapping(value = "/options", method = { RequestMethod.GET, RequestMethod.POST })
+    @ResponseBody
+    public List<Option> options(OrgInfo orgInfo) {
+        List<Option> options = new ArrayList<>();
+        List<TreeNode> list = iOrgInfoService.selectTreeNodes(orgInfo);
+        for (TreeNode treeNode : list) {
+            options.add(new Option(treeNode.getName(), treeNode.getId()));
+        }
+        return options;
     }
 
 }
