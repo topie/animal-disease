@@ -135,9 +135,18 @@
     <result column="ev_AllSheepHydatidDH" property="evAllsheephydatiddh" jdbcType="DECIMAL" />
     <result column="ev_SheepHydatidX" property="evSheephydatidx" jdbcType="DECIMAL" />
     <result column="ev_AllSheepHydatidX" property="evAllsheephydatidx" jdbcType="DECIMAL" />
+
+    <result column="ev_BrucellaM5DH" property="evBrucellam5dh" jdbcType="DECIMAL" />
+    <result column="ev_AllBrucellaM5DH" property="evAllbrucellam5dh" jdbcType="DECIMAL" />
+    <result column="ev_BrucellaM5X" property="evBrucellam5x" jdbcType="DECIMAL" />
+    <result column="ev_AllBrucellaM5X" property="evAllbrucellam5x" jdbcType="DECIMAL" />
   </resultMap>
   <select id="selectSumByReportCode" resultMap="BaseResultMap">
     select
+     sum(ev_BrucellaM5X) ev_BrucellaM5X,
+    sum(ev_AllBrucellaM5X) ev_AllBrucellaM5X,
+    sum(ev_BrucellaM5DH) ev_BrucellaM5DH,
+    sum(ev_AllBrucellaM5DH) ev_AllBrucellaM5DH,
     sum(ev_FMOInactivatedDH) ev_FMOInactivatedDH,
     sum(ev_FMOInactivatedX) ev_FMOInactivatedX,
     sum(ev_FMOSyntheticDH) ev_FMOSyntheticDH,
