@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.WbrucellosisMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Wbrucellosis" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="bru_id" property="bruId" jdbcType="CHAR" />
+    <result column="bru_reportId" property="bruReportid" jdbcType="CHAR" />
+    <result column="bru_date" property="bruDate" jdbcType="TIMESTAMP" />
+    <result column="bru_regionCode" property="bruRegioncode" jdbcType="VARCHAR" />
+    <result column="bru_regionName" property="bruRegionname" jdbcType="VARCHAR" />
+    <result column="bru_s2VaccineUse" property="bruS2vaccineuse" jdbcType="DECIMAL" />
+    <result column="bru_s2NiuImmuneAmount" property="bruS2niuimmuneamount" jdbcType="DECIMAL" />
+    <result column="bru_s2NiuShouldAmount" property="bruS2niushouldamount" jdbcType="DECIMAL" />
+    <result column="bru_m5VaccineUse" property="bruM5vaccineuse" jdbcType="DECIMAL" />
+    <result column="bru_m5NiuImmuneAmount" property="bruM5niuimmuneamount" jdbcType="DECIMAL" />
+    <result column="bru_m5NiuShouldAmount" property="bruM5niushouldamount" jdbcType="DECIMAL" />
+    <result column="bru_a19VaccineUse" property="bruA19vaccineuse" jdbcType="DECIMAL" />
+    <result column="bru_a19NiuImmuneAmount" property="bruA19niuimmuneamount" jdbcType="DECIMAL" />
+    <result column="bru_a19NiuShouldAmount" property="bruA19niushouldamount" jdbcType="DECIMAL" />
+    <result column="bru_s2SheepImmuneAmount" property="bruS2sheepimmuneamount" jdbcType="DECIMAL" />
+    <result column="bru_s2SheepShouldAmount" property="bruS2sheepshouldamount" jdbcType="DECIMAL" />
+    <result column="bru_m5SheepImmuneAmount" property="bruM5sheepimmuneamount" jdbcType="DECIMAL" />
+    <result column="bru_m5SheepShouldAmount" property="bruM5sheepshouldamount" jdbcType="DECIMAL" />
+    <result column="bru_a19SheepImmuneAmount" property="bruA19sheepimmuneamount" jdbcType="DECIMAL" />
+    <result column="bru_a19SheepShouldAmount" property="bruA19sheepshouldamount" jdbcType="DECIMAL" />
+  </resultMap>
+  <select id="selectSumByReportCode" resultMap="BaseResultMap">
+    select
+    sum(bru_s2VaccineUse) bru_s2VaccineUse,
+    sum(bru_s2NiuImmuneAmount) bru_s2NiuImmuneAmount,
+    sum(bru_s2SheepImmuneAmount) bru_s2SheepImmuneAmount,
+    sum(bru_m5VaccineUse) bru_m5VaccineUse,
+    sum(bru_m5NiuImmuneAmount) bru_m5NiuImmuneAmount,
+    sum(bru_m5SheepImmuneAmount) bru_m5SheepImmuneAmount,
+     sum(bru_a19VaccineUse) bru_a19VaccineUse,
+    sum(bru_a19NiuImmuneAmount) bru_a19NiuImmuneAmount,
+    sum(bru_a19SheepImmuneAmount) bru_a19SheepImmuneAmount
+    from animal_disease.b_wbrucellosis
+    where bru_regionCode=#{regionCode} AND bru_date BETWEEN  #{beginTime} AND #{endTime}
+  </select>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select t1.Liv_regionCode as bru_regionCode ,t1.Liv_regionName as bed_regionName,t2.* from
+    (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+    LEFT JOIN
+    (
+    select
+    bru_regionCode,
+   sum(bru_s2VaccineUse) bru_s2VaccineUse,
+    sum(bru_s2NiuImmuneAmount) bru_s2NiuImmuneAmount,
+    sum(bru_s2SheepImmuneAmount) bru_s2SheepImmuneAmount,
+    sum(bru_m5VaccineUse) bru_m5VaccineUse,
+    sum(bru_m5NiuImmuneAmount) bru_m5NiuImmuneAmount,
+    sum(bru_m5SheepImmuneAmount) bru_m5SheepImmuneAmount,
+     sum(bru_a19VaccineUse) bru_a19VaccineUse,
+    sum(bru_a19NiuImmuneAmount) bru_a19NiuImmuneAmount,
+    sum(bru_a19SheepImmuneAmount) bru_a19SheepImmuneAmount
+    from animal_disease.b_wbrucellosis
+    where  bru_date BETWEEN  #{beginTime} AND #{endTime}
+    GROUP  by bru_regionCode
+    ) as t2
+    on t1.Liv_regionCode=t2.bru_regionCode
+    ORDER  by t1.Liv_regionCode
+
+  </select>
+</mapper>

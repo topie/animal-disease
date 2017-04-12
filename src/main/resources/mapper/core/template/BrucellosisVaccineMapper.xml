@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.BrucellosisVaccineMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.BrucellosisVaccine" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="bru_id" property="bruId" jdbcType="CHAR" />
+    <result column="bru_reportId" property="bruReportid" jdbcType="CHAR" />
+    <result column="bru_regionCode" property="bruRegioncode" jdbcType="VARCHAR" />
+    <result column="bru_regionName" property="bruRegionname" jdbcType="VARCHAR" />
+    <result column="bru_date" property="bruDate" jdbcType="TIMESTAMP" />
+    <result column="bru_s2UseCount" property="bruS2usecount" jdbcType="DECIMAL" />
+    <result column="bru_s2StoreCount" property="bruS2storecount" jdbcType="DECIMAL" />
+    <result column="bru_s2YearCount" property="bruS2yearcount" jdbcType="DECIMAL" />
+    <result column="bru_m5UseCount" property="bruM5usecount" jdbcType="DECIMAL" />
+    <result column="bru_m5StoreCount" property="bruM5storecount" jdbcType="DECIMAL" />
+    <result column="bru_m5YearCount" property="bruM5yearcount" jdbcType="DECIMAL" />
+    <result column="bru_a19UseCount" property="bruA19usecount" jdbcType="DECIMAL" />
+    <result column="bru_a19StoreCount" property="bruA19storecount" jdbcType="DECIMAL" />
+    <result column="bru_a19YearCount" property="bruA19yearcount" jdbcType="DECIMAL" />
+  </resultMap>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select t1.Liv_regionCode as bru_regionCode ,t1.Liv_regionName as bru_regionName,t2.* from
+    (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+    LEFT JOIN
+    ( select  * from animal_disease.b_brucellosisvaccine
+    where  bru_date BETWEEN  #{beginTime} AND #{endTime}
+    ) as t2
+    on t1.Liv_regionCode=t2.bru_regionCode
+    ORDER  by t1.Liv_regionCode
+  </select>
+</mapper>
