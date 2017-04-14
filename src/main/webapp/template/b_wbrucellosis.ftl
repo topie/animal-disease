@@ -294,8 +294,8 @@
             var lj_sheep=(parseFloat(sum_bruS2sheepimmuneamount)+parseFloat(sum_bruM5sheepimmuneamount)+parseFloat(sum_bruA19sheepimmuneamount)).toFixed(2);
             var immuneBruniu = $.trim($('td[n="immuneBruniu"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immuneBruniu"]').text()));
             var immuneBruSheep = $.trim($('td[n="immuneBruSheep"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immuneBruSheep"]').text()));
-            var jz_niu=immuneBruniu==0?0:(parseFloat(lj_niu*100)/parseFloat(immuneBruniu)).toFixed(2);
-            var jz_sheep=immuneBruSheep==0?0:(parseFloat(lj_sheep*100)/parseFloat(immuneBruSheep)).toFixed(2);
+            var jz_niu=parseFloat(immuneBruniu)==parseFloat(0)?0:(parseFloat(lj_niu*100)/parseFloat(immuneBruniu)).toFixed(2);
+            var jz_sheep=parseFloat(immuneBruSheep)==parseFloat(0)?0:(parseFloat(lj_sheep*100)/parseFloat(immuneBruSheep)).toFixed(2);
             $('td[n="jz_niu"]').text(jz_niu+"%");
             $('td[n="jz_sheep"]').text(jz_sheep+"%");
 

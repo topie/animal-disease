@@ -127,7 +127,7 @@
 				<td class="c3" colspan="18">${user.realName}</td>
 			</tr>
 			<tr class="r3">
-				<td class="c4">主管领导：</td>
+				<td class="c2">主管领导：</td>
 				<td class="c3" colspan="18">${user.leaderName}</td>
 			</tr>
 			<tr class="r4">
@@ -168,7 +168,7 @@
 				<td role="data" n="kfOtherkingfisher"   class="c2"><#if item.kfOtherkingfisher??>${item.kfOtherkingfisher}</#if></td>
 				<td role="data" n="kfCulling"   class="c2"><#if item.kfCulling??>${item.kfCulling}</#if></td>
 				<td role="data" n="kfYearmonitoring"   class="c2"><#if item.kfYearmonitoring??>${item.kfYearmonitoring}</#if></td>
-				<td role="data" n="kfYearmaterials"   class="c5"><#if item.kfYearmaterials??>${item.kfYearmaterials}</#if></td>
+				<td role="data" n="kfYearmaterials"   class="c2"><#if item.kfYearmaterials??>${item.kfYearmaterials}</#if></td>
 				<td role="data" n="kfYearquarantine"   class="c2"><#if item.kfYearquarantine??>${item.kfYearquarantine}</#if></td>
 				<td role="data" n="kfYearother"   class="c2"><#if item.kfYearother??>${item.kfYearother}</#if></td>
 				<td role="data" n="kfProvincevaccine"   class="c2"><#if item.kfProvincevaccine??>${item.kfProvincevaccine}</#if></td>

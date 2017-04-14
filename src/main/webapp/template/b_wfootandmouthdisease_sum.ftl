@@ -118,8 +118,8 @@
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="3">省份</td>
-				<td class="c2" colspan="11">口蹄疫o型灭活类疫苗</td>
-				<td class="c2" colspan="11">口蹄疫o型-亚洲I型二价灭活疫苗</td>
+				<td class="c2" colspan="11">口蹄疫O型灭活类疫苗</td>
+				<td class="c2" colspan="11">口蹄疫O型-亚洲I型二价灭活疫苗</td>
 				<td class="c2" colspan="7">口蹄疫O型-A型-亚洲I型三价灭活疫苗</td>
 				<td class="c2" colspan="7">口蹄疫A型灭活疫苗</td>
 				<td class="c2" colspan="8">应免数量</td>
@@ -142,9 +142,9 @@
 				<td class="c2" rowspan="2">累计疫苗使用数量(万毫升)</td>
 				<td class="c2" colspan="2">本周免疫数量（万头）</td>
 				<td class="c2" colspan="3">累计免疫数量(万头)</td>
-				<td class="c2" colspan="5">口蹄疫o型疫苗</td>
+				<td class="c2" colspan="5">口蹄疫O型疫苗</td>
 				<td class="c2" colspan="3">口蹄疫A型灭活疫苗</td>
-				<td class="c2" colspan="5">口蹄疫o型疫苗</td>
+				<td class="c2" colspan="5">口蹄疫O型疫苗</td>
 				<td class="c2" colspan="3">口蹄疫A型灭活疫苗</td>
 			</tr>
 			<tr class="r4">

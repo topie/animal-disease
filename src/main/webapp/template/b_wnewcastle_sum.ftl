@@ -56,7 +56,7 @@
 </head>
 <body class="b1">
 
-	<table class="t1">
+	<table class="t1" width="100%">
 		<colgroup>
 			<col width="112">
 			<col width="100">

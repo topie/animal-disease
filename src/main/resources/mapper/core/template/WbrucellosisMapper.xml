@@ -41,7 +41,7 @@
     where bru_regionCode=#{regionCode} AND bru_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
   <select id="selectAllByDate" resultMap="BaseResultMap">
-    select t1.Liv_regionCode as bru_regionCode ,t1.Liv_regionName as bed_regionName,t2.* from
+    select t1.Liv_regionCode as bru_regionCode ,t1.Liv_regionName as bru_regionName,t2.* from
     (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
     LEFT JOIN
     (

@@ -129,7 +129,7 @@
 				<td class="c3" colspan="6">${user.realName}</td>
 			</tr>
 			<tr class="r2">
-				<td class="c4">主管领导：</td>
+				<td class="c2">主管领导：</td>
 				<td class="c3" colspan="6">${user.leaderName}</td>
 			</tr>
 			<tr class="r4">
@@ -138,7 +138,7 @@
 				<td class="c4" rowspan="2">累计疫苗使用数量(万毫升/万羽份)</td>
 				<td class="c2" rowspan="2">本周免疫数量（万羽）</td>
 				<td class="c2" rowspan="2">累计免疫数量(万羽)</td>
-				<td class="c5" rowspan="2">应免数量(万羽)</td>
+				<td class="c2" rowspan="2">应免数量(万羽)</td>
 				<td class="c2" rowspan="2">免疫进展(%)</td>
 			</tr>
 			<tr class="r5"></tr>
@@ -149,7 +149,7 @@
 				<td role="data" n="ncInactivatedimmuneamount"  class="c2"><#if item.ncInactivatedimmuneamount??>${item.ncInactivatedimmuneamount}</#if></td>
 				<td role="lj_ncInactivatedimmuneamount" class="c6"><#if itemSum.ncInactivatedimmuneamount??>${itemSum.ncInactivatedimmuneamount}</#if></td>
 				<td n="immunenewcastle" class="c6" rowspan="2"><#if wlivestockinout.immunenewcastle??>${wlivestockinout.immunenewcastle}</#if></td>
-				<td n="jz_sum" class="c6" rowspan="2"><#if wlivestockinout.immunenewcastle??&&wlivestockinout.immunenewcastle>0>${(itemSum.ncInactivatedimmuneamount?default(0)+itemSum.ncJointimmuneamount?default(0))*100/wlivestockinout.immunenewcastle}%</#if></td>
+				<td n="jz_sum" class="c6" rowspan="2"></td>
 			</tr>
             <input id="ncInactivatedvaccine" type="hidden" value="${itemSum.ncInactivatedvaccine?default(0)-item.ncInactivatedvaccine?default(0)}"/>
             <input id="ncInactivatedimmuneamount" type="hidden" value="${itemSum.ncInactivatedimmuneamount?default(0)-item.ncInactivatedimmuneamount?default(0)}"/>
@@ -229,7 +229,7 @@
             $("td[role=lj_ncJointimmuneamount]").text(sum_ncJointimmuneamount);
             var lj_sum=(parseFloat(sum_ncInactivatedimmuneamount)+parseFloat(sum_ncJointimmuneamount)).toFixed(2);
             var immunenewcastle = $.trim($('td[n="immunenewcastle"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immunenewcastle"]').text()));
-            var jz_sum=(parseFloat(lj_sum*100)/parseFloat(immunenewcastle)).toFixed(2);
+            var jz_sum=parseFloat(immunenewcastle)==parseFloat(0)?0:(parseFloat(lj_sum*100)/parseFloat(immunenewcastle)).toFixed(2);
             $('td[n="jz_sum"]').text(jz_sum+"%");
         }
 

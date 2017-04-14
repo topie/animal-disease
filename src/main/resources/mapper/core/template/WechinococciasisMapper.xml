@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.WechinococciasisMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.Wechinococciasis" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="ech_id" property="echId" jdbcType="CHAR" />
+    <result column="ech_reportId" property="echReportid" jdbcType="CHAR" />
+    <result column="ech_date" property="echDate" jdbcType="TIMESTAMP" />
+    <result column="ech_regionCode" property="echRegioncode" jdbcType="VARCHAR" />
+    <result column="ech_regionName" property="echRegionname" jdbcType="VARCHAR" />
+    <result column="ech_inactivatedVaccine" property="echInactivatedvaccine" jdbcType="DECIMAL" />
+    <result column="ech_inactivatedImmuneAmount" property="echInactivatedimmuneamount" jdbcType="DECIMAL" />
+    <result column="ech_inactivatedShouldAmount" property="echInactivatedshouldamount" jdbcType="DECIMAL" />
+
+  </resultMap>
+  <select id="selectSumByReportCode" resultMap="BaseResultMap">
+    select
+    sum(ech_inactivatedVaccine) ech_inactivatedVaccine,
+    sum(ech_inactivatedImmuneAmount) ech_inactivatedImmuneAmount,
+    sum(ech_inactivatedShouldAmount) ech_inactivatedShouldAmount
+
+    from animal_disease.b_wechinococciasis
+    where ech_regionCode=#{regionCode} AND ech_date BETWEEN  #{beginTime} AND #{endTime}
+  </select>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select t1.Liv_regionCode as ech_regionCode ,t1.Liv_regionName as ech_regionName,t2.* from
+    (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+    LEFT JOIN
+    (
+    select
+    ech_regionCode,
+      sum(ech_inactivatedVaccine) ech_inactivatedVaccine,
+    sum(ech_inactivatedImmuneAmount) ech_inactivatedImmuneAmount,
+    sum(ech_inactivatedShouldAmount) ech_inactivatedShouldAmount
+
+    from animal_disease.b_wechinococciasis
+    where  ech_date BETWEEN  #{beginTime} AND #{endTime}
+    GROUP  by ech_regionCode
+    ) as t2
+    on t1.Liv_regionCode=t2.ech_regionCode
+    ORDER  by t1.Liv_regionCode
+
+  </select>
+</mapper>

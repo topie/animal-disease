@@ -187,7 +187,7 @@
 				<td class="c3" colspan="10">${user.realName}</td>
 			</tr>
 			<tr class="r2">
-				<td class="c4">主管领导</td>
+				<td class="c2">主管领导</td>
 				<td class="c3" colspan="10">${user.leaderName}</td>
 			</tr>
 			<tr class="r3">
@@ -208,7 +208,7 @@
 				<td class="c2">其它动物</td>
 			</tr>
 			<tr class="r5">
-				<td class="c2">口蹄疫o型灭活类疫苗</td>
+				<td class="c2">口蹄疫O型灭活类疫苗</td>
 				<td role="data" n="fmdInactivatedvaccine"  class="c2"><#if item.fmdInactivatedvaccine??>${item.fmdInactivatedvaccine}</#if></td>
 				<td role="lj_fmdInactivatedvaccine" class="c7"><#if itemSum.fmdInactivatedvaccine??>${itemSum.fmdInactivatedvaccine}</#if></td>
 				<td role="data"  n="fmdInactivatedimmuneamountpig"  class="c2"><#if item.fmdInactivatedimmuneamountpig??>${item.fmdInactivatedimmuneamountpig}</#if></td>
@@ -226,7 +226,7 @@
                 <input id="fmdInactivatedimmuneamountother" type="hidden" value="${itemSum.fmdInactivatedimmuneamountother?default(0)-item.fmdInactivatedimmuneamountother?default(0)}"/>
 			</tr>
 			<tr class="r6">
-				<td class="c2">口蹄疫o型-亚洲i型二价灭活疫苗</td>
+				<td class="c2">口蹄疫O型-亚洲I型二价灭活疫苗</td>
 				<td role="data"  n="fmdO2vaccine"  class="c9"><#if item.fmdO2vaccine??>${item.fmdO2vaccine}</#if></td>
 				<td role="lj_fmdO2vaccine" class="c7"><#if itemSum.fmdO2vaccine??>${itemSum.fmdO2vaccine}</#if></td>
 				<td role="data"  n="fmdO2immuneamountpig"  class="c9"><#if item.fmdO2immuneamountpig??>${item.fmdO2immuneamountpig}</#if></td>
@@ -244,7 +244,7 @@
             <input id="fmdO2immuneamountsheep" type="hidden" value="${itemSum.fmdO2immuneamountsheep?default(0)-item.fmdO2immuneamountsheep?default(0)}"/>
             <input id="fmdO2immuneamountother" type="hidden" value="${itemSum.fmdO2immuneamountother?default(0)-item.fmdO2immuneamountother?default(0)}"/>
 			<tr class="r7">
-				<td class="c2">口蹄疫o型-a型-亚洲i型三价灭活疫苗</td>
+				<td class="c2">口蹄疫O型-A型-亚洲I型三价灭活疫苗</td>
 				<td role="data"  n="fmdO3vaccine"  class="c2"><#if item.fmdO3vaccine??>${item.fmdO3vaccine}</#if></td>
 				<td role="lj_fmdO3vaccine" class="c7"><#if itemSum.fmdO3vaccine??>${itemSum.fmdO3vaccine}</#if></td>
 				<td  n="fmdO3immuneamountpig"   class="c2">-</td>
@@ -260,7 +260,7 @@
                 <input id="fmdO3immuneamountsheep" type="hidden" value="${itemSum.fmdO3immuneamountsheep?default(0)-item.fmdO3immuneamountsheep?default(0)}"/>
 			</tr>
 			<tr class="r8">
-				<td class="c2">口蹄疫a型灭活疫苗</td>
+				<td class="c2">口蹄疫A型灭活疫苗</td>
 				<td role="data" n="fmdAvaccine" class="c11"><#if item.fmdAvaccine??>${item.fmdAvaccine}</#if></td>
 				<td role="lj_fmdAvaccine" class="c7"><#if itemSum.fmdAvaccine??>${itemSum.fmdAvaccine}</#if></td>
 				<td   n="" class="c11">-</td>

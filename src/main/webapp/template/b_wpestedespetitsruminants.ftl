@@ -202,7 +202,7 @@
 				<td class="c6" colspan="6">${user.realName}</td>
 			</tr>
 			<tr class="r2">
-				<td class="c7">主管领导：</td>
+				<td class="c5">主管领导：</td>
 				<td class="c6" colspan="6">${user.leaderName}</td>
 			</tr>
 			<tr class="r4">
@@ -211,7 +211,7 @@
 				<td class="c7" rowspan="1">累计疫苗使用数量(万头份)</td>
 				<td class="c5" rowspan="1">本周免疫数量（万只）</td>
 				<td class="c5" rowspan="1">累计免疫数量(万只)</td>
-				<td class="c8" rowspan="1">应免数量(万只)</td>
+				<td class="c5" rowspan="1">应免数量(万只)</td>
 				<td class="c5" rowspan="1">免疫进展(%)</td>
 			</tr>
 			<tr class="r3">
@@ -221,7 +221,7 @@
 				<td role="data" n="wpdrImmuneamount"  class="c10"><#if item.wpdrImmuneamount??>${item.wpdrImmuneamount}</#if></td>
 				<td role="lj_wpdrImmuneamount" class="c11"><#if itemSum.wpdrImmuneamount??>${itemSum.wpdrImmuneamount}</#if></td>
 				<td n="pestedespetitsruminants" class="c11"><#if wlivestockinout.pestedespetitsruminants??>${wlivestockinout.pestedespetitsruminants}</#if></td>
-				<td n="jz_sum" class="c11"><#if  (wlivestockinout.pestedespetitsruminants??&&wlivestockinout.pestedespetitsruminants>0)>${(itemSum.wpdrImmuneamount?default(0))*100/wlivestockinout.pestedespetitsruminants}%</#if></td>
+				<td n="jz_sum" class="c11"></td>
 			</tr>
             <input id="wpdrVaccine" type="hidden" value="${itemSum.wpdrVaccine?default(0)-item.wpdrVaccine?default(0)}"/>
             <input id="wpdrImmuneamount" type="hidden" value="${itemSum.wpdrImmuneamount?default(0)-item.wpdrImmuneamount?default(0)}"/>
@@ -283,7 +283,7 @@
             $("td[role=lj_wpdrImmuneamount]").text(sum_wpdrImmuneamount);
             var lj_sum=parseFloat(sum_wpdrImmuneamount).toFixed(2);
             var pestedespetitsruminants = $.trim($('td[n="pestedespetitsruminants"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="pestedespetitsruminants"]').text()));
-            var jz_sum=(parseFloat(lj_sum*100)/parseFloat(pestedespetitsruminants)).toFixed(2);
+            var jz_sum=parseFloat(pestedespetitsruminants)==parseFloat(0)?0:(parseFloat(lj_sum*100)/parseFloat(pestedespetitsruminants)).toFixed(2);
             $('td[n="jz_sum"]').text(jz_sum+"%");
         }
 

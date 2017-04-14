@@ -183,7 +183,7 @@
 
 			</tr>
 			<tr class="r1">
-				<td class="c4">主管领导：</td>
+				<td class="c3">主管领导：</td>
 				<td class="c2" colspan="6">${user.leaderName}</td>
 
 			</tr>

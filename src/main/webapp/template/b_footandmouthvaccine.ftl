@@ -116,7 +116,7 @@
 				<td class="c3" colspan="17">${user.realName}</td>
 			</tr>
 			<tr class="r2">
-				<td class="c4">主管领导：</td>
+				<td class="c2">主管领导：</td>
 				<td class="c3" colspan="17">${user.leaderName}</td>
 			</tr>
 			<tr class="r4">

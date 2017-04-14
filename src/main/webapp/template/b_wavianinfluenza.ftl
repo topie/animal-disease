@@ -191,7 +191,7 @@
 				<td class="c3" colspan="21">${user.realName}</td>
 			</tr>
 			<tr class="r2">
-				<td class="c4">主管领导：</td>
+				<td class="c2">主管领导：</td>
 				<td class="c3" colspan="21">${user.leaderName}</td>
 			</tr>
 			<tr class="r3">
@@ -377,11 +377,11 @@
             var immunebirdfluother = $.trim($('td[n="immunebirdfluother"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immunebirdfluother"]').text()));
             var immunebirdSum=(parseFloat(immunebirdfluchecken)+parseFloat(immunebirdfluduck)+parseFloat(immunebirdflugoose)+parseFloat(immunebirdfluother)).toFixed(2);
             $('td[n="immunebirdSum"]').text(immunebirdSum);
-            var jz_chicken=(parseFloat(lj_chicken*100)/parseFloat(immunebirdfluchecken)).toFixed(2);
-            var jz_duck=(parseFloat(lj_duck*100)/parseFloat(immunebirdfluduck)).toFixed(2);
-            var jz_goose=(parseFloat(lj_goose*100)/parseFloat(immunebirdflugoose)).toFixed(2);
-            var jz_other=(parseFloat(lj_other*100)/parseFloat(immunebirdfluother)).toFixed(2);
-            var jz_sum=(parseFloat(lj_sum*100)/parseFloat(immunebirdSum)).toFixed(2);
+            var jz_chicken=parseFloat(immunebirdfluchecken)==parseFloat(0)?0:(parseFloat(lj_chicken*100)/parseFloat(immunebirdfluchecken)).toFixed(2);
+            var jz_duck=parseFloat(immunebirdfluduck)==parseFloat(0)?0:(parseFloat(lj_duck*100)/parseFloat(immunebirdfluduck)).toFixed(2);
+            var jz_goose=parseFloat(immunebirdflugoose)==parseFloat(0)?0:(parseFloat(lj_goose*100)/parseFloat(immunebirdflugoose)).toFixed(2);
+            var jz_other=parseFloat(immunebirdfluother)==parseFloat(0)?0:(parseFloat(lj_other*100)/parseFloat(immunebirdfluother)).toFixed(2);
+            var jz_sum=parseFloat(immunebirdSum)==parseFloat(0)?0:(parseFloat(lj_sum*100)/parseFloat(immunebirdSum)).toFixed(2);
 
             $('td[n="jz_immunebirdfluchecken"]').text(jz_chicken+"%");
             $('td[n="jz_immunebirdfluduck"]').text(jz_duck+"%");

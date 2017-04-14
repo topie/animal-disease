@@ -153,7 +153,7 @@
         <td class="c2" rowspan="2">本月疫苗使用数量(万头份)</td>
         <td class="c4" rowspan="2">累计疫苗使用数量(万头份)</td>
         <td class="c2" colspan="2">本月免疫数量（万头）</td>
-        <td class="c5" colspan="2">累计免疫数量(万头)</td>
+        <td class="c2" colspan="2">累计免疫数量(万头)</td>
     </tr>
     <tr class="r5">
         <td class="c2">牛</td>

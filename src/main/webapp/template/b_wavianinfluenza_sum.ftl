@@ -69,7 +69,7 @@
 
 	<table class="t1">
 		<colgroup>
-			<col width="112">
+			<col width="15%">
 			<col width="67">
 			<col width="67">
 			<col width="61">
@@ -108,7 +108,7 @@
 				<td class="c1" colspan="33">${templateName}</td>
 			</tr>
 			<tr class="r2">
-				<td class="c2" rowspan="3">省份</td>
+				<td class="c2" rowspan="3" width="10%">省份</td>
 				<td class="c2" colspan="11">高致病性禽流感灭活疫苗</td>
 				<td class="c2" colspan="11">禽流感-新城疫重组二联活疫苗</td>
 				<td class="c2" colspan="5" rowspan="2">应免数量(万羽)</td>
@@ -119,8 +119,8 @@
 				<td class="c2" rowspan="2">累计疫苗使用数量(万毫升)</td>
 				<td class="c2" colspan="4">本周免疫数量（万羽）</td>
 				<td class="c2" colspan="5">累计免疫数量(万羽)</td>
-				<td class="c2" rowspan="2">本周疫苗使用数量(万羽份)</td>
-				<td class="c2" rowspan="2">累计疫苗使用数量(万羽份)</td>
+				<td class="c2" rowspan="2" width="66">本周疫苗使用数量(万羽份)</td>
+				<td class="c2" rowspan="2" width="66">累计疫苗使用数量(万羽份)</td>
 				<td class="c2" colspan="4">本周免疫数量（万羽）</td>
 				<td class="c2" colspan="5">累计免疫数量(万羽)</td>
 			</tr>

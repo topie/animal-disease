@@ -168,7 +168,7 @@
 				<td class="c2" colspan="6">${user.realName}</td>
 			</tr>
 			<tr class="r2">
-				<td class="c4">主管领导：</td>
+				<td class="c3">主管领导：</td>
 				<td class="c2" colspan="6">${user.leaderName}</td>
 			</tr>
 			<tr class="r4">
@@ -177,7 +177,7 @@
 				<td class="c4" >累计疫苗使用数量(万头份)</td>
 				<td class="c3" >本周免疫数量（万头）</td>
 				<td class="c3" >累计免疫数量(万头)</td>
-				<td class="c5" >应免数量(万头)</td>
+				<td class="c3" >应免数量(万头)</td>
 				<td class="c3" >免疫进展(%)</td>
 			</tr>
 			<tr class="r3">
@@ -246,7 +246,7 @@
             $("td[role=lj_csfImmuneamount]").text(sum_csfImmuneamount);
             var lj_sum=parseFloat(sum_csfImmuneamount).toFixed(2);
             var immuneswine = $.trim($('td[n="immuneswine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immuneswine"]').text()));
-            var jz_sum=(parseFloat(lj_sum*100)/parseFloat(immuneswine)).toFixed(2);
+            var jz_sum=parseFloat(immuneswine)==parseFloat(0)?0:(parseFloat(lj_sum*100)/parseFloat(immuneswine)).toFixed(2);
             $('td[n="jz_sum"]').text(jz_sum+"%");
         }
 

@@ -106,6 +106,24 @@
 			<col width="44">
 			<col width="44">
 			<col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
+            <col width="44">
 		</colgroup>
 		<tbody>
 			<tr class="r1">

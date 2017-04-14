@@ -138,7 +138,7 @@
 				<td class="c4" colspan="10">${user.realName}</td>
 			</tr>
 			<tr class="r2">
-				<td class="c5">主管领导：</td>
+				<td class="c3">主管领导：</td>
 				<td class="c4" colspan="10">${user.leaderName}</td>
 			</tr>
 			<tr class="r3">
@@ -169,10 +169,10 @@
 				<td role="data" n="aiInactivatedimmuneamountduck"   class="c3"><#if item.aiInactivatedimmuneamountduck??>${item.aiInactivatedimmuneamountduck}</#if></td>
 				<td role="data" n="aiInactivatedimmuneamountgoose"   class="c3"><#if item.aiInactivatedimmuneamountgoose??>${item.aiInactivatedimmuneamountgoose}</#if></td>
 				<td role="data" n="aiInactivatedimmuneamountother"  class="c3"><#if item.aiInactivatedimmuneamountother??>${item.aiInactivatedimmuneamountother}</#if></td>
-                <td role="lj_aiInactivatedimmuneamountchicken" class="c3"><#if itemSum.aiInactivatedimmuneamountchicken??>${itemSum.aiInactivatedimmuneamountchicken}</#if></td>
-                <td role="lj_aiInactivatedimmuneamountduck" class="c3"><#if itemSum.aiInactivatedimmuneamountduck??>${itemSum.aiInactivatedimmuneamountduck}</#if></td>
-                <td role="lj_aiInactivatedimmuneamountgoose" class="c3"><#if itemSum.aiInactivatedimmuneamountgoose??>${itemSum.aiInactivatedimmuneamountgoose}</#if></td>
-                <td role="lj_aiInactivatedimmuneamountother" class="c3"><#if itemSum.aiInactivatedimmuneamountother??>${itemSum.aiInactivatedimmuneamountother}</#if></td>
+                <td role="lj_aiInactivatedimmuneamountchicken" class="c7"><#if itemSum.aiInactivatedimmuneamountchicken??>${itemSum.aiInactivatedimmuneamountchicken}</#if></td>
+                <td role="lj_aiInactivatedimmuneamountduck" class="c7"><#if itemSum.aiInactivatedimmuneamountduck??>${itemSum.aiInactivatedimmuneamountduck}</#if></td>
+                <td role="lj_aiInactivatedimmuneamountgoose" class="c7"><#if itemSum.aiInactivatedimmuneamountgoose??>${itemSum.aiInactivatedimmuneamountgoose}</#if></td>
+                <td role="lj_aiInactivatedimmuneamountother" class="c7"><#if itemSum.aiInactivatedimmuneamountother??>${itemSum.aiInactivatedimmuneamountother}</#if></td>
 
                 <input id="aiInactivatedvaccine" type="hidden" value="${itemSum.aiInactivatedvaccine?default(0)-item.aiInactivatedvaccine?default(0)}"/>
                 <input id="aiInactivatedimmuneamountchicken" type="hidden" value="${itemSum.aiInactivatedimmuneamountchicken?default(0)-item.aiInactivatedimmuneamountchicken?default(0)}"/>
@@ -181,17 +181,17 @@
                 <input id="aiInactivatedimmuneamountother" type="hidden" value="${itemSum.aiInactivatedimmuneamountother?default(0)-item.aiInactivatedimmuneamountother?default(0)}"/>
 			</tr>
 			<tr class="r2">
-				<td class="c4">禽流感-新城疫重组二联活疫苗</td>
+				<td class="c3">禽流感-新城疫重组二联活疫苗</td>
 				<td role="data" n="aiJointvaccine"   class="c3"><#if item.aiJointvaccine??>${item.aiJointvaccine}</#if></td>
 				<td role="lj_aiJointvaccine" class="c7"><#if itemSum.aiJointvaccine??>${itemSum.aiJointvaccine}</#if></td>
 				<td role="data" n="aiJointimmuneamountchicken"   class="c3"><#if item.aiJointimmuneamountchicken??>${item.aiJointimmuneamountchicken}</#if></td>
 				<td role="data" n="aiJointimmuneamountduck"   class="c3"><#if item.aiJointimmuneamountduck??>${item.aiJointimmuneamountduck}</#if></td>
 				<td role="data" n="aiJointimmuneamountgoose"   class="c3"><#if item.aiJointimmuneamountgoose??>${item.aiJointimmuneamountgoose}</#if></td>
 				<td role="data" n="aiJointimmuneamountother"   class="c3"><#if item.aiJointimmuneamountother??>${item.aiJointimmuneamountother}</#if></td>
-				<td role="lj_aiJointimmuneamountchicken" class="c3"><#if itemSum.aiJointimmuneamountchicken??>${itemSum.aiJointimmuneamountchicken}</#if></td>
-				<td role="lj_aiJointimmuneamountduck" class="c3"><#if itemSum.aiJointimmuneamountduck??>${itemSum.aiJointimmuneamountduck}</#if></td>
-				<td role="lj_aiJointimmuneamountgoose" class="c3"><#if itemSum.aiJointimmuneamountgoose??>${itemSum.aiJointimmuneamountgoose}</#if></td>
-				<td role="lj_aiJointimmuneamountother" class="c3"><#if itemSum.aiJointimmuneamountother??>${itemSum.aiJointimmuneamountother}</#if></td>
+				<td role="lj_aiJointimmuneamountchicken" class="c7"><#if itemSum.aiJointimmuneamountchicken??>${itemSum.aiJointimmuneamountchicken}</#if></td>
+				<td role="lj_aiJointimmuneamountduck" class="c7"><#if itemSum.aiJointimmuneamountduck??>${itemSum.aiJointimmuneamountduck}</#if></td>
+				<td role="lj_aiJointimmuneamountgoose" class="c7"><#if itemSum.aiJointimmuneamountgoose??>${itemSum.aiJointimmuneamountgoose}</#if></td>
+				<td role="lj_aiJointimmuneamountother" class="c7"><#if itemSum.aiJointimmuneamountother??>${itemSum.aiJointimmuneamountother}</#if></td>
 
                 <input id="aiJointvaccine" type="hidden" value="${itemSum.aiJointvaccine?default(0)-item.aiJointvaccine?default(0)}"/>
                 <input id="aiJointimmuneamountchicken" type="hidden" value="${itemSum.aiJointimmuneamountchicken?default(0)-item.aiJointimmuneamountchicken?default(0)}"/>
