@@ -5,13 +5,15 @@
 
     <bean id="expTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
         <!-- 核心线程数 -->
-        <property name="corePoolSize" value="${executor.corePoolSize}" />
+        <property name="corePoolSize" value="${executor.corePoolSize}"/>
         <!-- 最大线程数 -->
-        <property name="maxPoolSize" value="${executor.maxPoolSize}" />
+        <property name="maxPoolSize" value="${executor.maxPoolSize}"/>
         <!-- 队列最大长度 -->
-        <property name="queueCapacity" value="${executor.queueCapacity}" />
+        <property name="queueCapacity" value="${executor.queueCapacity}"/>
         <!-- 线程池维护线程所允许的空闲时间，默认为60s -->
-        <property name="keepAliveSeconds" value="${executor.keep_alive_seconds}" />
+        <property name="keepAliveSeconds" value="${executor.keep_alive_seconds}"/>
     </bean>
+
+    <bean id="iUserWebService" class="com.topie.webservice.service.impl.UserWebServiceImpl"/>
 
 </beans>

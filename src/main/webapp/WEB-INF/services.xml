@@ -1,0 +1,19 @@
+<serviceGroup>//多个webservice时候用这个标签，这里带上也没事
+    <service name="userService">//webservice的代理类(业务实现类)继承IWeatherService
+        <description>userService</description>
+        <parameter name="ServiceClass">
+            com.topie.webservice.service.IUserWebService
+        </parameter>
+        <parameter name="ServiceObjectSupplier">
+            org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier
+        </parameter>
+        //这个要与spring的配置文件里的bean一样(除非你的webservice的bean不是用spring管理的)
+        <parameter name="SpringBeanName">iUserWebService</parameter>
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+                             class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+            <messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only"
+                             class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+        </messageReceivers>
+    </service>
+</serviceGroup>

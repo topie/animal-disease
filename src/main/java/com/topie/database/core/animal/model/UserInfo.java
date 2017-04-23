@@ -3,9 +3,12 @@ package com.topie.database.core.animal.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Table(name = "a_user_info")
-public class UserInfo {
+public class UserInfo implements Serializable {
+
+    private static final long serialVersionUID = -785819305026593814L;
 
     /**
      * 用户ID
