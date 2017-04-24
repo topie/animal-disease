@@ -145,7 +145,7 @@
 				<td class="c4" colspan="6">${user.realName}</td>
 			</tr>
 			<tr class="r4">
-				<td class="c5">主管领导：</td>
+				<td class="c3">主管领导：</td>
 				<td class="c4" colspan="6">${user.leaderName}</td>
 			</tr>
 			<tr class="r5">
@@ -244,7 +244,7 @@
             $("td[role=lj_bedWeakimmuneamount]").text(sum_bedWeakimmuneamount);
             var lj_sum=(parseFloat(sum_bedInactivatedimmuneamount)+parseFloat(sum_bedWeakimmuneamount)).toFixed(2);
             var immuneblueear = $.trim($('td[n="immuneblueear"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immuneblueear"]').text()));
-            var jz_sum=(parseFloat(lj_sum*100)/parseFloat(immuneblueear)).toFixed(2);
+            var jz_sum=parseFloat(immuneblueear)==parseFloat(0)?0:(parseFloat(lj_sum*100)/parseFloat(immuneblueear)).toFixed(2);
             $('td[n="jz_sum"]').text(jz_sum+"%");
 
         }

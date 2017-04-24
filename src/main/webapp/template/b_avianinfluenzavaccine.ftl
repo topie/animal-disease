@@ -59,7 +59,7 @@
         <td class="c2">填 表 人:</td><td class="c3" colspan="23">${user.realName}</td>
     </tr>
     <tr class="r2">
-        <td class="c4">主管领导：</td><td class="c3" colspan="23">${user.leaderName}</td>
+        <td class="c2">主管领导：</td><td class="c3" colspan="23">${user.leaderName}</td>
     </tr>
     <tr class="r4">
         <td class="c2" colspan="24">禽流感疫苗</td>

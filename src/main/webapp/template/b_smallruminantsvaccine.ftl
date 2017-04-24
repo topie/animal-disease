@@ -111,7 +111,7 @@
 				<td class="c3" colspan="2">${user.realName}</td>
 			</tr>
 			<tr class="r2">
-				<td class="c4">主管领导：</td>
+				<td class="c2">主管领导：</td>
 				<td class="c3" colspan="2">${user.leaderName}</td>
 			</tr>
 			<tr class="r3">
@@ -123,7 +123,7 @@
 				<td class="c6">全年使用数量</td>
 			</tr>
 			<tr class="r3">
-				<td class="c4">小反刍兽疫疫苗(万头份)</td>
+				<td class="c6">小反刍兽疫疫苗(万头份)</td>
 				<td class="c5">小反刍兽疫疫苗(万头份)</td>
 				<td class="c6">小反刍兽疫疫苗(万头份)</td>
 			</tr>

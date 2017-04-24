@@ -67,7 +67,7 @@
 </head>
 <body class="b1">
 
-	<table class="t1">
+	<table class="t1" width="100%">
 		<colgroup>
 			<col width="112">
 			<col width="100">
@@ -111,7 +111,7 @@
 				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].wpdrVaccine??>${cumulatives[item_index].wpdrVaccine}</#if></td>
 				<td n="wpdrImmuneamount"  class="c2"><#if item.wpdrImmuneamount??>${item.wpdrImmuneamount}</#if></td>
 				<td class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].wpdrImmuneamount??>${cumulatives[item_index].wpdrImmuneamount}</#if></td>
-				<td n="wpdrShouldamount"  class="c2"><#if wlivestockinouts[item_index]??&&wlivestockinouts[item_index].pestedespetitsruminants??>${wlivestockinouts[item_index].pestedespetitsruminants}</#if></td>
+				<td   class="c2"><#if wlivestockinouts[item_index]??&&wlivestockinouts[item_index].pestedespetitsruminants??>${wlivestockinouts[item_index].pestedespetitsruminants}</#if></td>
 				<td class="c2"><#if (wlivestockinouts??&&wlivestockinouts[item_index]??&&wlivestockinouts[item_index].pestedespetitsruminants??&&wlivestockinouts[item_index].pestedespetitsruminants>0)><#if cumulatives[item_index]??&&cumulatives[item_index].wpdrImmuneamount??>${cumulatives[item_index].wpdrImmuneamount?default(0)*100/wlivestockinouts[item_index].pestedespetitsruminants}%</#if></#if></td>
 			</tr>
           </#list>

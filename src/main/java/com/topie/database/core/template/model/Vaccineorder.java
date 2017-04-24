@@ -398,6 +398,18 @@ public class Vaccineorder {
     @Column(name = "ev_AllSheepHydatidX")
     private BigDecimal evAllsheephydatidx;
 
+
+    @Column(name = "ev_BrucellaM5DH")
+    private BigDecimal evBrucellam5dh;
+
+    @Column(name = "ev_AllBrucellaM5DH")
+    private BigDecimal evAllbrucellam5dh;
+
+    @Column(name = "ev_BrucellaM5X")
+    private BigDecimal evBrucellam5x;
+
+    @Column(name = "ev_AllBrucellaM5X")
+    private BigDecimal evAllbrucellam5x;
     /**
      * @return ReportId
      */
@@ -2216,5 +2228,38 @@ public class Vaccineorder {
      */
     public void setEvAllsheephydatidx(BigDecimal evAllsheephydatidx) {
         this.evAllsheephydatidx = evAllsheephydatidx;
+    }
+
+
+    public BigDecimal getEvBrucellam5dh() {
+        return evBrucellam5dh;
+    }
+
+    public BigDecimal getEvAllbrucellam5dh() {
+        return evAllbrucellam5dh;
+    }
+
+    public void setEvBrucellam5dh(BigDecimal evBrucellam5dh) {
+        this.evBrucellam5dh = evBrucellam5dh;
+    }
+
+    public void setEvAllbrucellam5dh(BigDecimal evAllbrucellam5dh) {
+        this.evAllbrucellam5dh = evAllbrucellam5dh;
+    }
+
+    public BigDecimal getEvBrucellam5x() {
+        return evBrucellam5x;
+    }
+
+    public BigDecimal getEvAllbrucellam5x() {
+        return evAllbrucellam5x;
+    }
+
+    public void setEvBrucellam5x(BigDecimal evBrucellam5x) {
+        this.evBrucellam5x = evBrucellam5x;
+    }
+
+    public void setEvAllbrucellam5x(BigDecimal evAllbrucellam5x) {
+        this.evAllbrucellam5x = evAllbrucellam5x;
     }
 }

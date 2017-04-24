@@ -183,7 +183,7 @@
 
 			</tr>
 			<tr class="r1">
-				<td class="c4">主管领导：</td>
+				<td class="c3">主管领导：</td>
 				<td class="c2" colspan="6">${user.leaderName}</td>
 
 			</tr>
@@ -361,7 +361,7 @@
             <input id="evAih5n2d7dh" type="hidden" value="${itemSum.evAih5n2d7dh?default(0)-item.evAih5n2d7dh?default(0)}"/>
             <input id="evAih5n2d7x" type="hidden" value="${itemSum.evAih5n2d7x?default(0)-item.evAih5n2d7x?default(0)}"/>
 			<tr class="r1">
-				<td class="c2">禽流感-新城疫重组二联活疫苗（rL-H5-6株）（万羽份）</td>
+				<td class="c2">禽流感-新城疫重组二联活疫苗（rL-H5株）（万羽份）</td>
 				<td role="data" n="evAirlh5dh"   class="c3"><#if item.evAirlh5dh??>${item.evAirlh5dh}</#if></td>
 				<td role="lj_evAirlh5dh" class="c6"><#if itemSum??&&itemSum.evAirlh5dh??>${itemSum.evAirlh5dh}</#if></td>
 				<td role="data" n="evAirlh5x"   class="c3"><#if item.evAirlh5x??>${item.evAirlh5x}</#if></td>
@@ -446,7 +446,7 @@
             <input id="evPdprdh" type="hidden" value="${itemSum.evPdprdh?default(0)-item.evPdprdh?default(0)}"/>
             <input id="evPdprx" type="hidden" value="${itemSum.evPdprx?default(0)-item.evPdprx?default(0)}"/>
 			<tr class="r1">
-				<td class="c3" rowspan="2">布鲁氏菌病</td>
+				<td class="c3" rowspan="3">布鲁氏菌病</td>
 				<td class="c2">布鲁氏菌活疫苗（S2株）（万头份）</td>
 				<td role="data" n="evBrucellas2dh"   class="c3"><#if item.evBrucellas2dh??>${item.evBrucellas2dh}</#if></td>
 				<td role="lj_evBrucellas2dh" class="c6"><#if itemSum??&&itemSum.evBrucellas2dh??>${itemSum.evBrucellas2dh}</#if></td>
@@ -458,6 +458,17 @@
             <input id="evBrucellas2x" type="hidden" value="${itemSum.evBrucellas2x?default(0)-item.evBrucellas2x?default(0)}"/>
             <input id="evBrucellaa19dh" type="hidden" value="${itemSum.evBrucellaa19dh?default(0)-item.evBrucellaa19dh?default(0)}"/>
             <input id="evBrucellaa19x" type="hidden" value="${itemSum.evBrucellaa19x?default(0)-item.evBrucellaa19x?default(0)}"/>
+            <tr class="r1">
+                <td class="c2">布鲁氏菌活疫苗（M5株）（万头份）</td>
+                <td role="data" n="evBrucellam5dh"   class="c3"><#if item.evBrucellam5dh??>${item.evBrucellam5dh}</#if></td>
+                <td role="lj_evBrucellam5dh" class="c6"><#if itemSum??&&itemSum.evBrucellam5dh??>${itemSum.evBrucellam5dh}</#if></td>
+                <td role="data" n="evBrucellam5x"   class="c3"><#if item.evBrucellam5x??>${item.evBrucellam5x}</#if></td>
+                <td role="lj_evBrucellam5x" class="c6"><#if itemSum??&&itemSum.evBrucellam5x??>${itemSum.evBrucellam5x}</#if></td>
+                <td role="data" n=""   class="c2">&nbsp;</td>
+            </tr>
+            <input id="evBrucellam5dh" type="hidden" value="${itemSum.evBrucellam5dh?default(0)-item.evBrucellam5dh?default(0)}"/>
+            <input id="evBrucellam5x" type="hidden" value="${itemSum.evBrucellam5x?default(0)-item.evBrucellam5x?default(0)}"/>
+
 			<tr class="r1">
 				<td class="c2">布鲁氏菌活疫苗（A19株）（万头份）</td>
 				<td role="data" n="evBrucellaa19dh"   class="c3"><#if item.evBrucellaa19dh??>${item.evBrucellaa19dh}</#if></td>
@@ -687,6 +698,14 @@
             var lj_evPdprx=document.getElementById('evPdprx').value;
             $("td[role=lj_evPdprdh]").text((parseFloat(lj_evPdprdh)+parseFloat(evPdprdh)).toFixed(2));
             $("td[role=lj_evPdprx]").text((parseFloat(lj_evPdprx)+parseFloat(evPdprx)).toFixed(2));
+
+            var evBrucellam5dh = $.trim($('td[n="evBrucellam5dh"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="evBrucellam5dh"]').text()));
+            var evBrucellam5x = $.trim($('td[n="evBrucellam5x"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="evBrucellam5x"]').text()));
+            var lj_evBrucellam5dh=document.getElementById('evBrucellam5dh').value;
+            var lj_evBrucellam5x=document.getElementById('evBrucellam5x').value;
+            $("td[role=lj_evBrucellam5dh]").text((parseFloat(lj_evBrucellam5dh)+parseFloat(evBrucellam5dh)).toFixed(2));
+            $("td[role=lj_evBrucellam5x]").text((parseFloat(lj_evBrucellam5x)+parseFloat(evBrucellam5x)).toFixed(2));
+
            
         }
 

@@ -68,6 +68,9 @@ public class ExcelServiceImpl implements IExcelService {
     private BlueeardiseaseMapper blueeardiseaseMapper;
 
     @Autowired
+    private BrucellosisDiseaseMapper brucellosisDiseaseMapper;
+
+    @Autowired
     private ClassicalswinefeverMapper classicalswinefeverMapper;
 
     @Autowired
@@ -126,6 +129,21 @@ public class ExcelServiceImpl implements IExcelService {
 
     @Autowired
     private EmergencyvaccineMapper emergencyvaccineMapper;
+
+    @Autowired
+    private WbrucellosisMapper wbrucellosisMapper;
+
+    @Autowired
+    private BrucellosisVaccineMapper brucellosisVaccineMapper;
+
+    @Autowired
+    private EchinococciasisDiseaseMapper echinococciasisDiseaseMapper;
+
+    @Autowired
+    private EchinococciasisVaccineMapper echinococciasisVaccineMapper;
+
+    @Autowired
+    private WechinococciasisMapper wechinococciasisMapper;
 
     private Wlivestockinout getWlivestockinout(Region region, Date date) {
         Date beginTime = BeginTimeUtil.getCurrentHalfYearBeginTime(date);
@@ -284,6 +302,28 @@ public class ExcelServiceImpl implements IExcelService {
                 params.put("item", item);
                 break;
             }
+            case "b_echinococciasisvaccine": {
+                EchinococciasisVaccine arg = new EchinococciasisVaccine();
+                arg.setEchReportid(report.getReportId());
+                List<EchinococciasisVaccine> items = echinococciasisVaccineMapper.select(arg);
+                EchinococciasisVaccine item = new EchinococciasisVaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                }
+                params.put("item", item);
+                break;
+            }
+            case "b_brucellosisvaccine": {
+                BrucellosisVaccine arg = new BrucellosisVaccine();
+                arg.setBruReportid(report.getReportId());
+                List<BrucellosisVaccine> items = brucellosisVaccineMapper.select(arg);
+                BrucellosisVaccine item = new BrucellosisVaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                }
+                params.put("item", item);
+                break;
+            }
             case "b_avianinfluenzavaccine": {
                 Avianinfluenzavaccine arg = new Avianinfluenzavaccine();
                 arg.setAvReportid(report.getReportId());
@@ -381,6 +421,40 @@ public class ExcelServiceImpl implements IExcelService {
                 params.put("itemSum", itemSum);
                 break;
             }
+             case "b_wechinococciasis": {
+                 Wechinococciasis arg = new Wechinococciasis();
+                arg.setEchReportid(report.getReportId());
+                List<Wechinococciasis> items = wechinococciasisMapper.select(arg);
+                 Wechinococciasis item = new Wechinococciasis();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                }
+                params.put("item", item);
+                 Wechinococciasis itemSum = wechinococciasisMapper
+                        .selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Wechinococciasis();
+                }
+                params.put("itemSum", itemSum);
+                break;
+            }
+            case "b_wbrucellosis": {
+                Wbrucellosis arg = new Wbrucellosis();
+                arg.setBruReportid(report.getReportId());
+                List<Wbrucellosis> items = wbrucellosisMapper.select(arg);
+                Wbrucellosis item = new Wbrucellosis();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                }
+                params.put("item", item);
+                Wbrucellosis itemSum = wbrucellosisMapper
+                        .selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new Wbrucellosis();
+                }
+                params.put("itemSum", itemSum);
+                break;
+            }
             case "b_vaccineorder": {
                 Vaccineorder arg = new Vaccineorder();
                 arg.setReportid(report.getReportId());
@@ -411,6 +485,40 @@ public class ExcelServiceImpl implements IExcelService {
                         .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new Blueeardisease();
+                }
+                params.put("itemSum", itemSum);
+                break;
+            }
+            case "b_echinococciasisdisease": {
+                EchinococciasisDisease arg = new EchinococciasisDisease();
+                arg.setEchReportid(report.getReportId());
+                List<EchinococciasisDisease> items = echinococciasisDiseaseMapper.select(arg);
+                EchinococciasisDisease item = new EchinococciasisDisease();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                }
+                params.put("item", item);
+                EchinococciasisDisease itemSum = echinococciasisDiseaseMapper
+                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new EchinococciasisDisease();
+                }
+                params.put("itemSum", itemSum);
+                break;
+            }
+            case "b_brucellosisdisease": {
+                BrucellosisDisease arg = new BrucellosisDisease();
+                arg.setBruReportid(report.getReportId());
+                List<BrucellosisDisease> items = brucellosisDiseaseMapper.select(arg);
+                BrucellosisDisease item = new BrucellosisDisease();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                }
+                params.put("item", item);
+                BrucellosisDisease itemSum = brucellosisDiseaseMapper
+                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                if (itemSum == null) {
+                    itemSum = new BrucellosisDisease();
                 }
                 params.put("itemSum", itemSum);
                 break;
@@ -642,6 +750,18 @@ public class ExcelServiceImpl implements IExcelService {
                 params.put("items", items);
                 break;
             }
+             case "b_echinococciasisvaccine": {
+                //                params=this.getReportSummaryHtmlUtil(Bluevaccine.class,reportIds,"bvReportid",bluevaccineMapper,"bv_regionCode");
+                List<EchinococciasisVaccine> items = echinococciasisVaccineMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                break;
+            }
+            case "b_brucellosisvaccine": {
+                //                params=this.getReportSummaryHtmlUtil(Bluevaccine.class,reportIds,"bvReportid",bluevaccineMapper,"bv_regionCode");
+                List<BrucellosisVaccine> items = brucellosisVaccineMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                break;
+            }
             case "b_avianinfluenzavaccine": {
                 //               params=this.getReportSummaryHtmlUtil(Avianinfluenzavaccine.class,reportIds,"avReportid",avianinfluenzavaccineMapper,"av_regionCode");
                 List<Avianinfluenzavaccine> items = avianinfluenzavaccineMapper.selectAllByDate(endTime, endTime);
@@ -691,6 +811,24 @@ public class ExcelServiceImpl implements IExcelService {
                 params.put("items", items);
                 List<Wblueeardisease> cumulatives = wblueeardiseaseMapper.selectAllByDate(halfYearbeginTime, endTime);
                 params.put("cumulatives", cumulatives);
+
+                break;
+            }
+            case "b_wechinococciasis": {
+                //                params=this.getReportSummaryHtmlUtil(Wblueeardisease.class,reportIds,"bedReportid",wblueeardiseaseMapper,"bed_regionCode");
+                List<Wechinococciasis> items = wechinococciasisMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Wechinococciasis> cumulatives = wechinococciasisMapper.selectAllByDate(halfYearbeginTime, endTime);
+                params.put("cumulatives", cumulatives);
+
+                break;
+            }
+            case "b_wbrucellosis": {
+                //                params=this.getReportSummaryHtmlUtil(Wblueeardisease.class,reportIds,"bedReportid",wblueeardiseaseMapper,"bed_regionCode");
+                List<Wbrucellosis> items = wbrucellosisMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<Wbrucellosis> cumulatives = wbrucellosisMapper.selectAllByDate(halfYearbeginTime, endTime);
+                params.put("cumulatives", cumulatives);
                 break;
             }
             case "b_vaccineorder": {
@@ -704,6 +842,22 @@ public class ExcelServiceImpl implements IExcelService {
                 List<Blueeardisease> items = blueeardiseaseMapper.selectAllByDate(endTime, endTime);
                 params.put("items", items);
                 List<Blueeardisease> cumulatives = blueeardiseaseMapper.selectAllByDate(monthBeginTime, endTime);
+                params.put("cumulatives", cumulatives);
+                break;
+            }
+              case "b_echinococciasisdisease": {
+                //                params=this.getReportSummaryHtmlUtil(Blueeardisease.class,reportIds,"bedReportid",blueeardiseaseMapper,"bed_regionCode");
+                List<EchinococciasisDisease> items = echinococciasisDiseaseMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<EchinococciasisDisease> cumulatives = echinococciasisDiseaseMapper.selectAllByDate(monthBeginTime, endTime);
+                params.put("cumulatives", cumulatives);
+                break;
+            }
+             case "b_brucellosisdisease": {
+                //                params=this.getReportSummaryHtmlUtil(Blueeardisease.class,reportIds,"bedReportid",blueeardiseaseMapper,"bed_regionCode");
+                List<BrucellosisDisease> items = brucellosisDiseaseMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                List<BrucellosisDisease> cumulatives = brucellosisDiseaseMapper.selectAllByDate(monthBeginTime, endTime);
                 params.put("cumulatives", cumulatives);
                 break;
             }
@@ -1113,6 +1267,68 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 break;
             }
+            case "b_echinococciasisvaccine": {
+                EchinococciasisVaccine fill = (EchinococciasisVaccine) JSONObject.toBean(jsonObj, EchinococciasisVaccine.class);
+                EchinococciasisVaccine arg = new EchinococciasisVaccine();
+                arg.setEchReportid(report.getReportId());
+                List<EchinococciasisVaccine> items = echinococciasisVaccineMapper.select(arg);
+                EchinococciasisVaccine item = new EchinococciasisVaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setEchId(UUIDUtil.getUUID());
+                } else {
+                    fill.setEchId(item.getEchId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setEchReportid(report.getReportId());
+                item.setEchDate(report.getBeginTime());
+                item.setEchRegioncode(region.getRegionCode());
+                item.setEchRegionname(region.getRegionName());
+                if (insert) {
+                    echinococciasisVaccineMapper.insertSelective(item);
+                } else {
+                    echinococciasisVaccineMapper.updateByPrimaryKeySelective(item);
+                }
+                break;
+            }
+            case "b_brucellosisvaccine": {
+                BrucellosisVaccine fill = (BrucellosisVaccine) JSONObject.toBean(jsonObj, BrucellosisVaccine.class);
+                BrucellosisVaccine arg = new BrucellosisVaccine();
+                arg.setBruReportid(report.getReportId());
+                List<BrucellosisVaccine> items = brucellosisVaccineMapper.select(arg);
+                BrucellosisVaccine item = new BrucellosisVaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setBruId(UUIDUtil.getUUID());
+                } else {
+                    fill.setBruId(item.getBruId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setBruReportid(report.getReportId());
+                item.setBruDate(report.getBeginTime());
+                item.setBruRegioncode(region.getRegionCode());
+                item.setBruRegionname(region.getRegionName());
+                if (insert) {
+                    brucellosisVaccineMapper.insertSelective(item);
+                } else {
+                    brucellosisVaccineMapper.updateByPrimaryKeySelective(item);
+                }
+                break;
+            }
             case "b_avianinfluenzavaccine": {
                 Avianinfluenzavaccine fill = (Avianinfluenzavaccine) JSONObject
                         .toBean(jsonObj, Avianinfluenzavaccine.class);
@@ -1302,6 +1518,68 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 break;
             }
+           case "b_wechinococciasis": {
+               Wechinococciasis fill = (Wechinococciasis) JSONObject.toBean(jsonObj, Wechinococciasis.class);
+               Wechinococciasis arg = new Wechinococciasis();
+                arg.setEchReportid(report.getReportId());
+                List<Wechinococciasis> items = wechinococciasisMapper.select(arg);
+               Wechinococciasis item = new Wechinococciasis();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setEchId(UUIDUtil.getUUID());
+                } else {
+                    fill.setEchId(item.getEchId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setEchReportid(report.getReportId());
+                item.setEchDate(report.getBeginTime());
+                item.setEchRegioncode(region.getRegionCode());
+                item.setEchRegionname(region.getRegionName());
+                if (insert) {
+                    wechinococciasisMapper.insertSelective(item);
+                } else {
+                    wechinococciasisMapper.updateByPrimaryKeySelective(item);
+                }
+                break;
+            }
+            case "b_wbrucellosis": {
+                Wbrucellosis fill = (Wbrucellosis) JSONObject.toBean(jsonObj, Wbrucellosis.class);
+                Wbrucellosis arg = new Wbrucellosis();
+                arg.setBruReportid(report.getReportId());
+                List<Wbrucellosis> items = wbrucellosisMapper.select(arg);
+                Wbrucellosis item = new Wbrucellosis();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setBruId(UUIDUtil.getUUID());
+                } else {
+                    fill.setBruId(item.getBruId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setBruReportid(report.getReportId());
+                item.setBruDate(report.getBeginTime());
+                item.setBruRegioncode(region.getRegionCode());
+                item.setBruRegionname(region.getRegionName());
+                if (insert) {
+                    wbrucellosisMapper.insertSelective(item);
+                } else {
+                    wbrucellosisMapper.updateByPrimaryKeySelective(item);
+                }
+                break;
+            }
             case "b_vaccineorder": {
                 Vaccineorder fill = (Vaccineorder) JSONObject.toBean(jsonObj, Vaccineorder.class);
                 Vaccineorder arg = new Vaccineorder();
@@ -1361,6 +1639,68 @@ public class ExcelServiceImpl implements IExcelService {
                     blueeardiseaseMapper.insertSelective(item);
                 } else {
                     blueeardiseaseMapper.updateByPrimaryKeySelective(item);
+                }
+                break;
+            }
+            case "b_echinococciasisdisease": {
+                EchinococciasisDisease fill = (EchinococciasisDisease) JSONObject.toBean(jsonObj, EchinococciasisDisease.class);
+                EchinococciasisDisease arg = new EchinococciasisDisease();
+                arg.setEchReportid(report.getReportId());
+                List<EchinococciasisDisease> items = echinococciasisDiseaseMapper.select(arg);
+                EchinococciasisDisease item = new EchinococciasisDisease();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setEchId(UUIDUtil.getUUID());
+                } else {
+                    fill.setEchId(item.getEchId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setEchReportid(report.getReportId());
+                item.setEchDate(report.getBeginTime());
+                item.setEchRegioncode(region.getRegionCode());
+                item.setEchRegionname(region.getRegionName());
+                if (insert) {
+                    echinococciasisDiseaseMapper.insertSelective(item);
+                } else {
+                    echinococciasisDiseaseMapper.updateByPrimaryKeySelective(item);
+                }
+                break;
+            }
+            case "b_brucellosisdisease": {
+                BrucellosisDisease fill = (BrucellosisDisease) JSONObject.toBean(jsonObj, BrucellosisDisease.class);
+                BrucellosisDisease arg = new BrucellosisDisease();
+                arg.setBruReportid(report.getReportId());
+                List<BrucellosisDisease> items = brucellosisDiseaseMapper.select(arg);
+                BrucellosisDisease item = new BrucellosisDisease();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setBruId(UUIDUtil.getUUID());
+                } else {
+                    fill.setBruId(item.getBruId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setBruReportid(report.getReportId());
+                item.setBruDate(report.getBeginTime());
+                item.setBruRegioncode(region.getRegionCode());
+                item.setBruRegionname(region.getRegionName());
+                if (insert) {
+                    brucellosisDiseaseMapper.insertSelective(item);
+                } else {
+                    brucellosisDiseaseMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }

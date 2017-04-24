@@ -44,7 +44,7 @@ public class KEController {
             extMap.put("file", "doc,docx,xls,xlsx,ppt,htm,html,txt,zip,rar,gz,bz2");
 
             // 最大文件大小
-            long maxSize = 1000000;
+            long maxSize = 10000000;
 
             response.reset();
             response.setCharacterEncoding("UTF-8");
