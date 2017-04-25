@@ -8,6 +8,7 @@ import com.topie.common.service.impl.BaseService;
 import com.topie.database.core.animal.dao.UserInfoMapper;
 import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.UserInfo;
+import com.topie.database.core.system.model.User;
 import com.topie.security.service.UserService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -77,5 +79,37 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
     @Override
     public UserInfo selectByPlatformId(Integer platformId) {
         return userInfoMapper.selectByPlatformId(platformId);
+    }
+
+    @Override
+    public void insertOrUpdatePlatformUser(UserInfo userInfo) {
+        User user = userService.selectByLoginName(userInfo.getLoginName());
+        if (user == null) user = new User();
+        user.setLoginName(userInfo.getLoginName());
+        user.setPassword(userInfo.getPassword());
+        user.setDisplayName(userInfo.getRealName());
+        user.setContactPhone(userInfo.getMobile());
+        user.setAccountNonExpired(true);
+        user.setAccountNonLocked(true);
+        user.setCredentialsNonExpired(true);
+        user.setEnabled(true);
+        List<Integer> roleIds = new ArrayList<>();
+        if ("管理员".equals(userInfo.getRoleName())) {
+            roleIds.add(1);
+            user.setRoles(roleIds);
+        } else if ("中央".equals(userInfo.getRoleName())) {
+            roleIds.add(4);
+            user.setRoles(roleIds);
+        } else if ("省级".equals(userInfo.getRoleName())) {
+            roleIds.add(3);
+            user.setRoles(roleIds);
+        }
+        if (user.getId() != null) {
+            userService.updateUser(user);
+        } else {
+            userService.insertUser(user);
+        }
+        userInfo.setPlatformId(user.getId());
+        updateNotNull(userInfo);
     }
 }

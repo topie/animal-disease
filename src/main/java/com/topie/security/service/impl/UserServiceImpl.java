@@ -167,4 +167,9 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
         }
         return 0;
     }
+
+    @Override
+    public User selectByLoginName(String loginName) {
+        return userMapper.findUserByLoginName(loginName);
+    }
 }

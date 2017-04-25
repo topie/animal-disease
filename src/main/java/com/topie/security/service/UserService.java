@@ -43,4 +43,7 @@ public interface UserService extends IService<User> {
     int deleteUserRole(Integer userId, Integer roleId);
 
     int updatePassword(Integer platformId, String password);
+
+    User selectByLoginName(String loginName);
+
 }

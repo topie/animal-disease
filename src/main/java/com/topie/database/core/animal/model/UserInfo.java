@@ -24,6 +24,9 @@ public class UserInfo implements Serializable {
     @Column(name = "org_id")
     private String orgId;
 
+    @Column(name = "role_name")
+    private String roleName;
+
     /**
      * 平台用户
      */
@@ -85,6 +88,14 @@ public class UserInfo implements Serializable {
      */
     @Column(name = "token_code")
     private String tokenCode;
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 
     /**
      * 获取用户ID

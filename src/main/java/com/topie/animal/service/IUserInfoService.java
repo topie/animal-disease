@@ -23,4 +23,7 @@ public interface IUserInfoService extends IService<UserInfo> {
     UserInfo selectByOrgId(String regionCode);
 
     UserInfo selectByPlatformId(Integer platformId);
+
+    void insertOrUpdatePlatformUser(UserInfo userInfo);
+
 }

@@ -9,6 +9,7 @@ import com.topie.common.utils.Result;
 import com.topie.common.utils.UUIDUtil;
 import com.topie.database.core.animal.model.UserInfo;
 import com.topie.database.core.system.model.User;
+import com.topie.security.security.OrangeSideUserCache;
 import com.topie.security.service.UserService;
 import com.topie.security.utils.SecurityUtil;
 import com.topie.system.service.ILogService;
@@ -25,6 +26,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/animal/userInfo")
 public class UserInfoController {
+
+    @Autowired
+    OrangeSideUserCache orangeSideUserCache;
 
     @Autowired
     private IUserInfoService iUserInfoService;
@@ -84,22 +88,23 @@ public class UserInfoController {
         return ResponseUtil.success();
     }
 
+    @RequestMapping(value = "/bindAllUser", method = RequestMethod.GET)
+    @ResponseBody
+    public Result bindAllUser() {
+        List<UserInfo> list = iUserInfoService.selectAll();
+        for (UserInfo userInfo : list) {
+            iUserInfoService.insertOrUpdatePlatformUser(userInfo);
+            orangeSideUserCache.removeUserFromCacheByUserId(userInfo.getPlatformId());
+        }
+        return ResponseUtil.success();
+    }
+
     @RequestMapping(value = "/bind/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Result bind(@PathVariable(value = "id") String id) {
         UserInfo userInfo = iUserInfoService.selectByKey(id);
-        User user = new User();
-        user.setLoginName(userInfo.getLoginName());
-        user.setPassword(userInfo.getPassword());
-        user.setDisplayName(userInfo.getRealName());
-        user.setContactPhone(userInfo.getMobile());
-        user.setAccountNonExpired(true);
-        user.setAccountNonLocked(true);
-        user.setCredentialsNonExpired(true);
-        user.setEnabled(true);
-        userService.insertUser(user);
-        userInfo.setPlatformId(user.getId());
-        iUserInfoService.updateNotNull(userInfo);
+        iUserInfoService.insertOrUpdatePlatformUser(userInfo);
+        orangeSideUserCache.removeUserFromCacheByUserId(userInfo.getPlatformId());
         return ResponseUtil.success();
     }
 
