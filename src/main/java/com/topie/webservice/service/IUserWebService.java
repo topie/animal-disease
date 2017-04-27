@@ -10,4 +10,7 @@ public interface IUserWebService {
     UserInfo echoUser(UserInfo userInfo);
 
     String echoString(String echoString);
+
+    String SynchronizedInfo(String jsonString);
+
 }
