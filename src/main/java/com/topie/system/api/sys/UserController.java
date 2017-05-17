@@ -1,14 +1,17 @@
 package com.topie.system.api.sys;
 
 import com.github.pagehelper.PageInfo;
+import com.topie.animal.service.IUserInfoService;
+import com.topie.common.tools.encrypt.SimpleCrypto;
 import com.topie.common.utils.PageConvertUtil;
+import com.topie.common.utils.ResponseUtil;
+import com.topie.common.utils.Result;
+import com.topie.database.core.animal.model.UserInfo;
 import com.topie.database.core.system.model.User;
+import com.topie.security.exception.AuBzConstant;
 import com.topie.security.exception.AuthBusinessException;
 import com.topie.security.service.UserService;
 import com.topie.security.utils.SecurityUtil;
-import com.topie.common.utils.ResponseUtil;
-import com.topie.common.utils.Result;
-import com.topie.security.exception.AuBzConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private IUserInfoService iUserInfoService;
 
     @RequestMapping(value = "/pageList", method = RequestMethod.GET)
     @ResponseBody
@@ -68,6 +74,19 @@ public class UserController {
     public Result loadUser(@PathVariable(value = "userId") int userId) {
         User user = userService.findUserById(userId);
         List roles = userService.findUserRoleByUserId(userId);
+        if (roles != null) user.setRoles(roles);
+        return ResponseUtil.success(user);
+    }
+
+    @RequestMapping(value = "/loadUser/{userId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Result loadUser(@PathVariable(value = "userId") String userId) throws Exception {
+        userId = SimpleCrypto.decrypt("zcpt@123456", userId);
+        UserInfo u = iUserInfoService.selectByKey(userId);
+        if (u == null) return ResponseUtil.error("用户不存在");
+        Integer platformUserId = u.getPlatformId();
+        User user = userService.findUserById(platformUserId);
+        List roles = userService.findUserRoleByUserId(platformUserId);
         if (roles != null) user.setRoles(roles);
         return ResponseUtil.success(user);
     }

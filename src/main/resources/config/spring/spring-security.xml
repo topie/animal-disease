@@ -61,6 +61,9 @@
         </authentication-provider>
     </authentication-manager>
 
+    <beans:bean id="adminAuthenticationManager"
+                class="com.topie.security.security.AdminAuthenticationManager"/>
+
     <beans:bean id="authenticationProvider"
                 class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
         <beans:property name="userDetailsService" ref="orangeUserService"/>

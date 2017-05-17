@@ -32,12 +32,12 @@ public class OrangeSecurityMetadataSourceImpl implements FilterInvocationSecurit
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
         final HttpServletRequest request = ((FilterInvocation) o).getRequest();
-        Iterator<String> it = resourceMap.keySet().iterator();
+        Iterator<String> it = securityService.getCacheResourceMap().keySet().iterator();
         while (it.hasNext()) {
             String resURL = it.next();
             matcher = new AntPathRequestMatcher(resURL);
             if (matcher.matches(request)) {
-                Collection<ConfigAttribute> returnCollection = resourceMap.get(resURL);
+                Collection<ConfigAttribute> returnCollection = securityService.getCacheResourceMap().get(resURL);
                 return returnCollection;
             }
         }
@@ -48,7 +48,7 @@ public class OrangeSecurityMetadataSourceImpl implements FilterInvocationSecurit
     public Collection<ConfigAttribute> getAllConfigAttributes() {
         Set<ConfigAttribute> allAttributes = new HashSet<ConfigAttribute>();
 
-        for (Map.Entry<String, Collection<ConfigAttribute>> entry : resourceMap.entrySet()) {
+        for (Map.Entry<String, Collection<ConfigAttribute>> entry : securityService.getCacheResourceMap().entrySet()) {
             allAttributes.addAll(entry.getValue());
         }
 

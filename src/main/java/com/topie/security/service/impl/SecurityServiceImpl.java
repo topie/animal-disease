@@ -55,8 +55,7 @@ public class SecurityServiceImpl implements SecurityService {
     public Map<String, Collection<ConfigAttribute>> getCacheResourceMap() {
         List<Map> roleFunctions = (List<Map>) redisCache.get(SecurityConstant.RESOURCE_MAP);
         if (roleFunctions == null) {
-            roleFunctions = roleService.findRoleMatchUpFunctions();
-            redisCache.set(SecurityConstant.RESOURCE_MAP, roleFunctions);
+            return getDbResourceMap();
         }
         return getResourceMap(roleFunctions);
     }

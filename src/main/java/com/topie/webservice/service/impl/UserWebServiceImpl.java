@@ -1,5 +1,8 @@
 package com.topie.webservice.service.impl;
 
+import com.topie.animal.service.IOrgInfoService;
+import com.topie.animal.service.IUserInfoService;
+import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.UserInfo;
 import com.topie.webservice.service.IUserWebService;
 import net.sf.json.JSONObject;
@@ -8,6 +11,7 @@ import org.apache.axis2.addressing.EndpointReference;
 import org.apache.axis2.client.Options;
 import org.apache.axis2.rpc.client.RPCServiceClient;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.xml.namespace.QName;
@@ -131,17 +135,11 @@ public class UserWebServiceImpl implements IUserWebService {
 
     private static final String OTHERERROR = "1002";
 
-    @Override
-    public UserInfo echoUser(UserInfo userInfo) {
-        System.out.println(userInfo.getLeaderName());
-        return userInfo;
-    }
+    @Autowired
+    private IUserInfoService iUserInfoService;
 
-    @Override
-    public String echoString(String echoString) {
-        System.out.println(echoString);
-        return echoString;
-    }
+    @Autowired
+    private IOrgInfoService iOrgInfoService;
 
     @Override
     public String SynchronizedInfo(String jsonString) {
@@ -182,17 +180,21 @@ public class UserWebServiceImpl implements IUserWebService {
             Object[] response = serviceClient.invokeBlocking(qName, objects, returnTypes);
             String userInfo = (String) response[0];
             serviceClient.cleanupTransport();
-            System.out.println(userInfo);
-
+            //获取用户信息
+            JSONObject jsonObject = JSONObject.fromObject(userInfo);
+            //jsonObject.get(属性)
+            String userId = (String) jsonObject.get("userId");
+            UserInfo u = new UserInfo();
+            u.setUserId(userId);
             switch (operateId) {
                 case CREATEUSER:
-                    //todo create user
+                    iUserInfoService.insertOrUpdatePlatformUser(u);
                     break;
                 case UPDATEUSER:
-                    //todo create user
+                    iUserInfoService.insertOrUpdatePlatformUser(u);
                     break;
                 case DELETEUSER:
-                    //todo create user
+                    iUserInfoService.delete(userId);
                     break;
                 default:
                     return OTHERERROR;
@@ -225,16 +227,19 @@ public class UserWebServiceImpl implements IUserWebService {
             String orgInfo = (String) response[0];
             serviceClient.cleanupTransport();
             System.out.println(orgInfo);
-
+            JSONObject jsonObject = JSONObject.fromObject(orgInfo);
+            String orgId = (String) jsonObject.get("orgId");
+            OrgInfo o = new OrgInfo();
+            o.setOrgId(orgId);
             switch (operateId) {
                 case CREATEDEPT:
-                    //todo create user
+                    iOrgInfoService.save(o);
                     break;
                 case UPDATEDEPT:
-                    //todo create user
+                    iOrgInfoService.updateNotNull(o);
                     break;
                 case DELETEDEPT:
-                    //todo create user
+                    iOrgInfoService.delete(orgId);
                     break;
                 default:
                     return OTHERERROR;
