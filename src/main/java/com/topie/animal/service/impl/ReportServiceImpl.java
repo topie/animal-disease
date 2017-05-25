@@ -77,6 +77,7 @@ public class ReportServiceImpl extends BaseService<Report> implements IReportSer
         }
         List<String> templateIdList = iTemplateService.selectIdsByReportType(reportType);
         for (String templateId : templateIdList) {
+            int totalCnt = 0;
             for (String reportUserId : userIdList) {
                 Report report = new Report();
                 report.setTemplateId(templateId);
@@ -84,7 +85,14 @@ public class ReportServiceImpl extends BaseService<Report> implements IReportSer
                 report.setBeginTime(beginTime);
                 report.setReportUserId(reportUserId);
                 int cnt = reportMapper.selectCount(report);
-                if (cnt > 0) continue;
+                totalCnt += cnt;
+            }
+            if (totalCnt == 0 && userIdList.size() > 0) {
+                Report report = new Report();
+                report.setTemplateId(templateId);
+                report.setReportType(reportType);
+                report.setBeginTime(beginTime);
+                report.setReportUserId(userIdList.get(0));
                 report.setStatus(0);
                 report.setEndTime(DateUtil.addDay(beginTime, 9));
                 report.setReportId(UUIDUtil.getUUID());
