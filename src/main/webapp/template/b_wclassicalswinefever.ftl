@@ -230,7 +230,7 @@
                     e.stopPropagation()
                 })
                 $(this).append(input);
-                input.focus()
+                input.focus();input.select();
                 e.stopPropagation()
             })
         })
