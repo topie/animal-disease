@@ -2,7 +2,7 @@
 <head>
     <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style type="text/css">.b1{white-space-collapsing:preserve;}
-    .t1{border-collapse:collapse;border-spacing:0;}
+    .t1{width:100%;border-collapse:collapse;border-spacing:0;}
     .r1{height:24.75pt;}
     .r2{height:15.0pt;}
     .r3{height:16.5pt;}

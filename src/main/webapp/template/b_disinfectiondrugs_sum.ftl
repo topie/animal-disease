@@ -1,6 +1,6 @@
 <style type="text/css">
 
-    .t1 {
+    .t1 {width:100%;
         border-collapse: collapse;
         border-spacing: 0;
         width: 99%;
