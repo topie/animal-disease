@@ -6,7 +6,7 @@
 	white-space-collapsing: preserve;
 }
 
-.t1 {
+.t1 {width:100%;
 	border-collapse: collapse;
 	border-spacing: 0;
 }
@@ -230,7 +230,7 @@
                     e.stopPropagation()
                 })
                 $(this).append(input);
-                input.focus()
+                input.focus();input.select();
                 e.stopPropagation()
             })
         })

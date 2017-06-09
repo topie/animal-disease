@@ -23,7 +23,7 @@ public class C {
                     + "                    $(this).parent(\"td\").html(v)\n" + "                })\n"
                     + "                input.on(\"click\", function (e) {\n"
                     + "                    e.stopPropagation()\n" + "                })\n"
-                    + "                $(this).append(input);\n" + "                input.focus()\n"
+                    + "                $(this).append(input);\n" + "                input.focus();input.select();\n"
                     + "                e.stopPropagation()\n" + "            })\n" + "        })\n"
                     + "    })(jQuery, window, document)\n" + "</script>";
 }

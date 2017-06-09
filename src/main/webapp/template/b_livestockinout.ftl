@@ -1,5 +1,5 @@
 <style type="text/css">
-    .t1 {
+    .t1 {width:100%;
         border-collapse: collapse;
         border-spacing: 0;
         width: 99%;
@@ -215,7 +215,7 @@
                     e.stopPropagation()
                 })
                 $(this).append(input);
-                input.focus()
+                input.focus();input.select();
                 e.stopPropagation()
             })
         })
