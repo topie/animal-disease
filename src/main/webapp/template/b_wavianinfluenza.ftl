@@ -355,7 +355,7 @@
             var lj_aiJointimmuneamountduck=document.getElementById('aiJointimmuneamountduck').value;
             var lj_aiJointimmuneamountgoose=document.getElementById('aiJointimmuneamountgoose').value;
             var lj_aiJointimmuneamountother=document.getElementById('aiJointimmuneamountother').value;
-            var lj_chicken2=(parseFloat(aiJointimmuneamountchicken)+parseFloat(aiJointimmuneamountchicken)).toFixed(2);
+            var lj_chicken2=(parseFloat(lj_aiJointimmuneamountchicken)+parseFloat(aiJointimmuneamountchicken)).toFixed(2);
             var lj_duck2=(parseFloat(lj_aiJointimmuneamountduck)+parseFloat(aiJointimmuneamountduck)).toFixed(2);
             var lj_goose2=(parseFloat(lj_aiJointimmuneamountgoose)+parseFloat(aiJointimmuneamountgoose)).toFixed(2);
             var lj_other2=(parseFloat(lj_aiJointimmuneamountother)+parseFloat(aiJointimmuneamountother)).toFixed(2);
@@ -382,6 +382,18 @@
             var jz_goose=parseFloat(immunebirdflugoose)==parseFloat(0)?0:(parseFloat(lj_goose*100)/parseFloat(immunebirdflugoose)).toFixed(2);
             var jz_other=parseFloat(immunebirdfluother)==parseFloat(0)?0:(parseFloat(lj_other*100)/parseFloat(immunebirdfluother)).toFixed(2);
             var jz_sum=parseFloat(immunebirdSum)==parseFloat(0)?0:(parseFloat(lj_sum*100)/parseFloat(immunebirdSum)).toFixed(2);
+			if(immunebirdfluchecken<lj_chicken){
+				alert('鸡的累计免疫数量大于应免数量，请确认！');
+			}
+            if(immunebirdfluduck<lj_duck){
+                alert('鸭的累计免疫数量大于应免数量，请确认！');
+            }
+            if(immunebirdflugoose<lj_goose){
+                alert('鹅的累计免疫数量大于应免数量，请确认！');
+            }
+            if(immunebirdfluother<lj_other){
+                alert('其他的累计免疫数量大于应免数量，请确认！');
+            }
 
             $('td[n="jz_immunebirdfluchecken"]').text(jz_chicken+"%");
             $('td[n="jz_immunebirdfluduck"]').text(jz_duck+"%");

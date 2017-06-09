@@ -248,6 +248,10 @@
             var immuneswine = $.trim($('td[n="immuneswine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immuneswine"]').text()));
             var jz_sum=parseFloat(immuneswine)==parseFloat(0)?0:(parseFloat(lj_sum*100)/parseFloat(immuneswine)).toFixed(2);
             $('td[n="jz_sum"]').text(jz_sum+"%");
+
+            if(immuneswine<lj_sum){
+                alert('累计免疫数量大于应免数量，请确认！');
+            }
         }
 
         calculate()

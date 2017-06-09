@@ -195,6 +195,10 @@
             var jz_sum=parseFloat(immuneEchSheep)==parseFloat(0)?0:(parseFloat(lj_sum*100)/parseFloat(immuneEchSheep)).toFixed(2);
             $('td[n="jz_sum"]').text(jz_sum+"%");
 
+            if(immuneEchSheep<lj_sum){
+                alert('累计免疫数量大于应免数量，请确认！');
+            }
+
         }
 
         calculate()
