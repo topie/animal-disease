@@ -247,6 +247,11 @@
             var jz_sum=parseFloat(immuneblueear)==parseFloat(0)?0:(parseFloat(lj_sum*100)/parseFloat(immuneblueear)).toFixed(2);
             $('td[n="jz_sum"]').text(jz_sum+"%");
 
+
+            if(immuneblueear<lj_sum){
+                alert('累计免疫数量大于应免数量，请确认！');
+            }
+
         }
 
         calculate()

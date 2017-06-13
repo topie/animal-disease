@@ -486,6 +486,14 @@
 
             var jz_fmdoother=parseFloat(immunefmdother)==parseFloat(0)?0:(parseFloat(sum_fmdoother*100)/parseFloat(immunefmdother)).toFixed(2);
             $('td[n="jz_fmdoother"]').text(jz_fmdoother+"%");
+
+            if(immunefmdpig<sum_fmdInactivatedimmuneamountpig){
+                alert('口蹄疫O型猪的累计免疫数量大于应免数量，请确认！');
+            }
+            if(immunefmdother<sum_fmdoother){
+                alert('口蹄疫O型其他动物的累计免疫数量大于应免数量，请确认！');
+            }
+
             var fmdO3vaccine = $.trim($('td[n="fmdO3vaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="fmdO3vaccine"]').text()));
             var fmdO3immuneamountniu = $.trim($('td[n="fmdO3immuneamountniu"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="fmdO3immuneamountniu"]').text()));
             var fmdO3immuneamountsheep = $.trim($('td[n="fmdO3immuneamountsheep"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="fmdO3immuneamountsheep"]').text()));
@@ -510,7 +518,12 @@
             $('td[n="jz_fmdo2sheep"]').text(jz_fmdo2sheep+"%");
             $('td[n="lj_fmdosum"]').text(lj_fmdosum+"%");
             $('td[n="jz_fmdosum"]').text(jz_fmdosum+"%");
-
+            if(immunefmdniu<sum_fmdoniu){
+                alert('口蹄疫O型牛的累计免疫数量大于应免数量，请确认！');
+            }
+            if(immunefmdsheep<sum_fmdosheep){
+                alert('口蹄疫O型羊的累计免疫数量大于应免数量，请确认！');
+            }
 
             var immuneafmdniu = $.trim($('td[n="immuneafmdniu"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immuneafmdniu"]').text()));
             var immuneafmdsheep = $.trim($('td[n="immuneafmdsheep"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="immuneafmdsheep"]').text()));
@@ -538,6 +551,12 @@
             $('td[n="jz_fmdaniu"]').text(jz_fmdaniu+"%");
             $('td[n="jz_fmdasheep"]').text(jz_fmdasheep+"%");
 
+            if(immuneafmdniu<sum_fmdAimmuneamountniu){
+                alert('口蹄疫A型牛的累计免疫数量大于应免数量，请确认！');
+            }
+            if(immuneafmdsheep<sum_fmdAimmuneamountsheep){
+                alert('口蹄疫A型羊的累计免疫数量大于应免数量，请确认！');
+            }
 
 
 

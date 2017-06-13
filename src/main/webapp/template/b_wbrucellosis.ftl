@@ -299,6 +299,14 @@
             $('td[n="jz_niu"]').text(jz_niu+"%");
             $('td[n="jz_sheep"]').text(jz_sheep+"%");
 
+            if(immuneBruniu<lj_niu){
+                alert('牛的累计免疫数量大于应免数量，请确认！');
+            }
+            if(immuneBruSheep<lj_sheep){
+                alert('羊的累计免疫数量大于应免数量，请确认！');
+            }
+
+
         }
 
         calculate()
