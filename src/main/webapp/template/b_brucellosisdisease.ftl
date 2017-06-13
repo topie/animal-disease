@@ -230,7 +230,7 @@
                 })
                 var oldText = $(this).text()
                 $(this).empty()
-                var input = $('<input style="height: 100%;width:100%;" type="text" name="' + n + '" value="' + oldText + '">')
+                var input = $('<input style="height: 100%;width:100%;min-width:100px;" type="text" name="' + n + '" value="' + oldText + '">')
                 input.on("blur", function (e) {
                     var v = $(this).val()
                     $(this).parent("td").html(v)
