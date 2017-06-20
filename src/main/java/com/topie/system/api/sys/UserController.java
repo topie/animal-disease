@@ -79,6 +79,7 @@ public class UserController {
     public Result grand(@RequestParam(value = "id", required = false) Integer id,
             @RequestParam(value = "roles", required = false) String roles) {
         if (StringUtils.isNotEmpty(roles)) {
+            userService.deleteUserAllRoles(id);
             String[] roleIds = roles.split(",");
             for (String roleId : roleIds) {
                 if (StringUtils.isNotEmpty(roleId)) {
