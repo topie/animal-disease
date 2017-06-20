@@ -64,7 +64,7 @@ public class TokenController {
     @RequestMapping(value = "/generate", method = RequestMethod.POST)
     public ResponseEntity<?> authenticationRequest(@RequestBody OrangeAuthenticationRequest authenticationRequest)
             throws AuthenticationException {
-        if (StringUtils.isEmpty(authenticationRequest.getVcode()) || StringUtils
+        /*if (StringUtils.isEmpty(authenticationRequest.getVcode()) || StringUtils
                 .isEmpty(authenticationRequest.getVkey())) {
             return ResponseEntity.ok(HttpResponseUtil.error("请输入验证码"));
         }
@@ -76,7 +76,7 @@ public class TokenController {
         } else {
             return ResponseEntity.ok(HttpResponseUtil.error("验证码不存在或已过期"));
         }
-        redisCache.del("animal_vkey_" + authenticationRequest.getVkey());
+        redisCache.del("animal_vkey_" + authenticationRequest.getVkey());*/
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                 authenticationRequest.getUsername(), authenticationRequest.getPassword());
         usernamePasswordAuthenticationToken.setDetails(new OrangeHttpAuthenticationDetails());

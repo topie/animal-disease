@@ -68,6 +68,7 @@
 
     <result column="ev_BrucellaM5" property="evBrucellaM5" jdbcType="DECIMAL" />
     <result column="ev_AllBrucellaM5" property="evAllBrucellaM5" jdbcType="DECIMAL" />
+    <result column="bz" property="bz" jdbcType="VARCHAR"/>
   </resultMap>
   <select id="selectAllByDate" resultMap="BaseResultMap">
     select t1.Liv_regionCode as ev_regionCode ,t1.Liv_regionName as ev_regionName,t2.* from

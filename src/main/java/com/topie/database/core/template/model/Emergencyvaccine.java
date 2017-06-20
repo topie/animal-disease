@@ -192,6 +192,9 @@ public class Emergencyvaccine {
     @Column(name = "ev_AllBrucellaM5")
     private BigDecimal evAllBrucellaM5;
 
+    @Column(name = "bz")
+    private String bz;
+
     /**
      * @return ev_id
      */
@@ -1032,5 +1035,13 @@ public class Emergencyvaccine {
 
     public void setEvAllBrucellaM5(BigDecimal evAllBrucellaM5) {
         this.evAllBrucellaM5 = evAllBrucellaM5;
+    }
+
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
     }
 }
