@@ -93,7 +93,6 @@ public class TokenController {
         } catch (AuthenticationException failed) {
             return ResponseEntity.ok(HttpResponseUtil.error(failed.getMessage()));
         }
-
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetails userDetails = (UserDetails) redisCache
                 .get(SecurityConstant.USER_CACHE_PREFIX + authenticationRequest.getUsername());
@@ -116,10 +115,12 @@ public class TokenController {
         if (userInfo == null) return ResponseEntity.ok(HttpResponseUtil.error("用户不存在"));
         User user = userService.selectByKey(userInfo.getPlatformId());
         if (user == null) return ResponseEntity.ok(HttpResponseUtil.error("用户不存在"));
-
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+                user.getLoginName(), userInfo.getPassword());
+        usernamePasswordAuthenticationToken.setDetails(new OrangeHttpAuthenticationDetails());
         Authentication authentication = null;
         try {
-            authentication = this.adminAuthenticationManager.authenticate(user.getLoginName());
+            authentication = this.authenticationManager.authenticate(usernamePasswordAuthenticationToken);
             if (authentication == null) {
                 return ResponseEntity.ok(HttpResponseUtil.error("未检测到验证信息"));
             }
@@ -129,7 +130,6 @@ public class TokenController {
         } catch (AuthenticationException failed) {
             return ResponseEntity.ok(HttpResponseUtil.error(failed.getMessage()));
         }
-
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetails userDetails = (UserDetails) redisCache
                 .get(SecurityConstant.USER_CACHE_PREFIX + user.getLoginName());
