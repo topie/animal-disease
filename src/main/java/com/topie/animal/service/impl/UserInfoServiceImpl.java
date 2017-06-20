@@ -159,6 +159,8 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
             userService.insertUser(user);
         }
         userInfo.setPlatformId(user.getId());
+        UserInfo uu = selectByPlatformId(user.getId());
+        userInfo.setUserId(uu.getUserId());
         return updateNotNull(userInfo);
     }
 }
