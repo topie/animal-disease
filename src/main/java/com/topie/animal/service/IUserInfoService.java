@@ -24,10 +24,11 @@ public interface IUserInfoService extends IService<UserInfo> {
 
     UserInfo selectByPlatformId(Integer platformId);
 
-    void insertOrUpdatePlatformUser(UserInfo userInfo);
+    void insertPlatformUser(UserInfo userInfo);
 
     UserInfo selectByTokenCode(String ticket);
 
     void deleteByTicketCode(String ticketCode);
 
+    int updatePlatformUser(UserInfo u);
 }

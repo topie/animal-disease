@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.xml.namespace.QName;
-import java.util.UUID;
 
 /**
  * Created by chenguojun on 2017/4/21.
@@ -207,11 +206,10 @@ public class UserWebServiceImpl implements IUserWebService {
             switch (operateId) {
                 case CREATEUSER:
                     u.setUserId(UUIDUtil.getUUID());
-                    iUserInfoService.saveNotNull(u);
-                    iUserInfoService.insertOrUpdatePlatformUser(u);
+                    iUserInfoService.insertPlatformUser(u);
                     break;
                 case UPDATEUSER:
-                    iUserInfoService.insertOrUpdatePlatformUser(u);
+                    iUserInfoService.updatePlatformUser(u);
                     break;
                 case DELETEUSER:
                     iUserInfoService.deleteByTicketCode(ticketCode);

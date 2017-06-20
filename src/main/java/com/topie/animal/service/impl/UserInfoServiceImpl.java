@@ -82,7 +82,7 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
     }
 
     @Override
-    public void insertOrUpdatePlatformUser(UserInfo userInfo) {
+    public void insertPlatformUser(UserInfo userInfo) {
         User user = userService.selectByLoginName(userInfo.getLoginName());
         if (user == null) user = new User();
         user.setLoginName(userInfo.getLoginName());
@@ -110,7 +110,7 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
             userService.insertUser(user);
         }
         userInfo.setPlatformId(user.getId());
-        updateNotNull(userInfo);
+        saveNotNull(userInfo);
     }
 
     @Override
@@ -128,5 +128,37 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
         userInfo.setTokenCode(ticketCode);
         getMapper().delete(userInfo);
 
+    }
+
+    @Override
+    public int updatePlatformUser(UserInfo userInfo) {
+        User user = userService.selectByLoginName(userInfo.getLoginName());
+        if (user == null) user = new User();
+        user.setLoginName(userInfo.getLoginName());
+        user.setPassword(userInfo.getPassword());
+        user.setDisplayName(userInfo.getRealName());
+        user.setContactPhone(userInfo.getMobile());
+        user.setAccountNonExpired(true);
+        user.setAccountNonLocked(true);
+        user.setCredentialsNonExpired(true);
+        user.setEnabled(true);
+        List<Integer> roleIds = new ArrayList<>();
+        if ("管理员".equals(userInfo.getRoleName())) {
+            roleIds.add(1);
+            user.setRoles(roleIds);
+        } else if ("中央".equals(userInfo.getRoleName())) {
+            roleIds.add(4);
+            user.setRoles(roleIds);
+        } else if ("省级".equals(userInfo.getRoleName())) {
+            roleIds.add(3);
+            user.setRoles(roleIds);
+        }
+        if (user.getId() != null) {
+            userService.updateUser(user);
+        } else {
+            userService.insertUser(user);
+        }
+        userInfo.setPlatformId(user.getId());
+        return updateNotNull(userInfo);
     }
 }

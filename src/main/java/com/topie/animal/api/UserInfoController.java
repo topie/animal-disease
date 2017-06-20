@@ -93,7 +93,7 @@ public class UserInfoController {
     public Result bindAllUser() {
         List<UserInfo> list = iUserInfoService.selectAll();
         for (UserInfo userInfo : list) {
-            iUserInfoService.insertOrUpdatePlatformUser(userInfo);
+            iUserInfoService.insertPlatformUser(userInfo);
             orangeSideUserCache.removeUserFromCacheByUserId(userInfo.getPlatformId());
         }
         return ResponseUtil.success();
@@ -103,7 +103,7 @@ public class UserInfoController {
     @ResponseBody
     public Result bind(@PathVariable(value = "id") String id) {
         UserInfo userInfo = iUserInfoService.selectByKey(id);
-        iUserInfoService.insertOrUpdatePlatformUser(userInfo);
+        iUserInfoService.insertPlatformUser(userInfo);
         orangeSideUserCache.removeUserFromCacheByUserId(userInfo.getPlatformId());
         return ResponseUtil.success();
     }
