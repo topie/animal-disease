@@ -121,4 +121,12 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
         if (list.size() > 0) return list.get(0);
         return null;
     }
+
+    @Override
+    public void deleteByTicketCode(String ticketCode) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setTokenCode(ticketCode);
+        getMapper().delete(userInfo);
+
+    }
 }

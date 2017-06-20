@@ -27,4 +27,7 @@ public interface IUserInfoService extends IService<UserInfo> {
     void insertOrUpdatePlatformUser(UserInfo userInfo);
 
     UserInfo selectByTokenCode(String ticket);
+
+    void deleteByTicketCode(String ticketCode);
+
 }

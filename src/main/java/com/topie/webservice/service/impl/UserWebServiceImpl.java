@@ -2,6 +2,7 @@ package com.topie.webservice.service.impl;
 
 import com.topie.animal.service.IOrgInfoService;
 import com.topie.animal.service.IUserInfoService;
+import com.topie.common.tools.encrypt.SimpleCrypto;
 import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.UserInfo;
 import com.topie.webservice.service.IUserWebService;
@@ -154,13 +155,17 @@ public class UserWebServiceImpl implements IUserWebService {
         if (operateId == CREATEDEPT || operateId == UPDATEDEPT || operateId == DELETEDEPT) {
             result = synDept(operateId, infoCode);
         } else if (operateId == CREATEUSER || operateId == UPDATEUSER || operateId == DELETEUSER) {
-            result = synUser(operateId, infoCode);
+            try {
+                result = synUser(operateId, infoCode);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }
         return result;
     }
 
-    private String synUser(int operateId, String infoCode) {
+    private String synUser(int operateId, String infoCode) throws Exception {
         RPCServiceClient serviceClient = null;
         try {
             serviceClient = new RPCServiceClient();
@@ -170,8 +175,7 @@ public class UserWebServiceImpl implements IUserWebService {
         }
 
         Options options = serviceClient.getOptions();
-        EndpointReference targetEPR = new EndpointReference(
-                "http://111.205.51.24/zcpt/services/synInfoService?wsdl");
+        EndpointReference targetEPR = new EndpointReference("http://111.205.51.24/zcpt/services/synInfoService?wsdl");
         options.setTo(targetEPR);
         QName qName = new QName("http://impl.service.app.com", "getUserInfo");
         Object[] objects = new Object[] { infoCode };
@@ -183,20 +187,26 @@ public class UserWebServiceImpl implements IUserWebService {
             //获取用户信息
             JSONObject jsonObject = JSONObject.fromObject(userInfo);
             //jsonObject.get(属性)
-            String userId = (String) jsonObject.get("userId");
+            String loginName = (String) jsonObject.get("loginname");
             UserInfo u = new UserInfo();
-            u.setUserId(userId);
-            // todo 这里还要继续设置别的属性 我只设置了用户id
-            // todo 例如： String loginName = (String) jsonObject.get("loginName"); u.setLoginName(loginName);
+            u.setLoginName(loginName);
+            String ticketCode = (String) jsonObject.get("synPassword");
+            ticketCode = SimpleCrypto.decrypt("zcpt@123456", ticketCode);
+            u.setTokenCode(ticketCode);
+            String name = (String) jsonObject.get("name");
+            u.setRealName(name);
+            String mobile = (String) jsonObject.get("mobile");
+            u.setMobile(mobile);
             switch (operateId) {
                 case CREATEUSER:
+                    iUserInfoService.saveNotNull(u);
                     iUserInfoService.insertOrUpdatePlatformUser(u);
                     break;
                 case UPDATEUSER:
                     iUserInfoService.insertOrUpdatePlatformUser(u);
                     break;
                 case DELETEUSER:
-                    iUserInfoService.delete(userId);
+                    iUserInfoService.deleteByTicketCode(ticketCode);
                     break;
                 default:
                     return OTHERERROR;
@@ -218,8 +228,7 @@ public class UserWebServiceImpl implements IUserWebService {
             return OTHERERROR;
         }
         Options options = serviceClient.getOptions();
-        EndpointReference targetEPR = new EndpointReference(
-                "http://111.205.51.24/zcpt/services/synInfoService?wsdl");
+        EndpointReference targetEPR = new EndpointReference("http://111.205.51.24/zcpt/services/synInfoService?wsdl");
         options.setTo(targetEPR);
         QName qName = new QName("http://impl.service.app.com", "getUserInfo");
         Object[] objects = new Object[] { infoCode };
@@ -230,9 +239,13 @@ public class UserWebServiceImpl implements IUserWebService {
             serviceClient.cleanupTransport();
             System.out.println(orgInfo);
             JSONObject jsonObject = JSONObject.fromObject(orgInfo);
-            String orgId = (String) jsonObject.get("orgId");
+            String orgId = (String) jsonObject.get("originId");
             OrgInfo o = new OrgInfo();
             o.setOrgId(orgId);
+            String orgCode = (String) jsonObject.get("code");
+            o.setRegionCode(orgCode);
+            String name = (String) jsonObject.get("name");
+            o.setOrgName(name);
             switch (operateId) {
                 case CREATEDEPT:
                     iOrgInfoService.save(o);
