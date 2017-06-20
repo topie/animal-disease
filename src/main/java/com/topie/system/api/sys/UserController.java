@@ -84,6 +84,9 @@ public class UserController {
         if (u == null) return ResponseUtil.error("用户不存在");
         Integer platformUserId = u.getPlatformId();
         User user = userService.findUserById(platformUserId);
+        if (user == null) {
+            return ResponseUtil.error("用户未绑定");
+        }
         List roles = userService.findUserRoleByUserId(platformUserId);
         if (roles != null) user.setRoles(roles);
         return ResponseUtil.success(user);

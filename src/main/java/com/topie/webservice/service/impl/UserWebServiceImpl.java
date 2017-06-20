@@ -194,11 +194,7 @@ public class UserWebServiceImpl implements IUserWebService {
 
             u.setLoginName(loginName);
             String orgId = jsonObject.get("orgId").toString();
-
-
             u.setOrgId(orgId);
-
-            u.setPlatformId(999);
             String password = (String) jsonObject.get("synPassword");
             password = SimpleCrypto.decrypt("zcpt@123456", password);
             u.setPassword(password);
