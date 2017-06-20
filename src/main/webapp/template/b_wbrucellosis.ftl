@@ -213,6 +213,8 @@
     </tr>
     </tbody>
 </table>
+<input type="hidden" id="valid"/>
+<input type="hidden" id="valid-msg"/>
 </body>
 </html>
 <#if report.status!=1>
@@ -299,14 +301,19 @@
             $('td[n="jz_niu"]').text(jz_niu+"%");
             $('td[n="jz_sheep"]').text(jz_sheep+"%");
 
+            var flag="true";
+            var msg="";
             if(immuneBruniu<lj_niu){
-                alert('牛的累计免疫数量大于应免数量，请确认！');
+                flag="false";
+                msg="累牛的累计免疫数量大于应免数量，请确认！";
             }
             if(immuneBruSheep<lj_sheep){
-                alert('羊的累计免疫数量大于应免数量，请确认！');
+                flag="false";
+                msg="羊的累计免疫数量大于应免数量，请确认！";
             }
 
-
+            $("#valid").val(flag);
+            $("#valid-msg").val(msg);
         }
 
         calculate()

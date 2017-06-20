@@ -189,6 +189,8 @@
 			</tr>
 		</tbody>
 	</table>
+    <input type="hidden" id="valid"/>
+    <input type="hidden" id="valid-msg"/>
 </body>
 </html>
 <#if report.status!=1>
@@ -248,10 +250,14 @@
             $('td[n="jz_sum"]').text(jz_sum+"%");
 
 
+            var flag="true";
+            var msg="";
             if(immuneblueear<lj_sum){
-                alert('累计免疫数量大于应免数量，请确认！');
+                flag="false";
+                msg="累计免疫数量大于应免数量，请确认！";
             }
-
+            $("#valid").val(flag);
+            $("#valid-msg").val(msg);
         }
 
         calculate()

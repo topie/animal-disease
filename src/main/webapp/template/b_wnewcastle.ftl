@@ -176,6 +176,8 @@
 			</tr>
 		</tbody>
 	</table>
+	<input type="hidden" id="valid"/>
+	<input type="hidden" id="valid-msg"/>
 </body>
 </html>
 <#if report.status!=1>
@@ -235,8 +237,12 @@
             $('td[n="jz_sum"]').text(jz_sum+"%");
 
             if(immunenewcastle<lj_sum){
-                alert('累计免疫数量大于应免数量，请确认！');
-            }
+				$("#valid").val("false");
+                $("#valid-msg").val("累计免疫数量大于应免数量，请确认！");
+            }else{
+                $("#valid").val("true");
+                $("#valid-msg").val("");
+			}
 
 
         }
