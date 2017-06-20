@@ -171,7 +171,7 @@ public class UserWebServiceImpl implements IUserWebService {
 
         Options options = serviceClient.getOptions();
         EndpointReference targetEPR = new EndpointReference(
-                "http://192.168.23.1:8098/zcpt/services/synInfoService?wsdl");
+                "http://111.205.51.24/zcpt/services/synInfoService?wsdl");
         options.setTo(targetEPR);
         QName qName = new QName("http://impl.service.app.com", "getUserInfo");
         Object[] objects = new Object[] { infoCode };
@@ -219,7 +219,7 @@ public class UserWebServiceImpl implements IUserWebService {
         }
         Options options = serviceClient.getOptions();
         EndpointReference targetEPR = new EndpointReference(
-                "http://192.168.23.1:8098/zcpt/services/synInfoService?wsdl");
+                "http://111.205.51.24/zcpt/services/synInfoService?wsdl");
         options.setTo(targetEPR);
         QName qName = new QName("http://impl.service.app.com", "getUserInfo");
         Object[] objects = new Object[] { infoCode };

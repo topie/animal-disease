@@ -46,6 +46,9 @@ public class Disinfectiondrugs {
     @Column(name = "df_Allother")
     private BigDecimal dfAllother;
 
+    @Column(name = "bz")
+    private String bz;
+
     /**
      * @return df_id
      */
@@ -199,5 +202,13 @@ public class Disinfectiondrugs {
      */
     public void setDfAllother(BigDecimal dfAllother) {
         this.dfAllother = dfAllother;
+    }
+
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
     }
 }

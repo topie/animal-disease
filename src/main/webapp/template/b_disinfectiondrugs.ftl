@@ -62,47 +62,50 @@
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="6">${templateName}</td>
+        <td class="c1" colspan="3">${templateName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">单 位</td>
-        <td class="c3" colspan="5">${org.orgName}</td>
+        <td class="c3" colspan="2">${org.orgName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">填表日期</td>
-        <td class="c3" colspan="5"><#if item.dfDate??>${item.dfDate?string("yyyy-MM-dd")}</#if></td>
+        <td class="c3" colspan="2"><#if item.dfDate??>${item.dfDate?string("yyyy-MM-dd")}</#if></td>
     </tr>
     <tr class="r2">
         <td class="c2">填 表 人</td>
-        <td class="c3" colspan="5">${user.realName}</td>
+        <td class="c3" colspan="2">${user.realName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">主管领导</td>
-        <td class="c3" colspan="5">${user.leaderName}</td>
+        <td class="c3" colspan="2">${user.leaderName}</td>
     </tr>
     <tr class="r2">
-        <td class="c2" colspan="2">消毒药品种类</td>
+        <td class="c2" >消毒药品种类</td>
         <td class="c2">省级存储数量</td>
         <td class="c2">全省存储数量</td>
-        <td class="c2" colspan="2">备注</td>
+
     </tr>
     <tr class="r3">
-        <td class="c2" colspan="2">消毒药（吨）</td>
+        <td class="c2" >消毒药（吨）</td>
         <td role="data" n="dfDrugs" class="c2">${item.dfDrugs}</td>
         <td role="data" n="dfAlldrugs" class="c2">${item.dfAlldrugs}</td>
-        <td class="c2" colspan="2">&nbsp;</td>
+
     </tr>
     <tr class="r3">
-        <td class="c2" colspan="2">消毒剂（升）</td>
+        <td class="c2" >消毒剂（升）</td>
         <td role="data" n="dfPharmacy" class="c2">${item.dfPharmacy}</td>
         <td role="data" n="dfAllpharmacy" class="c2">${item.dfAllpharmacy}</td>
-        <td class="c2" colspan="2">&nbsp;</td>
+
     </tr>
-    <tr class="r4">
-        <td class="c2" colspan="2">其它（吨）</td>
+    <tr class="r3">
+        <td class="c2" >其它（吨）</td>
         <td role="data" n="dfOther" class="c2">${item.dfOther}</td>
         <td role="data" n="dfAllother" class="c2">${item.dfAllother}</td>
-        <td class="c2" colspan="2">&nbsp;</td>
+    </tr>
+    <tr class="r3">
+        <td class="c2" >备注</td>
+        <td role="note"  colspan="2" n="bz" class="c3">${item.bz}</td>
     </tr>
     </tbody>
 </table>
@@ -138,7 +141,35 @@
                 e.stopPropagation()
             })
         })
-
+        $("td[role=note]").each(function (i, d) {
+            var n = $(this).attr("n")
+            $(this).off("click")
+            $(this).on("click", function (e) {
+                $("td[role=data]").each(function (e) {
+                    $(this).attr("current", 0)
+                })
+                $(this).attr("current", 1)
+                $("td[current=0]").find("input").each(function (e) {
+                    var v = $(this).val()
+                    $(this).parent("td").html(v)
+                    calculate()
+                })
+                var oldText = $(this).text()
+                $(this).empty()
+                var input = $('<input style="height: 100%;width:100%;min-width:100px;" type="text" name="' + n + '" value="' + oldText + '">')
+                input.on("blur", function (e) {
+                    var v = $(this).val()
+                    $(this).parent("td").html(v)
+                    calculate()
+                })
+                input.on("click", function (e) {
+                    e.stopPropagation()
+                })
+                $(this).append(input);
+                input.focus();input.select();
+                e.stopPropagation()
+            })
+        })
         var calculate = function () {
 
         }

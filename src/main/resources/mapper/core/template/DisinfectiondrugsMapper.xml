@@ -16,6 +16,7 @@
         <result column="df_Alldrugs" property="dfAlldrugs" jdbcType="DECIMAL"/>
         <result column="df_Allpharmacy" property="dfAllpharmacy" jdbcType="DECIMAL"/>
         <result column="df_Allother" property="dfAllother" jdbcType="DECIMAL"/>
+        <result column="bz" property="bz" jdbcType="VARCHAR"/>
     </resultMap>
     <select id="selectByReportIds" resultMap="BaseResultMap">
         select * from animal_disease.b_disinfectiondrugs
