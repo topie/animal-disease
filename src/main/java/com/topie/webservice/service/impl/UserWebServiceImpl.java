@@ -186,6 +186,8 @@ public class UserWebServiceImpl implements IUserWebService {
             String userId = (String) jsonObject.get("userId");
             UserInfo u = new UserInfo();
             u.setUserId(userId);
+            // todo 这里还要继续设置别的属性 我只设置了用户id
+            // todo 例如： String loginName = (String) jsonObject.get("loginName"); u.setLoginName(loginName);
             switch (operateId) {
                 case CREATEUSER:
                     iUserInfoService.insertOrUpdatePlatformUser(u);

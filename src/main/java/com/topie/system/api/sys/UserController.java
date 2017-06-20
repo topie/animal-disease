@@ -81,7 +81,6 @@ public class UserController {
     @RequestMapping(value = "/loadUser/{userId}", method = RequestMethod.GET)
     @ResponseBody
     public Result loadUser(@PathVariable(value = "userId") String userId) throws Exception {
-        userId = SimpleCrypto.decrypt("zcpt@123456", userId);
         UserInfo u = iUserInfoService.selectByKey(userId);
         if (u == null) return ResponseUtil.error("用户不存在");
         Integer platformUserId = u.getPlatformId();
