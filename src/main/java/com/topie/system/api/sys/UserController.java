@@ -2,6 +2,7 @@ package com.topie.system.api.sys;
 
 import com.github.pagehelper.PageInfo;
 import com.topie.animal.service.IUserInfoService;
+import com.topie.common.tools.encrypt.SimpleCrypto;
 import com.topie.common.utils.PageConvertUtil;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
@@ -80,6 +81,7 @@ public class UserController {
     @RequestMapping(value = "/loadUser/{userId}", method = RequestMethod.GET)
     @ResponseBody
     public Result loadUser(@PathVariable(value = "userId") String userId) throws Exception {
+        userId = SimpleCrypto.decrypt("zcpt@123456", userId);
         UserInfo u = iUserInfoService.selectByTokenCode(userId);
         if (u == null) return ResponseUtil.error("用户不存在");
         Integer platformUserId = u.getPlatformId();
