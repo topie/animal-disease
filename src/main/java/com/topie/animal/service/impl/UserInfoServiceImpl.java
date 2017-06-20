@@ -126,7 +126,9 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
     public void deleteByTicketCode(String ticketCode) {
         UserInfo userInfo = new UserInfo();
         userInfo.setTokenCode(ticketCode);
+        UserInfo uu = getMapper().selectOne(userInfo);
         getMapper().delete(userInfo);
+        userService.deleteUser(userInfo.getPlatformId());
 
     }
 
