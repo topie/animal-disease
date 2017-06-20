@@ -1,7 +1,6 @@
 package com.topie;
 
-import com.topie.common.utils.date.DateUtil;
-import net.sf.json.JSONObject;
+import com.topie.common.tools.encrypt.SimpleCrypto;
 import org.junit.Test;
 
 /**
@@ -11,8 +10,7 @@ public class AppTest {
 
     @Test
     public void monthFirstDay() throws Exception {
-        JSONObject jsonObject = JSONObject.fromObject("{name:1}");
-        System.out.println(jsonObject.get("name"));
-        //System.out.println(DateUtil.getCurrentMonthFirstDay());
+        String ticket = SimpleCrypto.decrypt("zcpt@123456", "734EAC728A067D466C69DA8111A2D292");
+        System.out.println(ticket);
     }
 }

@@ -112,4 +112,13 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
         userInfo.setPlatformId(user.getId());
         updateNotNull(userInfo);
     }
+
+    @Override
+    public UserInfo selectByTokenCode(String ticket) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setTokenCode(ticket);
+        List<UserInfo> list = getMapper().select(userInfo);
+        if (list.size() > 0) return list.get(0);
+        return null;
+    }
 }

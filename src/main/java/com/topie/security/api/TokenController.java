@@ -112,7 +112,7 @@ public class TokenController {
             return ResponseEntity.ok(HttpResponseUtil.error("AUTH_TICKET未提供"));
         }
         ticket = SimpleCrypto.decrypt("zcpt@123456", ticket);
-        UserInfo userInfo = iUserInfoService.selectByKey(ticket);
+        UserInfo userInfo = iUserInfoService.selectByTokenCode(ticket);
         if (userInfo == null) return ResponseEntity.ok(HttpResponseUtil.error("用户不存在"));
         User user = userService.selectByKey(userInfo.getPlatformId());
         if (user == null) return ResponseEntity.ok(HttpResponseUtil.error("用户不存在"));
