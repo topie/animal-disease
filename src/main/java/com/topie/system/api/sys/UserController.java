@@ -10,8 +10,10 @@ import com.topie.database.core.animal.model.UserInfo;
 import com.topie.database.core.system.model.User;
 import com.topie.security.exception.AuBzConstant;
 import com.topie.security.exception.AuthBusinessException;
+import com.topie.security.service.RoleService;
 import com.topie.security.service.UserService;
 import com.topie.security.utils.SecurityUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @Autowired
     private IUserInfoService iUserInfoService;
@@ -67,6 +72,24 @@ public class UserController {
         }
         userService.updateUser(user);
         return ResponseUtil.success();
+    }
+
+    @RequestMapping(value = "/grand", method = RequestMethod.POST)
+    @ResponseBody
+    public Result grand(@RequestParam(value = "id", required = false) Integer id,
+            @RequestParam(value = "roles", required = false) String roles) {
+        if (StringUtils.isNotEmpty(roles)) {
+            String[] roleIds = roles.split(",");
+            for (String roleId : roleIds) {
+                if (StringUtils.isNotEmpty(roleId)) {
+                    userService.insertUserRole(id, Integer.valueOf(roleId));
+                }
+            }
+            return ResponseUtil.success();
+        } else {
+            return ResponseUtil.error("无效的角色");
+        }
+
     }
 
     @RequestMapping(value = "/load/{userId}", method = RequestMethod.GET)
