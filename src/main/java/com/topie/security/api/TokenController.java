@@ -2,6 +2,7 @@ package com.topie.security.api;
 
 import com.topie.animal.service.IUserInfoService;
 import com.topie.common.tools.cache.RedisCache;
+import com.topie.common.tools.encrypt.SimpleCrypto;
 import com.topie.common.utils.HttpResponseUtil;
 import com.topie.database.core.animal.model.UserInfo;
 import com.topie.database.core.system.model.User;
@@ -106,10 +107,11 @@ public class TokenController {
     }
 
     @RequestMapping(value = "/oss", method = RequestMethod.POST)
-    public ResponseEntity<?> oss(@RequestParam("ticket") String ticket) throws AuthenticationException {
+    public ResponseEntity<?> oss(@RequestParam("ticket") String ticket) throws Exception {
         if (StringUtils.isEmpty(ticket)) {
             return ResponseEntity.ok(HttpResponseUtil.error("AUTH_TICKET未提供"));
         }
+        ticket = SimpleCrypto.decrypt("zcpt@123456", ticket);
         UserInfo userInfo = iUserInfoService.selectByKey(ticket);
         if (userInfo == null) return ResponseEntity.ok(HttpResponseUtil.error("用户不存在"));
         User user = userService.selectByKey(userInfo.getPlatformId());
