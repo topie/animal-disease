@@ -3,6 +3,7 @@ package com.topie.webservice.service.impl;
 import com.topie.animal.service.IOrgInfoService;
 import com.topie.animal.service.IUserInfoService;
 import com.topie.common.tools.encrypt.SimpleCrypto;
+import com.topie.common.utils.UUIDUtil;
 import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.UserInfo;
 import com.topie.webservice.service.IUserWebService;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.xml.namespace.QName;
+import java.util.UUID;
 
 /**
  * Created by chenguojun on 2017/4/21.
@@ -189,9 +191,18 @@ public class UserWebServiceImpl implements IUserWebService {
             //jsonObject.get(属性)
             String loginName = (String) jsonObject.get("loginname");
             UserInfo u = new UserInfo();
+
             u.setLoginName(loginName);
-            String ticketCode = (String) jsonObject.get("synPassword");
-            ticketCode = SimpleCrypto.decrypt("zcpt@123456", ticketCode);
+            String orgId = jsonObject.get("orgId").toString();
+
+
+            u.setOrgId(orgId);
+
+            u.setPlatformId(999);
+            String password = (String) jsonObject.get("synPassword");
+            password = SimpleCrypto.decrypt("zcpt@123456", password);
+            u.setPassword(password);
+            String ticketCode = (String) jsonObject.get("code");
             u.setTokenCode(ticketCode);
             String name = (String) jsonObject.get("name");
             u.setRealName(name);
@@ -199,6 +210,7 @@ public class UserWebServiceImpl implements IUserWebService {
             u.setMobile(mobile);
             switch (operateId) {
                 case CREATEUSER:
+                    u.setUserId(UUIDUtil.getUUID());
                     iUserInfoService.saveNotNull(u);
                     iUserInfoService.insertOrUpdatePlatformUser(u);
                     break;
