@@ -45,7 +45,8 @@ public class ReReportController {
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     @ResponseBody
-    public Result insert(ReReport reReport, @RequestParam(value = "period", required = false) String period) {
+    public Result insert(ReReport reReport, @RequestParam(value = "orgIds", required = false) String orgIds,
+            @RequestParam(value = "period", required = false) String period) {
         if (StringUtils.isNotEmpty(period)) {
             Date beginTime;
             switch (reReport.getReportType()) {
@@ -73,24 +74,36 @@ public class ReReportController {
                 }
             }
             reReport.setBeginTime(beginTime);
+
         } else {
             return ResponseUtil.error("上报周期不能为空！");
         }
-        Report report = iReportService
-                .selectOneByOrgIdAndTemplateIdAndBeginTime(reReport.getOrgId(), reReport.getTemplateId(),
-                        reReport.getBeginTime());
-        if (report == null) {
-            return ResponseUtil.error("填报不存在无法补填报！");
+        int result = 0;
+        if (StringUtils.isNotEmpty(orgIds)) {
+            String[] orgIdsArr = orgIds.split(",");
+            for (String orgId : orgIdsArr) {
+                if (StringUtils.isNotEmpty(orgId) && StringUtils.isNumeric(orgId)) {
+                    reReport.setOrgId(orgId);
+                    Report report = iReportService
+                            .selectOneByOrgIdAndTemplateIdAndBeginTime(reReport.getOrgId(), reReport.getTemplateId(),
+                                    reReport.getBeginTime());
+                    if (report == null) {
+                        return ResponseUtil.error("填报不存在无法补填报！");
+                    }
+                    List<ReReport> reReportList = iReReportService.selectByReport(report);
+                    if (reReportList.size() > 0) {
+                        return ResponseUtil.error("已存在补填报记录，不能重复添加!");
+                    }
+                    report.setStatus(0);
+                    iReportService.updateNotNull(report);
+                    reReport.setId(UUIDUtil.getUUID());
+                    reReport.setReIsOpen(1);
+                    result += iReReportService.saveNotNull(reReport);
+                }
+            }
+        } else {
+            return ResponseUtil.error("补填报组织机构不能为空！");
         }
-        List<ReReport> reReportList = iReReportService.selectByReport(report);
-        if (reReportList.size() > 0) {
-            return ResponseUtil.error("已存在补填报记录，不能重复添加!");
-        }
-        report.setStatus(0);
-        iReportService.updateNotNull(report);
-        reReport.setId(UUIDUtil.getUUID());
-        reReport.setReIsOpen(1);
-        int result = iReReportService.saveNotNull(reReport);
         return result > 0 ? ResponseUtil.success() : ResponseUtil.error();
     }
 
