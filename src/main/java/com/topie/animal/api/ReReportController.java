@@ -47,6 +47,7 @@ public class ReReportController {
     @ResponseBody
     public Result insert(ReReport reReport, @RequestParam(value = "orgIds", required = false) String orgIds,
             @RequestParam(value = "period", required = false) String period) {
+        int result = 0;
         if (StringUtils.isNotEmpty(period)) {
             Date beginTime;
             switch (reReport.getReportType()) {
@@ -78,11 +79,10 @@ public class ReReportController {
         } else {
             return ResponseUtil.error("上报周期不能为空！");
         }
-        int result = 0;
         if (StringUtils.isNotEmpty(orgIds)) {
             String[] orgIdsArr = orgIds.split(",");
             for (String orgId : orgIdsArr) {
-                if (StringUtils.isNotEmpty(orgId) && StringUtils.isNumeric(orgId)) {
+                if (StringUtils.isNotEmpty(orgId)) {
                     reReport.setOrgId(orgId);
                     Report report = iReportService
                             .selectOneByOrgIdAndTemplateIdAndBeginTime(reReport.getOrgId(), reReport.getTemplateId(),
