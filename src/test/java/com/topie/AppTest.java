@@ -1,6 +1,7 @@
 package com.topie;
 
 import com.topie.common.tools.encrypt.SimpleCrypto;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 /**
@@ -10,7 +11,9 @@ public class AppTest {
 
     @Test
     public void monthFirstDay() throws Exception {
-        String ticket = SimpleCrypto.decrypt("zcpt@123456", "734EAC728A067D466C69DA8111A2D292");
-        System.out.println(ticket);
+        String orgId = "1";
+        if (StringUtils.isNotEmpty(orgId) && StringUtils.isNumeric(orgId)) {
+            System.out.println(orgId);
+        }
     }
 }

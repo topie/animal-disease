@@ -80,16 +80,15 @@ public class ReportServiceImpl extends BaseService<Report> implements IReportSer
             for (String reportUserId : userIdList) {
                 Report report = new Report();
                 report.setTemplateId(templateId);
-                report.setReportType(reportType);
                 report.setBeginTime(beginTime);
                 report.setReportUserId(reportUserId);
-                int cnt = reportMapper.selectCount(report);
-                if (cnt == 0) {
+                List<Report> cnt = reportMapper.select(report);
+                if (cnt.size() == 0) {
                     Report fR = new Report();
                     fR.setTemplateId(templateId);
                     fR.setReportType(reportType);
                     fR.setBeginTime(beginTime);
-                    fR.setReportUserId(userIdList.get(0));
+                    fR.setReportUserId(reportUserId);
                     fR.setStatus(0);
                     fR.setEndTime(DateUtil.addDay(beginTime, 9));
                     fR.setReportId(UUIDUtil.getUUID());
