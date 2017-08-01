@@ -165,27 +165,27 @@
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="7">${templateName}</td>
+        <td class="c1" colspan="6">${templateName}</td>
 
     </tr>
     <tr class="r1">
         <td class="c3">单 位:</td>
-        <td class="c2" colspan="6">${org.orgName}</td>
+        <td class="c2" colspan="5">${org.orgName}</td>
 
     </tr>
     <tr class="r1">
         <td class="c3">填表日期:</td>
-        <td class="c2" colspan="6"><#if item.date??>${item.date?string("yyyy-MM-dd")}</#if></td>
+        <td class="c2" colspan="5"><#if item.date??>${item.date?string("yyyy-MM-dd")}</#if></td>
 
     </tr>
     <tr class="r1">
         <td class="c3">填 表 人:</td>
-        <td class="c2" colspan="6">${user.realName}</td>
+        <td class="c2" colspan="5">${user.realName}</td>
 
     </tr>
     <tr class="r1">
         <td class="c3">主管领导：</td>
-        <td class="c2" colspan="6">${user.leaderName}</td>
+        <td class="c2" colspan="5">${user.leaderName}</td>
 
     </tr>
     <tr class="r1">
@@ -194,7 +194,7 @@
         <td class="c3">累计到货</td>
         <td class="c3">本月下拨</td>
         <td class="c3">累计下拨</td>
-        <td class="c3">备注</td>
+        
 
     </tr>
     <tr class="r1">
@@ -208,7 +208,7 @@
             class="c3"><#if item.evFmoinactivatedx??>${item.evFmoinactivatedx}</#if></td>
         <td role="lj_evFmoinactivatedx"
             class="c6"><#if itemSum??&&itemSum.evFmoinactivatedx??>${itemSum.evFmoinactivatedx}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+        
 
     </tr>
     <tr class="r1">
@@ -219,7 +219,7 @@
         <td role="data" n="evFmosyntheticx" class="c3"><#if item.evFmosyntheticx??>${item.evFmosyntheticx}</#if></td>
         <td role="lj_evFmosyntheticx"
             class="c6"><#if itemSum??&&itemSum.evFmosyntheticx??>${itemSum.evFmosyntheticx}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+      
     </tr>
     <input id="evFmoinactivateddh" type="hidden"
            value="${itemSum.evFmoinactivateddh?default(0)-item.evFmoinactivateddh?default(0)}"/>
@@ -239,7 +239,7 @@
             class="c3"><#if item.evFmosinactivatedx??>${item.evFmosinactivatedx}</#if></td>
         <td role="lj_evFmosinactivatedx"
             class="c6"><#if itemSum??&&itemSum.evFmosinactivatedx??>${itemSum.evFmosinactivatedx}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+       
 
     </tr>
     <tr class="r1">
@@ -248,7 +248,7 @@
         <td role="lj_evFmoasdh" class="c6"><#if itemSum??&&itemSum.evFmoasdh??>${itemSum.evFmoasdh}</#if></td>
         <td role="data" n="evFmoasx" class="c9"><#if item.evFmoasx??>${item.evFmoasx}</#if></td>
         <td role="lj_evFmoasx" class="c6"><#if itemSum??&&itemSum.evFmoasx??>${itemSum.evFmoasx}</#if></td>
-        <td role="data" n="" class="c8">&nbsp;</td>
+        
     </tr>
     <input id="evFmosinactivateddh" type="hidden"
            value="${itemSum.evFmosinactivateddh?default(0)-item.evFmosinactivateddh?default(0)}"/>
@@ -266,7 +266,7 @@
             class="c5"><#if item.evFmo3inactivatedx??>${item.evFmo3inactivatedx}</#if></td>
         <td role="lj_evFmo3inactivatedx"
             class="c6"><#if itemSum??&&itemSum.evFmo3inactivatedx??>${itemSum.evFmo3inactivatedx}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+        
     </tr>
     <tr class="r1">
         <td class="c11">口蹄疫A型灭活疫苗（万毫升）</td>
@@ -274,7 +274,7 @@
         <td role="lj_evFmoadh" class="c6"><#if itemSum??&&itemSum.evFmoadh??>${itemSum.evFmoadh}</#if></td>
         <td role="data" n="evFmoax" class="c12"><#if item.evFmoax??>${item.evFmoax}</#if></td>
         <td role="lj_evFmoax" class="c6"><#if itemSum??&&itemSum.evFmoax??>${itemSum.evFmoax}</#if></td>
-        <td role="data" n="" class="c11">&nbsp;</td>
+      
     </tr>
     <input id="evFmo3inactivateddh" type="hidden"
            value="${itemSum.evFmo3inactivateddh?default(0)-item.evFmo3inactivateddh?default(0)}"/>
@@ -290,7 +290,7 @@
             class="c6"><#if itemSum??&&itemSum.evAih5n1re4dh??>${itemSum.evAih5n1re4dh}</#if></td>
         <td role="data" n="evAih5n1re4x" class="c3"><#if item.evAih5n1re4x??>${item.evAih5n1re4x}</#if></td>
         <td role="lj_evAih5n1re4x" class="c6"><#if itemSum??&&itemSum.evAih5n1re4x??>${itemSum.evAih5n1re4x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+       
     </tr>
     <tr class="r1">
         <td class="c2">禽流感灭活疫苗（H5N1，Re-5株）（万毫升）</td>
@@ -299,7 +299,7 @@
             class="c6"><#if itemSum??&&itemSum.evAih5n1re5dh??>${itemSum.evAih5n1re5dh}</#if></td>
         <td role="data" n="evAih5n1re5x" class="c3"><#if item.evAih5n1re5x??>${item.evAih5n1re5x}</#if></td>
         <td role="lj_evAih5n1re5x" class="c6"><#if itemSum??&&itemSum.evAih5n1re5x??>${itemSum.evAih5n1re5x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+       
     </tr>
     <input id="evAih5n1re4dh" type="hidden" value="${itemSum.evAih5n1re4dh?default(0)-item.evAih5n1re4dh?default(0)}"/>
     <input id="evAih5n1re4x" type="hidden" value="${itemSum.evAih5n1re4x?default(0)-item.evAih5n1re4x?default(0)}"/>
@@ -315,7 +315,7 @@
             class="c3"><#if item.evAllaih5n1re5re4x??>${item.evAllaih5n1re5re4x}</#if></td>
         <td role="lj_evAllaih5n1re5re4x"
             class="c6"><#if itemSum??&&itemSum.evAllaih5n1re5re4x??>${itemSum.evAllaih5n1re5re4x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+      
     </tr>
     <tr class="r1">
         <td class="c2">H5-H9二价灭活疫苗（万毫升）</td>
@@ -323,7 +323,7 @@
         <td role="lj_evAih5h9dh" class="c6"><#if itemSum??&&itemSum.evAih5h9dh??>${itemSum.evAih5h9dh}</#if></td>
         <td role="data" n="evAih5h9x" role="data" class="c3"><#if item.evAih5h9x??>${item.evAih5h9x}</#if></td>
         <td role="lj_evAih5h9x" class="c6"><#if itemSum??&&itemSum.evAih5h9x??>${itemSum.evAih5h9x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+       
     </tr>
     <input id="evAllaih5n1re5re4dh" type="hidden"
            value="${itemSum.evAllaih5n1re5re4dh?default(0)-item.evAllaih5n1re5re4dh?default(0)}"/>
@@ -338,7 +338,7 @@
             class="c6"><#if itemSum??&&itemSum.evAih5n1re6dh??>${itemSum.evAih5n1re6dh}</#if></td>
         <td role="data" n="evAih5n1re6x" class="c3"><#if item.evAih5n1re6x??>${item.evAih5n1re6x}</#if></td>
         <td role="lj_evAih5n1re6x" class="c6"><#if itemSum??&&itemSum.evAih5n1re6x??>${itemSum.evAih5n1re6x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+        
     </tr>
     <tr class="r1">
         <td class="c2">重组禽流感灭活疫苗（H5N1,Re-7株）（万毫升）</td>
@@ -347,7 +347,7 @@
             class="c6"><#if itemSum??&&itemSum.evAih5n1re7dh??>${itemSum.evAih5n1re7dh}</#if></td>
         <td role="data" n="evAih5n1re7x" class="c3"><#if item.evAih5n1re7x??>${item.evAih5n1re7x}</#if></td>
         <td role="lj_evAih5n1re7x" class="c6"><#if itemSum??&&itemSum.evAih5n1re7x??>${itemSum.evAih5n1re7x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+     
     </tr>
     <input id="evAih5n1re6dh" type="hidden" value="${itemSum.evAih5n1re6dh?default(0)-item.evAih5n1re6dh?default(0)}"/>
     <input id="evAih5n1re6x" type="hidden" value="${itemSum.evAih5n1re6x?default(0)-item.evAih5n1re6x?default(0)}"/>
@@ -361,7 +361,7 @@
         <td role="data" n="evAih5n1re6re7x" class="c3"><#if item.evAih5n1re6re7x??>${item.evAih5n1re6re7x}</#if></td>
         <td role="lj_evAih5n1re6re7x"
             class="c6"><#if itemSum??&&itemSum.evAih5n1re6re7x??>${itemSum.evAih5n1re6re7x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+       
     </tr>
     <tr class="r1">
         <td class="c2">重组禽流感病毒H5亚型二价灭活疫苗（H5N1,Re-6+Re-8株）（万毫升）</td>
@@ -371,7 +371,7 @@
         <td role="data" n="evAih5n1re6re8x" class="c3"><#if item.evAih5n1re6re8x??>${item.evAih5n1re6re8x}</#if></td>
         <td role="lj_evAih5n1re6re8x"
             class="c6"><#if itemSum??&&itemSum.evAih5n1re6re8x??>${itemSum.evAih5n1re6re8x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+       
     </tr>
     <input id="evAih5n1re6re7dh" type="hidden"
            value="${itemSum.evAih5n1re6re7dh?default(0)-item.evAih5n1re6re7dh?default(0)}"/>
@@ -391,7 +391,7 @@
             class="c3"><#if item.evAih5n1re6re7re8x??>${item.evAih5n1re6re7re8x}</#if></td>
         <td role="lj_evAih5n1re6re7re8x"
             class="c6"><#if itemSum??&&itemSum.evAih5n1re6re7re8x??>${itemSum.evAih5n1re6re7re8x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+       
     </tr>
     <tr class="r1">
         <td class="c2">禽流感灭活疫苗（H5N2亚型，D7株）</td>
@@ -399,7 +399,7 @@
         <td role="lj_evAih5n2d7dh" class="c6"><#if itemSum??&&itemSum.evAih5n2d7dh??>${itemSum.evAih5n2d7dh}</#if></td>
         <td role="data" n="evAih5n2d7x" class="c3"><#if item.evAih5n2d7x??>${item.evAih5n2d7x}</#if></td>
         <td role="lj_evAih5n2d7x" class="c6"><#if itemSum??&&itemSum.evAih5n2d7x??>${itemSum.evAih5n2d7x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+        
     </tr>
     <input id="evAih5n1re6re7re8dh" type="hidden"
            value="${itemSum.evAih5n1re6re7re8dh?default(0)-item.evAih5n1re6re7re8dh?default(0)}"/>
@@ -413,7 +413,7 @@
         <td role="lj_evAirlh5dh" class="c6"><#if itemSum??&&itemSum.evAirlh5dh??>${itemSum.evAirlh5dh}</#if></td>
         <td role="data" n="evAirlh5x" class="c3"><#if item.evAirlh5x??>${item.evAirlh5x}</#if></td>
         <td role="lj_evAirlh5x" class="c6"><#if itemSum??&&itemSum.evAirlh5x??>${itemSum.evAirlh5x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+        
     </tr>
     <tr class="r1">
         <td class="c3" rowspan="2">高致病性猪蓝耳病疫苗</td>
@@ -422,7 +422,7 @@
         <td role="lj_evBedh" class="c6"><#if itemSum??&&itemSum.evBedh??>${itemSum.evBedh}</#if></td>
         <td role="data" n="evBex" class="c3"><#if item.evBex??>${item.evBex}</#if></td>
         <td role="lj_evBex" class="c6"><#if itemSum??&&itemSum.evBex??>${itemSum.evBex}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+        
     </tr>
     <input id="evAirlh5dh" type="hidden" value="${itemSum.evAirlh5dh?default(0)-item.evAirlh5dh?default(0)}"/>
     <input id="evAirlh5x" type="hidden" value="${itemSum.evAirlh5x?default(0)-item.evAirlh5x?default(0)}"/>
@@ -437,7 +437,7 @@
         <td role="data" n="evBeinactivatedx" class="c3"><#if item.evBeinactivatedx??>${item.evBeinactivatedx}</#if></td>
         <td role="lj_evBeinactivatedx"
             class="c6"><#if itemSum??&&itemSum.evBeinactivatedx??>${itemSum.evBeinactivatedx}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+       
     </tr>
     <input id="evBeinactivateddh" type="hidden"
            value="${itemSum.evBeinactivateddh?default(0)-item.evBeinactivateddh?default(0)}"/>
@@ -450,7 +450,7 @@
         <td role="lj_evCsdh" class="c6"><#if itemSum??&&itemSum.evCsdh??>${itemSum.evCsdh}</#if></td>
         <td role="data" n="evCsx" class="c3"><#if item.evCsx??>${item.evCsx}</#if></td>
         <td role="lj_evCsx" class="c6"><#if itemSum??&&itemSum.evCsx??>${itemSum.evCsx}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+        
     </tr>
     <tr class="r1">
         <td class="c2">传代细胞源猪瘟活疫苗（万头份）</td>
@@ -459,7 +459,7 @@
             class="c6"><#if itemSum??&&itemSum.evCspassagedh??>${itemSum.evCspassagedh}</#if></td>
         <td role="data" n="evCspassagex" class="c3"><#if item.evCspassagex??>${item.evCspassagex}</#if></td>
         <td role="lj_evCspassagex" class="c6"><#if itemSum??&&itemSum.evCspassagex??>${itemSum.evCspassagex}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+        
     </tr>
     <input id="evCsdh" type="hidden" value="${itemSum.evCsdh?default(0)-item.evCsdh?default(0)}"/>
     <input id="evCsx" type="hidden" value="${itemSum.evCsx?default(0)-item.evCsx?default(0)}"/>
@@ -475,7 +475,7 @@
         <td role="data" n="evNcinactivatedx" class="c3"><#if item.evNcinactivatedx??>${item.evNcinactivatedx}</#if></td>
         <td role="lj_evNcinactivatedx"
             class="c6"><#if itemSum??&&itemSum.evNcinactivatedx??>${itemSum.evNcinactivatedx}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+        
     </tr>
     <tr class="r1">
         <td class="c2">新城疫弱毒疫苗(万羽份)</td>
@@ -483,7 +483,7 @@
         <td role="lj_evNcweakdh" class="c6"><#if itemSum??&&itemSum.evNcweakdh??>${itemSum.evNcweakdh}</#if></td>
         <td role="data" n="evNcweakx" class="c3"><#if item.evNcweakx??>${item.evNcweakx}</#if></td>
         <td role="lj_evNcweakx" class="c6"><#if itemSum??&&itemSum.evNcweakx??>${itemSum.evNcweakx}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+       
     </tr>
     <input id="evNcinactivateddh" type="hidden"
            value="${itemSum.evNcinactivateddh?default(0)-item.evNcinactivateddh?default(0)}"/>
@@ -498,8 +498,7 @@
         <td role="lj_evPdprdh" class="c6"><#if itemSum??&&itemSum.evPdprdh??>${itemSum.evPdprdh}</#if></td>
         <td role="data" n="evPdprx" class="c3"><#if item.evPdprx??>${item.evPdprx}</#if></td>
         <td role="lj_evPdprx" class="c6"><#if itemSum??&&itemSum.evPdprx??>${itemSum.evPdprx}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
-
+        
     </tr>
     <input id="evPdprdh" type="hidden" value="${itemSum.evPdprdh?default(0)-item.evPdprdh?default(0)}"/>
     <input id="evPdprx" type="hidden" value="${itemSum.evPdprx?default(0)-item.evPdprx?default(0)}"/>
@@ -512,7 +511,7 @@
         <td role="data" n="evBrucellas2x" class="c3"><#if item.evBrucellas2x??>${item.evBrucellas2x}</#if></td>
         <td role="lj_evBrucellas2x"
             class="c6"><#if itemSum??&&itemSum.evBrucellas2x??>${itemSum.evBrucellas2x}</#if></td>
-        <td role="data" n="" class="c3">&nbsp;</td>
+        
     </tr>
     <input id="evBrucellas2dh" type="hidden"
            value="${itemSum.evBrucellas2dh?default(0)-item.evBrucellas2dh?default(0)}"/>
@@ -529,7 +528,7 @@
         <td role="data" n="evBrucellam5x" class="c3"><#if item.evBrucellam5x??>${item.evBrucellam5x}</#if></td>
         <td role="lj_evBrucellam5x"
             class="c6"><#if itemSum??&&itemSum.evBrucellam5x??>${itemSum.evBrucellam5x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+        
     </tr>
     <input id="evBrucellam5dh" type="hidden"
            value="${itemSum.evBrucellam5dh?default(0)-item.evBrucellam5dh?default(0)}"/>
@@ -543,7 +542,7 @@
         <td role="data" n="evBrucellaa19x" class="c3"><#if item.evBrucellaa19x??>${item.evBrucellaa19x}</#if></td>
         <td role="lj_evBrucellaa19x"
             class="c6"><#if itemSum??&&itemSum.evBrucellaa19x??>${itemSum.evBrucellaa19x}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+       
     </tr>
     <input id="evBrucellaa19dh" type="hidden"
            value="${itemSum.evBrucellaa19dh?default(0)-item.evBrucellaa19dh?default(0)}"/>
@@ -562,7 +561,7 @@
         <td role="data" n="evSheephydatidx" class="c3"><#if item.evSheephydatidx??>${item.evSheephydatidx}</#if></td>
         <td role="lj_evSheephydatidx"
             class="c6"><#if itemSum??&&itemSum.evSheephydatidx??>${itemSum.evSheephydatidx}</#if></td>
-        <td role="data" n="" class="c2">&nbsp;</td>
+       
     </tr>
 
     </tbody>

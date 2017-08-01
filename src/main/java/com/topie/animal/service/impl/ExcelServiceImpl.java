@@ -115,6 +115,9 @@ public class ExcelServiceImpl implements IExcelService {
     @Autowired
     private KingfisherMapper kingfisherMapper;
 
+   @Autowired
+    private KingfisherNewMapper kingfisherNewMapper;
+
     @Autowired
     private LivestockdensityMapper livestockdensityMapper;
 
@@ -180,7 +183,7 @@ public class ExcelServiceImpl implements IExcelService {
             wlivestockinout = new Wlivestockinout();
         }
         params.put("wlivestockinout", wlivestockinout);
-
+        Date monthBeginTime=BeginTimeUtil.getMonthBeginTime(report.getBeginTime());
         Date beginTime = BeginTimeUtil.getBeginTime(report.getBeginTime());
         Date halfYearbeginTime = BeginTimeUtil.getCurrentHalfYearBeginTime(report.getBeginTime());
         Date endTime = report.getBeginTime();
@@ -196,7 +199,7 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Avianinfluenza itemSum = avianinfluenzaMapper
-                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                        .selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new Avianinfluenza();
                 }
@@ -263,6 +266,17 @@ public class ExcelServiceImpl implements IExcelService {
                 arg.setKfReportid(report.getReportId());
                 List<Kingfisher> items = kingfisherMapper.select(arg);
                 Kingfisher item = new Kingfisher();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                }
+                params.put("item", item);
+                break;
+            }
+            case "b_kingfisher_new": {
+                KingfisherNew arg = new KingfisherNew();
+                arg.setKfReportid(report.getReportId());
+                List<KingfisherNew> items = kingfisherNewMapper.select(arg);
+                KingfisherNew item = new KingfisherNew();
                 if (items.size() > 0) {
                     item = items.get(0);
                 }
@@ -465,7 +479,7 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Vaccineorder itemSum = vaccineorderMapper
-                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                        .selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new Vaccineorder();
                 }
@@ -482,7 +496,7 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Blueeardisease itemSum = blueeardiseaseMapper
-                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                        .selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new Blueeardisease();
                 }
@@ -499,7 +513,7 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 EchinococciasisDisease itemSum = echinococciasisDiseaseMapper
-                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                        .selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new EchinococciasisDisease();
                 }
@@ -516,7 +530,7 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 BrucellosisDisease itemSum = brucellosisDiseaseMapper
-                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                        .selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new BrucellosisDisease();
                 }
@@ -533,7 +547,7 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Classicalswinefever itemSum = classicalswinefeverMapper
-                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                        .selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new Classicalswinefever();
                 }
@@ -550,7 +564,7 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Footandmouthdisease itemSum = footandmouthdiseaseMapper
-                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                        .selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new Footandmouthdisease();
                 }
@@ -564,7 +578,7 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", livestockInOut);
                 LiveStockInOut itemSum = liveStockInOutMapper
-                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                        .selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new LiveStockInOut();
                 }
@@ -580,7 +594,7 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Newcastle itemSum = newcastleMapper.selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                Newcastle itemSum = newcastleMapper.selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new Newcastle();
                 }
@@ -597,7 +611,7 @@ public class ExcelServiceImpl implements IExcelService {
                 }
                 params.put("item", item);
                 Pestedespetitsruminants itemSum = pestedespetitsruminantsMapper
-                        .selectSumByReportCode(region.getRegionCode(), beginTime, endTime);
+                        .selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new Pestedespetitsruminants();
                 }
@@ -728,6 +742,12 @@ public class ExcelServiceImpl implements IExcelService {
             case "b_kingfisher": {
                 //                params=this.getReportSummaryHtmlUtil(Kingfisher.class,reportIds,"kfReportid",kingfisherMapper,"kf_regionCode");
                 List<Kingfisher> items = kingfisherMapper.selectAllByDate(endTime, endTime);
+                params.put("items", items);
+                break;
+            }
+             case "b_kingfisher_new": {
+                //                params=this.getReportSummaryHtmlUtil(Kingfisher.class,reportIds,"kfReportid",kingfisherMapper,"kf_regionCode");
+                List<KingfisherNew> items = kingfisherNewMapper.selectAllByDate(endTime, endTime);
                 params.put("items", items);
                 break;
             }
@@ -1170,6 +1190,38 @@ public class ExcelServiceImpl implements IExcelService {
                     kingfisherMapper.insertSelective(item);
                 } else {
                     i = kingfisherMapper.updateByPrimaryKeySelective(item);
+                }
+                break;
+            }
+             case "b_kingfisher_new": {
+                KingfisherNew fill = (KingfisherNew) JSONObject.toBean(jsonObj, KingfisherNew.class);
+                 KingfisherNew arg = new KingfisherNew();
+                arg.setKfReportid(report.getReportId());
+                List<KingfisherNew> items = kingfisherNewMapper.select(arg);
+                 KingfisherNew item = new KingfisherNew();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setKfId(UUIDUtil.getUUID());
+                } else {
+                    fill.setKfId(item.getKfId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setKfReportid(report.getReportId());
+                item.setKfDate(report.getBeginTime());
+                item.setKfRegioncode(region.getRegionCode());
+                item.setKfRegionname(region.getRegionName());
+                int i;
+                if (insert) {
+                    kingfisherNewMapper.insertSelective(item);
+                } else {
+                    i = kingfisherNewMapper.updateByPrimaryKeySelective(item);
                 }
                 break;
             }

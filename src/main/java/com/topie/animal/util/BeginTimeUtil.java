@@ -102,7 +102,13 @@ public class BeginTimeUtil {
         Date beginTime1 = DateUtil.StringToDate(beginTimeStr, DateStyle.YYYY_MM_DD);
         return beginTime1;
     }
+    public static Date getMonthBeginTime(Date beginTime){
+        int year = DateUtil.getYear(beginTime);
 
+        String beginTimeStr = year + "-01"  + "-01";
+        beginTime = DateUtil.StringToDate(beginTimeStr, DateStyle.YYYY_MM_DD);
+        return beginTime;
+    }
     public static String getCurrentHalfYearBeginTimeStr(String beginTime) {
         int year = DateUtil.getYear(beginTime);
         int month = DateUtil.getMonth(beginTime) + 1;
