@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topie.database.core.template.dao.KingfisherNewMapper" >
+  <resultMap id="BaseResultMap" type="com.topie.database.core.template.model.KingfisherNew" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="kf_id" property="kfId" jdbcType="CHAR" />
+    <result column="kf_reportId" property="kfReportid" jdbcType="CHAR" />
+    <result column="kf_regionCode" property="kfRegioncode" jdbcType="VARCHAR" />
+    <result column="kf_regionName" property="kfRegionname" jdbcType="VARCHAR" />
+    <result column="kf_date" property="kfDate" jdbcType="TIMESTAMP" />
+    <result column="kf_yearYmpt" property="kfYearympt" jdbcType="DECIMAL" />
+    <result column="kf_yearFyfw" property="kfYearfyfw" jdbcType="DECIMAL" />
+    <result column="kf_yearOther" property="kfYearother" jdbcType="DECIMAL" />
+    <result column="kf_yearQzps" property="kfYearqzps" jdbcType="DECIMAL" />
+    <result column="kf_yearWhhcl" property="kfYearwhhcl" jdbcType="DECIMAL" />
+    <result column="kf_AllShengYmpt" property="kfAllshengympt" jdbcType="DECIMAL" />
+    <result column="kf_AllShengFyfw" property="kfAllshengfyfw" jdbcType="DECIMAL" />
+    <result column="kf_AllShengOther" property="kfAllshengother" jdbcType="DECIMAL" />
+    <result column="kf_AllShengQzps" property="kfAllshengqzps" jdbcType="DECIMAL" />
+    <result column="kf_AllShengWhhcl" property="kfAllshengwhhcl" jdbcType="DECIMAL" />
+    <result column="kf_ShengYmpt" property="kfShengympt" jdbcType="DECIMAL" />
+    <result column="kf_ShengFyfw" property="kfShengfyfw" jdbcType="DECIMAL" />
+    <result column="kf_ShengOther" property="kfShengother" jdbcType="DECIMAL" />
+    <result column="kf_ShengQzps" property="kfShengqzps" jdbcType="DECIMAL" />
+    <result column="kf_ShengWhhcl" property="kfShengwhhcl" jdbcType="DECIMAL" />
+  </resultMap>
+  <select id="selectAllByDate" resultMap="BaseResultMap">
+    select t1.Liv_regionCode as kf_regionCode ,t1.Liv_regionName as kf_regionName,t2.* from
+    (select Liv_regionCode,Liv_regionName   from animal_disease.b_wlivestockinout  GROUP  by  Liv_regionCode,Liv_regionName ) as t1
+    LEFT JOIN
+    ( select  * from animal_disease.B_Kingfisher_new
+    where  kf_date BETWEEN  #{beginTime} AND #{endTime}
+    ) as t2
+    on t1.Liv_regionCode=t2.kf_regionCode
+    ORDER  by t1.Liv_regionCode
+  </select>
+</mapper>
