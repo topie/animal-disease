@@ -43,7 +43,7 @@
             <if test="reIsOpen!=null">
                 and r.re_is_open = #{reIsOpen}
             </if>
-            <if test="orgId!=null and templateId!=''">
+            <if test="orgId!=null and orgId!=''">
                 and r.org_id = #{orgId}
             </if>
             <if test="templateId!=null and templateId!=''">

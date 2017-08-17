@@ -8,6 +8,8 @@ import com.topie.common.tools.excel.ExcelFileUtil;
 import com.topie.common.tools.tabletoxls.TableToXls;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
+import com.topie.common.utils.date.DateStyle;
+import com.topie.common.utils.date.DateUtil;
 import com.topie.database.core.animal.model.ReReport;
 import com.topie.database.core.animal.model.Report;
 import com.topie.database.core.animal.model.Template;
@@ -96,7 +98,12 @@ public class ExcelController {
         FileOutputStream fileOutputStream = new FileOutputStream(filePath);
         TableToXls.process(excelHtml, fileOutputStream);
         fileOutputStream.close();
-        ExcelFileUtil.download(response, filePath, (report != null ? report.getReportId() : "未命名") + ".xls");
+        String templateId = report.getTemplateId();
+        Template template = iTemplateService.selectByKey(templateId);
+        ExcelFileUtil.download(response, filePath, (template != null ?
+                template.getTemplateName() + "-" + report.getReportType() + "-" + DateUtil
+                        .DateToString(report.getBeginTime(), DateStyle.YYYY_MM_DD) :
+                "未命名") + ".xls");
     }
 
     @RequestMapping(value = "/summary", method = RequestMethod.GET)
@@ -120,7 +127,7 @@ public class ExcelController {
         TableToXls.process(excelHtml, fileOutputStream);
         fileOutputStream.close();
         Template template = iTemplateService.selectByKey(templateId);
-        ExcelFileUtil.download(response, filePath, template.getTableName() + "-汇总.xls");
+        ExcelFileUtil.download(response, filePath, template.getTemplateName() + "-汇总.xls");
     }
 
 }
