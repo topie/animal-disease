@@ -1,18 +1,20 @@
 package com.topie.animal.api;
 
+import com.topie.animal.constant.ReportTypeE;
 import com.topie.animal.service.IExcelService;
 import com.topie.animal.service.IReReportService;
 import com.topie.animal.service.IReportService;
 import com.topie.animal.service.ITemplateService;
+import com.topie.animal.util.PeriodUtil;
 import com.topie.common.tools.excel.ExcelFileUtil;
 import com.topie.common.tools.tabletoxls.TableToXls;
 import com.topie.common.utils.ResponseUtil;
 import com.topie.common.utils.Result;
-import com.topie.common.utils.date.DateStyle;
-import com.topie.common.utils.date.DateUtil;
+import com.topie.database.core.animal.dao.WeekConfigMapper;
 import com.topie.database.core.animal.model.ReReport;
 import com.topie.database.core.animal.model.Report;
 import com.topie.database.core.animal.model.Template;
+import com.topie.database.core.animal.model.WeekConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -44,6 +46,9 @@ public class ExcelController {
 
     @Autowired
     private IExcelService iExcelService;
+
+    @Autowired
+    private WeekConfigMapper weekConfigMapper;
 
     @Value("${temp.folder}")
     private String tempFolder;
@@ -98,12 +103,18 @@ public class ExcelController {
         FileOutputStream fileOutputStream = new FileOutputStream(filePath);
         TableToXls.process(excelHtml, fileOutputStream);
         fileOutputStream.close();
-        String templateId = report.getTemplateId();
-        Template template = iTemplateService.selectByKey(templateId);
-        ExcelFileUtil.download(response, filePath, (template != null ?
-                template.getTemplateName() + "-" + report.getReportType() + "-" + DateUtil
-                        .DateToString(report.getBeginTime(), DateStyle.YYYY_MM_DD) :
-                "未命名") + ".xls");
+        Template template = iTemplateService.selectByKey(report.getTemplateId());
+        Map<String, String> weekConfigMap = null;
+        if (report.getReportType() == ReportTypeE.WEEK.getCode().intValue()) {
+            weekConfigMap = new HashMap();
+            List<WeekConfig> weekConfigs = weekConfigMapper.selectAll();
+            for (WeekConfig weekConfig : weekConfigs) {
+                weekConfigMap.put(weekConfig.getYear() + "#" + weekConfig.getType(), weekConfig.getTime());
+            }
+        }
+        String period = PeriodUtil.build(report.getReportType(), report.getBeginTime(), weekConfigMap);
+        ExcelFileUtil.download(response, filePath,
+                (template != null ? (period + " " + template.getTemplateName()) : "未命名") + ".xls");
     }
 
     @RequestMapping(value = "/summary", method = RequestMethod.GET)
