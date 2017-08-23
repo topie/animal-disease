@@ -4,6 +4,7 @@ import com.topie.common.utils.PropertiesUtil;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +17,8 @@ public class ExcelFileUtil {
     public static void download(HttpServletResponse response, String filePath, String fileName) throws Exception {
         response.setCharacterEncoding("utf-8");
         response.setContentType("multipart/form-core");
-        response.setHeader("Content-Disposition",
-                "attachment;filename=" + new String(fileName.getBytes("gb2312"), "iso-8859-1"));
+        response.setHeader("Accept-Language", "zh-cn");
+        response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF8"));
         File file = new File(filePath);
         InputStream inputStream = new FileInputStream(file);
         OutputStream os = response.getOutputStream();
@@ -29,8 +30,8 @@ public class ExcelFileUtil {
         inputStream.close();
     }
 
-    public static <T> void reponseXls(HttpServletResponse response, String fileName,
-                                      String[] headers, List<T> list) throws Exception {
+    public static <T> void reponseXls(HttpServletResponse response, String fileName, String[] headers, List<T> list)
+            throws Exception {
         response.setCharacterEncoding("utf-8");
         response.setContentType("multipart/form-core");
         response.setHeader("Content-Disposition",
@@ -45,8 +46,8 @@ public class ExcelFileUtil {
         inputStream.close();
     }
 
-    public static <T> void reponseXlsx(HttpServletResponse response, String fileName,
-                                       String[] headers, List<T> list) throws Exception {
+    public static <T> void reponseXlsx(HttpServletResponse response, String fileName, String[] headers, List<T> list)
+            throws Exception {
         response.setCharacterEncoding("utf-8");
         response.setContentType("multipart/form-core");
         response.setHeader("Content-Disposition",
@@ -61,9 +62,8 @@ public class ExcelFileUtil {
         inputStream.close();
     }
 
-    public static <T> void reponseXlsx(HttpServletResponse response, String fileName,
-                                       List<String> sheetNames, List<String[]> headers, List<Collection<T>> list)
-            throws Exception {
+    public static <T> void reponseXlsx(HttpServletResponse response, String fileName, List<String> sheetNames,
+            List<String[]> headers, List<Collection<T>> list) throws Exception {
         response.setCharacterEncoding("utf-8");
         response.setContentType("multipart/form-core");
         response.setHeader("Content-Disposition",
@@ -78,9 +78,8 @@ public class ExcelFileUtil {
         inputStream.close();
     }
 
-    public static <T> void reponseXlsx(HttpServletResponse response, String fileName,
-                                       List<String> sheetNames, List<String[]> mapHeaders, List<String[]> headers,
-                                       List<Collection<T>> list) throws Exception {
+    public static <T> void reponseXlsx(HttpServletResponse response, String fileName, List<String> sheetNames,
+            List<String[]> mapHeaders, List<String[]> headers, List<Collection<T>> list) throws Exception {
         response.setCharacterEncoding("utf-8");
         response.setContentType("multipart/form-core");
         response.setHeader("Content-Disposition",
@@ -95,8 +94,8 @@ public class ExcelFileUtil {
         inputStream.close();
     }
 
-    public static <T> void reponseXlsx(HttpServletResponse response, String fileName,
-                                       String[] headers, String[] mapHeaders, List<T> list) throws Exception {
+    public static <T> void reponseXlsx(HttpServletResponse response, String fileName, String[] headers,
+            String[] mapHeaders, List<T> list) throws Exception {
         response.setCharacterEncoding("utf-8");
         response.setContentType("multipart/form-core");
         response.setHeader("Content-Disposition",
@@ -111,8 +110,7 @@ public class ExcelFileUtil {
         inputStream.close();
     }
 
-    public static InputStream getXlsInputStream(String[] headers, List<Map> list)
-            throws IOException {
+    public static InputStream getXlsInputStream(String[] headers, List<Map> list) throws IOException {
         File file = createTempFile();
         if (!file.exists()) {
             try {
@@ -136,8 +134,7 @@ public class ExcelFileUtil {
         }
     }
 
-    public static <T> InputStream getXlsxInputStreamByBean(String[] headers, List<T> list)
-            throws IOException {
+    public static <T> InputStream getXlsxInputStreamByBean(String[] headers, List<T> list) throws IOException {
         File file = createTempFile();
         if (!file.exists()) {
             try {
@@ -186,8 +183,8 @@ public class ExcelFileUtil {
         }
     }
 
-    public static <T> InputStream getXlsxInputStreamByBean(List<String> sheetNames,
-                                                           List<String[]> headers, List<Collection<T>> list) throws IOException {
+    public static <T> InputStream getXlsxInputStreamByBean(List<String> sheetNames, List<String[]> headers,
+            List<Collection<T>> list) throws IOException {
         File file = createTempFile();
         if (!file.exists()) {
             try {
@@ -211,9 +208,8 @@ public class ExcelFileUtil {
         }
     }
 
-    public static <T> InputStream getXlsxInputStreamByBean(List<String> sheetNames,
-                                                           List<String[]> mapHeaders, List<String[]> headers, List<Collection<T>> list)
-            throws IOException {
+    public static <T> InputStream getXlsxInputStreamByBean(List<String> sheetNames, List<String[]> mapHeaders,
+            List<String[]> headers, List<Collection<T>> list) throws IOException {
         File file = createTempFile();
         if (!file.exists()) {
             try {
@@ -237,8 +233,8 @@ public class ExcelFileUtil {
         }
     }
 
-    public static <T> InputStream getXlsxInputStreamByBean(String[] headers, String[] mapHeaders,
-                                                           List<T> list) throws IOException {
+    public static <T> InputStream getXlsxInputStreamByBean(String[] headers, String[] mapHeaders, List<T> list)
+            throws IOException {
         File file = createTempFile();
         if (!file.exists()) {
             try {
@@ -262,8 +258,7 @@ public class ExcelFileUtil {
         }
     }
 
-    public static <T> InputStream getXlsInputStreamByBean(String[] headers, List<T> list)
-            throws IOException {
+    public static <T> InputStream getXlsInputStreamByBean(String[] headers, List<T> list) throws IOException {
         File file = createTempFile();
         if (!file.exists()) {
             try {
@@ -289,8 +284,7 @@ public class ExcelFileUtil {
 
     private static File createTempFile() throws IOException {
         File temp = new File(
-                PropertiesUtil.get("/config/properties/project", "temp.folder") + System
-                        .currentTimeMillis());
+                PropertiesUtil.get("/config/properties/project", "temp.folder") + System.currentTimeMillis());
         return temp;
     }
 
