@@ -91,15 +91,16 @@ public class ReReportController {
                         return ResponseUtil.error("填报不存在无法补填报！");
                     }
                     List<ReReport> reReportList = iReReportService.selectByReport(report);
-                    if (reReportList.size() > 0) {
-                        reReport = reReportList.get(0);
-                    } else {
-                        reReport.setId(UUIDUtil.getUUID());
-                    }
                     report.setStatus(0);
                     iReportService.updateNotNull(report);
                     reReport.setReIsOpen(1);
-                    result += iReReportService.saveNotNull(reReport);
+                    if (reReportList.size() > 0) {
+                        reReport = reReportList.get(0);
+                        result += iReReportService.updateNotNull(reReport);
+                    } else {
+                        reReport.setId(UUIDUtil.getUUID());
+                        result += iReReportService.saveNotNull(reReport);
+                    }
                 }
             }
         } else {
