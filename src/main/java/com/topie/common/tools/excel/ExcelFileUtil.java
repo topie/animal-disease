@@ -2,6 +2,7 @@ package com.topie.common.tools.excel;
 
 import com.topie.common.utils.PropertiesUtil;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
@@ -17,8 +18,8 @@ public class ExcelFileUtil {
     public static void download(HttpServletResponse response, String filePath, String fileName) throws Exception {
         response.setCharacterEncoding("utf-8");
         response.setContentType("multipart/form-core");
-        response.setHeader("Accept-Language", "zh-cn");
-        response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF8"));
+        response.setHeader("Content-Disposition",
+                "attachment;filename=" + new String(fileName.getBytes("gbk"), "iso-8859-1"));
         File file = new File(filePath);
         InputStream inputStream = new FileInputStream(file);
         OutputStream os = response.getOutputStream();
@@ -28,6 +29,32 @@ public class ExcelFileUtil {
             os.write(b, 0, length);
         }
         inputStream.close();
+    }
+
+    public static void download(HttpServletRequest request, HttpServletResponse response, String filePath,
+            String fileName) throws IOException {
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("multipart/form-core");
+        response.setHeader("Content-Disposition", "attachment;filename=" + encodingFileName(request, fileName));
+        File file = new File(filePath);
+        InputStream inputStream = new FileInputStream(file);
+        OutputStream os = response.getOutputStream();
+        byte[] b = new byte[1024];
+        int length;
+        while ((length = inputStream.read(b)) > 0) {
+            os.write(b, 0, length);
+        }
+        inputStream.close();
+    }
+
+    private static String encodingFileName(HttpServletRequest request, String fileName)
+            throws UnsupportedEncodingException {
+        if (request.getHeader("User-Agent").toUpperCase().indexOf("MSIE") > 0) {
+            fileName = URLEncoder.encode(fileName, "UTF-8");
+        } else {
+            fileName = new String(fileName.getBytes("gbk"), "iso-8859-1");
+        }
+        return fileName;
     }
 
     public static <T> void reponseXls(HttpServletResponse response, String fileName, String[] headers, List<T> list)

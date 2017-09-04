@@ -138,7 +138,7 @@ public class ExcelController {
         TableToXls.process(excelHtml, fileOutputStream);
         fileOutputStream.close();
         Template template = iTemplateService.selectByKey(templateId);
-        ExcelFileUtil.download(response, filePath, template.getTemplateName() + "-汇总.xls");
+        ExcelFileUtil.download(response, filePath, template.getTemplateName() + "汇总.xls");
     }
 
 }
