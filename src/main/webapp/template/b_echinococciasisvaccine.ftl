@@ -141,10 +141,10 @@
     <tr class="r3">
         <td class="c2">使用数量</td>
         <td class="c2">目前库存数量</td>
-        <td class="c2">上半年使用数量</td>
+        <td class="c2">全年使用数量</td>
         <td class="c4" colspan="2">使用数量</td>
         <td class="c4" colspan="2">目前库存数量</td>
-        <td class="c4" colspan="2">上半年使用数量</td>
+        <td class="c4" colspan="2">全年使用数量</td>
         <td class="c7" rowspan="2">驱虫犬只数量（万只）</td>
     </tr>
     <tr class="r3">

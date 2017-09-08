@@ -55,9 +55,9 @@
         <td class="c2" colspan="14">${user.leaderName}</td>
     </tr>
     <tr class="r4">
-        <td class="c2" colspan="5">全省上半年落实动物疫病防控经费（万元）</td>
-        <td class="c2" colspan="5">全省春防落实动物疫病防控经费（万元）</td>
-        <td class="c2" colspan="5">省本级春防落实动物疫病防控经费（万元）</td>
+        <td class="c2" colspan="5">全省全年落实动物疫病防控经费（万元）</td>
+        <td class="c2" colspan="5">全省秋防落实动物疫病防控经费（万元）</td>
+        <td class="c2" colspan="5">省本级秋防落实动物疫病防控经费（万元）</td>
     </tr>
     <tr class="r5">
         <td class="c2" colspan="3">强制免疫补助经费</td>
@@ -99,7 +99,7 @@
         <td role="data" n="kfShengwhhcl"   class="c2"><#if item.kfShengwhhcl??>${item.kfShengwhhcl}</#if></td>
     </tr>
     <tr class="r3">
-        <td class="c3" colspan="15">备注：全省上半年落实动物疫病防控经费指的是省级、市级、县级上半年配套经费，全省春防落实动物疫病防控经费指的省级、市级、县级春防配套经费，省本级春防落实动物疫病防控经费指的是省级春防配套经费。</td>
+        <td class="c3" colspan="15">备注：全省全年落实动物疫病防控经费指的是省级、市级、县级全年配套经费，全省秋防落实动物疫病防控经费指的省级、市级、县级秋防配套经费，省本级秋防落实动物疫病防控经费指的是省级秋防配套经费。</td>
     </tr>
     </tbody>
 </table>

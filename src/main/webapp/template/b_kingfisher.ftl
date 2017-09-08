@@ -131,7 +131,7 @@
 				<td class="c3" colspan="18">${user.leaderName}</td>
 			</tr>
 			<tr class="r4">
-				<td class="c2" colspan="11">全省上半年落实动物疫病防控经费（万元）</td>
+				<td class="c2" colspan="11">全省全年落实动物疫病防控经费（万元）</td>
 				<td class="c2" colspan="4">全省春秋防落实动物疫病防控经费（万元）</td>
 				<td class="c2" colspan="4">省本级春秋防落实动物疫病防控经费（万元）</td>
 			</tr>

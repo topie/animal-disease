@@ -119,7 +119,7 @@
     <tr class="r5">
         <td class="c2" colspan="3">使用数量</td>
         <td class="c2" colspan="3">目前库存数量</td>
-        <td class="c2" colspan="3">半年使用数量</td>
+        <td class="c2" colspan="3">全年使用数量</td>
     </tr>
     <tr class="r6">
         <td class="c2">布氏菌病活疫苗(S2株)（万头份）</td>
