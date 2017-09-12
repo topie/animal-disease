@@ -302,7 +302,7 @@
 				<td class="c3" colspan="21">2.使用的疫苗种类与其使用数量、免疫动物数量相对应；</td>
 			</tr>
 			<tr class="r5">
-				<td class="c3" colspan="21">3.&ldquo;高致病性禽流感灭活疫苗&rdquo;,&rdquo;重组禽流感病毒（H5+H7）二价灭活疫苗&rdquo;使用数量按毫升统计，&ldquo;禽流感-新城疫重组二联活疫苗&rdquo;使用数量按羽份统计。</td>
+				<td class="c3" colspan="21">3.&ldquo;高致病性禽流感灭活疫苗&rdquo;、&rdquo;重组禽流感病毒（H5+H7）二价灭活疫苗&rdquo;使用数量按毫升统计，&ldquo;禽流感-新城疫重组二联活疫苗&rdquo;使用数量按羽份统计。</td>
 			</tr>
 		</tbody>
 	</table>
