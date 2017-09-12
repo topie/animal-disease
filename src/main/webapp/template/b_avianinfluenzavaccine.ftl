@@ -44,32 +44,36 @@
         <col width="66">
         <col width="65">
         <col width="68">
+        <col width="66">
+        <col width="65">
+        <col width="68">
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="24">${templateName}统计表</td>
+        <td class="c1" colspan="27">${templateName}统计表</td>
     </tr>
     <tr class="r2">
-        <td class="c2">单    位:</td><td class="c3" colspan="23">${item.avRegionname}</td>
+        <td class="c2">单    位:</td><td class="c3" colspan="26">${item.avRegionname}</td>
     </tr>
     <tr class="r2">
-        <td class="c2">填表日期:</td><td class="c3" colspan="23"><#if item.avDate??>${item.avDate?string("yyyy-MM-dd")}</#if></td>
+        <td class="c2">填表日期:</td><td class="c3" colspan="26"><#if item.avDate??>${item.avDate?string("yyyy-MM-dd")}</#if></td>
     </tr>
     <tr class="r3">
-        <td class="c2">填 表 人:</td><td class="c3" colspan="23">${user.realName}</td>
+        <td class="c2">填 表 人:</td><td class="c3" colspan="26">${user.realName}</td>
     </tr>
     <tr class="r2">
-        <td class="c2">主管领导：</td><td class="c3" colspan="23">${user.leaderName}</td>
+        <td class="c2">主管领导：</td><td class="c3" colspan="26">${user.leaderName}</td>
     </tr>
     <tr class="r4">
-        <td class="c2" colspan="24">禽流感疫苗</td>
+        <td class="c2" colspan="27">禽流感疫苗</td>
     </tr>
     <tr class="r5">
-        <td class="c2" colspan="8">使用数量</td>
-        <td class="c2" colspan="8">目前库存数量</td>
-        <td class="c2" colspan="8">全年使用数量</td>
+        <td class="c2" colspan="9">使用数量</td>
+        <td class="c2" colspan="9">目前库存数量</td>
+        <td class="c2" colspan="9">全年使用数量</td>
     </tr>
     <tr class="r6">
+        <td class="c2">重组禽流感病毒（H5+H7）二价灭活疫苗（H5N1 Re-8株+H7N9 H7-Re-1株）（万毫升）</td>
         <td class="c2">H5-H9二价灭活疫苗（万毫升）</td>
         <td class="c2">重组禽流感灭活疫苗（H5N1,Re-6株）（万毫升）</td>
         <td class="c2">重组禽流感灭活疫苗（H5N1,Re-7株）（万毫升）</td>
@@ -78,6 +82,7 @@
         <td class="c2">重组禽流感病毒H5亚型三价灭活疫苗（H5N1,Re-6+Re-7株+Re-8株）（万毫升）</td>
         <td class="c2">禽流感灭活疫苗（H5N2亚型，D7株）（万毫升）</td>
         <td class="c2">禽流感-新城疫重组二联活疫苗（rL-H5-6株）（万羽份）</td>
+        <td class="c2">重组禽流感病毒（H5+H7）二价灭活疫苗（H5N1 Re-8株+H7N9 H7-Re-1株）（万毫升）</td>
         <td class="c2">H5-H9二价灭活疫苗（万毫升）</td>
         <td class="c2">重组禽流感灭活疫苗（H5N1,Re-6株）（万毫升）</td>
         <td class="c2">重组禽流感灭活疫苗（H5N1,Re-7株）（万毫升）</td>
@@ -86,6 +91,7 @@
         <td class="c2">重组禽流感病毒H5亚型三价灭活疫苗（H5N1,Re-6+Re-7株+Re-8株）（万毫升）</td>
         <td class="c2">禽流感灭活疫苗（H5N2亚型，D7株）（万毫升）</td>
         <td class="c2">禽流感-新城疫重组二联活疫苗（rL-H5-6株）（万羽份）</td>
+        <td class="c2">重组禽流感病毒（H5+H7）二价灭活疫苗（H5N1 Re-8株+H7N9 H7-Re-1株）（万毫升）</td>
         <td class="c2">H5-H9二价灭活疫苗（万毫升）</td>
         <td class="c2">重组禽流感灭活疫苗（H5N1,Re-6株）（万毫升）</td>
         <td class="c2">重组禽流感灭活疫苗（H5N1,Re-7株）（万毫升）</td>
@@ -96,6 +102,7 @@
         <td class="c2">禽流感-新城疫重组二联活疫苗（rL-H5-6株）（万羽份）</td>
     </tr>
     <tr class="r7">
+        <td role="data" n="avH5H7UseCount" class="c2"><#if item.avH5H7UseCount??>${item.avH5H7UseCount}</#if></td>
         <td role="data" n="avH5h9usecount" class="c2"><#if item.avH5h9usecount??>${item.avH5h9usecount}</#if></td>
         <td role="data" n="avH5n1re6usecount" class="c2"><#if item.avH5n1re6usecount??>${item.avH5n1re6usecount}</#if></td>
         <td role="data" n="avH5n1re7usecount" class="c2"><#if item.avH5n1re7usecount??>${item.avH5n1re7usecount}</#if></td>
@@ -104,6 +111,7 @@
         <td role="data" n="avRe6re7re8usecount" class="c2"><#if item.avRe6re7re8usecount??>${item.avRe6re7re8usecount}</#if></td>
         <td role="data" n="avH5n2d7usecount" class="c2"><#if item.avH5n2d7usecount??>${item.avH5n2d7usecount}</#if></td>
         <td role="data" n="avRhrh5usecount" class="c2"><#if item.avRhrh5usecount??>${item.avRhrh5usecount}</#if></td>
+        <td role="data" n="avH5H7StoreCount" class="c2"><#if item.avH5H7StoreCount??>${item.avH5H7StoreCount}</#if></td>
         <td role="data" n="avH5h9storecount" class="c2"><#if item.avH5h9storecount??>${item.avH5h9storecount}</#if></td>
         <td role="data" n="avH5n1re6storecount" class="c2"><#if item.avH5n1re6storecount??>${item.avH5n1re6storecount}</#if></td>
         <td role="data" n="avH5n1re7storecount" class="c2"><#if item.avH5n1re7storecount??>${item.avH5n1re7storecount}</#if></td>
@@ -112,6 +120,7 @@
         <td role="data" n="avRe6re7re8storecount" class="c2"><#if item.avRe6re7re8storecount??>${item.avRe6re7re8storecount}</#if></td>
         <td role="data" n="avH5n2d7storecount" class="c2"><#if item.avH5n2d7storecount??>${item.avH5n2d7storecount}</#if></td>
         <td role="data" n="avRhrh5storecount" class="c2"><#if item.avRhrh5storecount??>${item.avRhrh5storecount}</#if></td>
+        <td role="data" n="avH5H7YearCount" class="c2"><#if item.avH5H7YearCount??>${item.avH5H7YearCount}</#if></td>
         <td role="data" n="avH5h9yearcount" class="c2"><#if item.avH5h9yearcount??>${item.avH5h9yearcount}</#if></td>
         <td role="data" n="avH5n1re6yearcount" class="c2"><#if item.avH5n1re6yearcount??>${item.avH5n1re6yearcount}</#if></td>
         <td role="data" n="avH5n1re7yearcount" class="c2"><#if item.avH5n1re7yearcount??>${item.avH5n1re7yearcount}</#if></td>

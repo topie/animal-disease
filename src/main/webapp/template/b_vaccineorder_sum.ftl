@@ -132,7 +132,7 @@
 			<tr class="r2">
 				<td class="c2">&nbsp;</td>
 				<td class="c2" colspan="10">口蹄疫</td>
-				<td class="c2" colspan="16">禽流感</td>
+				<td class="c2" colspan="18">禽流感</td>
 				<td class="c2" colspan="4">高致病性猪蓝耳病疫苗</td>
 				<td class="c2" colspan="4">猪瘟疫苗</td>
 				<td class="c2" colspan="4">新城疫疫苗</td>
@@ -158,6 +158,7 @@
                 <td class="c2" colspan="2">禽流感灭活疫苗（H5N2亚型，D7株）</td>
 
 				<td class="c2" colspan="2">H5-H9二价灭活疫苗（万毫升）</td>
+                <td class="c2" colspan="2">重组禽流感病毒（H5+H7）二价灭活疫苗（H5N1 Re-8株+H7N9 H7-Re-1株）（万毫升）</td>
 				<td class="c2" colspan="2">高致病性猪蓝耳病灭活疫苗(万毫升)</td>
 				<td class="c2" colspan="2">高致病性猪蓝耳病活疫苗(万头份)</td>
 				<td class="c2" colspan="2">猪瘟活疫苗(万头份)</td>
@@ -172,6 +173,8 @@
                 <td class="c2" colspan="2">羊棘球蚴（包虫）病基因工程亚单位疫苗</td>
 			</tr>
 			<tr class="r4">
+                <td class="c3">到货</td>
+                <td class="c3">下拨</td>
                 <td class="c3">到货</td>
                 <td class="c3">下拨</td>
                 <td class="c3">到货</td>
@@ -241,6 +244,8 @@
 			<#assign evAih5n1re6re8xSum=0>
 			<#assign evAih5h9dhSum=0>
 			<#assign evAih5h9xSum=0>
+			<#assign evAIH5H7DHSum=0>
+			<#assign evAIH5H7XSum=0>
 			<#assign evBedhSum=0>
 			<#assign evBexSum=0>
 			<#assign evBeinactivateddhSum=0>
@@ -294,6 +299,10 @@
 
 				<#assign evAih5h9dhSum=evAih5h9dhSum?default(0) +item.evAih5h9dh?default(0)>
 				<#assign evAih5h9xSum=evAih5h9xSum?default(0) +item.evAih5h9x?default(0)>
+
+				<#assign evAIH5H7DHSum=evAIH5H7DHSum?default(0) +item.evAIH5H7DH?default(0)>
+				<#assign evAIH5H7XSum=evAIH5H7XSum?default(0) +item.evAIH5H7X?default(0)>
+
 				<#assign evBedhSum=evBedhSum?default(0) +item.evBedh?default(0)>
 				<#assign evBexSum=evBexSum?default(0) +item.evBex?default(0)>
 				<#assign evBeinactivateddhSum=evBeinactivateddhSum?default(0) +item.evBeinactivateddh?default(0)>
@@ -358,6 +367,9 @@
 				<td n="evAih5h9dh"  class="c2"><#if item.evAih5h9dh??>${item.evAih5h9dh}</#if></td>
 				<td n="evAih5h9x"  class="c2"><#if item.evAih5h9x??>${item.evAih5h9x}</#if></td>
 
+                <td n="evAIH5H7DH"  class="c2"><#if item.evAIH5H7DH??>${item.evAIH5H7DH}</#if></td>
+                <td n="evAIH5H7X"  class="c2"><#if item.evAIH5H7X??>${item.evAIH5H7X}</#if></td>
+
 				<td n="evBedh"  class="c2"><#if item.evBedh??>${item.evBedh}</#if></td>
 				<td n="evBex"  class="c2"><#if item.evBex??>${item.evBex}</#if></td>
 				<td n="evBeinactivateddh"  class="c2"><#if item.evBeinactivateddh??>${item.evBeinactivateddh}</#if></td>
@@ -413,6 +425,11 @@
 
                 <td n="evAih5h9dhSum" class="c2"><#if evAih5h9dhSum??>${evAih5h9dhSum}</#if></td>
                 <td n="evAih5h9xSum" class="c2"><#if evAih5h9xSum??>${evAih5h9xSum}</#if></td>
+
+
+                <td n="evAIH5H7DHSum" class="c2"><#if evAIH5H7DHSum??>${evAIH5H7DHSum}</#if></td>
+                <td n="evAIH5H7XSum" class="c2"><#if evAIH5H7XSum??>${evAIH5H7XSum}</#if></td>
+
                 <td n="evBedhSum" class="c2"><#if evBedhSum??>${evBedhSum}</#if></td>
                 <td n="evBexSum" class="c2"><#if evBexSum??>${evBexSum}</#if></td>
                 <td n="evBeinactivateddhSum" class="c2"><#if evBeinactivateddhSum??>${evBeinactivateddhSum}</#if></td>

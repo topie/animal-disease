@@ -13,6 +13,7 @@ import com.topie.database.core.animal.dao.WeekConfigMapper;
 import com.topie.database.core.animal.model.*;
 import com.topie.database.core.template.dao.*;
 import com.topie.database.core.template.model.*;
+import com.topie.system.service.ILogService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -147,6 +148,9 @@ public class ExcelServiceImpl implements IExcelService {
 
     @Autowired
     private WechinococciasisMapper wechinococciasisMapper;
+
+    @Autowired
+    private ILogService iLogService;
 
     private Wlivestockinout getWlivestockinout(Region region, Date date) {
         Date beginTime = BeginTimeUtil.getCurrentHalfYearBeginTime(date);
@@ -662,6 +666,7 @@ public class ExcelServiceImpl implements IExcelService {
         }
 
         String templatePath = request.getSession().getServletContext().getRealPath("/template");
+        iLogService.insertLog("打开报表");
         return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getNormalTemplate(), params);
     }
 
@@ -961,7 +966,7 @@ public class ExcelServiceImpl implements IExcelService {
         List<Wlivestockinout> wlivestockinouts = this.wlivestockinoutMapper
                 .selectLivestockInOutByDate(halfYearbeginTime);
         params.put("wlivestockinouts", wlivestockinouts);
-
+        iLogService.insertLog("查询汇总报表");
         return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getSummaryTemplate(), params);
     }
 
@@ -1002,6 +1007,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     avianinfluenzaMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存禽流感月报");
                 break;
             }
             case "b_emergencyvaccine": {
@@ -1033,6 +1039,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     emergencyvaccineMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存疫苗储备情况报表");
                 break;
             }
             case "b_smallruminantsvaccine": {
@@ -1065,9 +1072,11 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     smallruminantsvaccineMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存小反刍兽疫春秋防汇总报表");
                 break;
             }
             case "b_poultrydensity": {
+
                 Poultrydensity fill = (Poultrydensity) JSONObject.toBean(jsonObj, Poultrydensity.class);
                 Poultrydensity arg = new Poultrydensity();
                 arg.setPdReportid(report.getReportId());
@@ -1096,6 +1105,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     poultrydensityMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存家禽免疫密度统计表");
                 break;
             }
             case "b_newcastlevaccine": {
@@ -1127,6 +1137,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     newcastlevaccineMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存新城疫疫苗使用统计表");
                 break;
             }
             case "b_livestockdensity": {
@@ -1159,6 +1170,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     livestockdensityMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存牲畜免疫密度统计表");
                 break;
             }
             case "b_kingfisher": {
@@ -1191,6 +1203,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     i = kingfisherMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存经费统计表");
                 break;
             }
              case "b_kingfisher_new": {
@@ -1223,9 +1236,10 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     i = kingfisherNewMapper.updateByPrimaryKeySelective(item);
                 }
+                 iLogService.insertLog("保存经费统计表-新");
                 break;
             }
-            case "b_classicalswinefevervaccine": {
+                case "b_classicalswinefevervaccine": {
                 Classicalswinefevervaccine fill = (Classicalswinefevervaccine) JSONObject
                         .toBean(jsonObj, Classicalswinefevervaccine.class);
                 Classicalswinefevervaccine arg = new Classicalswinefevervaccine();
@@ -1255,6 +1269,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     classicalswinefevervaccineMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存猪瘟疫苗使用统计表");
                 break;
             }
             case "b_footandmouthvaccine": {
@@ -1286,6 +1301,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     footandmouthvaccineMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存口蹄疫疫苗使用统计表");
                 break;
             }
             case "b_bluevaccine": {
@@ -1317,6 +1333,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     bluevaccineMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存高致病性猪蓝耳病疫苗使用统计表");
                 break;
             }
             case "b_echinococciasisvaccine": {
@@ -1348,6 +1365,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     echinococciasisVaccineMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存包虫病疫苗使用统计表");
                 break;
             }
             case "b_brucellosisvaccine": {
@@ -1379,6 +1397,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     brucellosisVaccineMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存布鲁氏菌病疫苗使用统计表");
                 break;
             }
             case "b_avianinfluenzavaccine": {
@@ -1411,6 +1430,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     avianinfluenzavaccineMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存禽流感疫苗使用统计表");
                 break;
             }
             case "b_wpestedespetitsruminants": {
@@ -1443,6 +1463,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     wpestedespetitsruminantsMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存小反刍兽疫疫苗使用和免疫情况周报表");
                 break;
             }
             case "b_wavianinfluenza": {
@@ -1474,6 +1495,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     wavianinfluenzaMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存禽流感疫苗使用和免疫情况周报表");
                 break;
             }
             case "b_wnewcastle": {
@@ -1505,6 +1527,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     wnewcastleMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存新城疫疫苗使用和免疫情况周报表");
                 break;
             }
             case "b_wclassicalswinefever": {
@@ -1537,6 +1560,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     wclassicalswinefeverMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存猪瘟疫苗使用和免疫情况周报表");
                 break;
             }
             case "b_wblueeardisease": {
@@ -1568,6 +1592,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     wblueeardiseaseMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存高致病性猪蓝耳病疫苗使用和免疫情况周报表");
                 break;
             }
            case "b_wechinococciasis": {
@@ -1599,6 +1624,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     wechinococciasisMapper.updateByPrimaryKeySelective(item);
                 }
+               iLogService.insertLog("保存包虫病疫苗使用和免疫情况周报表");
                 break;
             }
             case "b_wbrucellosis": {
@@ -1630,6 +1656,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     wbrucellosisMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存鲁氏菌病疫苗使用和免疫情况周报表");
                 break;
             }
             case "b_vaccineorder": {
@@ -1661,6 +1688,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     vaccineorderMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存疫苗到货、下拨月报表");
                 break;
             }
             case "b_blueeardisease": {
@@ -1692,6 +1720,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     blueeardiseaseMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存高致病性猪蓝耳病免疫情况月报表");
                 break;
             }
             case "b_echinococciasisdisease": {
@@ -1723,6 +1752,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     echinococciasisDiseaseMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存包虫病免疫情况月报表");
                 break;
             }
             case "b_brucellosisdisease": {
@@ -1754,6 +1784,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     brucellosisDiseaseMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存布鲁氏菌病免疫情况月报表");
                 break;
             }
             case "b_classicalswinefever": {
@@ -1785,6 +1816,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     classicalswinefeverMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存猪瘟免疫情况月报表");
                 break;
             }
             case "b_footandmouthdisease": {
@@ -1816,6 +1848,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     footandmouthdiseaseMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存口蹄疫免疫情况月报表");
                 break;
             }
             case "b_newcastle": {
@@ -1847,6 +1880,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     newcastleMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存新城疫免疫情况月报表");
                 break;
             }
             case "b_pestedespetitsruminants": {
@@ -1879,6 +1913,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     pestedespetitsruminantsMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存小反刍兽疫免疫情况月报表");
                 break;
             }
             case "b_livestockinout": {
@@ -1902,6 +1937,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     liveStockInOutMapper.updateByPrimaryKeySelective(liveStockInOut);
                 }
+                iLogService.insertLog("保存畜禽存栏和应免数量月报表");
                 break;
             }
             case "b_disinfectiondrugs": {
@@ -1933,6 +1969,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     disinfectiondrugsMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存消毒药品储备情况表");
                 break;
             }
             case "b_wfootandmouthdisease": {
@@ -1965,6 +2002,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     wfootandmouthdiseaseMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存牲畜口蹄疫疫苗使用和免疫情况周报表");
                 break;
             }
             case "b_wlivestockinout": {
@@ -1996,6 +2034,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     wlivestockinoutMapper.updateByPrimaryKeySelective(item);
                 }
+                iLogService.insertLog("保存畜禽存栏和应免数量统计表");
                 break;
             }
             default:

@@ -77,6 +77,62 @@ public class Wavianinfluenza {
     @Column(name = "ai_jointVaccine")
     private BigDecimal aiJointvaccine;
 
+
+    @Column(name = "ai_H5H7Vaccine")
+    private BigDecimal aiH5H7Vaccine;
+
+    @Column(name = "ai_H5H7ImmuneAmountChicken")
+    private BigDecimal aiH5H7ImmuneAmountChicken;
+
+    @Column(name = "ai_H5H7ImmuneAmountDuck")
+    private BigDecimal aiH5H7ImmuneAmountDuck;
+
+    @Column(name = "ai_H5H7ImmuneAmountGoose")
+    private BigDecimal aiH5H7ImmuneAmountGoose;
+
+    @Column(name = "ai_H5H7ImmuneAmountOther")
+    private BigDecimal aiH5H7ImmuneAmountOther;
+
+    public void setAiH5H7Vaccine(BigDecimal aiH5H7Vaccine) {
+        this.aiH5H7Vaccine = aiH5H7Vaccine;
+    }
+
+    public void setAiH5H7ImmuneAmountChicken(BigDecimal aiH5H7ImmuneAmountChicken) {
+        this.aiH5H7ImmuneAmountChicken = aiH5H7ImmuneAmountChicken;
+    }
+
+    public void setAiH5H7ImmuneAmountDuck(BigDecimal aiH5H7ImmuneAmountDuck) {
+        this.aiH5H7ImmuneAmountDuck = aiH5H7ImmuneAmountDuck;
+    }
+
+    public void setAiH5H7ImmuneAmountGoose(BigDecimal aiH5H7ImmuneAmountGoose) {
+        this.aiH5H7ImmuneAmountGoose = aiH5H7ImmuneAmountGoose;
+    }
+
+    public BigDecimal getAiH5H7ImmuneAmountOther() {
+        return aiH5H7ImmuneAmountOther;
+    }
+
+    public BigDecimal getAiH5H7Vaccine() {
+        return aiH5H7Vaccine;
+    }
+
+    public BigDecimal getAiH5H7ImmuneAmountChicken() {
+        return aiH5H7ImmuneAmountChicken;
+    }
+
+    public BigDecimal getAiH5H7ImmuneAmountDuck() {
+        return aiH5H7ImmuneAmountDuck;
+    }
+
+    public BigDecimal getAiH5H7ImmuneAmountGoose() {
+        return aiH5H7ImmuneAmountGoose;
+    }
+
+    public void setAiH5H7ImmuneAmountOther(BigDecimal aiH5H7ImmuneAmountOther) {
+        this.aiH5H7ImmuneAmountOther = aiH5H7ImmuneAmountOther;
+    }
+
     /**
      * @return ai_id
      */

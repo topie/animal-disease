@@ -199,6 +199,25 @@
                 <input id="aiJointimmuneamountgoose" type="hidden" value="${itemSum.aiJointimmuneamountgoose?default(0)-item.aiJointimmuneamountgoose?default(0)}"/>
                 <input id="aiJointimmuneamountother" type="hidden" value="${itemSum.aiJointimmuneamountother?default(0)-item.aiJointimmuneamountother?default(0)}"/>
 			</tr>
+            <tr class="r2">
+                <td class="c3">重组禽流感病毒（H5+H7）二价灭活疫苗</td>
+                <td role="data" n="aiH5H7Vaccine"   class="c3"><#if item.aiH5H7Vaccine??>${item.aiH5H7Vaccine}</#if></td>
+                <td role="lj_aiH5H7Vaccine" class="c7"><#if itemSum.aiH5H7Vaccine??>${itemSum.aiH5H7Vaccine}</#if></td>
+                <td role="data" n="aiH5H7ImmuneAmountChicken"   class="c3"><#if item.aiH5H7ImmuneAmountChicken??>${item.aiH5H7ImmuneAmountChicken}</#if></td>
+                <td role="data" n="aiH5H7ImmuneAmountDuck"   class="c3"><#if item.aiH5H7ImmuneAmountDuck??>${item.aiH5H7ImmuneAmountDuck}</#if></td>
+                <td role="data" n="aiH5H7ImmuneAmountGoose"   class="c3"><#if item.aiH5H7ImmuneAmountGoose??>${item.aiH5H7ImmuneAmountGoose}</#if></td>
+                <td role="data" n="aiH5H7ImmuneAmountOther"   class="c3"><#if item.aiH5H7ImmuneAmountOther??>${item.aiH5H7ImmuneAmountOther}</#if></td>
+                <td role="lj_aiH5H7ImmuneAmountChicken" class="c7"><#if itemSum.aiH5H7ImmuneAmountChicken??>${itemSum.aiH5H7ImmuneAmountChicken}</#if></td>
+                <td role="lj_aiH5H7ImmuneAmountDuck" class="c7"><#if itemSum.aiH5H7ImmuneAmountDuck??>${itemSum.aiH5H7ImmuneAmountDuck}</#if></td>
+                <td role="lj_aiH5H7ImmuneAmountGoose" class="c7"><#if itemSum.aiH5H7ImmuneAmountGoose??>${itemSum.aiH5H7ImmuneAmountGoose}</#if></td>
+                <td role="lj_aiH5H7ImmuneAmountOther" class="c7"><#if itemSum.aiH5H7ImmuneAmountOther??>${itemSum.aiH5H7ImmuneAmountOther}</#if></td>
+
+                <input id="aiH5H7Vaccine" type="hidden" value="${itemSum.aiH5H7Vaccine?default(0)-item.aiH5H7Vaccine?default(0)}"/>
+                <input id="aiH5H7ImmuneAmountChicken" type="hidden" value="${itemSum.aiH5H7ImmuneAmountChicken?default(0)-item.aiH5H7ImmuneAmountChicken?default(0)}"/>
+                <input id="aiH5H7ImmuneAmountDuck" type="hidden" value="${itemSum.aiH5H7ImmuneAmountDuck?default(0)-item.aiH5H7ImmuneAmountDuck?default(0)}"/>
+                <input id="aiH5H7ImmuneAmountGoose" type="hidden" value="${itemSum.aiH5H7ImmuneAmountGoose?default(0)-item.aiH5H7ImmuneAmountGoose?default(0)}"/>
+                <input id="aiH5H7ImmuneAmountOther" type="hidden" value="${itemSum.aiH5H7ImmuneAmountOther?default(0)-item.aiH5H7ImmuneAmountOther?default(0)}"/>
+            </tr>
 			<tr class="r2">
 				<td class="c3" rowspan="3">填报说明：</td>
 				<td class="c4" colspan="10">1、本月免疫数量是指填报本月的免疫数量；</td>
@@ -276,6 +295,21 @@
             $("td[role=lj_aiJointimmuneamountduck]").text((parseFloat(lj_aiJointimmuneamountduck)+parseFloat(aiJointimmuneamountduck)).toFixed(2));
             $("td[role=lj_aiJointimmuneamountgoose]").text((parseFloat(lj_aiJointimmuneamountgoose)+parseFloat(aiJointimmuneamountgoose)).toFixed(2));
             $("td[role=lj_aiJointimmuneamountother]").text((parseFloat(lj_aiJointimmuneamountother)+parseFloat(aiJointimmuneamountother)).toFixed(2));
+            var aiH5H7Vaccine = $.trim($('td[n="aiH5H7Vaccine"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="aiH5H7Vaccine"]').text()));
+            var aiH5H7ImmuneAmountChicken = $.trim($('td[n="aiH5H7ImmuneAmountChicken"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="aiH5H7ImmuneAmountChicken"]').text()));
+            var aiH5H7ImmuneAmountDuck = $.trim($('td[n="aiH5H7ImmuneAmountDuck"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="aiH5H7ImmuneAmountDuck"]').text()));
+            var aiH5H7ImmuneAmountGoose = $.trim($('td[n="aiH5H7ImmuneAmountGoose"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="aiH5H7ImmuneAmountGoose"]').text()));
+            var aiH5H7ImmuneAmountOther = $.trim($('td[n="aiH5H7ImmuneAmountOther"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="aiH5H7ImmuneAmountOther"]').text()));
+            var lj_aiH5H7Vaccine=document.getElementById('aiH5H7Vaccine').value;
+            var lj_aiH5H7ImmuneAmountChicken=document.getElementById('aiH5H7ImmuneAmountChicken').value;
+            var lj_aiH5H7ImmuneAmountDuck=document.getElementById('aiH5H7ImmuneAmountDuck').value;
+            var lj_aiH5H7ImmuneAmountGoose=document.getElementById('aiH5H7ImmuneAmountGoose').value;
+            var lj_aiH5H7ImmuneAmountOther=document.getElementById('aiH5H7ImmuneAmountOther').value;
+            $("td[role=lj_aiH5H7Vaccine]").text((parseFloat(lj_aiH5H7Vaccine)+parseFloat(aiH5H7Vaccine)).toFixed(2));
+            $("td[role=lj_aiH5H7ImmuneAmountChicken]").text((parseFloat(lj_aiH5H7ImmuneAmountChicken)+parseFloat(aiH5H7ImmuneAmountChicken)).toFixed(2));
+            $("td[role=lj_aiH5H7ImmuneAmountDuck]").text((parseFloat(lj_aiH5H7ImmuneAmountDuck)+parseFloat(aiH5H7ImmuneAmountDuck)).toFixed(2));
+            $("td[role=lj_aiH5H7ImmuneAmountGoose]").text((parseFloat(lj_aiH5H7ImmuneAmountGoose)+parseFloat(aiH5H7ImmuneAmountGoose)).toFixed(2));
+            $("td[role=lj_aiH5H7ImmuneAmountOther]").text((parseFloat(lj_aiH5H7ImmuneAmountOther)+parseFloat(aiH5H7ImmuneAmountOther)).toFixed(2));
         }
         calculate()
     })(jQuery, window, document)

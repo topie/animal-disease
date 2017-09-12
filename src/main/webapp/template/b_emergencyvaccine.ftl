@@ -81,7 +81,7 @@
 
     </tr>
     <tr class="r3">
-        <td class="c3" rowspan="8">禽流感</td>
+        <td class="c3" rowspan="9">禽流感</td>
         <td class="c4">禽流感-新城疫重组二联活疫苗（rL-H5）（万羽份）</td>
         <td role="data" n="evAirlh5"   class="c3"><#if item.evAirlh5??>${item.evAirlh5}</#if></td>
         <td role="data" n="evAllairlh5"   class="c3"><#if item.evAllairlh5??>${item.evAllairlh5}</#if></td>
@@ -127,6 +127,12 @@
         <td class="c4">H5-H9二价灭活疫苗（万毫升）</td>
         <td role="data" n="evAih5h9"   class="c3"><#if item.evAih5h9??>${item.evAih5h9}</#if></td>
         <td role="data" n="evAllaih5h9"   class="c3"><#if item.evAllaih5h9??>${item.evAllaih5h9}</#if></td>
+
+    </tr>
+    <tr class="r5">
+        <td class="c4">重组禽流感病毒（H5+H7）二价灭活疫苗（H5N1 Re-8株+H7N9 H7-Re-1株）（万毫升）</td>
+        <td role="data" n="evAIH5H7"   class="c3"><#if item.evAIH5H7??>${item.evAIH5H7}</#if></td>
+        <td role="data" n="evAllAIH5H7"   class="c3"><#if item.evAllAIH5H7??>${item.evAllAIH5H7}</#if></td>
 
     </tr>
     <tr class="r3">

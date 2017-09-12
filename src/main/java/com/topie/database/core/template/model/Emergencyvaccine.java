@@ -192,8 +192,32 @@ public class Emergencyvaccine {
     @Column(name = "ev_AllBrucellaM5")
     private BigDecimal evAllBrucellaM5;
 
+
+
     @Column(name = "bz")
     private String bz;
+
+    @Column(name = "ev_AIH5H7")
+    private BigDecimal evAIH5H7;
+
+    @Column(name = "ev_AllAIH5H7")
+    private BigDecimal evAllAIH5H7;
+
+    public BigDecimal getEvAIH5H7() {
+        return evAIH5H7;
+    }
+
+    public BigDecimal getEvAllAIH5H7() {
+        return evAllAIH5H7;
+    }
+
+    public void setEvAIH5H7(BigDecimal evAIH5H7) {
+        this.evAIH5H7 = evAIH5H7;
+    }
+
+    public void setEvAllAIH5H7(BigDecimal evAllAIH5H7) {
+        this.evAllAIH5H7 = evAllAIH5H7;
+    }
 
     /**
      * @return ev_id
