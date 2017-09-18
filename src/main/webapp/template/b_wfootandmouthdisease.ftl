@@ -314,11 +314,22 @@
         <td class="c4">-</td>
         <td n="immunefmdother" class="c9"  rowspan="2"><#if wlivestockinout.immunefmdother??>${wlivestockinout.immunefmdother}</#if></td>
         <td n="immunefmdoSum" class="c9" rowspan="3"><#if wlivestockinout??>${wlivestockinout.immunefmdpig?default(0)+wlivestockinout.immunefmdniu?default(0)+wlivestockinout.immunefmdsheep?default(0)+wlivestockinout.immunefmdother?default(0)}</#if></td>
-        <td n="jz_fmdopig" class="c10"></td>
+        <td n="jz_fmdopig" class="c10">
+        <#if (wlivestockinout.immunefmdpig??&&wlivestockinout.immunefmdpig>0)>${itemSum.fmdInactivatedimmuneamountpig?default(0)*100/wlivestockinout.immunefmdpig}%</#if>
+
+        </td>
         <td class="c2">-</td>
         <td class="c2">-</td>
-        <td n="jz_fmdoother" class="c8" rowspan="2"></td>
-        <td n="jz_fmdosum" class="c7" rowspan="3"></td>
+        <td n="jz_fmdoother" class="c8" rowspan="2">
+        <#if (wlivestockinout.immunefmdother??&&wlivestockinout.immunefmdother>0)>${(itemSum.fmdInactivatedimmuneamountother?default(0)+itemSum.fmdO2immuneamountother?default(0))*100/wlivestockinout.immunefmdother}%</#if>
+        </td>
+
+        <td n="jz_fmdosum" class="c7" rowspan="3">
+        <#if (wlivestockinout??)>${(itemSum.fmdInactivatedimmuneamountpig?default(0)
+        +itemSum.fmdO2immuneamountniu?default(0)+itemSum.fmdO3immuneamountniu?default(0)
+        +itemSum.fmdO2immuneamountsheep?default(0)+itemSum.fmdO3immuneamountsheep?default(0)
+        +itemSum.fmdInactivatedimmuneamountother?default(0)+itemSum.fmdO2immuneamountother?default(0))*100/(wlivestockinout.immunefmdpig?default(0)+wlivestockinout.immunefmdniu?default(0)+wlivestockinout.immunefmdsheep?default(0)+wlivestockinout.immunefmdother?default(0))}%</#if>
+        </td>
 
     </tr>
     <input id="fmdInactivatedvaccine" type="hidden" value="${itemSum.fmdInactivatedvaccine?default(0)-item.fmdInactivatedvaccine?default(0)}"/>
@@ -341,8 +352,12 @@
         <td n="immunefmdniu" class="c9" rowspan="2"><#if wlivestockinout.immunefmdniu??>${wlivestockinout.immunefmdniu}</#if></td>
         <td n="immunefmdsheep" class="c9" rowspan="2"><#if wlivestockinout.immunefmdsheep??>${wlivestockinout.immunefmdsheep}</#if></td>
         <td class="c5">-</td>
-        <td n="jz_fmdo2niu" class="c8" rowspan="2"></td>
-        <td n="jz_fmdo2sheep" class="c7" rowspan="2"></td>
+        <td n="jz_fmdo2niu" class="c8" rowspan="2">
+        <#if (wlivestockinout.immunefmdniu??&&wlivestockinout.immunefmdniu>0)>${(itemSum.fmdO2immuneamountniu?default(0)+itemSum.fmdO3immuneamountniu?default(0))*100/wlivestockinout.immunefmdniu}%</#if>
+        </td>
+        <td n="jz_fmdo2sheep" class="c7" rowspan="2">
+        <#if (wlivestockinout.immunefmdsheep??&&wlivestockinout.immunefmdsheep>0)>${(itemSum.fmdO2immuneamountsheep?default(0)+itemSum.fmdO3immuneamountsheep?default(0))*100/wlivestockinout.immunefmdsheep}%</#if>
+        </td>
     </tr>
     <input id="fmdO2vaccine" type="hidden" value="${itemSum.fmdO2vaccine?default(0)-item.fmdO2vaccine?default(0)}"/>
     <input id="fmdO2immuneamountniu" type="hidden" value="${itemSum.fmdO2immuneamountniu?default(0)-item.fmdO2immuneamountniu?default(0)}"/>
@@ -390,10 +405,18 @@
         <td class="c4">-</td>
         <td n="immunefmdaSum" class="c9"><#if wlivestockinout??>${wlivestockinout.immuneafmdniu?default(0)+wlivestockinout.immuneafmdsheep?default(0)}</#if></td>
         <td class="c5">-</td>
-        <td n="jz_fmdaniu" class="c7"></td>
-        <td n="jz_fmdasheep" class="c7"></td>
+        <td n="jz_fmdaniu" class="c7">
+        <#if (wlivestockinout.immuneafmdniu??&&wlivestockinout.immuneafmdniu>0)>${itemSum.fmdAimmuneamountniu?default(0)*100/wlivestockinout.immuneafmdniu}%</#if>
+        </td>
+        <td n="jz_fmdasheep" class="c7">
+        <#if (wlivestockinout.immuneafmdsheep??&&wlivestockinout.immuneafmdsheep>0)>${itemSum.fmdAimmuneamountsheep?default(0)*100/wlivestockinout.immuneafmdsheep}%</#if>
+        </td>
         <td class="c2">-</td>
-        <td n="jz_sum2" class="c7"></td>
+        <td n="jz_sum2" class="c7">
+        <#if (wlivestockinout??)>
+        ${(itemSum.fmdAimmuneamountniu?default(0)+itemSum.fmdAimmuneamountsheep?default(0))*100/(wlivestockinout.immuneafmdniu?default(0)+wlivestockinout.immuneafmdsheep?default(0))}
+            %</#if>
+        </td>
     </tr>
     <input id="fmdAvaccine" type="hidden" value="${itemSum.fmdAvaccine?default(0)-item.fmdAvaccine?default(0)}"/>
     <input id="fmdAimmuneamountniu" type="hidden" value="${itemSum.fmdAimmuneamountniu?default(0)-item.fmdAimmuneamountniu?default(0)}"/>
