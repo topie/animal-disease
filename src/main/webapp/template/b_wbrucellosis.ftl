@@ -142,10 +142,10 @@
     <tr class="r4">
         <td class="c2" rowspan="2">疫苗种类</td>
         <td class="c2" rowspan="2">本周疫苗使用数量(万头份)</td>
-        <td class="c2" rowspan="2">春防累计疫苗使用数量(万头份)</td>
+        <td class="c2" rowspan="2">秋防累计疫苗使用数量(万头份)</td>
         <td class="c2" colspan="2">本周免疫数量（万头）</td>
-        <td class="c2" colspan="2">春防累计免疫数量(万头)</td>
-        <td class="c2" colspan="2">春防应免数量(万头)</td>
+        <td class="c2" colspan="2">秋防累计免疫数量(万头)</td>
+        <td class="c2" colspan="2">秋防应免数量(万头)</td>
         <td class="c2" colspan="2">免疫进展(%)</td>
     </tr>
     <tr class="r5">

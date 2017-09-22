@@ -113,7 +113,7 @@
 			<tr class="r5">
 				<td class="c2" colspan="2">使用数量</td>
 				<td class="c2" colspan="2">目前库存数量</td>
-				<td class="c2" colspan="2">上半年使用数量</td>
+				<td class="c2" colspan="2">全年使用数量</td>
 			</tr>
 			<tr class="r6">
 				<td class="c2">猪瘟活疫苗(万头份)</td>

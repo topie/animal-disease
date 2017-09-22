@@ -84,9 +84,9 @@
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="3">省份</td>
-                <td class="c2" colspan="5">全省上半年落实动物疫病防控经费（万元）</td>
-                <td class="c2" colspan="5">全省春防落实动物疫病防控经费（万元）</td>
-                <td class="c2" colspan="5">省本级春防落实动物疫病防控经费（万元）</td>
+                <td class="c2" colspan="5">全省全年落实动物疫病防控经费（万元）</td>
+                <td class="c2" colspan="5">全省秋防落实动物疫病防控经费（万元）</td>
+                <td class="c2" colspan="5">省本级秋防落实动物疫病防控经费（万元）</td>
 			</tr>
             <tr class="r3">
                 <td class="c2" colspan="3">强制免疫补助经费</td>

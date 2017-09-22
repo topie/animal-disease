@@ -140,9 +140,15 @@
     <result column="ev_AllBrucellaM5DH" property="evAllbrucellam5dh" jdbcType="DECIMAL" />
     <result column="ev_BrucellaM5X" property="evBrucellam5x" jdbcType="DECIMAL" />
     <result column="ev_AllBrucellaM5X" property="evAllbrucellam5x" jdbcType="DECIMAL" />
+
+
+    <result column="ev_AIH5H7DH" property="evAIH5H7DH" jdbcType="DECIMAL" />
+    <result column="ev_AIH5H7X" property="evAIH5H7X" jdbcType="DECIMAL" />
   </resultMap>
   <select id="selectSumByReportCode" resultMap="BaseResultMap">
     select
+     sum(ev_AIH5H7DH) ev_AIH5H7DH,
+    sum(ev_AIH5H7X) ev_AIH5H7X,
      sum(ev_BrucellaM5X) ev_BrucellaM5X,
     sum(ev_AllBrucellaM5X) ev_AllBrucellaM5X,
     sum(ev_BrucellaM5DH) ev_BrucellaM5DH,

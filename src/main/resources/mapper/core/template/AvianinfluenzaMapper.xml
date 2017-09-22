@@ -28,6 +28,12 @@
     <result column="ai_jointShouldAmountGoose" property="aiJointshouldamountgoose" jdbcType="DECIMAL" />
     <result column="ai_jointShouldAmountOther" property="aiJointshouldamountother" jdbcType="DECIMAL" />
     <result column="ai_jointVaccine" property="aiJointvaccine" jdbcType="DECIMAL" />
+
+      <result column="ai_H5H7Vaccine" property="aiH5H7Vaccine" jdbcType="DECIMAL" />
+      <result column="ai_H5H7ImmuneAmountChicken" property="aiH5H7ImmuneAmountChicken" jdbcType="DECIMAL" />
+      <result column="ai_H5H7ImmuneAmountDuck" property="aiH5H7ImmuneAmountDuck" jdbcType="DECIMAL" />
+      <result column="ai_H5H7ImmuneAmountGoose" property="aiH5H7ImmuneAmountGoose" jdbcType="DECIMAL" />
+      <result column="ai_H5H7ImmuneAmountOther" property="aiH5H7ImmuneAmountOther" jdbcType="DECIMAL" />
   </resultMap>
   <select id="selectCumulative" resultMap="BaseResultMap">
   select * from animal_disease.b_avianinfluenza  where ai_date BETWEEN  #{beginTime} AND #{endTime}
@@ -43,7 +49,12 @@
     sum(ai_inactivatedImmuneAmountChicken) ai_inactivatedImmuneAmountChicken,
     sum(ai_inactivatedImmuneAmountDuck) ai_inactivatedImmuneAmountDuck,
     sum(ai_inactivatedImmuneAmountGoose) ai_inactivatedImmuneAmountGoose,
-    sum(ai_inactivatedImmuneAmountOther) ai_inactivatedImmuneAmountOther
+    sum(ai_inactivatedImmuneAmountOther) ai_inactivatedImmuneAmountOther,
+     sum(ai_H5H7Vaccine) ai_H5H7Vaccine,
+     sum(ai_H5H7ImmuneAmountChicken) ai_H5H7ImmuneAmountChicken,
+    sum(ai_H5H7ImmuneAmountDuck) ai_H5H7ImmuneAmountDuck,
+     sum(ai_H5H7ImmuneAmountGoose) ai_H5H7ImmuneAmountGoose,
+    sum(ai_H5H7ImmuneAmountOther) ai_H5H7ImmuneAmountOther
     from animal_disease.b_avianinfluenza
     where ai_regionCode=#{regionCode} AND ai_date BETWEEN  #{beginTime} AND #{endTime}
 
@@ -63,7 +74,12 @@
     sum(ai_inactivatedImmuneAmountChicken) ai_inactivatedImmuneAmountChicken,
     sum(ai_inactivatedImmuneAmountDuck) ai_inactivatedImmuneAmountDuck,
     sum(ai_inactivatedImmuneAmountGoose) ai_inactivatedImmuneAmountGoose,
-    sum(ai_inactivatedImmuneAmountOther) ai_inactivatedImmuneAmountOther
+    sum(ai_inactivatedImmuneAmountOther) ai_inactivatedImmuneAmountOther,
+      sum(ai_H5H7Vaccine) ai_H5H7Vaccine,
+     sum(ai_H5H7ImmuneAmountChicken) ai_H5H7ImmuneAmountChicken,
+    sum(ai_H5H7ImmuneAmountDuck) ai_H5H7ImmuneAmountDuck,
+     sum(ai_H5H7ImmuneAmountGoose) ai_H5H7ImmuneAmountGoose,
+    sum(ai_H5H7ImmuneAmountOther) ai_H5H7ImmuneAmountOther
     from animal_disease.b_avianinfluenza
     where  ai_date BETWEEN  #{beginTime} AND #{endTime}
     GROUP  by ai_regionCode

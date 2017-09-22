@@ -80,6 +80,7 @@
 			<col width="75">
 			<col width="75">
 			<col width="75">
+            <col width="75">
 			<col width="75">
 			<col width="75">
 			<col width="75">
@@ -101,16 +102,16 @@
 		</colgroup>
 		<tbody>
 			<tr class="r1">
-				<td class="c1" colspan="51">${templateName}</td>
+				<td class="c1" colspan="53">${templateName}</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" rowspan="3">省份</td>
-				<td class="c2" colspan="24">省级疫苗储备统计</td>
-				<td class="c2" colspan="24">全省疫苗储备统计</td>
+				<td class="c2" colspan="25">省级疫苗储备统计</td>
+				<td class="c2" colspan="25">全省疫苗储备统计</td>
 			</tr>
 			<tr class="r2">
 				<td class="c2" colspan="5">口蹄疫疫苗</td>
-				<td class="c2" colspan="8">禽流感疫苗</td>
+				<td class="c2" colspan="9">禽流感疫苗</td>
 				<td class="c3" colspan="2">高致病性蓝耳病疫苗</td>
 				<td class="c2" colspan="2">猪瘟疫苗</td>
 				<td class="c2" colspan="2">新城疫疫苗</td>
@@ -118,7 +119,7 @@
                 <td class="c2" colspan="3">布鲁氏菌病</td>
                 <td class="c2">棘球蚴病</td>
 				<td class="c2" colspan="5">口蹄疫疫苗</td>
-				<td class="c2" colspan="8">禽流感疫苗</td>
+				<td class="c2" colspan="9">禽流感疫苗</td>
 				<td class="c3" colspan="2">高致病性蓝耳病疫苗</td>
 				<td class="c2" colspan="2">猪瘟疫苗</td>
 				<td class="c2" colspan="2">新城疫疫苗</td>
@@ -143,6 +144,7 @@
                 <td class="c2">禽流感灭活疫苗（H5N2亚型，D7株）</td>
 
 				<td class="c2">H5-H9二价灭活疫苗（万毫升）</td>
+                <td class="c2">重组禽流感病毒（H5+H7）二价灭活疫苗（H5N1 Re-8株+H7N9 H7-Re-1株）（万毫升）</td>
 
 				<td class="c2">高致病性猪蓝耳病灭活疫苗(万毫升)</td>
 				<td class="c2">高致病性猪蓝耳病活疫苗(万头份)</td>
@@ -169,6 +171,7 @@
                 <td class="c2">重组禽流感病毒H5亚型三价灭活疫苗（H5N1,Re-6+Re-7株+Re-8株）（万毫升）</td>
                 <td class="c2">禽流感灭活疫苗（H5N2亚型，D7株）</td>
 				<td class="c2">H5-H9二价灭活疫苗（万毫升）</td>
+                <td class="c2">重组禽流感病毒（H5+H7）二价灭活疫苗（H5N1 Re-8株+H7N9 H7-Re-1株）（万毫升）</td>
 
 				<td class="c2">高致病性猪蓝耳病灭活疫苗(万毫升)</td>
 				<td class="c2">高致病性猪蓝耳病活疫苗(万头份)</td>
@@ -193,6 +196,7 @@
 			<#assign evAih5n1re7Sum=0>
 			<#assign evAih5n1re6re8Sum=0>
 			<#assign evAih5h9Sum=0>
+			<#assign evAIH5H7Sum=0>
 			<#assign evBeSum=0>
 			<#assign evBeinactivatedSum=0>
 			<#assign evCsSum=0>
@@ -209,6 +213,7 @@
 			<#assign evAllaih5n1re7Sum=0>
 			<#assign evAllaih5n1re6re8Sum=0>
 			<#assign evAllaih5h9Sum=0>
+			<#assign evAllAIH5H7Sum=0>
 			<#assign evAllbeSum=0>
 			<#assign evAllbeinactivatedSum=0>
 			<#assign evAllcsSum=0>
@@ -244,6 +249,7 @@
 				<#assign evAih5n1re7Sum=evAih5n1re7Sum?default(0) +item.evAih5n1re7?default(0)>
 				<#assign evAih5n1re6re8Sum=evAih5n1re6re8Sum?default(0) +item.evAih5n1re6re8?default(0)>
 				<#assign evAih5h9Sum=evAih5h9Sum?default(0) +item.evAih5h9?default(0)>
+				<#assign evAIH5H7Sum=evAIH5H7Sum?default(0) +item.evAIH5H7?default(0)>
 				<#assign evBeSum=evBeSum?default(0) +item.evBe?default(0)>
 				<#assign evBeinactivatedSum=evBeinactivatedSum?default(0) +item.evBeinactivated?default(0)>
 				<#assign evCsSum=evCsSum?default(0) +item.evCs?default(0)>
@@ -260,6 +266,7 @@
 				<#assign evAllaih5n1re7Sum=evAllaih5n1re7Sum?default(0) +item.evAllaih5n1re7?default(0)>
 				<#assign evAllaih5n1re6re8Sum=evAllaih5n1re6re8Sum?default(0) +item.evAllaih5n1re6re8?default(0)>
 				<#assign evAllaih5h9Sum=evAllaih5h9Sum?default(0) +item.evAllaih5h9?default(0)>
+				<#assign evAllAIH5H7Sum=evAllAIH5H7Sum?default(0) +item.evAllAIH5H7?default(0)>
 				<#assign evAllbeSum=evAllbeSum?default(0) +item.evAllbe?default(0)>
 				<#assign evAllbeinactivatedSum=evAllbeinactivatedSum?default(0) +item.evAllbeinactivated?default(0)>
 				<#assign evAllcsSum=evAllcsSum?default(0) +item.evAllcs?default(0)>
@@ -306,6 +313,7 @@
                 <td n="evAih5n2d7" class="c2"><#if item.evAih5n2d7??>${item.evAih5n2d7}</#if></td>
 
 				<td n="evAih5h9" class="c2"><#if item.evAih5h9??>${item.evAih5h9}</#if></td>
+                <td n="evAIH5H7" class="c2"><#if item.evAIH5H7??>${item.evAIH5H7}</#if></td>
 
 				<td n="evBe" class="c2"><#if item.evBe??>${item.evBe}</#if></td>
 				<td n="evBeinactivated" class="c2"><#if item.evBeinactivated??>${item.evBeinactivated}</#if></td>
@@ -336,6 +344,7 @@
                 <td n="evAllaih5n2d7" class="c2"><#if item.evAllaih5n2d7??>${item.evAllaih5n2d7}</#if></td>
 
 				<td n="evAllaih5h9" class="c2"><#if item.evAllaih5h9??>${item.evAllaih5h9}</#if></td>
+                <td n="evAllAIH5H7" class="c2"><#if item.evAllAIH5H7??>${item.evAllAIH5H7}</#if></td>
 
 				<td n="evAllbe" class="c2"><#if item.evAllbe??>${item.evAllbe}</#if></td>
 				<td n="evAllbeinactivated" class="c2"><#if item.evAllbeinactivated??>${item.evAllbeinactivated}</#if></td>
@@ -370,6 +379,7 @@
                 <td n="evAih5n2d7Sum" class="c2"><#if evAih5n2d7Sum??>${evAih5n2d7Sum}</#if></td>
 
                 <td n="evAih5h9Sum" class="c2"><#if evAih5h9Sum??>${evAih5h9Sum}</#if></td>
+                <td n="evAIH5H7Sum" class="c2"><#if evAIH5H7Sum??>${evAIH5H7Sum}</#if></td>
                 <td n="evBeSum" class="c2"><#if evBeSum??>${evBeSum}</#if></td>
                 <td n="evBeinactivatedSum" class="c2"><#if evBeinactivatedSum??>${evBeinactivatedSum}</#if></td>
                 <td n="evCsSum" class="c2"><#if evCsSum??>${evCsSum}</#if></td>
@@ -396,6 +406,7 @@
                 <td n="evAllaih5n1re6re7re8Sum" class="c2"><#if evAllaih5n1re6re7re8Sum??>${evAllaih5n1re6re7re8Sum}</#if></td>
                 <td n="evAllaih5n2d7Sum" class="c2"><#if evAllaih5n2d7Sum??>${evAllaih5n2d7Sum}</#if></td>
                 <td n="evAllaih5h9Sum" class="c2"><#if evAllaih5h9Sum??>${evAllaih5h9Sum}</#if></td>
+                <td n="evAllAIH5H7Sum" class="c2"><#if evAllAIH5H7Sum??>${evAllAIH5H7Sum}</#if></td>
                 <td n="evAllbeSum" class="c2"><#if evAllbeSum??>${evAllbeSum}</#if></td>
                 <td n="evAllbeinactivatedSum" class="c2"><#if evAllbeinactivatedSum??>${evAllbeinactivatedSum}</#if></td>
                 <td n="evAllcsSum" class="c2"><#if evAllcsSum??>${evAllcsSum}</#if></td>

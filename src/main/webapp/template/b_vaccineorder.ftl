@@ -283,7 +283,7 @@
     <input id="evFmoadh" type="hidden" value="${itemSum.evFmoadh?default(0)-item.evFmoadh?default(0)}"/>
     <input id="evFmoax" type="hidden" value="${itemSum.evFmoax?default(0)-item.evFmoax?default(0)}"/>
     <tr class="r1">
-        <td class="c3" rowspan="11">禽流感</td>
+        <td class="c3" rowspan="12">禽流感</td>
         <td class="c2">禽流感灭活疫苗（H5N1，Re-4株）（万毫升）</td>
         <td role="data" n="evAih5n1re4dh" class="c3"><#if item.evAih5n1re4dh??>${item.evAih5n1re4dh}</#if></td>
         <td role="lj_evAih5n1re4dh"
@@ -414,6 +414,15 @@
         <td role="data" n="evAirlh5x" class="c3"><#if item.evAirlh5x??>${item.evAirlh5x}</#if></td>
         <td role="lj_evAirlh5x" class="c6"><#if itemSum??&&itemSum.evAirlh5x??>${itemSum.evAirlh5x}</#if></td>
         
+    </tr>
+    <tr class="r1">
+        <td class="c2">重组禽流感病毒（H5+H7）二价灭活疫苗（H5N1 Re-8株+H7N9 H7-Re-1株）（万毫升）</td>
+        <td role="data" n="evAIH5H7DH" class="c3"><#if item.evAIH5H7DH??>${item.evAIH5H7DH}</#if></td>
+        <td role="lj_evAIH5H7DH" class="c6"><#if itemSum??&&itemSum.evAIH5H7DH??>${itemSum.evAIH5H7DH}</#if></td>
+        <td role="data" n="evAIH5H7X" class="c3"><#if item.evAIH5H7X??>${item.evAIH5H7X}</#if></td>
+        <td role="lj_evAIH5H7X" class="c6"><#if itemSum??&&itemSum.evAIH5H7X??>${itemSum.evAIH5H7X}</#if></td>
+        <input id="evAIH5H7DH" type="hidden" value="${itemSum.evAIH5H7DH?default(0)-item.evAIH5H7DH?default(0)}"/>
+        <input id="evAIH5H7X" type="hidden" value="${itemSum.evAIH5H7X?default(0)-item.evAIH5H7X?default(0)}"/>
     </tr>
     <tr class="r1">
         <td class="c3" rowspan="2">高致病性猪蓝耳病疫苗</td>
@@ -699,6 +708,15 @@
             $("td[role=lj_evAirlh5x]").text((parseFloat(lj_evAirlh5x) + parseFloat(evAirlh5x)).toFixed(2));
             $("td[role=lj_evBedh]").text((parseFloat(lj_evBedh) + parseFloat(evBedh)).toFixed(2));
             $("td[role=lj_evBex]").text((parseFloat(lj_evBex) + parseFloat(evBex)).toFixed(2));
+
+            var evAIH5H7DH = $.trim($('td[n="evAIH5H7DH"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="evAIH5H7DH"]').text()));
+            var evAIH5H7X = $.trim($('td[n="evAIH5H7X"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="evAIH5H7X"]').text()));
+            var lj_evAIH5H7DH = document.getElementById('evAIH5H7DH').value;
+            var lj_evAIH5H7X = document.getElementById('evAIH5H7X').value;
+            $("td[role=lj_evAIH5H7DH]").text((parseFloat(lj_evAIH5H7DH) + parseFloat(evAIH5H7DH)).toFixed(2));
+            $("td[role=lj_evAIH5H7X]").text((parseFloat(lj_evAIH5H7X) + parseFloat(evAIH5H7X)).toFixed(2));
+
+
 
             var evBeinactivateddh = $.trim($('td[n="evBeinactivateddh"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="evBeinactivateddh"]').text()));
             var evBeinactivatedx = $.trim($('td[n="evBeinactivatedx"]').text()) == "" ? 0 : parseFloat($.trim($('td[n="evBeinactivatedx"]').text()));

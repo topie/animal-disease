@@ -410,6 +410,31 @@ public class Vaccineorder {
 
     @Column(name = "ev_AllBrucellaM5X")
     private BigDecimal evAllbrucellam5x;
+
+
+
+    @Column(name = "ev_AIH5H7DH")
+    private BigDecimal evAIH5H7DH;
+
+    @Column(name = "ev_AIH5H7X")
+    private BigDecimal evAIH5H7X;
+
+    public BigDecimal getEvAIH5H7DH() {
+        return evAIH5H7DH;
+    }
+
+    public BigDecimal getEvAIH5H7X() {
+        return evAIH5H7X;
+    }
+
+    public void setEvAIH5H7DH(BigDecimal evAIH5H7DH) {
+        this.evAIH5H7DH = evAIH5H7DH;
+    }
+
+    public void setEvAIH5H7X(BigDecimal evAIH5H7X) {
+        this.evAIH5H7X = evAIH5H7X;
+    }
+
     /**
      * @return ReportId
      */

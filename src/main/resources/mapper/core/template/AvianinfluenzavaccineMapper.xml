@@ -15,6 +15,7 @@
     <result column="av_H5N1Re4UseCount" property="avH5n1re4usecount" jdbcType="DECIMAL" />
     <result column="av_H5N1Re5UseCount" property="avH5n1re5usecount" jdbcType="DECIMAL" />
     <result column="av_H5H9UseCount" property="avH5h9usecount" jdbcType="DECIMAL" />
+
     <result column="av_Re5AndRe4StoreCount" property="avRe5andre4storecount" jdbcType="DECIMAL" />
     <result column="av_rHRH5StoreCount" property="avRhrh5storecount" jdbcType="DECIMAL" />
     <result column="av_H5N1Re4StoreCount" property="avH5n1re4storecount" jdbcType="DECIMAL" />
@@ -43,6 +44,10 @@
     <result column="av_Re6Re7Re8UseCount" property="avRe6re7re8usecount" jdbcType="DECIMAL" />
     <result column="av_Re6Re7Re8StoreCount" property="avRe6re7re8storecount" jdbcType="DECIMAL" />
     <result column="av_Re6Re7Re8YearCount" property="avRe6re7re8yearcount" jdbcType="DECIMAL" />
+
+    <result column="av_H5H7UseCount" property="avH5H7UseCount" jdbcType="DECIMAL" />
+    <result column="av_H5H7StoreCount" property="avH5H7StoreCount" jdbcType="DECIMAL" />
+    <result column="av_H5H7YearCount" property="avH5H7YearCount" jdbcType="DECIMAL" />
   </resultMap>
   <select id="selectAllByDate" resultMap="BaseResultMap">
     select t1.Liv_regionCode as av_regionCode ,t1.Liv_regionName as av_regionName,t2.* from
