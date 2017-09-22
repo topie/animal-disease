@@ -96,6 +96,7 @@ public class ReReportController {
                     reReport.setReIsOpen(1);
                     if (reReportList.size() > 0) {
                         reReport = reReportList.get(0);
+                        reReport.setReIsOpen(1);
                         result += iReReportService.updateNotNull(reReport);
                     } else {
                         reReport.setId(UUIDUtil.getUUID());
