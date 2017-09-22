@@ -24,7 +24,7 @@ public class XlsToHtmlTest {
      */
     public static void main(String[] args) {
         try {
-            PoiUtil.excelToHtml("/Users/chenguojun/Downloads/OKR汇总20170708.xls", "/Users/chenguojun/Downloads/OKR_SUMMARIY.html");
+            PoiUtil.excelToHtml("/Users/chenguojun/Downloads/8月城市合伙人销售奖励_0902.xls", "/Users/chenguojun/Downloads/8.html");
         } catch (IOException ex) {
             Logger.getLogger(XlsToHtmlTest.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {

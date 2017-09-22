@@ -38,7 +38,7 @@ public class ReReportController {
     public Result pageList(ReReportDto reReportDto,
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
-        reReportDto.setReIsOpen(true);
+        //reReportDto.setReIsOpen(true);
         PageInfo<ReReportDto> pageInfo = iReReportService.selectByPage(reReportDto, pageNum, pageSize);
         return ResponseUtil.success(PageConvertUtil.grid(pageInfo));
     }
@@ -96,6 +96,7 @@ public class ReReportController {
                     reReport.setReIsOpen(1);
                     if (reReportList.size() > 0) {
                         reReport = reReportList.get(0);
+                        reReport.setReIsOpen(1);
                         result += iReReportService.updateNotNull(reReport);
                     } else {
                         reReport.setId(UUIDUtil.getUUID());
@@ -127,6 +128,15 @@ public class ReReportController {
     @ResponseBody
     public Result close(@RequestParam(value = "id") String id) {
         iReReportService.updateToClose(id);
+        return ResponseUtil.success();
+    }
+
+    @RequestMapping(value = "/open", method = RequestMethod.POST)
+    @ResponseBody
+    public Result open(@RequestParam(value = "id") String id) {
+        ReReport reReport = iReReportService.selectByKey(id);
+        reReport.setReIsOpen(1);
+        iReReportService.updateNotNull(reReport);
         return ResponseUtil.success();
     }
 
