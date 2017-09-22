@@ -130,4 +130,13 @@ public class ReReportController {
         return ResponseUtil.success();
     }
 
+    @RequestMapping(value = "/open", method = RequestMethod.POST)
+    @ResponseBody
+    public Result open(@RequestParam(value = "id") String id) {
+        ReReport reReport = iReReportService.selectByKey(id);
+        reReport.setReIsOpen(1);
+        iReReportService.updateNotNull(reReport);
+        return ResponseUtil.success();
+    }
+
 }
