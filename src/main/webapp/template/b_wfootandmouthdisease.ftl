@@ -413,7 +413,7 @@
         </td>
         <td class="c2">-</td>
         <td n="jz_sum2" class="c7">
-        <#if (wlivestockinout??)>
+        <#if (wlivestockinout??&&(wlivestockinout.immuneafmdniu?default(0)+wlivestockinout.immuneafmdsheep?default(0)>0))>
         ${(itemSum.fmdAimmuneamountniu?default(0)+itemSum.fmdAimmuneamountsheep?default(0))*100/(wlivestockinout.immuneafmdniu?default(0)+wlivestockinout.immuneafmdsheep?default(0))}
             %</#if>
         </td>
