@@ -38,7 +38,7 @@ public class ReReportController {
     public Result pageList(ReReportDto reReportDto,
             @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
             @RequestParam(value = "pageSize", required = false, defaultValue = "15") int pageSize) {
-        reReportDto.setReIsOpen(true);
+        //reReportDto.setReIsOpen(true);
         PageInfo<ReReportDto> pageInfo = iReReportService.selectByPage(reReportDto, pageNum, pageSize);
         return ResponseUtil.success(PageConvertUtil.grid(pageInfo));
     }
