@@ -76,7 +76,7 @@ public class DataServiceController {
             for (ObjectError objectError : result.getAllErrors()) {
                 builder.append(objectError.getDefaultMessage()).append(";");
             }
-            return new AnimalResponse(animalRequest.getRequestId(), -1, "协议格式不正确");
+            return new AnimalResponse(animalRequest.getRequestId(), -1, "协议格式不正确"+builder.toString());
         }
         String fullMessage =
                 animalRequest.getClientId() + secret + animalRequest.getRequestId() + animalRequest.getTimeStamp();
@@ -85,7 +85,7 @@ public class DataServiceController {
             return new AnimalResponse(animalRequest.getRequestId(), -104, "MAC校验失败");
         }
         Report report = new Report();
-        String templateId = requestMap.get(animalRequest.getClientId());
+        String templateId = requestMap.get(animalRequest.getRequestId());
         report.setTemplateId(templateId);
         Integer reportType = animalRequest.getData().getReport_type();
         report.setReportType(reportType);

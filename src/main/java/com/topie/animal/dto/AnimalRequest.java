@@ -2,6 +2,8 @@ package com.topie.animal.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.NotNull;
+
 public class AnimalRequest {
 
     @NotBlank(message = "ClientId不能为空")
@@ -14,7 +16,7 @@ public class AnimalRequest {
 
     private AnimalRequestData Data;
 
-    @NotBlank(message = "TimeStamp不能为空")
+    @NotNull(message = "TimeStamp不能为空")
     private Integer TimeStamp;
 
     @NotBlank(message = "Mac不能为空")
