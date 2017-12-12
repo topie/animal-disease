@@ -92,6 +92,7 @@ public class DataServiceController {
         report.setReportId(UUIDUtil.getUUID());
         report.setBeginTime(DateUtil.StringToDate(animalRequest.getData().getBegin_time()));
         report.setReportTime(new Date());
+        report.setReportUserId(animalRequest.getData().getReport_user_id());
         report.setStatus(1);
         iReportService.saveNotNull(report);
         iExcelService
