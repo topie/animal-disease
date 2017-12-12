@@ -184,7 +184,7 @@
 			</tr>
 			<tr class="r2">
 				<td class="c2">填表日期:</td>
-				<td class="c3" colspan="21"><#if item.beddate??>${item.beddate?string("yyyy-MM-dd")}</#if></td>
+				<td class="c3" colspan="21"><#if item.aiDate??>${item.aiDate?string("yyyy-MM-dd")}</#if></td>
 			</tr>
 			<tr class="r3">
 				<td class="c2">填 表 人:</td>

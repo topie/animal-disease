@@ -111,7 +111,7 @@
 				<td class="c2" rowspan="3" width="10%">省份</td>
 				<td class="c2" colspan="11">高致病性禽流感灭活疫苗</td>
 				<td class="c2" colspan="11">禽流感-新城疫重组二联活疫苗</td>
-                <td class="c2" colspan="11">禽流感-新城疫重组二联活疫苗</td>
+                <td class="c2" colspan="11">重组禽流感病毒（H5+H7）二价灭活疫苗</td>
 				<td class="c2" colspan="5" rowspan="2">应免数量(万羽)</td>
 				<td class="c2" colspan="5" rowspan="2">免疫进展</td>
 			</tr>
@@ -283,8 +283,8 @@
 				<td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiJointimmuneamountother??>${cumulatives[item_index].aiJointimmuneamountother}</#if></td>
 				<td n=""  class="c2"><#if cumulatives[item_index]??>${cumulatives[item_index].aiJointimmuneamountchicken?default(0)+cumulatives[item_index].aiJointimmuneamountduck?default(0)+cumulatives[item_index].aiJointimmuneamountgoose?default(0)+cumulatives[item_index].aiJointimmuneamountother?default(0)}</#if></td>
 
-                <td n="aiH5H7Vaccine"  class="c2"><#if item.aiH5H7Vaccine??>${item.aiH5H7Vaccine}</#if>123</td>
-                <td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiH5H7Vaccine??>${cumulatives[item_index].aiH5H7Vaccine}</#if>456</td>
+                <td n="aiH5H7Vaccine"  class="c2"><#if item.aiH5H7Vaccine??>${item.aiH5H7Vaccine}</#if></td>
+                <td n=""  class="c2"><#if cumulatives[item_index]??&&cumulatives[item_index].aiH5H7Vaccine??>${cumulatives[item_index].aiH5H7Vaccine}</#if></td>
 
                 <td n="aiH5H7ImmuneAmountChicken"  class="c2"><#if item.aiH5H7ImmuneAmountChicken??>${item.aiH5H7ImmuneAmountChicken}</#if></td>
                 <td n="aiH5H7ImmuneAmountDuck"  class="c2"><#if item.aiH5H7ImmuneAmountDuck??>${item.aiH5H7ImmuneAmountDuck}</#if></td>
