@@ -14,4 +14,6 @@ public interface IExcelService {
     String getReportSummaryHtml(HttpServletRequest request, String templateId, String beginTime);
 
     int insertOrUpdateReportFill(String data, Report report);
+
+    int insertOrUpdateReportFillForApi(String data, Report report);
 }

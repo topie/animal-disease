@@ -20,7 +20,9 @@ import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Example;
 
+import javax.persistence.Column;
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -116,7 +118,7 @@ public class ExcelServiceImpl implements IExcelService {
     @Autowired
     private KingfisherMapper kingfisherMapper;
 
-   @Autowired
+    @Autowired
     private KingfisherNewMapper kingfisherNewMapper;
 
     @Autowired
@@ -187,7 +189,7 @@ public class ExcelServiceImpl implements IExcelService {
             wlivestockinout = new Wlivestockinout();
         }
         params.put("wlivestockinout", wlivestockinout);
-        Date monthBeginTime=BeginTimeUtil.getMonthBeginTime(report.getBeginTime());
+        Date monthBeginTime = BeginTimeUtil.getMonthBeginTime(report.getBeginTime());
         Date beginTime = BeginTimeUtil.getBeginTime(report.getBeginTime());
         Date halfYearbeginTime = BeginTimeUtil.getCurrentHalfYearBeginTime(report.getBeginTime());
         Date endTime = report.getBeginTime();
@@ -439,16 +441,16 @@ public class ExcelServiceImpl implements IExcelService {
                 params.put("itemSum", itemSum);
                 break;
             }
-             case "b_wechinococciasis": {
-                 Wechinococciasis arg = new Wechinococciasis();
+            case "b_wechinococciasis": {
+                Wechinococciasis arg = new Wechinococciasis();
                 arg.setEchReportid(report.getReportId());
                 List<Wechinococciasis> items = wechinococciasisMapper.select(arg);
-                 Wechinococciasis item = new Wechinococciasis();
+                Wechinococciasis item = new Wechinococciasis();
                 if (items.size() > 0) {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                 Wechinococciasis itemSum = wechinococciasisMapper
+                Wechinococciasis itemSum = wechinococciasisMapper
                         .selectSumByReportCode(region.getRegionCode(), halfYearbeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new Wechinococciasis();
@@ -598,7 +600,8 @@ public class ExcelServiceImpl implements IExcelService {
                     item = items.get(0);
                 }
                 params.put("item", item);
-                Newcastle itemSum = newcastleMapper.selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
+                Newcastle itemSum = newcastleMapper
+                        .selectSumByReportCode(region.getRegionCode(), monthBeginTime, endTime);
                 if (itemSum == null) {
                     itemSum = new Newcastle();
                 }
@@ -750,7 +753,7 @@ public class ExcelServiceImpl implements IExcelService {
                 params.put("items", items);
                 break;
             }
-             case "b_kingfisher_new": {
+            case "b_kingfisher_new": {
                 //                params=this.getReportSummaryHtmlUtil(Kingfisher.class,reportIds,"kfReportid",kingfisherMapper,"kf_regionCode");
                 List<KingfisherNew> items = kingfisherNewMapper.selectAllByDate(endTime, endTime);
                 params.put("items", items);
@@ -775,7 +778,7 @@ public class ExcelServiceImpl implements IExcelService {
                 params.put("items", items);
                 break;
             }
-             case "b_echinococciasisvaccine": {
+            case "b_echinococciasisvaccine": {
                 //                params=this.getReportSummaryHtmlUtil(Bluevaccine.class,reportIds,"bvReportid",bluevaccineMapper,"bv_regionCode");
                 List<EchinococciasisVaccine> items = echinococciasisVaccineMapper.selectAllByDate(endTime, endTime);
                 params.put("items", items);
@@ -870,19 +873,21 @@ public class ExcelServiceImpl implements IExcelService {
                 params.put("cumulatives", cumulatives);
                 break;
             }
-              case "b_echinococciasisdisease": {
+            case "b_echinococciasisdisease": {
                 //                params=this.getReportSummaryHtmlUtil(Blueeardisease.class,reportIds,"bedReportid",blueeardiseaseMapper,"bed_regionCode");
                 List<EchinococciasisDisease> items = echinococciasisDiseaseMapper.selectAllByDate(endTime, endTime);
                 params.put("items", items);
-                List<EchinococciasisDisease> cumulatives = echinococciasisDiseaseMapper.selectAllByDate(monthBeginTime, endTime);
+                List<EchinococciasisDisease> cumulatives = echinococciasisDiseaseMapper
+                        .selectAllByDate(monthBeginTime, endTime);
                 params.put("cumulatives", cumulatives);
                 break;
             }
-             case "b_brucellosisdisease": {
+            case "b_brucellosisdisease": {
                 //                params=this.getReportSummaryHtmlUtil(Blueeardisease.class,reportIds,"bedReportid",blueeardiseaseMapper,"bed_regionCode");
                 List<BrucellosisDisease> items = brucellosisDiseaseMapper.selectAllByDate(endTime, endTime);
                 params.put("items", items);
-                List<BrucellosisDisease> cumulatives = brucellosisDiseaseMapper.selectAllByDate(monthBeginTime, endTime);
+                List<BrucellosisDisease> cumulatives = brucellosisDiseaseMapper
+                        .selectAllByDate(monthBeginTime, endTime);
                 params.put("cumulatives", cumulatives);
                 break;
             }
@@ -968,6 +973,17 @@ public class ExcelServiceImpl implements IExcelService {
         params.put("wlivestockinouts", wlivestockinouts);
         iLogService.insertLog("查询汇总报表");
         return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getSummaryTemplate(), params);
+    }
+
+    private void changeApiJson(Class<?> clazz, JSONObject jsonObj) {
+        Field[] fieldsArr = clazz.getDeclaredFields();
+        for (Field field : fieldsArr) {
+            Column column = field.getAnnotation(Column.class);
+            String columnName = column.name();
+            String fieldName = field.getName();
+            jsonObj.put(fieldName, jsonObj.get(columnName));
+            jsonObj.remove(columnName);
+        }
     }
 
     @Override
@@ -1206,12 +1222,12 @@ public class ExcelServiceImpl implements IExcelService {
                 iLogService.insertLog("保存经费统计表");
                 break;
             }
-             case "b_kingfisher_new": {
+            case "b_kingfisher_new": {
                 KingfisherNew fill = (KingfisherNew) JSONObject.toBean(jsonObj, KingfisherNew.class);
-                 KingfisherNew arg = new KingfisherNew();
+                KingfisherNew arg = new KingfisherNew();
                 arg.setKfReportid(report.getReportId());
                 List<KingfisherNew> items = kingfisherNewMapper.select(arg);
-                 KingfisherNew item = new KingfisherNew();
+                KingfisherNew item = new KingfisherNew();
                 if (items.size() > 0) {
                     item = items.get(0);
                 } else {
@@ -1236,10 +1252,10 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     i = kingfisherNewMapper.updateByPrimaryKeySelective(item);
                 }
-                 iLogService.insertLog("保存经费统计表-新");
+                iLogService.insertLog("保存经费统计表-新");
                 break;
             }
-                case "b_classicalswinefevervaccine": {
+            case "b_classicalswinefevervaccine": {
                 Classicalswinefevervaccine fill = (Classicalswinefevervaccine) JSONObject
                         .toBean(jsonObj, Classicalswinefevervaccine.class);
                 Classicalswinefevervaccine arg = new Classicalswinefevervaccine();
@@ -1337,7 +1353,8 @@ public class ExcelServiceImpl implements IExcelService {
                 break;
             }
             case "b_echinococciasisvaccine": {
-                EchinococciasisVaccine fill = (EchinococciasisVaccine) JSONObject.toBean(jsonObj, EchinococciasisVaccine.class);
+                EchinococciasisVaccine fill = (EchinococciasisVaccine) JSONObject
+                        .toBean(jsonObj, EchinococciasisVaccine.class);
                 EchinococciasisVaccine arg = new EchinococciasisVaccine();
                 arg.setEchReportid(report.getReportId());
                 List<EchinococciasisVaccine> items = echinococciasisVaccineMapper.select(arg);
@@ -1595,12 +1612,12 @@ public class ExcelServiceImpl implements IExcelService {
                 iLogService.insertLog("保存高致病性猪蓝耳病疫苗使用和免疫情况周报表");
                 break;
             }
-           case "b_wechinococciasis": {
-               Wechinococciasis fill = (Wechinococciasis) JSONObject.toBean(jsonObj, Wechinococciasis.class);
-               Wechinococciasis arg = new Wechinococciasis();
+            case "b_wechinococciasis": {
+                Wechinococciasis fill = (Wechinococciasis) JSONObject.toBean(jsonObj, Wechinococciasis.class);
+                Wechinococciasis arg = new Wechinococciasis();
                 arg.setEchReportid(report.getReportId());
                 List<Wechinococciasis> items = wechinococciasisMapper.select(arg);
-               Wechinococciasis item = new Wechinococciasis();
+                Wechinococciasis item = new Wechinococciasis();
                 if (items.size() > 0) {
                     item = items.get(0);
                 } else {
@@ -1624,7 +1641,7 @@ public class ExcelServiceImpl implements IExcelService {
                 } else {
                     wechinococciasisMapper.updateByPrimaryKeySelective(item);
                 }
-               iLogService.insertLog("保存包虫病疫苗使用和免疫情况周报表");
+                iLogService.insertLog("保存包虫病疫苗使用和免疫情况周报表");
                 break;
             }
             case "b_wbrucellosis": {
@@ -1724,7 +1741,8 @@ public class ExcelServiceImpl implements IExcelService {
                 break;
             }
             case "b_echinococciasisdisease": {
-                EchinococciasisDisease fill = (EchinococciasisDisease) JSONObject.toBean(jsonObj, EchinococciasisDisease.class);
+                EchinococciasisDisease fill = (EchinococciasisDisease) JSONObject
+                        .toBean(jsonObj, EchinococciasisDisease.class);
                 EchinococciasisDisease arg = new EchinococciasisDisease();
                 arg.setEchReportid(report.getReportId());
                 List<EchinococciasisDisease> items = echinococciasisDiseaseMapper.select(arg);
@@ -2006,6 +2024,1113 @@ public class ExcelServiceImpl implements IExcelService {
                 break;
             }
             case "b_wlivestockinout": {
+                Wlivestockinout fill = (Wlivestockinout) JSONObject.toBean(jsonObj, Wlivestockinout.class);
+                Wlivestockinout arg = new Wlivestockinout();
+                arg.setReportid(report.getReportId());
+                List<Wlivestockinout> items = wlivestockinoutMapper.select(arg);
+                Wlivestockinout item = new Wlivestockinout();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setLivestockid(UUIDUtil.getUUID());
+                } else {
+                    fill.setLivestockid(item.getLivestockid());
+                    item = fill;
+                    insert = false;
+                }
+                item.setReportid(report.getReportId());
+                item.setLivestockdate(report.getBeginTime());
+                item.setLivRegioncode(region.getRegionCode());
+                item.setLivRegionname(region.getRegionName());
+                if (insert) {
+                    wlivestockinoutMapper.insertSelective(item);
+                } else {
+                    wlivestockinoutMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存畜禽存栏和应免数量统计表");
+                break;
+            }
+            default:
+                break;
+        }
+        return 1;
+    }
+
+    @Override
+    public int insertOrUpdateReportFillForApi(String data, Report report) {
+        JSONObject jsonObj = JSONObject.fromObject(data);
+        UserInfo userInfo = iUserInfoService.selectByKey(report.getReportUserId());
+        Template template = iTemplateService.selectByKey(report.getTemplateId());
+        OrgInfo orgInfo = iOrgInfoService.selectByKey(userInfo.getOrgId());
+        Region region = regionMapper.selectByPrimaryKey(orgInfo.getRegionCode());
+        switch (template.getTableName().toLowerCase()) {
+            case "b_avianinfluenza": {
+                changeApiJson(Avianinfluenza.class, jsonObj);
+                Avianinfluenza fill = (Avianinfluenza) JSONObject.toBean(jsonObj, Avianinfluenza.class);
+                Avianinfluenza arg = new Avianinfluenza();
+                arg.setAiReportid(report.getReportId());
+                List<Avianinfluenza> items = avianinfluenzaMapper.select(arg);
+                Avianinfluenza item = new Avianinfluenza();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setAiId(UUIDUtil.getUUID());
+                } else {
+                    fill.setAiId(item.getAiId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setAiReportid(report.getReportId());
+                item.setAiDate(report.getBeginTime());
+                item.setAiRegioncode(region.getRegionCode());
+                item.setAiRegionname(region.getRegionName());
+                if (insert) {
+                    avianinfluenzaMapper.insertSelective(item);
+                } else {
+                    avianinfluenzaMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存禽流感月报");
+                break;
+            }
+            case "b_emergencyvaccine": {
+                changeApiJson(Emergencyvaccine.class, jsonObj);
+                Emergencyvaccine fill = (Emergencyvaccine) JSONObject.toBean(jsonObj, Emergencyvaccine.class);
+                Emergencyvaccine arg = new Emergencyvaccine();
+                arg.setEvReportid(report.getReportId());
+                List<Emergencyvaccine> items = emergencyvaccineMapper.select(arg);
+                Emergencyvaccine item = new Emergencyvaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setEvId(UUIDUtil.getUUID());
+                } else {
+                    fill.setEvId(item.getEvId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setEvReportid(report.getReportId());
+                item.setEvDate(report.getBeginTime());
+                item.setEvRegioncode(region.getRegionCode());
+                item.setEvRegionname(region.getRegionName());
+                if (insert) {
+                    emergencyvaccineMapper.insertSelective(item);
+                } else {
+                    emergencyvaccineMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存疫苗储备情况报表");
+                break;
+            }
+            case "b_smallruminantsvaccine": {
+                changeApiJson(Smallruminantsvaccine.class, jsonObj);
+                Smallruminantsvaccine fill = (Smallruminantsvaccine) JSONObject
+                        .toBean(jsonObj, Smallruminantsvaccine.class);
+                Smallruminantsvaccine arg = new Smallruminantsvaccine();
+                arg.setSrvReportid(report.getReportId());
+                List<Smallruminantsvaccine> items = smallruminantsvaccineMapper.select(arg);
+                Smallruminantsvaccine item = new Smallruminantsvaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setSrvId(UUIDUtil.getUUID());
+                } else {
+                    fill.setSrvId(item.getSrvId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setSrvReportid(report.getReportId());
+                item.setSrvDate(report.getBeginTime());
+                item.setSrvRegioncode(region.getRegionCode());
+                item.setSrvRegionname(region.getRegionName());
+                if (insert) {
+                    smallruminantsvaccineMapper.insertSelective(item);
+                } else {
+                    smallruminantsvaccineMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存小反刍兽疫春秋防汇总报表");
+                break;
+            }
+            case "b_poultrydensity": {
+                changeApiJson(Poultrydensity.class, jsonObj);
+                Poultrydensity fill = (Poultrydensity) JSONObject.toBean(jsonObj, Poultrydensity.class);
+                Poultrydensity arg = new Poultrydensity();
+                arg.setPdReportid(report.getReportId());
+                List<Poultrydensity> items = poultrydensityMapper.select(arg);
+                Poultrydensity item = new Poultrydensity();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setPdId(UUIDUtil.getUUID());
+                } else {
+                    fill.setPdId(item.getPdId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setPdReportid(report.getReportId());
+                item.setPdDate(report.getBeginTime());
+                item.setPdRegioncode(region.getRegionCode());
+                item.setPdRegionname(region.getRegionName());
+                if (insert) {
+                    poultrydensityMapper.insertSelective(item);
+                } else {
+                    poultrydensityMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存家禽免疫密度统计表");
+                break;
+            }
+            case "b_newcastlevaccine": {
+                changeApiJson(Newcastlevaccine.class, jsonObj);
+                Newcastlevaccine fill = (Newcastlevaccine) JSONObject.toBean(jsonObj, Newcastlevaccine.class);
+                Newcastlevaccine arg = new Newcastlevaccine();
+                arg.setNvReportid(report.getReportId());
+                List<Newcastlevaccine> items = newcastlevaccineMapper.select(arg);
+                Newcastlevaccine item = new Newcastlevaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setNvId(UUIDUtil.getUUID());
+                } else {
+                    fill.setNvId(item.getNvId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setNvReportid(report.getReportId());
+                item.setNvDate(report.getBeginTime());
+                item.setNvRegioncode(region.getRegionCode());
+                item.setNvRegionname(region.getRegionName());
+                if (insert) {
+                    newcastlevaccineMapper.insertSelective(item);
+                } else {
+                    newcastlevaccineMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存新城疫疫苗使用统计表");
+                break;
+            }
+            case "b_livestockdensity": {
+                changeApiJson(Livestockdensity.class, jsonObj);
+                Livestockdensity fill = (Livestockdensity) JSONObject.toBean(jsonObj, Livestockdensity.class);
+                Livestockdensity arg = new Livestockdensity();
+                arg.setLdReportid(report.getReportId());
+                List<Livestockdensity> items = livestockdensityMapper.select(arg);
+                Livestockdensity item = new Livestockdensity();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+
+                if (item == null) {
+                    item = fill;
+                    item.setLdId(UUIDUtil.getUUID());
+                } else {
+                    fill.setLdId(item.getLdId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setLdReportid(report.getReportId());
+                item.setLdDate(report.getBeginTime());
+                item.setLdRegioncode(region.getRegionCode());
+                item.setLdRegionname(region.getRegionName());
+                if (insert) {
+                    livestockdensityMapper.insertSelective(item);
+                } else {
+                    livestockdensityMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存牲畜免疫密度统计表");
+                break;
+            }
+            case "b_kingfisher": {
+                changeApiJson(Kingfisher.class, jsonObj);
+                Kingfisher fill = (Kingfisher) JSONObject.toBean(jsonObj, Kingfisher.class);
+                Kingfisher arg = new Kingfisher();
+                arg.setKfReportid(report.getReportId());
+                List<Kingfisher> items = kingfisherMapper.select(arg);
+                Kingfisher item = new Kingfisher();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setKfId(UUIDUtil.getUUID());
+                } else {
+                    fill.setKfId(item.getKfId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setKfReportid(report.getReportId());
+                item.setKfDate(report.getBeginTime());
+                item.setKfRegioncode(region.getRegionCode());
+                item.setKfRegionname(region.getRegionName());
+                int i;
+                if (insert) {
+                    kingfisherMapper.insertSelective(item);
+                } else {
+                    i = kingfisherMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存经费统计表");
+                break;
+            }
+            case "b_kingfisher_new": {
+                changeApiJson(KingfisherNew.class, jsonObj);
+                KingfisherNew fill = (KingfisherNew) JSONObject.toBean(jsonObj, KingfisherNew.class);
+                KingfisherNew arg = new KingfisherNew();
+                arg.setKfReportid(report.getReportId());
+                List<KingfisherNew> items = kingfisherNewMapper.select(arg);
+                KingfisherNew item = new KingfisherNew();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setKfId(UUIDUtil.getUUID());
+                } else {
+                    fill.setKfId(item.getKfId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setKfReportid(report.getReportId());
+                item.setKfDate(report.getBeginTime());
+                item.setKfRegioncode(region.getRegionCode());
+                item.setKfRegionname(region.getRegionName());
+                int i;
+                if (insert) {
+                    kingfisherNewMapper.insertSelective(item);
+                } else {
+                    i = kingfisherNewMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存经费统计表-新");
+                break;
+            }
+            case "b_classicalswinefevervaccine": {
+                changeApiJson(Classicalswinefevervaccine.class, jsonObj);
+                Classicalswinefevervaccine fill = (Classicalswinefevervaccine) JSONObject
+                        .toBean(jsonObj, Classicalswinefevervaccine.class);
+                Classicalswinefevervaccine arg = new Classicalswinefevervaccine();
+                arg.setCvReportid(report.getReportId());
+                List<Classicalswinefevervaccine> items = classicalswinefevervaccineMapper.select(arg);
+                Classicalswinefevervaccine item = new Classicalswinefevervaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setCvId(UUIDUtil.getUUID());
+                } else {
+                    fill.setCvId(item.getCvId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setCvReportid(report.getReportId());
+                item.setCvDate(report.getBeginTime());
+                item.setCvRegioncode(region.getRegionCode());
+                item.setCvRegionname(region.getRegionName());
+                if (insert) {
+                    classicalswinefevervaccineMapper.insertSelective(item);
+                } else {
+                    classicalswinefevervaccineMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存猪瘟疫苗使用统计表");
+                break;
+            }
+            case "b_footandmouthvaccine": {
+                changeApiJson(Footandmouthvaccine.class, jsonObj);
+                Footandmouthvaccine fill = (Footandmouthvaccine) JSONObject.toBean(jsonObj, Footandmouthvaccine.class);
+                Footandmouthvaccine arg = new Footandmouthvaccine();
+                arg.setFvReportid(report.getReportId());
+                List<Footandmouthvaccine> items = footandmouthvaccineMapper.select(arg);
+                Footandmouthvaccine item = new Footandmouthvaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setFvId(UUIDUtil.getUUID());
+                } else {
+                    fill.setFvId(item.getFvId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setFvReportid(report.getReportId());
+                item.setFvDate(report.getBeginTime());
+                item.setFvRegioncode(region.getRegionCode());
+                item.setFvRegionname(region.getRegionName());
+                if (insert) {
+                    footandmouthvaccineMapper.insertSelective(item);
+                } else {
+                    footandmouthvaccineMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存口蹄疫疫苗使用统计表");
+                break;
+            }
+            case "b_bluevaccine": {
+                changeApiJson(Bluevaccine.class, jsonObj);
+                Bluevaccine fill = (Bluevaccine) JSONObject.toBean(jsonObj, Bluevaccine.class);
+                Bluevaccine arg = new Bluevaccine();
+                arg.setBvReportid(report.getReportId());
+                List<Bluevaccine> items = bluevaccineMapper.select(arg);
+                Bluevaccine item = new Bluevaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setBvId(UUIDUtil.getUUID());
+                } else {
+                    fill.setBvId(item.getBvId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setBvReportid(report.getReportId());
+                item.setBvDate(report.getBeginTime());
+                item.setBvRegioncode(region.getRegionCode());
+                item.setBvRegionname(region.getRegionName());
+                if (insert) {
+                    bluevaccineMapper.insertSelective(item);
+                } else {
+                    bluevaccineMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存高致病性猪蓝耳病疫苗使用统计表");
+                break;
+            }
+            case "b_echinococciasisvaccine": {
+                changeApiJson(EchinococciasisVaccine.class, jsonObj);
+                EchinococciasisVaccine fill = (EchinococciasisVaccine) JSONObject
+                        .toBean(jsonObj, EchinococciasisVaccine.class);
+                EchinococciasisVaccine arg = new EchinococciasisVaccine();
+                arg.setEchReportid(report.getReportId());
+                List<EchinococciasisVaccine> items = echinococciasisVaccineMapper.select(arg);
+                EchinococciasisVaccine item = new EchinococciasisVaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setEchId(UUIDUtil.getUUID());
+                } else {
+                    fill.setEchId(item.getEchId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setEchReportid(report.getReportId());
+                item.setEchDate(report.getBeginTime());
+                item.setEchRegioncode(region.getRegionCode());
+                item.setEchRegionname(region.getRegionName());
+                if (insert) {
+                    echinococciasisVaccineMapper.insertSelective(item);
+                } else {
+                    echinococciasisVaccineMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存包虫病疫苗使用统计表");
+                break;
+            }
+            case "b_brucellosisvaccine": {
+                changeApiJson(BrucellosisVaccine.class, jsonObj);
+                BrucellosisVaccine fill = (BrucellosisVaccine) JSONObject.toBean(jsonObj, BrucellosisVaccine.class);
+                BrucellosisVaccine arg = new BrucellosisVaccine();
+                arg.setBruReportid(report.getReportId());
+                List<BrucellosisVaccine> items = brucellosisVaccineMapper.select(arg);
+                BrucellosisVaccine item = new BrucellosisVaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setBruId(UUIDUtil.getUUID());
+                } else {
+                    fill.setBruId(item.getBruId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setBruReportid(report.getReportId());
+                item.setBruDate(report.getBeginTime());
+                item.setBruRegioncode(region.getRegionCode());
+                item.setBruRegionname(region.getRegionName());
+                if (insert) {
+                    brucellosisVaccineMapper.insertSelective(item);
+                } else {
+                    brucellosisVaccineMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存布鲁氏菌病疫苗使用统计表");
+                break;
+            }
+            case "b_avianinfluenzavaccine": {
+                changeApiJson(Avianinfluenzavaccine.class, jsonObj);
+                Avianinfluenzavaccine fill = (Avianinfluenzavaccine) JSONObject
+                        .toBean(jsonObj, Avianinfluenzavaccine.class);
+                Avianinfluenzavaccine arg = new Avianinfluenzavaccine();
+                arg.setAvReportid(report.getReportId());
+                List<Avianinfluenzavaccine> items = avianinfluenzavaccineMapper.select(arg);
+                Avianinfluenzavaccine item = new Avianinfluenzavaccine();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setAvId(UUIDUtil.getUUID());
+                } else {
+                    fill.setAvId(item.getAvId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setAvReportid(report.getReportId());
+                item.setAvDate(report.getBeginTime());
+                item.setAvRegioncode(region.getRegionCode());
+                item.setAvRegionname(region.getRegionName());
+                if (insert) {
+                    avianinfluenzavaccineMapper.insertSelective(item);
+                } else {
+                    avianinfluenzavaccineMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存禽流感疫苗使用统计表");
+                break;
+            }
+            case "b_wpestedespetitsruminants": {
+                changeApiJson(Wpestedespetitsruminants.class, jsonObj);
+                Wpestedespetitsruminants fill = (Wpestedespetitsruminants) JSONObject
+                        .toBean(jsonObj, Wpestedespetitsruminants.class);
+                Wpestedespetitsruminants arg = new Wpestedespetitsruminants();
+                arg.setWpdrReportid(report.getReportId());
+                List<Wpestedespetitsruminants> items = wpestedespetitsruminantsMapper.select(arg);
+                Wpestedespetitsruminants item = new Wpestedespetitsruminants();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setWpdrId(UUIDUtil.getUUID());
+                } else {
+                    fill.setWpdrId(item.getWpdrId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setWpdrReportid(report.getReportId());
+                item.setWpdrDate(report.getBeginTime());
+                item.setWpdrRegioncode(region.getRegionCode());
+                item.setWpdrRegionname(region.getRegionName());
+                if (insert) {
+                    wpestedespetitsruminantsMapper.insertSelective(item);
+                } else {
+                    wpestedespetitsruminantsMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存小反刍兽疫疫苗使用和免疫情况周报表");
+                break;
+            }
+            case "b_wavianinfluenza": {
+                changeApiJson(Wavianinfluenza.class, jsonObj);
+                Wavianinfluenza fill = (Wavianinfluenza) JSONObject.toBean(jsonObj, Wavianinfluenza.class);
+                Wavianinfluenza arg = new Wavianinfluenza();
+                arg.setAiReportid(report.getReportId());
+                List<Wavianinfluenza> items = wavianinfluenzaMapper.select(arg);
+                Wavianinfluenza item = new Wavianinfluenza();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setAiId(UUIDUtil.getUUID());
+                } else {
+                    fill.setAiId(item.getAiId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setAiReportid(report.getReportId());
+                item.setAiDate(report.getBeginTime());
+                item.setAiRegioncode(region.getRegionCode());
+                item.setAiRegionname(region.getRegionName());
+                if (insert) {
+                    wavianinfluenzaMapper.insertSelective(item);
+                } else {
+                    wavianinfluenzaMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存禽流感疫苗使用和免疫情况周报表");
+                break;
+            }
+            case "b_wnewcastle": {
+                changeApiJson(Wnewcastle.class, jsonObj);
+                Wnewcastle fill = (Wnewcastle) JSONObject.toBean(jsonObj, Wnewcastle.class);
+                Wnewcastle arg = new Wnewcastle();
+                arg.setNcReportid(report.getReportId());
+                List<Wnewcastle> items = wnewcastleMapper.select(arg);
+                Wnewcastle item = new Wnewcastle();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setNcId(UUIDUtil.getUUID());
+                } else {
+                    fill.setNcId(item.getNcId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setNcReportid(report.getReportId());
+                item.setNcDate(report.getBeginTime());
+                item.setNcRegioncode(region.getRegionCode());
+                item.setNcRegionname(region.getRegionName());
+                if (insert) {
+                    wnewcastleMapper.insertSelective(item);
+                } else {
+                    wnewcastleMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存新城疫疫苗使用和免疫情况周报表");
+                break;
+            }
+            case "b_wclassicalswinefever": {
+                changeApiJson(Wclassicalswinefever.class, jsonObj);
+                Wclassicalswinefever fill = (Wclassicalswinefever) JSONObject
+                        .toBean(jsonObj, Wclassicalswinefever.class);
+                Wclassicalswinefever arg = new Wclassicalswinefever();
+                arg.setCsfReportid(report.getReportId());
+                List<Wclassicalswinefever> items = wclassicalswinefeverMapper.select(arg);
+                Wclassicalswinefever item = new Wclassicalswinefever();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setCsfId(UUIDUtil.getUUID());
+                } else {
+                    fill.setCsfId(item.getCsfId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setCsfReportid(report.getReportId());
+                item.setCsfDate(report.getBeginTime());
+                item.setCsfRegioncode(region.getRegionCode());
+                item.setCsfRegionname(region.getRegionName());
+                if (insert) {
+                    wclassicalswinefeverMapper.insertSelective(item);
+                } else {
+                    wclassicalswinefeverMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存猪瘟疫苗使用和免疫情况周报表");
+                break;
+            }
+            case "b_wblueeardisease": {
+                changeApiJson(Wblueeardisease.class, jsonObj);
+                Wblueeardisease fill = (Wblueeardisease) JSONObject.toBean(jsonObj, Wblueeardisease.class);
+                Wblueeardisease arg = new Wblueeardisease();
+                arg.setBedReportid(report.getReportId());
+                List<Wblueeardisease> items = wblueeardiseaseMapper.select(arg);
+                Wblueeardisease item = new Wblueeardisease();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setBedId(UUIDUtil.getUUID());
+                } else {
+                    fill.setBedId(item.getBedId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setBedReportid(report.getReportId());
+                item.setBedDate(report.getBeginTime());
+                item.setBedRegioncode(region.getRegionCode());
+                item.setBedRegionname(region.getRegionName());
+                if (insert) {
+                    wblueeardiseaseMapper.insertSelective(item);
+                } else {
+                    wblueeardiseaseMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存高致病性猪蓝耳病疫苗使用和免疫情况周报表");
+                break;
+            }
+            case "b_wechinococciasis": {
+                changeApiJson(Wechinococciasis.class, jsonObj);
+                Wechinococciasis fill = (Wechinococciasis) JSONObject.toBean(jsonObj, Wechinococciasis.class);
+                Wechinococciasis arg = new Wechinococciasis();
+                arg.setEchReportid(report.getReportId());
+                List<Wechinococciasis> items = wechinococciasisMapper.select(arg);
+                Wechinococciasis item = new Wechinococciasis();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setEchId(UUIDUtil.getUUID());
+                } else {
+                    fill.setEchId(item.getEchId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setEchReportid(report.getReportId());
+                item.setEchDate(report.getBeginTime());
+                item.setEchRegioncode(region.getRegionCode());
+                item.setEchRegionname(region.getRegionName());
+                if (insert) {
+                    wechinococciasisMapper.insertSelective(item);
+                } else {
+                    wechinococciasisMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存包虫病疫苗使用和免疫情况周报表");
+                break;
+            }
+            case "b_wbrucellosis": {
+                changeApiJson(Wbrucellosis.class, jsonObj);
+                Wbrucellosis fill = (Wbrucellosis) JSONObject.toBean(jsonObj, Wbrucellosis.class);
+                Wbrucellosis arg = new Wbrucellosis();
+                arg.setBruReportid(report.getReportId());
+                List<Wbrucellosis> items = wbrucellosisMapper.select(arg);
+                Wbrucellosis item = new Wbrucellosis();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setBruId(UUIDUtil.getUUID());
+                } else {
+                    fill.setBruId(item.getBruId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setBruReportid(report.getReportId());
+                item.setBruDate(report.getBeginTime());
+                item.setBruRegioncode(region.getRegionCode());
+                item.setBruRegionname(region.getRegionName());
+                if (insert) {
+                    wbrucellosisMapper.insertSelective(item);
+                } else {
+                    wbrucellosisMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存鲁氏菌病疫苗使用和免疫情况周报表");
+                break;
+            }
+            case "b_vaccineorder": {
+                changeApiJson(Vaccineorder.class, jsonObj);
+                Vaccineorder fill = (Vaccineorder) JSONObject.toBean(jsonObj, Vaccineorder.class);
+                Vaccineorder arg = new Vaccineorder();
+                arg.setReportid(report.getReportId());
+                List<Vaccineorder> items = vaccineorderMapper.select(arg);
+                Vaccineorder item = new Vaccineorder();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setVaccineorderid(UUIDUtil.getUUID());
+                } else {
+                    fill.setVaccineorderid(item.getVaccineorderid());
+                    item = fill;
+                    insert = false;
+                }
+                item.setReportid(report.getReportId());
+                item.setDate(report.getBeginTime());
+                item.setRegioncode(region.getRegionCode());
+                item.setRegionname(region.getRegionName());
+                if (insert) {
+                    vaccineorderMapper.insertSelective(item);
+                } else {
+                    vaccineorderMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存疫苗到货、下拨月报表");
+                break;
+            }
+            case "b_blueeardisease": {
+                changeApiJson(Blueeardisease.class, jsonObj);
+                Blueeardisease fill = (Blueeardisease) JSONObject.toBean(jsonObj, Blueeardisease.class);
+                Blueeardisease arg = new Blueeardisease();
+                arg.setBedReportid(report.getReportId());
+                List<Blueeardisease> items = blueeardiseaseMapper.select(arg);
+                Blueeardisease item = new Blueeardisease();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setBedId(UUIDUtil.getUUID());
+                } else {
+                    fill.setBedId(item.getBedId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setBedReportid(report.getReportId());
+                item.setBedDate(report.getBeginTime());
+                item.setBedRegioncode(region.getRegionCode());
+                item.setBedRegionname(region.getRegionName());
+                if (insert) {
+                    blueeardiseaseMapper.insertSelective(item);
+                } else {
+                    blueeardiseaseMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存高致病性猪蓝耳病免疫情况月报表");
+                break;
+            }
+            case "b_echinococciasisdisease": {
+                changeApiJson(EchinococciasisDisease.class, jsonObj);
+                EchinococciasisDisease fill = (EchinococciasisDisease) JSONObject
+                        .toBean(jsonObj, EchinococciasisDisease.class);
+                EchinococciasisDisease arg = new EchinococciasisDisease();
+                arg.setEchReportid(report.getReportId());
+                List<EchinococciasisDisease> items = echinococciasisDiseaseMapper.select(arg);
+                EchinococciasisDisease item = new EchinococciasisDisease();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setEchId(UUIDUtil.getUUID());
+                } else {
+                    fill.setEchId(item.getEchId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setEchReportid(report.getReportId());
+                item.setEchDate(report.getBeginTime());
+                item.setEchRegioncode(region.getRegionCode());
+                item.setEchRegionname(region.getRegionName());
+                if (insert) {
+                    echinococciasisDiseaseMapper.insertSelective(item);
+                } else {
+                    echinococciasisDiseaseMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存包虫病免疫情况月报表");
+                break;
+            }
+            case "b_brucellosisdisease": {
+                changeApiJson(BrucellosisDisease.class, jsonObj);
+                BrucellosisDisease fill = (BrucellosisDisease) JSONObject.toBean(jsonObj, BrucellosisDisease.class);
+                BrucellosisDisease arg = new BrucellosisDisease();
+                arg.setBruReportid(report.getReportId());
+                List<BrucellosisDisease> items = brucellosisDiseaseMapper.select(arg);
+                BrucellosisDisease item = new BrucellosisDisease();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setBruId(UUIDUtil.getUUID());
+                } else {
+                    fill.setBruId(item.getBruId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setBruReportid(report.getReportId());
+                item.setBruDate(report.getBeginTime());
+                item.setBruRegioncode(region.getRegionCode());
+                item.setBruRegionname(region.getRegionName());
+                if (insert) {
+                    brucellosisDiseaseMapper.insertSelective(item);
+                } else {
+                    brucellosisDiseaseMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存布鲁氏菌病免疫情况月报表");
+                break;
+            }
+            case "b_classicalswinefever": {
+                changeApiJson(Classicalswinefever.class, jsonObj);
+                Classicalswinefever fill = (Classicalswinefever) JSONObject.toBean(jsonObj, Classicalswinefever.class);
+                Classicalswinefever arg = new Classicalswinefever();
+                arg.setCsfReportid(report.getReportId());
+                List<Classicalswinefever> items = classicalswinefeverMapper.select(arg);
+                Classicalswinefever item = new Classicalswinefever();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setCsfId(UUIDUtil.getUUID());
+                } else {
+                    fill.setCsfId(item.getCsfId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setCsfReportid(report.getReportId());
+                item.setCsfDate(report.getBeginTime());
+                item.setCsfRegioncode(region.getRegionCode());
+                item.setCsfRegionname(region.getRegionName());
+                if (insert) {
+                    classicalswinefeverMapper.insertSelective(item);
+                } else {
+                    classicalswinefeverMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存猪瘟免疫情况月报表");
+                break;
+            }
+            case "b_footandmouthdisease": {
+                changeApiJson(Footandmouthdisease.class, jsonObj);
+                Footandmouthdisease fill = (Footandmouthdisease) JSONObject.toBean(jsonObj, Footandmouthdisease.class);
+                Footandmouthdisease arg = new Footandmouthdisease();
+                arg.setFmdReportid(report.getReportId());
+                List<Footandmouthdisease> items = footandmouthdiseaseMapper.select(arg);
+                Footandmouthdisease item = new Footandmouthdisease();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setFmdId(UUIDUtil.getUUID());
+                } else {
+                    fill.setFmdId(item.getFmdId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setFmdReportid(report.getReportId());
+                item.setFmdDate(report.getBeginTime());
+                item.setFmdRegioncode(region.getRegionCode());
+                item.setFmdRegionname(region.getRegionName());
+                if (insert) {
+                    footandmouthdiseaseMapper.insertSelective(item);
+                } else {
+                    footandmouthdiseaseMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存口蹄疫免疫情况月报表");
+                break;
+            }
+            case "b_newcastle": {
+                changeApiJson(Newcastle.class, jsonObj);
+                Newcastle fill = (Newcastle) JSONObject.toBean(jsonObj, Newcastle.class);
+                Newcastle arg = new Newcastle();
+                arg.setNcReportid(report.getReportId());
+                List<Newcastle> items = newcastleMapper.select(arg);
+                Newcastle item = new Newcastle();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setNcId(UUIDUtil.getUUID());
+                } else {
+                    fill.setNcId(item.getNcId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setNcReportid(report.getReportId());
+                item.setNcDate(report.getBeginTime());
+                item.setNcRegioncode(region.getRegionCode());
+                item.setNcRegionname(region.getRegionName());
+                if (insert) {
+                    newcastleMapper.insertSelective(item);
+                } else {
+                    newcastleMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存新城疫免疫情况月报表");
+                break;
+            }
+            case "b_pestedespetitsruminants": {
+                changeApiJson(Pestedespetitsruminants.class, jsonObj);
+                Pestedespetitsruminants fill = (Pestedespetitsruminants) JSONObject
+                        .toBean(jsonObj, Pestedespetitsruminants.class);
+                Pestedespetitsruminants arg = new Pestedespetitsruminants();
+                arg.setPdprReportid(report.getReportId());
+                List<Pestedespetitsruminants> items = pestedespetitsruminantsMapper.select(arg);
+                Pestedespetitsruminants item = new Pestedespetitsruminants();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setPdprId(UUIDUtil.getUUID());
+                } else {
+                    fill.setPdprId(item.getPdprId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setPdprReportid(report.getReportId());
+                item.setPdprDate(report.getBeginTime());
+                item.setPdprRegioncode(region.getRegionCode());
+                item.setPdprRegionname(region.getRegionName());
+                if (insert) {
+                    pestedespetitsruminantsMapper.insertSelective(item);
+                } else {
+                    pestedespetitsruminantsMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存小反刍兽疫免疫情况月报表");
+                break;
+            }
+            case "b_livestockinout": {
+                changeApiJson(LiveStockInOut.class, jsonObj);
+                LiveStockInOut fill = (LiveStockInOut) JSONObject.toBean(jsonObj, LiveStockInOut.class);
+                LiveStockInOut liveStockInOut = liveStockInOutMapper.selectOneByReportId(report.getReportId());
+                boolean insert = true;
+                if (liveStockInOut == null) {
+                    liveStockInOut = fill;
+                    liveStockInOut.setLivestockid(UUIDUtil.getUUID());
+                } else {
+                    fill.setLivestockid(liveStockInOut.getLivestockid());
+                    liveStockInOut = fill;
+                    insert = false;
+                }
+                liveStockInOut.setReportid(report.getReportId());
+                liveStockInOut.setLivestockdate(report.getBeginTime());
+                liveStockInOut.setLivRegioncode(region.getRegionCode());
+                liveStockInOut.setLivRegionname(region.getRegionName());
+                if (insert) {
+                    liveStockInOutMapper.insertSelective(liveStockInOut);
+                } else {
+                    liveStockInOutMapper.updateByPrimaryKeySelective(liveStockInOut);
+                }
+                iLogService.insertLog("保存畜禽存栏和应免数量月报表");
+                break;
+            }
+            case "b_disinfectiondrugs": {
+                changeApiJson(Disinfectiondrugs.class, jsonObj);
+                Disinfectiondrugs fill = (Disinfectiondrugs) JSONObject.toBean(jsonObj, Disinfectiondrugs.class);
+                Disinfectiondrugs arg = new Disinfectiondrugs();
+                arg.setDfReportid(report.getReportId());
+                List<Disinfectiondrugs> items = disinfectiondrugsMapper.select(arg);
+                Disinfectiondrugs item = new Disinfectiondrugs();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setDfId(UUIDUtil.getUUID());
+                } else {
+                    fill.setDfId(item.getDfId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setDfReportid(report.getReportId());
+                item.setDfDate(report.getBeginTime());
+                item.setDfRegioncode(region.getRegionCode());
+                item.setDfRegionname(region.getRegionName());
+                if (insert) {
+                    disinfectiondrugsMapper.insertSelective(item);
+                } else {
+                    disinfectiondrugsMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存消毒药品储备情况表");
+                break;
+            }
+            case "b_wfootandmouthdisease": {
+                changeApiJson(Wfootandmouthdisease.class, jsonObj);
+                Wfootandmouthdisease fill = (Wfootandmouthdisease) JSONObject
+                        .toBean(jsonObj, Wfootandmouthdisease.class);
+                Wfootandmouthdisease arg = new Wfootandmouthdisease();
+                arg.setFmdReportid(report.getReportId());
+                List<Wfootandmouthdisease> items = wfootandmouthdiseaseMapper.select(arg);
+                Wfootandmouthdisease item = new Wfootandmouthdisease();
+                if (items.size() > 0) {
+                    item = items.get(0);
+                } else {
+                    item = null;
+                }
+                boolean insert = true;
+                if (item == null) {
+                    item = fill;
+                    item.setFmdId(UUIDUtil.getUUID());
+                } else {
+                    fill.setFmdId(item.getFmdId());
+                    item = fill;
+                    insert = false;
+                }
+                item.setFmdReportid(report.getReportId());
+                item.setFmdDate(report.getBeginTime());
+                item.setFmdRegioncode(region.getRegionCode());
+                item.setFmdRegionname(region.getRegionName());
+                if (insert) {
+                    wfootandmouthdiseaseMapper.insertSelective(item);
+                } else {
+                    wfootandmouthdiseaseMapper.updateByPrimaryKeySelective(item);
+                }
+                iLogService.insertLog("保存牲畜口蹄疫疫苗使用和免疫情况周报表");
+                break;
+            }
+            case "b_wlivestockinout": {
+                changeApiJson(Wlivestockinout.class, jsonObj);
                 Wlivestockinout fill = (Wlivestockinout) JSONObject.toBean(jsonObj, Wlivestockinout.class);
                 Wlivestockinout arg = new Wlivestockinout();
                 arg.setReportid(report.getReportId());

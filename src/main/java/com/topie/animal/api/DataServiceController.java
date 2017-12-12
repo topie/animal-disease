@@ -76,7 +76,7 @@ public class DataServiceController {
             for (ObjectError objectError : result.getAllErrors()) {
                 builder.append(objectError.getDefaultMessage()).append(";");
             }
-            return new AnimalResponse(animalRequest.getRequestId(), -1, "协议格式不正确"+builder.toString());
+            return new AnimalResponse(animalRequest.getRequestId(), -1, "协议格式不正确" + builder.toString());
         }
         String fullMessage =
                 animalRequest.getClientId() + secret + animalRequest.getRequestId() + animalRequest.getTimeStamp();
@@ -96,7 +96,7 @@ public class DataServiceController {
         report.setStatus(1);
         iReportService.saveNotNull(report);
         iExcelService
-                .insertOrUpdateReportFill(JSONObject.toJSONString(animalRequest.getData().getReport_data()), report);
+                .insertOrUpdateReportFillForApi(JSONObject.toJSONString(animalRequest.getData().getReport_data()), report);
         report.setStatus(2);
         return new AnimalResponse(animalRequest.getRequestId(), 0, "成功");
     }
