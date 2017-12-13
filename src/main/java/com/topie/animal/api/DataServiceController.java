@@ -4,11 +4,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.topie.animal.dto.AnimalRequest;
 import com.topie.animal.dto.AnimalResponse;
 import com.topie.animal.service.IExcelService;
+import com.topie.animal.service.IOrgInfoService;
 import com.topie.animal.service.IReportService;
+import com.topie.animal.service.IUserInfoService;
 import com.topie.common.utils.EncryptHelper;
 import com.topie.common.utils.UUIDUtil;
 import com.topie.common.utils.date.DateUtil;
+import com.topie.database.core.animal.model.OrgInfo;
 import com.topie.database.core.animal.model.Report;
+import com.topie.database.core.animal.model.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -34,6 +38,12 @@ public class DataServiceController {
 
     @Autowired
     private IExcelService iExcelService;
+
+    @Autowired
+    private IUserInfoService iUserInfoService;
+
+    @Autowired
+    private IOrgInfoService iOrgInfoService;
 
     @RequestMapping(method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
@@ -84,19 +94,38 @@ public class DataServiceController {
         if (!animalRequest.getMac().equals(mac)) {
             return new AnimalResponse(animalRequest.getRequestId(), -104, "MAC校验失败");
         }
-        Report report = new Report();
-        String reportId = UUIDUtil.getUUID();
-        String templateId = requestMap.get(animalRequest.getRequestId());
-        report.setTemplateId(templateId);
         Integer reportType = animalRequest.getData().getReport_type();
-        report.setReportType(reportType);
-        report.setReportId(reportId);
-        report.setBeginTime(DateUtil.StringToDate(animalRequest.getData().getBegin_time()));
-        report.setReportTime(new Date());
-        report.setReportUserId(animalRequest.getData().getReport_user_id());
-        report.setStatus(2);
-        iReportService.saveNotNull(report);
-        report.setReportId(reportId);
+        String templateId = requestMap.get(animalRequest.getRequestId());
+
+        Report reportSearch = new Report();
+        reportSearch.setBeginTime(DateUtil.StringToDate(animalRequest.getData().getBegin_time()));
+        reportSearch.setReportUserId(animalRequest.getData().getReport_user_id());
+        reportSearch.setTemplateId(templateId);
+        UserInfo userInfo = iUserInfoService.selectByKey(reportSearch.getReportUserId());
+        OrgInfo orgInfo = iOrgInfoService.selectByKey(userInfo.getOrgId());
+        Report r = iReportService
+                .selectOneByOrgIdAndTemplateIdAndBeginTime(orgInfo.getOrgId(), reportSearch.getTemplateId(),
+                        reportSearch.getBeginTime());
+        Report report = new Report();
+        if(r!=null){
+            String reportId = r.getReportId();
+            report = r;
+            report.setReportTime(new Date());
+            report.setStatus(2);
+            iReportService.updateNotNull(report);
+            report.setReportId(reportId);
+        }else{
+            String reportId = UUIDUtil.getUUID();
+            report.setTemplateId(templateId);
+            report.setReportType(reportType);
+            report.setReportId(reportId);
+            report.setBeginTime(DateUtil.StringToDate(animalRequest.getData().getBegin_time()));
+            report.setReportTime(new Date());
+            report.setReportUserId(animalRequest.getData().getReport_user_id());
+            report.setStatus(2);
+            iReportService.saveNotNull(report);
+            report.setReportId(reportId);
+        }
         iExcelService.insertOrUpdateReportFillForApi(JSONObject.toJSONString(animalRequest.getData().getReport_data()),
                 report);
         return new AnimalResponse(animalRequest.getRequestId(), 0, "成功");
