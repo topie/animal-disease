@@ -93,11 +93,10 @@ public class DataServiceController {
         report.setBeginTime(DateUtil.StringToDate(animalRequest.getData().getBegin_time()));
         report.setReportTime(new Date());
         report.setReportUserId(animalRequest.getData().getReport_user_id());
-        report.setStatus(1);
-        iReportService.saveNotNull(report);
-        iExcelService
-                .insertOrUpdateReportFillForApi(JSONObject.toJSONString(animalRequest.getData().getReport_data()), report);
         report.setStatus(2);
+        iReportService.saveNotNull(report);
+        iExcelService.insertOrUpdateReportFillForApi(JSONObject.toJSONString(animalRequest.getData().getReport_data()),
+                report);
         return new AnimalResponse(animalRequest.getRequestId(), 0, "成功");
     }
 }
