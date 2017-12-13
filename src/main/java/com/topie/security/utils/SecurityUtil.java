@@ -12,6 +12,8 @@ public class SecurityUtil {
 
     public static String getCurrentUserName() {
         if (SecurityContextHolder.getContext() == null) return null;
+        if (SecurityContextHolder.getContext().getAuthentication() == null) return null;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == null) return null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userName = null;
         if (principal instanceof OrangeSecurityUser) userName = ((OrangeSecurityUser) principal).getUsername();
@@ -20,6 +22,8 @@ public class SecurityUtil {
 
     public static Integer getCurrentUserId() {
         if (SecurityContextHolder.getContext() == null) return null;
+        if (SecurityContextHolder.getContext().getAuthentication() == null) return null;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == null) return null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Integer userId = null;
         if (principal instanceof OrangeSecurityUser) userId = ((OrangeSecurityUser) principal).getId();
@@ -28,6 +32,8 @@ public class SecurityUtil {
 
     public static OrangeSecurityUser getCurrentSecurityUser() {
         if (SecurityContextHolder.getContext() == null) return null;
+        if (SecurityContextHolder.getContext().getAuthentication() == null) return null;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == null) return null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof OrangeSecurityUser) return (OrangeSecurityUser) principal;
         return null;
