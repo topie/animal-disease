@@ -85,16 +85,18 @@ public class DataServiceController {
             return new AnimalResponse(animalRequest.getRequestId(), -104, "MAC校验失败");
         }
         Report report = new Report();
+        String reportId = UUIDUtil.getUUID();
         String templateId = requestMap.get(animalRequest.getRequestId());
         report.setTemplateId(templateId);
         Integer reportType = animalRequest.getData().getReport_type();
         report.setReportType(reportType);
-        report.setReportId(UUIDUtil.getUUID());
+        report.setReportId(reportId);
         report.setBeginTime(DateUtil.StringToDate(animalRequest.getData().getBegin_time()));
         report.setReportTime(new Date());
         report.setReportUserId(animalRequest.getData().getReport_user_id());
         report.setStatus(2);
         iReportService.saveNotNull(report);
+        report.setReportId(reportId);
         iExcelService.insertOrUpdateReportFillForApi(JSONObject.toJSONString(animalRequest.getData().getReport_data()),
                 report);
         return new AnimalResponse(animalRequest.getRequestId(), 0, "成功");
