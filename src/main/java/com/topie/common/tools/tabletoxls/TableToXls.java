@@ -94,7 +94,7 @@ public class TableToXls {
                 try {
                     baos.close();
                 } catch (IOException e) {
-                    log.warn("Close Byte Array Inpout Stream Error Caused.", e);
+                    log.error("Close Byte Array Inpout Stream Error Caused.", e);
                 }
             }
         }
@@ -120,28 +120,21 @@ public class TableToXls {
             maxRow += 2;
             rowIndex = maxRow;
         }
-        log.info("Interate Table Rows.");
         for (Element row : table.select("tr")) {
-            log.info("Parse Table Row [{}]. Row Index [{}].", row, rowIndex);
             int colIndex = 0;
-            log.info("Interate Cols.");
             for (Element td : row.select("td, th")) {
                 // skip occupied cell
                 while (cellsOccupied.get(rowIndex + "_" + colIndex) != null) {
-                    log.info("Cell [{}][{}] Has Been Occupied, Skip.", rowIndex, colIndex);
                     ++colIndex;
                 }
-                log.info("Parse Col [{}], Col Index [{}].", td, colIndex);
                 int rowSpan = 0;
                 String strRowSpan = td.attr("rowspan");
                 if (StringUtils.isNotBlank(strRowSpan) && StringUtils.isNumeric(strRowSpan)) {
-                    log.info("Found Row Span [{}].", strRowSpan);
                     rowSpan = Integer.parseInt(strRowSpan);
                 }
                 int colSpan = 0;
                 String strColSpan = td.attr("colspan");
                 if (StringUtils.isNotBlank(strColSpan) && StringUtils.isNumeric(strColSpan)) {
-                    log.info("Found Col Span [{}].", strColSpan);
                     colSpan = Integer.parseInt(strColSpan);
                 }
                 // col span & row span
@@ -196,7 +189,6 @@ public class TableToXls {
     }
 
     private void spanRow(Element td, int rowIndex, int colIndex, int rowSpan) {
-        log.info("Span Row , From Row [{}], Span [{}].", rowIndex, rowSpan);
         mergeRegion(rowIndex, rowIndex + rowSpan - 1, colIndex, colIndex);
         for (int i = 0; i < rowSpan; ++i) {
             HSSFRow row = getOrCreateRow(rowIndex + i);
@@ -207,7 +199,6 @@ public class TableToXls {
     }
 
     private void spanCol(Element td, int rowIndex, int colIndex, int colSpan) {
-        log.info("Span Col, From Col [{}], Span [{}].", colIndex, colSpan);
         mergeRegion(rowIndex, rowIndex, colIndex, colIndex + colSpan - 1);
         HSSFRow row = getOrCreateRow(rowIndex);
         for (int i = 0; i < colSpan; ++i) {
@@ -217,8 +208,6 @@ public class TableToXls {
     }
 
     private void spanRowAndCol(Element td, int rowIndex, int colIndex, int rowSpan, int colSpan) {
-        log.info("Span Row And Col, From Row [{}], Span [{}].", rowIndex, rowSpan);
-        log.info("From Col [{}], Span [{}].", colIndex, colSpan);
         mergeRegion(rowIndex, rowIndex + rowSpan - 1, colIndex, colIndex + colSpan - 1);
         for (int i = 0; i < rowSpan; ++i) {
             HSSFRow row = getOrCreateRow(rowIndex + i);
@@ -233,7 +222,6 @@ public class TableToXls {
     private HSSFCell createCell(Element td, HSSFRow row, int colIndex) {
         HSSFCell cell = row.getCell(colIndex);
         if (cell == null) {
-            log.debug("Create Cell [{}][{}].", row.getRowNum(), colIndex);
             cell = row.createCell(colIndex);
         }
         return applyStyle(td, cell);
@@ -251,7 +239,6 @@ public class TableToXls {
                 }
                 cellStyle = cellStyles.get(styleStr(mapStyleParsed));
                 if (cellStyle == null) {
-                    log.debug("No Cell Style Found In Cache, Parse New Style.");
                     cellStyle = workBook.createCellStyle();
                     cellStyle.cloneStyleFrom(defaultCellStyle);
                     for (CssApplier applier : STYLE_APPLIERS) {
@@ -261,11 +248,9 @@ public class TableToXls {
                     cellStyles.put(styleStr(mapStyleParsed), cellStyle);
                 }
             } else {
-                log.info("Custom Cell Style Exceeds 4000, Could Not Create New Style, Use Default Style.");
                 cellStyle = defaultCellStyle;
             }
         } else {
-            log.debug("Use Default Cell Style.");
             cellStyle = defaultCellStyle;
         }
         cell.setCellStyle(cellStyle);
@@ -273,19 +258,16 @@ public class TableToXls {
     }
 
     private String styleStr(Map<String, String> style) {
-        log.debug("Build Style String, Style [{}].", style);
         StringBuilder sbStyle = new StringBuilder();
         Object[] keys = style.keySet().toArray();
         Arrays.sort(keys);
         for (Object key : keys) {
             sbStyle.append(key).append(':').append(style.get(key)).append(';');
         }
-        log.debug("Style String Result [{}].", sbStyle);
         return sbStyle.toString();
     }
 
     private Map<String, String> parseStyle(String style) {
-        log.debug("Parse Style String [{}] To Map.", style);
         Map<String, String> mapStyle = new HashMap<String, String>();
         for (String s : style.split("\\s*;\\s*")) {
             if (StringUtils.isNotBlank(s)) {
@@ -301,14 +283,12 @@ public class TableToXls {
                 }
             }
         }
-        log.debug("Style Map Result [{}].", mapStyle);
         return mapStyle;
     }
 
     private HSSFRow getOrCreateRow(int rowIndex) {
         HSSFRow row = sheet.getRow(rowIndex);
         if (row == null) {
-            log.info("Create New Row [{}].", rowIndex);
             row = sheet.createRow(rowIndex);
             if (rowIndex > maxRow) {
                 maxRow = rowIndex;
@@ -318,8 +298,6 @@ public class TableToXls {
     }
 
     private void mergeRegion(int firstRow, int lastRow, int firstCol, int lastCol) {
-        log.debug("Merge Region, From Row [{}], To [{}].", firstRow, lastRow);
-        log.debug("From Col [{}], To [{}].", firstCol, lastCol);
         sheet.addMergedRegion(new CellRangeAddress(firstRow, lastRow, firstCol, lastCol));
     }
 }

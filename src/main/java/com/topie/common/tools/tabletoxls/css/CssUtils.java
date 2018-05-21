@@ -93,7 +93,7 @@ public class CssUtils {
      * @return color after process
      */
     public static String processColor(String color) {
-    	log.info("Process Color [{}].", color);
+    	//log.info("Process Color [{}].", color);
     	String colorRtn = null;
     	if (StringUtils.isNotBlank(color)) {
     		HSSFColor poiColor = null;

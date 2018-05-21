@@ -98,10 +98,14 @@ public class ExcelController {
         if (report == null) {
             ResponseUtil.writeJson(response, "填报不存在");
         }
+        System.out.println("计算HTML开始");
         String excelHtml = iExcelService.getReportHtml(request, report);
+        System.out.println("计算HTML结束");
         String filePath = tempFolder + "/export.xls";
         FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+        System.out.println("生成XLS开始");
         TableToXls.process(excelHtml, fileOutputStream);
+        System.out.println("生成HTML结束");
         fileOutputStream.close();
         Template template = iTemplateService.selectByKey(report.getTemplateId());
         Map<String, String> weekConfigMap = null;

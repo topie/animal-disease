@@ -88,7 +88,7 @@ public class SpecFillController {
             specFill.setTableContent(
                     "<style type=\"text/css\">" + Jsoup.parseBodyFragment(html).select("style").first().html()
                             + "</style>" + "<table class='t1'>" + Jsoup.parseBodyFragment(html).select("table").first()
-                            .html() + "</table>" + C.SPEC_FILL_SCRIPT);
+                            .html() + "</table>" );
         }
         if (specFill.getOrgId() != null) {
             OrgInfo orgInfo = iOrgInfoService.selectByKey(specFill.getOrgId());
@@ -107,7 +107,7 @@ public class SpecFillController {
             specFill.setTableContent(
                     "<style type=\"text/css\">" + Jsoup.parseBodyFragment(html).select("style").first().html()
                             + "</style>" + "<table class='t1'>" + Jsoup.parseBodyFragment(html).select("table").first()
-                            .html() + "</table>" + C.SPEC_FILL_SCRIPT);
+                            .html() + "</table>" );
         }
         if (specFill.getOrgId() != null) {
             OrgInfo orgInfo = iOrgInfoService.selectByKey(specFill.getOrgId());

@@ -108,7 +108,7 @@ public class TextApplier implements CssApplier {
                     font = getFont(cell, font);
                     font.setColor(color.getIndex());
                 } else {
-                    log.info("Text Color [{}] Is Black Or Fimiliar To Black, Ignore.", style.remove(COLOR));
+                   // log.info("Text Color [{}] Is Black Or Fimiliar To Black, Ignore.", style.remove(COLOR));
                 }
             }
             // text-decoration
@@ -184,12 +184,12 @@ public class TextApplier implements CssApplier {
                     if (fontSize.matches(PATTERN_LENGTH)) {
                         mapRtn.put(FONT_SIZE, fontSize);
                     } else {
-                        log.info("Font Size [{}] Not Supported, Ignore.", fontSize);
+                      //  log.info("Font Size [{}] Not Supported, Ignore.", fontSize);
                     }
                 }
                 String lineHeight = m.group(2);
                 if (StringUtils.isNotBlank(lineHeight)) {
-                    log.info("Line Height [{}] Not Supported, Ignore.", lineHeight);
+                  //  log.info("Line Height [{}] Not Supported, Ignore.", lineHeight);
                 }
                 m.appendReplacement(sbFont, " ");
                 m.appendTail(sbFont);

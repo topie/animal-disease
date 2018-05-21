@@ -140,6 +140,7 @@ public class ReportHalfYearController {
         }
         Date end = DateUtil.addDay(begin, 7);
         Date now = new Date();
+        begin= DateUtil.addDay(begin, -7);
         if (now.before(begin) || now.after(end)) {
             if (now.after(b2) && now.before(end)) {
                 argMap.put("reportType", ReportTypeE.HALF_YEAR.getCode());

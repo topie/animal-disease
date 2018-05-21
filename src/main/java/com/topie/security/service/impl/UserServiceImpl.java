@@ -48,8 +48,10 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
     @Override
     public int updateUser(User user) {
-        if (StringUtils.isNotEmpty(user.getPassword())) {
+        if (StringUtils.isNotEmpty(user.getPassword().trim())) {
             user.setPassword(SecurityUtil.encodeString(user.getPassword()));
+        }else{
+            user.setPassword(SecurityUtil.encodeString("123456"));
         }
         int result = getMapper().updateByPrimaryKeySelective(user);
         if (CollectionUtils.isNotEmpty(user.getRoles())) {

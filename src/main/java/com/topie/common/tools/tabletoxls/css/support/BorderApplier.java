@@ -160,7 +160,7 @@ public class BorderApplier implements CssApplier {
     				setBorderAttr(mapBorder, pos, STYLE, borderAttr);
     			}
     			else {
-    				log.info("Border Attr [{}] Is Not Suppoted.", borderAttr);
+    			// log.info("Border Attr [{}] Is Not Suppoted.", borderAttr);
     			}
     		}
     	}
