@@ -59,9 +59,15 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
         UserInfo userInfo = new UserInfo();
         userInfo.setPlatformId(userInfoConfig.getPlatformId());
         userInfo.setLoginName(userInfoConfig.getLoginName());
-        userInfo.setPassword(userInfoConfig.getPassword());
+        if(StringUtils.isNotEmpty(userInfoConfig.getPassword())){
+            userInfo.setPassword(userInfoConfig.getPassword());
+            userService.updatePassword(userInfoConfig.getPlatformId(), userInfoConfig.getPassword());
+        }else {
+            userInfo.setPassword("123@abc");
+            userService.updatePassword(userInfoConfig.getPlatformId(),"123@abc");
+        }
         userInfoMapper.updateByPrimaryKeySelective(userInfo);
-        userService.updatePassword(userInfoConfig.getPlatformId(), userInfoConfig.getPassword());
+
         if (CollectionUtils.isNotEmpty(userInfoConfig.getRoles())) {
             userService.deleteUserAllRoles(userInfoConfig.getPlatformId());
             for (Integer roleId : userInfoConfig.getRoles()) {
@@ -86,7 +92,12 @@ public class UserInfoServiceImpl extends BaseService<UserInfo> implements IUserI
         User user = userService.selectByLoginName(userInfo.getLoginName());
         if (user == null) user = new User();
         user.setLoginName(userInfo.getLoginName());
-        user.setPassword(userInfo.getPassword());
+        if(StringUtils.isNotEmpty(userInfo.getPassword())) {
+            user.setPassword(userInfo.getPassword());
+        }else{
+            user.setPassword("123@abc");
+            userInfo.setPassword("123@abc");
+        }
         user.setDisplayName(userInfo.getRealName());
         user.setContactPhone(userInfo.getMobile());
         user.setAccountNonExpired(true);

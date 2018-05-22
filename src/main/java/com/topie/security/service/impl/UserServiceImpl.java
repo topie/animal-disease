@@ -51,7 +51,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
         if (StringUtils.isNotEmpty(user.getPassword().trim())) {
             user.setPassword(SecurityUtil.encodeString(user.getPassword()));
         }else{
-            user.setPassword(SecurityUtil.encodeString("123456"));
+            user.setPassword(SecurityUtil.encodeString("123@abc"));
         }
         int result = getMapper().updateByPrimaryKeySelective(user);
         if (CollectionUtils.isNotEmpty(user.getRoles())) {

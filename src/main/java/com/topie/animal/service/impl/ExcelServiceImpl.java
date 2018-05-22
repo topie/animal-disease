@@ -667,8 +667,16 @@ public class ExcelServiceImpl implements IExcelService {
             default:
                 return null;
         }
+        String filePath="/template";
+        int month = DateUtil.getMonth(beginTime) + 1;
+        if (month <=6) {
+            filePath="/template/chun";
+        } else {
+            filePath="/template/qiu";
+        }
+        String templatePath = request.getSession().getServletContext().getRealPath(filePath);
 
-        String templatePath = request.getSession().getServletContext().getRealPath("/template");
+
         iLogService.insertLog("打开报表");
         return FreeMarkerUtil.getHtmlStringFromTemplate(templatePath, template.getNormalTemplate(), params);
     }
