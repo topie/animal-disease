@@ -158,6 +158,40 @@ public class Avianinfluenzavaccine {
         this.avH5H7YearCount = avH5H7YearCount;
     }
 
+    @Column(name = "av_MhUseCount")
+    private BigDecimal avMhUseCount;
+
+
+    @Column(name = "av_MhStoreCount")
+    private BigDecimal avMhStoreCount;
+
+    @Column(name = "av_MhYearCount")
+    private BigDecimal avMhYearCount;
+
+    public BigDecimal getAvMhUseCount() {
+        return avMhUseCount;
+    }
+
+    public void setAvMhUseCount(BigDecimal avMhUseCount) {
+        this.avMhUseCount = avMhUseCount;
+    }
+
+    public BigDecimal getAvMhStoreCount() {
+        return avMhStoreCount;
+    }
+
+    public void setAvMhStoreCount(BigDecimal avMhStoreCount) {
+        this.avMhStoreCount = avMhStoreCount;
+    }
+
+    public BigDecimal getAvMhYearCount() {
+        return avMhYearCount;
+    }
+
+    public void setAvMhYearCount(BigDecimal avMhYearCount) {
+        this.avMhYearCount = avMhYearCount;
+    }
+
     /**
      * @return av_id
      */

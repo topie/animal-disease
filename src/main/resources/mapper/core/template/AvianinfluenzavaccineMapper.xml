@@ -48,6 +48,10 @@
     <result column="av_H5H7UseCount" property="avH5H7UseCount" jdbcType="DECIMAL" />
     <result column="av_H5H7StoreCount" property="avH5H7StoreCount" jdbcType="DECIMAL" />
     <result column="av_H5H7YearCount" property="avH5H7YearCount" jdbcType="DECIMAL" />
+
+    <result column="av_MhUseCount" property="avMhUseCount" jdbcType="DECIMAL" />
+    <result column="av_MhStoreCount" property="avMhStoreCount" jdbcType="DECIMAL" />
+    <result column="av_MhYearCount" property="avMhYearCount" jdbcType="DECIMAL" />
   </resultMap>
   <select id="selectAllByDate" resultMap="BaseResultMap">
     select t1.Liv_regionCode as av_regionCode ,t1.Liv_regionName as av_regionName,t2.* from

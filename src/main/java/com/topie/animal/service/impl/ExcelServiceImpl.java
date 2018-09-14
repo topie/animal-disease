@@ -23,6 +23,8 @@ import tk.mybatis.mapper.entity.Example;
 import javax.persistence.Column;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Field;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -151,6 +153,10 @@ public class ExcelServiceImpl implements IExcelService {
     @Autowired
     private WechinococciasisMapper wechinococciasisMapper;
 
+    public static final String B_PESTEDESPETISRUMINANTS_DATE="2018-05-31 23:59:59";
+    public static final String B_AVIANINFLUENZAVACCINE_DATE="2018-06-30 23:59:59";
+
+
     @Autowired
     private ILogService iLogService;
 
@@ -164,7 +170,7 @@ public class ExcelServiceImpl implements IExcelService {
     }
 
     @Override
-    public String getReportHtml(HttpServletRequest request, Report report) {
+    public String getReportHtml(HttpServletRequest request, Report report)  {
         Map params = new HashMap();
 
         UserInfo userInfo = iUserInfoService.selectByKey(report.getReportUserId());
@@ -668,11 +674,26 @@ public class ExcelServiceImpl implements IExcelService {
                 return null;
         }
         String filePath="/template";
-        int month = DateUtil.getMonth(beginTime) + 1;
+        int month = DateUtil.getMonth(report.getBeginTime()) + 1;
         if (month <=6) {
             filePath="/template/chun";
         } else {
             filePath="/template/qiu";
+        }
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date xfc= null;
+        Date qlg=null;
+        try {
+            xfc = sdf.parse(B_PESTEDESPETISRUMINANTS_DATE);
+            qlg=sdf.parse(B_AVIANINFLUENZAVACCINE_DATE);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if(template.getTableName().toLowerCase().equals("b_pestedespetitsruminants")&&report.getBeginTime().after(xfc)){
+            template.setNormalTemplate("b_pestedespetitsruminants_new.ftl");
+        }
+        if(template.getTableName().toLowerCase().equals("b_avianinfluenzavaccine")&&report.getBeginTime().after(qlg)){
+            template.setNormalTemplate("b_avianinfluenzavaccine_2018qiu.ftl");
         }
         String templatePath = request.getSession().getServletContext().getRealPath(filePath);
 
@@ -694,7 +715,7 @@ public class ExcelServiceImpl implements IExcelService {
     }
 
     @Override
-    public String getReportSummaryHtml(HttpServletRequest request, String templateId, String beginTime) {
+    public String getReportSummaryHtml(HttpServletRequest request, String templateId, String beginTime){
         Template template = iTemplateService.selectByKey(templateId);
         List<String> reportIds = iReportService.selectIdsByTemplateIdAndBeginTime(templateId, beginTime);
         String endTime = beginTime;
@@ -975,7 +996,36 @@ public class ExcelServiceImpl implements IExcelService {
             default:
                 return null;
         }
-        String templatePath = request.getSession().getServletContext().getRealPath("/template");
+
+        String filePath="/template";
+        //判断春季还是秋季报表
+        int month = DateUtil.getMonth(beginTime) + 1;
+        if (month <=6) {
+            filePath="/template/chun";
+        } else {
+            filePath="/template/qiu";
+        }
+        //判断填报的报表是小反刍兽疫报表修改前后
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date xfc= null;
+        Date beginDate= null;
+        Date qlg=null;
+        try {
+            xfc = sdf.parse(B_PESTEDESPETISRUMINANTS_DATE);
+            qlg=sdf.parse(B_AVIANINFLUENZAVACCINE_DATE);
+            beginDate=sdf.parse(beginTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if(template.getTableName().toLowerCase().equals("b_pestedespetitsruminants")&&beginDate.after(xfc)){
+            template.setSummaryTemplate("b_pestedespetitsruminants_new_sum.ftl");
+        }
+
+        if(template.getTableName().toLowerCase().equals("b_avianinfluenzavaccine")&&beginDate.after(qlg)){
+            template.setNormalTemplate("b_avianinfluenzavaccine_sum_2018qiu.ftl");
+        }
+        String templatePath = request.getSession().getServletContext().getRealPath(filePath);
         List<Wlivestockinout> wlivestockinouts = this.wlivestockinoutMapper
                 .selectLivestockInOutByDate(halfYearbeginTime);
         params.put("wlivestockinouts", wlivestockinouts);

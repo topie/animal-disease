@@ -35,6 +35,9 @@ public class Pestedespetitsruminants {
     @Column(name = "pdpr_LiveSheep")
     private BigDecimal pdprLivesheep;
 
+    @Column(name = "pdpr_Live")
+    private BigDecimal pdprLive;
+
     /**
      * @return pdpr_id
      */
@@ -159,5 +162,19 @@ public class Pestedespetitsruminants {
      */
     public void setPdprLivesheep(BigDecimal pdprLivesheep) {
         this.pdprLivesheep = pdprLivesheep;
+    }
+
+    /**
+     * @return pdpr_Live
+     */
+    public BigDecimal getPdprLive() {
+        return pdprLive;
+    }
+
+    /**
+     * @param pdprLive
+     */
+    public void setPdprLive(BigDecimal pdprLive) {
+        this.pdprLive = pdprLive;
     }
 }
