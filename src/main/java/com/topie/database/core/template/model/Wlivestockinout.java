@@ -99,6 +99,159 @@ public class Wlivestockinout {
     private BigDecimal immuneEchSheep;
 
     /**
+     * 2018-09-14新增A型猪、A型其他,OA型 猪、牛、羊、其他
+     */
+    @Column(name = "ImmuneAFMDZhu")
+    private BigDecimal immuneafmdzhu;
+
+    @Column(name = "ImmuneAFMDOther")
+    private BigDecimal immuneafmdother;
+
+    @Column(name = "ImmuneOAFMDZhu")
+    private BigDecimal immuneOafmdzhu;
+
+    @Column(name = "ImmuneOAFMDOther")
+    private BigDecimal immuneOafmdother;
+
+    @Column(name = "ImmuneOAFMDNiu")
+    private BigDecimal immuneOafmdniu;
+
+    @Column(name = "ImmuneOAFMDSheep")
+    private BigDecimal immuneOafmdsheep;
+
+    public BigDecimal getImmuneafmdzhu() {
+        return immuneafmdzhu;
+    }
+
+    public void setImmuneafmdzhu(BigDecimal immuneafmdzhu) {
+        this.immuneafmdzhu = immuneafmdzhu;
+    }
+
+    public BigDecimal getImmuneafmdother() {
+        return immuneafmdother;
+    }
+
+    public void setImmuneafmdother(BigDecimal immuneafmdother) {
+        this.immuneafmdother = immuneafmdother;
+    }
+
+    public BigDecimal getImmuneOafmdzhu() {
+        return immuneOafmdzhu;
+    }
+
+    public void setImmuneOafmdzhu(BigDecimal immuneOafmdzhu) {
+        this.immuneOafmdzhu = immuneOafmdzhu;
+    }
+
+    public BigDecimal getImmuneOafmdother() {
+        return immuneOafmdother;
+    }
+
+    public void setImmuneOafmdother(BigDecimal immuneOafmdother) {
+        this.immuneOafmdother = immuneOafmdother;
+    }
+
+    public BigDecimal getImmuneOafmdniu() {
+        return immuneOafmdniu;
+    }
+
+    public void setImmuneOafmdniu(BigDecimal immuneOafmdniu) {
+        this.immuneOafmdniu = immuneOafmdniu;
+    }
+
+    public BigDecimal getImmuneOafmdsheep() {
+        return immuneOafmdsheep;
+    }
+
+    public void setImmuneOafmdsheep(BigDecimal immuneOafmdsheep) {
+        this.immuneOafmdsheep = immuneOafmdsheep;
+    }
+
+    /**
+     * 2018-09-18新增O-亚I型牛、羊;O-A-亚I型猪、牛、羊、其他
+     */
+    @Column(name = "ImmuneOIFMDNiu")
+    private BigDecimal immuneOifmdniu;
+
+    @Column(name = "ImmuneOIFMDSheep")
+    private BigDecimal immuneOifmdSheep;
+
+    @Column(name = "ImmuneOIFMDOther")
+    private BigDecimal immuneOifmdOther;
+
+    @Column(name = "ImmuneOAIFMDZhu")
+    private BigDecimal immuneOaifmdzhu;
+
+    @Column(name = "ImmuneOAIFMDNiu")
+    private BigDecimal immuneOaifmdniu;
+
+    @Column(name = "ImmuneOAIFMDSheep")
+    private BigDecimal immuneOaifmdsheep;
+
+    @Column(name = "ImmuneOAIFMDOther")
+    private BigDecimal immuneOaifmdother;
+
+    public BigDecimal getImmuneOifmdniu() {
+        return immuneOifmdniu;
+    }
+
+    public void setImmuneOifmdniu(BigDecimal immuneOifmdniu) {
+        this.immuneOifmdniu = immuneOifmdniu;
+    }
+
+    public BigDecimal getImmuneOifmdSheep() {
+        return immuneOifmdSheep;
+    }
+
+    public void setImmuneOifmdSheep(BigDecimal immuneOifmdSheep) {
+        this.immuneOifmdSheep = immuneOifmdSheep;
+    }
+
+    public BigDecimal getImmuneOifmdOther() {
+        return immuneOifmdOther;
+    }
+
+    public void setImmuneOifmdOther(BigDecimal immuneOifmdOther) {
+        this.immuneOifmdOther = immuneOifmdOther;
+    }
+
+    public BigDecimal getImmuneOaifmdzhu() {
+        return immuneOaifmdzhu;
+    }
+
+    public void setImmuneOaifmdzhu(BigDecimal immuneOaifmdzhu) {
+        this.immuneOaifmdzhu = immuneOaifmdzhu;
+    }
+
+    public BigDecimal getImmuneOaifmdniu() {
+        return immuneOaifmdniu;
+    }
+
+    public void setImmuneOaifmdniu(BigDecimal immuneOaifmdniu) {
+        this.immuneOaifmdniu = immuneOaifmdniu;
+    }
+
+    public BigDecimal getImmuneOaifmdsheep() {
+        return immuneOaifmdsheep;
+    }
+
+    public void setImmuneOaifmdsheep(BigDecimal immuneOaifmdsheep) {
+        this.immuneOaifmdsheep = immuneOaifmdsheep;
+    }
+
+    public BigDecimal getImmuneOaifmdother() {
+        return immuneOaifmdother;
+    }
+
+    public void setImmuneOaifmdother(BigDecimal immuneOaifmdother) {
+        this.immuneOaifmdother = immuneOaifmdother;
+    }
+
+    /*
+    end
+     */
+
+    /**
      * @return LivestockId
      */
     public String getLivestockid() {

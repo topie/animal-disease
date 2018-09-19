@@ -35,6 +35,29 @@
         <result column="ImmuneBruniu" property="immuneBruniu" jdbcType="DECIMAL"/>
         <result column="ImmuneBruSheep" property="immuneBruSheep" jdbcType="DECIMAL"/>
         <result column="ImmuneEchSheep" property="immuneEchSheep" jdbcType="DECIMAL"/>
+        <!--
+          2018-09-17增加口蹄疫A型猪、其他，OA型猪、牛、羊、其他
+        -->
+        <result column="ImmuneAFMDZhu" property="immuneafmdzhu" jdbcType="DECIMAL"/>
+        <result column="ImmuneAFMDOther" property="immuneafmdother" jdbcType="DECIMAL"/>
+
+        <result column="ImmuneOAFMDZhu" property="immuneOafmdzhu" jdbcType="DECIMAL"/>
+        <result column="ImmuneOAFMDNiu" property="immuneOafmdniu" jdbcType="DECIMAL"/>
+        <result column="ImmuneOAFMDSheep" property="immuneOafmdsheep" jdbcType="DECIMAL"/>
+        <result column="ImmuneOAFMDOther" property="immuneOafmdother" jdbcType="DECIMAL"/>
+
+        <!--
+         2018-09-18增加口蹄疫O-亚I型牛、羊，O-A-亚I型猪、牛、羊、其他
+       -->
+        <result column="ImmuneOIFMDNiu" property="immuneOifmdniu" jdbcType="DECIMAL"/>
+        <result column="ImmuneOIFMDSheep" property="immuneOifmdSheep" jdbcType="DECIMAL"/>
+        <result column="ImmuneOIFMDOther" property="immuneOifmdOther" jdbcType="DECIMAL"/>
+
+        <result column="ImmuneOAIFMDZhu" property="immuneOaifmdzhu" jdbcType="DECIMAL"/>
+        <result column="ImmuneOAIFMDNiu" property="immuneOaifmdniu" jdbcType="DECIMAL"/>
+        <result column="ImmuneOAIFMDSheep" property="immuneOaifmdsheep" jdbcType="DECIMAL"/>
+        <result column="ImmuneOAIFMDOther" property="immuneOaifmdother" jdbcType="DECIMAL"/>
+
     </resultMap>
     <select id="selectSumByReportIds" resultMap="BaseResultMap">
         select
@@ -62,7 +85,21 @@
         sum(PesteDesPetitsRuminants) PesteDesPetitsRuminants,
         sum(ImmuneBruniu) ImmuneBruniu,
         sum(ImmuneBruSheep) ImmuneBruSheep,
-        sum(ImmuneEchSheep) ImmuneEchSheep
+        sum(ImmuneEchSheep) ImmuneEchSheep,
+        sum(ImmuneAFMDZhu) ImmuneAFMDZhu,
+        sum(ImmuneAFMDOther) ImmuneAFMDOther,
+        sum(ImmuneOAFMDZhu) ImmuneOAFMDZhu,
+        sum(ImmuneOAFMDNiu) ImmuneOAFMDNiu,
+        sum(ImmuneOAFMDSheep) ImmuneOAFMDSheep,
+        sum(ImmuneOAFMDOther) ImmuneOAFMDOther,
+
+        sum(ImmuneOIFMDNiu) ImmuneOIFMDNiu,
+        sum(ImmuneOIFMDSheep) ImmuneOIFMDSheep,
+        sum(ImmuneOIFMDOther) ImmuneOIFMDOther,
+        sum(ImmuneOAIFMDZhu) ImmuneOAIFMDZhu,
+        sum(ImmuneOAIFMDNiu) ImmuneOAIFMDNiu,
+        sum(ImmuneOAIFMDSheep) ImmuneOAIFMDSheep,
+        sum(ImmuneOAIFMDOther) ImmuneOAIFMDOther
         from animal_disease.b_wlivestockinout
         where ReportId in
         <foreach item="item" collection="ids" open="(" separator="," close=")">

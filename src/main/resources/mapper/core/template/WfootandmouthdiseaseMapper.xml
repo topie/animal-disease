@@ -42,6 +42,12 @@
     <result column="fmd_O3ImmuneAmountNiu" property="fmdO3immuneamountniu" jdbcType="DECIMAL" />
     <result column="fmd_O3ImmuneAmountSheep" property="fmdO3immuneamountsheep" jdbcType="DECIMAL" />
     <result column="fmd_O3ImmuneAmountOther" property="fmdO3immuneamountother" jdbcType="DECIMAL" />
+
+      <result column="fmd_OAImmuneAmountZhu" property="fmdOaimmuneamountzhu" jdbcType="DECIMAL" />
+      <result column="fmd_OAImmuneAmountOther" property="fmdOaimmuneamountother" jdbcType="DECIMAL" />
+      <result column="fmd_AImmuneAmountZhu" property="fmdAimmuneamountzhu" jdbcType="DECIMAL" />
+      <result column="fmd_AImmuneAmountOther" property="fmdAimmuneamountother" jdbcType="DECIMAL" />
+
   </resultMap>
 
 <select id="selectLivestockInOutByReportId" resultMap="BaseResultMap">
@@ -80,7 +86,11 @@ select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
     sum(fmd_O3ImmuneAmountPig) fmd_O3ImmuneAmountPig,
     sum(fmd_O3ImmuneAmountNiu) fmd_O3ImmuneAmountNiu,
     sum(fmd_O3ImmuneAmountSheep) fmd_O3ImmuneAmountSheep,
-    sum(fmd_O3ImmuneAmountOther) fmd_O3ImmuneAmountOther
+    sum(fmd_O3ImmuneAmountOther) fmd_O3ImmuneAmountOther,
+     sum(fmd_AImmuneAmountZhu) fmd_AImmuneAmountZhu,
+    sum(fmd_AImmuneAmountOther) fmd_AImmuneAmountOther,
+     sum(fmd_OAImmuneAmountZhu) fmd_OAImmuneAmountZhu,
+    sum(fmd_OAImmuneAmountOther) fmd_OAImmuneAmountOther
     from animal_disease.b_wfootandmouthdisease
     where fmd_regionCode=#{regionCode} AND fmd_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
@@ -121,7 +131,11 @@ select * from animal_disease.b_wlivestockinout where ReportId=#{reportId}
     sum(fmd_O3ImmuneAmountPig) fmd_O3ImmuneAmountPig,
     sum(fmd_O3ImmuneAmountNiu) fmd_O3ImmuneAmountNiu,
     sum(fmd_O3ImmuneAmountSheep) fmd_O3ImmuneAmountSheep,
-    sum(fmd_O3ImmuneAmountOther) fmd_O3ImmuneAmountOther
+    sum(fmd_O3ImmuneAmountOther) fmd_O3ImmuneAmountOther,
+     sum(fmd_AImmuneAmountZhu) fmd_AImmuneAmountZhu,
+    sum(fmd_AImmuneAmountOther) fmd_AImmuneAmountOther,
+     sum(fmd_OAImmuneAmountZhu) fmd_OAImmuneAmountZhu,
+    sum(fmd_OAImmuneAmountOther) fmd_OAImmuneAmountOther
       from animal_disease.b_wfootandmouthdisease
        where  fmd_date BETWEEN  #{beginTime} AND #{endTime}
        GROUP  BY fmd_regionCode

@@ -695,6 +695,12 @@ public class ExcelServiceImpl implements IExcelService {
         if(template.getTableName().toLowerCase().equals("b_avianinfluenzavaccine")&&report.getBeginTime().after(qlg)){
             template.setNormalTemplate("b_avianinfluenzavaccine_2018qiu.ftl");
         }
+        if(template.getTableName().toLowerCase().equals("b_wlivestockinout")&&report.getBeginTime().after(qlg)){
+            template.setNormalTemplate("b_wlivestockinout_2018qiu.ftl");
+        }
+        if(template.getTableName().toLowerCase().equals("b_wfootandmouthdisease")&&report.getBeginTime().after(qlg)){
+            template.setNormalTemplate("b_wfootandmouthdisease_2018qiu.ftl");
+        }
         String templatePath = request.getSession().getServletContext().getRealPath(filePath);
 
 
@@ -1023,7 +1029,13 @@ public class ExcelServiceImpl implements IExcelService {
         }
 
         if(template.getTableName().toLowerCase().equals("b_avianinfluenzavaccine")&&beginDate.after(qlg)){
-            template.setNormalTemplate("b_avianinfluenzavaccine_sum_2018qiu.ftl");
+            template.setSummaryTemplate("b_avianinfluenzavaccine_sum_2018qiu.ftl");
+        }
+        if(template.getTableName().toLowerCase().equals("b_wlivestockinout")&&beginDate.after(qlg)) {
+            template.setSummaryTemplate("b_wlivestockinout_sum_2018qiu.ftl");
+        }
+        if(template.getTableName().toLowerCase().equals("b_wfootandmouthdisease")&&beginDate.after(qlg)){
+            template.setSummaryTemplate("b_wfootandmouthdisease_sum_2018qiu.ftl");
         }
         String templatePath = request.getSession().getServletContext().getRealPath(filePath);
         List<Wlivestockinout> wlivestockinouts = this.wlivestockinoutMapper

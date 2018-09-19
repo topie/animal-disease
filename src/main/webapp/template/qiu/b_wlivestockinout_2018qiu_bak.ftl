@@ -142,33 +142,45 @@
         <col width="50">
         <col width="50">
         <col width="50">
+        <col width="50">
+        <col width="50">
+        <col width="50">
+        <col width="50">
+        <col width="50">
+        <col width="50">
+        <col width="50">
+        <col width="50">
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="26">${templateName}</td>
+        <td class="c1" colspan="37">${templateName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">单 位:</td>
-        <td class="c3" colspan="25">${org.orgName}</td>
+        <td class="c3" colspan="36">${org.orgName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">填表日期:</td>
-        <td class="c3" colspan="25"><#if report.reportTime??>${report.reportTime?string("yyyy-MM-dd")}</#if>
+        <td class="c3" colspan="36"><#if report.reportTime??>${report.reportTime?string("yyyy-MM-dd")}</#if>
     </tr>
     <tr class="r2">
         <td class="c2">&nbsp;填 表 人:</td>
-        <td class="c3" colspan="25">${user.realName}</td>
+        <td class="c3" colspan="36">${user.realName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">&nbsp;主管领导：</td>
-        <td class="c5" colspan="25">${user.leaderName}</td>
+        <td class="c5" colspan="36">${user.leaderName}</td>
     </tr>
     <tr class="r3">
         <td class="c3">&nbsp;</td>
         <td class="c2" colspan="8">存栏数量（万头/只/羽）</td>
-        <td class="c2" colspan="4">牲畜口蹄疫应免数量（万头/只）</td>
+        <td class="c2" colspan="2">牲畜O型口蹄疫应免数量（万头/只）</td>
+        <td class="c2" colspan="4">O型-A型口蹄疫应免数量（万头/只）</td>
+        <td class="c2" colspan="3">O型-亚I型口蹄疫应免数量（万头/只）</td>
+        <td class="c2" colspan="4">O型-A型-亚I型口蹄疫应免数量（万头/只）</td>
+        <td class="c2" colspan="4">A型口蹄疫应免数量（万头/只）</td>
+
         <td class="c2" colspan="4">禽流感应免数量（万羽）</td>
-        <td class="c2" colspan="2">A型口蹄疫应免数量（万头/只）</td>
         <td class="c2">高致病性猪蓝耳病应免数量（万头）</td>
         <td class="c6">猪瘟应免数量（万头）</td>
         <td class="c7">新城疫应免数量（万羽）</td>
@@ -178,6 +190,7 @@
     </tr>
     <tr class="r2">
         <td class="c2">畜禽种类</td>
+        <!-- 存栏量 -->
         <td class="c2">猪</td>
         <td class="c2">牛</td>
         <td class="c2">羊</td>
@@ -186,26 +199,51 @@
         <td class="c2">鸭</td>
         <td class="c2">鹅</td>
         <td class="c2">其它禽</td>
+        <!-- 口蹄疫  -->
+        <!--O型 -->
+        <td class="c2">猪</td>
+        <td class="c2">其它畜</td>
+        <!--O-A型 -->
         <td class="c2">猪</td>
         <td class="c2">牛</td>
         <td class="c2">羊</td>
         <td class="c2">其它畜</td>
+        <!--O-亚I型 -->
+        <td class="c2">牛</td>
+        <td class="c2">羊</td>
+        <td class="c2">其它畜</td>
+        <!--O-A-亚I型 -->
+        <td class="c2">猪</td>
+        <td class="c2">牛</td>
+        <td class="c2">羊</td>
+        <td class="c2">其它畜</td>
+        <!--A型 -->
+        <td class="c2">猪</td>
+        <td class="c2">牛</td>
+        <td class="c2">羊</td>
+        <td class="c2">其它畜</td>
+        <!-- 禽流感  -->
         <td class="c2">鸡</td>
         <td class="c2">鸭</td>
         <td class="c2">鹅</td>
         <td class="c2">其它禽</td>
-        <td class="c2">牛</td>
-        <td class="c2">羊</td>
+        <!-- 猪蓝耳-->
         <td class="c2">猪</td>
+        <!-- 猪瘟-->
         <td class="c6">猪</td>
+        <!-- 新城疫-->
         <td class="c7">鸡</td>
+        <!-- 小反刍兽疫-->
         <td class="c8">羊</td>
+        <!-- 布鲁氏菌病-->
         <td class="c2">牛</td>
         <td class="c2">羊</td>
+        <!-- 包虫病-->
         <td class="c2">羊</td>
     </tr>
     <tr class="r4">
         <td class="c9">&nbsp;-</td>
+        <!-- 存栏量 -->
         <td role="data" n="herdspig" class="c2">${item.herdspig}</td>
         <td role="data" n="herdsniu" class="c2">${item.herdsniu}</td>
         <td role="data" n="herdssheep" class="c2">${item.herdssheep}</td>
@@ -214,29 +252,50 @@
         <td role="data" n="herdsduck" class="c2">${item.herdsduck}</td>
         <td role="data" n="herdsgoose" class="c2">${item.herdsgoose}</td>
         <td role="data" n="herdsotherq" class="c2">${item.herdsotherq}</td>
+        <!-- 口蹄疫  -->
+        <!--O型 -->
         <td role="data" n="immunefmdpig" class="c2">${item.immunefmdpig}</td>
-        <td role="data" n="immunefmdniu" class="c2">${item.immunefmdniu}</td>
-        <td role="data" n="immunefmdsheep" class="c6">${item.immunefmdsheep}</td>
         <td role="data" n="immunefmdother" class="c2">${item.immunefmdother}</td>
+        <!--O-A型 -->
+        <td role="data" n="immuneOafmdzhu" class="c2">${item.immuneOafmdzhu}</td>
+        <td role="data" n="immuneOafmdniu" class="c2">${item.immuneOafmdniu}</td>
+        <td role="data" n="immuneOafmdsheep" class="c2">${item.immuneOafmdsheep}</td>
+        <td role="data" n="immuneOafmdother" class="c2">${item.immuneOafmdother}</td>
+        <!--O-亚I型 -->
+        <td role="data" n="immuneOifmdniu" class="c2">${item.immuneOifmdniu}</td>
+        <td role="data" n="immuneOifmdSheep" class="c2">${item.immuneOifmdSheep}</td>
+         <td role="data" n="immuneOifmdOther" class="c2">${item.immuneOifmdOther}</td>
+        <!--O-A-亚I型 -->
+        <td role="data" n="immuneOaifmdzhu" class="c2">${item.immuneOaifmdzhu}</td>
+        <td role="data" n="immuneOaifmdniu" class="c2">${item.immuneOaifmdniu}</td>
+        <td role="data" n="immuneOaifmdsheep" class="c2">${item.immuneOaifmdsheep}</td>
+        <td role="data" n="immuneOaifmdother" class="c2">${item.immuneOaifmdother}</td>
+        <!--A型 -->
+        <td role="data" n="immuneafmdzhu" class="c2">${item.immuneafmdzhu}</td>
+        <td role="data" n="immuneafmdniu" class="c2">${item.immuneafmdniu}</td>
+        <td role="data" n="immuneafmdsheep" class="c2">${item.immuneafmdsheep}</td>
+        <td role="data" n="immuneafmdother" class="c2">${item.immuneafmdother}</td>
+        <!-- 禽流感  -->
         <td role="data" n="immunebirdfluchecken" class="c2">${item.immunebirdfluchecken}</td>
         <td role="data" n="immunebirdfluduck" class="c2">${item.immunebirdfluduck}</td>
         <td role="data" n="immunebirdflugoose" class="c2">${item.immunebirdflugoose}</td>
         <td role="data" n="immunebirdfluother" class="c2">${item.immunebirdfluother}</td>
-
-        <td role="data" n="immuneafmdniu" class="c2">${item.immuneafmdniu}</td>
-        <td role="data" n="immuneafmdsheep" class="c2">${item.immuneafmdsheep}</td>
-
+        <!-- 猪蓝耳-->
         <td role="data" n="immuneblueear" class="c2">${item.immuneblueear}</td>
+        <!-- 猪瘟-->
         <td role="data" n="immuneswine" class="c2">${item.immuneswine}</td>
+        <!-- 新城疫-->
         <td role="data" n="immunenewcastle" class="c2">${item.immunenewcastle}</td>
-
+        <!-- 小反刍兽疫-->
         <td role="data" n="pestedespetitsruminants" class="c8">${item.pestedespetitsruminants}</td>
-
+        <!-- 布鲁氏菌病-->
         <td role="data" n="immuneBruniu" class="c2"><#if item.immuneBruniu??>${item.immuneBruniu}</#if></td>
         <td role="data" n="immuneBruSheep" class="c2"><#if item.immuneBruSheep??>${item.immuneBruSheep}</#if></td>
+        <!-- 包虫病-->
         <td role="data" n="immuneEchSheep"  class="c2"><#if item.immuneEchSheep??>${item.immuneEchSheep}</#if></td>
 
     </tr>
+
     </tbody>
 </table>
 <script type="text/javascript">

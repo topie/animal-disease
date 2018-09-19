@@ -142,33 +142,35 @@
         <col width="50">
         <col width="50">
         <col width="50">
+        <col width="50">
+        <col width="50">
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="26">${templateName}</td>
+        <td class="c1" colspan="28">${templateName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">单 位:</td>
-        <td class="c3" colspan="25">${org.orgName}</td>
+        <td class="c3" colspan="27">${org.orgName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">填表日期:</td>
-        <td class="c3" colspan="25"><#if report.reportTime??>${report.reportTime?string("yyyy-MM-dd")}</#if>
+        <td class="c3" colspan="27"><#if report.reportTime??>${report.reportTime?string("yyyy-MM-dd")}</#if>
     </tr>
     <tr class="r2">
         <td class="c2">&nbsp;填 表 人:</td>
-        <td class="c3" colspan="25">${user.realName}</td>
+        <td class="c3" colspan="27">${user.realName}</td>
     </tr>
     <tr class="r2">
         <td class="c2">&nbsp;主管领导：</td>
-        <td class="c5" colspan="25">${user.leaderName}</td>
+        <td class="c5" colspan="27">${user.leaderName}</td>
     </tr>
     <tr class="r3">
         <td class="c3">&nbsp;</td>
         <td class="c2" colspan="8">存栏数量（万头/只/羽）</td>
         <td class="c2" colspan="4">牲畜口蹄疫应免数量（万头/只）</td>
         <td class="c2" colspan="4">禽流感应免数量（万羽）</td>
-        <td class="c2" colspan="2">A型口蹄疫应免数量（万头/只）</td>
+        <td class="c2" colspan="4">A型口蹄疫应免数量（万头/只）</td>
         <td class="c2">高致病性猪蓝耳病应免数量（万头）</td>
         <td class="c6">猪瘟应免数量（万头）</td>
         <td class="c7">新城疫应免数量（万羽）</td>
@@ -194,7 +196,9 @@
         <td class="c2">鸭</td>
         <td class="c2">鹅</td>
         <td class="c2">其它禽</td>
+        <td class="c2">猪</td>
         <td class="c2">牛</td>
+        <td class="c2">其它畜</td>
         <td class="c2">羊</td>
         <td class="c2">猪</td>
         <td class="c6">猪</td>
@@ -223,8 +227,10 @@
         <td role="data" n="immunebirdflugoose" class="c2">${item.immunebirdflugoose}</td>
         <td role="data" n="immunebirdfluother" class="c2">${item.immunebirdfluother}</td>
 
+        <td role="data" n="immuneafmdzhu" class="c2">${item.immuneafmdzhu}</td>
         <td role="data" n="immuneafmdniu" class="c2">${item.immuneafmdniu}</td>
         <td role="data" n="immuneafmdsheep" class="c2">${item.immuneafmdsheep}</td>
+        <td role="data" n="immuneafmdother" class="c2">${item.immuneafmdother}</td>
 
         <td role="data" n="immuneblueear" class="c2">${item.immuneblueear}</td>
         <td role="data" n="immuneswine" class="c2">${item.immuneswine}</td>
