@@ -739,10 +739,9 @@
             $("td[role=lj_fmdAvaccine]").text(sum_fmdAvaccine);
 
             $("td[role=lj_fmdInactivatedimmuneamountpig]").text(sum_fmdInactivatedimmuneamountpig);
+            $("td[role=lj_fmdInactivatedimmuneamountniu]").text(sum_fmdInactivatedimmuneamountniu);
+            $("td[role=lj_fmdInactivatedimmuneamountsheep]").text(sum_fmdInactivatedimmuneamountsheep);
             $("td[role=lj_fmdInactivatedimmuneamountother]").text(sum_fmdInactivatedimmuneamountother);
-
-            $("td[role=lj_fmdAimmuneamountniu]").text(sum_fmdAimmuneamountniu);
-            $("td[role=lj_fmdAimmuneamountsheep]").text(sum_fmdAimmuneamountsheep);
 
 
             $("td[role=lj_fmdO2immuneamountniu]").text(sum_fmdO2immuneamountniu);
