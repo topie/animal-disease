@@ -42,6 +42,17 @@
     <result column="fmd_O3ImmuneAmountNiu" property="fmdO3immuneamountniu" jdbcType="DECIMAL" />
     <result column="fmd_O3ImmuneAmountSheep" property="fmdO3immuneamountsheep" jdbcType="DECIMAL" />
     <result column="fmd_O3ImmuneAmountOther" property="fmdO3immuneamountother" jdbcType="DECIMAL" />
+
+    <result column="fmd_AImmuneAmountZhu" property="fmdAimmuneamountzhu" jdbcType="DECIMAL" />
+    <result column="fmd_AImmuneAmountOther" property="fmdAimmuneamountother" jdbcType="DECIMAL" />
+    <result column="fmd_OAImmuneAmountZhu" property="fmdOaimmuneamountzhu" jdbcType="DECIMAL" />
+    <result column="fmd_OAImmuneAmountOther" property="fmdOaimmuneamountother" jdbcType="DECIMAL" />
+
+    <result column="fmd_OAVaccine" property="fmdOavaccine" jdbcType="DECIMAL" />
+    <result column="fmd_OAImmuneAmountPig" property="fmdOaimmuneamountpig" jdbcType="DECIMAL" />
+    <result column="fmd_OAImmuneAmountNiu" property="fmdOaimmuneamountniu" jdbcType="DECIMAL" />
+    <result column="fmd_OAImmuneAmountSheep" property="fmdOaimmuneamountsheep" jdbcType="DECIMAL" />
+    <result column="fmd_OAImmuneAmountOther" property="fmdOaimmuneamountother" jdbcType="DECIMAL" />
   </resultMap>
   <select id="selectSumByReportCode" resultMap="BaseResultMap">
     select
@@ -49,8 +60,9 @@
     sum(fmd_inactivatedImmuneAmountPig) fmd_inactivatedImmuneAmountPig,
     sum(fmd_inactivatedImmuneAmountOther) fmd_inactivatedImmuneAmountOther,
     sum(fmd_inactivatedImmuneAmountSheep) fmd_inactivatedImmuneAmountSheep,
-    sum(fmd_O2Vaccine) fmd_O2Vaccine,
+
     sum(fmd_inactivatedImmuneAmountNiu) fmd_inactivatedImmuneAmountNiu,
+    sum(fmd_O2Vaccine) fmd_O2Vaccine,
     sum(fmd_O2ImmuneAmountPig) fmd_O2ImmuneAmountPig,
     sum(fmd_O2ImmuneAmountNiu) fmd_O2ImmuneAmountNiu,
     sum(fmd_O2ImmuneAmountSheep) fmd_O2ImmuneAmountSheep,
@@ -60,7 +72,16 @@
     sum(fmd_O3ImmuneAmountSheep) fmd_O3ImmuneAmountSheep,
      sum(fmd_AVaccine) fmd_AVaccine,
     sum(fmd_AImmuneAmountNiu) fmd_AImmuneAmountNiu,
-    sum(fmd_AImmuneAmountSheep) fmd_AImmuneAmountSheep
+    sum(fmd_AImmuneAmountSheep) fmd_AImmuneAmountSheep,
+     sum(fmd_AImmuneAmountZhu) fmd_AImmuneAmountZhu,
+    sum(fmd_AImmuneAmountOther) fmd_AImmuneAmountOther,
+    sum(fmd_O3ImmuneAmountPig) fmd_O3ImmuneAmountPig,
+    sum(fmd_O3ImmuneAmountOther) fmd_O3ImmuneAmountOther,
+    sum(fmd_OAVaccine) fmd_OAVaccine,
+    sum(fmd_OAImmuneAmountZhu) fmd_OAImmuneAmountZhu,
+    sum(fmd_OAImmuneAmountNiu) fmd_OAImmuneAmountNiu,
+    sum(fmd_OAImmuneAmountSheep) fmd_OAImmuneAmountSheep,
+    sum(fmd_OAImmuneAmountOther) fmd_OAImmuneAmountOther
     from animal_disease.b_footandmouthdisease
     where fmd_regionCode=#{regionCode} AND fmd_date BETWEEN  #{beginTime} AND #{endTime}
   </select>
@@ -86,7 +107,16 @@
     sum(fmd_O3ImmuneAmountSheep) fmd_O3ImmuneAmountSheep,
      sum(fmd_AVaccine) fmd_AVaccine,
     sum(fmd_AImmuneAmountNiu) fmd_AImmuneAmountNiu,
-    sum(fmd_AImmuneAmountSheep) fmd_AImmuneAmountSheep
+    sum(fmd_AImmuneAmountSheep) fmd_AImmuneAmountSheep,
+     sum(fmd_AImmuneAmountZhu) fmd_AImmuneAmountZhu,
+    sum(fmd_AImmuneAmountOther) fmd_AImmuneAmountOther,
+     sum(fmd_O3ImmuneAmountPig) fmd_O3ImmuneAmountPig,
+    sum(fmd_O3ImmuneAmountOther) fmd_O3ImmuneAmountOther,
+    sum(fmd_OAVaccine) fmd_OAVaccine,
+    sum(fmd_OAImmuneAmountZhu) fmd_OAImmuneAmountZhu,
+    sum(fmd_OAImmuneAmountNiu) fmd_OAImmuneAmountNiu,
+    sum(fmd_OAImmuneAmountSheep) fmd_OAImmuneAmountSheep,
+    sum(fmd_OAImmuneAmountOther) fmd_OAImmuneAmountOther
     from animal_disease.b_footandmouthdisease
     where  fmd_date BETWEEN  #{beginTime} AND #{endTime}
     GROUP  by fmd_regionCode

@@ -36,6 +36,8 @@
         <result column="ImmuneBruniu" property="immuneBruniu" jdbcType="DECIMAL"/>
         <result column="ImmuneBruSheep" property="immuneBruSheep" jdbcType="DECIMAL"/>
         <result column="ImmuneEchSheep" property="immuneEchSheep" jdbcType="DECIMAL"/>
+        <result column="ImmuneAFMDZhu" property="immuneafmdzhu" jdbcType="DECIMAL"/>
+            <result column="ImmuneAFMDOther" property="immuneafmdother" jdbcType="DECIMAL"/>
     </resultMap>
     <select id="selectOneByReportId" resultMap="BaseResultMap">
       select * from animal_disease.b_livestockinout where ReportId=#{reportId}
@@ -75,7 +77,9 @@
         sum(ImmuneaPprSheep) ImmuneaPprSheep,
         sum(ImmuneBruniu) ImmuneBruniu,
         sum(ImmuneBruSheep) ImmuneBruSheep,
-        sum(ImmuneEchSheep) ImmuneEchSheep
+        sum(ImmuneEchSheep) ImmuneEchSheep,
+        sum(ImmuneAFMDZhu) ImmuneAFMDZhu,
+        sum(ImmuneAFMDOther) ImmuneAFMDOther
         from animal_disease.b_livestockinout
         where ReportId in
         <foreach item="item" collection="ids" open="(" separator="," close=")">
@@ -111,7 +115,9 @@
          sum(ImmuneaPprSheep) ImmuneaPprSheep,
         sum(ImmuneBruniu) ImmuneBruniu,
         sum(ImmuneBruSheep) ImmuneBruSheep,
-        sum(ImmuneEchSheep) ImmuneEchSheep
+        sum(ImmuneEchSheep) ImmuneEchSheep,
+        sum(ImmuneAFMDZhu) ImmuneAFMDZhu,
+        sum(ImmuneAFMDOther) ImmuneAFMDOther
         from animal_disease.b_livestockinout
         where Liv_regionCode=#{regionCode} AND LivestockDate BETWEEN  #{beginTime} AND #{endTime}
       ORDER  BY  Liv_regionCode

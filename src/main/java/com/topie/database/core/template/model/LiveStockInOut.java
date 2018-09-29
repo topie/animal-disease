@@ -106,6 +106,28 @@ public class LiveStockInOut {
     @Column(name = "ImmuneEchSheep")
     private BigDecimal immuneEchSheep=BigDecimal.ZERO;
 
+    @Column(name = "ImmuneAFMDZhu")
+    private BigDecimal immuneafmdzhu=BigDecimal.ZERO;
+
+    @Column(name = "ImmuneAFMDOther")
+    private BigDecimal immuneafmdother=BigDecimal.ZERO;
+
+    public BigDecimal getImmuneafmdzhu() {
+        return immuneafmdzhu;
+    }
+
+    public void setImmuneafmdzhu(BigDecimal immuneafmdzhu) {
+        this.immuneafmdzhu = immuneafmdzhu;
+    }
+
+    public BigDecimal getImmuneafmdother() {
+        return immuneafmdother;
+    }
+
+    public void setImmuneafmdother(BigDecimal immuneafmdother) {
+        this.immuneafmdother = immuneafmdother;
+    }
+
     /**
      * @return LivestockId
      */

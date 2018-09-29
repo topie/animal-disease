@@ -119,6 +119,52 @@ public class Footandmouthdisease {
     @Column(name = "fmd_O3ImmuneAmountOther")
     private BigDecimal fmdO3immuneamountother;
 
+    @Column(name = "fmd_AImmuneAmountZhu")
+    private BigDecimal fmdAimmuneamountzhu;
+
+    @Column(name = "fmd_AImmuneAmountOther")
+    private BigDecimal fmdAimmuneamountother;
+
+    @Column(name = "fmd_OAImmuneAmountZhu")
+    private BigDecimal fmdOaimmuneamountzhu;
+
+    @Column(name = "fmd_OAImmuneAmountOther")
+    private BigDecimal fmdOaimmuneamountother;
+
+
+
+    public BigDecimal getFmdAimmuneamountzhu() {
+        return fmdAimmuneamountzhu;
+    }
+
+    public void setFmdAimmuneamountzhu(BigDecimal fmdAimmuneamountzhu) {
+        this.fmdAimmuneamountzhu = fmdAimmuneamountzhu;
+    }
+
+    public BigDecimal getFmdAimmuneamountother() {
+        return fmdAimmuneamountother;
+    }
+
+    public void setFmdAimmuneamountother(BigDecimal fmdAimmuneamountother) {
+        this.fmdAimmuneamountother = fmdAimmuneamountother;
+    }
+
+    public BigDecimal getFmdOaimmuneamountzhu() {
+        return fmdOaimmuneamountzhu;
+    }
+
+    public void setFmdOaimmuneamountzhu(BigDecimal fmdOaimmuneamountzhu) {
+        this.fmdOaimmuneamountzhu = fmdOaimmuneamountzhu;
+    }
+
+    public BigDecimal getFmdOaimmuneamountother() {
+        return fmdOaimmuneamountother;
+    }
+
+    public void setFmdOaimmuneamountother(BigDecimal fmdOaimmuneamountother) {
+        this.fmdOaimmuneamountother = fmdOaimmuneamountother;
+    }
+
     /**
      * @return fmd_id
      */

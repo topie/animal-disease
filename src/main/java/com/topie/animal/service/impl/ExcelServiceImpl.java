@@ -155,6 +155,7 @@ public class ExcelServiceImpl implements IExcelService {
 
     public static final String B_PESTEDESPETISRUMINANTS_DATE="2018-05-31 23:59:59";
     public static final String B_AVIANINFLUENZAVACCINE_DATE="2018-06-30 23:59:59";
+    public static final String B_NiNE_DATE="2018-08-31 23:59:59";
 
 
     @Autowired
@@ -683,9 +684,11 @@ public class ExcelServiceImpl implements IExcelService {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date xfc= null;
         Date qlg=null;
+        Date nine=null;
         try {
             xfc = sdf.parse(B_PESTEDESPETISRUMINANTS_DATE);
             qlg=sdf.parse(B_AVIANINFLUENZAVACCINE_DATE);
+            nine=sdf.parse(B_NiNE_DATE);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -700,6 +703,12 @@ public class ExcelServiceImpl implements IExcelService {
         }
         if(template.getTableName().toLowerCase().equals("b_wfootandmouthdisease")&&report.getBeginTime().after(qlg)){
             template.setNormalTemplate("b_wfootandmouthdisease_2018qiu.ftl");
+        }
+        if(template.getTableName().toLowerCase().equals("b_livestockinout")&&report.getBeginTime().after(nine)){
+            template.setNormalTemplate("b_livestockinout_2018qiu.ftl");
+        }
+        if(template.getTableName().toLowerCase().equals("b_footandmouthdisease")&&report.getBeginTime().after(nine)){
+            template.setNormalTemplate("b_footandmouthdisease_2018qiu.ftl");
         }
         String templatePath = request.getSession().getServletContext().getRealPath(filePath);
 
@@ -1016,9 +1025,11 @@ public class ExcelServiceImpl implements IExcelService {
         Date xfc= null;
         Date beginDate= null;
         Date qlg=null;
+        Date nine=null;
         try {
             xfc = sdf.parse(B_PESTEDESPETISRUMINANTS_DATE);
             qlg=sdf.parse(B_AVIANINFLUENZAVACCINE_DATE);
+            nine=sdf.parse(B_NiNE_DATE);
             beginDate=sdf.parse(beginTime);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -1037,6 +1048,13 @@ public class ExcelServiceImpl implements IExcelService {
         if(template.getTableName().toLowerCase().equals("b_wfootandmouthdisease")&&beginDate.after(qlg)){
             template.setSummaryTemplate("b_wfootandmouthdisease_sum_2018qiu.ftl");
         }
+        if(template.getTableName().toLowerCase().equals("b_livestockinout")&&beginDate.after(nine)){
+            template.setSummaryTemplate("b_livestockinout_sum_2018qiu.ftl");
+        }
+        if(template.getTableName().toLowerCase().equals("b_footandmouthdisease")&&beginDate.after(nine)){
+            template.setSummaryTemplate("b_footandmouthdisease_sum_2018qiu.ftl");
+        }
+
         String templatePath = request.getSession().getServletContext().getRealPath(filePath);
         List<Wlivestockinout> wlivestockinouts = this.wlivestockinoutMapper
                 .selectLivestockInOutByDate(halfYearbeginTime);
