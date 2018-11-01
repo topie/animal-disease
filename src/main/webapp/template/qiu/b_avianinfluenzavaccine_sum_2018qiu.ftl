@@ -126,49 +126,49 @@
 				<td class="c3">禽流感-新城疫重组二联活疫苗（rL-H5-6株）（万羽份）</td>
 			</tr>
 			<#assign avH5H7UseCountSum=0>
-			<#assign avMhusecountSum=0>
+			<#assign avMhUseCountSum=0>
 
 			<#assign avRhrh5usecountSum=0>
 			<#assign avH5H7StoreCountSum=0>
-			<#assign avMhstorecountSum=0>
+			<#assign avMhStoreCountSum=0>
 
 			<#assign avRhrh5storecountSum=0>
 			<#assign avH5H7YearCountSum=0>
-			<#assign avMhyearcountSum=0>
+			<#assign avMhYearCountSum=0>
 
 			<#assign avRhrh5yearcountSum=0>
 			<#list items as item>
 				<#assign avH5H7UseCountSum=avH5H7UseCountSum?default(0) +item.avH5H7UseCount?default(0)>
-				<#assign avMhusecountSum=avMhusecountSum?default(0) +item.avMhusecount?default(0)>
+				<#assign avMhUseCountSum=avMhUseCountSum?default(0) +item.avMhUseCount?default(0)>
 				<#assign avRhrh5usecountSum=avRhrh5usecountSum?default(0) +item.avRhrh5usecount?default(0)>
 				<#assign avH5H7StoreCountSum=avH5H7StoreCountSum?default(0) +item.avH5H7StoreCount?default(0)>
-				<#assign avMhstorecountSum=avMhstorecountSum?default(0) +item.avMhstorecount?default(0)>
+				<#assign avMhStoreCountSum=avMhStoreCountSum?default(0) +item.avMhStoreCount?default(0)>
 				<#assign avRhrh5storecountSum=avRhrh5storecountSum?default(0) +item.avRhrh5storecount?default(0)>
 				<#assign avH5H7YearCountSum=avH5H7YearCountSum?default(0) +item.avH5H7YearCount?default(0)>
-				<#assign avMhyearcountSum=avMhyearcountSum?default(0) +item.avMhyearcount?default(0)>
+				<#assign avMhYearCountSum=avMhYearCountSum?default(0) +item.avMhYearCount?default(0)>
 				<#assign avRhrh5yearcountSum=avRhrh5yearcountSum?default(0) +item.avRhrh5yearcount?default(0)>
 			<tr class="r5">
 				<td n="avRegionname"  class="c2">${item.avRegionname}</td>
 				<td n="avH5H7UseCount"  class="c2">${item.avH5H7UseCount?default(0)}</td>
-				<td n="avMhusecount"  class="c2"><#if item.avMhusecount??>${item.avMhusecount}</#if></td>
+				<td n="avMhUseCount"  class="c2"><#if item.avMhUseCount??>${item.avMhUseCount}</#if></td>
                 <td n="avH5H7StoreCount"  class="c2">${item.avH5H7StoreCount?default(0)}</td>
-				<td n="avMhstorecount"  class="c2"><#if item.avMhstorecount??>${item.avMhstorecount}</#if></td>
+				<td n="avMhStoreCount"  class="c2"><#if item.avMhStoreCount??>${item.avMhStoreCount}</#if></td>
 				<td n="avRhrh5storecount"  class="c2"><#if item.avRhrh5storecount??>${item.avRhrh5storecount}</#if></td>
                 <td n="avH5H7YearCount"  class="c2">${item.avH5H7YearCount?default(0)}</td>
-				<td n="avMhyearcount"  class="c2"><#if item.avMhyearcount??>${item.avMhyearcount}</#if></td>
+				<td n="avMhYearCount"  class="c2"><#if item.avMhYearCount??>${item.avMhYearCount}</#if></td>
 				<td n="avRhrh5yearcount"  class="c2"><#if item.avRhrh5yearcount??>${item.avRhrh5yearcount}</#if></td>
 			</tr>
 </#list>
             <tr class="r5">
                 <td  class="c2">合计</td>
                 <td n="avH5H7UseCountSum" class="c2"><#if avH5H7UseCountSum??>${avH5H7UseCountSum}</#if></td>
-                <td n="avMhusecountSum" class="c2"><#if avMhusecountSum??>${avMhusecountSum}</#if></td>
+                <td n="avMhUseCountSum" class="c2"><#if avMhUseCountSum??>${avMhUseCountSum}</#if></td>
                 <td n="avRhrh5usecountSum" class="c2"><#if avRhrh5usecountSum??>${avRhrh5usecountSum}</#if></td>
                 <td n="avH5H7StoreCountSum" class="c2"><#if avH5H7StoreCountSum??>${avH5H7StoreCountSum}</#if></td>
-                <td n="avMhstorecountSum" class="c2"><#if avMhstorecountSum??>${avMhstorecountSum}</#if></td>
+                <td n="avMhStoreCountSum" class="c2"><#if avMhStoreCountSum??>${avMhStoreCountSum}</#if></td>
                 <td n="avRhrh5storecountSum" class="c2"><#if avRhrh5storecountSum??>${avRhrh5storecountSum}</#if></td>
                 <td n="avH5H7YearCountSum" class="c2"><#if avH5H7YearCountSum??>${avH5H7YearCountSum}</#if></td>
-                <td n="avMhyearcountSum" class="c2"><#if avMhyearcountSum??>${avMhyearcountSum}</#if></td>
+                <td n="avMhYearCountSum" class="c2"><#if avMhYearCountSum??>${avMhYearCountSum}</#if></td>
                 <td n="avRhrh5yearcountSum" class="c2"><#if avRhrh5yearcountSum??>${avRhrh5yearcountSum}</#if></td>
             </tr>
 		</tbody>

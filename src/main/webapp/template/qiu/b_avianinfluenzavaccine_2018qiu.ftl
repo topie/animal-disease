@@ -35,7 +35,7 @@
     </colgroup>
     <tbody>
     <tr class="r1">
-        <td class="c1" colspan="27">${templateName}统计表</td>
+        <td class="c1" colspan="9">${templateName}统计表</td>
     </tr>
     <tr class="r2">
         <td class="c2">单    位:</td><td class="c3" colspan="26">${item.avRegionname}</td>
@@ -50,12 +50,12 @@
         <td class="c2">主管领导：</td><td class="c3" colspan="26">${user.leaderName}</td>
     </tr>
     <tr class="r4">
-        <td class="c2" colspan="27">禽流感疫苗</td>
+        <td class="c2" colspan="9">禽流感疫苗</td>
     </tr>
     <tr class="r5">
-        <td class="c2" colspan="9">使用数量</td>
-        <td class="c2" colspan="9">目前库存数量</td>
-        <td class="c2" colspan="9">全年使用数量</td>
+        <td class="c2" colspan="3">使用数量</td>
+        <td class="c2" colspan="3">目前库存数量</td>
+        <td class="c2" colspan="3">全年使用数量</td>
     </tr>
     <tr class="r6">
         <td class="c2">重组禽流感病毒（H5+H7）二价灭活疫苗（H5N1 Re-8株+H7N9 H7-Re-1株）（万毫升）</td>
@@ -73,15 +73,15 @@
     </tr>
     <tr class="r7">
         <td role="data" n="avH5H7UseCount" class="c2"><#if item.avH5H7UseCount??>${item.avH5H7UseCount}</#if></td>
-        <td role="data" n="avMhusecount" class="c2"><#if item.avMhusecount??>${item.avMhusecount}</#if></td>
+        <td role="data" n="avMhUseCount" class="c2"><#if item.avMhUseCount??>${item.avMhUseCount}</#if></td>
 
         <td role="data" n="avRhrh5usecount" class="c2"><#if item.avRhrh5usecount??>${item.avRhrh5usecount}</#if></td>
         <td role="data" n="avH5H7StoreCount" class="c2"><#if item.avH5H7StoreCount??>${item.avH5H7StoreCount}</#if></td>
-        <td role="data" n="avMhstorecount" class="c2"><#if item.avMhstorecount??>${item.avMhstorecount}</#if></td>
+        <td role="data" n="avMhStoreCount" class="c2"><#if item.avMhStoreCount??>${item.avMhStoreCount}</#if></td>
 
         <td role="data" n="avRhrh5storecount" class="c2"><#if item.avRhrh5storecount??>${item.avRhrh5storecount}</#if></td>
         <td role="data" n="avH5H7YearCount" class="c2"><#if item.avH5H7YearCount??>${item.avH5H7YearCount}</#if></td>
-        <td role="data" n="avMhyearcount" class="c2"><#if item.avMhyearcount??>${item.avMhyearcount}</#if></td>
+        <td role="data" n="avMhYearCount" class="c2"><#if item.avMhYearCount??>${item.avMhYearCount}</#if></td>
 
         <td role="data" n="avRhrh5yearcount" class="c2"><#if item.avRhrh5yearcount??>${item.avRhrh5yearcount}</#if></td>
     </tr>
