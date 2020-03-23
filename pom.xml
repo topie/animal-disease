@@ -20,7 +20,7 @@
         <!--  编译jdk版本  -->
         <jdk.version>1.8</jdk.version>
         <!-- spring版本号 -->
-        <spring.version>4.1.2.RELEASE</spring.version>
+        <spring.version>5.2.4.RELEASE</spring.version>
         <!-- security版本号 -->
         <spring.security.version>3.2.9.RELEASE</spring.security.version>
         <!-- mybatis版本号 -->
